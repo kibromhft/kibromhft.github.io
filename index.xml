@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Lil&#39;Log</title>
+    <title>Kb&#39;s Blog</title>
     <link>https://kibromhft.github.io/</link>
-    <description>Recent content on Lil&#39;Log</description>
+    <description>Recent content on Kb&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 08 Sep 2022 10:00:00 -0700</lastBuildDate><atom:link href="https://kibromhft.github.io/index.xml" rel="self" type="application/rss+xml" />
@@ -273,7 +273,7 @@ Attention is, to some extent, motivated by how we pay visual attention to differ
       <pubDate>Sat, 05 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://kibromhft.github.io/posts/2018-05-05-drl-implementation/</guid>
-      <description>The full implementation is available in lilianweng/deep-reinforcement-learning-gym
+      <description>The full implementation is available in kibromhaftu/deep-reinforcement-learning-gym
 In the previous two posts, I have introduced the algorithms of many deep reinforcement learning models. Now it is the time to get our hands dirty and practice how to implement the models in the wild. The implementation is gonna be built in Tensorflow and OpenAI gym environment. The full version of the code in this tutorial is available in [lilian/deep-reinforcement-learning-gym].
 Environment Setup Make sure you have Homebrew installed:  /usr/bin/ruby -e &amp;#34;$(curl -fsSL https://raw.</description>
     </item>
@@ -303,7 +303,7 @@ A couple of exciting news in Artificial Intelligence (AI) has just happened in r
       <pubDate>Tue, 23 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>https://kibromhft.github.io/posts/2018-01-23-multi-armed-bandit/</guid>
-      <description>The algorithms are implemented for Bernoulli bandit in lilianweng/multi-armed-bandit.
+      <description>The algorithms are implemented for Bernoulli bandit in kibromhaftu/multi-armed-bandit.
 Exploitation vs Exploration The exploration vs exploitation dilemma exists in many aspects of our life. Say, your favorite restaurant is right around the corner. If you go there every day, you would be confident of what you will get, but miss the chances of discovering an even better option. If you try new places all the time, very likely you are gonna have to eat unpleasant food from time to time.</description>
     </item>
     
@@ -392,7 +392,7 @@ Meanwhile, the rapid growth of deep learning models pushes the requirement of in
       <pubDate>Sat, 08 Jul 2017 00:00:00 +0000</pubDate>
       
       <guid>https://kibromhft.github.io/posts/2017-07-08-stock-rnn-part-1/</guid>
-      <description>This is a tutorial for how to build a recurrent neural network using Tensorflow to predict stock market prices. The full working code is available in github.com/lilianweng/stock-rnn. If you don&amp;rsquo;t know what is recurrent neural network or LSTM cell, feel free to check my previous post.
+      <description>This is a tutorial for how to build a recurrent neural network using Tensorflow to predict stock market prices. The full working code is available in github.com/kibromhaftu/stock-rnn. If you don&amp;rsquo;t know what is recurrent neural network or LSTM cell, feel free to check my previous post.
  One thing I would like to emphasize that because my motivation for writing this post is more on demonstrating how to build and train an RNN model in Tensorflow and less on solve the stock prediction problem, I didn&amp;rsquo;t try hard on improving the prediction outcomes.</description>
     </item>
     

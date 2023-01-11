@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>math-heavy on Lil&#39;Log</title>
+    <title>math-heavy on Kb&#39;s Blog</title>
     <link>https://kibromhft.github.io/tags/math-heavy/</link>
-    <description>Recent content in math-heavy on Lil&#39;Log</description>
+    <description>Recent content in math-heavy on Kb&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 11 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kibromhft.github.io/tags/math-heavy/index.xml" rel="self" type="application/rss+xml" />
@@ -52,7 +52,7 @@ A couple of exciting news in Artificial Intelligence (AI) has just happened in r
       <pubDate>Tue, 23 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>https://kibromhft.github.io/posts/2018-01-23-multi-armed-bandit/</guid>
-      <description>The algorithms are implemented for Bernoulli bandit in lilianweng/multi-armed-bandit.
+      <description>The algorithms are implemented for Bernoulli bandit in kibromhaftu/multi-armed-bandit.
 Exploitation vs Exploration The exploration vs exploitation dilemma exists in many aspects of our life. Say, your favorite restaurant is right around the corner. If you go there every day, you would be confident of what you will get, but miss the chances of discovering an even better option. If you try new places all the time, very likely you are gonna have to eat unpleasant food from time to time.</description>
     </item>
     
