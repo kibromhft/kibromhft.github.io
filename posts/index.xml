@@ -36,7 +36,7 @@ Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolu
  Augmented data. Given a set of existing training samples, we can apply a variety of augmentation, distortion and transformation to derive new data points without losing the key attributes. We have covered a bunch of augmentation methods on text and images in a previous post on contrastive learning.</description>
 		</item>
 		<item>
-			<title>Learning with not Enough Data Part 2-KB: Active Learning</title>
+			<title>Learning with not Enough Data Part 2: Active Learning</title>
 			<link>https://kibromhft.github.io/posts/2022-02-20-active-learning/</link>
 			<pubDate>Sun, 20 Feb 2022 00:00:00 +0000</pubDate>
 			<guid>https://kibromhft.github.io/posts/2022-02-20-active-learning/</guid>
