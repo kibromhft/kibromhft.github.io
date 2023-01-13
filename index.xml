@@ -249,10 +249,10 @@ Flow-based deep generative models conquer this hard problem with the help of nor
     
     <item>
       <title>From Autoencoder to Beta-VAE</title>
-      <link>https://kibromhft.github.io/posts/2018-08-12-vae/</link>
+      <link>https://kibromhft.github.io/posts/2022-02-24-vae/</link>
       <pubDate>Sun, 12 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://kibromhft.github.io/posts/2018-08-12-vae/</guid>
+      <guid>https://kibromhft.github.io/posts/2022-02-24-vae/</guid>
       <description>[Updated on 2019-07-18: add a section on VQ-VAE &amp;amp; VQ-VAE-2.]  [Updated on 2019-07-26: add a section on TD-VAE.] 
 Autocoder is invented to reconstruct high-dimensional data using a neural network model with a narrow bottleneck layer in the middle (oops, this is probably not true for Variational Autoencoder, and we will investigate it in details in later sections). A nice byproduct is dimension reduction: the bottleneck layer captures a compressed latent encoding.</description>
     </item>
