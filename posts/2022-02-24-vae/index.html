@@ -285,10 +285,6 @@ Autocoder is invented to reconstruct high-dimensional data using a neural networ
 </div>
 
   <div class="post-content"><!-- Autocoders are a family of neural network models aiming to learn compressed latent variables of high-dimensional data. Starting from the basic autocoder model, this post reviews several variations, including denoising, sparse, and contractive autoencoders, and then Variational Autoencoder (VAE) and its modification beta-VAE. -->
-<p><span class="update">[Updated on 2019-07-18: add a section on <a href="#vq-vae-and-vq-vae-2">VQ-VAE &amp; VQ-VAE-2</a>.]</span>
-<br/>
-<span class="update">[Updated on 2019-07-26: add a section on <a href="#td-vae">TD-VAE</a>.]</span>
-<br/></p>
 <p>Autocoder is invented to reconstruct high-dimensional data using a neural network model with a narrow bottleneck layer in the middle (oops, this is probably not true for <a href="#vae-variational-autoencoder">Variational Autoencoder</a>, and we will investigate it in details in later sections). A nice byproduct is dimension reduction: the bottleneck layer captures a compressed latent encoding. Such a low-dimensional representation can be used as en embedding vector in various applications (i.e. search), help data compression, or reveal the underlying data generative factors.</p>
 <h1 id="notation">Notation<a hidden class="anchor" aria-hidden="true" href="#notation">#</a></h1>
 <table>
