@@ -402,6 +402,8 @@ $$
 <p>In addition to this, by using a combination of many input dimensions, the model is able to create a more generalizable and <em>robust</em> latent representation. This is because the model is not relying on just one dimension for its understanding of the image, but rather is able to gather information from multiple dimensions. This improves the overall robustness of the model and allows it to better handle different types of noise and corruption.</p>
 <p>Overall, the use of a stochastic mapping in combination with incorporating prior knowledge about the corruption process and utilizing a combination of many input dimensions, allows for the creation of a strong and robust latent representation for high dimensional input with high redundancy, such as images.</p>
 <hr>
+
+<hr>
 <h1 id="vae-variational-autoencoder">Unveiling the Hidden Structure: A Variational Autoencoder(VAE) Approach<a hidden class="anchor" aria-hidden="true" href="#vae-variational-autoencoder">#</a></h1>
 <p>The idea of <strong>Variational Autoencoder</strong> (<a href="https://arxiv.org/abs/1312.6114">Kingma &amp; Welling, 2014</a>), short for <strong>VAE</strong>, is actually less similar to all the autoencoder models above, but deeply rooted in the methods of variational bayesian and graphical model.</p>
 <p>Instead of mapping the input into a <em>fixed</em> vector, we want to map it into a distribution. Let’s label this distribution as $p_\theta$, parameterized by $\theta$.  The relationship between the data input $\mathbf{x}$ and the latent encoding vector $\mathbf{z}$ can be fully defined by:</p>
