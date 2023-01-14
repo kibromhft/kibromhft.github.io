@@ -372,9 +372,9 @@ $$
 L_\text{AE}(\theta, \phi) = \frac{1}{n}\sum_{i=1}^n (\mathbf{x}^{(i)} - f_\theta(g_\phi(\mathbf{x}^{(i)})))^2
 $$
 </div>
-<center>
+<p>
     Where $L_\text{AE}$ is the loss function for the Autoencoder, $n$ is the number of input samples, $\mathbf{x}^{(i)}$ is the $i^{th}$ input sample, $f_\theta(.)$ is the decoder function parameterized by $\theta$, and $g_\phi(.)$ is the encoder function parameterized by $\phi$. This loss function measures the average squared difference between the original input and the reconstructed output, and the goal is to minimize this value during the training process by optimizing the parameters $\theta$ and $\phi$.
-</center>
+</p>
 
 <h1 id="denoising-autoencoder">Denoising Autoencoder<a hidden class="anchor" aria-hidden="true" href="#denoising-autoencoder">#</a></h1>
 <p>Since the autoencoder learns the identity function, we are facing the risk of &ldquo;overfitting&rdquo; when there are more network parameters than the number of data points.</p>
