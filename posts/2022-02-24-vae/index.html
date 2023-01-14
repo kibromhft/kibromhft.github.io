@@ -397,8 +397,8 @@ $$
 <img src="denoising_DAE.png" style="width: 100%;" class="center" />
   <figcaption>
     <p><em>Fig. 2. Denoising autoencoder model architecture.</em></p>
-    <p><em><strong>The input, which may be a noisy or corrupted version of the original data, is fed into the encoder network. The encoder compresses the input into a lower-dimensional representation, also known as the bottleneck or latent representation.</strong></em></p>
-    <p><em><strong>The decoder network then takes the bottleneck representation and reconstructs the original input, but with the noise removed. The model is trained using backpropagation to minimize the difference between the original input and the reconstructed output, thus removing noise and unwanted variations from the input. The final output is a denoised version of the original input.</strong></em></p>
+    <p><em>The input, which may be a noisy or corrupted version of the original data, is fed into the encoder network. The encoder compresses the input into a lower-dimensional representation, also known as the bottleneck or latent representation.
+    The decoder network then takes the bottleneck representation and reconstructs the original input, but with the noise removed. The model is trained using backpropagation to minimize the difference between the original input and the reconstructed output, thus removing noise and unwanted variations from the input. The final output is a denoised version of the original input.</em></p>
   </figcaption>
 <p>This design is motivated by the fact that humans can easily recognize an object or a scene even the view is partially occluded or corrupted. To &ldquo;repair&rdquo; the partially destroyed input, the denoising autoencoder has to discover and capture relationship between dimensions of input in order to infer missing pieces.</p>
 <p>For high dimensional input with high redundancy, like images, the model is likely to depend on evidence gathered from a combination of many input dimensions to recover the denoised version rather than to overfit one dimension. This builds up a good foundation for learning <em>robust</em> latent representation.</p>
