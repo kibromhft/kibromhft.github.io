@@ -353,13 +353,13 @@ One of the main benefits of autoencoders is their ability to reduce the dimensio
 </tbody>
 </table>
 <h1 id="autoencoder">Autoencoder<a hidden class="anchor" aria-hidden="true" href="#autoencoder">#</a></h1>
-<p>An <strong>Autoencoder</strong> is a type of neural network designed to learn an identity function in an unsupervised way. The main goal of an autoencoder is to reconstruct the original input, while at the same time compressing the data in the process, which allows discovering a more efficient and compressed representation of the input. The idea of autoencoders was originated in the 1980s, but it was later popularized by the seminal paper by Hinton & Salakhutdinov, 2006.
+<p>An <strong>Autoencoder</strong> is a type of neural network designed to learn an identity function in an unsupervised way. The main goal of an autoencoder is to reconstruct the original input, while at the same time compressing the data in the process, which allows discovering a more efficient and compressed representation of the input.
 </p>
 <p>An Autoencoder typically consists of two main parts:
 </p>
 <ul>
-<li><em>Encoder</em> network: It translates the original high-dimension input into the latent low-dimensional code. The input size is larger than the output size.</li>
-<li><em>Decoder</em> network: The decoder network recovers the data from the code, likely with larger and larger output layers.</li>
+  <li><strong>Encoder network</strong> : The encoder network is responsible for translating the original high-dimensional input into a low-dimensional code, also known as latent representation. The encoder network typically has a smaller output layer than its input layer, which effectively reduces the dimensionality of the input data. It is trained to extract the most important features of the input data and represent them in the lower-dimensional code. The final output of the encoder network is the low-dimensional code, also known as the latent representation of the input data.</li>
+  <li><strong>Decoder network</strong> : The decoder network takes the low-dimensional code produced by the encoder network as input and attempts to reconstruct the original high-dimensional input data. The decoder network typically has a larger output layer than its input layer, which effectively increases the dimensionality of the code to match the original input data. It is trained to map the low-dimensional code back to the high-dimensional space of the original input. The decoder network is typically trained to minimize the difference between the input data and the reconstruction produced by the decoder network.</li>
 </ul>
 <img src="autoencoder-architecture.png" style="width: 100%;" class="center" />
 <figcaption>Fig. 1. Illustration of autoencoder model architecture.</figcaption>
