@@ -395,7 +395,13 @@ $$
 <p>The DAE is trained by minimizing the reconstruction error of the corrupted input by the original one. The algorithm uses a stochastic approach to add noise to the input data, this way the model is exposed to different variations of the input data during training, which improves the robustness and generalization of the model. As a result, the denoising autoencoder can handle real-world, noisy data when it is used for inference. Additionally, by training on noisy data, the denoising autoencoder can also be used as a pre-training step for other machine learning tasks, such as classification or segmentation.</p>
 <p>In summary, denoising autoencoder is a powerful technique for learning robust and informative representations of data, and it has been widely used in a variety of applications, such as image and speech denoising, anomaly detection, and generative models. The technique was first proposed by Vincent et al. in 2008 and still remains an active research area in the field of deep learning.</p>
 <img src="denoising_DAE.png" style="width: 100%;" class="center" />
-<figcaption>Fig. 2. Illustration of denoising autoencoder model architecture.</figcaption>
+  <figcaption>
+    <p>Fig. 2. Denoising autoencoder model architecture.</p>
+    <ul>
+      <li>The input, which may be a noisy or corrupted version of the original data, is fed into the encoder network. The encoder compresses the input into a lower-dimensional representation, also known as the bottleneck or latent representation.</li>
+      <li>The decoder network then takes the bottleneck representation and reconstructs the original input, but with the noise removed. The model is trained using backpropagation to minimize the difference between the original input and the reconstructed output, thus removing noise and unwanted variations from the input. The final output is a denoised version of the original input.</li>
+    </ul>
+  </figcaption>
 <p>This design is motivated by the fact that humans can easily recognize an object or a scene even the view is partially occluded or corrupted. To &ldquo;repair&rdquo; the partially destroyed input, the denoising autoencoder has to discover and capture relationship between dimensions of input in order to infer missing pieces.</p>
 <p>For high dimensional input with high redundancy, like images, the model is likely to depend on evidence gathered from a combination of many input dimensions to recover the denoised version rather than to overfit one dimension. This builds up a good foundation for learning <em>robust</em> latent representation.</p>
 <p>The noise is controlled by a stochastic mapping $\mathcal{q}_\mathcal{D}(\tilde{\mathbf{x}} \vert \mathbf{x})$, and it is not specific to a particular type of corruption process (i.e. masking noise, Gaussian noise, salt-and-pepper noise, etc.). Naturally the corruption process can be equipped with prior knowledge</p>
