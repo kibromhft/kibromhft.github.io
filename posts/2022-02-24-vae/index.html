@@ -337,22 +337,26 @@ One of the main benefits of autoencoders is their ability to reduce the dimensio
   <td>The <strong>encoding</strong> function parameterized by $\phi$. This function is used to <strong>encode</strong> the input data into a compact representation that can be used for further processing in the neural network. The specific form of the encoding function may vary depending on the application, but common examples include convolutional neural networks (CNNs) and autoencoders.</td>
 </tr>
 <tr>
-<td>$f_{\theta}(.)$</td>
-<td>The <strong>decoding</strong> function parameterized by $\theta$.</td>
+  <td>$f_{\theta}(.)$</td>
+  <td>The <strong>decoding</strong> function parameterized by $\theta$. This function is used to <strong>decode</strong> the encoded data back to its original form after it has been processed in the neural network. The specific form of the decoding function may vary depending on the application, but common examples include transposed convolutional neural networks (CNNs) and autoencoders.</td>
 </tr>
 <tr>
-<td>$q_{\phi}(\mathbf{z}\vert\mathbf{x})$</td>
-<td>Estimated posterior probability function, also known as <strong>probabilistic encoder</strong>.</td>
+  <td>$q_{\phi}(\mathbf{z}\vert\mathbf{x})$</td>
+  <td>Estimated posterior probability function, also known as <strong>probabilistic encoder</strong>, parameterized by $\phi$. This function is used to estimate the probability distribution of latent variables $\mathbf{z}$ given the input data $\mathbf{x}$. This can be useful in certain types of generative models, such as Variational Autoencoders (VAEs), where the goal is to learn a compact and informative representation of the data.
+</td>
 </tr>
 <tr>
-<td>$p_{\theta}(\mathbf{x}\vert\mathbf{z})$</td>
-<td>Likelihood of generating true data sample given the latent code, also known as <strong>probabilistic decoder</strong>.</td>
+  <td>$p_{\theta}(\mathbf{x}\vert\mathbf{z})$</td>
+  <td>Likelihood function, also known as <strong>probabilistic decoder</strong>, parameterized by $\theta$. This function is used to estimate the probability of generating the true data sample $\mathbf{x}$ given the latent code $\mathbf{z}$. This can be useful in certain types of generative models, such as Variational Autoencoders (VAEs), where the goal is to learn a compact and informative representation of the data.
+</td>
 </tr>
 </tbody>
 </table>
 <h1 id="autoencoder">Autoencoder<a hidden class="anchor" aria-hidden="true" href="#autoencoder">#</a></h1>
-<p><strong>Autoencoder</strong> is a neural network designed to learn an identity function in an unsupervised way  to reconstruct the original input while compressing the data in the process so as to discover a more efficient and compressed representation. The idea was originated in <a href="https://en.wikipedia.org/wiki/Autoencoder">the 1980s</a>, and later promoted by the seminal paper by <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.459.3788&amp;rep=rep1&amp;type=pdf">Hinton &amp; Salakhutdinov, 2006</a>.</p>
-<p>It consists of two networks:</p>
+<p>An <strong>Autoencoder</strong> is a type of neural network designed to learn an identity function in an unsupervised way. The main goal of an autoencoder is to reconstruct the original input, while at the same time compressing the data in the process, which allows discovering a more efficient and compressed representation of the input. The idea of autoencoders was originated in the 1980s, but it was later popularized by the seminal paper by Hinton & Salakhutdinov, 2006.
+</p>
+<p>An Autoencoder typically consists of two main parts:
+</p>
 <ul>
 <li><em>Encoder</em> network: It translates the original high-dimension input into the latent low-dimensional code. The input size is larger than the output size.</li>
 <li><em>Decoder</em> network: The decoder network recovers the data from the code, likely with larger and larger output layers.</li>
