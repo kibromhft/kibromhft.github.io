@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 12 Aug 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://kibromhft.github.io/tags/autoencoder/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>From Autoencoder to Beta-VAE</title>
+      <title>Disentangling the Latent Space: A Guide to Beta-VAE</title>
       <link>https://kibromhft.github.io/posts/2022-02-24-vae/</link>
       <pubDate>Sun, 12 Aug 2018 00:00:00 +0000</pubDate>
       
