@@ -401,46 +401,7 @@ $$
 <p>One way to control the amount of noise present in the input is through the use of a <em>stochastic mapping</em>, represented by the equation $\mathcal{q}_\mathcal{D}(\tilde{\mathbf{x}} \vert \mathbf{x})$. This method is not specific to any one type of <em>corruption process</em>, such as masking noise, Gaussian noise, or salt-and-pepper noise. Instead, it can be adapted to incorporate <em>prior knowledge</em> about the corruption process in order to achieve better results. By incorporating prior knowledge in this way, the model is able to better handle the noise and improve the overall accuracy of the denoised output.</p>
 <p>In addition to this, by using a combination of many input dimensions, the model is able to create a more generalizable and <em>robust</em> latent representation. This is because the model is not relying on just one dimension for its understanding of the image, but rather is able to gather information from multiple dimensions. This improves the overall robustness of the model and allows it to better handle different types of noise and corruption.</p>
 <p>Overall, the use of a stochastic mapping in combination with incorporating prior knowledge about the corruption process and utilizing a combination of many input dimensions, allows for the creation of a strong and robust latent representation for high dimensional input with high redundancy, such as images.</p>
-
-<h1 id="sparse-autoencoder">Sparse Autoencoder<a hidden class="anchor" aria-hidden="true" href="#sparse-autoencoder">#</a></h1>
-<p><strong>Sparse Autoencoder</strong> applies a &ldquo;sparse&rdquo; constraint on the hidden unit activation to avoid overfitting and improve robustness. It forces the model to only have a small number of hidden units being activated at the same time, or in other words, one hidden neuron should be inactivate most of time.</p>
-<p>Recall that common <a href="http://cs231n.github.io/neural-networks-1/#actfun">activation functions</a> include sigmoid, tanh, relu, leaky relu, etc. A neuron is activated when the value is close to 1 and inactivate with a value close to 0.</p>
-<p>Let’s say there are $s_l$ neurons in the $l$-th hidden layer and the activation function for the $j$-th neuron in this layer is labelled as $a^{(l)}_j(.)$, $j=1, \dots, s_l$. The fraction of activation of this neuron $\hat{\rho}_j$ is expected to be a small number $\rho$, known as <em>sparsity parameter</em>; a common config is $\rho = 0.05$.</p>
-<div>
-$$
-\hat{\rho}_j^{(l)} = \frac{1}{n} \sum_{i=1}^n [a_j^{(l)}(\mathbf{x}^{(i)})] \approx \rho
-$$
-</div>
-<p>This constraint is achieved by adding a penalty term into the loss function. The KL-divergence $D_\text{KL}$ measures the difference between two Bernoulli distributions, one with mean $\rho$ and the other with mean $\hat{\rho}_j^{(l)}$. The hyperparameter $\beta$ controls how strong the penalty we want to apply on the sparsity loss.</p>
-<div>
-$$
-\begin{aligned}
-L_\text{SAE}(\theta) 
-&= L(\theta) + \beta \sum_{l=1}^L \sum_{j=1}^{s_l} D_\text{KL}(\rho \| \hat{\rho}_j^{(l)}) \\
-&= L(\theta) + \beta \sum_{l=1}^L \sum_{j=1}^{s_l} \rho\log\frac{\rho}{\hat{\rho}_j^{(l)}} + (1-\rho)\log\frac{1-\rho}{1-\hat{\rho}_j^{(l)}}
-\end{aligned}
-$$
-</div>
-<img src="kl-metric-sparse-autoencoder.png" style="width: 80%;" class="center" />
-<figcaption>Fig. 4. The KL divergence between a Bernoulli distribution with mean $\rho=0.25$ and a Bernoulli distribution with mean $0 \leq \hat{\rho} \leq 1$.</figcaption>
-<p><strong>$k$-Sparse Autoencoder</strong></p>
-<p>In $k$-Sparse Autoencoder (<a href="https://arxiv.org/abs/1312.5663">Makhzani and Frey, 2013</a>), the sparsity is enforced by only keeping the top k highest activations in the bottleneck layer with linear activation function.
-First we run feedforward through the encoder network to get the compressed code: $\mathbf{z} = g(\mathbf{x})$.
-Sort the values  in the code vector $\mathbf{z}$. Only the k largest values are kept while other neurons are set to 0. This can be done in a ReLU layer with an adjustable threshold too. Now we have a sparsified code: $\mathbf{z}’ = \text{Sparsify}(\mathbf{z})$.
-Compute the output and the loss from the sparsified code, $L = |\mathbf{x} - f(\mathbf{z}') |_2^2$.
-And, the back-propagation only goes through the top k activated hidden units!</p>
-<img src="k-sparse-autoencoder.png" style="width: 100%;" class="center" />
-<figcaption>Fig. 5. Filters of the k-sparse autoencoder for different sparsity levels k, learnt from MNIST with 1000 hidden units.. (Image source: <a href="https://arxiv.org/abs/1312.5663" target="_blank">Makhzani and Frey, 2013</a>)</figcaption>
-<h1 id="contractive-autoencoder">Contractive Autoencoder<a hidden class="anchor" aria-hidden="true" href="#contractive-autoencoder">#</a></h1>
-<p>Similar to sparse autoencoder, <strong>Contractive Autoencoder</strong> (<a href="http://www.icml-2011.org/papers/455_icmlpaper.pdf">Rifai, et al, 2011</a>) encourages the learned representation to stay in a contractive space for better robustness.</p>
-<p>It adds a term in the loss function to penalize the representation being too sensitive to the input,  and thus improve the robustness to small perturbations around the training data points. The sensitivity is measured by the Frobenius norm of the Jacobian matrix of the encoder activations with respect to the input:</p>
-<div>
-$$
-\|J_f(\mathbf{x})\|_F^2 = \sum_{ij} \Big( \frac{\partial h_j(\mathbf{x})}{\partial x_i} \Big)^2
-$$
-</div>
-<p>where $h_j$ is one unit output in the compressed code $\mathbf{z} = f(x)$.</p>
-<p>This penalty term is the sum of squares of all partial derivatives of the learned encoding with respect to input dimensions. The authors claimed that empirically this penalty was found to  carve a representation that corresponds to a lower-dimensional non-linear manifold, while staying more invariant to majority directions orthogonal to the manifold.</p>
+<hr>
 <h1 id="vae-variational-autoencoder">VAE: Variational Autoencoder<a hidden class="anchor" aria-hidden="true" href="#vae-variational-autoencoder">#</a></h1>
 <p>The idea of <strong>Variational Autoencoder</strong> (<a href="https://arxiv.org/abs/1312.6114">Kingma &amp; Welling, 2014</a>), short for <strong>VAE</strong>, is actually less similar to all the autoencoder models above, but deeply rooted in the methods of variational bayesian and graphical model.</p>
 <p>Instead of mapping the input into a <em>fixed</em> vector, we want to map it into a distribution. Let’s label this distribution as $p_\theta$, parameterized by $\theta$.  The relationship between the data input $\mathbf{x}$ and the latent encoding vector $\mathbf{z}$ can be fully defined by:</p>
