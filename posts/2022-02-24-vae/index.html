@@ -139,6 +139,14 @@ Autoencoders are a type of neural network that can be used to learn a compressed
   }
 }
 </script>
+<style>
+
+/* Dotted red border */
+hr.new3 {
+  border-top: 1px dotted red;
+}
+
+</style>
 </head>
 
 <body class="" id="top">
@@ -353,7 +361,7 @@ One of the main benefits of autoencoders is their ability to reduce the dimensio
 </p>
 <p>An Autoencoder typically consists of two main parts:
 </p>
-<hr>
+<hr class="new3">
 <ul>
   <li><strong>Encoder network</strong> : The encoder network is responsible for translating the original high-dimensional input into a low-dimensional code, also known as latent representation. The encoder network typically has a smaller output layer than its input layer, which effectively reduces the dimensionality of the input data. It is trained to extract the most important features of the input data and represent them in the lower-dimensional code. The final output of the encoder network is the low-dimensional code, also known as the latent representation of the input data.</li>
   <li><strong>Decoder network</strong> : The decoder network takes the low-dimensional code produced by the encoder network as input and attempts to reconstruct the original high-dimensional input data. The decoder network typically has a larger output layer than its input layer, which effectively increases the dimensionality of the code to match the original input data. It is trained to map the low-dimensional code back to the high-dimensional space of the original input. The decoder network is typically trained to minimize the difference between the input data and the reconstruction produced by the decoder network.</li>
