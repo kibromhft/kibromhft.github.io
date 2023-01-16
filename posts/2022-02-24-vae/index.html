@@ -479,7 +479,7 @@ $$
 
 <p>Unfortunately it is not easy to compute $p_\theta(\mathbf{x}^{(i)})$ in this way, as it is very expensive to check all the possible values of $\mathbf{z}$ and sum them up. To narrow down the value space to facilitate faster search, we would like to introduce a new approximation function to output what is a likely code given an input $\mathbf{x}$, $q_\phi(\mathbf{z}\vert\mathbf{x})$, parameterized by $\phi$.</p>
 <p>The approximation function $q_\phi(\mathbf{z}\vert\mathbf{x})$ is typically chosen to be a simple distribution, such as a standard normal distribution. The VAE then uses this approximation function to estimate the true posterior distribution $p_\theta(\mathbf{z}\vert\mathbf{x})$. This is done by minimizing the Kullback-Leibler divergence between the true posterior and the approximation function, which is also known as the variational lower bound.</p>
-<p>The variational lower bound can be written as:</p>
+<p>Here is a representation of the variational lower bound, which we will examine in more detail in its own section:</p>
 <div>
 $$
 \mathcal{L}(\theta, \phi, \mathbf{x}) = \mathbb{E}_{q_\phi(\mathbf{z}\vert\mathbf{x})}[\log p_\theta(\mathbf{x}\vert\mathbf{z})] - \text{KL}(q_\phi(\mathbf{z}\vert\mathbf{x})\|p_\theta(\mathbf{z}))
