@@ -481,6 +481,27 @@ $$
 \end{aligned}
 $$
 </div>
+<p>A rearranged version of the equation:</p>
+<div>
+$$
+\log p_\theta(\mathbf{x}) - D_\text{KL}( q_\phi(\mathbf{z}\vert\mathbf{x}) \| p_\theta(\mathbf{z}\vert\mathbf{x}) ) = \mathbb{E}_{\mathbf{z}\sim q_\phi(\mathbf{z}\vert\mathbf{x})}\log p_\theta(\mathbf{x}\vert\mathbf{z}) - D_\text{KL}(q_\phi(\mathbf{z}\vert\mathbf{x}) \| p_\theta(\mathbf{z}))
+$$
+</div>
+<p>A probability of generating real data and the difference between the estimated posterior and the real distribution are represented in the equation on the left, while on the right, the log-likelihood is represented, along with the difference between the prior and approximating latent variables. </p>
+<p>The objective of VAE is to maximize this equation. The loss function for VAE is defined as the negation of this equation:</p>
+<div>
+$$
+\begin{aligned}
+L_\text{VAE}(\theta, \phi) 
+&= -\log p_\theta(\mathbf{x}) + D_\text{KL}( q_\phi(\mathbf{z}\vert\mathbf{x}) \| p_\theta(\mathbf{z}\vert\mathbf{x}) )\\
+&= - \mathbb{E}_{\mathbf{z} \sim q_\phi(\mathbf{z}\vert\mathbf{x})} \log p_\theta(\mathbf{x}\vert\mathbf{z}) + D_\text{KL}( q_\phi(\mathbf{z}\vert\mathbf{x}) \| p_\theta(\mathbf{z}) ) \\
+\theta^{*}, \phi^{*} &= \arg\min_{\theta, \phi} L_\text{VAE}
+\end{aligned}
+$$
+</div>
+Where $\theta^{}, \phi^{}$ are the optimal parameters for the model.
+
+
 
 <p>The Evidence Lower Bound (ELBO) is an upper bound on the log marginal likelihood of the data, $\log p_\theta(\mathbf{x})$. We can optimize the ELBO with respect to $\phi$ and $\theta$ to find the best approximating distribution, $q_\phi(\mathbf{z}\vert\mathbf{x})$, and the best parameter values, $\theta$.</p> 
 <p>In summary, the ELBO is a scalar value that is used as a loss function in variational inference to approximate the true posterior distribution. It is the sum of two terms: the expected log likelihood of the data under the approximating distribution, and the KL divergence between the approximating distribution and the true posterior. It can be optimized with respect to both the parameters of the approximating distribution and the model, in order to find the best approximation of the true posterior distribution.</p> 
