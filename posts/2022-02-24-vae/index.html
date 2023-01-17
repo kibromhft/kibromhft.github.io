@@ -477,7 +477,6 @@ $$
 &=\log p_\theta(\mathbf{x}) - \int q_\phi(\mathbf{z} \vert \mathbf{x})\log\frac{p_\theta(\mathbf{x}, \mathbf{z})}{q_\phi(\mathbf{z} \vert \mathbf{x})p_\theta(\mathbf{x})} d\mathbf{z} \\
 
 &\text{ By defining } D_\text{KL}(q_\phi(\mathbf{z}\vert\mathbf{x})||p_\theta(\mathbf{z})) = \int q_\phi(\mathbf{z} \vert \mathbf{x})\log\frac{p_\theta(\mathbf{z})}{q_\phi(\mathbf{z} \vert \mathbf{x})} d\mathbf{z} \\
-&\text{Then:} \\
 &=\log p_\theta(\mathbf{x}) - D_\text{KL}(q_\phi(\mathbf{z}\vert\mathbf{x})||p_\theta(\mathbf{z})) + \mathbb{E}{q\phi(\mathbf{z}\vert\mathbf{x})}\left[\log p_\theta(\mathbf{x},\mathbf{z})\right] \\
 \end{aligned}
 $$
