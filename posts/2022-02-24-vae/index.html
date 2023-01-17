@@ -456,61 +456,40 @@ $$
 <p>In general, the VAE is a powerful generative model that allows us to model the data distribution in a probabilistic way, by introducing a latent variable that represents the hidden structure of the data. It is trained by maximizing the variational lower bound, which is a trade-off between the expected log-likelihood of the data and the KL divergence between the approximation function and the prior distribution. The VAE has several advantages over traditional autoencoder models, such as the ability to generate new samples, estimate the true posterior distribution, and incorporate prior knowledge about the data distribution. To further understand the training process of the VAE, it's imperative to delve into two key concepts: <strong> the Loss function and the Reparameterization trick</strong>. The Loss function is used to measure the difference between the predicted and actual data, and the Reparameterization trick is a technique used to ensure the VAE's latent variables are differentiable, making it possible for the model to be trained using gradient-based optimization methods. In the next sections, we will explore these concepts in more detail, and see how they contribute to the overall performance of the VAE model.</p>
 
 <h2 id="loss-function-elbo">Loss Function: ELBO<a hidden class="anchor" aria-hidden="true" href="#loss-function-elbo">#</a></h2>
-<p>The estimated posterior $q_\phi(\mathbf{z}\vert\mathbf{x})$ should be very close to the real one $p_\theta(\mathbf{z}\vert\mathbf{x})$. We can use <a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence">Kullback-Leibler divergence</a> to quantify the distance between these two distributions. KL divergence $D_\text{KL}(X|Y)$ measures how much information is lost if the distribution Y is used to represent X.</p>
-<p>In our case we want to minimize $D_\text{KL}( q_\phi(\mathbf{z}\vert\mathbf{x}) | p_\theta(\mathbf{z}\vert\mathbf{x}) )$ with respect to $\phi$.</p>
-<p>But why use $D_\text{KL}(q_\phi | p_\theta)$ (reversed KL) instead of $D_\text{KL}(p_\theta | q_\phi)$ (forward KL)? Eric Jang has a great explanation in his <a href="https://blog.evjang.com/2016/08/variational-bayes.html">post</a> on Bayesian Variational methods. As a quick recap:</p>
-<img src="forward_vs_reversed_KL.png" style="width: 100%;" class="center" />
-<figcaption>Fig. 7. Forward and reversed KL divergence have different demands on how to match two distributions. (Image source: <a href="https://blog.evjang.com/2016/08/variational-bayes.html" target="_blank">blog.evjang.com/2016/08/variational-bayes.html</a>)</figcaption>
-<ul>
-<li>Forward KL divergence: $D_\text{KL}(P|Q) = \mathbb{E}_{z\sim P(z)} \log\frac{P(z)}{Q(z)}$; we have to ensure that Q(z)&gt;0 wherever P(z)&gt;0. The optimized variational distribution $q(z)$ has to cover over the entire $p(z)$.</li>
-<li>Reversed KL divergence: $D_\text{KL}(Q|P) = \mathbb{E}_{z\sim Q(z)} \log\frac{Q(z)}{P(z)}$; minimizing the reversed KL divergence squeezes the $Q(z)$ under $P(z)$.</li>
-</ul>
-<p>Let&rsquo;s now expand the equation:</p>
+<p>In variational inference, we want to approximate the true posterior distribution, $p_\theta(\mathbf{z}\vert\mathbf{x})$, with a simpler distribution, $q_\phi(\mathbf{z}\vert\mathbf{x})$. The goal is to find a $q_\phi(\mathbf{z}\vert\mathbf{x})$ that is as close as possible to $p_\theta(\mathbf{z}\vert\mathbf{x})$. One way to quantify the distance between these two distributions is by using the Kullback-Leibler divergence (KL divergence). 
+KL divergence, denoted as $D_\text{KL}(X|Y)$, measures the amount of information lost when approximating a distribution X with distribution Y. In the context of variational inference, we want to minimize the KL divergence between $q_\phi(\mathbf{z}\vert\mathbf{x})$ and $p_\theta(\mathbf{z}\vert\mathbf{x})$, with respect to $\phi$.
+
+It is important to note that we use the reversed KL divergence, $D_\text{KL}(q_\phi | p_\theta)$ instead of the forward KL divergence, $D_\text{KL}(p_\theta | q_\phi)$. The reason for this is that the forward KL divergence requires the approximating distribution, $q_\phi$, to cover the entire support of the true distribution, $p_\theta$, which can be restrictive. On the other hand, minimizing the reversed KL divergence squeezes the approximating distribution, $q_\phi$, under the true distribution, $p_\theta$, allowing for more flexibility.
+
+Let's now expand the equation for the reversed KL divergence between $q_\phi(\mathbf{z}\vert\mathbf{x})$ and $p_\theta(\mathbf{z}\vert\mathbf{x})$:
+
 <div>
 $$
 \begin{aligned}
-& D_\text{KL}( q_\phi(\mathbf{z}\vert\mathbf{x}) \| p_\theta(\mathbf{z}\vert\mathbf{x}) ) & \\
-&=\int q_\phi(\mathbf{z} \vert \mathbf{x}) \log\frac{q_\phi(\mathbf{z} \vert \mathbf{x})}{p_\theta(\mathbf{z} \vert \mathbf{x})} d\mathbf{z} & \\
-&=\int q_\phi(\mathbf{z} \vert \mathbf{x}) \log\frac{q_\phi(\mathbf{z} \vert \mathbf{x})p_\theta(\mathbf{x})}{p_\theta(\mathbf{z}, \mathbf{x})} d\mathbf{z} & \scriptstyle{\text{; Because }p(z \vert x) = p(z, x) / p(x)} \\
-&=\int q_\phi(\mathbf{z} \vert \mathbf{x}) \big( \log p_\theta(\mathbf{x}) + \log\frac{q_\phi(\mathbf{z} \vert \mathbf{x})}{p_\theta(\mathbf{z}, \mathbf{x})} \big) d\mathbf{z} & \\
-&=\log p_\theta(\mathbf{x}) + \int q_\phi(\mathbf{z} \vert \mathbf{x})\log\frac{q_\phi(\mathbf{z} \vert \mathbf{x})}{p_\theta(\mathbf{z}, \mathbf{x})} d\mathbf{z} & \scriptstyle{\text{; Because }\int q(z \vert x) dz = 1}\\
-&=\log p_\theta(\mathbf{x}) + \int q_\phi(\mathbf{z} \vert \mathbf{x})\log\frac{q_\phi(\mathbf{z} \vert \mathbf{x})}{p_\theta(\mathbf{x}\vert\mathbf{z})p_\theta(\mathbf{z})} d\mathbf{z} & \scriptstyle{\text{; Because }p(z, x) = p(x \vert z) p(z)} \\
-&=\log p_\theta(\mathbf{x}) + \mathbb{E}_{\mathbf{z}\sim q_\phi(\mathbf{z} \vert \mathbf{x})}[\log \frac{q_\phi(\mathbf{z} \vert \mathbf{x})}{p_\theta(\mathbf{z})} - \log p_\theta(\mathbf{x} \vert \mathbf{z})] &\\
-&=\log p_\theta(\mathbf{x}) + D_\text{KL}(q_\phi(\mathbf{z}\vert\mathbf{x}) \| p_\theta(\mathbf{z})) - \mathbb{E}_{\mathbf{z}\sim q_\phi(\mathbf{z}\vert\mathbf{x})}\log p_\theta(\mathbf{x}\vert\mathbf{z}) &
+& D_\text{KL}( q_\phi(\mathbf{z}\vert\mathbf{x}) | p_\theta(\mathbf{z}\vert\mathbf{x}) ) & \
+&=\int q_\phi(\mathbf{z} \vert \mathbf{x}) \log\frac{q_\phi(\mathbf{z} \vert \mathbf{x})}{p_\theta(\mathbf{z} \vert \mathbf{x})} d\mathbf{z} & \
+&=\int q_\phi(\mathbf{z} \vert \mathbf{x}) \log\frac{q_\phi(\mathbf{z} \vert \mathbf{x})p_\theta(\mathbf{x})}{p_\theta(\mathbf{z}, \mathbf{x})} d\mathbf{z} & \scriptstyle{\text{; Because }p(z \vert x) = p(z, x) / p(x)} \
+&=\int q_\phi(\mathbf{z} \vert \mathbf{x}) \big( \log p_\theta(\mathbf{x}) + \log\frac{q_\phi(\mathbf{z} \vert \mathbf{x})}{p_\theta(\mathbf{z}, \mathbf{x})} \big) d\mathbf{z} & \
+&=\log p_\theta(\mathbf{x}) + \int q_\phi(\mathbf{z} \vert \mathbf{x})\log\frac{q_\phi(\mathbf{z} \vert \mathbf{x})}{p_\theta(\mathbf{z}, \mathbf{x})} d\mathbf{z} & \
+&=\log p_\theta(\mathbf{x}) - \int q_\phi(\mathbf{z} \vert \mathbf{x})\log\frac{p_\theta(\mathbf{z}, \mathbf{x})}{q_\phi(\mathbf{z} \vert \mathbf{x})} d\mathbf{z} & \scriptstyle{\text{; By reversing the KL}} \
+&=\log p_\theta(\mathbf{x}) - \int q_\phi(\mathbf{z} \vert \mathbf{x})\log\frac{p_\theta(\mathbf{x}, \mathbf{z})}{q_\phi(\mathbf{z} \vert \mathbf{x})p_\theta(\mathbf{x})} d\mathbf{z} & \scriptstyle{\text{; By switching the order of x, z}} \
+&=\log p_\theta(\mathbf{x}) - D_\text{KL}(q_\phi(\mathbf{z}\vert\mathbf{x})||p_\theta(\mathbf{z})) + \mathbb{E}{q\phi(\mathbf{z}\vert\mathbf{x})}\left[\log p_\theta(\mathbf{x},\mathbf{z})\right] & \text{, by defining } D_\text{KL}(q_\phi(\mathbf{z}\vert\mathbf{x})||p_\theta(\mathbf{z})) = \int q_\phi(\mathbf{z} \vert \mathbf{x})\log\frac{p_\theta(\mathbf{z})}{q_\phi(\mathbf{z} \vert \mathbf{x})} d\mathbf{z} \
 \end{aligned}
 $$
 </div>
-<p>So we have:</p>
-<div>
-$$
-D_\text{KL}( q_\phi(\mathbf{z}\vert\mathbf{x}) \| p_\theta(\mathbf{z}\vert\mathbf{x}) ) =\log p_\theta(\mathbf{x}) + D_\text{KL}(q_\phi(\mathbf{z}\vert\mathbf{x}) \| p_\theta(\mathbf{z})) - \mathbb{E}_{\mathbf{z}\sim q_\phi(\mathbf{z}\vert\mathbf{x})}\log p_\theta(\mathbf{x}\vert\mathbf{z})
-$$
-</div>
-<p>Once rearrange the left and right hand side of the equation,</p>
-<div>
-$$
-\log p_\theta(\mathbf{x}) - D_\text{KL}( q_\phi(\mathbf{z}\vert\mathbf{x}) \| p_\theta(\mathbf{z}\vert\mathbf{x}) ) = \mathbb{E}_{\mathbf{z}\sim q_\phi(\mathbf{z}\vert\mathbf{x})}\log p_\theta(\mathbf{x}\vert\mathbf{z}) - D_\text{KL}(q_\phi(\mathbf{z}\vert\mathbf{x}) \| p_\theta(\mathbf{z}))
-$$
-</div>
-<p>The LHS of the equation is exactly what we want to maximize when learning the true distributions: we want to maximize the (log-)likelihood of generating real data (that is $\log p_\theta(\mathbf{x})$) and also minimize the difference between the real and estimated posterior distributions (the term $D_\text{KL}$ works like a regularizer).  Note that $p_\theta(\mathbf{x})$ is fixed with respect to $q_\phi$.</p>
-<p>The negation of the above defines our loss function:</p>
-<div>
-$$
-\begin{aligned}
-L_\text{VAE}(\theta, \phi) 
-&= -\log p_\theta(\mathbf{x}) + D_\text{KL}( q_\phi(\mathbf{z}\vert\mathbf{x}) \| p_\theta(\mathbf{z}\vert\mathbf{x}) )\\
-&= - \mathbb{E}_{\mathbf{z} \sim q_\phi(\mathbf{z}\vert\mathbf{x})} \log p_\theta(\mathbf{x}\vert\mathbf{z}) + D_\text{KL}( q_\phi(\mathbf{z}\vert\mathbf{x}) \| p_\theta(\mathbf{z}) ) \\
-\theta^{*}, \phi^{*} &= \arg\min_{\theta, \phi} L_\text{VAE}
-\end{aligned}
-$$
-</div>
-<p>In Variational Bayesian methods, this loss function is known as the <em>variational lower bound</em>, or <em>evidence lower bound</em>. The &ldquo;lower bound&rdquo; part in the name comes from the fact that KL divergence is always non-negative and thus $-L_\text{VAE}$ is the lower bound of $\log p_\theta (\mathbf{x})$.</p>
-<div>
-$$
--L_\text{VAE} = \log p_\theta(\mathbf{x}) - D_\text{KL}( q_\phi(\mathbf{z}\vert\mathbf{x}) \| p_\theta(\mathbf{z}\vert\mathbf{x}) ) \leq \log p_\theta(\mathbf{x})
-$$
-</div>
-<p>Therefore by minimizing the loss, we are maximizing the lower bound of the probability of generating real data samples.</p>
+
+<p>The Evidence Lower Bound (ELBO) is an upper bound on the log marginal likelihood of the data, $\log p_\theta(\mathbf{x})$. We can optimize the ELBO with respect to $\phi$ and $\theta$ to find the best approximating distribution, $q_\phi(\mathbf{z}\vert\mathbf{x})$, and the best parameter values, $\theta$.</p> 
+<p>In summary, the ELBO is a scalar value that is used as a loss function in variational inference to approximate the true posterior distribution. It is the sum of two terms: the expected log likelihood of the data under the approximating distribution, and the KL divergence between the approximating distribution and the true posterior. It can be optimized with respect to both the parameters of the approximating distribution and the model, in order to find the best approximation of the true posterior distribution.</p> 
+<p>It is important to note that the ELBO is an lower bound on the true log likelihood of the data, thus, the optimization of ELBO will not give the true maximum likelihood estimate of the parameters. However, it is a practical and commonly used method for approximating the true posterior in Bayesian inference.</p> 
+<p>Also, in practice, the ELBO is usually optimized via Stochastic Gradient Variational Bayes (SGVB) which is an efficient optimization method that utilizes the reparameterization trick and stochastic gradient descent to optimize the ELBO.</p> 
+<p>In a nutshell, Variational Inference is a powerful technique for approximating complex posterior distributions in Bayesian models, and the Evidence Lower Bound (ELBO) is a key component of this method, serving as the loss function to be optimized during the inference process.</p> 
+
+
+
+
+
+
+
 <h2 id="reparameterization-trick">Reparameterization Trick<a hidden class="anchor" aria-hidden="true" href="#reparameterization-trick">#</a></h2>
 <p>The expectation term in the loss function invokes generating samples from $\mathbf{z} \sim q_\phi(\mathbf{z}\vert\mathbf{x})$. Sampling is a stochastic process and therefore we cannot backpropagate the gradient. To make it trainable, the reparameterization trick is introduced: It is often possible to express the random variable $\mathbf{z}$ as a deterministic variable $\mathbf{z} = \mathcal{T}_\phi(\mathbf{x}, \boldsymbol{\epsilon})$, where $\boldsymbol{\epsilon}$ is an auxiliary independent random variable, and the transformation function $\mathcal{T}_\phi$ parameterized by $\phi$ converts $\boldsymbol{\epsilon}$ to $\mathbf{z}$.</p>
 <p>For example, a common choice of the form of $q_\phi(\mathbf{z}\vert\mathbf{x})$ is a multivariate Gaussian with a diagonal covariance structure:</p>
