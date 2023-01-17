@@ -512,12 +512,10 @@ Where $\theta^{}, \phi^{}$ are the optimal parameters for the model.
 
 
 
-
-
-
 <h2 id="reparameterization-trick">Reparameterization Trick<a hidden class="anchor" aria-hidden="true" href="#reparameterization-trick">#</a></h2>
-<p>The expectation term in the loss function invokes generating samples from $\mathbf{z} \sim q_\phi(\mathbf{z}\vert\mathbf{x})$. Sampling is a stochastic process and therefore we cannot backpropagate the gradient. To make it trainable, the reparameterization trick is introduced: It is often possible to express the random variable $\mathbf{z}$ as a deterministic variable $\mathbf{z} = \mathcal{T}_\phi(\mathbf{x}, \boldsymbol{\epsilon})$, where $\boldsymbol{\epsilon}$ is an auxiliary independent random variable, and the transformation function $\mathcal{T}_\phi$ parameterized by $\phi$ converts $\boldsymbol{\epsilon}$ to $\mathbf{z}$.</p>
-<p>For example, a common choice of the form of $q_\phi(\mathbf{z}\vert\mathbf{x})$ is a multivariate Gaussian with a diagonal covariance structure:</p>
+<p>The reparameterization trick is a technique used to make stochastic processes differentiable for use in neural networks. The technique is particularly useful when working with generative models, where a random variable is typically used to generate data samples. However, as sampling is a stochastic process, it is not differentiable, which makes it difficult to use in a neural network.</p>
+<p>To overcome this, the reparameterization trick is introduced. The main idea is to express the random variable as a deterministic function of another random variable and some parameters that can be learned by the network. This way, the network can learn the parameters of the distribution while keeping the stochasticity in the auxiliary random variable, making it possible to compute gradients and update the parameters.</p>
+<p>For example, in the case of a multivariate Gaussian distribution, the random variable can be represented as:
 <div>
 $$
 \begin{aligned}
@@ -526,11 +524,14 @@ $$
 \end{aligned}
 $$
 </div>
-<p>where $\odot$ refers to element-wise product.</p>
-<img src="reparameterization-trick.png" style="width: 80%;" class="center" />
-<figcaption>Fig. 8. Illustration of how the reparameterization trick makes the $\mathbf{z}$ sampling process trainable.(Image source: Slide 12 in Kingma’s NIPS 2015 workshop <a href="http://dpkingma.com/wordpress/wp-content/uploads/2015/12/talk_nips_workshop_2015.pdf" target="_blank">talk</a>)</figcaption>
-<p>The reparameterization trick works for other types of distributions too, not only Gaussian.
-In the multivariate Gaussian case, we make the model trainable by learning the mean and variance of the distribution, $\mu$ and $\sigma$, explicitly using the reparameterization trick, while the stochasticity remains in the random variable $\boldsymbol{\epsilon} \sim \mathcal{N}(0, \boldsymbol{I})$.</p>
+<p>where $\boldsymbol{\mu}^{(i)}$ is the mean of the distribution, $\boldsymbol{\sigma}^{2(i)}$ is the variance of the distribution and $\mathbf{x}^{(i)}$ is the input data. The auxiliary random variable $\boldsymbol{\epsilon}$ is often a standard normal distribution. This way the mean and variance of the distribution is learned explicitly by the network, while the stochasticity remains in $\boldsymbol{\epsilon}$.</p>
+<p>Notice that the $\odot$ symbol refers to element-wise product.</p>
+<p>This trick allows the network to compute gradients and update the parameters of the distribution, and it is not limited to the Gaussian distribution, it can be applied to other types of distributions as well, such as the Bernoulli, Categorical, etc.</p>
+<p>This technique is particularly useful for Variational Autoencoder (VAE) and other variations such as the Variational Inference Generative Adversarial Networks (VIGAN) and others.</p>
+
+
+
+
 <img src="vae-gaussian.png" style="width: 100%;" class="center" />
 <figcaption>Fig. 9. Illustration of variational autoencoder model with the multivariate Gaussian assumption.</figcaption>
 <h1 id="beta-vae">Beta-VAE<a hidden class="anchor" aria-hidden="true" href="#beta-vae">#</a></h1>
