@@ -525,14 +525,7 @@ $$
 $$
 </div>
 <p>where $\boldsymbol{\mu}^{(i)}$ is the mean of the distribution, $\boldsymbol{\sigma}^{2(i)}$ is the variance of the distribution and $\mathbf{x}^{(i)}$ is the input data. The auxiliary random variable $\boldsymbol{\epsilon}$ is often a standard normal distribution. This way the mean and variance of the distribution is learned explicitly by the network, while the stochasticity remains in $\boldsymbol{\epsilon}$. Notice that the $\odot$ symbol refers to element-wise product.</p>
-<p> The reparameterization trick can be used to express $\mathbf{z}$ as a deterministic function of an auxiliary independent random variable $\boldsymbol{\epsilon}$ and a transformation function $\mathcal{T}_\phi$ parameterized by $\phi$: </p>
-<div>
-$$
-\begin{aligned}
-\mathbf{z} = \boldsymbol{\mu} + \boldsymbol{\sigma} \odot \boldsymbol{\epsilon} \\ &\text{, where } \boldsymbol{\epsilon} \sim \mathcal{N}(0, \boldsymbol{I})
-\end{aligned}
-$$
-</div>
+
 <p>
 In this case, the auxiliary random variable $\boldsymbol{\epsilon}$ is often a standard normal distribution. By expressing the random variable in this way, the network can learn the mean and variance of the distribution explicitly using the reparameterization trick, while the stochasticity remains in the random variable $\boldsymbol{\epsilon}$.
 </p>
