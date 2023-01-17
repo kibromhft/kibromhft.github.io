@@ -472,7 +472,8 @@ $$
 &\text{Applying Bayes }p(z \vert x) = p(z, x) / p(x) \\
 &=\int q_\phi(\mathbf{z} \vert \mathbf{x}) \big( \log p_\theta(\mathbf{x}) + \log\frac{q_\phi(\mathbf{z} \vert \mathbf{x})}{p_\theta(\mathbf{z}, \mathbf{x})} \big) d\mathbf{z} & \\
 &=\log p_\theta(\mathbf{x}) + \int q_\phi(\mathbf{z} \vert \mathbf{x})\log\frac{q_\phi(\mathbf{z} \vert \mathbf{x})}{p_\theta(\mathbf{z}, \mathbf{x})} d\mathbf{z} & \\
-&=\log p_\theta(\mathbf{x}) - \int q_\phi(\mathbf{z} \vert \mathbf{x})\log\frac{p_\theta(\mathbf{z}, \mathbf{x})}{q_\phi(\mathbf{z} \vert \mathbf{x})} d\mathbf{z} &\text{Switching the order of x, z} \\
+&=\log p_\theta(\mathbf{x}) - \int q_\phi(\mathbf{z} \vert \mathbf{x})\log\frac{p_\theta(\mathbf{z}, \mathbf{x})}{q_\phi(\mathbf{z} \vert \mathbf{x})} d\mathbf{z} & \\
+&\text{Switching the order of x, z} \\
 &=\log p_\theta(\mathbf{x}) - \int q_\phi(\mathbf{z} \vert \mathbf{x})\log\frac{p_\theta(\mathbf{x}, \mathbf{z})}{q_\phi(\mathbf{z} \vert \mathbf{x})p_\theta(\mathbf{x})} d\mathbf{z} \\
 
 &\text{ By defining } D_\text{KL}(q_\phi(\mathbf{z}\vert\mathbf{x})||p_\theta(\mathbf{z})) = \int q_\phi(\mathbf{z} \vert \mathbf{x})\log\frac{p_\theta(\mathbf{z})}{q_\phi(\mathbf{z} \vert \mathbf{x})} d\mathbf{z} \\
