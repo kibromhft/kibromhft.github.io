@@ -79,6 +79,21 @@ One of the main benefits of autoencoders is their ability to reduce the dimensio
 <meta property="og:url" content="https://kibromhft.github.io/posts/2022-02-24-vae/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-02-24T00:00:00&#43;00:00" />
 <meta property="article:modified_time" content="2022-02-24T00:00:00&#43;00:00" />
+#lightbulb {
+  display: none;
+}
+
+#lightbulb-off {
+  display: inline-block;
+}
+
+#theme-toggle:active #lightbulb {
+  display: inline-block;
+}
+
+#theme-toggle:active #lightbulb-off {
+  display: none;
+}
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Disentangling the Latent Space: A Guide to Beta-VAE"/>
@@ -211,6 +226,18 @@ hr.new3 {
                     </svg>
                 </button>
             </span>
+			
+			<span class="logo-switches">
+				<button id="theme-toggle" accesskey="t" title="(Alt + T)">
+					<svg id="lightbulb" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/>
+					</svg>
+					<svg id="lightbulb-off" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M9.06 8l-2-2M4.4 4.98l2 2M20 12c0-2.61-1.67-4.83-4-5.65v2.06c1.33.83 2 3.04 2 5.65z"/>
+					</svg>
+				</button>
+			</span>
+			
         </div>
         <ul id="menu">
             <li>
