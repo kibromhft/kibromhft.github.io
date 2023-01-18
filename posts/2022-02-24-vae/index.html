@@ -535,7 +535,13 @@ $$
 <img src="vae-gaussian.png" style="width: 100%;" class="center" />
 <figcaption>Fig. 9. Illustration of variational autoencoder model with the multivariate Gaussian assumption.</figcaption>
 <h1 id="beta-vae">Beta-VAE<a hidden class="anchor" aria-hidden="true" href="#beta-vae">#</a></h1>
-<p>The equation for the Evidence Lower Bound (ELBO) in Beta-VAE is as follows:</p>
+<div>
+$$
+\begin{aligned}
+The equation for the Evidence Lower Bound (ELBO) in Beta-VAE is as follows:
+<div>
+$$
+\begin{aligned}
 <p>ELBO = -\beta * D_\text{KL}( q_\phi(\mathbf{z}\vert\mathbf{x}) | p_\theta(\mathbf{z}\vert\mathbf{x}) ) -\log p_\theta(\mathbf{x}\vert\mathbf{z})</p>
 <p>The first term is the KL divergence between the approximate posterior distribution, q_phi(z|x), and the true posterior distribution, p_theta(z|x), scaled by the beta hyperparameter. The second term is the negative log-likelihood of the data given the latent variables, -log p_theta(x|z)</p>
 <p>The KL divergence term in the ELBO objective function is multiplied by the hyperparameter beta, which controls the trade-off between the reconstruction error and the KL divergence term. In the standard VAE, beta is set to 1, which implies that both the reconstruction error and KL divergence are given equal weight. In Beta-VAE, beta is set to a value greater than 1, which increases the weight on the KL divergence term, encouraging the approximate posterior to match the true posterior more closely, resulting in a more disentangled representation of the data.</p>
