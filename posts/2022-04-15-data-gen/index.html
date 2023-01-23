@@ -313,7 +313,7 @@ if (!doNotTrack) {
     </details>
 </div>
 
-  <div class="post-content"><p>Here comes the Part 3 on learning with not enough data (Previous: <a href="https://kibromhft.github.io/posts/2021-12-05-semi-supervised/">Part 1</a> and <a href="https://kibromhft.github.io/posts/2022-02-20-active-learning/">Part 2</a>). Let’s consider two approaches for generating synthetic data for training.</p>
+  <div class="post-content"><p>Here comes the Part 3 on learning with not enough data (Previous: <a href="https://kibromhft.github.io/posts/2021-12-05-semi-supervised/">Part 1</a> and <a href="https://kibromhft.github.io/posts/2022-02-20-causality_in_ML/">Part 2</a>). Let’s consider two approaches for generating synthetic data for training.</p>
 <ul>
 <li><strong>Augmented data</strong>. Given a set of existing training samples, we can apply a variety of augmentation, distortion and transformation to derive new data points without losing the key attributes. We have covered a bunch of augmentation methods on text and images in a <a href="https://kibromhft.github.io/posts/2021-05-31-contrastive/">previous post</a> on contrastive learning. For the sake of post completeness, I <em>duplicate</em> the section on data augmentation here with some edits.</li>
 <li><strong>New data</strong>. Given few or even no data points, we can rely on powerful pretrained models to generate a number of <em>new</em> data points. This is especially true in recent years given the fast progress in large pretrained <a href="https://kibromhft.github.io/posts/2019-01-31-lm/">language models (LM)</a>. Few shot prompting is shown to be effective for LM to learn within context without extra training.</li>
@@ -380,7 +380,7 @@ if (!doNotTrack) {
 <p><a href="https://arxiv.org/abs/2108.13487">Wang et al. (2021)</a> explored ways to leverage GPT-3 as a weak annotator via few-shot prompting, achieving 10x cheaper than human labeling. The paper argues that by using data labeled by GPT-3, it essentially performs <a href="https://kibromhft.github.io/posts/2021-12-05-semi-supervised/#self-training"><em>self-training</em></a>: The predictions on unlabeled samples apply entropy regularization on the model to avoid high class overlaps so as to help improve the model performance.</p>
 <img src="GPT3-data-gen.png" class="center" />
 <figcaption>Fig. 2. Illustration of how to use GPT-3 to generate more training data with the human-in-the-loop active learning pipeline to improve the data quality. (Image source: <a href="https://arxiv.org/abs/2108.13487" target="_blank">Wang et al. 2021</a>)</figcaption>
-<p>GPT-3-labeled samples selected by <a href="https://kibromhft.github.io/posts/2022-02-20-active-learning/">active learning</a> with highest uncertainty are sent to human labelers to be re-annotated. The few-shot prompt contains a small number of human labeled examples and thus the labeling cost is restricted. Synthetic samples are ranked by predicted logits of label $y$ and those with the lowest scores go through relabeling.</p>
+<p>GPT-3-labeled samples selected by <a href="https://kibromhft.github.io/posts/2022-02-20-causality_in_ML/">active learning</a> with highest uncertainty are sent to human labelers to be re-annotated. The few-shot prompt contains a small number of human labeled examples and thus the labeling cost is restricted. Synthetic samples are ranked by predicted logits of label $y$ and those with the lowest scores go through relabeling.</p>
 <p>GPT-3 labeling achieves better results in the low-cost regime, but has a gap with human labeling when enough money is spent on data collection. This implies the following inequation, although to what extent &ldquo;a lot&rdquo; or &ldquo;noisy&rdquo; means depends on the task details.</p>
 <blockquote>
 <p><strong>A lot of high-quality data &gt; A lot of noisy data &gt; A little high quality data</strong>.</p>
@@ -669,7 +669,7 @@ Gontijo-Lopes et al. 2020 (<a href="https://arxiv.org/abs/2002.08973">https://ar
     <br>
     <span>Generalized Visual Language Models</span>
   </a>
-  <a class="next" href="https://kibromhft.github.io/posts/2022-02-20-active-learning/">
+  <a class="next" href="https://kibromhft.github.io/posts/2022-02-20-causality_in_ML/">
     <span class="title"> »</span>
     <br>
     <span>Learning with not Enough Data Part 2: Active Learning</span>
