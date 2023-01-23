@@ -8,13 +8,12 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 20 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://kibromhft.github.io/tags/active-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Learning with not Enough Data Part 2: Active Learning</title>
-      <link>https://kibromhft.github.io/posts/2022-02-20-active-learning/</link>
+      <title>Causality in Machine Learning</title>
+      <link>https://kibromhft.github.io/posts/2022-02-20-causality_in_ML/</link>
       <pubDate>Sun, 20 Feb 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://kibromhft.github.io/posts/2022-02-20-active-learning/</guid>
-      <description>This is part 2 of what to do when facing a limited amount of labeled data for supervised learning tasks. This time we will get some amount of human labeling work involved, but within a budget limit, and therefore we need to be smart when selecting which samples to label.
-Notations    Symbol Meaning     $K$ Number of unique class labels.   $(\mathbf{x}^l, y) \sim \mathcal{X}, y \in \{0, 1\}^K$ Labeled dataset.</description>
+      <guid>https://kibromhft.github.io/posts/2022-02-20-causality_in_ML/</guid>
+      <description>Are you tired of making predictions based on correlation rather than causation? Introducing Causality in Machine Learning, a cutting-edge approach to understanding the underlying causes of complex data patterns. By incorporating causal inference techniques, we can gain a deeper understanding of how different variables interact and affect each other, leading to more accurate predictions and informed decision-making.</description>
     </item>
     
   </channel>
