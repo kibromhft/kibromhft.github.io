@@ -305,7 +305,7 @@ So far, I&rsquo;ve written about three types of generative models, GAN, VAE, and
 <p><span class="update">[Updated on 2021-09-19: Highly recommend this blog post on <a href="https://yang-song.github.io/blog/2021/score/">score-based generative modeling</a> by Yang Song (author of several key papers in the references)].</span><br/>
 <span class="update">[Updated on 2022-08-27: Added <a href="#classifier-free-guidance">classifier-free guidance</a>, <a href="#glide">GLIDE</a>, <a href="#unclip">unCLIP</a> and <a href="#imagen">Imagen</a>.</span><br/>
 <span class="update">[Updated on 2022-08-31: Added <a href="#ldm">latent diffusion model</a>.</span></p>
-<p>So far, I&rsquo;ve written about three types of generative models, <a href="https://kibromhft.github.io/posts/2017-08-20-gan/">GAN</a>, <a href="https://kibromhft.github.io/posts/2022-02-24-vae/">VAE</a>, and <a href="https://kibromhft.github.io/posts/2018-10-13-flow-models/">Flow-based</a> models. They have shown great success in generating high-quality samples, but each has some limitations of its own. GAN models are known for potentially unstable training and less diversity in generation due to their adversarial training nature. VAE relies on a surrogate loss. Flow models have to use specialized architectures to construct reversible transform.</p>
+<p>So far, I&rsquo;ve written about three types of generative models, <a href="https://kibromhft.github.io/posts/2017-08-20-gan/">GAN</a>, <a href="https://kibromhft.github.io/posts/2022-02-27-vae/">VAE</a>, and <a href="https://kibromhft.github.io/posts/2018-10-13-flow-models/">Flow-based</a> models. They have shown great success in generating high-quality samples, but each has some limitations of its own. GAN models are known for potentially unstable training and less diversity in generation due to their adversarial training nature. VAE relies on a surrogate loss. Flow models have to use specialized architectures to construct reversible transform.</p>
 <p>Diffusion models are inspired by non-equilibrium thermodynamics. They define a Markov chain of diffusion steps to slowly add random noise to data and then learn to reverse the diffusion process to construct desired data samples from the noise. Unlike VAE or flow models, diffusion models are learned with a fixed procedure and the latent variable has high dimensionality (same as the original data).</p>
 <img src="generative-overview.png" style="width: 100%;" class="center" />
 <figcaption>Fig. 1. Overview of different types of generative models.</figcaption>
@@ -322,7 +322,7 @@ $$
 <p>The data sample $\mathbf{x}_0$ gradually loses its distinguishable features as the step $t$ becomes larger. Eventually when $T \to \infty$, $\mathbf{x}_T$ is equivalent to an isotropic Gaussian distribution.</p>
 <img src="DDPM.png" style="width: 100%;" class="center" />
 <figcaption>Fig. 2. The Markov chain of forward (reverse) diffusion process of generating a sample by slowly adding (removing) noise. (Image source: <a href="https://arxiv.org/abs/2006.11239" target="_blank">Ho et al. 2020</a> with a few additional annotations)</figcaption>
-<p><a id="nice"></a>A nice property of the above process is that we can sample $\mathbf{x}_t$ at any arbitrary time step $t$ in a closed form using <a href="https://kibromhft.github.io/posts/2022-02-24-vae/#reparameterization-trick">reparameterization trick</a>. Let $\alpha_t = 1 - \beta_t$ and $\bar{\alpha}_t = \prod_{i=1}^t \alpha_i$:</p>
+<p><a id="nice"></a>A nice property of the above process is that we can sample $\mathbf{x}_t$ at any arbitrary time step $t$ in a closed form using <a href="https://kibromhft.github.io/posts/2022-02-27-vae/#reparameterization-trick">reparameterization trick</a>. Let $\alpha_t = 1 - \beta_t$ and $\bar{\alpha}_t = \prod_{i=1}^t \alpha_i$:</p>
 <div>
 $$
 \begin{aligned}
@@ -401,7 +401,7 @@ $$
 \end{aligned}
 $$
 </div>
-<p>As demonstrated in Fig. 2., such a setup is very similar to <a href="https://kibromhft.github.io/posts/2022-02-24-vae/">VAE</a> and thus we can use the variational lower bound to optimize the negative log-likelihood.</p>
+<p>As demonstrated in Fig. 2., such a setup is very similar to <a href="https://kibromhft.github.io/posts/2022-02-27-vae/">VAE</a> and thus we can use the variational lower bound to optimize the negative log-likelihood.</p>
 <div>
 $$
 \begin{aligned}
@@ -581,8 +581,8 @@ $$
 <figcaption>Fig. 8. The plot for tradeoff between compression rate and distortion, illustrating two-stage compressions - perceptural and semantic comparession. (Image source: <a href="https://arxiv.org/abs/2112.10752" target="_blank">Rombach & Blattmann, et al. 2022</a>)</figcaption>
 <p>The perceptual compression process relies on an autoencoder model. An encoder $\mathcal{E}$ is used to compress the input image $\mathbf{x} \in \mathbb{R}^{H \times W \times 3}$ to a smaller 2D latent vector $\mathbf{z} = \mathcal{E}(\mathbf{x}) \in \mathbb{R}^{h \times w \times c}$ , where the downsampling rate $f=H/h=W/w=2^m, m \in \mathbb{N}$. Then an decoder $\mathcal{D}$ reconstructs the images from the latent vector, $\tilde{\mathbf{x}} = \mathcal{D}(\mathbf{z})$. The paper explored two types of regularization in autoencoder training to avoid arbitrarily high-variance in the latent spaces.</p>
 <ul>
-<li>KL-reg: A small KL penalty towards a standard normal distribution over the learned latent, similar to <a href="https://kibromhft.github.io/posts/2022-02-24-vae/">VAE</a>.</li>
-<li>VQ-reg: Uses a vector quantization layer within the decoder, like <a href="https://kibromhft.github.io/posts/2022-02-24-vae/#vq-vae-and-vq-vae-2">VQVAE</a> but the quantization layer is absorbed by the decoder.</li>
+<li>KL-reg: A small KL penalty towards a standard normal distribution over the learned latent, similar to <a href="https://kibromhft.github.io/posts/2022-02-27-vae/">VAE</a>.</li>
+<li>VQ-reg: Uses a vector quantization layer within the decoder, like <a href="https://kibromhft.github.io/posts/2022-02-27-vae/#vq-vae-and-vq-vae-2">VQVAE</a> but the quantization layer is absorbed by the decoder.</li>
 </ul>
 <p>The diffusion and denoising processes happen on the latent vector $\mathbf{z}$. The denoising model is a time-conditioned U-Net, augmented with the cross-attention mechanism to handle flexible conditioning information for image generation (e.g. class labels, semantic maps, blurred variants of an image). The design is equivalent to fuse representation of different modality into the model with cross-attention mechanism. Each type of conditioning information is paired with a domain-specific encoder $\tau_\theta$ to project the conditioning input $y$ to an intermediate representation that can be mapped into cross-attention component, $\tau_\theta(y) \in \mathbb{R}^{M \times d_\tau}$:</p>
 <div>
