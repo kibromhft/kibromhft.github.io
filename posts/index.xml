@@ -14,9 +14,9 @@
 		           type="application/rss+xml"/>
 		<item>
 			<title>Some Math behind Neural Tangent Kernel</title>
-			<link>https://kibromhft.github.io/posts/2022-09-08-ntk/</link>
+			<link>https://kibromhft.github.io/posts/2023-01-03-automation/</link>
 			<pubDate>Thu, 08 Sep 2022 10:00:00 -0700</pubDate>
-			<guid>https://kibromhft.github.io/posts/2022-09-08-ntk/</guid>
+			<guid>https://kibromhft.github.io/posts/2023-01-03-automation/</guid>
 			<description>Neural networks are well known to be over-parameterized and can often easily fit data with near-zero training loss with decent generalization performance on test dataset. Although all these parameters are initialized at random, the optimization process can consistently lead to similarly good outcomes. And this is true even when the number of model parameters exceeds the number of training data points.
 Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolution of neural networks during training via gradient descent.</description>
 		</item>
