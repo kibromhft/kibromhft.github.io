@@ -35,16 +35,6 @@ Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolu
       <description>Are you tired of making predictions based on correlation rather than causation? Introducing Causality in Machine Learning, a cutting-edge approach to understanding the underlying causes of complex data patterns. By incorporating causal inference techniques, we can gain a deeper understanding of how different variables interact and affect each other, leading to more accurate predictions and informed decision-making.</description>
     </item>
     
-    <item>
-      <title>Learning with not Enough Data Part 1: Semi-Supervised Learning</title>
-      <link>https://kibromhft.github.io/posts/2021-12-05-semi-supervised/</link>
-      <pubDate>Sun, 05 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2021-12-05-semi-supervised/</guid>
-      <description>When facing a limited amount of labeled data for supervised learning tasks, four approaches are commonly discussed.
- Pre-training + fine-tuning: Pre-train a powerful task-agnostic model on a large unsupervised data corpus, e.g. pre-training LMs on free text, or pre-training vision models on unlabelled images via self-supervised learning, and then fine-tune it on the downstream task with a small set of labeled samples. Semi-supervised learning: Learn from the labelled and unlabeled samples together.</description>
-    </item>
-    
 
     
     <item>
