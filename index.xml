@@ -37,16 +37,7 @@ Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolu
     
 
     
-    <item>
-      <title>What are Diffusion Models?</title>
-      <link>https://kibromhft.github.io/posts/2021-07-11-diffusion-models/</link>
-      <pubDate>Sun, 11 Jul 2021 00:00:00 +0000</pubDate>
-      
-      
-      <description>[Updated on 2021-09-19: Highly recommend this blog post on score-based generative modeling by Yang Song (author of several key papers in the references)]. [Updated on 2022-08-27: Added classifier-free guidance, GLIDE, unCLIP and Imagen. [Updated on 2022-08-31: Added latent diffusion model.
-So far, I&amp;rsquo;ve written about three types of generative models, GAN, VAE, and Flow-based models. They have shown great success in generating high-quality samples, but each has some limitations of its own.</description>
-    </item>
-    
+   
     <item>
       <title>Contrastive Representation Learning</title>
       <link>https://kibromhft.github.io/posts/2021-05-31-contrastive/</link>
