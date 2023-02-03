@@ -50,15 +50,7 @@ It sounds like an impossible task if we want to teach integral or derivative to 
     </item>
     
 
-    <item>
-      <title>Evolution Strategies</title>
-      <link>https://kibromhft.github.io/posts/2019-09-05-evolution-strategies/</link>
-      <pubDate>Thu, 05 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2019-09-05-evolution-strategies/</guid>
-      <description>Stochastic gradient descent is a universal choice for optimizing deep learning models. However, it is not the only option. With black-box optimization algorithms, you can evaluate a target function $f(x): \mathbb{R}^n \to \mathbb{R}$, even when you don&amp;rsquo;t know the precise analytic form of $f(x)$ and thus cannot compute gradients or the Hessian matrix. Examples of black-box optimization methods include Simulated Annealing, Hill Climbing and Nelder-Mead method.
-Evolution Strategies (ES) is one type of black-box optimization algorithms, born in the family of Evolutionary Algorithms (EA).</description>
-    </item>
+
     
     <item>
       <title>Meta Reinforcement Learning</title>
