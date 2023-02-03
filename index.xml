@@ -45,22 +45,14 @@ Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolu
  Pre-training + fine-tuning: Pre-train a powerful task-agnostic model on a large unsupervised data corpus, e.g. pre-training LMs on free text, or pre-training vision models on unlabelled images via self-supervised learning, and then fine-tune it on the downstream task with a small set of labeled samples. Semi-supervised learning: Learn from the labelled and unlabeled samples together.</description>
     </item>
     
-    <item>
-      <title>How to Train Really Large Models on Many GPUs?</title>
-      <link>https://kibromhft.github.io/posts/2021-09-25-train-large/</link>
-      <pubDate>Fri, 24 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2021-09-25-train-large/</guid>
-      <description>[Updated on 2022-03-13: add expert choice routing.] [Updated on 2022-06-10]: Greg and I wrote a shorted and upgraded version of this post, published on OpenAI Blog: &amp;ldquo;Techniques for Training Large Neural Networks&amp;rdquo;
-In recent years, we are seeing better results on many NLP benchmark tasks with larger pre-trained language models. How to train large and deep neural networks is challenging, as it demands a large amount of GPU memory and a long horizon of training time.</description>
-    </item>
+
     
     <item>
       <title>What are Diffusion Models?</title>
       <link>https://kibromhft.github.io/posts/2021-07-11-diffusion-models/</link>
       <pubDate>Sun, 11 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://kibromhft.github.io/posts/2021-07-11-diffusion-models/</guid>
+      
       <description>[Updated on 2021-09-19: Highly recommend this blog post on score-based generative modeling by Yang Song (author of several key papers in the references)]. [Updated on 2022-08-27: Added classifier-free guidance, GLIDE, unCLIP and Imagen. [Updated on 2022-08-31: Added latent diffusion model.
 So far, I&amp;rsquo;ve written about three types of generative models, GAN, VAE, and Flow-based models. They have shown great success in generating high-quality samples, but each has some limitations of its own.</description>
     </item>
