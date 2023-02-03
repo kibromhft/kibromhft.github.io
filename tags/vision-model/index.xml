@@ -7,14 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 09 Jun 2022 15:10:30 -0700</lastBuildDate><atom:link href="https://kibromhft.github.io/tags/vision-model/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Generalized Visual Language Models</title>
-      <link>https://kibromhft.github.io/posts/2022-06-09-vlm/</link>
-      <pubDate>Thu, 09 Jun 2022 15:10:30 -0700</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2022-06-09-vlm/</guid>
-      <description>Processing images to generate text, such as image captioning and visual question-answering, has been studied for years. Traditionally such systems rely on an object detection network as a vision encoder to capture visual features and then produce text via a text decoder. Given a large amount of existing literature, in this post, I would like to only focus on one approach for solving vision language tasks, which is to extend pre-trained generalized language models to be capable of consuming visual signals.</description>
-    </item>
+
     
     <item>
       <title>Object Detection Part 4: Fast Detection Models</title>
