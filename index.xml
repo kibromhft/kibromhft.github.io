@@ -41,15 +41,7 @@ Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolu
     
 
     
-    <item>
-      <title>Controllable Neural Text Generation</title>
-      <link>https://kibromhft.github.io/posts/2021-01-02-controllable-text-generation/</link>
-      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2021-01-02-controllable-text-generation/</guid>
-      <description>[Updated on 2021-02-01: Updated to version 2.0 with several work added and many typos fixed.] [Updated on 2021-05-26: Add P-tuning and Prompt Tuning in the &amp;ldquo;prompt design&amp;rdquo; section.] [Updated on 2021-09-19: Add &amp;ldquo;unlikelihood training&amp;rdquo;.]
-There is a gigantic amount of free text on the Web, several magnitude more than labelled benchmark datasets. The state-of-the-art language models (LM) are trained with unsupervised Web data in large scale. When generating samples from LM by iteratively sampling the next token, we do not have much control over attributes of the output text, such as the topic, the style, the sentiment, etc.</description>
-    </item>
+
     
     <item>
       <title>How to Build an Open-Domain Question Answering System?</title>
