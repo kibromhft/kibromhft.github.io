@@ -39,15 +39,7 @@ Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolu
     
    
     
-    <item>
-      <title>Reducing Toxicity in Language Models</title>
-      <link>https://kibromhft.github.io/posts/2021-03-21-lm-toxicity/</link>
-      <pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2021-03-21-lm-toxicity/</guid>
-      <description>Large pretrained language models are trained over a sizable collection of online data. They unavoidably acquire certain toxic behavior and biases from the Internet. Pretrained language models are very powerful and have shown great success in many NLP tasks. However, to safely deploy them for practical real-world applications demands a strong safety control over the model generation process.
-Many challenges are associated with the effort to diminish various types of unsafe content:</description>
-    </item>
+
     
     <item>
       <title>Controllable Neural Text Generation</title>
