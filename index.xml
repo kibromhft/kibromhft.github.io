@@ -385,16 +385,7 @@ Meanwhile, the rapid growth of deep learning models pushes the requirement of in
  One thing I would like to emphasize that because my motivation for writing this post is more on demonstrating how to build and train an RNN model in Tensorflow and less on solve the stock prediction problem, I didn&amp;rsquo;t try hard on improving the prediction outcomes.</description>
     </item>
     
-    <item>
-      <title>An Overview of Deep Learning for Curious People</title>
-      <link>https://kibromhft.github.io/posts/2017-06-21-overview/</link>
-      <pubDate>Wed, 21 Jun 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2017-06-21-overview/</guid>
-      <description>(The post was originated from my talk for WiMLDS x Fintech meetup hosted by Affirm.)
-I believe many of you have watched or heard of the games between AlphaGo and professional Go player Lee Sedol in 2016. Lee has the highest rank of nine dan and many world championships. No doubt, he is one of the best Go players in the world, but he lost by 1-4 in this series versus AlphaGo.</description>
-    </item>
-    
+   
     
     <item>
       <title>FAQ</title>
