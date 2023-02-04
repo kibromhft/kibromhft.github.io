@@ -79,14 +79,7 @@ It sounds like an impossible task if we want to teach integral or derivative to 
 To recap, a good meta-learning model is expected to generalize to new tasks or new environments that have never been encountered during training. The adaptation process, essentially a mini learning session, happens at test with limited exposure to the new configurations.</description>
     </item>
     
-    <item>
-      <title>Domain Randomization for Sim2Real Transfer</title>
-      <link>https://kibromhft.github.io/posts/2019-05-05-domain-randomization/</link>
-      <pubDate>Sun, 05 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2019-05-05-domain-randomization/</guid>
-      <description>In Robotics, one of the hardest problems is how to make your model transfer to the real world. Due to the sample inefficiency of deep RL algorithms and the cost of data collection on real robots, we often need to train models in a simulator which theoretically provides an infinite amount of data. However, the reality gap between the simulator and the physical world often leads to failure when working with physical robots.</description>
-    </item>
+
     
     <item>
       <title>Are Deep Neural Networks Dramatically Overfitted?</title>
@@ -112,16 +105,7 @@ The effort in understanding why deep neural networks can generalize somehow remi
 A good machine learning model often requires training with a large number of samples. Humans, in contrast, learn new concepts and skills much faster and more efficiently. Kids who have seen cats and birds only a few times can quickly tell them apart. People who know how to ride a bike are likely to discover the way to ride a motorcycle fast with little or even no demonstration.</description>
     </item>
     
-    <item>
-      <title>Flow-based Deep Generative Models</title>
-      <link>https://kibromhft.github.io/posts/2018-10-13-flow-models/</link>
-      <pubDate>Sat, 13 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2018-10-13-flow-models/</guid>
-      <description>So far, I&amp;rsquo;ve written about two types of generative models, GAN and VAE. Neither of them explicitly learns the probability density function of real data, $p(\mathbf{x})$ (where $\mathbf{x} \in \mathcal{D}$) &amp;mdash; because it is really hard! Taking the generative model with latent variables as an example, $p(\mathbf{x}) = \int p(\mathbf{x}\vert\mathbf{z})p(\mathbf{z})d\mathbf{z}$ can hardly be calculated as it is intractable to go through all possible values of the latent code $\mathbf{z}$.
-Flow-based deep generative models conquer this hard problem with the help of normalizing flows, a powerful statistics tool for density estimation.</description>
-    </item>
-    
+
     <item>
       <title>Disentangling the Latent Space: A Guide to Beta-VAE</title>
       <link>https://kibromhft.github.io/posts/2022-02-27-vae/</link>
