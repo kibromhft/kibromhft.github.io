@@ -167,14 +167,7 @@ Environment Setup Make sure you have Homebrew installed:  /usr/bin/ruby -e &amp;
 			<guid>https://kibromhft.github.io/posts/2018-04-08-policy-gradient/</guid>
 			<description>[Updated on 2018-06-30: add two new policy gradient methods, SAC and D4PG.]  [Updated on 2018-09-30: add a new policy gradient method, TD3.]  [Updated on 2019-02-09: add SAC with automatically adjusted temperature].  [Updated on 2019-06-26: Thanks to Chanseok, we have a version of this post in Korean].  [Updated on 2019-09-12: add a new policy gradient method SVPG.]  [Updated on 2019-12-22: add a new policy gradient method IMPALA.</description>
 		</item>
-		<item>
-			<title>A (Long) Peek into Reinforcement Learning</title>
-			<link>https://kibromhft.github.io/posts/2018-02-19-rl-overview/</link>
-			<pubDate>Mon, 19 Feb 2018 00:00:00 +0000</pubDate>
-			<guid>https://kibromhft.github.io/posts/2018-02-19-rl-overview/</guid>
-			<description>[Updated on 2020-09-03: Updated the algorithm of SARSA and Q-learning so that the difference is more pronounced. [Updated on 2021-09-19: Thanks to 爱吃猫的鱼, we have this post in Chinese].
-A couple of exciting news in Artificial Intelligence (AI) has just happened in recent years. AlphaGo defeated the best professional human player in the game of Go. Very soon the extended algorithm AlphaGo Zero beat AlphaGo by 100-0 without supervised learning on human knowledge.</description>
-		</item>
+
 		<item>
 			<title>The Multi-Armed Bandit Problem and Its Solutions</title>
 			<link>https://kibromhft.github.io/posts/2018-01-23-multi-armed-bandit/</link>
@@ -200,14 +193,7 @@ Exploitation vs Exploration The exploration vs exploitation dilemma exists in ma
 			<description>Human vocabulary comes in free text. In order to make a machine learning model understand and process the natural language, we need to transform the free-text words into numeric values. One of the simplest transformation approaches is to do a one-hot encoding in which each distinct word stands for one dimension of the resulting vector and a binary value indicates whether the word presents (1) or not (0).
 However, one-hot encoding is impractical computationally when dealing with the entire vocabulary, as the representation demands hundreds of thousands of dimensions.</description>
 		</item>
-		<item>
-			<title>Anatomize Deep Learning with Information Theory</title>
-			<link>https://kibromhft.github.io/posts/2017-09-28-information-bottleneck/</link>
-			<pubDate>Thu, 28 Sep 2017 00:00:00 +0000</pubDate>
-			<guid>https://kibromhft.github.io/posts/2017-09-28-information-bottleneck/</guid>
-			<description>Professor Naftali Tishby passed away in 2021. Hope the post can introduce his cool idea of information bottleneck to more people.
-Recently I watched the talk &amp;ldquo;Information Theory in Deep Learning&amp;rdquo; by Prof Naftali Tishby and found it very interesting. He presented how to apply the information theory to study the growth and transformation of deep neural networks during training. Using the Information Bottleneck (IB) method, he proposed a new learning bound for deep neural networks (DNN), as the traditional learning theory fails due to the exponentially large number of parameters.</description>
-		</item>
+
 		<item>
 			<title>From GAN to WGAN</title>
 			<link>https://kibromhft.github.io/posts/2017-08-20-gan/</link>

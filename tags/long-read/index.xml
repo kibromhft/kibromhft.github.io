@@ -59,15 +59,6 @@ A good machine learning model often requires training with a large number of sam
       <description>[Updated on 2018-06-30: add two new policy gradient methods, SAC and D4PG.]  [Updated on 2018-09-30: add a new policy gradient method, TD3.]  [Updated on 2019-02-09: add SAC with automatically adjusted temperature].  [Updated on 2019-06-26: Thanks to Chanseok, we have a version of this post in Korean].  [Updated on 2019-09-12: add a new policy gradient method SVPG.]  [Updated on 2019-12-22: add a new policy gradient method IMPALA.</description>
     </item>
     
-    <item>
-      <title>A (Long) Peek into Reinforcement Learning</title>
-      <link>https://kibromhft.github.io/posts/2018-02-19-rl-overview/</link>
-      <pubDate>Mon, 19 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2018-02-19-rl-overview/</guid>
-      <description>[Updated on 2020-09-03: Updated the algorithm of SARSA and Q-learning so that the difference is more pronounced. [Updated on 2021-09-19: Thanks to 爱吃猫的鱼, we have this post in Chinese].
-A couple of exciting news in Artificial Intelligence (AI) has just happened in recent years. AlphaGo defeated the best professional human player in the game of Go. Very soon the extended algorithm AlphaGo Zero beat AlphaGo by 100-0 without supervised learning on human knowledge.</description>
-    </item>
     
     <item>
       <title>From GAN to WGAN</title>
