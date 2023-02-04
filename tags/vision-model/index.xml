@@ -9,26 +9,8 @@
     <lastBuildDate>Thu, 09 Jun 2022 15:10:30 -0700</lastBuildDate><atom:link href="https://kibromhft.github.io/tags/vision-model/index.xml" rel="self" type="application/rss+xml" />
 
     
-    <item>
-      <title>Object Detection Part 4: Fast Detection Models</title>
-      <link>https://kibromhft.github.io/posts/2018-12-27-object-recognition-part-4/</link>
-      <pubDate>Thu, 27 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2018-12-27-object-recognition-part-4/</guid>
-      <description>In Part 3, we have reviewed models in the R-CNN family. All of them are region-based object detection algorithms. They can achieve high accuracy but could be too slow for certain applications such as autonomous driving. In Part 4, we only focus on fast object detection models, including SSD, RetinaNet, and models in the YOLO family.
-Links to all the posts in the series: [Part 1] [Part 2] [Part 3] [Part 4].</description>
-    </item>
-    
-    <item>
-      <title>Object Detection for Dummies Part 3: R-CNN Family</title>
-      <link>https://kibromhft.github.io/posts/2017-12-31-object-recognition-part-3/</link>
-      <pubDate>Sun, 31 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2017-12-31-object-recognition-part-3/</guid>
-      <description>[Updated on 2018-12-20: Remove YOLO here. Part 4 will cover multiple fast object detection algorithms, including YOLO.]  [Updated on 2018-12-27: Add bbox regression and tricks sections for R-CNN.]
-In the series of &amp;ldquo;Object Detection for Dummies&amp;rdquo;, we started with basic concepts in image processing, such as gradient vectors and HOG, in Part 1. Then we introduced classic convolutional neural network architecture designs for classification and pioneer models for object recognition, Overfeat and DPM, in Part 2.</description>
-    </item>
-    
+
+
     <item>
       <title>Object Detection for Dummies Part 2: CNN, DPM and Overfeat</title>
       <link>https://kibromhft.github.io/posts/2017-12-15-object-recognition-part-2/</link>

@@ -55,14 +55,29 @@ Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolu
 Automatically learning and evolving network topologies is not a new idea (Stanley &amp;amp; Miikkulainen, 2002). In recent years, the pioneering work by Zoph &amp;amp; Le 2017 and Baker et al.</description>
     </item>
     
-      
 
     
-
+    <item>
+      <title>Curriculum for Reinforcement Learning</title>
+      <link>https://kibromhft.github.io/posts/2020-01-29-curriculum-rl/</link>
+      <pubDate>Wed, 29 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kibromhft.github.io/posts/2020-01-29-curriculum-rl/</guid>
+      <description>[Updated on 2020-02-03: mentioning PCG in the &amp;ldquo;Task-Specific Curriculum&amp;rdquo; section. [Updated on 2020-02-04: Add a new &amp;ldquo;curriculum through distillation&amp;rdquo; section.
+It sounds like an impossible task if we want to teach integral or derivative to a 3-year-old who does not even know basic arithmetics. That&amp;rsquo;s why education is important, as it provides a systematic way to break down complex knowledge and a nice curriculum for teaching concepts from simple to hard.</description>
+    </item>
     
  
 
-
+    <item>
+      <title>Meta Reinforcement Learning</title>
+      <link>https://kibromhft.github.io/posts/2019-06-23-meta-rl/</link>
+      <pubDate>Sun, 23 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://kibromhft.github.io/posts/2019-06-23-meta-rl/</guid>
+      <description>In my earlier post on meta-learning, the problem is mainly defined in the context of few-shot classification. Here I would like to explore more into cases when we try to &amp;ldquo;meta-learn&amp;rdquo; Reinforcement Learning (RL) tasks by developing an agent that can solve unseen tasks fast and efficiently.
+To recap, a good meta-learning model is expected to generalize to new tasks or new environments that have never been encountered during training. The adaptation process, essentially a mini learning session, happens at test with limited exposure to the new configurations.</description>
+    </item>
     
     <item>
       <title>Domain Randomization for Sim2Real Transfer</title>
@@ -84,26 +99,9 @@ If you are like me, entering into the field of deep learning with experience in 
 The effort in understanding why deep neural networks can generalize somehow reminds me of this interesting paper on System Biology &amp;mdash; &amp;ldquo;Can a biologist fix a radio?</description>
     </item>
     
-    <item>
-      <title>Generalized Language Models</title>
-      <link>https://kibromhft.github.io/posts/2019-01-31-lm/</link>
-      <pubDate>Thu, 31 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2019-01-31-lm/</guid>
-      <description>[Updated on 2019-02-14: add ULMFiT and GPT-2.] [Updated on 2020-02-29: add ALBERT.] [Updated on 2020-10-25: add RoBERTa.] [Updated on 2020-12-13: add T5.] [Updated on 2020-12-30: add GPT-3.] [Updated on 2021-11-13: add XLNet, BART and ELECTRA; Also updated the Summary section.]
-Fig. 0. I guess they are Elmo &amp; Bert? (Image source: here) We have seen amazing progress in NLP in 2018. Large-scale pre-trained language modes like OpenAI GPT and BERT have achieved great performance on a variety of language tasks using generic model architectures.</description>
-    </item>
+
     
-    <item>
-      <title>Object Detection Part 4: Fast Detection Models</title>
-      <link>https://kibromhft.github.io/posts/2018-12-27-object-recognition-part-4/</link>
-      <pubDate>Thu, 27 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2018-12-27-object-recognition-part-4/</guid>
-      <description>In Part 3, we have reviewed models in the R-CNN family. All of them are region-based object detection algorithms. They can achieve high accuracy but could be too slow for certain applications such as autonomous driving. In Part 4, we only focus on fast object detection models, including SSD, RetinaNet, and models in the YOLO family.
-Links to all the posts in the series: [Part 1] [Part 2] [Part 3] [Part 4].</description>
-    </item>
-    
+   
     <item>
       <title>Meta-Learning: Learning to Learn Fast</title>
       <link>https://kibromhft.github.io/posts/2018-11-30-meta-learning/</link>
