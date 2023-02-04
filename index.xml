@@ -127,15 +127,7 @@ In the previous two posts, I have introduced the algorithms of many deep reinfor
 Environment Setup Make sure you have Homebrew installed:  /usr/bin/ruby -e &amp;#34;$(curl -fsSL https://raw.</description>
     </item>
     
-    <item>
-      <title>Policy Gradient Algorithms</title>
-      <link>https://kibromhft.github.io/posts/2018-04-08-policy-gradient/</link>
-      <pubDate>Sun, 08 Apr 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2018-04-08-policy-gradient/</guid>
-      <description>[Updated on 2018-06-30: add two new policy gradient methods, SAC and D4PG.]  [Updated on 2018-09-30: add a new policy gradient method, TD3.]  [Updated on 2019-02-09: add SAC with automatically adjusted temperature].  [Updated on 2019-06-26: Thanks to Chanseok, we have a version of this post in Korean].  [Updated on 2019-09-12: add a new policy gradient method SVPG.]  [Updated on 2019-12-22: add a new policy gradient method IMPALA.</description>
-    </item>
-    
+
     <item>
       <title>A (Long) Peek into Reinforcement Learning</title>
       <link>https://kibromhft.github.io/posts/2018-02-19-rl-overview/</link>
