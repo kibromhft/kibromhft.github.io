@@ -19,15 +19,7 @@ Disclaimers given so many papers in the wild:
  Assume we have access to a powerful pretrained language model.</description>
     </item>
     
-    <item>
-      <title>The Transformer Family</title>
-      <link>https://kibromhft.github.io/posts/2020-04-07-the-transformer-family/</link>
-      <pubDate>Tue, 07 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2020-04-07-the-transformer-family/</guid>
-      <description>It has been almost two years since my last post on attention. Recent progress on new and enhanced versions of Transformer motivates me to write another post on this specific topic, focusing on how the vanilla Transformer can be improved for longer-term attention span, less memory and computation consumption, RL task solving and more.
-Notations    Symbol Meaning     $d$ The model size / hidden state dimension / positional encoding size.</description>
-    </item>
+
     
     <item>
       <title>Generalized Language Models</title>
