@@ -59,16 +59,7 @@ A good machine learning model often requires training with a large number of sam
       <description>[Updated on 2018-06-30: add two new policy gradient methods, SAC and D4PG.]  [Updated on 2018-09-30: add a new policy gradient method, TD3.]  [Updated on 2019-02-09: add SAC with automatically adjusted temperature].  [Updated on 2019-06-26: Thanks to Chanseok, we have a version of this post in Korean].  [Updated on 2019-09-12: add a new policy gradient method SVPG.]  [Updated on 2019-12-22: add a new policy gradient method IMPALA.</description>
     </item>
     
-    
-    <item>
-      <title>From GAN to WGAN</title>
-      <link>https://kibromhft.github.io/posts/2017-08-20-gan/</link>
-      <pubDate>Sun, 20 Aug 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2017-08-20-gan/</guid>
-      <description>[Updated on 2018-09-30: thanks to Yoonju, we have this post translated in Korean!]  [Updated on 2019-04-18: this post is also available on arXiv.]
-Generative adversarial network (GAN) has shown great results in many generative tasks to replicate the real-world rich content such as images, human language, and music. It is inspired by game theory: two models, a generator and a critic, are competing with each other while making each other stronger at the same time.</description>
-    </item>
+
     
   </channel>
 </rss>
