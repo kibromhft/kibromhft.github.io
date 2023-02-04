@@ -183,22 +183,8 @@ A couple of exciting news in Artificial Intelligence (AI) has just happened in r
 			<description>The algorithms are implemented for Bernoulli bandit in kibromhaftu/multi-armed-bandit.
 Exploitation vs Exploration The exploration vs exploitation dilemma exists in many aspects of our life. Say, your favorite restaurant is right around the corner. If you go there every day, you would be confident of what you will get, but miss the chances of discovering an even better option. If you try new places all the time, very likely you are gonna have to eat unpleasant food from time to time.</description>
 		</item>
-		<item>
-			<title>Object Detection for Dummies Part 3: R-CNN Family</title>
-			<link>https://kibromhft.github.io/posts/2017-12-31-object-recognition-part-3/</link>
-			<pubDate>Sun, 31 Dec 2017 00:00:00 +0000</pubDate>
-			<guid>https://kibromhft.github.io/posts/2017-12-31-object-recognition-part-3/</guid>
-			<description>[Updated on 2018-12-20: Remove YOLO here. Part 4 will cover multiple fast object detection algorithms, including YOLO.]  [Updated on 2018-12-27: Add bbox regression and tricks sections for R-CNN.]
-In the series of &amp;ldquo;Object Detection for Dummies&amp;rdquo;, we started with basic concepts in image processing, such as gradient vectors and HOG, in Part 1. Then we introduced classic convolutional neural network architecture designs for classification and pioneer models for object recognition, Overfeat and DPM, in Part 2.</description>
-		</item>
-		<item>
-			<title>Object Detection for Dummies Part 2: CNN, DPM and Overfeat</title>
-			<link>https://kibromhft.github.io/posts/2017-12-15-object-recognition-part-2/</link>
-			<pubDate>Fri, 15 Dec 2017 00:00:00 +0000</pubDate>
-			<guid>https://kibromhft.github.io/posts/2017-12-15-object-recognition-part-2/</guid>
-			<description>Part 1 of the &amp;ldquo;Object Detection for Dummies&amp;rdquo; series introduced: (1) the concept of image gradient vector and how HOG algorithm summarizes the information across all the gradient vectors in one image; (2) how the image segmentation algorithm works to detect regions that potentially contain objects; (3) how the Selective Search algorithm refines the outcomes of image segmentation for better region proposal.
-In Part 2, we are about to find out more on the classic convolution neural network architectures for image classification.</description>
-		</item>
+
+
 		<item>
 			<title>Object Detection for Dummies Part 1: Gradient Vector, HOG, and SS</title>
 			<link>https://kibromhft.github.io/posts/2017-10-29-object-recognition-part-1/</link>
