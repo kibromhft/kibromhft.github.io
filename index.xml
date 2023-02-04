@@ -56,54 +56,13 @@ Automatically learning and evolving network topologies is not a new idea (Stanle
     </item>
     
       
-    <item>
-      <title>The Transformer Family</title>
-      <link>https://kibromhft.github.io/posts/2020-04-07-the-transformer-family/</link>
-      <pubDate>Tue, 07 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2020-04-07-the-transformer-family/</guid>
-      <description>It has been almost two years since my last post on attention. Recent progress on new and enhanced versions of Transformer motivates me to write another post on this specific topic, focusing on how the vanilla Transformer can be improved for longer-term attention span, less memory and computation consumption, RL task solving and more.
-Notations    Symbol Meaning     $d$ The model size / hidden state dimension / positional encoding size.</description>
-    </item>
+
     
-    <item>
-      <title>Curriculum for Reinforcement Learning</title>
-      <link>https://kibromhft.github.io/posts/2020-01-29-curriculum-rl/</link>
-      <pubDate>Wed, 29 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2020-01-29-curriculum-rl/</guid>
-      <description>[Updated on 2020-02-03: mentioning PCG in the &amp;ldquo;Task-Specific Curriculum&amp;rdquo; section. [Updated on 2020-02-04: Add a new &amp;ldquo;curriculum through distillation&amp;rdquo; section.
-It sounds like an impossible task if we want to teach integral or derivative to a 3-year-old who does not even know basic arithmetics. That&amp;rsquo;s why education is important, as it provides a systematic way to break down complex knowledge and a nice curriculum for teaching concepts from simple to hard.</description>
-    </item>
+
     
-    <item>
-      <title>Self-Supervised Representation Learning</title>
-      <link>https://kibromhft.github.io/posts/2019-11-10-self-supervised/</link>
-      <pubDate>Sun, 10 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2019-11-10-self-supervised/</guid>
-      <description>[Updated on 2020-01-09: add a new section on Contrastive Predictive Coding].  [Updated on 2020-04-13: add a &amp;ldquo;Momentum Contrast&amp;rdquo; section on MoCo, SimCLR and CURL.]  [Updated on 2020-07-08: add a &amp;ldquo;Bisimulation&amp;rdquo; section on DeepMDP and DBC.]  [Updated on 2020-09-12: add MoCo V2 and BYOL in the &amp;ldquo;Momentum Contrast&amp;rdquo; section.]  [Updated on 2021-05-31: remove section on &amp;ldquo;Momentum Contrast&amp;rdquo; and add a pointer to a full post on &amp;ldquo;Contrastive Representation Learning&amp;rdquo;]</description>
-    </item>
-    
-    <item>
-      <title>Evolution Strategies</title>
-      <link>https://kibromhft.github.io/posts/2019-09-05-evolution-strategies/</link>
-      <pubDate>Thu, 05 Sep 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2019-09-05-evolution-strategies/</guid>
-      <description>Stochastic gradient descent is a universal choice for optimizing deep learning models. However, it is not the only option. With black-box optimization algorithms, you can evaluate a target function $f(x): \mathbb{R}^n \to \mathbb{R}$, even when you don&amp;rsquo;t know the precise analytic form of $f(x)$ and thus cannot compute gradients or the Hessian matrix. Examples of black-box optimization methods include Simulated Annealing, Hill Climbing and Nelder-Mead method.
-Evolution Strategies (ES) is one type of black-box optimization algorithms, born in the family of Evolutionary Algorithms (EA).</description>
-    </item>
-    
-    <item>
-      <title>Meta Reinforcement Learning</title>
-      <link>https://kibromhft.github.io/posts/2019-06-23-meta-rl/</link>
-      <pubDate>Sun, 23 Jun 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2019-06-23-meta-rl/</guid>
-      <description>In my earlier post on meta-learning, the problem is mainly defined in the context of few-shot classification. Here I would like to explore more into cases when we try to &amp;ldquo;meta-learn&amp;rdquo; Reinforcement Learning (RL) tasks by developing an agent that can solve unseen tasks fast and efficiently.
-To recap, a good meta-learning model is expected to generalize to new tasks or new environments that have never been encountered during training. The adaptation process, essentially a mini learning session, happens at test with limited exposure to the new configurations.</description>
-    </item>
+ 
+
+
     
     <item>
       <title>Domain Randomization for Sim2Real Transfer</title>

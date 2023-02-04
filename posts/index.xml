@@ -112,24 +112,10 @@ Automatically learning and evolving network topologies is not a new idea (Stanle
 Exploitation versus exploration is a critical topic in Reinforcement Learning. We&amp;rsquo;d like the RL agent to find the best solution as fast as possible. However, in the meantime, committing to solutions too quickly without enough exploration sounds pretty bad, as it could lead to local minima or total failure. Modern RL algorithms that optimize for the best returns can achieve good exploitation quite efficiently, while exploration remains more like an open topic.</description>
 		</item>
 
-		<item>
-			<title>Curriculum for Reinforcement Learning</title>
-			<link>https://kibromhft.github.io/posts/2020-01-29-curriculum-rl/</link>
-			<pubDate>Wed, 29 Jan 2020 00:00:00 +0000</pubDate>
-			<guid>https://kibromhft.github.io/posts/2020-01-29-curriculum-rl/</guid>
-			<description>[Updated on 2020-02-03: mentioning PCG in the &amp;ldquo;Task-Specific Curriculum&amp;rdquo; section. [Updated on 2020-02-04: Add a new &amp;ldquo;curriculum through distillation&amp;rdquo; section.
-It sounds like an impossible task if we want to teach integral or derivative to a 3-year-old who does not even know basic arithmetics. That&amp;rsquo;s why education is important, as it provides a systematic way to break down complex knowledge and a nice curriculum for teaching concepts from simple to hard.</description>
-		</item>
 
 
-		<item>
-			<title>Meta Reinforcement Learning</title>
-			<link>https://kibromhft.github.io/posts/2019-06-23-meta-rl/</link>
-			<pubDate>Sun, 23 Jun 2019 00:00:00 +0000</pubDate>
-			<guid>https://kibromhft.github.io/posts/2019-06-23-meta-rl/</guid>
-			<description>In my earlier post on meta-learning, the problem is mainly defined in the context of few-shot classification. Here I would like to explore more into cases when we try to &amp;ldquo;meta-learn&amp;rdquo; Reinforcement Learning (RL) tasks by developing an agent that can solve unseen tasks fast and efficiently.
-To recap, a good meta-learning model is expected to generalize to new tasks or new environments that have never been encountered during training. The adaptation process, essentially a mini learning session, happens at test with limited exposure to the new configurations.</description>
-		</item>
+
+
 		<item>
 			<title>Domain Randomization for Sim2Real Transfer</title>
 			<link>https://kibromhft.github.io/posts/2019-05-05-domain-randomization/</link>

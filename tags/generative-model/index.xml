@@ -17,27 +17,11 @@
 So far, I&amp;rsquo;ve written about three types of generative models, GAN, VAE, and Flow-based models. They have shown great success in generating high-quality samples, but each has some limitations of its own.</description>
     </item>
     
-    <item>
-      <title>Curriculum for Reinforcement Learning</title>
-      <link>https://kibromhft.github.io/posts/2020-01-29-curriculum-rl/</link>
-      <pubDate>Wed, 29 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2020-01-29-curriculum-rl/</guid>
-      <description>[Updated on 2020-02-03: mentioning PCG in the &amp;ldquo;Task-Specific Curriculum&amp;rdquo; section. [Updated on 2020-02-04: Add a new &amp;ldquo;curriculum through distillation&amp;rdquo; section.
-It sounds like an impossible task if we want to teach integral or derivative to a 3-year-old who does not even know basic arithmetics. That&amp;rsquo;s why education is important, as it provides a systematic way to break down complex knowledge and a nice curriculum for teaching concepts from simple to hard.</description>
-    </item>
+
     
 
     
-    <item>
-      <title>Disentangling the Latent Space: A Guide to Beta-VAE</title>
-      <link>https://kibromhft.github.io/posts/2022-02-27-vae/</link>
-      <pubDate>Sun, 12 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2022-02-27-vae/</guid>
-      <description>
-Autocoder is invented to reconstruct high-dimensional data using a neural network model with a narrow bottleneck layer in the middle (oops, this is probably not true for Variational Autoencoder, and we will investigate it in details in later sections). A nice byproduct is dimension reduction: the bottleneck layer captures a compressed latent encoding.</description>
-    </item>
+
     
     <item>
       <title>From GAN to WGAN</title>
