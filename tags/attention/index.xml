@@ -21,25 +21,8 @@ Disclaimers given so many papers in the wild:
     
 
     
-    <item>
-      <title>Generalized Language Models</title>
-      <link>https://kibromhft.github.io/posts/2019-01-31-lm/</link>
-      <pubDate>Thu, 31 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2019-01-31-lm/</guid>
-      <description>[Updated on 2019-02-14: add ULMFiT and GPT-2.] [Updated on 2020-02-29: add ALBERT.] [Updated on 2020-10-25: add RoBERTa.] [Updated on 2020-12-13: add T5.] [Updated on 2020-12-30: add GPT-3.] [Updated on 2021-11-13: add XLNet, BART and ELECTRA; Also updated the Summary section.]
-Fig. 0. I guess they are Elmo &amp; Bert? (Image source: here) We have seen amazing progress in NLP in 2018. Large-scale pre-trained language modes like OpenAI GPT and BERT have achieved great performance on a variety of language tasks using generic model architectures.</description>
-    </item>
-    
-    <item>
-      <title>Attention? Attention!</title>
-      <link>https://kibromhft.github.io/posts/2018-06-24-attention/</link>
-      <pubDate>Sun, 24 Jun 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2018-06-24-attention/</guid>
-      <description>[Updated on 2018-10-28: Add Pointer Network and the link to my implementation of Transformer.] [Updated on 2018-11-06: Add a link to the implementation of Transformer model.] [Updated on 2018-11-18: Add Neural Turing Machines.] [Updated on 2019-07-18: Correct the mistake on using the term &amp;ldquo;self-attention&amp;rdquo; when introducing the show-attention-tell paper; moved it to Self-Attention section.] [Updated on 2020-04-07: A follow-up post on improved Transformer models is here.]
-Attention is, to some extent, motivated by how we pay visual attention to different regions of an image or correlate words in one sentence.</description>
-    </item>
+
+
     
   </channel>
 </rss>
