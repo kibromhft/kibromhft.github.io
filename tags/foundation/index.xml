@@ -28,15 +28,6 @@ If you are like me, entering into the field of deep learning with experience in 
 The effort in understanding why deep neural networks can generalize somehow reminds me of this interesting paper on System Biology &amp;mdash; &amp;ldquo;Can a biologist fix a radio?</description>
     </item>
     
-    <item>
-      <title>Anatomize Deep Learning with Information Theory</title>
-      <link>https://kibromhft.github.io/posts/2017-09-28-information-bottleneck/</link>
-      <pubDate>Thu, 28 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2017-09-28-information-bottleneck/</guid>
-      <description>Professor Naftali Tishby passed away in 2021. Hope the post can introduce his cool idea of information bottleneck to more people.
-Recently I watched the talk &amp;ldquo;Information Theory in Deep Learning&amp;rdquo; by Prof Naftali Tishby and found it very interesting. He presented how to apply the information theory to study the growth and transformation of deep neural networks during training. Using the Information Bottleneck (IB) method, he proposed a new learning bound for deep neural networks (DNN), as the traditional learning theory fails due to the exponentially large number of parameters.</description>
-    </item>
     
     <item>
       <title>How to Explain the Prediction of a Machine Learning Model?</title>
