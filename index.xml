@@ -137,15 +137,6 @@ In Part 2, we are about to find out more on the classic convolution neural netwo
       <description>I&amp;rsquo;ve never worked in the field of computer vision and has no idea how the magic could work when an autonomous car is configured to tell apart a stop sign from a pedestrian in a red hat. To motivate myself to look into the maths behind object recognition and detection algorithms, I&amp;rsquo;m writing a few posts on this topic &amp;ldquo;Object Detection for Dummies&amp;rdquo;. This post, part 1, starts with super rudimentary concepts in image processing and a few methods for image segmentation.</description>
     </item>
     
-    <item>
-      <title>Learning Word Embedding</title>
-      <link>https://kibromhft.github.io/posts/2017-10-15-word-embedding/</link>
-      <pubDate>Sun, 15 Oct 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2017-10-15-word-embedding/</guid>
-      <description>Human vocabulary comes in free text. In order to make a machine learning model understand and process the natural language, we need to transform the free-text words into numeric values. One of the simplest transformation approaches is to do a one-hot encoding in which each distinct word stands for one dimension of the resulting vector and a binary value indicates whether the word presents (1) or not (0).
-However, one-hot encoding is impractical computationally when dealing with the entire vocabulary, as the representation demands hundreds of thousands of dimensions.</description>
-    </item>
 
     
     <item>
