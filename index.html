@@ -90,8 +90,9 @@ if (!doNotTrack) {
       "index.xml", "https://scholar.google.com/citations?user=dCa-pW8AAAAJ\u0026hl=en\u0026oi=ao", "https://github.com/kibromhaftu", "https://www.instagram.com/kibromhaftu/", "https://twitter.com/kibromhaftu/", "https://paypal.me/kibromhaftu", "https://venmo.com/kibromhaftu"
   ]
 }
-</script>]
+</script>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body class="list" id="top">
@@ -131,7 +132,8 @@ if (!doNotTrack) {
 
 
 <header class="header">
- <div class="w3-bar w3-light-grey">
+<div class="w3-container">
+  <div class="w3-bar w3-light-grey">
     <a href="#" class="w3-bar-item w3-button">Home</a>
     <a href="#" class="w3-bar-item w3-button">Link 1</a>
     <div class="w3-dropdown-click">
@@ -145,6 +147,18 @@ if (!doNotTrack) {
       </div>
     </div>
   </div>
+</div>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("demo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
     <nav class="nav">
         <div class="logo">
             <a href="https://kibromhft.github.io/" accesskey="h" title="Kb&#39;s Blog (Alt + H)">Kb&#39;s Blog</a>
