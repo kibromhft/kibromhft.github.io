@@ -142,11 +142,11 @@ if (!doNotTrack) {
 </div>
 
   <div class="w3-bar w3-black">
-    <button class="w3-bar-item w3-button" onclick="w3_open()">☰</button>
+    <button class="w3-bar-item" onclick="w3_open()">☰</button>
     <div class="logo w3-bar-item w3-button">
             <a href="https://kibromhft.github.io/" class="w3-bar-item w3-button" accesskey="h" title="Kb's Blog (Alt + H)">Kb's Blog</a>
             <span class="logo-switches ">
-                <button id="semere-toggle w3-bar-item w3-button" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" class=" w3-bar-item w3-button" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
@@ -464,7 +464,7 @@ The effort in understanding why deep neural networks can generalize somehow remi
 
 </script>
 <script>
-    document.getElementById("semere-toggle").addEventListener("click", () => {
+    document.getElementById("theme-toggle").addEventListener("click", () => {
         if (document.body.className.includes("dark")) {
             document.body.classList.remove('dark');
             localStorage.setItem("pref-theme", 'light');
