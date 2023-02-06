@@ -1288,6 +1288,9 @@ h6:hover .anchor {
   display: block;
 }
 
+.header-height {
+  height: 40px;
+}
 
 
 
