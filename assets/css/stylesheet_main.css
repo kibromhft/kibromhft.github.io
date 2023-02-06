@@ -1261,7 +1261,7 @@ h6:hover .anchor {
   display: none;
 }
 
-#menu .active:hover + #archive-dropdown {
+#menu li:hover #archive-dropdown {
   display: block;
   position: absolute;
 }
