@@ -1264,7 +1264,7 @@ h6:hover .anchor {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  min-width: 160px;
+  width: 150px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   list-style: none;
@@ -1293,12 +1293,10 @@ h6:hover .anchor {
   height: 40px;
   display: block;
   text-align: justify;
+  width: 150px;
 }
 
 
-.dropdown-menu {
-  min-height: 120px;
-}
 
 
 
