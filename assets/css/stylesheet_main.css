@@ -1271,7 +1271,7 @@ h6:hover .anchor {
 }
 .dropdown-menu a {
   color: black;
-  padding: 5px;
+  padding: 0px;
   text-decoration: none;
   display: block;
 }
@@ -1279,6 +1279,10 @@ h6:hover .anchor {
   display: block;
 }
 
+.dropdown-menu {
+  margin: 0;
+  padding: 0;
+}
 
 
 
