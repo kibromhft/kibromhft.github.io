@@ -1257,12 +1257,21 @@ h6:hover .anchor {
 }
 
 
-#menu li select {
+#archive-dropdown {
   display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-#menu li:hover select {
+#menu li:hover #archive-dropdown {
   display: block;
   position: absolute;
+  background-color: #f9f9f9;
+}
+
+#menu li #archive-dropdown li a {
+  display: block;
+  padding: 10px;
 }
 
