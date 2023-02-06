@@ -1288,13 +1288,20 @@ h6:hover .anchor {
   display: block;
 }
 
-
 .header-height a {
   height: 40px;
   display: block;
   text-align: justify;
   width: 150px;
-  padding: 5px;
+  padding: 10px;
+}
+
+.first a {
+  padding-top: 20px;
+}
+
+.dropdown-menu {
+  width: 150px;
 }
 
 
