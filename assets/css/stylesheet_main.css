@@ -1257,60 +1257,37 @@ h6:hover .anchor {
 }
 
 
-#archive-dropdown {
-  display: none;
+
+
+
+
+
+.header .nav #menu li:hover .sub-menu {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.header .nav #menu .sub-menu a {
+  display: block;
+  padding: 12px 16px;
+  color: #333;
+  text-decoration: none;
+}
+
+.header .nav #menu .sub-menu a:hover {
+  background-color: #f1f1f1;
+}
+
+.header .nav #menu .sub-menu ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-#menu li:hover #archive-dropdown {
-  display: block;
-  position: absolute;
-  background-color: #f9f9f9;
-}
-
-#menu #archive-dropdown li a {
-  display: block;
-  padding: 5px 10px !important;
-  margin: 0;
-}
-
-
-
-
-.header .nav #menu li {
-  position: relative;
-  display: inline-block;
-}
-
-.header .nav #menu li .dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  display: none;
-  z-index: 999;
-  padding: 0;
-  margin: 0;
-  background-color: #f3f3f3;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  border-radius: 10px;
-}
-
-.header .nav #menu li .dropdown-menu a {
-  display: block;
-  padding: 12px 16px;
-  text-decoration: none;
-  color: #333;
-}
-
-.header .nav #menu li .dropdown-menu a:hover {
-  background-color: #ddd;
-}
-
-.header .nav #menu li:hover .dropdown-menu {
-  display: block;
-}
 
 
 
