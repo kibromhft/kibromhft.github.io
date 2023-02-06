@@ -1257,12 +1257,11 @@ h6:hover .anchor {
 }
 
 
-.sub-menu {
-  position: absolute;
+#archive-dropdown {
   display: none;
-  z-index: 1;
 }
 
-li:hover .sub-menu {
+#menu .active:hover + #archive-dropdown {
   display: block;
+  position: absolute;
 }
