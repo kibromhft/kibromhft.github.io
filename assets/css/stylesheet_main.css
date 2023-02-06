@@ -1292,7 +1292,9 @@ h6:hover .anchor {
 .header-height a {
   height: 40px;
   display: block;
+  text-align: justify;
 }
+
 
 .dropdown-menu {
   min-height: 120px;
