@@ -1270,9 +1270,10 @@ h6:hover .anchor {
   background-color: #f9f9f9;
 }
 
+
 #menu li #archive-dropdown li a {
   display: block;
-  padding: 5px 10px;
+  padding: 5px 10px !important;
 }
 
 
