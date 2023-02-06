@@ -1275,7 +1275,6 @@ h6:hover .anchor {
 
 .dropdown-menu a {
   display: block;
-  padding: 7px 0;
   text-decoration: none;
   color: black;
 }
@@ -1289,7 +1288,7 @@ h6:hover .anchor {
 }
 
 .header-height a {
-  height: 40px;
+  height: 45px;
   display: block;
   text-align: justify;
   width: 150px;
@@ -1297,7 +1296,7 @@ h6:hover .anchor {
 }
 
 .first a {
-  padding-top: 20px;
+  padding-left: 25px;
 }
 
 .dropdown-menu {
