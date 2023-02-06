@@ -1292,7 +1292,7 @@ h6:hover .anchor {
   display: block;
   text-align: justify;
   width: 150px;
-  padding: 10px;
+  padding: 0;
 }
 
 .first a {
