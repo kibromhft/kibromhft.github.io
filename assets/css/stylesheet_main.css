@@ -1264,7 +1264,7 @@ h6:hover .anchor {
   margin: 0;
 }
 
-#menu li:hover #archive-dropdown {
+#menu li:hover #archive-dropdown, #archive-dropdown:hover {
   display: block;
   position: absolute;
   background-color: #f9f9f9;
@@ -1274,6 +1274,7 @@ h6:hover .anchor {
   display: block;
   padding: 5px; /* Change the padding to 5px */
 }
+
 
 
 
