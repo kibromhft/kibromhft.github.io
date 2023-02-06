@@ -1257,11 +1257,12 @@ h6:hover .anchor {
 }
 
 
-#archive-dropdown {
+#menu li select {
   display: none;
 }
 
-#menu li:hover #archive-dropdown {
+#menu li:hover select {
   display: block;
   position: absolute;
 }
+
