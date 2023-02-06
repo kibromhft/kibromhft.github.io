@@ -1272,13 +1272,8 @@ h6:hover .anchor {
 
 #menu li #archive-dropdown li a {
   display: block;
-  padding: 5px;
+  padding: 5px; /* Change the padding to 5px */
 }
-
-#menu li #archive-dropdown li {
-  padding: 5px; /* Add padding to the li element */
-}
-
 
 
 
