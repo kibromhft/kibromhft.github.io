@@ -1255,3 +1255,14 @@ h6:hover .anchor {
   font-size: 16px;
   border: none;
 }
+
+
+.sub-menu {
+  position: absolute;
+  display: none;
+  z-index: 1;
+}
+
+li:hover .sub-menu {
+  display: block;
+}
