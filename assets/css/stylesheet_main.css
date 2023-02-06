@@ -1303,6 +1303,15 @@ h6:hover .anchor {
   width: 150px;
 }
 
+.separator::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 50%;
+  border-top: 1px solid #ccc;
+  z-index: 1;
+}
 
 
 
