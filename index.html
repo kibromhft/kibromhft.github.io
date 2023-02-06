@@ -11,7 +11,7 @@
 <meta name="description" content="Document my learning notes.">
 <meta name="author" content="kibrom Haftu">
 <link rel="canonical" href="https://kibromhft.github.io/" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet_main.css"  rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet_main.css" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kibromhft.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kibromhft.github.io/favicon-32x32.png">
@@ -91,6 +91,15 @@ if (!doNotTrack) {
   ]
 }
 </script>
+<!-- semere code -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.w3-bar .w3-bar-item {
+   padding:8px
+}
+</style>
+<!-- end semere code -->
 </head>
 
 <body class="list" id="top">
@@ -130,7 +139,69 @@ if (!doNotTrack) {
 
 
 <header class="header">
-    <nav class="nav">
+<!-- semere code -->
+<!-- Sidebar -->
+<div class="w3-sidebar w3-bar-block w3-border-right w3-black" style="display:none" id="mySidebar">
+  <button onclick="w3_close()" class="w3-bar-item w3-large w3-white">Close &times;</button>
+  <a href="#" class="w3-bar-item w3-button">Link 1</a>
+  <a href="#" class="w3-bar-item w3-button">Link 2</a>
+  <a href="#" class="w3-bar-item w3-button">Link 3</a>
+</div>
+
+  <div class="w3-bar w3-black">
+    <div class="logo w3-bar-item">
+	
+			<a class="w3-bar-item w3-button" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+            <a href="https://kibromhft.github.io/" class="w3-bar-item w3-button w3-margin-left" accesskey="h" title="Kb's Blog (Alt + H)">Kb's Blog</a>
+            <span class="logo-switches ">
+                <button id="theme-toggle" class=" w3-bar-item w3-button" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+     <div class="w3-dropdown-hover w3-right w3-margin-top">
+      <button class="w3-button">Dropdown <i class="fa fa-caret-down"></i></button>
+      <span class="w3-right"></span>
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+        <a href="#" class="w3-bar-item w3-button">Link 1</a>
+        <a href="#" class="w3-bar-item w3-button">Link 2</a>
+        <a href="#" class="w3-bar-item w3-button">Link 3</a>
+      </div>
+    </div>
+	<a href="https://kibromhft.github.io/faq" title="FAQ" class="w3-bar-item w3-button w3-right w3-margin-top">FAQ</a>
+	<a href="https://kibromhft.github.io/tags" title="Tags" class="w3-bar-item w3-button w3-right w3-margin-top">Tags</a>
+	<a href="https://kibromhft.github.io/search" title="Search" class="w3-bar-item w3-button w3-right w3-margin-top">Search</a>
+	<a href="https://kibromhft.github.io/archives" title="Archive" class="w3-bar-item w3-button w3-right w3-margin-top">Archive</a>
+    <a href="https://kibromhft.github.io/" title="Posts" class="w3-bar-item w3-button w3-right w3-active w3-margin-top">Home</a>
+    
+  </div>
+
+<script>
+
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+<!-- end semere code -->
+<!-- old navigation -->
+    <!-- nav class="nav">
         <div class="logo">
             <a href="https://kibromhft.github.io/" accesskey="h" title="Kb&#39;s Blog (Alt + H)">Kb&#39;s Blog</a>
             <span class="logo-switches">
@@ -177,29 +248,24 @@ if (!doNotTrack) {
                     <span>Tags</span>
                 </a>
             </li>
-
-			
-			<li>
-				<a href="#">FAQ</a>
-				<ul class="sub-menu">
-					<li><a href="#">FAQ 1</a></li>
-					<li><a href="#">FAQ 2</a></li>
-					<li><a href="#">FAQ 3</a></li>
-				</ul>
-			</li>
-
+            <li>
+                <a href="https://kibromhft.github.io/faq" title="FAQ">
+                    <span>FAQ</span>
+                </a>
+            </li>
             <li>
                 <a href="https://www.emojisearch.app/" title="emojisearch.app">
                     <span>emojisearch.app</span>
                 </a>
             </li>
         </ul>
-    </nav>
+    </nav-->
+<!-- end old navigation-->
 </header>
 <main class="main"> 
 <article class="first-entry home-info">
     <header class="entry-header">
-        <h1>👋 Welcoming you!</h1>
+        <h1>?? Welcoming you!</h1>
     </header>
     <section class="entry-content">
         <p>Hello, I&rsquo;m Kibrom. This blog is a learning diary. Apart from writing ML blog, I&rsquo;m also working as Project Lead Data Scientist at Afro Chest X-ray Dataset and as Manager of Apps and DB Admin. Division at Lion International Bank S.C.</p>
@@ -267,7 +333,7 @@ if (!doNotTrack) {
     <p>As we enter the digital age, one thing is certain: technology is not just a trend, it's a game-changer. With each passing day, technology is making its way into more and more industries, bringing about a variety of benefits for society such as increased efficiency, improved communication, and access to information. But, with change comes challenges, and one of the biggest concerns is the displacement of jobs.
 Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolution of neural networks during training via gradient descent....</p>
   </section>
-  <footer class="entry-footer"><span title='2023-01-03 10:00:00 -0700 PDT'>January 3, 2023</span>&nbsp;·&nbsp;11 min&nbsp;·&nbsp;kibrom Haftu</footer>
+  <footer class="entry-footer"><span title='2023-01-03 10:00:00 -0700 PDT'>January 3, 2023</span>&nbsp;Â·&nbsp;11 min&nbsp;Â·&nbsp;kibrom Haftu</footer>
   <a class="entry-link" aria-label="post link to Jobs in the Digital Era" href="https://kibromhft.github.io/posts/2023-01-03-automation/"></a>
 </article>
 
@@ -284,7 +350,7 @@ Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolu
     <p>Autoencoders are a type of neural network that can be used to learn a compressed representation of input data. They work by training the network to reconstruct the input data from a lower-dimensional latent representation, which is typically obtained using an encoder. Autoencoders are versatile and can be used for a variety of tasks, including data compression, anomaly detection, and feature learning..
 ....</p>
   </section>
-  <footer class="entry-footer"><span title='2022-02-27 00:00:00 +0000 UTC'>February 27, 2022</span>&nbsp;·&nbsp;22 min&nbsp;·&nbsp;kibrom Haftu</footer>
+  <footer class="entry-footer"><span title='2022-02-27 00:00:00 +0000 UTC'>February 27, 2022</span>&nbsp;Â·&nbsp;22 min&nbsp;Â·&nbsp;kibrom Haftu</footer>
   <a class="entry-link" aria-label="post link to VAE" href="https://kibromhft.github.io/posts/2022-02-27-vae/"></a>
 </article>
 
@@ -296,7 +362,7 @@ Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolu
   <section class="entry-content">
     <p>Are you tired of making predictions based on correlation rather than causation? Introducing Causality in Machine Learning, a cutting-edge approach to understanding the underlying causes of complex data patterns. By incorporating causal inference techniques, we can gain a deeper understanding of how different variables interact and affect each other, leading to more accurate predictions and informed decision-making.</p>
   </section>
-  <footer class="entry-footer"><span title='2022-02-20 00:00:00 +0000 UTC'>February 20, 2022</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;kibrom Haftu</footer>
+  <footer class="entry-footer"><span title='2022-02-20 00:00:00 +0000 UTC'>February 20, 2022</span>&nbsp;Â·&nbsp;7 min&nbsp;Â·&nbsp;kibrom Haftu</footer>
   <a class="entry-link" aria-label="post link to Causality in Machine Learning" href="https://kibromhft.github.io/posts/2022-02-20-causality_in_ML/"></a>
 </article>
 
@@ -317,10 +383,10 @@ Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolu
     </h2>
   </header>
   <section class="entry-content">
-    <p>Although most popular and successful model architectures are designed by human experts, it doesn’t mean we have explored the entire network architecture space and settled down with the best option. We would have a better chance to find the optimal solution if we adopt a systematic and automatic way of learning high-performance model architectures.
+    <p>Although most popular and successful model architectures are designed by human experts, it doesnâ€™t mean we have explored the entire network architecture space and settled down with the best option. We would have a better chance to find the optimal solution if we adopt a systematic and automatic way of learning high-performance model architectures.
 Automatically learning and evolving network topologies is not a new idea (Stanley &amp; Miikkulainen, 2002). In recent years, the pioneering work by Zoph &amp; Le 2017 and Baker et al....</p>
   </section>
-  <footer class="entry-footer"><span title='2020-08-06 00:00:00 +0000 UTC'>August 6, 2020</span>&nbsp;·&nbsp;32 min&nbsp;·&nbsp;kibrom Haftu</footer>
+  <footer class="entry-footer"><span title='2020-08-06 00:00:00 +0000 UTC'>August 6, 2020</span>&nbsp;Â·&nbsp;32 min&nbsp;Â·&nbsp;kibrom Haftu</footer>
   <a class="entry-link" aria-label="post link to Neural Architecture Search" href="https://kibromhft.github.io/posts/2020-08-06-nas/"></a>
 </article>
 
@@ -346,14 +412,14 @@ Automatically learning and evolving network topologies is not a new idea (Stanle
   <section class="entry-content">
     <p>[Updated on 2019-05-27: add the section on Lottery Ticket Hypothesis.]
 If you are like me, entering into the field of deep learning with experience in traditional machine learning, you may often ponder over this question: Since a typical deep neural network has so many parameters and training error can easily be perfect, it should surely suffer from substantial overfitting. How could it be ever generalized to out-of-sample data points?
-The effort in understanding why deep neural networks can generalize somehow reminds me of this interesting paper on System Biology �?“Can a biologist fix a radio?...</p>
+The effort in understanding why deep neural networks can generalize somehow reminds me of this interesting paper on System Biology â�?â€œCan a biologist fix a radio?...</p>
   </section>
-  <footer class="entry-footer"><span title='2019-03-14 00:00:00 +0000 UTC'>March 14, 2019</span>&nbsp;·&nbsp;22 min&nbsp;·&nbsp;kibrom Haftu</footer>
+  <footer class="entry-footer"><span title='2019-03-14 00:00:00 +0000 UTC'>March 14, 2019</span>&nbsp;Â·&nbsp;22 min&nbsp;Â·&nbsp;kibrom Haftu</footer>
   <a class="entry-link" aria-label="post link to Are Deep Neural Networks Dramatically Overfitted?" href="https://kibromhft.github.io/posts/2019-03-14-overfit/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
-    <a class="next" href="https://kibromhft.github.io/page/2/"> »</a>
+    <a class="next" href="https://kibromhft.github.io/page/2/"> Â»</a>
   </nav>
 </footer>
     </main>

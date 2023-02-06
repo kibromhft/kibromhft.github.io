@@ -1255,14 +1255,3 @@ h6:hover .anchor {
   font-size: 16px;
   border: none;
 }
-
-
-.header .nav ul li ul.sub-menu {
-    display: none;
-    position: absolute;
-    background-color: white;
-}
-
-.header .nav ul li:hover > ul.sub-menu {
-    display: block;
-}
