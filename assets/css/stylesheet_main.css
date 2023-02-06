@@ -1275,6 +1275,12 @@ h6:hover .anchor {
   padding: 7px 10px;
   text-decoration: none;
   display: block;
+  margin: 0;
+  padding: 0;
+}
+.dropdown-menu li {
+  margin: 0;
+  padding: 0;
 }
 .dropdown:hover .dropdown-menu {
   display: block;
