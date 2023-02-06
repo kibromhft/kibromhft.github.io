@@ -1288,11 +1288,15 @@ h6:hover .anchor {
   display: block;
 }
 
+
 .header-height a {
   height: 40px;
   display: block;
 }
 
+.dropdown-menu {
+  min-height: 120px;
+}
 
 
 
