@@ -1304,6 +1304,11 @@ h6:hover .anchor {
   width: 150px;
 }
 
+.header {
+  border: 0.5px solid gray;
+}
+
+
 
 
 
