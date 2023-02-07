@@ -307,12 +307,7 @@ img {
 .nav a {
     display: block
 }
-nav hr {
-  border: 0;
-  height: 1px;
-  background-color: red;
-  margin: 1em 0;
-}
+
 
 .logo,
 #menu {
