@@ -309,9 +309,9 @@ img {
 }
 nav hr {
   border: 0;
-  height: 1px;
-  background-color: black;
-  margin: 1em 0;
+  height: 3px;
+  background-color: red;
+  margin: 3em 0;
 }
 
 .logo,
