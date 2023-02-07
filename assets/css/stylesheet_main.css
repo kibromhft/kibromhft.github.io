@@ -815,7 +815,7 @@ figcaption a {
 
 .post-content hr {
     margin: 30px 0;
-    height: 1px;
+    height: 2px;
     background: var(--tertiary);
     border-top: 0;
     border-bottom: 0
