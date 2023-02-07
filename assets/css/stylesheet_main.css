@@ -311,7 +311,7 @@ img {
 .logo,
 #menu {
     display: flex;
-    margin: auto var(--gap)
+    justify-content: space-between;
 }
 
 .logo {
