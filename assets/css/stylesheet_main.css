@@ -1305,7 +1305,7 @@ h6:hover .anchor {
 }
 
 .header {
-  border-top: 0.5px solid gray;
+  border-bottom: 0.5px solid gray;
   width: 100%;
 }
 
