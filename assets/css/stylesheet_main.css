@@ -308,7 +308,10 @@ img {
     display: block
 }
 
-
+  hr {
+    border: 1px solid black;
+    width: 100%;
+  }
 .logo,
 #menu {
     display: flex;
