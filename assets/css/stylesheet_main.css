@@ -1306,6 +1306,10 @@ h6:hover .anchor {
 
 
 
+:root {
+  --header-border-color: gray;
+}
+
 .header {
   position: relative;
 }
@@ -1317,8 +1321,12 @@ h6:hover .anchor {
   left: 0;
   right: 0;
   height: 1px;
-  background: gray;
+  background: var(--header-border-color);
   filter: blur(1px);
+}
+.header {
+  border-top: 1px solid var(--header-border-color);
+  border-image: url(data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3CfeGaussianBlur stdDeviation='1' /%3E%3C/svg%3E) 1 1 stretch;
 }
 
 
