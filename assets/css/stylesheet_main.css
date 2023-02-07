@@ -1304,9 +1304,21 @@ h6:hover .anchor {
   width: 150px;
 }
 
+
+
 .header {
-  border-bottom: 0.5px solid gray;
-  width: 100%;
+  position: relative;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: gray;
+  filter: blur(1px);
 }
 
 
