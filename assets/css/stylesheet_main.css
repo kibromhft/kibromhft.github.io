@@ -301,6 +301,7 @@ img {
     max-width: calc(var(--nav-width) + var(--gap) * 2);
     margin-inline-start: auto;
     margin-inline-end: auto;
+	border: 1px solid black;
     line-height: var(--header-height)
 }
 
