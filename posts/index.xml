@@ -132,7 +132,7 @@ The effort in understanding why deep neural networks can generalize somehow remi
 			<link>https://kibromhft.github.io/posts/2018-11-30-meta-learning/</link>
 			<pubDate>Fri, 30 Nov 2018 00:00:00 +0000</pubDate>
 			<guid>https://kibromhft.github.io/posts/2018-11-30-meta-learning/</guid>
-			<description>[Updated on 2019-10-01: thanks to Tianhao, we have this post translated in Chinese!]
+			<description>
 A good machine learning model often requires training with a large number of samples. Humans, in contrast, learn new concepts and skills much faster and more efficiently. Kids who have seen cats and birds only a few times can quickly tell them apart. People who know how to ride a bike are likely to discover the way to ride a motorcycle fast with little or even no demonstration.</description>
 		</item>
 		<item>
