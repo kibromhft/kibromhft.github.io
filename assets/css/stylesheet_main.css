@@ -1315,6 +1315,19 @@ h6:hover .anchor {
   }
 }
 
+header.header {
+  position: relative;
+}
+
+header.header:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: rgba(0,0,0,0.1);
+}
 
 
 
