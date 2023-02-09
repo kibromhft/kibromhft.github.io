@@ -130,49 +130,67 @@ if (!doNotTrack) {
 
 
 <style>
-      /* CSS to style the body */
-      body {
+      /* CSS to style the profile section */
+      .profile {
+        width: 200px;
+        height: 100%;
+        background-color: #f5f5f5;
+        float: left;
+      }
+
+      /* CSS to style the profile picture */
+      .profile-pic {
+        width: 100%;
+        height: 200px;
+        background-image: url(your-profile-picture.jpg);
+        background-size: cover;
+        background-position: center;
+        margin-bottom: 20px;
+      }
+
+      /* CSS to style the profile information */
+      .profile-info {
+        padding: 20px;
+      }
+
+      /* CSS to style the profile name */
+      .profile-name {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      /* CSS to style the profile links */
+      .profile-links {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .profile-links li {
+        margin-bottom: 10px;
+      }
+
+      .profile-links a {
+        color: #333;
+        text-decoration: none;
+      }
+
+      /* CSS to style the scroller */
+      .scroller {
+        overflow: scroll;
+        height: 100%;
+        width: calc(100% - 200px);
+        background-color: #f5f5f5;
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
+        padding: 0;
         margin: 0;
       }
 
-      /* CSS to style the profile photo and social media links */
-      .profile {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 200px;
-        background-color: #f5f5f5;
-        margin-right: 20px;
+      .pdf-file {
+        width: 100%;
+        height: 100%;
       }
-      .profile img {
-        border-radius: 50%;
-        width: 150px;
-        height: 150px;
-        margin-bottom: 20px;
-      }
-      .profile a {
-        display: block;
-        margin-bottom: 10px;
-        font-size: 20px;
-      }
-	/* CSS to style the scroller */
-	/* CSS to style the scroller */
-	.scroller {
-	  overflow: scroll;
-	  height: 100%;
-	  width: calc(100% - 200px);
-	  background-color: #f5f5f5;
-	  display: flex;
-	  padding: 0;
-	  margin: 0;
-	}
-
-
     </style>
 
 </head>
@@ -315,14 +333,20 @@ if (!doNotTrack) {
     </main> -->
 <h1> CV</h1>
 If the embedded PDF below does not load, you can <u><a href="https://stuartgeiger.com/geiger-cv.pdf">download it here.</a></u> <br> 
-		<div class="scroller">
-		  <div class="profile">
-			<img src="profile_photo.jpg" alt="Profile photo">
-			<a href="#">LinkedIn</a>
-			<a href="#">Twitter</a>
-			<a href="#">GitHub</a>
+		<div class="profile">
+		  <div class="profile-pic"></div>
+		  <div class="profile-info">
+			<div class="profile-name">Your Name</div>
+			<ul class="profile-links">
+			  <li><a href="#">LinkedIn</a></li>
+			  <li><a href="#">GitHub</a></li>
+			  <li><a href="#">Portfolio</a></li>
+			</ul>
 		  </div>
-		  <embed src="resume.pdf">
+		</div>
+		<!-- Scroller section -->
+		<div class="scroller">
+		  <iframe class="pdf-file" src="resume.pdf"></iframe>
 		</div>
 
 <footer class="footer">
