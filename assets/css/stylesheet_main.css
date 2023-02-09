@@ -543,7 +543,7 @@ pre:hover .copy-code {
 }
 
 .entry-footer {
-    color: var(--secondary);
+    color: rgb(0, 116, 204);
     font-size: 13px
 }
 
