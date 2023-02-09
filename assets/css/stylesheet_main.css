@@ -1335,6 +1335,11 @@ header.header:after {
 }
 
 
+  .first-entry.home-info {
+    border: 1px solid black;
+    padding: 10px;
+  }
+
 
 
 
