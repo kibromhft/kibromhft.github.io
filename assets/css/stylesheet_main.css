@@ -1373,8 +1373,8 @@ header.header:after {
 }
 
 .about-block {
-    padding-right: 10px;
-    padding-left: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
     -webkit-box-flex: 1;
     -webkit-flex: 1;
     -ms-flex: 1;
