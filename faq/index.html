@@ -130,17 +130,12 @@ if (!doNotTrack) {
 
 
 <style>
-      /* CSS to style the body */
-      body {
+    /* CSS to style the profile photo and scroller */
+      .container {
         display: flex;
-        flex-direction: column;
-        align-items: center;
         justify-content: center;
-        height: 100vh;
-        margin: 0;
+        margin-top: 50px;
       }
-
-      /* CSS to style the profile photo and social media links */
       .profile {
         display: flex;
         flex-direction: column;
@@ -155,25 +150,13 @@ if (!doNotTrack) {
         height: 150px;
         margin-bottom: 20px;
       }
-      .profile a {
-        display: block;
-        margin-bottom: 10px;
-        font-size: 20px;
+      .scroller {
+        overflow: scroll;
+        height: 500px;
+        width: 800px;
+        margin: 0 auto;
+        background-color: #f5f5f5;
       }
-	/* CSS to style the scroller */
-	/* CSS to style the scroller */
-	.scroller {
-		overflow: scroll;
-		height: 100px;
-		width: calc(100% - 200px);
-		background-color: #f5f5f5;
-		display: flex;
-		padding: 0;
-		margin: 0;
-		
-		float: right;
-		padding-left: 4.2372881356%;
-	}
 
 
     </style>
@@ -318,14 +301,13 @@ if (!doNotTrack) {
     </main> -->
 <h1> CV</h1>
 If the embedded PDF below does not load, you can <u><a href="https://stuartgeiger.com/geiger-cv.pdf">download it here.</a></u> <br> 
-		<div class="scroller">
+		<div class="container">
 		  <div class="profile">
 			<img src="profile_photo.jpg" alt="Profile photo">
-			<a href="#">LinkedIn</a>
-			<a href="#">Twitter</a>
-			<a href="#">GitHub</a>
 		  </div>
-		  <embed src="resume.pdf" width="800" height="500">
+		  <div class="scroller">
+			<embed src="resume.pdf" width="800" height="500">
+		  </div>
 		</div>
 
 <footer class="footer">
