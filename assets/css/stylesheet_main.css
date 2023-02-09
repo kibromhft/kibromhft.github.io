@@ -1335,10 +1335,12 @@ header.header:after {
 }
 
 
-  .first-entry.home-info {
-    border: 1px solid black;
-    padding: 10px;
-  }
+.first-entry.home-info {
+  background-color: #f7f7f7;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
 
 
 
