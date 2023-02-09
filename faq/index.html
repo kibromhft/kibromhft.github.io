@@ -127,6 +127,27 @@ if (!doNotTrack) {
   }
 }
 </script>
+    <style>
+      /* CSS to style the header */
+      header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 70px;
+        background-color: #333;
+        color: #fff;
+        font-size: 36px;
+        font-weight: bold;
+      }
+      /* CSS to style the scroller */
+      .scroller {
+        overflow: scroll;
+        height: 500px;
+        width: 800px;
+        margin: 0 auto;
+        background-color: #f5f5f5;
+      }
+    </style>
 </head>
 
 <body class="" id="top">
@@ -265,6 +286,11 @@ if (!doNotTrack) {
 
 </div>
     </main>
+
+    <header>My Resume</header>
+    <div class="scroller">
+      <embed src="resume.pdf" width="800" height="500">
+    </div>
 
 <div class="archive"><h1 class="page__title">CV</h1>If the embedded PDF below does not load, you can <u><a href="https://kibromhft.github.io/kb-cv.pdf">download it here.</a></u> <br> <div class="fluid-width-video-wrapper" style="padding-top: 150%;"><embed src="https://stuartgeiger.com/kb-cv.pdf" type="application/pdf" id="fitvid0"></div></div>
 
