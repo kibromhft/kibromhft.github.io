@@ -1395,4 +1395,38 @@ header.header:after {
 
 
 
-
+@media (min-width: 67.5em)
+.sidebar {
+    padding-right: 0;
+}
+@media (min-width: 51.5625em)
+.sidebar {
+    width: 15.2542372881%;
+    float: left;
+    margin-right: 1.6949152542%;
+    opacity: 1;
+    -webkit-transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
+}
+.sidebar {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    clear: both;
+    margin-bottom: 1em;
+}
+@media (min-width: 51.5625em)
+.sticky {
+    clear: both;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 2em;
+}
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+user agent stylesheet
+div {
+    display: block;
+}
