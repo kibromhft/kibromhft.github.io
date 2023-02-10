@@ -129,7 +129,7 @@ if (!doNotTrack) {
 </script>
 
 
-    <style>
+ <style>
       /* CSS to style the body */
       body {
         display: flex;
@@ -159,6 +159,24 @@ if (!doNotTrack) {
         display: block;
         margin-bottom: 10px;
         font-size: 20px;
+      }
+      
+      .scroller {
+        overflow: hidden;
+        height: 100%;
+        width: calc(100% - 200px);
+        background-color: #f5f5f5;
+        display: flex;
+        padding: 0;
+        margin: 0;
+      }
+      
+      embed {
+        overflow: scroll;
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        margin: 0;
       }
     </style>
 
@@ -308,7 +326,9 @@ If the embedded PDF below does not load, you can <u><a href="https://stuartgeige
       <a href="#">Twitter</a>
       <a href="#">GitHub</a>
     </div>
-    <embed src="resume.pdf" width="800" height="500" style="overflow:scroll;">
+    <div class="scroller">
+      <embed src="resume.pdf" width="800" height="500">
+    </div>
 
 <footer class="footer">
     <span>&copy; 2023 <a href="https://kibromhft.github.io/">Kb&#39;s Blog</a></span>
