@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
@@ -130,6 +131,7 @@ if (!doNotTrack) {
 
 
 <style>
+
       /* CSS to style the body */
       body {
         display: flex;
@@ -138,6 +140,7 @@ if (!doNotTrack) {
         justify-content: center;
         height: 100vh;
         margin: 0;
+		margin: 0;
       }
 
       /* CSS to style the profile photo and social media links */
@@ -147,13 +150,21 @@ if (!doNotTrack) {
         align-items: center;
         width: 200px;
         background-color: #f5f5f5;
-        margin-right: 20px;
+        margin-right: 0px;
+		border: none;
+		opacity: 0.8;
+		backdrop-blur: 10px;
+		-webkit-backdrop-blur: 10px; /* Safari */
       }
       .profile img {
         border-radius: 50%;
-        width: 150px;
-        height: 150px;
+@ -160,309 +162,308 @@
         margin-bottom: 20px;
+		opacity: 1;
+		filter: contrast(130%);
+		backdrop-blur: 10px;
+		-webkit-backdrop-blur: 10px; /* Safari */
+
       }
       .profile a {
         display: block;
@@ -163,14 +174,32 @@ if (!doNotTrack) {
 	/* CSS to style the scroller */
 	/* CSS to style the scroller */
 	.scroller {
-	  overflow: scroll;
+	  overflow: hidden;
 	  height: 100%;
-	  width: calc(100% - 200px);
+	  border: none;
+	  <!-- width: calc(100% - 200px); -->
 	  background-color: #f5f5f5;
 	  display: flex;
 	  padding: 0;
 	  margin: 0;
 	}
+	
+<!-- 	embed {
+		  margin: 0;
+		  width: calc(100% - 200px);
+		  min-width: 800px;
+		}
+ -->
+		embed {
+		  <!-- width: 100% !important; -->
+		  min-width: 800px;
+		  height: 100% !important;
+		  padding: 0 !important;
+		  margin: 0 !important;
+		}
+
+
+
 
 
     </style>
@@ -318,17 +347,11 @@ If the embedded PDF below does not load, you can <u><a href="https://stuartgeige
 		<div class="scroller">
 		  <div class="profile">
 			<img src="profile_photo.jpg" alt="Profile photo">
-			<a href="#">
-			  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-				<!-- Icon for LinkedIn -->
-				<path d="M19 0H5C2.239 0 0 2.239 0 5V19C0 21.761 2.239 24 5 24H19C21.761 24 24 21.761 24 19V5C24 2.239 21.761 0 19 0ZM7 19H5V8H7V19ZM6 7.5C4.57 7.5 3.5 6.43 3.5 5C3.5 3.57 4.57 2.5 6 2.5C7.43 2.5 8.5 3.57 8.5 5C8.5 6.43 7.43 7.5 6 7.5ZM20 19H18V13C18 11.34 17.11 9.86 15.65 9.65C14.18 9.43 13 10.54 13 12V19H10V8H13V9.5C13.5 8.53 14.35 7.5 15.5 7.5C16.65 7.5 17.5 8.53 17.5 9.5V19H20V19Z" fill="#0077B5"/>
-			  </svg>
-			  LinkedIn
-			</a>
+			<a href="#">LinkedIn</a>
 			<a href="#">Twitter</a>
 			<a href="#">GitHub</a>
 		  </div>
-		  <embed src="resume.pdf" width="800" height="500">
+		  <embed src="resume.pdf">
 		</div>
 
 <footer class="footer">
