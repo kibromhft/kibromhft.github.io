@@ -1392,53 +1392,77 @@ header.header:after {
 
 /* podcast */
 
-	.podcast {
-	  max-width: 800px;
-	  margin: 0 auto;
-	  padding: 40px;
+	.audio-player {
+	  font-family: Arial, sans-serif;
+	  width: 300px;
+	  margin: 20px auto;
 	}
 
-	.playlist {
+	.audio-list {
 	  list-style: none;
-	  margin: 0;
 	  padding: 0;
+	  margin: 0;
 	}
 
-	.track {
+	.audio-list li {
 	  display: flex;
 	  align-items: center;
-	  margin-bottom: 20px;
+	  justify-content: space-between;
+	  margin: 10px 0;
+	  padding: 10px;
+	  border-radius: 5px;
+	  background-color: #f2f2f2;
 	}
 
-	.track-details {
-	  margin-right: 20px;
+	.audio-title {
+	  flex: 1;
+	  margin-right: 10px;
 	}
 
-	.track-details h2 {
-	  font-size: 24px;
-	  margin: 0;
+	audio {
+	  display: none;
 	}
 
-	.track-details p {
-	  font-size: 14px;
-	  margin: 0;
-	  color: #666;
+	.audio-controls {
+	  display: flex;
+	  align-items: center;
+	  justify-content: space-between;
+	  margin-top: 10px;
 	}
 
-	.play-button,
-	.pause-button {
-	  display: inline-block;
-	  width: 24px;
-	  height: 24px;
-	  background-image: url('play.png');
-	  background-size: contain;
-	  background-repeat: no-repeat;
+	.play-pause {
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  width: 50px;
+	  height: 50px;
+	  border-radius: 50%;
+	  background-color: #428bca;
+	  color: #fff;
 	  cursor: pointer;
 	}
 
-	.pause-button {
-	  background-image: url('pause.png');
+	.play-pause i {
+	  font-size: 24px;
+	  margin: 0 10px;
 	}
+
+	.seek-bar {
+	  height: 4px;
+	  width: 200px;
+	  background-color: #ddd;
+	  position: relative;
+	  cursor: pointer;
+	}
+
+	.fill {
+	  height: 100%;
+	  background-color: #428bca;
+	  position: absolute;
+	  left: 0;
+	  top: 0;
+	}
+
 /* End podcast */
 
 
