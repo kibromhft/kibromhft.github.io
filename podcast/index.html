@@ -211,7 +211,7 @@ if (!doNotTrack) {
  -->
 
 
-		<div class="player-container">
+<!-- 		<div class="player-container">
 		  <div class="audio-player">
 			<audio id="audioPlayer" controls>
 			  <source id="audioSource" src="example.mp3" type="audio/mpeg">
@@ -230,7 +230,20 @@ if (!doNotTrack) {
 			<li><a href="audio2.mp3">Audio 2</a></li>
 			<li><a href="audio3.mp3">Audio 3</a></li>
 		  </ul>
+		</div> -->
+		<div class="audio-player">
+		  <audio src="audio1.mp3"></audio>
+		  <div class="controls">
+			<button class="play-pause"></button>
+			<input type="range" class="volume">
+		  </div>
+		  <ul class="playlist">
+			<li class="active">Track 1</li>
+			<li>Track 2</li>
+			<li>Track 3</li>
+		  </ul>
 		</div>
+
 
 
 	<script>
