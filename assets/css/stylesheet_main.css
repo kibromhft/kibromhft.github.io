@@ -1453,6 +1453,44 @@ FontAwesome styles
 }
 
  */
-End podcast
 
+
+
+ /* Begin New podcast */
+ 
+ .audio-player {
+        display: flex;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background-color: #222;
+        color: #fff;
+      }
+      .audio-player audio {
+        display: none;
+      }
+      .audio-player .play-btn {
+        background-color: #f3c200;
+        color: #222;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 50%;
+        font-size: 24px;
+        margin-right: 20px;
+        cursor: pointer;
+      }
+      .audio-player .play-btn:hover {
+        background-color: #e0b000;
+      }
+      .audio-player .title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-right: 20px;
+      }
+      .audio-player .duration {
+        font-size: 18px;
+      }
+	  
+/* 	  End podcast
+ */
 
