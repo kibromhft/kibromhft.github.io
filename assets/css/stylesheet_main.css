@@ -1458,70 +1458,90 @@ FontAwesome styles
 
  /* Begin New podcast */
  
-	.player-container {
-	  font-family: 'Open Sans', sans-serif;
-	  color: #303030;
-	  max-width: 600px;
-	  margin: 0 auto;
-	}
+/* Audio player */
+.audio-player {
+  background-color: #fff;
+  padding: 16px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
 
-	.audio-player {
-	  position: relative;
-	  margin-bottom: 40px;
-	}
+.audio-player h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
 
-	.playback-controls {
-	  position: absolute;
-	  bottom: 0;
-	  left: 0;
-	  display: flex;
-	}
+.audio-player audio {
+  width: 100%;
+  margin-bottom: 16px;
+}
 
-	button {
-	  background-color: transparent;
-	  border: none;
-	  cursor: pointer;
-	  font-size: 28px;
-	  margin-right: 16px;
-	}
+.audio-player .controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-	button:hover {
-	  opacity: 0.7;
-	}
+.audio-player .controls button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-right: 16px;
+}
 
-	#pauseButton {
-	  display: none;
-	}
+.audio-player .controls button:last-of-type {
+  margin-right: 0;
+}
 
-	.progress-container {
-	  height: 5px;
-	  background-color: #eee;
-	  cursor: pointer;
-	}
+.audio-player .controls button img {
+  height: 24px;
+  width: 24px;
+}
 
-	.progress-bar {
-	  height: 100%;
-	  background-color: #4285f4;
-	  width: 0%;
-	}
+.audio-player .progress-bar {
+  height: 4px;
+  background-color: #ddd;
+  margin-bottom: 16px;
+  position: relative;
+}
 
-	ul.playlist {
-	  list-style: none;
-	  margin: 0;
-	  padding: 0;
-	}
+.audio-player .progress-bar .progress {
+  height: 100%;
+  background-color: #222;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
 
-	ul.playlist li a {
-	  color: #303030;
-	  display: block;
-	  margin-bottom: 16px;
-	  text-decoration: none;
-	  transition: color 0.2s;
-	}
+/* Playlist */
+.playlist {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 
-	ul.playlist li a:hover {
-	  color: #4285f4;
-	}
+.playlist li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.playlist li a {
+  color: #222;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.playlist li a:hover {
+  color: #06f;
+}
+
+.playlist li img {
+  height: 32px;
+  width: 32px;
+  margin-right: 8px;
+}
 
 
 /* 	  End podcast
