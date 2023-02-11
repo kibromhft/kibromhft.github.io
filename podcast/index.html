@@ -93,7 +93,7 @@ if (!doNotTrack) {
 </script>
 
 
-<script>
+<!-- <script>
 
 const audio = document.getElementById('audio');
 const audioItems = document.querySelectorAll('.audio-item');
@@ -131,6 +131,46 @@ document.getElementById('play-pause').addEventListener('click', () => {
 
 
 </script>
+ -->
+
+    <script>
+      const audioPlayer = document.querySelector('.audio-player');
+      const playBtn = audioPlayer.querySelector('.play-btn');
+      const audio = audioPlayer.querySelector('audio');
+      const title = audioPlayer.querySelector('.title');
+      const duration = audioPlayer.querySelector('.duration');
+      
+      function togglePlay() {
+        if (audio.paused) {
+          audio.play();
+        } else {
+          audio.pause();
+        }
+      }
+      
+      function updateButton() {
+        const icon = this.paused ? '&#9658;' : '&#9612;&#9612;';
+        playBtn.innerHTML = icon;
+      }
+      
+      function updateTime() {
+        const currentMinutes = Math.floor(audio.currentTime / 60);
+        const currentSeconds = Math.floor(audio.currentTime % 60).toString().padStart(2, '0');
+        const durationMinutes = Math.floor(audio.duration / 60);
+        const durationSeconds = Math.floor(audio.duration % 60).toString().padStart(2, '0');
+        duration.textContent = `${currentMinutes}:${currentSeconds} / ${durationMinutes}:${durationSeconds}`;
+      }
+      
+      function updateTitle() {
+        title.textContent = audio.src;
+      }
+      
+      playBtn.addEventListener('click', togglePlay);
+      audio.addEventListener('play', updateButton);
+      audio.addEventListener('pause', updateButton);
+      audio.addEventListener('timeupdate', updateTime);
+      audio.addEventListener('loadedmetadata', updateTitle);
+    </script>
 
 
 <script>
@@ -230,44 +270,7 @@ document.getElementById('play-pause').addEventListener('click', () => {
       <div class="duration">0:00 / 45:12</div>
       <audio src="https://kibromhft.github.io/podcast/episode1.mp3" type="audio/mpeg"> Song1 </audio>
     </div>
-    <script>
-      const audioPlayer = document.querySelector('.audio-player');
-      const playBtn = audioPlayer.querySelector('.play-btn');
-      const audio = audioPlayer.querySelector('audio');
-      const title = audioPlayer.querySelector('.title');
-      const duration = audioPlayer.querySelector('.duration');
-      
-      function togglePlay() {
-        if (audio.paused) {
-          audio.play();
-        } else {
-          audio.pause();
-        }
-      }
-      
-      function updateButton() {
-        const icon = this.paused ? '&#9658;' : '&#9612;&#9612;';
-        playBtn.innerHTML = icon;
-      }
-      
-      function updateTime() {
-        const currentMinutes = Math.floor(audio.currentTime / 60);
-        const currentSeconds = Math.floor(audio.currentTime % 60).toString().padStart(2, '0');
-        const durationMinutes = Math.floor(audio.duration / 60);
-        const durationSeconds = Math.floor(audio.duration % 60).toString().padStart(2, '0');
-        duration.textContent = `${currentMinutes}:${currentSeconds} / ${durationMinutes}:${durationSeconds}`;
-      }
-      
-      function updateTitle() {
-        title.textContent = audio.src;
-      }
-      
-      playBtn.addEventListener('click', togglePlay);
-      audio.addEventListener('play', updateButton);
-      audio.addEventListener('pause', updateButton);
-      audio.addEventListener('timeupdate', updateTime);
-      audio.addEventListener('loadedmetadata', updateTitle);
-    </script>
+
 	
 
 	
