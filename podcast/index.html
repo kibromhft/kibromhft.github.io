@@ -90,6 +90,47 @@ if (!doNotTrack) {
 
 </script>
 
+
+<script>
+
+const audio = document.getElementById('audio');
+const audioItems = document.querySelectorAll('.audio-item');
+
+// Add click event listener to each audio item
+audioItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const src = item.dataset.src;
+    const title = item.dataset.title;
+    audio.src = src;
+    audio.play();
+    document.getElementById('audio-title').textContent = title;
+  });
+});
+
+// Add event listener to update play/pause button
+audio.addEventListener('play', () => {
+  document.getElementById('play-pause').classList.remove('fa-play');
+  document.getElementById('play-pause').classList.add('fa-pause');
+});
+
+audio.addEventListener('pause', () => {
+  document.getElementById('play-pause').classList.remove('fa-pause');
+  document.getElementById('play-pause').classList.add('fa-play');
+});
+
+// Add click event listener to play/pause button
+document.getElementById('play-pause').addEventListener('click', () => {
+  if (audio.paused) {
+    audio.play();
+  } else {
+    audio.pause();
+  }
+});
+
+
+</script>
+
+
 <script>
   MathJax = {
     tex: {
