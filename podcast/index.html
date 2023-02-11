@@ -211,86 +211,70 @@ if (!doNotTrack) {
  -->
 
 
-		<div class="player-container">
-		  <div class="audio-player">
-			<audio id="audioPlayer" controls>
-			  <source id="audioSource" src="example.mp3" type="audio/mpeg">
-			  Your browser does not support the audio element.
-			</audio>
-			<div class="playback-controls">
-			  <button id="playButton"><i class="fa fa-play"></i></button>
-			  <button id="pauseButton"><i class="fa fa-pause"></i></button>
-			</div>
-			<div class="progress-container">
-			  <div id="progressBar" class="progress-bar"></div>
-			</div>
-		  </div>
-		  <ul class="playlist">
-			<li><a href="audio1.mp3">Audio 1</a></li>
-			<li><a href="audio2.mp3">Audio 2</a></li>
-			<li><a href="audio3.mp3">Audio 3</a></li>
-		  </ul>
+	<div class="audio-player">
+	  <h2>Episode 1: Introduction</h2>
+	  <audio id="audio" src="https://www.iamdeveloper.com/podcast-files/ep1.mp3"></audio>
+	  <div class="controls">
+		<button id="play-pause-btn"><i class="fas fa-play"></i></button>
+		<div class="progress-bar">
+		  <div class="progress"></div>
 		</div>
-		
+		<button id="mute-btn"><i class="fas fa-volume-up"></i></button>
+	  </div>
+	</div>
+
+	<ul class="playlist">
+	  <li>
+		<img src="https://www.iamdeveloper.com/podcast-files/ep1-thumbnail.png" alt="Episode 1 thumbnail">
+		<a href="#" data-src="https://www.iamdeveloper.com/podcast-files/ep1.mp3">Introduction</a>
+	  </li>
+	  <li>
+		<img src="https://www.iamdeveloper.com/podcast-files/ep2-thumbnail.png" alt="Episode 2 thumbnail">
+		<a href="#" data-src="https://www.iamdeveloper.com/podcast-files/ep2.mp3">Web Development</a>
+	  </li>
+	  <li>
+		<img src="https://www.iamdeveloper.com/podcast-files/ep3-thumbnail.png" alt="Episode 3 thumbnail">
+		<a href="#" data-src="https://www.iamdeveloper.com/podcast-files/ep3.mp3">Career Advice</a>
+	  </li>
+	</ul>
+
 
 
 	<script>
-		const audioPlayer = document.querySelector('#audioPlayer');
-		const audioSource = document.querySelector('#audioSource');
-		const playButton = document.querySelector('#playButton');
-		const pauseButton = document.querySelector('#pauseButton');
-		const progressBar = document.querySelector('#progressBar');
-		const playlist = document.querySelectorAll('.playlist li a');
+		const audio = document.getElementById('audio');
+		const playPauseBtn = document.getElementById('play-pause-btn');
+		const muteBtn = document.getElementById('mute-btn');
+		const progressBar = document.querySelector('.progress-bar .progress');
 
-		let isPlaying = false;
-
-		// Play audio function
-		function playAudio() {
-		  audioPlayer.play();
-		  isPlaying = true;
-		  playButton.style.display = 'none';
-		  pauseButton.style.display = 'block';
-		}
-
-		// Pause audio function
-		function pauseAudio() {
-		  audioPlayer.pause();
-		  isPlaying = false;
-		  playButton.style.display = 'block';
-		  pauseButton.style.display = 'none';
-		}
-
-		// Update progress bar function
-		function updateProgressBar() {
-		  const percentage = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-		  progressBar.style.width = percentage + '%';
-		}
-
-		// Play next audio function
-		function playNextAudio(audioUrl) {
-		  audioSource.src = audioUrl;
-		  audioPlayer.load();
-		  playAudio();
-		}
-
-		// Event listeners
-		playButton.addEventListener('click', playAudio);
-		pauseButton.addEventListener('click', pauseAudio);
-
-		audioPlayer.addEventListener('timeupdate', updateProgressBar);
-		audioPlayer.addEventListener('ended', () => {
-		  isPlaying = false;
-		  playButton.style.display = 'block';
-		  pauseButton.style.display = 'none';
+		playPauseBtn.addEventListener('click', () => {
+		  if (audio.paused || audio.ended) {
+			audio.play();
+			playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+		  } else {
+			audio.pause();
+			playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+		  }
 		});
 
-		playlist.forEach(audio => {
-		  audio.addEventListener('click', (event) => {
-			event.preventDefault();
-			const audioUrl = event.target.getAttribute('href');
-			playNextAudio(audioUrl);
-		  });
+		muteBtn.addEventListener('click', () => {
+		  if (audio.muted) {
+			audio.muted = false;
+			muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+		  } else {
+			audio.muted = true;
+			muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+		  }
 		});
+
+		audio.addEventListener('timeupdate', () => {
+		  const progress = (audio.currentTime / audio.duration) * 100;
+		  progressBar.style.width = `${progress}%`;
+		});
+
+		audio.addEventListener('ended', () => {
+		  playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+		});
+
 
 	</script>
 
