@@ -224,31 +224,19 @@ document.getElementById('play-pause').addEventListener('click', () => {
 </header>
 
 
-					<div class="audio-player">
-					  <ul class="audio-list">
-						<li>
-						  <div class="audio-title">Song Title 1</div>
-						  <audio src="song1.mp3"></audio>
-						</li>
-						<li>
-						  <div class="audio-title">Song Title 2</div>
-						  <audio src="song2.mp3"></audio>
-						</li>
-						<li>
-						  <div class="audio-title">Song Title 3</div>
-						  <audio src="song3.mp3"></audio>
-						</li>
-					  </ul>
-					  <div class="audio-controls">
-						<div class="play-pause">
-						  <i class="fa fa-play"></i>
-						  <i class="fa fa-pause"></i>
-						</div>
-						<div class="seek-bar">
-						  <div class="fill"></div>
-						</div>
-					  </div>
-					</div>
+	<div class="audio-player">
+	  <div class="player-controls">
+		<button class="player-button" id="play-pause-button">
+		  <i class="fas fa-play"></i>
+		</button>
+		<div class="progress-bar">
+		  <div class="progress-bar-filled" id="progress-bar-filled"></div>
+		</div>
+		<div class="player-time" id="player-time">0:00 / 0:00</div>
+	  </div>
+	  <audio src="your-audio-file.mp3" id="audio"></audio>
+	</div>
+
 
 	
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.1/howler.min.js"></script>

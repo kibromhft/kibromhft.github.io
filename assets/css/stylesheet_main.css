@@ -1392,77 +1392,67 @@ header.header:after {
 
 /* podcast */
 
-	.audio-player {
-	  font-family: Arial, sans-serif;
-	  width: 300px;
-	  margin: 20px auto;
-	}
+	/* Audio player styles */
+/* .audio-player {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: #0a0a0a;
+  color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
 
-	.audio-list {
-	  list-style: none;
-	  padding: 0;
-	  margin: 0;
-	}
+.player-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
 
-	.audio-list li {
-	  display: flex;
-	  align-items: center;
-	  justify-content: space-between;
-	  margin: 10px 0;
-	  padding: 10px;
-	  border-radius: 5px;
-	  background-color: #f2f2f2;
-	}
+.player-button {
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+}
 
-	.audio-title {
-	  flex: 1;
-	  margin-right: 10px;
-	}
+.player-button:hover {
+  color: #d5d5d5;
+}
 
-	audio {
-	  display: none;
-	}
+.progress-bar {
+  width: 100%;
+  height: 5px;
+  background-color: #4d4d4d;
+  position: relative;
+}
 
-	.audio-controls {
-	  display: flex;
-	  align-items: center;
-	  justify-content: space-between;
-	  margin-top: 10px;
-	}
+.progress-bar-filled {
+  height: 100%;
+  background-color: #fff;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
 
-	.play-pause {
-	  display: flex;
-	  align-items: center;
-	  justify-content: center;
-	  width: 50px;
-	  height: 50px;
-	  border-radius: 50%;
-	  background-color: #428bca;
-	  color: #fff;
-	  cursor: pointer;
-	}
+.player-time {
+  font-size: 14px;
+}
 
-	.play-pause i {
-	  font-size: 24px;
-	  margin: 0 10px;
-	}
+FontAwesome styles
+@import url("https://use.fontawesome.com/releases/v5.15.1/css/all.css");
 
-	.seek-bar {
-	  height: 4px;
-	  width: 200px;
-	  background-color: #ddd;
-	  position: relative;
-	  cursor: pointer;
-	}
+.fa-play:before {
+  content: "\f04b";
+}
 
-	.fill {
-	  height: 100%;
-	  background-color: #428bca;
-	  position: absolute;
-	  left: 0;
-	  top: 0;
-	}
+.fa-pause:before {
+  content: "\f04c";
+}
 
-/* End podcast */
+ */
+End podcast
 
 
