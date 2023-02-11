@@ -11,8 +11,6 @@
 <meta name="author" content="kibrom Haftu">
 <link rel="canonical" href="https://kibromhft.github.io/tags/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet_main.css"  rel="preload stylesheet" as="style">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-
 <link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kibromhft.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kibromhft.github.io/favicon-32x32.png">
@@ -92,87 +90,6 @@ if (!doNotTrack) {
 
 </script>
 
-
-<!-- <script>
-
-const audio = document.getElementById('audio');
-const audioItems = document.querySelectorAll('.audio-item');
-
-// Add click event listener to each audio item
-audioItems.forEach(item => {
-  item.addEventListener('click', () => {
-    const src = item.dataset.src;
-    const title = item.dataset.title;
-    audio.src = src;
-    audio.play();
-    document.getElementById('audio-title').textContent = title;
-  });
-});
-
-// Add event listener to update play/pause button
-audio.addEventListener('play', () => {
-  document.getElementById('play-pause').classList.remove('fa-play');
-  document.getElementById('play-pause').classList.add('fa-pause');
-});
-
-audio.addEventListener('pause', () => {
-  document.getElementById('play-pause').classList.remove('fa-pause');
-  document.getElementById('play-pause').classList.add('fa-play');
-});
-
-// Add click event listener to play/pause button
-document.getElementById('play-pause').addEventListener('click', () => {
-  if (audio.paused) {
-    audio.play();
-  } else {
-    audio.pause();
-  }
-});
-
-
-</script>
- -->
-
-    <script>
-      const audioPlayer = document.querySelector('.audio-player');
-      const playBtn = audioPlayer.querySelector('.play-btn');
-      const audio = audioPlayer.querySelector('audio');
-      const title = audioPlayer.querySelector('.title');
-      const duration = audioPlayer.querySelector('.duration');
-      
-      function togglePlay() {
-        if (audio.paused) {
-          audio.play();
-        } else {
-          audio.pause();
-        }
-      }
-      
-      function updateButton() {
-        const icon = this.paused ? '&#9658;' : '&#9612;&#9612;';
-        playBtn.innerHTML = icon;
-      }
-      
-      function updateTime() {
-        const currentMinutes = Math.floor(audio.currentTime / 60);
-        const currentSeconds = Math.floor(audio.currentTime % 60).toString().padStart(2, '0');
-        const durationMinutes = Math.floor(audio.duration / 60);
-        const durationSeconds = Math.floor(audio.duration % 60).toString().padStart(2, '0');
-        duration.textContent = `${currentMinutes}:${currentSeconds} / ${durationMinutes}:${durationSeconds}`;
-      }
-      
-      function updateTitle() {
-        title.textContent = audio.src;
-      }
-      
-      playBtn.addEventListener('click', togglePlay);
-      audio.addEventListener('play', updateButton);
-      audio.addEventListener('pause', updateButton);
-      audio.addEventListener('timeupdate', updateTime);
-      audio.addEventListener('loadedmetadata', updateTitle);
-    </script>
-
-
 <script>
   MathJax = {
     tex: {
@@ -241,7 +158,7 @@ document.getElementById('play-pause').addEventListener('click', () => {
                 </a>
             </li>
             <li>
-                <a href="https://kibromhft.github.io/tags/" title="Podcast">
+                <a href="https://kibromhft.github.io/tags/" title="P">
                     <span class="active">Podcast</span>
                 </a>
             </li>
@@ -264,23 +181,31 @@ document.getElementById('play-pause').addEventListener('click', () => {
 </header>
 
 
-<div class="audio-player">
-      <button class="play-btn">&#9658;</button>
-      <div class="title">Podcast Episode 1</div>
-      <div class="duration">0:00 / 45:12</div>
-      <audio src="https://kibromhft.github.io/podcast/episode1.mp3" type="audio/mpeg"> Song1 </audio>
-    </div>
+<audio id="audioPlayer" controls>
+  <source id="audioSource" src="example.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
 
-	
+<ul id="playlist">
+  <li><a href="audio1.mp3">Audio 1</a></li>
+  <li><a href="audio2.mp3">Audio 2</a></li>
+  <li><a href="audio3.mp3">Audio 3</a></li>
+</ul>
 
-	
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.1/howler.min.js"></script>
-    <script>
-      var playlist = new Howl({
-        src: ['episode1.mp3', 'episode2.mp3', 'episode3.mp3'],
-        html5: true
-      });
-    </script>
+<script>
+  const audioPlayer = document.getElementById('audioPlayer');
+  const audioSource = document.getElementById('audioSource');
+  const playlist = document.getElementById('playlist');
+
+  playlist.addEventListener('click', function(event) {
+    event.preventDefault();
+    audioSource.src = event.target.href;
+    audioPlayer.load();
+    audioPlayer.play();
+  });
+</script>
+
+
 </main>
     
 <footer class="footer">
