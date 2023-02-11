@@ -1458,7 +1458,7 @@ FontAwesome styles
 
  /* Begin New podcast */
  
- .audio-player {
+	.audio-player {
         display: flex;
         align-items: center;
         font-family: Arial, sans-serif;
@@ -1490,7 +1490,11 @@ FontAwesome styles
       .audio-player .duration {
         font-size: 18px;
       }
-	  
+	  .audio-list {
+		height: 200px;
+		overflow-y: scroll;
+}
+
 /* 	  End podcast
  */
 
