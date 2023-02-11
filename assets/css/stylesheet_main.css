@@ -1390,6 +1390,55 @@ header.header:after {
     padding-left: 4.2372881356%;
 }
 
+/* podcast */
 
+	.podcast {
+	  max-width: 800px;
+	  margin: 0 auto;
+	  padding: 40px;
+	}
+
+	.playlist {
+	  list-style: none;
+	  margin: 0;
+	  padding: 0;
+	}
+
+	.track {
+	  display: flex;
+	  align-items: center;
+	  margin-bottom: 20px;
+	}
+
+	.track-details {
+	  margin-right: 20px;
+	}
+
+	.track-details h2 {
+	  font-size: 24px;
+	  margin: 0;
+	}
+
+	.track-details p {
+	  font-size: 14px;
+	  margin: 0;
+	  color: #666;
+	}
+
+	.play-button,
+	.pause-button {
+	  display: inline-block;
+	  width: 24px;
+	  height: 24px;
+	  background-image: url('play.png');
+	  background-size: contain;
+	  background-repeat: no-repeat;
+	  cursor: pointer;
+	}
+
+	.pause-button {
+	  background-image: url('pause.png');
+	}
+/* End podcast */
 
 
