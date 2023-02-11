@@ -1458,42 +1458,69 @@ FontAwesome styles
 
  /* Begin New podcast */
  
-/* 	.audio-player {
-        display: flex;
-        align-items: center;
-        font-family: Arial, sans-serif;
-        padding: 20px;
-        background-color: #222;
-        color: #fff;
-      }
-      .audio-player audio {
-        display: none;
-      }
-      .audio-player .play-btn {
-        background-color: #f3c200;
-        color: #222;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 50%;
-        font-size: 24px;
-        margin-right: 20px;
-        cursor: pointer;
-      }
-      .audio-player .play-btn:hover {
-        background-color: #e0b000;
-      }
-      .audio-player .title {
-        font-size: 24px;
-        font-weight: bold;
-        margin-right: 20px;
-      }
-      .audio-player .duration {
-        font-size: 18px;
-      }
-	  .audio-list {
-		height: 200px;
-		overflow-y: scroll;
-} */
+	.player-container {
+	  display: flex;
+	  flex-direction: column;
+	  background-color: #fff;
+	  padding: 20px;
+	  border-radius: 6px;
+	  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+	}
+
+	.audio-player {
+	  display: flex;
+	  align-items: center;
+	  margin-bottom: 15px;
+	}
+
+	.playback-controls button {
+	  border: none;
+	  background: none;
+	  font-size: 28px;
+	  color: #333;
+	  padding: 0 8px;
+	  transition: all 0.2s ease;
+	  cursor: pointer;
+	}
+
+	.playback-controls button:hover {
+	  color: #000;
+	}
+
+	.playback-controls button:focus {
+	  outline: none;
+	}
+
+	#playButton {
+	  margin-right: 10px;
+	}
+
+	#pauseButton {
+	  display: none;
+	}
+
+	.playlist {
+	  margin: 0;
+	  padding: 0;
+	  list-style: none;
+	}
+
+	.playlist li {
+	  margin-bottom: 10px;
+	}
+
+	.playlist a {
+	  color: #333;
+	  text-decoration: none;
+	  transition: all 0.2s ease;
+	  display: block;
+	  padding: 8px 0;
+	}
+
+	.playlist a:hover {
+	  color: #000;
+	}
+
 
 /* 	  End podcast
  */

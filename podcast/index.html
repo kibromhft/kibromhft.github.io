@@ -11,6 +11,8 @@
 <meta name="author" content="kibrom Haftu">
 <link rel="canonical" href="https://kibromhft.github.io/tags/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet_main.css"  rel="preload stylesheet" as="style">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+
 <link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kibromhft.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kibromhft.github.io/favicon-32x32.png">
@@ -186,11 +188,13 @@ if (!doNotTrack) {
   Your browser does not support the audio element.
 </audio>
 
-<ul id="playlist">
+<!-- <ul id="playlist">
   <li><a href="audio1.mp3">Audio 1</a></li>
   <li><a href="audio2.mp3">Audio 2</a></li>
   <li><a href="audio3.mp3">Audio 3</a></li>
 </ul>
+
+
 
 <script>
   const audioPlayer = document.getElementById('audioPlayer');
@@ -204,6 +208,70 @@ if (!doNotTrack) {
     audioPlayer.play();
   });
 </script>
+ -->
+
+
+	<div class="player-container">
+	  <div class="audio-player">
+		<audio id="audioPlayer" controls>
+		  <source id="audioSource" src="example.mp3" type="audio/mpeg">
+		  Your browser does not support the audio element.
+		</audio>
+		<div class="playback-controls">
+		  <button id="playButton"><i class="fa fa-play"></i></button>
+		  <button id="pauseButton"><i class="fa fa-pause"></i></button>
+		</div>
+	  </div>
+	  <ul class="playlist">
+		<li><a href="audio1.mp3">Audio 1</a></li>
+		<li><a href="audio2.mp3">Audio 2</a></li>
+		<li><a href="audio3.mp3">Audio 3</a></li>
+	  </ul>
+	</div>
+
+	<script>
+	  const audioPlayer = document.getElementById('audioPlayer');
+	  const audioSource = document.getElementById('audioSource');
+	  const playlist = document.querySelector('.playlist');
+	  const playButton = document.getElementById('playButton');
+	  const pauseButton = document.getElementById('pauseButton');
+
+	  let isPlaying = false;
+
+	  function play() {
+		audioPlayer.play();
+		playButton.style.display = 'none';
+		pauseButton.style.display = 'inline-block';
+		isPlaying = true;
+	  }
+
+	  function pause() {
+		audioPlayer.pause();
+		playButton.style.display = 'inline-block';
+		pauseButton.style.display = 'none';
+		isPlaying = false;
+	  }
+
+	  function togglePlay() {
+		if (isPlaying) {
+		  pause();
+		} else {
+		  play();
+		}
+	  }
+
+	  function playTrack(event) {
+		event.preventDefault();
+		audioSource.src = event.target.href;
+		audioPlayer.load();
+		play();
+	  }
+
+	  playButton.addEventListener('click', togglePlay);
+	  pauseButton.addEventListener('click', togglePlay);
+	  playlist.addEventListener('click', playTrack);
+	</script>
+
 
 
 </main>
