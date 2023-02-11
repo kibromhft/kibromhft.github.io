@@ -211,65 +211,86 @@ if (!doNotTrack) {
  -->
 
 
-	<div class="player-container">
-	  <div class="audio-player">
-		<audio id="audioPlayer" controls>
-		  <source id="audioSource" src="example.mp3" type="audio/mpeg">
-		  Your browser does not support the audio element.
-		</audio>
-		<div class="playback-controls">
-		  <button id="playButton"><i class="fa fa-play"></i></button>
-		  <button id="pauseButton"><i class="fa fa-pause"></i></button>
+		<div class="player-container">
+		  <div class="audio-player">
+			<audio id="audioPlayer" controls>
+			  <source id="audioSource" src="example.mp3" type="audio/mpeg">
+			  Your browser does not support the audio element.
+			</audio>
+			<div class="playback-controls">
+			  <button id="playButton"><i class="fa fa-play"></i></button>
+			  <button id="pauseButton"><i class="fa fa-pause"></i></button>
+			</div>
+			<div class="progress-container">
+			  <div id="progressBar" class="progress-bar"></div>
+			</div>
+		  </div>
+		  <ul class="playlist">
+			<li><a href="audio1.mp3">Audio 1</a></li>
+			<li><a href="audio2.mp3">Audio 2</a></li>
+			<li><a href="audio3.mp3">Audio 3</a></li>
+		  </ul>
 		</div>
-	  </div>
-	  <ul class="playlist">
-		<li><a href="audio1.mp3">Audio 1</a></li>
-		<li><a href="audio2.mp3">Audio 2</a></li>
-		<li><a href="audio3.mp3">Audio 3</a></li>
-	  </ul>
-	</div>
+
 
 	<script>
-	  const audioPlayer = document.getElementById('audioPlayer');
-	  const audioSource = document.getElementById('audioSource');
-	  const playlist = document.querySelector('.playlist');
-	  const playButton = document.getElementById('playButton');
-	  const pauseButton = document.getElementById('pauseButton');
+		const audioPlayer = document.querySelector('#audioPlayer');
+		const audioSource = document.querySelector('#audioSource');
+		const playButton = document.querySelector('#playButton');
+		const pauseButton = document.querySelector('#pauseButton');
+		const progressBar = document.querySelector('#progressBar');
+		const playlist = document.querySelectorAll('.playlist li a');
 
-	  let isPlaying = false;
+		let isPlaying = false;
 
-	  function play() {
-		audioPlayer.play();
-		playButton.style.display = 'none';
-		pauseButton.style.display = 'inline-block';
-		isPlaying = true;
-	  }
-
-	  function pause() {
-		audioPlayer.pause();
-		playButton.style.display = 'inline-block';
-		pauseButton.style.display = 'none';
-		isPlaying = false;
-	  }
-
-	  function togglePlay() {
-		if (isPlaying) {
-		  pause();
-		} else {
-		  play();
+		// Play audio function
+		function playAudio() {
+		  audioPlayer.play();
+		  isPlaying = true;
+		  playButton.style.display = 'none';
+		  pauseButton.style.display = 'block';
 		}
-	  }
 
-	  function playTrack(event) {
-		event.preventDefault();
-		audioSource.src = event.target.href;
-		audioPlayer.load();
-		play();
-	  }
+		// Pause audio function
+		function pauseAudio() {
+		  audioPlayer.pause();
+		  isPlaying = false;
+		  playButton.style.display = 'block';
+		  pauseButton.style.display = 'none';
+		}
 
-	  playButton.addEventListener('click', togglePlay);
-	  pauseButton.addEventListener('click', togglePlay);
-	  playlist.addEventListener('click', playTrack);
+		// Update progress bar function
+		function updateProgressBar() {
+		  const percentage = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+		  progressBar.style.width = percentage + '%';
+		}
+
+		// Play next audio function
+		function playNextAudio(audioUrl) {
+		  audioSource.src = audioUrl;
+		  audioPlayer.load();
+		  playAudio();
+		}
+
+		// Event listeners
+		playButton.addEventListener('click', playAudio);
+		pauseButton.addEventListener('click', pauseAudio);
+
+		audioPlayer.addEventListener('timeupdate', updateProgressBar);
+		audioPlayer.addEventListener('ended', () => {
+		  isPlaying = false;
+		  playButton.style.display = 'block';
+		  pauseButton.style.display = 'none';
+		});
+
+		playlist.forEach(audio => {
+		  audio.addEventListener('click', (event) => {
+			event.preventDefault();
+			const audioUrl = event.target.getAttribute('href');
+			playNextAudio(audioUrl);
+		  });
+		});
+
 	</script>
 
 

@@ -1459,66 +1459,68 @@ FontAwesome styles
  /* Begin New podcast */
  
 	.player-container {
-	  display: flex;
-	  flex-direction: column;
-	  background-color: #fff;
-	  padding: 20px;
-	  border-radius: 6px;
-	  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+	  font-family: 'Open Sans', sans-serif;
+	  color: #303030;
+	  max-width: 600px;
+	  margin: 0 auto;
 	}
 
 	.audio-player {
+	  position: relative;
+	  margin-bottom: 40px;
+	}
+
+	.playback-controls {
+	  position: absolute;
+	  bottom: 0;
+	  left: 0;
 	  display: flex;
-	  align-items: center;
-	  margin-bottom: 15px;
 	}
 
-	.playback-controls button {
+	button {
+	  background-color: transparent;
 	  border: none;
-	  background: none;
-	  font-size: 28px;
-	  color: #333;
-	  padding: 0 8px;
-	  transition: all 0.2s ease;
 	  cursor: pointer;
+	  font-size: 28px;
+	  margin-right: 16px;
 	}
 
-	.playback-controls button:hover {
-	  color: #000;
-	}
-
-	.playback-controls button:focus {
-	  outline: none;
-	}
-
-	#playButton {
-	  margin-right: 10px;
+	button:hover {
+	  opacity: 0.7;
 	}
 
 	#pauseButton {
 	  display: none;
 	}
 
-	.playlist {
+	.progress-container {
+	  height: 5px;
+	  background-color: #eee;
+	  cursor: pointer;
+	}
+
+	.progress-bar {
+	  height: 100%;
+	  background-color: #4285f4;
+	  width: 0%;
+	}
+
+	ul.playlist {
+	  list-style: none;
 	  margin: 0;
 	  padding: 0;
-	  list-style: none;
 	}
 
-	.playlist li {
-	  margin-bottom: 10px;
-	}
-
-	.playlist a {
-	  color: #333;
-	  text-decoration: none;
-	  transition: all 0.2s ease;
+	ul.playlist li a {
+	  color: #303030;
 	  display: block;
-	  padding: 8px 0;
+	  margin-bottom: 16px;
+	  text-decoration: none;
+	  transition: color 0.2s;
 	}
 
-	.playlist a:hover {
-	  color: #000;
+	ul.playlist li a:hover {
+	  color: #4285f4;
 	}
 
 
