@@ -184,153 +184,117 @@ if (!doNotTrack) {
 
 
 
-	<div class="audio-player-container">
-		<div class="audio-player">
-		  <div class="audio-player-header">
-			<h1 class="audio-title">Podcast Title</h1>
-			<h2 class="audio-episode">Episode Title</h2>
-		  </div>
-		  <div class="audio-player-body">
-			<audio src="audio1.mp3"></audio>
-			<div class="progress-bar-container">
-			  <div class="progress-bar"></div>
-			</div>
-			<div class="player-controls">
-			  <button class="skip-backward-btn"><i class="fas fa-backward"></i></button>
-			  <button class="play-btn"><i class="fas fa-play"></i></button>
-			  <button class="pause-btn"><i class="fas fa-pause"></i></button>
-			  <button class="stop-btn"><i class="fas fa-stop"></i></button>
-			  <button class="skip-forward-btn"><i class="fas fa-forward"></i></button>
-			  <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1">
-			  <button class="download-btn"><i class="fas fa-download"></i></button>
-			</div>
-		  </div>
-		</div>
-		<div class="playlist">
-		  <h3>Playlist</h3>
-		  <ul>
-			<li data-audio="audio1.mp3" data-title="Podcast Title" data-episode="Episode 1">Episode 1</li>
-			<li data-audio="audio2.mp3" data-title="Podcast Title" data-episode="Episode 2">Episode 2</li>
-			<li data-audio="audio3.mp3" data-title="Podcast Title" data-episode="Episode 3">Episode 3</li>
-		  </ul>
+	<div class="audio-player">
+	  <div class="audio-player-header">
+		<h1>Podcast Title</h1>
+		<p>Episode Title</p>
+	  </div>
+	  <div class="audio-player-body">
+		<audio src="audio1.mp3"></audio>
+		<div class="progress-bar">
+		  <div class="progress"></div>
 		</div>
 	  </div>
+	  <div class="audio-player-footer">
+		<div class="player-controls">
+		  <button class="play-btn"><i class="fa fa-play"></i></button>
+		  <button class="pause-btn"><i class="fa fa-pause"></i></button>
+		  <button class="stop-btn"><i class="fa fa-stop"></i></button>
+		</div>
+	  </div>
+	</div>
+	<div class="audio-player">
+	  <div class="audio-player-header">
+		<h1>Podcast Title 2</h1>
+		<p>Episode Title 2</p>
+	  </div>
+	  <div class="audio-player-body">
+		<audio src="audio2.mp3"></audio>
+		<div class="progress-bar">
+		  <div class="progress"></div>
+		</div>
+	  </div>
+	  <div class="audio-player-footer">
+		<div class="player-controls">
+		  <button class="play-btn"><i class="fa fa-play"></i></button>
+		  <button class="pause-btn"><i class="fa fa-pause"></i></button>
+		  <button class="stop-btn"><i class="fa fa-stop"></i></button>
+		</div>
+	  </div>
+	</div>
 
     
 	<script>
-	const audioFiles = [
-	  {
-		src: 'audio1.mp3',
-		title: 'Podcast Title 1',
-		episode: 'Episode 1'
-	  },
-	  {
-		src: 'audio2.mp3',
-		title: 'Podcast Title 2',
-		episode: 'Episode 2'
-	  }
-	];
+	const audioFiles = [  {    src: 'audio1.mp3',    title: 'Podcast Title',    episode: 'Episode 1'  },  {    src: 'audio2.mp3',    title: 'Podcast Title',    episode: 'Episode 2'  }];
 
-	const audioPlayer = document.querySelector('.audio-player');
-	const audioTitle = audioPlayer.querySelector('h2');
-	const audioEpisode = audioPlayer.querySelector('h3');
-	const audio = audioPlayer.querySelector('audio');
-	const progressBar = audioPlayer.querySelector('.progress-bar');
-	const playBtn = audioPlayer.querySelector('.play-btn');
-	const pauseBtn = audioPlayer.querySelector('.pause-btn');
-	const stopBtn = audioPlayer.querySelector('.stop-btn');
-	const backwardBtn = audioPlayer.querySelector('.backward-btn');
-	const forwardBtn = audioPlayer.querySelector('.forward-btn');
-	const volumeSlider = audioPlayer.querySelector('.volume-slider');
-	const playlist = document.querySelector('.playlist');
+const audioPlayer = document.querySelector('.audio-player');
+const audioTitle = audioPlayer.querySelector('h1');
+const audioEpisode = audioPlayer.querySelector('p');
+const audio = audioPlayer.querySelector('audio');
+const progressBar = audioPlayer.querySelector('.progress');
+const playBtn = audioPlayer.querySelector('.play-btn');
+const pauseBtn = audioPlayer.querySelector('.pause-btn');
+const stopBtn = audioPlayer.querySelector('.stop-btn');
 
-	let isPlaying = false;
-	let currentAudio = 0;
+let isPlaying = false;
+let currentAudio = 0;
 
-	function playAudio() {
-	  isPlaying = true;
-	  audio.play();
-	  playBtn.style.display = 'none';
-	  pauseBtn.style.display = 'block';
-	}
+function playAudio() {
+  isPlaying = true;
+  audio.play();
+  playBtn.style.display = 'none';
+  pauseBtn.style.display = 'block';
+}
 
-	function pauseAudio() {
-	  isPlaying = false;
-	  audio.pause();
-	  playBtn.style.display = 'block';
-	  pauseBtn.style.display = 'none';
-	}
+function pauseAudio() {
+  isPlaying = false;
+  audio.pause();
+  playBtn.style.display = 'block';
+  pauseBtn.style.display = 'none';
+}
 
-	function stopAudio() {
-	  isPlaying = false;
-	  audio.pause();
-	  audio.currentTime = 0;
-	  playBtn.style.display = 'block';
-	  pauseBtn.style.display = 'none';
-	}
+function stopAudio() {
+  isPlaying = false;
+  audio.pause();
+  audio.currentTime = 0;
+  playBtn.style.display = 'block';
+  pauseBtn.style.display = 'none';
+}
 
-	function skipForward() {
-	  audio.currentTime += 10;
-	}
+function updateProgressBar() {
+  const progress = (audio.currentTime / audio.duration) * 100;
+  progressBar.style.width = `${progress}%`;
+}
 
-	function skipBackward() {
-	  audio.currentTime -= 10;
-	}
+function setCurrentAudio(index) {
+  currentAudio = index;
+  audioTitle.textContent = audioFiles[index].title;
+  audioEpisode.textContent = audioFiles[index].episode;
+  audio.src = audioFiles[index].src;
+}
 
-	function updateProgressBar() {
-	  const progress = (audio.currentTime / audio.duration) * 100;
-	  progressBar.style.width = `${progress}%`;
-	}
+function init() {
+  setCurrentAudio(currentAudio);
 
-	function setCurrentAudio(index) {
-	  currentAudio = index;
-	  audioTitle.textContent = audioFiles[index].title;
-	  audioEpisode.textContent = audioFiles[index].episode;
-	  audio.src = audioFiles[index].src;
-	}
+  playBtn.addEventListener('click', playAudio);
+  pauseBtn.addEventListener('click', pauseAudio);
+  stopBtn.addEventListener('click', stopAudio);
 
-	function updateVolume() {
-	  audio.volume = volumeSlider.value / 100;
-	}
+  audio.addEventListener('ended', () => {
+    isPlaying = false;
+    playBtn.style.display = 'block';
+    pauseBtn.style.display = 'none';
 
-	function togglePlaylist() {
-	  playlist.classList.toggle('show');
-	}
+    if (currentAudio < audioFiles.length - 1) {
+      setCurrentAudio(currentAudio + 1);
+      playAudio();
+    }
+  });
 
-	function init() {
-	  setCurrentAudio(currentAudio);
+  audio.addEventListener('timeupdate', updateProgressBar);
+}
 
-	  playBtn.addEventListener('click', playAudio);
-	  pauseBtn.addEventListener('click', pauseAudio);
-	  stopBtn.addEventListener('click', stopAudio);
-	  forwardBtn.addEventListener('click', skipForward);
-	  backwardBtn.addEventListener('click', skipBackward);
-	  volumeSlider.addEventListener('input', updateVolume);
-	  playlist.addEventListener('click', (event) => {
-		const index = event.target.dataset.index;
-		if (index !== undefined) {
-		  setCurrentAudio(index);
-		  playAudio();
-		  togglePlaylist();
-		}
-	  });
-
-	  audio.addEventListener('ended', () => {
-		isPlaying = false;
-		playBtn.style.display = 'block';
-		pauseBtn.style.display = 'none';
-
-		if (currentAudio < audioFiles.length - 1) {
-		  setCurrentAudio(currentAudio + 1);
-		  playAudio();
-		}
-	  });
-
-	  audio.addEventListener('timeupdate', updateProgressBar);
-	}
-
-	init();
-
+init();
 
 	</script>
 <script>
