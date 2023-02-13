@@ -184,25 +184,36 @@ if (!doNotTrack) {
 
 
 
-    <div class="audio-player">
-      <div class="audio-player-header">
-        <h1>Podcast Title</h1>
-        <p>Episode Title</p>
-      </div>
-      <div class="audio-player-body">
-        <audio src="audio1.mp3" controls></audio>
-      </div>
-      <div class="audio-player-footer">
-        <div class="progress-bar">
-          <div class="progress"></div>
-        </div>
-        <div class="player-controls">
-          <button class="play-btn"><i class="fa fa-play"></i></button>
-          <button class="pause-btn"><i class="fa fa-pause"></i></button>
-          <button class="stop-btn"><i class="fa fa-stop"></i></button>
-        </div>
-      </div>
-    </div>
+	<div class="audio-player">
+	  <div class="audio-player-header">
+		<h1>Podcast Playlist</h1>
+	  </div>
+	  <div class="audio-player-body">
+		<div class="audio-info">
+		  <h2 class="episode-title"></h2>
+		  <h3 class="podcast-title"></h3>
+		</div>
+		<div class="waveform"></div>
+		<audio id="player" preload="metadata" crossorigin="anonymous" controls>
+		  <source src="audio1.mp3" type="audio/mpeg">
+		  <source src="audio2.mp3" type="audio/mpeg">
+		  <source src="audio3.mp3" type="audio/mpeg">
+		</audio>
+	  </div>
+	  <div class="audio-player-footer">
+		<div class="progress-bar">
+		  <div class="progress"></div>
+		</div>
+		<div class="player-controls">
+		  <button class="play-btn"><i class="fa fa-play"></i></button>
+		  <button class="pause-btn"><i class="fa fa-pause"></i></button>
+		  <button class="stop-btn"><i class="fa fa-stop"></i></button>
+		  <button class="prev-btn"><i class="fa fa-step-backward"></i></button>
+		  <button class="next-btn"><i class="fa fa-step-forward"></i></button>
+		</div>
+	  </div>
+	</div>
+
     
 	<script>
 
