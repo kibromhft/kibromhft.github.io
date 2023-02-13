@@ -13,6 +13,9 @@
 <link crossorigin="anonymous" href="/assets/css/stylesheet_main.css"  rel="preload stylesheet" as="style">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 
+<link rel="stylesheet" href="https://unpkg.com/wavesurfer.js/dist/wavesurfer.min.css">
+<script src="https://unpkg.com/wavesurfer.js/dist/wavesurfer.min.js"></script>
+
 <link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kibromhft.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kibromhft.github.io/favicon-32x32.png">
@@ -77,7 +80,7 @@ if (!doNotTrack) {
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Tags"/>
 <meta name="twitter:description" content="Document my learning notes."/>
-<link rel="stylesheet" href="https://unpkg.com/wavesurfer.js/dist/wavesurfer.min.css">
+
 
 </head>
 
@@ -185,103 +188,65 @@ if (!doNotTrack) {
 
 
 
-		<div class="podcast-player">
-		  <div class="podcast-player-header">
+		<div class="audio-player">
+		  <div class="audio-player-header">
 			<h1>Podcast Title</h1>
 			<p>Episode Title</p>
 		  </div>
-		  <div class="podcast-player-body">
-			<div class="podcast-list">
-			  <div class="podcast-item">
-				<div class="podcast-item-image">
-				  <img src="episode1.png" alt="Episode 1">
-				</div>
-				<div class="podcast-item-details">
-				  <h2>Episode 1 Title</h2>
-				  <p>Episode 1 Description</p>
-				  <audio src="audio1.mp3"></audio>
-				</div>
-			  </div>
-			  <div class="podcast-item">
-				<div class="podcast-item-image">
-				  <img src="episode2.png" alt="Episode 2">
-				</div>
-				<div class="podcast-item-details">
-				  <h2>Episode 2 Title</h2>
-				  <p>Episode 2 Description</p>
-				  <audio src="audio2.mp3"></audio>
-				</div>
-			  </div>
-			  <!-- add more podcast items here -->
-			</div>
+		  <div class="audio-player-body">
+			<div id="waveform"></div>
+			<audio id="audio" src="audio1.mp3"></audio>
 		  </div>
-		  <div class="podcast-player-footer">
-			<div class="waveform-progress-bar">
-			  <div class="waveform"></div>
+		  <div class="audio-player-footer">
+			<div class="progress-bar">
 			  <div class="progress"></div>
 			</div>
 			<div class="player-controls">
-			  <button class="play-btn"><i class="fa fa-play"></i></button>
-			  <button class="pause-btn"><i class="fa fa-pause"></i></button>
-			  <button class="stop-btn"><i class="fa fa-stop"></i></button>
+			  <button id="play-btn"><i class="fa fa-play"></i></button>
+			  <button id="pause-btn"><i class="fa fa-pause"></i></button>
+			  <button id="stop-btn"><i class="fa fa-stop"></i></button>
 			</div>
 		  </div>
 		</div>
 
+
     
 	<script>
+// Create a WaveSurfer instance
+const wavesurfer = WaveSurfer.create({
+  container: '#waveform',
+  waveColor: '#D5E5FF',
+  progressColor: '#5F98E6',
+  barWidth: 2,
+  barRadius: 2,
+  cursorWidth: 0,
+  responsive: true,
+});
 
-	// initialize Wavesurfer.js
-	const wavesurfer = WaveSurfer.create({
-	  container: '.waveform',
-	  waveColor: '#ddd',
-	  progressColor: '#333',
-	  barWidth: 3,
-	  height: 50
-	});
+// Load the audio file
+wavesurfer.load(document.getElementById('audio').src);
 
-	// handle clicking on a podcast item
-	const podcastItems = document.querySelectorAll('.podcast-item');
-	podcastItems.forEach((item) => {
-	  item.addEventListener('click', () => {
-		// remove active class from all podcast items
-		podcastItems.forEach((i) => i.classList.remove('active'));
-		// add active class to clicked item
-		item.classList.add('active');
-		// load audio source into Wavesurfer
-		const audioSource = item.querySelector('audio').src;
-		wavesurfer.load(audioSource);
-	  });
-	});
+// Handle the play button click event
+document.getElementById('play-btn').addEventListener('click', function() {
+  wavesurfer.play();
+});
 
-	// handle play button click
-	const playButton = document.querySelector('.play-btn');
-	playButton.addEventListener('click', () => {
-	  wavesurfer.play();
-	});
+// Handle the pause button click event
+document.getElementById('pause-btn').addEventListener('click', function() {
+  wavesurfer.pause();
+});
 
-	// handle pause button click
-	const pauseButton = document.querySelector('.pause-btn');
-	pauseButton.addEventListener('click', () => {
-	  wavesurfer.pause();
-	});
+// Handle the stop button click event
+document.getElementById('stop-btn').addEventListener('click', function() {
+  wavesurfer.stop();
+});
 
-	// handle stop button click
-	const stopButton = document.querySelector('.stop-btn');
-	stopButton.addEventListener('click', () => {
-	  wavesurfer.stop();
-	});
+// Update the progress bar while playing
+wavesurfer.on('audioprocess', function() {
+  const progress = wavesurfer.getCurrentTime() / wavesurfer.getDuration();
+  document.querySelector('.progress').style.width = progress * 100 + '%';
+});
 
-	// update progress bar as audio plays
-	wavesurfer.on('audioprocess', () => {
-	  const progressElement = document.querySelector('.progress');
-	  const progress = (wavesurfer.getCurrentTime() / wavesurfer.getDuration()) * 100;
-	  progressElement.style.width = `${progress}%`;
-	});
-
-
-	</script>
-    <script src="https://unpkg.com/wavesurfer.js/dist/wavesurfer.min.js"></script>
 
 </main>
     
