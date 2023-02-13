@@ -13,9 +13,6 @@
 <link crossorigin="anonymous" href="/assets/css/stylesheet_main.css"  rel="preload stylesheet" as="style">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 
-<link rel="stylesheet" href="https://unpkg.com/wavesurfer.js/dist/wavesurfer.min.css">
-<script src="https://unpkg.com/wavesurfer.js/dist/wavesurfer.min.js"></script>
-
 <link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kibromhft.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kibromhft.github.io/favicon-32x32.png">
@@ -80,7 +77,6 @@ if (!doNotTrack) {
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Tags"/>
 <meta name="twitter:description" content="Document my learning notes."/>
-
 
 </head>
 
@@ -188,89 +184,89 @@ if (!doNotTrack) {
 
 
 
-	<div class="audio-player">
-	  <div class="audio-player-header">
-		<h1>Podcast Title</h1>
-		<p>Episode Title</p>
-	  </div>
-	  <div class="audio-player-body">
-		<div id="waveform1"></div>
-		<audio id="audio1" src="audio1.mp3"></audio>
-		<div id="waveform2"></div>
-		<audio id="audio2" src="audio2.mp3"></audio>
-	  </div>
-	  <div class="audio-player-footer">
-		<div class="progress-bar">
-		  <div class="progress"></div>
-		</div>
-		<div class="player-controls">
-		  <button id="play-btn"><i class="fa fa-play"></i></button>
-		  <button id="pause-btn"><i class="fa fa-pause"></i></button>
-		  <button id="stop-btn"><i class="fa fa-stop"></i></button>
-		</div>
-	  </div>
-	</div>
-
-
+    <div class="audio-player">
+      <div class="audio-player-header">
+        <h1>Podcast Title</h1>
+        <p>Episode Title</p>
+      </div>
+      <div class="audio-player-body">
+        <audio src="audio1.mp3" controls></audio>
+      </div>
+      <div class="audio-player-footer">
+        <div class="progress-bar">
+          <div class="progress"></div>
+        </div>
+        <div class="player-controls">
+          <button class="play-btn"><i class="fa fa-play"></i></button>
+          <button class="pause-btn"><i class="fa fa-pause"></i></button>
+          <button class="stop-btn"><i class="fa fa-stop"></i></button>
+        </div>
+      </div>
+    </div>
     
 	<script>
-	// Create a WaveSurfer instance for audio1
-	const wavesurfer1 = WaveSurfer.create({
-	  container: '#waveform1',
-	  waveColor: '#D5E5FF',
-	  progressColor: '#5F98E6',
-	  barWidth: 2,
-	  barRadius: 2,
-	  cursorWidth: 0,
-	  responsive: true,
-	});
 
-	// Load audio1
-	wavesurfer1.load(document.getElementById('audio1').src);
+	.audio-player {
+	  max-width: 500px;
+	  margin: 50px auto;
+	  background-color: #fff;
+	  border-radius: 5px;
+	  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	}
 
-	// Create a WaveSurfer instance for audio2
-	const wavesurfer2 = WaveSurfer.create({
-	  container: '#waveform2',
-	  waveColor: '#D5E5FF',
-	  progressColor: '#5F98E6',
-	  barWidth: 2,
-	  barRadius: 2,
-	  cursorWidth: 0,
-	  responsive: true,
-	});
+	.audio-player-header {
+	  padding: 20px;
+	  text-align: center;
+	}
 
-	// Load audio2
-	wavesurfer2.load(document.getElementById('audio2').src);
+	.audio-player-header h1 {
+	  margin: 0;
+	}
 
-	// Handle the play button click event
-	document.getElementById('play-btn').addEventListener('click', function() {
-	  wavesurfer1.play();
-	  wavesurfer2.play();
-	});
+	.audio-player-header p {
+	  margin: 0;
+	  color: #888;
+	}
 
-	// Handle the pause button click event
-	document.getElementById('pause-btn').addEventListener('click', function() {
-	  wavesurfer1.pause();
-	  wavesurfer2.pause();
-	});
+	.audio-player-body {
+	  padding: 20px;
+	  text-align: center;
+	}
 
-	// Handle the stop button click event
-	document.getElementById('stop-btn').addEventListener('click', function() {
-	  wavesurfer1.stop();
-	  wavesurfer2.stop();
-	});
+	.progress-bar {
+	  width: 100%;
+	  height: 5px;
+	  background-color: #f1f1f1;
+	  margin-bottom: 10px;
+	}
 
-	// Update the progress bar while playing
-	wavesurfer1.on('audioprocess', function() {
-	  const progress = wavesurfer1.getCurrentTime() / wavesurfer1.getDuration();
-	  document.querySelector('.progress').style.width = progress * 100 + '%';
-	});
+	.progress {
+	  width: 0;
+	  height: 5px;
+	  background-color: #92ce00;
+	}
 
-	wavesurfer2.on('audioprocess', function() {
-	  const progress = wavesurfer2.getCurrentTime() / wavesurfer2.getDuration();
-	  document.querySelector('.progress').style.width = progress * 100 + '%';
-	});
-	
+	.player-controls {
+	  display: flex;
+	  justify-content: center;
+	}
+
+	.play-btn,
+	.pause-btn,
+	.stop-btn {
+	  background-color: transparent;
+	  border: none;
+	  font-size: 24px;
+	  margin: 0 10px;
+	  cursor: pointer;
+	}
+
+	.play-btn:hover,
+	.pause-btn:hover,
+	.stop-btn:hover {
+	  color: #92ce00;
+	}
+
 	</script>
 
 </main>

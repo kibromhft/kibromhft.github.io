@@ -1458,74 +1458,68 @@ FontAwesome styles
 
  /* Begin New podcast */
  
- .audio-player {
-  background-color: #f5f5f5;
-  border-radius: 5px;
-  overflow: hidden;
-  margin: 20px;
-  width: 500px;
-}
 
-.audio-player-header {
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-  text-align: center;
-}
+	.audio-player {
+	  max-width: 500px;
+	  margin: 50px auto;
+	  background-color: #fff;
+	  border-radius: 5px;
+	  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	}
 
-.audio-player-header h1 {
-  margin: 0;
-  font-size: 24px;
-}
+	.audio-player-header {
+	  padding: 20px;
+	  text-align: center;
+	}
 
-.audio-player-header p {
-  margin: 0;
-  font-size: 18px;
-}
+	.audio-player-header h1 {
+	  margin: 0;
+	}
 
-.audio-player-body {
-  padding: 20px;
-}
+	.audio-player-header p {
+	  margin: 0;
+	  color: #888;
+	}
 
-.progress-bar {
-  background-color: #ddd;
-  height: 5px;
-  margin-bottom: 20px;
-  position: relative;
-}
+	.audio-player-body {
+	  padding: 20px;
+	  text-align: center;
+	}
 
-.progress {
-  background-color: #5F98E6;
-  height: 5px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  transition: width 0.1s ease-in-out;
-}
+	.progress-bar {
+	  width: 100%;
+	  height: 5px;
+	  background-color: #f1f1f1;
+	  margin-bottom: 10px;
+	}
 
-.player-controls {
-  display: flex;
-  justify-content: center;
-}
+	.progress {
+	  width: 0;
+	  height: 5px;
+	  background-color: #92ce00;
+	}
 
-.player-controls button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 24px;
-  margin: 0 10px;
-  color: #333;
-}
+	.player-controls {
+	  display: flex;
+	  justify-content: center;
+	}
 
-.player-controls button:hover {
-  color: #5F98E6;
-}
+	.play-btn,
+	.pause-btn,
+	.stop-btn {
+	  background-color: transparent;
+	  border: none;
+	  font-size: 24px;
+	  margin: 0 10px;
+	  cursor: pointer;
+	}
 
-#waveform1,
-#waveform2 {
-  height: 100px;
-}
+	.play-btn:hover,
+	.pause-btn:hover,
+	.stop-btn:hover {
+	  color: #92ce00;
+	}
+
 
 
 /* 	  End podcast
