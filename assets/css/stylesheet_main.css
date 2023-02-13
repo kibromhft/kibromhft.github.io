@@ -1460,66 +1460,81 @@ FontAwesome styles
  
 
 /* Audio Player */
-.audio-player {
-  max-width: 500px;
-  margin: 50px auto;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
 
-.audio-player-header {
-  padding: 20px;
-  text-align: center;
-}
 
-.audio-player-header h1 {
-  margin: 0;
-}
+	.audio-player {
+	  margin-bottom: 2rem;
+	}
 
-.audio-player-header p {
-  margin: 0;
-  color: #888;
-}
+	.audio-player-header {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  text-align: center;
+	}
 
-.audio-player-body {
-  padding: 20px;
-  text-align: center;
-}
+	.audio-player-header h1 {
+	  margin: 0;
+	}
 
-.progress-bar {
-  width: 100%;
-  height: 5px;
-  background-color: #f1f1f1;
-  margin-bottom: 10px;
-}
+	.audio-player-header p {
+	  margin: 0;
+	  font-size: 0.8rem;
+	}
 
-.progress {
-  width: 0;
-  height: 5px;
-  background-color: #92ce00;
-}
+	.audio-player-body {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  padding: 1rem;
+	  background-color: #f8f8f8;
+	  border-radius: 5px;
+	}
 
-.player-controls {
-  display: flex;
-  justify-content: center;
-}
+	.progress-bar {
+	  position: relative;
+	  width: 100%;
+	  height: 5px;
+	  background-color: #ddd;
+	  margin-bottom: 1rem;
+	  cursor: pointer;
+	}
 
-.play-btn,
-.pause-btn,
-.stop-btn {
-  background-color: transparent;
-  border: none;
-  font-size: 24px;
-  margin: 0 10px;
-  cursor: pointer;
-}
+	.progress {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  height: 100%;
+	  background-color: #ff2d55;
+	}
 
-.play-btn:hover,
-.pause-btn:hover,
-.stop-btn:hover {
-  color: #92ce00;
-}
+	.audio-player-footer {
+	  display: flex;
+	  justify-content: center;
+	}
+
+	.player-controls button {
+	  display: block;
+	  background-color: #ff2d55;
+	  border: none;
+	  border-radius: 50%;
+	  color: #fff;
+	  font-size: 1.2rem;
+	  width: 50px;
+	  height: 50px;
+	  margin: 0 0.5rem;
+	  cursor: pointer;
+	  transition: background-color 0.2s ease-in-out;
+	}
+
+	.player-controls button:hover {
+	  background-color: #d6003d;
+	}
+
+	.player-controls button:active {
+	  transform: scale(0.9);
+	}
+
 
 
 
