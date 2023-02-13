@@ -270,20 +270,79 @@ if (!doNotTrack) {
 	</script> -->
 
 
-		<div class="player-container">
-		  <div class="waveform" style="background-image: url('https://www.buzzsprout.com/player/wave/8')"></div>
-		  <audio id="audio-player" src="https://www.buzzsprout.com/2065897/11881708-pandemic-life-storybook-chromatic-remote-work-and-so-much-more-with-chantastic.mp3" preload="none"></audio>
-		  <div class="controls">
-			<button id="play-pause-btn" class="play-btn"></button>
-			<div class="timeline">
-			  <div id="current-time"></div>
-			  <div id="progress-bar">
-				<div id="progress"></div>
-			  </div>
-			  <div id="duration"></div>
+
+    <div class="container">
+      <h1>Podcast Player</h1>
+      <div class="episode">
+        <div class="wave build" style="background-image: url('https://www.buzzsprout.com/player/wave/8')">
+          <span class="mejs-offscreen">Audio Player</span>
+          <div class="mejs-container svg mejs-buzz mejs-audio" tabindex="0" role="application" aria-label="Audio Player">
+            <div class="mejs-inner">
+              <div class="mejs-mediaelement">
+                <audio src="audio1.mp3" class="mejs-buzz" type="audio/mp3" preload="none"></audio>
+              </div>
+              <div class="mejs-layers">
+                <div class="mejs-poster mejs-layer" style="display: none;"></div>
+              </div>
+              <div class="mejs-controls">
+                <div class="mejs-button mejs-playpause-button mejs-play">
+                  <button type="button" title="Play" aria-label="Play"></button>
+                </div>
+                <div class="mejs-time-rail">
+                  <span class="mejs-time-total mejs-time-slider" aria-label="Time Slider" aria-valuemin="0" aria-valuemax="NaN" aria-valuenow="0" aria-valuetext="00:00" role="slider" tabindex="0">
+                    <span class="mejs-time-buffering" style="display: none;"></span>
+                    <span class="mejs-time-loaded"></span>
+                    <span class="mejs-time-current"></span>
+                    <span class="mejs-time-handle"></span>
+                    <span class="mejs-time-float" style="display: none;"><span class="mejs-time-float-current">00:00</span><span class="mejs-time-float-corner"></span></span>
+                  </span>
+                </div>
+                <div class="mejs-time" role="timer" aria-live="off">
+                  <span class="mejs-currenttime">00:00</span><span> | </span><span class="mejs-duration">00:00</span>
+                </div>
+              </div>
+              <div class="mejs-clear"></div>
+            </div>
+          </div>
+        </div>
+        <h2>Audio 1 Title</h2>
+        <p>Description of audio 1 goes here</p>
+      </div>
+      <div class="episode">
+        <div class="wave build" style="background-image: url('https://www.buzzsprout.com/player/wave/8')">
+          <span class="mejs-offscreen">Audio Player</span>
+          <div class="mejs-container svg mejs-buzz mejs-audio" tabindex="0" role="application" aria-label="Audio Player">
+            <div class="mejs-inner">
+              <div class="mejs-mediaelement">
+                <audio src="audio2.mp3" class="mejs-buzz" type="audio/mp3" preload="none"></audio>
+              </div>
+			<div class="mejs-layers">
+			  <div class="mejs-poster mejs-layer" style="display: none; width: 100%; height: 60px;"></div>
 			</div>
-		  </div>
-		</div>
+			<div class="mejs-controls">
+			  <div class="mejs-button mejs-playpause-button mejs-play">
+				<button type="button" aria-controls="mep_0" title="Play" aria-label="Play"></button>
+			  </div>
+			  <div class="mejs-time-rail" style="width: 576px;">
+				<span class="mejs-time-total mejs-time-slider" aria-label="Time Slider" aria-valuemin="0" aria-valuemax="NaN" aria-valuenow="0" aria-valuetext="00:00" role="slider" tabindex="0" style="width: 576px;">
+				  <span class="mejs-time-buffering" style="display: none;"></span>
+				  <span class="mejs-time-loaded"></span>
+				  <span class="mejs-time-current" style="background-image: url(&quot;https://www.buzzsprout.com/player/wave/8?color=%2392ce00&quot;);"></span>
+				  <span class="mejs-time-handle"></span>
+				  <span class="mejs-time-float" style="display: none;">
+					<span class="mejs-time-float-current">00:00</span>
+					<span class="mejs-time-float-corner"></span>
+				  </span>
+				</span>
+			  </div>
+			  <div class="mejs-time" role="timer" aria-live="off">
+				<span class="mejs-currenttime">00:00</span>
+				<span> | </span>
+				<span class="mejs-duration">30:55</span>
+			  </div>
+			</div>
+			<div class="mejs-clear"></div>
+
 		
 		
 

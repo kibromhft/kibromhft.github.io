@@ -1521,80 +1521,89 @@ FontAwesome styles
 	}
  */
 
+	/* Audio Player */
+	.mejs-container .mejs-controls {
+	  background-color: transparent;
+	  padding: 5px;
+	}
 
-.player-container {
-  position: relative;
-  width: 100%;
-  height: 80px;
-}
+	.mejs-container .mejs-controls .mejs-time {
+	  margin-right: 10px;
+	}
 
-.waveform {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center center;
-  opacity: 0.5;
-}
+	.mejs-container .mejs-controls .mejs-time-rail .mejs-time-current {
+	  background: #92ce00;
+	}
 
-.controls {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 50px;
-  background-color: #f2f2f2;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-  box-sizing: border-box;
-}
+	.mejs-container .mejs-controls .mejs-time-rail .mejs-time-handle {
+	  background: #92ce00;
+	}
 
-.play-btn {
-  width: 40px;
-  height: 40px;
-  background-image: url('play-btn.png');
-  background-size: cover;
-  background-position: center center;
-  cursor: pointer;
-}
+	.mejs-container .mejs-controls .mejs-time-rail .mejs-time-loaded {
+	  background-color: rgba(255, 255, 255, 0.3);
+	}
 
-.timeline {
-  flex-grow: 1;
-  height: 20px;
-  display: flex;
-  align-items: center;
-}
+	.mejs-container .mejs-controls .mejs-time-rail .mejs-time-float {
+	  display: none;
+	}
 
-#current-time,
-#duration {
-  font-size: 14px;
-  color: #777;
-  margin: 0 10px;
-}
+	.mejs-container .mejs-controls .mejs-playpause-button {
+	  border: none;
+	  background: none;
+	  color: #92ce00;
+	}
 
-#progress-bar {
-  position: relative;
-  flex-grow: 1;
-  height: 4px;
-  background-color: #ccc;
-  margin: 8px 20px;
-  border-radius: 2px;
-}
+	.mejs-container .mejs-controls .mejs-playpause-button:hover {
+	  color: #fff;
+	}
 
-#progress {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 4px;
-  background-color: #92ce00;
-  border-radius: 2px;
-}
+	.mejs-container .mejs-controls .mejs-volume-button button {
+	  background-color: transparent;
+	  color: #92ce00;
+	}
 
+	.mejs-container .mejs-controls .mejs-volume-button button:hover {
+	  color: #fff;
+	}
+
+	.mejs-container .mejs-controls .mejs-volume-slider {
+	  height: 4px;
+	  background-color: rgba(255, 255, 255, 0.3);
+	  margin-top: 8px;
+	}
+
+	.mejs-container .mejs-controls .mejs-volume-slider .mejs-volume-current {
+	  height: 100%;
+	  background-color: #92ce00;
+	}
+
+	.mejs-container .mejs-controls .mejs-volume-slider .mejs-volume-handle {
+	  top: -6px;
+	  background-color: #92ce00;
+	  border-radius: 50%;
+	}
+
+	/* Playlist */
+	#playlist {
+	  list-style: none;
+	  padding: 0;
+	}
+
+	#playlist li {
+	  padding: 10px;
+	  background-color: rgba(255, 255, 255, 0.1);
+	  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	  cursor: pointer;
+	  transition: background-color 0.2s ease;
+	}
+
+	#playlist li:hover {
+	  background-color: rgba(255, 255, 255, 0.3);
+	}
+
+	#playlist li.active {
+	  background-color: rgba(255, 255, 255, 0.3);
+	}
 
 /* 	  End podcast
  */
