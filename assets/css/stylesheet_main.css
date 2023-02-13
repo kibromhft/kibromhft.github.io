@@ -1521,89 +1521,155 @@ FontAwesome styles
 	}
  */
 
-	/* Audio Player */
-	.mejs-container .mejs-controls {
-	  background-color: transparent;
-	  padding: 5px;
-	}
+/* Audio List */
 
-	.mejs-container .mejs-controls .mejs-time {
-	  margin-right: 10px;
-	}
+.audio-list {
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 30px;
+}
 
-	.mejs-container .mejs-controls .mejs-time-rail .mejs-time-current {
-	  background: #92ce00;
-	}
+.audio-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
 
-	.mejs-container .mejs-controls .mejs-time-rail .mejs-time-handle {
-	  background: #92ce00;
-	}
+.audio-list-item-play {
+  width: 50px;
+  height: 50px;
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+}
 
-	.mejs-container .mejs-controls .mejs-time-rail .mejs-time-loaded {
-	  background-color: rgba(255, 255, 255, 0.3);
-	}
+/* Audio Player */
+.audio-player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #292c2f;
+  color: #b3b3b3;
+  z-index: 9999;
+}
 
-	.mejs-container .mejs-controls .mejs-time-rail .mejs-time-float {
-	  display: none;
-	}
+.audio-player .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
 
-	.mejs-container .mejs-controls .mejs-playpause-button {
-	  border: none;
-	  background: none;
-	  color: #92ce00;
-	}
+.audio-player .controls {
+  display: flex;
+  align-items: center;
+}
 
-	.mejs-container .mejs-controls .mejs-playpause-button:hover {
-	  color: #fff;
-	}
+.audio-player .controls button {
+  margin-right: 20px;
+  background-color: transparent;
+  border: none;
+  color: #b3b3b3;
+  cursor: pointer;
+}
 
-	.mejs-container .mejs-controls .mejs-volume-button button {
-	  background-color: transparent;
-	  color: #92ce00;
-	}
+.audio-player .controls button:last-of-type {
+  margin-right: 0;
+}
 
-	.mejs-container .mejs-controls .mejs-volume-button button:hover {
-	  color: #fff;
-	}
+.audio-player .time {
+  display: flex;
+  align-items: center;
+}
 
-	.mejs-container .mejs-controls .mejs-volume-slider {
-	  height: 4px;
-	  background-color: rgba(255, 255, 255, 0.3);
-	  margin-top: 8px;
-	}
+.audio-player .time span {
+  margin-right: 10px;
+}
 
-	.mejs-container .mejs-controls .mejs-volume-slider .mejs-volume-current {
-	  height: 100%;
-	  background-color: #92ce00;
-	}
+.audio-player .progress {
+  position: relative;
+  height: 2px;
+  flex: 1;
+  margin: 0 20px;
+  background-color: #474a4d;
+}
 
-	.mejs-container .mejs-controls .mejs-volume-slider .mejs-volume-handle {
-	  top: -6px;
-	  background-color: #92ce00;
-	  border-radius: 50%;
-	}
+.audio-player .progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #b3b3b3;
+  transition: width 0.1s linear;
+}
 
-	/* Playlist */
-	#playlist {
-	  list-style: none;
-	  padding: 0;
-	}
+.audio-player .volume {
+  display: flex;
+  align-items: center;
+}
 
-	#playlist li {
-	  padding: 10px;
-	  background-color: rgba(255, 255, 255, 0.1);
-	  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-	  cursor: pointer;
-	  transition: background-color 0.2s ease;
-	}
+.audio-player .volume-button {
+  margin-right: 20px;
+  background-color: transparent;
+  border: none;
+  color: #b3b3b3;
+  cursor: pointer;
+}
 
-	#playlist li:hover {
-	  background-color: rgba(255, 255, 255, 0.3);
-	}
+.audio-player .volume-button:last-of-type {
+  margin-right: 0;
+}
 
-	#playlist li.active {
-	  background-color: rgba(255, 255, 255, 0.3);
-	}
+.audio-player .volume-slider {
+  position: relative;
+  height: 2px;
+  width: 50px;
+  margin-right: 20px;
+  background-color: #474a4d;
+}
+
+.audio-player .volume-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #b3b3b3;
+  transition: width 0.1s linear;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  .audio-player .container {
+    flex-direction: column;
+    padding: 20px 15px;
+  }
+
+  .audio-player .controls {
+    margin-top: 20px;
+  }
+
+  .audio-player .time {
+    display: none;
+  }
+
+  .audio-player .progress {
+    margin: 20px 0;
+  }
+
+  .audio-player .volume {
+    margin-top: 20px;
+  }
+}
+
 
 /* 	  End podcast
  */

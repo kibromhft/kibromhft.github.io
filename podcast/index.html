@@ -11,7 +11,8 @@
 <meta name="author" content="kibrom Haftu">
 <link rel="canonical" href="https://kibromhft.github.io/tags/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet_main.css"  rel="preload stylesheet" as="style">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous"> -->
 
 <link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kibromhft.github.io/favicon-16x16.png">
@@ -271,77 +272,58 @@ if (!doNotTrack) {
 
 
 
-    <div class="container">
-      <h1>Podcast Player</h1>
-      <div class="episode">
-        <div class="wave build" style="background-image: url('https://www.buzzsprout.com/player/wave/8')">
-          <span class="mejs-offscreen">Audio Player</span>
-          <div class="mejs-container svg mejs-buzz mejs-audio" tabindex="0" role="application" aria-label="Audio Player">
-            <div class="mejs-inner">
-              <div class="mejs-mediaelement">
-                <audio src="audio1.mp3" class="mejs-buzz" type="audio/mp3" preload="none"></audio>
-              </div>
-              <div class="mejs-layers">
-                <div class="mejs-poster mejs-layer" style="display: none;"></div>
-              </div>
-              <div class="mejs-controls">
-                <div class="mejs-button mejs-playpause-button mejs-play">
-                  <button type="button" title="Play" aria-label="Play"></button>
-                </div>
-                <div class="mejs-time-rail">
-                  <span class="mejs-time-total mejs-time-slider" aria-label="Time Slider" aria-valuemin="0" aria-valuemax="NaN" aria-valuenow="0" aria-valuetext="00:00" role="slider" tabindex="0">
-                    <span class="mejs-time-buffering" style="display: none;"></span>
-                    <span class="mejs-time-loaded"></span>
-                    <span class="mejs-time-current"></span>
-                    <span class="mejs-time-handle"></span>
-                    <span class="mejs-time-float" style="display: none;"><span class="mejs-time-float-current">00:00</span><span class="mejs-time-float-corner"></span></span>
-                  </span>
-                </div>
-                <div class="mejs-time" role="timer" aria-live="off">
-                  <span class="mejs-currenttime">00:00</span><span> | </span><span class="mejs-duration">00:00</span>
-                </div>
-              </div>
-              <div class="mejs-clear"></div>
-            </div>
-          </div>
-        </div>
-        <h2>Audio 1 Title</h2>
-        <p>Description of audio 1 goes here</p>
+
+  <div class="audio-list">
+    <div class="audio-list-item">
+      <div class="audio-list-item-title">
+        <h3>Podcast Episode 1: Lorem Ipsum Dolor Sit Amet</h3>
+        <p>January 1, 2023</p>
       </div>
-      <div class="episode">
-        <div class="wave build" style="background-image: url('https://www.buzzsprout.com/player/wave/8')">
-          <span class="mejs-offscreen">Audio Player</span>
-          <div class="mejs-container svg mejs-buzz mejs-audio" tabindex="0" role="application" aria-label="Audio Player">
-            <div class="mejs-inner">
-              <div class="mejs-mediaelement">
-                <audio src="audio2.mp3" class="mejs-buzz" type="audio/mp3" preload="none"></audio>
-              </div>
-			<div class="mejs-layers">
-			  <div class="mejs-poster mejs-layer" style="display: none; width: 100%; height: 60px;"></div>
-			</div>
-			<div class="mejs-controls">
-			  <div class="mejs-button mejs-playpause-button mejs-play">
-				<button type="button" aria-controls="mep_0" title="Play" aria-label="Play"></button>
-			  </div>
-			  <div class="mejs-time-rail" style="width: 576px;">
-				<span class="mejs-time-total mejs-time-slider" aria-label="Time Slider" aria-valuemin="0" aria-valuemax="NaN" aria-valuenow="0" aria-valuetext="00:00" role="slider" tabindex="0" style="width: 576px;">
-				  <span class="mejs-time-buffering" style="display: none;"></span>
-				  <span class="mejs-time-loaded"></span>
-				  <span class="mejs-time-current" style="background-image: url(&quot;https://www.buzzsprout.com/player/wave/8?color=%2392ce00&quot;);"></span>
-				  <span class="mejs-time-handle"></span>
-				  <span class="mejs-time-float" style="display: none;">
-					<span class="mejs-time-float-current">00:00</span>
-					<span class="mejs-time-float-corner"></span>
-				  </span>
-				</span>
-			  </div>
-			  <div class="mejs-time" role="timer" aria-live="off">
-				<span class="mejs-currenttime">00:00</span>
-				<span> | </span>
-				<span class="mejs-duration">30:55</span>
-			  </div>
-			</div>
-			<div class="mejs-clear"></div>
+      <div class="audio-list-item-play">
+        <i class="fa fa-play"></i>
+      </div>
+    </div>
+    <div class="audio-list-item">
+      <div class="audio-list-item-title">
+        <h3>Podcast Episode 2: Consectetur Adipiscing Elit</h3>
+        <p>January 15, 2023</p>
+      </div>
+      <div class="audio-list-item-play">
+        <i class="fa fa-play"></i>
+      </div>
+    </div>
+    <div class="audio-list-item">
+      <div class="audio-list-item-title">
+        <h3>Podcast Episode 3: Sed Do Eiusmod Tempor Incididunt</h3>
+        <p>February 1, 2023</p>
+      </div>
+      <div class="audio-list-item-play">
+        <i class="fa fa-play"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="audio-player">
+    <div class="audio-player-controls">
+      <div class="audio-player-buttons">
+        <button class="audio-player-play-pause"><i class="fa fa-play"></i></button>
+      </div>
+      <div class="audio-player-progress">
+        <div class="audio-player-progress-bar">
+          <div class="audio-player-progress-played"></div>
+        </div>
+        <div class="audio-player-progress-time">
+          <span class="audio-player-progress-current-time">00:00</span> / <span class="audio-player-progress-duration">00:00</span>
+        </div>
+      </div>
+    </div>
+    <audio src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" class="audio-player-element"></audio>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="audio-player.js"></script>
+
+
 
 		
 		
