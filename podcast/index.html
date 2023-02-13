@@ -184,44 +184,138 @@ if (!doNotTrack) {
 
 
 
-	<div class="audio-player">
-	  <div class="audio-player-header">
-		<h1>Podcast Title</h1>
-		<p>Episode Title</p>
-	  </div>
-	  <div class="audio-player-body">
-		<audio src="audio1.mp3"></audio>
-		<div class="progress-bar">
-		  <div class="progress"></div>
-		</div>
-	  </div>
-	  <div class="audio-player-footer">
-		<div class="player-controls">
-		  <button class="play-btn"><i class="fa fa-play"></i></button>
-		  <button class="pause-btn"><i class="fa fa-pause"></i></button>
-		  <button class="stop-btn"><i class="fa fa-stop"></i></button>
-		</div>
-	  </div>
-	</div>
-	<div class="audio-player">
-	  <div class="audio-player-header">
-		<h1>Podcast Title 2</h1>
-		<p>Episode Title 2</p>
-	  </div>
-	  <div class="audio-player-body">
-		<audio src="audio2.mp3"></audio>
-		<div class="progress-bar">
-		  <div class="progress"></div>
-		</div>
-	  </div>
-	  <div class="audio-player-footer">
-		<div class="player-controls">
-		  <button class="play-btn"><i class="fa fa-play"></i></button>
-		  <button class="pause-btn"><i class="fa fa-pause"></i></button>
-		  <button class="stop-btn"><i class="fa fa-stop"></i></button>
-		</div>
-	  </div>
-	</div>
+	<!-- HTML code for the audio player -->
+<div class="audio-player">
+  <div class="audio-player-header">
+    <img class="thumbnail" src="episode1.jpg" alt="Episode 1 thumbnail">
+    <div class="header-info">
+      <h1>Podcast Title</h1>
+      <p class="episode-title">Episode Title</p>
+    </div>
+  </div>
+  <div class="audio-player-body">
+    <audio src="audio1.mp3"></audio>
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
+  </div>
+  <div class="audio-player-footer">
+    <div class="player-controls">
+      <button class="skip-back-btn"><i class="fa fa-backward"></i></button>
+      <button class="play-btn"><i class="fa fa-play"></i></button>
+      <button class="pause-btn"><i class="fa fa-pause"></i></button>
+      <button class="stop-btn"><i class="fa fa-stop"></i></button>
+      <button class="skip-forward-btn"><i class="fa fa-forward"></i></button>
+      <div class="volume-control">
+        <button class="volume-btn"><i class="fa fa-volume-up"></i></button>
+        <input class="volume-slider" type="range" min="0" max="1" step="0.1" value="1">
+      </div>
+      <a class="download-btn" href="audio1.mp3" download><i class="fa fa-download"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript code for the audio player -->
+<script>
+const audioFiles = [
+  {
+    src: 'audio1.mp3',
+    title: 'Podcast Title',
+    episodeTitle: 'Episode 1',
+    thumbnail: 'episode1.jpg'
+  },
+  {
+    src: 'audio2.mp3',
+    title: 'Podcast Title',
+    episodeTitle: 'Episode 2',
+    thumbnail: 'episode2.jpg'
+  }
+];
+
+const audioPlayer = document.querySelector('.audio-player');
+const thumbnail = audioPlayer.querySelector('.thumbnail');
+const audioTitle = audioPlayer.querySelector('h1');
+const episodeTitle = audioPlayer.querySelector('.episode-title');
+const audio = audioPlayer.querySelector('audio');
+const progressBar = audioPlayer.querySelector('.progress');
+const playBtn = audioPlayer.querySelector('.play-btn');
+const pauseBtn = audioPlayer.querySelector('.pause-btn');
+const stopBtn = audioPlayer.querySelector('.stop-btn');
+const skipBackBtn = audioPlayer.querySelector('.skip-back-btn');
+const skipForwardBtn = audioPlayer.querySelector('.skip-forward-btn');
+const volumeBtn = audioPlayer.querySelector('.volume-btn');
+const volumeSlider = audioPlayer.querySelector('.volume-slider');
+const downloadBtn = audioPlayer.querySelector('.download-btn');
+
+let isPlaying = false;
+let currentAudio = 0;
+
+function playAudio() {
+  isPlaying = true;
+  audio.play();
+  playBtn.style.display = 'none';
+  pauseBtn.style.display = 'block';
+}
+
+function pauseAudio() {
+  isPlaying = false;
+  audio.pause();
+  playBtn.style.display = 'block';
+  pauseBtn.style.display = 'none';
+}
+
+function stopAudio() {
+  isPlaying = false;
+  audio.pause();
+  audio.currentTime = 0;
+  playBtn.style.display = 'block';
+  pauseBtn.style.display = 'none';
+}
+
+function skipBackward() {
+  audio.currentTime -= 10;
+}
+
+function skipForward() {
+  audio.currentTime += 10;
+}
+
+function updateProgressBar() {
+  const progress = (audio.currentTime / audio.duration) * 100;
+  progressBar.style.width = `${progress}%`;
+}
+
+function setCurrentAudio(index) {
+  currentAudio = index;
+  audioTitle.textContent = audioFiles[index].title;
+  audioEpisode.textContent = audioFiles[index].episode;
+  audio.src = audioFiles[index].src;
+}
+
+function init() {
+  setCurrentAudio(currentAudio);
+
+  playBtn.addEventListener('click', playAudio);
+  pauseBtn.addEventListener('click', pauseAudio);
+  stopBtn.addEventListener('click', stopAudio);
+
+  audio.addEventListener('ended', () => {
+    isPlaying = false;
+    playBtn.style.display = 'block';
+    pauseBtn.style.display = 'none';
+
+    if (currentAudio < audioFiles.length - 1) {
+      setCurrentAudio(currentAudio + 1);
+      playAudio();
+    }
+  });
+
+  audio.addEventListener('timeupdate', updateProgressBar);
+}
+
+init();
+
+
 
     
 	<script>
