@@ -1460,84 +1460,66 @@ FontAwesome styles
  
 
 /* Audio Player */
-
-/* Default styling */
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: 'Open Sans', sans-serif;
-}
-
-audio,
-button {
-	background-color: transparent;
-	border: none;
-	outline: none;
-}
-
-audio {
-	display: none;
-}
-
 .audio-player {
-	margin: 1rem;
-	background-color: #f5f5f5;
-	box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
-	border-radius: 0.25rem;
+  max-width: 500px;
+  margin: 50px auto;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .audio-player-header {
-	padding: 1rem;
-	background-color: #ebebeb;
-	border-top-left-radius: 0.25rem;
-	border-top-right-radius: 0.25rem;
+  padding: 20px;
+  text-align: center;
+}
+
+.audio-player-header h1 {
+  margin: 0;
+}
+
+.audio-player-header p {
+  margin: 0;
+  color: #888;
 }
 
 .audio-player-body {
-	padding: 1rem;
+  padding: 20px;
+  text-align: center;
 }
 
 .progress-bar {
-	height: 0.25rem;
-	background-color: #d8d8d8;
-	border-radius: 0.125rem;
-	overflow: hidden;
+  width: 100%;
+  height: 5px;
+  background-color: #f1f1f1;
+  margin-bottom: 10px;
 }
 
 .progress {
-	height: 100%;
-	background-color: #4a4a4a;
-}
-
-.audio-player-footer {
-	padding: 1rem;
-	background-color: #ebebeb;
-	border-bottom-left-radius: 0.25rem;
-	border-bottom-right-radius: 0.25rem;
+  width: 0;
+  height: 5px;
+  background-color: #92ce00;
 }
 
 .player-controls {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .play-btn,
 .pause-btn,
 .stop-btn {
-	font-size: 1.5rem;
-	padding: 0.5rem;
-	color: #4a4a4a;
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  margin: 0 10px;
+  cursor: pointer;
 }
 
 .play-btn:hover,
 .pause-btn:hover,
 .stop-btn:hover {
-	color: #666;
-	cursor: pointer;
+  color: #92ce00;
 }
-
 
 
 
