@@ -1455,67 +1455,70 @@ FontAwesome styles
  */
 
 
-/* CSS for audio player 1 */
-.audio-player {
-    max-width: 500px;
-    margin: 50px auto;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
 
-  .audio-player-header {
-    padding: 20px;
-    text-align: center;
-  }
+ /* Begin New podcast */
+ 
 
-  .audio-player-header h1 {
-    margin: 0;
-  }
+	.audio-player {
+	  max-width: 500px;
+	  margin: 50px auto;
+	  background-color: #fff;
+	  border-radius: 5px;
+	  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	}
 
-  .audio-player-header p {
-    margin: 0;
-    color: #888;
-  }
+	.audio-player-header {
+	  padding: 20px;
+	  text-align: center;
+	}
 
-  .audio-player-body {
-    padding: 20px;
-    text-align: center;
-  }
+	.audio-player-header h1 {
+	  margin: 0;
+	}
 
-  .progress-bar {
-    width: 100%;
-    height: 5px;
-    background-color: #f1f1f1;
-    margin-bottom: 10px;
-  }
+	.audio-player-header p {
+	  margin: 0;
+	  color: #888;
+	}
 
-  .progress {
-    width: 0;
-    height: 5px;
-    background-color: #92ce00;
-  }
+	.audio-player-body {
+	  padding: 20px;
+	  text-align: center;
+	}
 
-  .player-controls {
-    display: flex;
-    justify-content: center;
-  }
+	.progress-bar {
+	  width: 100%;
+	  height: 5px;
+	  background-color: #f1f1f1;
+	  margin-bottom: 10px;
+	}
 
-  .play-btn,
-  .pause-btn,
-  .stop-btn {
-    background-color: transparent;
-    border: none;
-    font-size: 24px;
-    margin: 0 10px;
-    cursor: pointer;
-  }
+	.progress {
+	  width: 0;
+	  height: 5px;
+	  background-color: #92ce00;
+	}
 
-  .play-btn:hover,
-  .pause-btn:hover,
-  .stop-btn:hover {
-    color: #92ce00;
-  }
+	.player-controls {
+	  display: flex;
+	  justify-content: center;
+	}
+
+	.play-btn,
+	.pause-btn,
+	.stop-btn {
+	  background-color: transparent;
+	  border: none;
+	  font-size: 24px;
+	  margin: 0 10px;
+	  cursor: pointer;
+	}
+
+	.play-btn:hover,
+	.pause-btn:hover,
+	.stop-btn:hover {
+	  color: #92ce00;
+	}
 
 
 
