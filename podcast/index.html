@@ -184,119 +184,111 @@ if (!doNotTrack) {
 
 
 
-	<div class="audio-player">
-	  <div class="audio-player-header">
-		<h1>Podcast Title</h1>
-		<p>Episode Title</p>
-	  </div>
-	  <div class="audio-player-body">
-		<audio src="audio1.mp3"></audio>
-		<div class="progress-bar">
-		  <div class="progress"></div>
-		</div>
-	  </div>
-	  <div class="audio-player-footer">
-		<div class="player-controls">
-		  <button class="play-btn"><i class="fa fa-play"></i></button>
-		  <button class="pause-btn"><i class="fa fa-pause"></i></button>
-		  <button class="stop-btn"><i class="fa fa-stop"></i></button>
-		</div>
-	  </div>
-	</div>
-	<div class="audio-player">
-	  <div class="audio-player-header">
-		<h1>Podcast Title 2</h1>
-		<p>Episode Title 2</p>
-	  </div>
-	  <div class="audio-player-body">
-		<audio src="audio2.mp3"></audio>
-		<div class="progress-bar">
-		  <div class="progress"></div>
-		</div>
-	  </div>
-	  <div class="audio-player-footer">
-		<div class="player-controls">
-		  <button class="play-btn"><i class="fa fa-play"></i></button>
-		  <button class="pause-btn"><i class="fa fa-pause"></i></button>
-		  <button class="stop-btn"><i class="fa fa-stop"></i></button>
-		</div>
-	  </div>
-	</div>
-
+    <div class="audio-player">
+      <div class="audio-player-header">
+        <h1>Podcast Title</h1>
+        <p>Episode Title</p>
+      </div>
+      <div class="audio-player-body">
+        <audio src="audio1.mp3" controls></audio>
+      </div>
+      <div class="audio-player-footer">
+        <div class="progress-bar">
+          <div class="progress"></div>
+        </div>
+        <div class="player-controls">
+          <button class="play-btn"><i class="fa fa-play"></i></button>
+          <button class="pause-btn"><i class="fa fa-pause"></i></button>
+          <button class="stop-btn"><i class="fa fa-stop"></i></button>
+        </div>
+      </div>
+    </div>
     
 	<script>
-	const audioFiles = [  {    src: 'audio1.mp3',    title: 'Podcast Title',    episode: 'Episode 1'  },  {    src: 'audio2.mp3',    title: 'Podcast Title',    episode: 'Episode 2'  }];
 
-const audioPlayer = document.querySelector('.audio-player');
-const audioTitle = audioPlayer.querySelector('h1');
-const audioEpisode = audioPlayer.querySelector('p');
-const audio = audioPlayer.querySelector('audio');
-const progressBar = audioPlayer.querySelector('.progress');
-const playBtn = audioPlayer.querySelector('.play-btn');
-const pauseBtn = audioPlayer.querySelector('.pause-btn');
-const stopBtn = audioPlayer.querySelector('.stop-btn');
+		const audio = document.querySelector('audio');
+		const playBtn = document.querySelector('.play-btn');
+		const pauseBtn = document.querySelector('.pause-btn');
+		const stopBtn = document.querySelector('.stop-btn');
+		const progressBar = document.querySelector('.progress');
+		const progressContainer = document.querySelector('.progress-bar');
 
-let isPlaying = false;
-let currentAudio = 0;
+		// Play
+		playBtn.addEventListener('click', () => {
+		  audio.play();
+		});
 
-function playAudio() {
-  isPlaying = true;
-  audio.play();
-  playBtn.style.display = 'none';
-  pauseBtn.style.display = 'block';
-}
+		// Pause
+		pauseBtn.addEventListener('click', () => {
+		  audio.pause();
+		});
 
-function pauseAudio() {
-  isPlaying = false;
-  audio.pause();
-  playBtn.style.display = 'block';
-  pauseBtn.style.display = 'none';
-}
+		// Stop
+		stopBtn.addEventListener('click', () => {
+		  audio.currentTime = 0;
+		  audio.pause();
+		});
 
-function stopAudio() {
-  isPlaying = false;
-  audio.pause();
-  audio.currentTime = 0;
-  playBtn.style.display = 'block';
-  pauseBtn.style.display = 'none';
-}
+		// Update progress bar
+		audio.addEventListener('timeupdate', () => {
+		  const { duration, currentTime } = audio;
+		  const progressPercent = (currentTime / duration) * 100;
+		  progressBar.style.width = `${progressPercent}%`;
+		});
 
-function updateProgressBar() {
-  const progress = (audio.currentTime / audio.duration) * 100;
-  progressBar.style.width = `${progress}%`;
-}
+		// Set progress bar
+		progressContainer.addEventListener('click', (e) => {
+		  const width = progressContainer.clientWidth;
+		  const clickX = e.offsetX;
+		  const duration = audio.duration;
 
-function setCurrentAudio(index) {
-  currentAudio = index;
-  audioTitle.textContent = audioFiles[index].title;
-  audioEpisode.textContent = audioFiles[index].episode;
-  audio.src = audioFiles[index].src;
-}
+		  audio.currentTime = (clickX / width) * duration;
+		});
 
-function init() {
-  setCurrentAudio(currentAudio);
-
-  playBtn.addEventListener('click', playAudio);
-  pauseBtn.addEventListener('click', pauseAudio);
-  stopBtn.addEventListener('click', stopAudio);
-
-  audio.addEventListener('ended', () => {
-    isPlaying = false;
-    playBtn.style.display = 'block';
-    pauseBtn.style.display = 'none';
-
-    if (currentAudio < audioFiles.length - 1) {
-      setCurrentAudio(currentAudio + 1);
-      playAudio();
-    }
-  });
-
-  audio.addEventListener('timeupdate', updateProgressBar);
-}
-
-init();
 
 	</script>
+
+</main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://kibromhft.github.io/">Kb&#39;s Blog</a></span>
+
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
 <script>
     var mybutton = document.getElementById("top-link");
     window.onscroll = function () {
