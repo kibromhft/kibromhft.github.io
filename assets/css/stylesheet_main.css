@@ -1455,70 +1455,129 @@ FontAwesome styles
  */
 
 
+/* CSS for audio player 1 */
+.audio-player-1 {
+  max-width: 500px;
+  margin: 50px auto;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
- /* Begin New podcast */
- 
+.audio-player-1 .audio-player-header {
+  padding: 20px;
+  text-align: center;
+}
 
-	.audio-player {
-	  max-width: 500px;
-	  margin: 50px auto;
-	  background-color: #fff;
-	  border-radius: 5px;
-	  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	}
+.audio-player-1 .audio-player-header h1 {
+  margin: 0;
+}
 
-	.audio-player-header {
-	  padding: 20px;
-	  text-align: center;
-	}
+.audio-player-1 .audio-player-header p {
+  margin: 0;
+  color: #888;
+}
 
-	.audio-player-header h1 {
-	  margin: 0;
-	}
+.audio-player-1 .audio-player-body {
+  padding: 20px;
+  text-align: center;
+}
 
-	.audio-player-header p {
-	  margin: 0;
-	  color: #888;
-	}
+.audio-player-1 .progress-bar {
+  width: 100%;
+  height: 5px;
+  background-color: #f1f1f1;
+  margin-bottom: 10px;
+}
 
-	.audio-player-body {
-	  padding: 20px;
-	  text-align: center;
-	}
+.audio-player-1 .progress {
+  width: 0;
+  height: 5px;
+  background-color: #92ce00;
+}
 
-	.progress-bar {
-	  width: 100%;
-	  height: 5px;
-	  background-color: #f1f1f1;
-	  margin-bottom: 10px;
-	}
+.audio-player-1 .player-controls {
+  display: flex;
+  justify-content: center;
+}
 
-	.progress {
-	  width: 0;
-	  height: 5px;
-	  background-color: #92ce00;
-	}
+.audio-player-1 .play-btn,
+.audio-player-1 .pause-btn,
+.audio-player-1 .stop-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  margin: 0 10px;
+  cursor: pointer;
+}
 
-	.player-controls {
-	  display: flex;
-	  justify-content: center;
-	}
+.audio-player-1 .play-btn:hover,
+.audio-player-1 .pause-btn:hover,
+.audio-player-1 .stop-btn:hover {
+  color: #92ce00;
+}
 
-	.play-btn,
-	.pause-btn,
-	.stop-btn {
-	  background-color: transparent;
-	  border: none;
-	  font-size: 24px;
-	  margin: 0 10px;
-	  cursor: pointer;
-	}
+/* CSS for audio player 2 */
+.audio-player-2 {
+  max-width: 500px;
+  margin: 50px auto;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-	.play-btn:hover,
-	.pause-btn:hover,
-	.stop-btn:hover {
-	  color: #92ce00;
-	}
+.audio-player-2 .audio-player-header {
+  padding: 20px;
+  text-align: center;
+}
+
+.audio-player-2 .audio-player-header h1 {
+  margin: 0;
+}
+
+.audio-player-2 .audio-player-header p {
+  margin: 0;
+  color: #888;
+}
+
+.audio-player-2 .audio-player-body {
+  padding: 20px;
+  text-align: center;
+}
+
+.audio-player-2 .progress-bar {
+  width: 100%;
+  height: 5px;
+  background-color: #f1f1f1;
+  margin-bottom: 10px;
+}
+
+.audio-player-2 .progress {
+  width: 0;
+  height: 5px;
+  background-color: #92ce00;
+}
+
+.audio-player-2 .player-controls {
+  display: flex;
+  justify-content: center;
+}
+
+.audio-player-2 .play-btn,
+.audio-player-2 .pause-btn,
+.audio-player-2 .stop-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.audio-player-2 .play-btn:hover,
+.audio-player-2 .pause-btn:hover,
+.audio-player-2 .stop-btn:hover {
+  color: #92ce00;
+}
 
 
 
