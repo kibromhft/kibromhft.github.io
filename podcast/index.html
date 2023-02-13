@@ -11,8 +11,7 @@
 <meta name="author" content="kibrom Haftu">
 <link rel="canonical" href="https://kibromhft.github.io/tags/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet_main.css"  rel="preload stylesheet" as="style">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous"> -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 
 <link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kibromhft.github.io/favicon-16x16.png">
@@ -185,7 +184,7 @@ if (!doNotTrack) {
 
 
 
-<!--     <div class="audio-player">
+    <div class="audio-player">
       <div class="audio-player-header">
         <h1>Podcast Title</h1>
         <p>Episode Title</p>
@@ -268,131 +267,7 @@ if (!doNotTrack) {
 	  color: #92ce00;
 	}
 
-	</script> -->
-
-
-
-
-  <div class="audio-list">
-    <div class="audio-list-item">
-      <div class="audio-list-item-title">
-        <h3>Podcast Episode 1: Lorem Ipsum Dolor Sit Amet</h3>
-        <p>January 1, 2023</p>
-      </div>
-      <div class="audio-list-item-play">
-        <i class="fa fa-play"></i>
-      </div>
-    </div>
-    <div class="audio-list-item">
-      <div class="audio-list-item-title">
-        <h3>Podcast Episode 2: Consectetur Adipiscing Elit</h3>
-        <p>January 15, 2023</p>
-      </div>
-      <div class="audio-list-item-play">
-        <i class="fa fa-play"></i>
-      </div>
-    </div>
-    <div class="audio-list-item">
-      <div class="audio-list-item-title">
-        <h3>Podcast Episode 3: Sed Do Eiusmod Tempor Incididunt</h3>
-        <p>February 1, 2023</p>
-      </div>
-      <div class="audio-list-item-play">
-        <i class="fa fa-play"></i>
-      </div>
-    </div>
-  </div>
-
-  <div class="audio-player">
-    <div class="audio-player-controls">
-      <div class="audio-player-buttons">
-        <button class="audio-player-play-pause"><i class="fa fa-play"></i></button>
-      </div>
-      <div class="audio-player-progress">
-        <div class="audio-player-progress-bar">
-          <div class="audio-player-progress-played"></div>
-        </div>
-        <div class="audio-player-progress-time">
-          <span class="audio-player-progress-current-time">00:00</span> / <span class="audio-player-progress-duration">00:00</span>
-        </div>
-      </div>
-    </div>
-    <audio src="audio1.mp3" class="audio-player-element"></audio>
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script> 
-  
-  const audioPlayer = document.querySelector('.audio-player');
-const audio = new Audio();
-const playBtn = document.querySelector('.play');
-const pauseBtn = document.querySelector('.pause');
-const seekSlider = document.querySelector('.seek-slider');
-const volumeSlider = document.querySelector('.volume-slider');
-const currTime = document.querySelector('.current-time');
-const totalTime = document.querySelector('.total-time');
-
-function togglePlay() {
-  if (audio.paused) {
-    audio.play();
-    audioPlayer.classList.add('playing');
-  } else {
-    audio.pause();
-    audioPlayer.classList.remove('playing');
-  }
-}
-
-function updateCurrTime() {
-  const newTime = audio.currentTime;
-  const minutes = Math.floor(newTime / 60);
-  const seconds = Math.floor(newTime % 60);
-  currTime.innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-  seekSlider.value = newTime;
-}
-
-function updateTotalTime() {
-  const newTime = audio.duration;
-  const minutes = Math.floor(newTime / 60);
-  const seconds = Math.floor(newTime % 60);
-  totalTime.innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-  seekSlider.max = newTime;
-}
-
-function updateVolume() {
-  audio.volume = volumeSlider.value;
-}
-
-function updateSeek() {
-  audio.currentTime = seekSlider.value;
-}
-
-audio.addEventListener('play', () => {
-  audioPlayer.classList.add('playing');
-});
-
-audio.addEventListener('pause', () => {
-  audioPlayer.classList.remove('playing');
-});
-
-audio.addEventListener('timeupdate', updateCurrTime);
-
-audio.addEventListener('loadedmetadata', updateTotalTime);
-
-playBtn.addEventListener('click', togglePlay);
-
-pauseBtn.addEventListener('click', togglePlay);
-
-volumeSlider.addEventListener('input', updateVolume);
-
-seekSlider.addEventListener('input', updateSeek);
-
-  
-  </script>
-
-
-
-		
-		
+	</script>
 
 </main>
     
