@@ -1459,7 +1459,6 @@ FontAwesome styles
  /* Begin New podcast */
  
 
-	/* Audio player */
 .audio-player {
   max-width: 500px;
   margin: 50px auto;
@@ -1508,7 +1507,7 @@ FontAwesome styles
 .play-btn,
 .pause-btn,
 .stop-btn,
-.backward-btn,
+.back-btn,
 .forward-btn {
   background-color: transparent;
   border: none;
@@ -1520,23 +1519,24 @@ FontAwesome styles
 .play-btn:hover,
 .pause-btn:hover,
 .stop-btn:hover,
-.backward-btn:hover,
+.back-btn:hover,
 .forward-btn:hover {
   color: #92ce00;
 }
 
 .playlist {
-  margin: 20px auto;
-  max-width: 500px;
-  background-color: #f9f9f9;
-  padding: 10px;
-  border-radius: 5px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.playlist h2 {
+  margin: 0;
 }
 
 .playlist ul {
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 10px 0;
 }
 
 .playlist li {
@@ -1545,13 +1545,15 @@ FontAwesome styles
 
 .playlist li a {
   text-decoration: none;
-  color: #333;
+  color: #92ce00;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .playlist li a:hover {
   text-decoration: underline;
-  color: #92ce00;
 }
+
 
 
 
