@@ -282,6 +282,7 @@ if (!doNotTrack) {
 		}
 
 		// Load episode
+		// Load episode
 		function loadEpisode(index) {
 		  const playlistItem = playlistItems[index];
 		  const audioSrc = playlistItem.getAttribute('data-src');
@@ -292,8 +293,14 @@ if (!doNotTrack) {
 		  audio.src = audioSrc;
 		  document.querySelector('.audio-player-header h1').textContent = podcastTitle;
 		  document.querySelector('.audio-player-header p').textContent = episodeTitle;
-		  duration = NaN;
+
+		  // Once the audio has loaded, set the duration and play the audio
+		  audio.onloadedmetadata = function() {
+			duration = audio.duration;
+			play();
+		  };
 		}
+
 
 
 		// Play/Pause button click event
