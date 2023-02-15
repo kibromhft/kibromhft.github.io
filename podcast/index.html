@@ -206,143 +206,144 @@ if (!doNotTrack) {
   <div class="playlist">
     <h2>Episodes</h2>
     <ul>
-      <li><a href="" data-src="audio1.mp3">Episode 1</a></li>
+      <li><a href="" data-src="audio1.mp3" class="active">Episode 1</a></li>
       <li><a href="#" data-src="audio2.mp3">Episode 2</a></li>
       <li><a href="#" data-src="audio3.mp3">Episode 3</a></li>
     </ul>
   </div>
 </div>
-  
-	<script>
-		const audio = document.querySelector('audio');
-		const playBtn = document.querySelector('.play-btn');
-		const pauseBtn = document.querySelector('.pause-btn');
-		const stopBtn = document.querySelector('.stop-btn');
-		const progressBar = document.querySelector('.progress');
-		const progressContainer = document.querySelector('.progress-bar');
-		const skipForwardBtn = document.querySelector('.skip-forward-btn');
-		const skipBackwardBtn = document.querySelector('.skip-backward-btn');
-		const playlistItems = document.querySelectorAll('.playlist li');
 
-		let currentEpisodeIndex = 0;
-		let isPlaying = false;
-		let isPaused = false;
-		let duration = 0;
+<script>
+  const audio = document.querySelector('audio');
+  const playBtn = document.querySelector('.play-btn');
+  const pauseBtn = document.querySelector('.pause-btn');
+  const stopBtn = document.querySelector('.stop-btn');
+  const progressBar = document.querySelector('.progress');
+  const progressContainer = document.querySelector('.progress-bar');
+  const skipForwardBtn = document.querySelector('.skip-forward-btn');
+  const skipBackwardBtn = document.querySelector('.skip-backward-btn');
+  const playlistItems = document.querySelectorAll('.playlist li');
 
-		// Play
-		function play() {
-		  audio.play();
-		  isPlaying = true;
-		  isPaused = false;
-		  playBtn.innerHTML = '<i class="fa fa-pause"></i>';
-		}
+  let currentEpisodeIndex = 0;
+  let isPlaying = false;
+  let isPaused = false;
+  let duration = 0;
 
-		// Pause
-		function pause() {
-		  audio.pause();
-		  isPaused = true;
-		  isPlaying = false;
-		  playBtn.innerHTML = '<i class="fa fa-play"></i>';
-		}
+  // Play
+  function play() {
+    audio.play();
+    isPlaying = true;
+    isPaused = false;
+    playBtn.innerHTML = '<i class="fa fa-pause"></i>';
+  }
 
-		// Stop
-		function stop() {
-		  audio.currentTime = 0;
-		  audio.pause();
-		  isPlaying = false;
-		  isPaused = false;
-		  playBtn.innerHTML = '<i class="fa fa-play"></i>';
-		}
+// Pause
+function pause() {
+audio.pause();
+isPaused = true;
+isPlaying = false;
+playBtn.innerHTML = '<i class="fa fa-play"></i>';
+}
 
-		// Skip forward
-		function skipForward() {
-		  audio.currentTime += 10;
-		}
+// Stop
+function stop() {
+audio.currentTime = 0;
+audio.pause();
+isPlaying = false;
+isPaused = false;
+playBtn.innerHTML = '<i class="fa fa-play"></i>';
+}
 
-		// Skip backward
-		function skipBackward() {
-		  audio.currentTime -= 10;
-		}
+// Skip forward
+function skipForward() {
+audio.currentTime += 10;
+}
 
-		// Update progress bar
-		function updateProgressBar() {
-		  const { currentTime } = audio;
-		  const progressPercent = (currentTime / duration) * 100;
-		  progressBar.style.width = `${progressPercent}%`;
-		}
+// Skip backward
+function skipBackward() {
+audio.currentTime -= 10;
+}
 
-		// Set progress bar
-		function setProgressBar(e) {
-		  const width = progressContainer.clientWidth;
-		  const clickX = e.offsetX;
-		  const newTime = (clickX / width) * duration;
+// Update progress bar
+function updateProgressBar() {
+const { currentTime } = audio;
+const progressPercent = (currentTime / duration) * 100;
+progressBar.style.width = ${progressPercent}%;
+}
 
-		  audio.currentTime = newTime;
-		}
+// Set progress bar
+function setProgressBar(e) {
+const width = progressContainer.clientWidth;
+const clickX = e.offsetX;
+const newTime = (clickX / width) * duration;
 
-		// Load episode
-		function loadEpisode(index) {
-		  const playlistItem = playlistItems[index];
-		  const audioSrc = playlistItem.getAttribute('data-src');
-		  const podcastTitle = playlistItem.getAttribute('data-podcast-title');
-		  const episodeTitle = playlistItem.getAttribute('data-episode-title');
+audio.currentTime = newTime;
+}
 
-		  currentEpisodeIndex = index;
-		  audio.src = audioSrc;
-		  document.querySelector('.audio-player-header h1').textContent = podcastTitle;
-		  document.querySelector('.audio-player-header p').textContent = episodeTitle;
-		  duration = NaN;
-		}
+// Load episode
+function loadEpisode(index) {
+const playlistItem = playlistItems[index];
+const audioSrc = playlistItem.getAttribute('data-src');
+const podcastTitle = playlistItem.getAttribute('data-podcast-title');
+const episodeTitle = playlistItem.getAttribute('data-episode-title');
 
-		// Play/Pause button click event
-		playBtn.addEventListener('click', () => {
-		  if (isPlaying) {
-			pause();
-		  } else {
-			play();
-		  }
-		});
+currentEpisodeIndex = index;
+audio.src = audioSrc;
+document.querySelector('.audio-player-header h1').textContent = podcastTitle;
+document.querySelector('.audio-player-header p').textContent = episodeTitle;
+duration = NaN;
+}
 
-		// Pause button click event
-		pauseBtn.addEventListener('click', () => {
-		  pause();
-		});
+// Play/Pause button click event
+playBtn.addEventListener('click', () => {
+if (isPlaying) {
+pause();
+} else {
+play();
+}
+});
 
-		// Stop button click event
-		stopBtn.addEventListener('click', () => {
-		  stop();
-		});
+// Pause button click event
+pauseBtn.addEventListener('click', () => {
+pause();
+});
 
-		// Skip forward button click event
-		skipForwardBtn.addEventListener('click', () => {
-		  skipForward();
-		});
+// Stop button click event
+stopBtn.addEventListener('click', () => {
+stop();
+});
 
-		// Skip backward button click event
-		skipBackwardBtn.addEventListener('click', () => {
-		  skipBackward();
-		});
+// Skip forward button click event
+skipForwardBtn.addEventListener('click', () => {
+skipForward();
+});
 
-		// Update progress bar
-		audio.addEventListener('timeupdate', () => {
-		  updateProgressBar();
-		});
+// Skip backward button click event
+skipBackwardBtn.addEventListener('click', () => {
+skipBackward();
+});
 
-		// Set progress bar
-		progressContainer.addEventListener('click', (e) => {
-		  setProgressBar(e);
-		});
+// Update progress bar
+audio.addEventListener('timeupdate', () => {
+updateProgressBar();
+});
 
-		// Load first episode in playlist
-		loadEpisode(0);
+// Set progress bar
+progressContainer.addEventListener('click', (e) => {
+setProgressBar(e);
+});
 
-		// Playlist item click event
-		playlistItems.forEach((playlistItem, index) => {
-		  playlistItem.addEventListener('click', () => {
-			loadEpisode(index);
-			play();
-		  });
-		});
+// Load first episode in playlist
+loadEpisode(0);
+
+// Playlist item click event
+playlistItems.forEach((playlistItem, index) => {
+playlistItem.addEventListener('click', () => {
+loadEpisode(index);
+play();
+});
+});
+
 
 	</script>
 
