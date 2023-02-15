@@ -185,15 +185,11 @@ if (!doNotTrack) {
 
 <div class="audio-player">
   <div class="audio-player-header">
-    <h1></h1>
-    <p></p>
+    <h1>Podcast Title</h1>
+    <p>Episode Title</p>
   </div>
   <div class="audio-player-body">
-<<<<<<< HEAD
-    <audio controls></audio>
-=======
     <audio src="audio1.mp3" controls></audio>
->>>>>>> parent of 0057ce2 (New-play)
   </div>
   <div class="audio-player-footer">
     <div class="progress-bar">
@@ -210,15 +206,9 @@ if (!doNotTrack) {
   <div class="playlist">
     <h2>Episodes</h2>
     <ul>
-<<<<<<< HEAD
-      <li data-src="audio1.mp3" data-podcast-title="Podcast Title" data-episode-title="Episode 1"><a href="#">Episode 1</a></li>
-      <li data-src="audio2.mp3" data-podcast-title="Podcast Title" data-episode-title="Episode 2"><a href="#">Episode 2</a></li>
-      <li data-src="audio3.mp3" data-podcast-title="Podcast Title" data-episode-title="Episode 3"><a href="#">Episode 3</a></li>
-=======
       <li><a href="" data-src="audio1.mp3">Episode 1</a></li>
       <li><a href="#" data-src="audio2.mp3">Episode 2</a></li>
       <li><a href="#" data-src="audio3.mp3">Episode 3</a></li>
->>>>>>> parent of 0057ce2 (New-play)
     </ul>
   </div>
 </div>
@@ -234,93 +224,6 @@ if (!doNotTrack) {
 		const skipBackwardBtn = document.querySelector('.skip-backward-btn');
 		const playlistItems = document.querySelectorAll('.playlist li');
 
-<<<<<<< HEAD
-
-
-
-<script>
-  const audio = document.querySelector('audio');
-const playBtn = document.querySelector('.play-btn');
-const pauseBtn = document.querySelector('.pause-btn');
-const stopBtn = document.querySelector('.stop-btn');
-const progressBar = document.querySelector('.progress');
-const progressContainer = document.querySelector('.progress-bar');
-const skipForwardBtn = document.querySelector('.skip-forward-btn');
-const skipBackwardBtn = document.querySelector('.skip-backward-btn');
-const playlistItems = document.querySelectorAll('.playlist li');
-
-let currentEpisodeIndex = 0;
-let isPlaying = false;
-let isPaused = false;
-let duration = 0;
-
-function play() {
-  audio.play();
-  isPlaying = true;
-  isPaused = false;
-  playButton.innerHTML = '<i class="fas fa-pause"></i>';
-}
-
-function pause() {
-  audio.pause();
-  isPlaying = false;
-  isPaused = true;
-  playButton.innerHTML = '<i class="fas fa-play"></i>';
-}
-
-function stop() {
-  audio.pause();
-  audio.currentTime = 0;
-  isPlaying = false;
-  isPaused = false;
-  playButton.innerHTML = '<i class="fas fa-play"></i>';
-}
-
-function updateTime() {
-  let currentMin = Math.floor(audio.currentTime / 60);
-  let currentSec = Math.floor(audio.currentTime % 60);
-  let durationMin = Math.floor(audio.duration / 60);
-  let durationSec = Math.floor(audio.duration % 60);
-
-  if (currentSec < 10) {
-    currentSec = `0${currentSec}`;
-  }
-  if (durationSec < 10) {
-    durationSec = `0${durationSec}`;
-  }
-
-  currentTime.innerHTML = `${currentMin}:${currentSec}`;
-  duration.innerHTML = `${durationMin}:${durationSec}`;
-}
-
-function updateProgress() {
-  let progress = Math.floor((audio.currentTime / audio.duration) * 100);
-  progressBar.style.width = `${progress}%`;
-}
-
-playButton.addEventListener('click', () => {
-  if (!isPlaying) {
-    play();
-  } else {
-    pause();
-  }
-});
-
-stopButton.addEventListener('click', stop);
-
-audio.addEventListener('timeupdate', () => {
-  updateTime();
-  updateProgress();
-});
-
-audio.addEventListener('ended', () => {
-  stop();
-});
-
-
-
-</script>
-=======
 		let currentEpisodeIndex = 0;
 		let isPlaying = false;
 		let isPaused = false;
@@ -442,7 +345,6 @@ audio.addEventListener('ended', () => {
 		});
 
 	</script>
->>>>>>> parent of 0057ce2 (New-play)
 
 </main>
     

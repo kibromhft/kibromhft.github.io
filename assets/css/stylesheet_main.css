@@ -1459,35 +1459,6 @@ FontAwesome styles
  /* Begin New podcast */
  
 
-<<<<<<< HEAD
-/* Global styles */
-
-body {
-  font-family: 'Helvetica Neue', sans-serif;
-  background-color: #F0F0F0;
-  color: #333;
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
-}
-
-h1, h2, h3 {
-  margin: 0;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-audio {
-  width: 100%;
-}
-
-/* Audio player styles */
-=======
->>>>>>> parent of 0057ce2 (New-play)
 .audio-player {
   max-width: 500px;
   margin: 50px auto;
@@ -1499,32 +1470,6 @@ audio {
 .audio-player-header {
   padding: 20px;
   text-align: center;
-<<<<<<< HEAD
-}
-
-.audio-player-footer {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  padding: 20px;
-  justify-content: space-between;
-}
-
-.progress-bar {
-  height: 4px;
-  width: 100%;
-  background-color: #f2f2f2;
-  position: relative;
-}
-
-.progress {
-  height: 100%;
-  width: 0;
-  background-color: #9c27b0;
-  position: absolute;
-  top: 0;
-  left: 0;
-=======
 }
 
 .audio-player-header h1 {
@@ -1557,7 +1502,6 @@ audio {
 .player-controls {
   display: flex;
   justify-content: center;
->>>>>>> parent of 0057ce2 (New-play)
 }
 
 .play-btn,
@@ -1566,14 +1510,6 @@ audio {
 .back-btn,
 .forward-btn {
   background-color: transparent;
-<<<<<<< HEAD
-  cursor: pointer;
-  font-size: 24px;
-  color: #9c27b0;
-  margin-right: 10px;
-}
-
-=======
   border: none;
   font-size: 24px;
   margin: 0 10px;
@@ -1617,7 +1553,6 @@ audio {
 .playlist li a:hover {
   text-decoration: underline;
 }
->>>>>>> parent of 0057ce2 (New-play)
 
 
 
