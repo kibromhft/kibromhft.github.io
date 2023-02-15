@@ -201,6 +201,8 @@ if (!doNotTrack) {
       <button class="stop-btn"><i class="fa fa-stop"></i></button>
       <button class="back-btn"><i class="fa fa-backward"></i></button>
       <button class="forward-btn"><i class="fa fa-forward"></i></button>
+	  <button class="skip-backward-btn"><i class="fa fa-backward"></i></button>
+
     </div>
   </div>
   <div class="playlist">
@@ -220,8 +222,8 @@ if (!doNotTrack) {
 		const stopBtn = document.querySelector('.stop-btn');
 		const progressBar = document.querySelector('.progress');
 		const progressContainer = document.querySelector('.progress-bar');
-		const skipForwardBtn = document.querySelector('.skip-forward-btn');
-		const skipBackwardBtn = document.querySelector('.skip-backward-btn');
+		const backBtn = document.querySelector('.back-btn');
+		const forwardBtn = document.querySelector('.forward-btn');
 		const playlistItems = document.querySelectorAll('.playlist li');
 
 		let currentEpisodeIndex = 0;
@@ -254,14 +256,14 @@ if (!doNotTrack) {
 		  playBtn.innerHTML = '<i class="fa fa-play"></i>';
 		}
 
-		// Skip forward
-		function skipForward() {
-		  audio.currentTime += 10;
+		// Backward
+		function backward() {
+		  audio.currentTime -= 10;
 		}
 
-		// Skip backward
-		function skipBackward() {
-		  audio.currentTime -= 10;
+		// Forward
+		function forward() {
+		  audio.currentTime += 10;
 		}
 
 		// Update progress bar
@@ -313,14 +315,14 @@ if (!doNotTrack) {
 		  stop();
 		});
 
-		// Skip forward button click event
-		skipForwardBtn.addEventListener('click', () => {
-		  skipForward();
+		// Backward button click event
+		backBtn.addEventListener('click', () => {
+		  backward();
 		});
 
-		// Skip backward button click event
-		skipBackwardBtn.addEventListener('click', () => {
-		  skipBackward();
+		// Forward button click event
+		forwardBtn.addEventListener('click', () => {
+		  forward();
 		});
 
 		// Update progress bar
@@ -343,6 +345,7 @@ if (!doNotTrack) {
 			play();
 		  });
 		});
+
 
 	</script>
 
