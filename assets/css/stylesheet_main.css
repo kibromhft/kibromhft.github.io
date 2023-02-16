@@ -1458,119 +1458,100 @@ FontAwesome styles
 
  /* Begin New podcast */
  
-body {
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-}
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 50px 20px;
-}
-
-.player {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
+.audio-player {
+  max-width: 500px;
+  margin: 50px auto;
   background-color: #fff;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  overflow: hidden;
-  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.player .background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('https://source.unsplash.com/random/1200x800');
-  background-size: cover;
-  background-position: center;
-  filter: blur(10px);
-  z-index: -1;
-}
-
-.player .header {
+.audio-player-header {
   padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  text-align: center;
 }
 
-.player .title {
-  font-size: 24px;
-  font-weight: 600;
+.audio-player-header h1 {
+  margin: 0;
 }
 
-.player .controls {
+.audio-player-header p {
+  margin: 0;
+  color: #888;
+}
+
+.audio-player-body {
+  padding: 20px;
+  text-align: center;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 5px;
+  background-color: #f1f1f1;
+  margin-bottom: 10px;
+}
+
+.progress {
+  width: 0;
+  height: 5px;
+  background-color: #92ce00;
+}
+
+.player-controls {
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 20px;
 }
 
-.player .controls button {
-  width: 40px;
-  height: 40px;
-  border: none;
-  border-radius: 50%;
+.play-btn,
+.pause-btn,
+.stop-btn,
+.back-btn,
+.forward-btn {
   background-color: transparent;
-  color: #333;
-  margin-right: 10px;
+  border: none;
+  font-size: 24px;
+  margin: 0 10px;
   cursor: pointer;
-  transition: all 0.2s;
 }
 
-.player .controls button:hover {
-  background-color: #333;
-  color: #fff;
+.play-btn:hover,
+.pause-btn:hover,
+.stop-btn:hover,
+.back-btn:hover,
+.forward-btn:hover {
+  color: #92ce00;
 }
 
-.player .controls button.active {
-  background-color: #333;
-  color: #fff;
+.playlist {
+  margin-top: 20px;
+  text-align: center;
 }
 
-.player .progress {
-  height: 10px;
-  background-color: #ddd;
-  margin: 0 20px;
-  position: relative;
+.playlist h2 {
+  margin: 0;
 }
 
-.player .progress .bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background-color: #333;
-  transition: width 0.2s;
+.playlist ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
 }
 
-.player .time {
-  font-size: 12px;
-  margin-top: 5px;
-  display: flex;
-  justify-content: space-between;
+.playlist li {
+  margin: 5px 0;
 }
 
-.player .time span {
-  color: #333;
+.playlist li a {
+  text-decoration: none;
+  color: #92ce00;
+  font-weight: bold;
+  font-size: 18px;
 }
 
-@media (max-width: 768px) {
-  .player .controls {
-    flex-direction: column;
-  }
-
-  .player .controls button {
-    margin: 0 0 10px;
-  }
+.playlist li a:hover {
+  text-decoration: underline;
 }
 
 
