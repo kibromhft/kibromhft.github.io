@@ -1459,98 +1459,33 @@ FontAwesome styles
  /* Begin New podcast */
  
 
-.audio-player {
-  max-width: 500px;
-  margin: 50px auto;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.audio-player-header {
+.container {
+  max-width: 800px;
+  margin: 0 auto;
   padding: 20px;
-  text-align: center;
 }
 
-.audio-player-header h1 {
-  margin: 0;
+.player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.audio-player-header p {
-  margin: 0;
-  color: #888;
+#playlist ul {
+  list-style: none;
+  padding: 0;
 }
 
-.audio-player-body {
-  padding: 20px;
-  text-align: center;
-}
-
-.progress-bar {
-  width: 100%;
-  height: 5px;
-  background-color: #f1f1f1;
+#playlist ul li {
   margin-bottom: 10px;
 }
 
-.progress {
-  width: 0;
-  height: 5px;
-  background-color: #92ce00;
-}
-
-.player-controls {
-  display: flex;
-  justify-content: center;
-}
-
-.play-btn,
-.pause-btn,
-.stop-btn,
-.back-btn,
-.forward-btn {
-  background-color: transparent;
-  border: none;
-  font-size: 24px;
-  margin: 0 10px;
-  cursor: pointer;
-}
-
-.play-btn:hover,
-.pause-btn:hover,
-.stop-btn:hover,
-.back-btn:hover,
-.forward-btn:hover {
-  color: #92ce00;
-}
-
-.playlist {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.playlist h2 {
-  margin: 0;
-}
-
-.playlist ul {
-  list-style: none;
-  padding: 0;
-  margin: 10px 0;
-}
-
-.playlist li {
-  margin: 5px 0;
-}
-
-.playlist li a {
+#playlist ul li a {
+  color: #333;
   text-decoration: none;
-  color: #92ce00;
-  font-weight: bold;
-  font-size: 18px;
 }
 
-.playlist li a:hover {
+#playlist ul li a:hover {
   text-decoration: underline;
 }
 
