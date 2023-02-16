@@ -1459,101 +1459,62 @@ FontAwesome styles
  /* Begin New podcast */
  
 
-.audio-player {
-  max-width: 500px;
-  margin: 50px auto;
-  background-color: #fff;
+
+
+
+#audio-player {
+  background: #eee;
+  padding: 20px;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
-.audio-player-header {
-  padding: 20px;
-  text-align: center;
+.audio-controls button {
+  margin: 5px;
 }
-
-.audio-player-header h1 {
-  margin: 0;
-}
-
-.audio-player-header p {
-  margin: 0;
-  color: #888;
-}
-
-.audio-player-body {
-  padding: 20px;
-  text-align: center;
-}
-
-.progress-bar {
-  width: 100%;
+.audio-timeline {
   height: 5px;
-  background-color: #f1f1f1;
+  background: #ddd;
+  position: relative;
   margin-bottom: 10px;
 }
-
-.progress {
-  width: 0;
+.audio-timeline-current {
+  height: 100%;
+  background: #0072c6;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.audio-timeline-total {
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+}
+.audio-volume-slider {
   height: 5px;
-  background-color: #92ce00;
+  background: #ddd;
+  position: relative;
+  margin-top: 10px;
 }
-
-.player-controls {
-  display: flex;
-  justify-content: center;
+.audio-volume-slider:before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: #0072c6;
+  border-radius: 50%;
+  position: absolute;
+  top: -2.5px;
+  left: 0;
 }
-
-.play-btn,
-.pause-btn,
-.stop-btn,
-.back-btn,
-.forward-btn {
-  background-color: transparent;
-  border: none;
-  font-size: 24px;
-  margin: 0 10px;
-  cursor: pointer;
-}
-
-.play-btn:hover,
-.pause-btn:hover,
-.stop-btn:hover,
-.back-btn:hover,
-.forward-btn:hover {
-  color: #92ce00;
-}
-
-.playlist {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.playlist h2 {
-  margin: 0;
-}
-
-.playlist ul {
+.audio-tracklist ul {
   list-style: none;
   padding: 0;
-  margin: 10px 0;
+  margin: 0;
 }
-
-.playlist li {
-  margin: 5px 0;
+.audio-track {
+  cursor: pointer;
 }
-
-.playlist li a {
-  text-decoration: none;
-  color: #92ce00;
-  font-weight: bold;
-  font-size: 18px;
+.audio-track.active {
+  background: #0072c6;
+  color: #fff;
 }
-
-.playlist li a:hover {
-  text-decoration: underline;
-}
-
 
 
 
