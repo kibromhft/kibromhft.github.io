@@ -1459,62 +1459,199 @@ FontAwesome styles
  /* Begin New podcast */
  
 
-
-
-
-#audio-player {
-  background: #eee;
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
   padding: 20px;
-  border-radius: 5px;
 }
-.audio-controls button {
-  margin: 5px;
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
 }
-.audio-timeline {
-  height: 5px;
-  background: #ddd;
-  position: relative;
-  margin-bottom: 10px;
-}
-.audio-timeline-current {
-  height: 100%;
-  background: #0072c6;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.audio-timeline-total {
-  height: 100%;
-  background: rgba(0, 0, 0, 0.1);
-}
-.audio-volume-slider {
-  height: 5px;
-  background: #ddd;
-  position: relative;
-  margin-top: 10px;
-}
-.audio-volume-slider:before {
-  content: "";
-  width: 10px;
-  height: 10px;
-  background: #0072c6;
-  border-radius: 50%;
-  position: absolute;
-  top: -2.5px;
-  left: 0;
-}
-.audio-tracklist ul {
+
+/* Playlist styles */
+.playlist {
+  display: flex;
+  flex-wrap: wrap;
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
-.audio-track {
+
+.playlist li {
+  flex-basis: 100%;
+  margin-bottom: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
   cursor: pointer;
+  transition: transform 0.2s;
 }
-.audio-track.active {
-  background: #0072c6;
+
+.playlist li:hover {
+  transform: scale(1.02);
+}
+
+.playlist li.active {
+  background-color: #c6d8ff;
+}
+
+.playlist li img {
+  width: 100%;
+}
+
+.playlist li h2 {
+  margin: 10px;
+  font-size: 18px;
+}
+
+.playlist li p {
+  margin: 10px;
+  font-size: 14px;
+  color: #888;
+}
+
+/* Controls styles */
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.controls button {
+  background-color: #ff7f50;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.controls button:hover {
+  background-color: #ff6347;
+}
+
+.controls button:active {
+  transform: scale(0.9);
+}
+
+.controls .play-btn {
+  background-color: #00bfff;
+  color: #fff;
+  width: 70px;
+  height: 70px;
+  font-size: 32px;
+  border-radius: 50%;
+  line-height: 70px;
+}
+
+.controls .play-btn:hover {
+  background-color: #1e90ff;
+}
+
+.controls .play-btn:active {
+  transform: scale(0.9);
+}
+
+.controls .volume {
+  width: 100px;
+}
+
+.controls .volume input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 5px;
+  background-color: #ccc;
+  border-radius: 10px;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+.controls .volume input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background-color: #ff7f50;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -5px;
+  transition: background-color 0.2s;
+}
+
+.controls .volume input[type="range"]::-webkit-slider-thumb:hover {
+  background-color: #ff6347;
+}
+
+.controls .volume input[type="range"]::-webkit-slider-thumb:active {
+  transform: scale(0.9);
+}
+
+.controls .repeat-btn {
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+    background-color: transparent;
+  border: none;
+  color: #ff7f50;
+  transition: color 0.2s;
+}
+
+.controls .repeat-btn.active {
+  color: #00bfff;
+}
+
+.controls .repeat-btn:hover {
+  color: #1e90ff;
+}
+
+.controls .shuffle-btn {
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  background-color: transparent;
+  border: none;
+  color: #ff7f50;
+  margin-left: 20px;
+}
+
+.controls .shuffle-btn.active {
+  color: #00bfff;
+}
+
+.controls .shuffle-btn:hover {
+  background-color: #ff6347;
   color: #fff;
 }
+
+@media (min-width: 768px) {
+  .playlist li {
+    flex-basis: calc(50% - 10px);
+    margin-right: 10px;
+  }
+}
+
 
 
 

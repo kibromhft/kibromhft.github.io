@@ -183,165 +183,349 @@ if (!doNotTrack) {
 </header>
 
 
-<div id="audio-player">
-  <div class="audio-controls">
-    <button class="previous-btn">Previous</button>
-    <button class="play-btn">Play</button>
-    <button class="pause-btn">Pause</button>
-    <button class="stop-btn">Stop</button>
-    <button class="next-btn">Next</button>
+<div class="container">
+    <h1>Audio Player</h1>
+    <div class="player">
+      <div class="player-controls">
+        <button class="btn shuffle-btn" title="Shuffle"><i class="fas fa-random"></i></button>
+        <button class="btn prev-btn" title="Previous"><i class="fas fa-step-backward"></i></button>
+        <button class="btn play-btn" title="Play"><i class="fas fa-play"></i></button>
+        <button class="btn pause-btn" title="Pause"><i class="fas fa-pause"></i></button>
+        <button class="btn next-btn" title="Next"><i class="fas fa-step-forward"></i></button>
+        <button class="btn repeat-btn" title="Repeat"><i class="fas fa-redo"></i></button>
+        <div class="volume">
+          <i class="fas fa-volume-up"></i>
+          <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1">
+        </div>
+        <div class="time">
+          <span class="current-time">00:00</span>
+          <progress class="progress-bar" value="0" max="1"></progress>
+          <span class="duration">00:00</span>
+        </div>
+      </div>
+      <div class="tracks">
+        <div class="track">
+          <div class="track-info">
+            <img src="thumbnail1.jpg" alt="Track 1 Thumbnail">
+            <div class="track-text">
+              <h3 class="track-name">Track 1</h3>
+              <span class="track-duration">4:34</span>
+              <span class="track-category">Category 1</span>
+              <span class="track-tags">Tag 1, Tag 2</span>
+            </div>
+          </div>
+          <audio src="audio1.mp3"></audio>
+        </div>
+        <div class="track">
+          <div class="track-info">
+            <img src="thumbnail2.jpg" alt="Track 2 Thumbnail">
+            <div class="track-text">
+              <h3 class="track-name">Track 2</h3>
+              <span class="track-duration">5:12</span>
+              <span class="track-category">Category 2</span>
+              <span class="track-tags">Tag 3, Tag 4</span>
+            </div>
+          </div>
+          <audio src="audio2.mp3"></audio>
+        </div>
+        <div class="track">
+          <div class="track-info">
+            <img src="thumbnail3.jpg" alt="Track 3 Thumbnail">
+            <div class="track-text">
+              <h3 class="track-name">Track 3</h3>
+              <span class="track-duration">3:45</span>
+              <span class="track-category">Category 1</span>
+              <span class="track-tags">Tag 5, Tag 6</span>
+            </div>
+          </div>
+          <audio src="audio3.mp3"></audio>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="audio-timeline">
-    <div class="audio-timeline-current"></div>
-    <div class="audio-timeline-total"></div>
-  </div>
-  <div class="audio-volume">
-    <button class="mute-btn">Mute</button>
-    <div class="audio-volume-slider"></div>
-  </div>
-  <div class="audio-tracklist">
-    <ul>
-      <li class="audio-track" data-src="audio1.mp3">Track 1</li>
-      <li class="audio-track" data-src="audio2.mp3">Track 2</li>
-      <li class="audio-track" data-src="audio3.mp3">Track 3</li>
-      <li class="audio-track" data-src="audio4.mp3">Track 4</li>
-    </ul>
-  </div>
-</div>
 
   
 	<script>
-		var audio = new Audio();
-var tracklist = document.querySelectorAll('.audio-track');
-var currentIndex = 0;
-var isPlaying = false;
+		// Get all the audio tracks
+	var tracks = document.querySelectorAll('.tracks .track');
 
-// Play the audio
-function play() {
-  isPlaying = true;
-  audio.play();
-  document.querySelector('.play-btn').style.display = 'none';
-  document.querySelector('.pause-btn').style.display = 'inline-block';
+	// Initialize the current track
+	var currentTrack = 0;
+
+	// Play the current track
+	function playTrack() {
+	  // Get the current audio element
+	  var audio = tracks[currentTrack].querySelector('audio');
+	  
+	  // Play the audio
+	  audio.play();
+	  
+	  // Set the play button to pause button
+	  var playBtn = document.querySelector('.play-btn');
+	  playBtn.classList.remove('active');
+	  var pauseBtn = document.querySelector('.pause-btn');
+	  pauseBtn.classList.add('active');
+	}
+
+	// Pause the current track
+	function pauseTrack() {
+	  // Get the current audio element
+	  var audio = tracks[currentTrack].querySelector('audio');
+	  
+	  // Pause the audio
+	  audio.pause();
+	  
+	  // Set the pause button to play button
+	  var pauseBtn = document.querySelector('.pause-btn');
+	  pauseBtn.classList.remove('active');
+	  var playBtn = document.querySelector('.play-btn');
+	  playBtn.classList.add('active');
+	}
+
+	// Go to the previous track
+	function prevTrack() {
+	  // Pause the current track
+	  pauseTrack();
+	  
+	  // Go to the previous track
+	  currentTrack--;
+	  
+	  // If we are at the beginning, go to the end
+	  if (currentTrack < 0) {
+		currentTrack = tracks.length - 1;
+	  }
+	  
+	  // Play the new track
+	  playTrack();
+	}
+
+	// Go to the next track
+	function nextTrack() {
+	  // Pause the current track
+	  pauseTrack();
+	  
+	  // Go to the next track
+	  currentTrack++;
+	  
+	  // If we are at the end, go to the beginning
+	  if (currentTrack >= tracks.length) {
+		currentTrack = 0;
+	  }
+	  
+	  // Play the new track
+	  playTrack();
+	}
+
+	// Set the volume
+	function setVolume() {
+	  // Get the volume slider value
+	  var volume = document.querySelector('.volume-slider').value;
+	  
+	  // Set the volume for all the audio elements
+	  for (var i = 0; i < tracks.length; i++) {
+		var audio = tracks[i].querySelector('audio');
+		audio.volume = volume;
+	  }
+	}
+
+	// Initialize the volume
+	setVolume();
+
+	// Add event listeners to the player controls
+	document.querySelector('.play-btn').addEventListener('click', playTrack);
+	document.querySelector('.pause-btn').addEventListener('click', pauseTrack);
+	document.querySelector('.prev-btn').addEventListener('click', prevTrack);
+	document.querySelector('.next-btn').addEventListener('click', nextTrack);
+	document.querySelector('.shuffle-btn').addEventListener('click', shuffleTracks);
+	document.querySelector('.repeat-btn').addEventListener('click', repeatPlaylist);
+	document.querySelector('.volume-slider').addEventListener('input', setVolume);
+
+	// Shuffle the tracks
+	function shuffleTracks() {
+	  // Shuffle the array of tracks
+	  for (var i = tracks.length - 1; i > 0; i--) {
+		var j = Math.floor(Math.random() * (i + 1));
+		var temp = tracks[i];
+		tracks[i] = tracks[j];
+		tracks[j] = temp;
+	  }
+	  
+	  // Reset the current track to the beginning
+	  currentTrack = 0;
+	  
+	  // Play the new track
+	  playTrack();
+	}
+
+	// Repeat the playlist
+	function repeatPlaylist() {
+	  // Toggle the repeat button
+	  var repeatBtn = document.querySelector('.repeat-btn');
+	  repeatBtn.classList.toggle('active');
+	  
+	  // Set the repeat attribute for all the audio elements
+	  var repeat = repeatBtn.classList.contains('active') ? 'true' : 'false';
+	  for (var i = 0; i < tracks.length; i++) {
+		var audio = tracks[i].querySelector('audio');
+		audio.setAttribute('loop', repeat);
+	  }
+	}
+
+	// Update the progress bar
+	function updateProgress() {
+	  // Get the current audio element
+	  var audio = tracks[currentTrack].querySelector('audio');
+	  
+	  // Get the progress bar and progress bar indicator elements
+	  var progress = document.querySelector('.progress');
+	  var progressIndicator = document.querySelector('.progress-indicator');
+	  
+	  // Calculate the progress percentage
+	  var progressPercent = (audio.currentTime / audio.duration) * 100;
+	  
+	  // Update the progress bar and progress bar indicator widths
+	  progress.style.width = progressPercent + '%';
+	  progressIndicator.style.left = progressPercent + '%';
+	}
+
+	// Update the current time and duration
+	function updateCurrentTime() {
+	  // Get the current audio element
+	  var audio = tracks[currentTrack].querySelector('audio');
+	  
+	  // Get the current time and duration elements
+	  var currentTime = document.querySelector('.current-time');
+	  var duration = document.querySelector('.duration');
+	  
+	  // Calculate the current time and duration in minutes and seconds
+	  var currentMinutes = Math.floor(audio.currentTime / 60);
+	  var currentSeconds = Math.floor(audio.currentTime - currentMinutes * 60);
+	  var durationMinutes = Math.floor(audio.duration / 60);
+	  var durationSeconds = Math.floor(audio.duration - durationMinutes * 60);
+	  
+	  // Add leading zeros to the minutes and seconds if necessary
+	  currentMinutes = (currentMinutes < 10) ? '0' + currentMinutes : currentMinutes;
+	  currentSeconds = (currentSeconds < 10) ? '0' + currentSeconds : currentSeconds;
+	  durationMinutes = (durationMinutes < 10) ? '0' + durationMinutes : durationMinutes;
+	  durationSeconds = (durationSeconds < 10) ? '0' + durationSeconds : durationSeconds;
+	  
+	  // Update the current time and duration elements
+	  currentTime.innerHTML = currentMinutes + ':' + currentSeconds;
+	  duration.innerHTML = durationMinutes + ':' + durationSeconds;
+	}
+
+	// Initialize the progress bar and current time and duration
+	updateProgress();
+	updateCurrentTime();
+
+	// Add event listeners to the audio elements
+	for (var i = 0; i < tracks.length; i++) {
+	  var audio = tracks[i].querySelector('audio');
+	  audio.addEventListener('timeupdate', updateProgress);
+	  audio.addEventListener('timeupdate', updateCurrentTime);
+	}
+
+	// Add event listener to the progress bar
+	document.querySelector('.progress-container').addEventListener('click', function(e) {
+	  // Get the progress bar and progress bar indicator elements
+	  var progress = document.querySelector('.progress');
+	  var progressIndicator = document.querySelector('.progress-indicator');
+	  
+	  // Calculate the new progress percentage
+	  var newProgressPercent = (e.clientX - progress.getBoundingClientRect().left) / progress.offsetWidth * 100;
+	  
+	  // Set the new progress bar and progress bar indicator widths
+	  progress.style.width = newProgressPercent + '%';
+	  progressIndicator.style.left = newProgressPercent + '%';
+	  
+	  // Get the current audio element
+	  var audio = tracks[currentTrack].querySelector('audio');
+	  
+	  // Set the new current time for the audio element
+	  audio.currentTime = audio.duration * (newProgressPercent / 100);
+	});
+
+// Add event listener to the playlist items
+for (var i = 0; i < tracks.length; i++) {
+  tracks[i].addEventListener('click', function() {
+    // Get the index of the clicked playlist item
+    var clickedIndex = Array.prototype.indexOf.call(tracks, this);
+    
+    // Set the current track to the clicked playlist item index
+    setCurrentTrack(clickedIndex);
+    
+    // Play the clicked track
+    playTrack();
+  });
 }
 
-// Pause the audio
-function pause() {
-  isPlaying = false;
-  audio.pause();
-  document.querySelector('.play-btn').style.display = 'inline-block';
-  document.querySelector('.pause-btn').style.display = 'none';
-}
+	// Add event listener to the play button
+	playBtn.addEventListener('click', function() {
+	  // If the current track is paused, play it
+	  // Otherwise, pause it
+	  if (tracks[currentTrack].querySelector('audio').paused) {
+		playTrack();
+	  } else {
+		pauseTrack();
+	  }
+	});
 
-// Stop the audio
-function stop() {
-  isPlaying = false;
-  audio.pause();
-  audio.currentTime = 0;
-  document.querySelector('.play-btn').style.display = 'inline-block';
-  document.querySelector('.pause-btn').style.display = 'none';
-}
+	// Add event listener to the next button
+	nextBtn.addEventListener('click', function() {
+	  // Increment the current track index
+	  currentTrack++;
+	  
+	  // If the current track index is greater than or equal to the number of tracks,
+	  // set the current track index to 0 (loop back to the first track)
+	  if (currentTrack >= tracks.length) {
+		currentTrack = 0;
+	  }
+	  
+	  // Play the new current track
+	  playTrack();
+	});
 
-// Play the next track
-function next() {
-  currentIndex++;
-  if (currentIndex > tracklist.length - 1) {
-    currentIndex = 0;
-  }
-  playTrack(currentIndex);
-}
+	// Add event listener to the previous button
+	prevBtn.addEventListener('click', function() {
+	  // Decrement the current track index
+	  currentTrack--;
+	  
+	  // If the current track index is less than 0,
+	  // set the current track index to the last track index
+	  if (currentTrack < 0) {
+		currentTrack = tracks.length - 1;
+	  }
+	  
+	  // Play the new current track
+	  playTrack();
+	});
 
-// Play the previous track
-function previous() {
-  currentIndex--;
-  if (currentIndex < 0) {
-    currentIndex = tracklist.length - 1;
-  }
-  playTrack(currentIndex);
-}
+	// Add event listener to the repeat button
+	repeatBtn.addEventListener('click', function() {
+	  // Toggle the active class on the repeat button
+	  this.classList.toggle('active');
+	  
+	  // Set the repeat attribute for all the audio elements
+	  var repeat = repeatBtn.classList.contains('active') ? 'true' : 'false';
+	  for (var i = 0; i < tracks.length; i++) {
+		var audio = tracks[i].querySelector('audio');
+		audio.setAttribute('loop', repeat);
+	  }
+	});
 
-// Play a specific track
-function playTrack(index) {
-  stop();
-  currentIndex = index;
-  audio.src = tracklist[currentIndex].getAttribute('data-src');
-  audio.load();
-  play();
-  setActiveTrack(currentIndex);
-}
+	// Add event listener to the volume slider
+	volSlider.addEventListener('input', function() {
+	  // Get the current audio element
+	  var audio = tracks[currentTrack].querySelector('audio');
+	  
+	  // Set the new volume for the audio element
+	  audio.volume = this.value / 100;
+	});
 
-// Set the active track
-function setActiveTrack(index) {
-  for (var i = 0; i < tracklist.length; i++) {
-    tracklist[i].classList.remove('active');
-  }
-  tracklist[index].classList.add('active');
-}
+	// Set the initial volume for the current track's audio element
+	tracks[currentTrack].querySelector('audio').volume = volSlider.value / 100;
 
-// Initialize the audio player
-function initAudioPlayer() {
-  // Play button click event
-  document.querySelector('.play-btn').addEventListener('click', function() {
-    play();
-  });
 
-  // Pause button click event
-  document.querySelector('.pause-btn').addEventListener('click', function() {
-    pause();
-  });
-
-  // Stop button click event
-  document.querySelector('.stop-btn').addEventListener('click', function() {
-    stop();
-  });
-
-  // Next button click event
-  document.querySelector('.next-btn').addEventListener('click', function() {
-    next();
-  });
-
-  // Previous button click event
-  document.querySelector('.previous-btn').addEventListener('click', function() {
-    previous();
-  });
-
-  // Audio ended event
-  audio.addEventListener('ended', function() {
-    next();
-  });
-
-  // Audio timeupdate event
-  audio.addEventListener('timeupdate', function() {
-    var currentTime = audio.currentTime;
-    var duration = audio.duration;
-    var progress = (currentTime / duration) * 100;
-    document.querySelector('.audio-timeline-current').style.width = progress + '%';
-  });
-
-  // Audio volume slider
-  var volumeSlider = document.querySelector('.audio-volume-slider');
-  volumeSlider.addEventListener('click', function(e) {
-    var volume = e.offsetX / this.offsetWidth;
-    audio.volume = volume;
-    volumeSlider.style.background = 'linear-gradient(to right, #0072c6, #0072c6 ' + (volume * 100) + '%, #ddd ' + (volume * 100) + '%, #ddd)';
-    volumeSlider.querySelector('before').style.left = (volume * 100) + '%';
-  });
-
-  // Tracklist click event
-  for (var i = 0; i < tracklist.length; i++) {
-    tracklist[i].addEventListener('click', function(e) {
-            var index = Array.prototype.indexOf.call(tracklist, e.target);
-      playTrack(index);
-    });
-  }
-
-  // Play the first track on load
-  playTrack(currentIndex);
-}
-
-// Initialize the audio player on window load
-window.addEventListener('load', function() {
-  initAudioPlayer();
-});
 
 
 
