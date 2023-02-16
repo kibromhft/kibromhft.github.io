@@ -183,70 +183,115 @@ if (!doNotTrack) {
 </header>
 
 
-	<main>
-	  <div class="container">
-		<div class="episodes">
-		  <h2>Episodes</h2>
-		  <div id="playlist">
-			<ul>
-			  <li><a href="audio/episode1.mp3">Episode 1</a></li>
-			  <li><a href="audio/episode2.mp3">Episode 2</a></li>
-			  <li><a href="audio/episode3.mp3">Episode 3</a></li>
-			</ul>
-		  </div>
-		</div>
-		<div class="player">
-		  <audio id="audio-player" controls>
-			<source src="" type="audio/mpeg">
-			Your browser does not support the audio element.
-		  </audio>
-		  <div id="current-track">
-			<p><strong>Current Track:</strong></p>
-			<p><span id="current-track-title"></span> by <span id="current-track-artist"></span></p>
-		  </div>
-		</div>
-	  </div>
-	</main>
+<main>
+  <div class="container">
+    <div class="episodes">
+      <h2>Episodes</h2>
+      <div id="playlist">
+        <ul>
+          <li><a href="audio/episode1.mp3">Episode 1</a></li>
+          <li><a href="audio/episode2.mp3">Episode 2</a></li>
+          <li><a href="audio/episode3.mp3">Episode 3</a></li>
+        </ul>
+      </div>
+      <div id="search">
+        <input type="text" id="search-input" placeholder="Search Episodes">
+        <button id="search-button">Search</button>
+      </div>
+    </div>
+    <div class="player">
+      <div id="waveform"></div>
+      <audio id="audio-player" controls>
+        <source src="" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <div id="current-track">
+        <p><strong>Current Track:</strong></p>
+        <p><span id="current-track-title"></span> by <span id="current-track-artist"></span></p>
+      </div>
+    </div>
+  </div>
+</main>
+
 
   
 	<script>
-		const audioPlayer = document.getElementById('audio-player');
-const playlist = document.getElementById('playlist');
-const tracks = playlist.getElementsByTagName('a');
-
-let currentTrackIndex = 0;
-
-audioPlayer.addEventListener('ended', () => {
-  currentTrackIndex++;
-
-  if (currentTrackIndex >= tracks.length) {
-    currentTrackIndex = 0;
-  }
-
-  loadTrack(tracks[currentTrackIndex]);
+		// Initialize Wavesurfer
+const waveform = WaveSurfer.create({
+  container: '#waveform',
+  waveColor: 'violet',
+  progressColor: 'purple',
 });
 
-for (let i = 0; i < tracks.length; i++) {
-  tracks[i].addEventListener('click', (event) => {
-    event.preventDefault();
+const audioPlayer = document.getElementById('audio-player');
+const playlist = document.getElementById('playlist');
+const tracks = playlist.getElementsByTagName('a');
+const searchInput = document.getElementById('search-input');
+const searchButton = document.getElementById('search-button');
 
-    currentTrackIndex = i;
-    loadTrack(tracks[i]);
+// Create playlist array
+let playlistArray = [];
+for (let i = 0; i < tracks.length; i++) {
+  playlistArray.push(tracks[i]);
+}
+
+// Initialize first track as current track
+let currentTrack = playlistArray[0];
+
+// Update current track information
+function updateCurrentTrack() {
+  const trackTitle = currentTrack.textContent;
+  const trackArtist = 'Podcast';
+  document.getElementById('current-track-title').textContent = trackTitle;
+  document.getElementById('current-track-artist').textContent = trackArtist;
+}
+
+// Update audio source and play selected track
+function playTrack(track) {
+  currentTrack = track;
+  updateCurrentTrack();
+  audioPlayer.src = currentTrack.href;
+  audioPlayer.play();
+}
+
+// Add event listeners to each track in playlist
+for (let i = 0; i < playlistArray.length; i++) {
+  playlistArray[i].addEventListener('click', function(e) {
+    e.preventDefault();
+    playTrack(this);
   });
 }
 
-function loadTrack(track) {
-  const trackUrl = track.getAttribute('href');
-  const trackTitle = track.innerHTML;
-  const trackArtist = 'My Podcast';
+// Initialize waveform for current track and update on track changes
+waveform.on('ready', function() {
+  updateCurrentTrack();
+  waveform.play();
+});
 
-  document.getElementById('current-track-title').innerHTML = trackTitle;
-  document.getElementById('current-track-artist').innerHTML = trackArtist;
+audioPlayer.addEventListener('ended', function() {
+  const nextTrackIndex = playlistArray.indexOf(currentTrack) + 1;
+  if (nextTrackIndex < playlistArray.length) {
+    const nextTrack = playlistArray[nextTrackIndex];
+    playTrack(nextTrack);
+    waveform.load(currentTrack.href);
+    waveform.play();
+  }
+});
 
-  audioPlayer.src = trackUrl;
-  audioPlayer.load();
-  audioPlayer.play();
-}
+// Search functionality
+searchButton.addEventListener('click', function() {
+  const searchValue = searchInput.value.toLowerCase();
+  const matchingTracks = playlist.getElementsByTagName('a');
+  for (let i = 0; i < matchingTracks.length; i++) {
+    const trackTitle = matchingTracks[i].textContent.toLowerCase();
+    if (trackTitle.includes(searchValue)) {
+      matchingTracks[i].style.display = 'block';
+    } else {
+      matchingTracks[i].style.display = 'none';
+    }
+  }
+});
+
 
 	</script>
 

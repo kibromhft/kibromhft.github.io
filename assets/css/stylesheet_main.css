@@ -1477,6 +1477,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 40px;
 }
 
 #playlist ul {
@@ -1497,6 +1498,39 @@ main {
   text-decoration: underline;
 }
 
+#search {
+  margin-top: 20px;
+}
+
+#search-input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 60%;
+  margin-right: 10px;
+}
+
+#search-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#search-button:hover {
+  background-color: #3e8e41;
+}
+
+#waveform {
+  width: 100%;
+  height: 100px;
+  margin-top: 20px;
+}
+
 #current-track {
   margin-top: 20px;
   text-align: center;
@@ -1513,6 +1547,7 @@ main {
 #current-track-artist {
   font-style: italic;
 }
+
 
 
 
