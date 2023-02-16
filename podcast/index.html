@@ -183,166 +183,185 @@ if (!doNotTrack) {
 </header>
 
 
-<div class="audio-player">
-  <div class="audio-player-header">
-    <h1>Podcast Title</h1>
-    <p>Episode Title</p>
-  </div>
-  <div class="audio-player-body">
-    <audio src="audio1.mp3" controls></audio>
-  </div>
-  <div class="audio-player-footer">
-    <div class="progress-bar">
-      <div class="progress"></div>
+    <div class="music-player">
+      <h1>Music Player</h1>
+      <audio id="audio-player"></audio>
+      <div class="song-details">
+        <h2 id="song-title"></h2>
+        <h3 id="song-artist"></h3>
+      </div>
+      <div class="controls">
+        <button id="play-button">Play</button>
+        <button id="pause-button">Pause</button>
+        <button id="stop-button">Stop</button>
+        <button id="previous-button">Previous</button>
+        <button id="next-button">Next</button>
+        <button id="shuffle-button">Shuffle</button>
+        <button id="repeat-button">Repeat</button>
+      </div>
+      <div class="playlist">
+        <h2>Playlist</h2>
+        <ul id="playlist-ul"></ul>
+      </div>
     </div>
-    <div class="player-controls">
-      <button class="play-btn"><i class="fa fa-play"></i></button>
-      <button class="pause-btn"><i class="fa fa-pause"></i></button>
-      <button class="stop-btn"><i class="fa fa-stop"></i></button>
-      <button class="back-btn"><i class="fa fa-backward"></i></button>
-      <button class="forward-btn"><i class="fa fa-forward"></i></button>
-    </div>
-  </div>
-  <div class="playlist">
-    <h2>Episodes</h2>
-    <ul>
-      <li><a href="" data-src="audio1.mp3">Episode 1</a></li>
-      <li><a href="#" data-src="audio2.mp3">Episode 2</a></li>
-      <li><a href="#" data-src="audio3.mp3">Episode 3</a></li>
-    </ul>
-  </div>
-</div>
   
 	<script>
-		const audio = document.querySelector('audio');
-		const playBtn = document.querySelector('.play-btn');
-		const pauseBtn = document.querySelector('.pause-btn');
-		const stopBtn = document.querySelector('.stop-btn');
-		const progressBar = document.querySelector('.progress');
-		const progressContainer = document.querySelector('.progress-bar');
-		const skipForwardBtn = document.querySelector('.skip-forward-btn');
-		const skipBackwardBtn = document.querySelector('.skip-backward-btn');
-		const playlistItems = document.querySelectorAll('.playlist li');
+		// Song objects with title, artist, and audio file path
+var songs = [
+  {
+    title: 'Song 1',
+    artist: 'Artist 1',
+    audio: 'song1.mp3'
+  },
+  {
+    title: 'Song 2',
+    artist: 'Artist 2',
+    audio: 'song2.mp3'
+  },
+  {
+    title: 'Song 3',
+    artist: 'Artist 3',
+    audio: 'song3.mp3'
+  },
+  {
+    title: 'Song 4',
+    artist: 'Artist 4',
+    audio: 'song4.mp3'
+  },
+  {
+    title: 'Song 5',
+    artist: 'Artist 5',
+    audio: 'song5.mp3'
+  },
+  {
+    title: 'Song 6',
+    artist: 'Artist 6',
+    audio: 'song6.mp3'
+  },
+  {
+    title: 'Song 7',
+    artist: 'Artist 7',
+    audio: 'song7.mp3'
+  },
+  {
+    title: 'Song 8',
+    artist: 'Artist 8',
+    audio: 'song8.mp3'
+  },
+  {
+    title: 'Song 9',
+    artist: 'Artist 9',
+    audio: 'song9.mp3'
+  },
+  {
+    title: 'Song 10',
+    artist: 'Artist 10',
+    audio: 'song10.mp3'
+  }
+];
 
-		let currentEpisodeIndex = 0;
-		let isPlaying = false;
-		let isPaused = false;
-		let duration = 0;
+var currentSong = 0;
+var isShuffled = false;
+var isRepeated = false;
 
-		// Play
-		function play() {
-		  audio.play();
-		  isPlaying = true;
-		  isPaused = false;
-		  playBtn.innerHTML = '<i class="fa fa-pause"></i>';
-		}
+var audioPlayer = document.getElementById('audio-player');
+var songTitle = document.getElementById('song-title');
+var songArtist = document.getElementById('song-artist');
+var playButton = document.getElementById('play-button');
+var pauseButton = document.getElementById('pause-button');
+var stopButton = document.getElementById('stop-button');
+var previousButton = document.getElementById('previous-button');
+var nextButton = document.getElementById('next-button');
+var shuffleButton = document.getElementById('shuffle-button');
+var repeatButton = document.getElementById('repeat-button');
+var playlistUl = document.getElementById('playlist-ul');
 
-		// Pause
-		function pause() {
-		  audio.pause();
-		  isPaused = true;
-		  isPlaying = false;
-		  playBtn.innerHTML = '<i class="fa fa-play"></i>';
-		}
+// Display the first song in the playlist when the page loads
+displaySong();
 
-		// Stop
-		function stop() {
-		  audio.currentTime = 0;
-		  audio.pause();
-		  isPlaying = false;
-		  isPaused = false;
-		  playBtn.innerHTML = '<i class="fa fa-play"></i>';
-		}
+// Add event listeners to the buttons
+playButton.addEventListener('click', playSong);
+pauseButton.addEventListener('click', pauseSong);
+stopButton.addEventListener('click', stopSong);
+previousButton.addEventListener('click', previousSong);
+nextButton.addEventListener('click', nextSong);
+shuffleButton.addEventListener('click', toggleShuffle);
+repeatButton.addEventListener('click', toggleRepeat);
 
-		// Skip forward
-		function skipForward() {
-		  audio.currentTime += 10;
-		}
+// Display the song details and play the audio for the current song
+function displaySong() {
+  songTitle.textContent = songs[currentSong].title;
+  songArtist.textContent = songs[currentSong].artist;
+  audioPlayer.src = songs[currentSong].audio;
+  audioPlayer.play();
+}
 
-		// Skip backward
-		function skipBackward() {
-		  audio.currentTime -= 10;
-		}
+// Play the audio
+function playSong() {
+  audioPlayer.play();
+}
 
-		// Update progress bar
-		function updateProgressBar() {
-		  const { currentTime } = audio;
-		  const progressPercent = (currentTime / duration) * 100;
-		  progressBar.style.width = `${progressPercent}%`;
-		}
+// Pause the audio
+function pauseSong() {
+  audioPlayer.pause();
+}
 
-		// Set progress bar
-		function setProgressBar(e) {
-		  const width = progressContainer.clientWidth;
-		  const clickX = e.offsetX;
-		  const newTime = (clickX / width) * duration;
+// Stop the audio and reset the current time to 0
+function stopSong() {
+  audioPlayer.pause();
+  audioPlayer.currentTime = 0;
+}
 
-		  audio.currentTime = newTime;
-		}
+// Play the previous song in the playlist
+function previousSong() {
+  currentSong--;
+  if (currentSong < 0) {
+    currentSong = songs.length - 1;
+  }
+  displaySong();
+}
 
-		// Load episode
-		function loadEpisode(index) {
-		  const playlistItem = playlistItems[index];
-		  const audioSrc = playlistItem.getAttribute('data-src');
-		  const podcastTitle = playlistItem.getAttribute('data-podcast-title');
-		  const episodeTitle = playlistItem.getAttribute('data-episode-title');
+// Play the next song in the playlist
+function nextSong() {
+  currentSong++;
+  if (currentSong >= songs.length) {
+    currentSong = 0;
+  }
+  displaySong();
+}
 
-		  currentEpisodeIndex = index;
-		  audio.src = audioSrc;
-		  document.querySelector('.audio-player-header h1').textContent = podcastTitle;
-		  document.querySelector('.audio-player-header p').textContent = episodeTitle;
-		  duration = NaN;
-		}
+// Toggle shuffle on/off
+function toggleShuffle() {
+  isShuffled = !isShuffled;
+  if (isShuffled) {
+    shuffleButton.classList.add('active');
+  } else {
+    shuffleButton.classList.remove('active');
+  }
+}
 
-		// Play/Pause button click event
-		playBtn.addEventListener('click', () => {
-		  if (isPlaying) {
-			pause();
-		  } else {
-			play();
-		  }
-		});
+// Toggle repeat on/off
+function toggleRepeat() {
+  isRepeated = !isRepeated;
+  if (isRepeated) {
+    repeatButton.classList.add('active');
+  } else {
+    repeatButton.classList.remove('active');
+  }
+}
 
-		// Pause button click event
-		pauseBtn.addEventListener('click', () => {
-		  pause();
-		});
+// Display the playlist
+for (var i = 0; i < songs.length; i++) {
+  var li = document.createElement('li');
+  li.textContent = songs[i].title + ' - ' + songs[i].artist;
+  li.dataset.index = i;
+  li.addEventListener('click', function() {
+    currentSong = this.dataset.index;
+    displaySong();
+  });
+  playlistUl.appendChild(li);
+}
 
-		// Stop button click event
-		stopBtn.addEventListener('click', () => {
-		  stop();
-		});
-
-		// Skip forward button click event
-		skipForwardBtn.addEventListener('click', () => {
-		  skipForward();
-		});
-
-		// Skip backward button click event
-		skipBackwardBtn.addEventListener('click', () => {
-		  skipBackward();
-		});
-
-		// Update progress bar
-		audio.addEventListener('timeupdate', () => {
-		  updateProgressBar();
-		});
-
-		// Set progress bar
-		progressContainer.addEventListener('click', (e) => {
-		  setProgressBar(e);
-		});
-
-		// Load first episode in playlist
-		loadEpisode(0);
-
-		// Playlist item click event
-		playlistItems.forEach((playlistItem, index) => {
-		  playlistItem.addEventListener('click', () => {
-			loadEpisode(index);
-			play();
-		  });
-		});
 
 	</script>
 
