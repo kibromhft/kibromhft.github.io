@@ -1554,6 +1554,11 @@ FontAwesome styles
   text-decoration: underline;
 }
 
+img.center {
+  background-color: transparent;
+}
+
+
 
 
 
