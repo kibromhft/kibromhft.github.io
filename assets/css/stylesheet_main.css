@@ -1080,7 +1080,7 @@ h6:hover .anchor {
 }
 
 #searchbox input:focus {
-    border-color: var(--secondary)
+    border-color: rgb(191, 0, 255) /* var(--secondary) */
 }
 
 #searchResults li {
