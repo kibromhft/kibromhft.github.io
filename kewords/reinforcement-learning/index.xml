@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>reinforcement-learning on Kb&#39;s Blog</title>
+    <link>https://kibromhft.github.io/tags/reinforcement-learning/</link>
+    <description>Recent content in reinforcement-learning on Kb&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 02 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kibromhft.github.io/tags/reinforcement-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Controllable Neural Text Generation</title>
+      <link>https://kibromhft.github.io/posts/2021-01-02-controllable-text-generation/</link>
+      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kibromhft.github.io/posts/2021-01-02-controllable-text-generation/</guid>
+      <description>[Updated on 2021-02-01: Updated to version 2.0 with several work added and many typos fixed.] [Updated on 2021-05-26: Add P-tuning and Prompt Tuning in the &amp;ldquo;prompt design&amp;rdquo; section.] [Updated on 2021-09-19: Add &amp;ldquo;unlikelihood training&amp;rdquo;.]
+There is a gigantic amount of free text on the Web, several magnitude more than labelled benchmark datasets. The state-of-the-art language models (LM) are trained with unsupervised Web data in large scale. When generating samples from LM by iteratively sampling the next token, we do not have much control over attributes of the output text, such as the topic, the style, the sentiment, etc.</description>
+    </item>
+    
+    <item>
+      <title>Neural Architecture Search</title>
+      <link>https://kibromhft.github.io/posts/2020-08-06-nas/</link>
+      <pubDate>Thu, 06 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kibromhft.github.io/posts/2020-08-06-nas/</guid>
+      <description>Although most popular and successful model architectures are designed by human experts, it doesn&amp;rsquo;t mean we have explored the entire network architecture space and settled down with the best option. We would have a better chance to find the optimal solution if we adopt a systematic and automatic way of learning high-performance model architectures.
+Automatically learning and evolving network topologies is not a new idea (Stanley &amp;amp; Miikkulainen, 2002). In recent years, the pioneering work by Zoph &amp;amp; Le 2017 and Baker et al.</description>
+    </item>
+    
+
+    
+    <item>
+      <title>The Transformer Family</title>
+      <link>https://kibromhft.github.io/posts/2020-04-07-the-transformer-family/</link>
+      <pubDate>Tue, 07 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://kibromhft.github.io/posts/2020-04-07-the-transformer-family/</guid>
+      <description>It has been almost two years since my last post on attention. Recent progress on new and enhanced versions of Transformer motivates me to write another post on this specific topic, focusing on how the vanilla Transformer can be improved for longer-term attention span, less memory and computation consumption, RL task solving and more.
+Notations    Symbol Meaning     $d$ The model size / hidden state dimension / positional encoding size.</description>
+    </item>
+    
+
+    
+
+
+    
+
+
+    
+    <item>
+      <title>Implementing Deep Reinforcement Learning Models with Tensorflow &#43; OpenAI Gym</title>
+      <link>https://kibromhft.github.io/posts/2018-05-05-drl-implementation/</link>
+      <pubDate>Sat, 05 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://kibromhft.github.io/posts/2018-05-05-drl-implementation/</guid>
+      <description>The full implementation is available in kibromhaftu/deep-reinforcement-learning-gym
+In the previous two posts, I have introduced the algorithms of many deep reinforcement learning models. Now it is the time to get our hands dirty and practice how to implement the models in the wild. The implementation is gonna be built in Tensorflow and OpenAI gym environment. The full version of the code in this tutorial is available in [lilian/deep-reinforcement-learning-gym].
+Environment Setup Make sure you have Homebrew installed:  /usr/bin/ruby -e &amp;#34;$(curl -fsSL https://raw.</description>
+    </item>
+    
+    <item>
+      <title>Policy Gradient Algorithms</title>
+      <link>https://kibromhft.github.io/posts/2018-04-08-policy-gradient/</link>
+      <pubDate>Sun, 08 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://kibromhft.github.io/posts/2018-04-08-policy-gradient/</guid>
+      <description>[Updated on 2018-06-30: add two new policy gradient methods, SAC and D4PG.]  [Updated on 2018-09-30: add a new policy gradient method, TD3.]  [Updated on 2019-02-09: add SAC with automatically adjusted temperature].  [Updated on 2019-06-26: Thanks to Chanseok, we have a version of this post in Korean].  [Updated on 2019-09-12: add a new policy gradient method SVPG.]  [Updated on 2019-12-22: add a new policy gradient method IMPALA.</description>
+    </item>
+
+    
+    <item>
+      <title>The Multi-Armed Bandit Problem and Its Solutions</title>
+      <link>https://kibromhft.github.io/posts/2018-01-23-multi-armed-bandit/</link>
+      <pubDate>Tue, 23 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://kibromhft.github.io/posts/2018-01-23-multi-armed-bandit/</guid>
+      <description>The algorithms are implemented for Bernoulli bandit in kibromhaftu/multi-armed-bandit.
+Exploitation vs Exploration The exploration vs exploitation dilemma exists in many aspects of our life. Say, your favorite restaurant is right around the corner. If you go there every day, you would be confident of what you will get, but miss the chances of discovering an even better option. If you try new places all the time, very likely you are gonna have to eat unpleasant food from time to time.</description>
+    </item>
+    
+  </channel>
+</rss>
