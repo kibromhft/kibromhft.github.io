@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>tensorflow on Kb&#39;s Blog</title>
-    <link>https://kibromhft.github.io/tags/tensorflow/</link>
+    <link>https://kibromhft.github.io/keywords/tensorflow/</link>
     <description>Recent content in tensorflow on Kb&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 05 May 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://kibromhft.github.io/tags/tensorflow/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 05 May 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://kibromhft.github.io/keywords/tensorflow/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Implementing Deep Reinforcement Learning Models with Tensorflow &#43; OpenAI Gym</title>
       <link>https://kibromhft.github.io/posts/2018-05-05-drl-implementation/</link>

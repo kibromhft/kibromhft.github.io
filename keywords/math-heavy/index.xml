@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>math-heavy on Kb&#39;s Blog</title>
-    <link>https://kibromhft.github.io/tags/math-heavy/</link>
+    <link>https://kibromhft.github.io/keywords/math-heavy/</link>
     <description>Recent content in math-heavy on Kb&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 11 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kibromhft.github.io/tags/math-heavy/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 11 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kibromhft.github.io/keywords/math-heavy/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>What are Diffusion Models?</title>
       <link>https://kibromhft.github.io/posts/2021-07-11-diffusion-models/</link>

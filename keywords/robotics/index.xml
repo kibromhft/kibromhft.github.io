@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>robotics on Kb&#39;s Blog</title>
-    <link>https://kibromhft.github.io/tags/robotics/</link>
+    <link>https://kibromhft.github.io/keywords/robotics/</link>
     <description>Recent content in robotics on Kb&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://kibromhft.github.io/tags/robotics/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://kibromhft.github.io/keywords/robotics/index.xml" rel="self" type="application/rss+xml" />
 
     
   </channel>
