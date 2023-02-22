@@ -1263,6 +1263,9 @@ h6:hover .anchor {
 .dropdown-toggle {
   cursor: pointer;
 }
+
+
+/* Position the dropdown menu directly below the parent menu item */
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -1283,15 +1286,14 @@ h6:hover .anchor {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 }
 
-
 /* Show the dropdown menu when the parent menu item is hovered over */
 .dropdown:hover .dropdown-menu {
   display: block;
 }
 
-/* Style the dropdown menu items */
+/* Position the dropdown menu relative to the Insights button */
 .dropdown-menu li {
-  padding: 5px;
+  position: relative;
 }
 
 .dropdown-menu li a {
@@ -1302,6 +1304,16 @@ h6:hover .anchor {
 
 .dropdown-menu li a:hover {
   background-color: #f5f5f5;
+}
+
+/* Style the Insights button */
+.dropdown-toggle {
+  position: relative;
+}
+
+/* Move the caret icon to the right of the Insights button */
+.dropdown-toggle .caret {
+  margin-left: 5px;
 }
 
 
