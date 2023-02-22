@@ -1282,15 +1282,11 @@ h6:hover .anchor {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-  
-  /* Add transition for the hover delay */
-  transition: opacity 0.2s ease-in-out;
 }
 
 /* Show the dropdown menu when the parent menu item is hovered over */
 .dropdown:hover .dropdown-menu {
   display: block;
-  opacity: 1;
 }
 
 /* Position the dropdown menu relative to the Insights button */
