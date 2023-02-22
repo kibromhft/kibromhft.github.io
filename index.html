@@ -85,73 +85,7 @@ if (!doNotTrack) {
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Kb&#39;s Blog"/>
 <meta name="twitter:description" content="Document my learning notes."/>
-<style>
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
 
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 1000;
-  min-width: 160px;
-  padding: 5px 0;
-  margin: 2px 0 0;
-  font-size: 14px;
-  text-align: left;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0 6px 12px rgba(0,0,0,.175);
-}
-
-.dropdown-menu > li {
-  display: block;
-}
-
-.dropdown-menu > li > a {
-  display: block;
-  padding: 3px 20px;
-  clear: both;
-  font-weight: 400;
-  line-height: 1.42857143;
-  color: #333;
-  white-space: nowrap;
-}
-
-.dropdown-menu > li > a:hover,
-.dropdown-menu > li > a:focus {
-  text-decoration: none;
-  color: #262626;
-  background-color: #f5f5f5;
-}
-
-.dropdown-menu > .header-height {
-  height: 30px;
-  line-height: 30px;
-  padding: 0 20px;
-  font-weight: bold;
-  color: #777;
-}
-
-.dropdown-menu > .separator {
-  height: 1px;
-  margin: 4px 0;
-  overflow: hidden;
-  background-color: #e5e5e5;
-}
-
-.dropdown-menu > .separator > a {
-  padding: 0;
-  margin: 0;
-}
-
-.dropdown-toggle .caret {
-  margin-left: 5px;
-}
-</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -271,20 +205,28 @@ if (!doNotTrack) {
 		  </li> -->
 
 			<!-- Wrap the dropdown in a <div> with class "dropdown-container" for better styling and positioning -->
-			<li class="dropdown">
-			  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-				Insights <span class="caret fa fa-bars"></span>
-			  </a>
-			  <ul class="dropdown-menu">
-				<li class="header-height"><a href="https://kibromhft.github.io/podcast">Podcast</a></li>
-				<li class="separator"><a href="#"></a></li>
-				<li class="header-height"><a href="#">Success Stories</a></li>
-				<li class="separator"><a href="#"></a></li>
-				<li class="header-height"><a href="#">Technology Trends</a></li>
-				<li class="separator"><a href="#"></a></li>
-				<li class="header-height"><a href="#">Resources</a></li>
-			  </ul>
-			</li>
+			<div class="dropdown-container">
+			  <li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+				  Insights <span class="caret fa fa-bars"></span>
+				</a>
+				<ul class="dropdown-menu">
+				  <!-- Add the class "header" to the list items for consistent styling -->
+				  <li class="header first">
+					<a href="https://kibromhft.github.io/podcast">Podcast</a>
+				  </li>
+				  <li class="header">
+					<a href="#">Success Stories</a>
+				  </li>
+				  <li class="header">
+					<a href="#">Technology Trends</a>
+				  </li>
+				  <li class="header">
+					<a href="#">Resources</a>
+				  </li>
+				</ul>
+			  </li>
+			</div>
 
 		
 		</ul>
