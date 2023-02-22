@@ -1285,7 +1285,7 @@ h6:hover .anchor {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
   
     /* Add transition for the hover delay */
-  transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
 /* Show the dropdown menu when the parent menu item is hovered over */
