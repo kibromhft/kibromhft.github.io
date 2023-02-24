@@ -1602,3 +1602,9 @@ img.center {
 /* 	  End podcast
  */
 
+/* this will highlight the link with a yellow background and bold font
+ */
+ .highlight-link {
+  background-color: yellow;
+  font-weight: bold;
+}
