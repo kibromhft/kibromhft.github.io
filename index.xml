@@ -35,24 +35,15 @@ Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolu
       <description>Are you tired of making predictions based on correlation rather than causation? Introducing Causality in Machine Learning, a cutting-edge approach to understanding the underlying causes of complex data patterns. By incorporating causal inference techniques, we can gain a deeper understanding of how different variables interact and affect each other, leading to more accurate predictions and informed decision-making.</description>
     </item>
     
-
-    
-   
-    
-
-    
-
-    
-
     
     <item>
-      <title>Neural Architecture Search</title>
+      <title>Demystifying Overfitting in Deep Neural Networks: Separating Fact from Fiction</title>
       <link>https://kibromhft.github.io/posts/2020-08-06-nas/</link>
       <pubDate>Thu, 06 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>https://kibromhft.github.io/posts/2020-08-06-nas/</guid>
-      <description>Although most popular and successful model architectures are designed by human experts, it doesn&amp;rsquo;t mean we have explored the entire network architecture space and settled down with the best option. We would have a better chance to find the optimal solution if we adopt a systematic and automatic way of learning high-performance model architectures.
-Automatically learning and evolving network topologies is not a new idea (Stanley &amp;amp; Miikkulainen, 2002). In recent years, the pioneering work by Zoph &amp;amp; Le 2017 and Baker et al.</description>
+      <description>
+	  Overfitting is often perceived as a major challenge in DNNs, leading to a lack of confidence in their ability to generalize to new data. As Neal Shusterman, the author of “Unwind”, once wrote: “But remember that good intentions pave many roads. Not all of them lead to hell.” However, the reality is that the severity of overfitting in DNNs is often overstated and can be effectively mitigated through various techniques.</description>
     </item>
     
 
