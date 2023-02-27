@@ -38,9 +38,9 @@ Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolu
 		</item>
 		<item>
 			<title>Disentangling the Latent Space: A Guide to Beta-VAE</title>
-			<link>https://kibromhft.github.io/posts/2022-02-27-vae/</link>
+			<link>https://kibromhft.github.io/posts/2022-12-27-vae/</link>
 			<pubDate>Thu, 24 Feb 2022:00:00 +0000</pubDate>
-			<guid>https://kibromhft.github.io/posts/2022-02-27-vae/</guid>
+			<guid>https://kibromhft.github.io/posts/2022-12-27-vae/</guid>
 			<description> 
 Autocoder is invented to reconstruct high-dimensional data using a neural network model with a narrow bottleneck layer in the middle (oops, this is probably not true for Variational Autoencoder, and we will investigate it in details in later sections). A nice byproduct is dimension reduction: the bottleneck layer captures a compressed latent encoding.</description>
 		</item>
