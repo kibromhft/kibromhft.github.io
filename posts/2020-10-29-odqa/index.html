@@ -320,7 +320,7 @@ Disclaimers given so many papers in the wild:
 <p>A model that can answer any question with regard to factual knowledge can lead to many useful and practical applications, such as working as a chatbot or an AI assistant??. In this post, we will review several common approaches for building such an open-domain question answering system.</p>
 <p>Disclaimers given so many papers in the wild:</p>
 <ul>
-<li>Assume we have access to a powerful pretrained <a href="https://kibromhft.github.io/posts/2019-01-31-lm/">language model</a>.</li>
+<li>Assume we have access to a powerful pretrained <a href="https://kibromhft.github.io/posts/2022-09-23-debug/">language model</a>.</li>
 <li>We do not cover how to use structured knowledge base (e.g. Freebase, WikiData) here.</li>
 <li>We only focus on a single-turn QA instead of a multi-turn conversation style QA.</li>
 <li>We mostly focus on QA models that contain neural networks, specially Transformer-based language models.</li>
@@ -377,7 +377,7 @@ $$
 <p><em>ElasticSearch + BM25</em> is used by the <strong>Multi-passage BERT</strong> QA model (<a href="https://arxiv.org/abs/1908.08167">Wang et al., 2019</a>). They found that splitting articles into passages with the length of 100 words by <em>sliding window</em> brings 4% improvements, since splitting documents into passages without overlap may cause some near-boundary evidence to lose useful contexts.</p>
 <h3 id="neural-ir">Neural IR<a hidden class="anchor" aria-hidden="true" href="#neural-ir">#</a></h3>
 <p>There is a long history in learning a low-dimensional representation of text, denser than raw term-based vectors (<a href="http://lsa.colorado.edu/papers/JASIS.lsi.90.pdf">Deerwester et al., 1990</a>; <a href="https://www.aclweb.org/anthology/W11-0329/">Yih, et al., 2011</a>). Dense representations can be learned through matrix decomposition or some neural network architectures (e.g. MLP, LSTM, bidirectional LSTM, etc). When involving neural networks, such approaches are referred to as &ldquo;Neural IR&rdquo;, Neural IR is a new category of methods for retrieval problems, but it is not necessary to perform better/superior than classic IR (<a href="https://sigir.org/wp-content/uploads/2019/01/p040.pdf">Lim, 2018</a>).</p>
-<p>After the success of many large-scale <a href="https://kibromhft.github.io/posts/2019-01-31-lm/">general language models</a>, many QA models embrace the following approach:</p>
+<p>After the success of many large-scale <a href="https://kibromhft.github.io/posts/2022-09-23-debug/">general language models</a>, many QA models embrace the following approach:</p>
 <div>
 $$
 h_x = E_x(x)\quad
@@ -455,7 +455,7 @@ $$
 </div>
 <p>where $\mathbf{W}_s$ and $\mathbf{W}_e$ are learned parameters.</p>
 <h3 id="bert-universe">BERT-universe<a hidden class="anchor" aria-hidden="true" href="#bert-universe">#</a></h3>
-<p>Following the success of <a href="https://kibromhft.github.io/posts/2019-01-31-lm/#bert">BERT</a> (<a href="https://arxiv.org/abs/1810.04805">Devlin et al., 2018</a>), many QA models develop the machine comprehension component based on BERT. Let&rsquo;s define the BERT model as a function that can take one or multiple strings (concatenated by <code>[SEP]</code>) as input and outputs a set of BERT encoding vectors for the special <code>[CLS]</code> token and every input token:</p>
+<p>Following the success of <a href="https://kibromhft.github.io/posts/2022-09-23-debug/#bert">BERT</a> (<a href="https://arxiv.org/abs/1810.04805">Devlin et al., 2018</a>), many QA models develop the machine comprehension component based on BERT. Let&rsquo;s define the BERT model as a function that can take one or multiple strings (concatenated by <code>[SEP]</code>) as input and outputs a set of BERT encoding vectors for the special <code>[CLS]</code> token and every input token:</p>
 <div>
 $$
 \text{BERT}(s_1, s_2, \dots) = [\mathbf{h}^\texttt{[CLS]}, \mathbf{h}^{(1)}, \mathbf{h}^{(2)}, \dots]
@@ -574,7 +574,7 @@ $$
 <p>After such pretraining, the BERT retriever is expected to have representations good enough for evidence retrieval. Only the question encoder needs to be fine-tuned for answer extraction. In other words, the evidence block encoder (i.e., $\mathbf{W}_z$ and $\text{BERT}_z$) is fixed and thus all the evidence block encodings can be pre-computed with support for <a href="#fast-maximum-inner-product-search-mips">fast Maximum Inner Product Search (MIPS)</a>.</p>
 <img src="ORQA-reader.png" style="width: 65%;" class="center" />
 <figcaption>Fig. 9. An illustration of the reader component in ORQA. (Image source: <a href="https://github.com/danqi/acl2020-openqa-tutorial/blob/master/slides/part5-dense-retriever-e2e-training.pdf" target="_blank">acl2020-openqa-tutorial/slides/part5</a>)</figcaption>
-<p>The reader follows the same design as in the original <a href="https://kibromhft.github.io/posts/2019-01-31-lm/#use-bert-in-downstream-tasks">BERT RC</a> experiments. It learns in a supervised manner, while the parameters of the evidence block encoder are fixed and all other parameters are fine-tuned. Given a question $x$ and a gold answer string $y$, the reader loss contains two parts:</p>
+<p>The reader follows the same design as in the original <a href="https://kibromhft.github.io/posts/2022-09-23-debug/#use-bert-in-downstream-tasks">BERT RC</a> experiments. It learns in a supervised manner, while the parameters of the evidence block encoder are fixed and all other parameters are fine-tuned. Given a question $x$ and a gold answer string $y$, the reader loss contains two parts:</p>
 <div>
 $$
 \mathcal{L}(x, y) = \mathcal{L}_\text{early}(x, y) + \mathcal{L}_\text{full}(x, y)
@@ -645,7 +645,7 @@ $$
 <ol>
 <li>Augmenting queries with relevant contexts dramatically improves the pretrained LM on unsupervised machine reading capabilities.</li>
 <li>An off-the-shelf IR system is sufficient for BERT to match the performance of a supervised ODQA baseline;</li>
-<li>BERT&rsquo;s <a href="https://kibromhft.github.io/posts/2019-01-31-lm/#pre-training-tasks">NSP</a> pre-training strategy is a highly effective unsupervised mechanism in dealing with noisy and irrelevant contexts.</li>
+<li>BERT&rsquo;s <a href="https://kibromhft.github.io/posts/2022-09-23-debug/#pre-training-tasks">NSP</a> pre-training strategy is a highly effective unsupervised mechanism in dealing with noisy and irrelevant contexts.</li>
 </ol>
 <p>They pair the BERT model with different types of context, including adversarial (unrelated context), retrieved (by BM25), and generative (by an autoregressive language model of 1.4N parameters, trained on CC-NEWS). The model is found to be robust to adversarial context, but only when the question and the context are provided as two segments (e.g. separated by <code>[SEP]</code>). One hypothesis is related to NSP task: &ldquo;BERT might learn to not condition across segments for masked token prediction if the NSP score is low, thereby implicitly detecting irrelevant and noisy contexts.&rdquo;</p>
 <p><strong>RAG</strong> (&ldquo;Retrieval-Augmented Generation&rdquo;; <a href="https://arxiv.org/abs/2005.11401">Lewis et al., 2020</a>) combines pre-trained parametric (language model) and non-parametric memory (external knowledge index) together for language generation. RAG can be fine-tuned on any seq2seq task, whereby both the retriever and the sequence generator are jointly learned. They found that unconstrained generation outperforms previous extractive approaches.</p>
@@ -681,7 +681,7 @@ $$
 <p><a href="https://arxiv.org/abs/2002.08910">Roberts et al. (2020)</a> measured the practical utility of a language model by fine-tuning a pre-trained model to answer questions without access to any external context or knowledge. They fine-tuned the <a href="https://arxiv.org/abs/1910.10683">T5</a> language model (same architecture as the original Transformer) to answer questions without inputting any additional information or context. Such setup enforces the language model to answer questions based on &ldquo;knowledge&rdquo; that it internalized during pre-training.</p>
 <img src="T5_SSM.png" style="width: 100%;" class="center" />
 <figcaption>Fig. 14. T5 is first pre-trained with salient span masking and then fine-tuned for each QA dataset to produce answers in free text. (Image source: <a href="https://arxiv.org/abs/2002.08910" target="_blank">Roberts et al. 2020</a>)</figcaption>
-<p>The original T5 models were pre-trained on a multi-task mixture including an unsupervised <a href="https://kibromhft.github.io/posts/2019-01-31-lm/#use-bert-in-downstream-tasks">&ldquo;masked language modeling&rdquo;</a> (MLM) tasks on the C4 (&ldquo;Colossal Clean Crawled Corpus&rdquo;) dataset as well as fine-tuned altogether with supervised translation, summarization, classification, and reading comprehension tasks. <a href="https://arxiv.org/abs/2002.08910">Roberts, et al. (2020)</a>  took a pre-trained T5 model and continued pre-training with <a href="#ssm">salient span masking</a> over Wikipedia corpus, which has been found to substantially boost the performance for ODQA. Then they fine-tuned the model for each QA datasets independently.</p>
+<p>The original T5 models were pre-trained on a multi-task mixture including an unsupervised <a href="https://kibromhft.github.io/posts/2022-09-23-debug/#use-bert-in-downstream-tasks">&ldquo;masked language modeling&rdquo;</a> (MLM) tasks on the C4 (&ldquo;Colossal Clean Crawled Corpus&rdquo;) dataset as well as fine-tuned altogether with supervised translation, summarization, classification, and reading comprehension tasks. <a href="https://arxiv.org/abs/2002.08910">Roberts, et al. (2020)</a>  took a pre-trained T5 model and continued pre-training with <a href="#ssm">salient span masking</a> over Wikipedia corpus, which has been found to substantially boost the performance for ODQA. Then they fine-tuned the model for each QA datasets independently.</p>
 <p>With a pre-trained T5 language model +  continue pre-training with salient spans masking + fine-tuning for each QA dataset,</p>
 <ul>
 <li>It can attain competitive results in open-domain question answering without access to external knowledge.</li>
