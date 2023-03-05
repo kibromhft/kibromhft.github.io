@@ -128,13 +128,14 @@ The effort in understanding why deep neural networks can generalize somehow remi
 		</item>
 
 		<item>
-			<title>Meta-Learning: Learning to Learn Fast</title>
+			<title>Data Analysis</title>
 			<link>https://kibromhft.github.io/posts/2022-09-08-data-analysis/</link>
-			<pubDate>Fri, 30 Nov 2018 00:00:00 +0000</pubDate>
+			<pubDate>Thu, 8 Sep 2022 00:00:00 +0000</pubDate>
 			<guid>https://kibromhft.github.io/posts/2022-09-08-data-analysis/</guid>
 			<description>
-A good machine learning model often requires training with a large number of samples. Humans, in contrast, learn new concepts and skills much faster and more efficiently. Kids who have seen cats and birds only a few times can quickly tell them apart. People who know how to ride a bike are likely to discover the way to ride a motorcycle fast with little or even no demonstration.</description>
+Data analysis is a process where the data is inspected, cleaned, transformed and modeled with the aim of extracting actionable knowledge. This knowledge can support the decision-making process in businesses. As a result, data analysis has become an essential tool for businesses to increase their competitive edge and improve operational efficiency.</description>
 		</item>
+		
 		<item>
 			<title>Flow-based Deep Generative Models</title>
 			<link>https://kibromhft.github.io/posts/2018-10-13-flow-models/</link>
