@@ -595,7 +595,7 @@ pre:hover .copy-code {
 
 .post-meta,
 .breadcrumbs {
-    color: rgb(14 150 239);/* var(--secondary); */
+    color: rgb(0,123,255);/* var(--secondary); */
     font-size: 14px;
     display: flex;
     flex-wrap: wrap
