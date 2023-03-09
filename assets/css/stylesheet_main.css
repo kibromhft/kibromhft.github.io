@@ -1609,3 +1609,25 @@ img.center {
   text-decoration: underline;
 }
 
+/* an <hr> element fade out at the end
+ */
+ .fade-out {
+  opacity: 1;
+  transition: opacity 1s ease-out;
+}
+.fade-out:after {
+  content: '';
+  display: block;
+  height: 20px;
+  width: 100%;
+  background: linear-gradient(to right, transparent, #000);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+.fade-out:hover:after {
+  opacity: 1;
+}
+
