@@ -1631,3 +1631,9 @@ img.center {
   opacity: 1;
 }
 
+.transparent-hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
