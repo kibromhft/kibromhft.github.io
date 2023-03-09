@@ -1634,6 +1634,8 @@ img.center {
 .transparent-hr {
     border: none;
     height: 1px;
+    width: 50%;
+    margin: 0 auto;
     background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 
