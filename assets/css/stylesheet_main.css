@@ -1619,7 +1619,7 @@ img.center {
   content: '';
   display: block;
   height: 20px;
-  width: 100%;
+  width: 80%;
   background: linear-gradient(to right, transparent, #000);
   position: absolute;
   bottom: 0;
