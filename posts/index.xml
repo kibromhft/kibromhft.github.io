@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/">
+	<channel>
+		<title>Posts on Kb&#39;s Blog</title>
+		<link>https://kibromhft.github.io/posts/</link>
+		<description>Recent content in Posts on Kb&#39;s Blog</description>
+		<generator>Hugo -- gohugo.io</generator>
+		<language>en-us</language>
+		<lastBuildDate>Thu, 08 Sep 2022 10:00:00 -0700</lastBuildDate>
+		<atom:link href="https://kibromhft.github.io/posts/index.xml"
+		           rel="self"
+		           type="application/rss+xml"/>
+		<item>
+			<title>Jobs in the Digital Era</title>
+			<link>https://kibromhft.github.io/posts/2023-01-03-automation/</link>
+			<pubDate>Thu, 08 Sep 2022 10:00:00 -0700</pubDate>
+			<guid>https://kibromhft.github.io/posts/2023-01-03-automation/</guid>
+			<description>As we enter the digital age, one thing is certain: technology is not just a trend, it's a game-changer. With each passing day, technology is making its way into more and more industries, bringing about a variety of benefits for society such as increased efficiency, improved communication, and access to information. But, with change comes challenges, and one of the biggest concerns is the displacement of jobs.
+Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolution of neural networks during training via gradient descent.</description>
+		</item>
+
+		<item>
+			<title>Learning with not Enough Data Part 3: Data Generation</title>
+			<link>https://kibromhft.github.io/posts/2022-04-15-data-gen/</link>
+			<pubDate>Fri, 15 Apr 2022 15:10:30 -0700</pubDate>
+			<guid>https://kibromhft.github.io/posts/2022-04-15-data-gen/</guid>
+			<description>Here comes the Part 3 on learning with not enough data (Previous: Part 1 and Part 2). Let’s consider two approaches for generating synthetic data for training.
+ Augmented data. Given a set of existing training samples, we can apply a variety of augmentation, distortion and transformation to derive new data points without losing the key attributes. We have covered a bunch of augmentation methods on text and images in a previous post on contrastive learning.</description>
+		</item>
+		<item>
+			<title>Causality in Machine Learning</title>
+			<link>https://kibromhft.github.io/posts/2022-11-20-causality_in_ML/</link>
+			<pubDate>Sun, 20 Feb 2022 00:00:00 +0000</pubDate>
+			<guid>https://kibromhft.github.io/posts/2022-11-20-causality_in_ML/</guid>
+			<description>Are you tired of making predictions based on correlation rather than causation? Introducing Causality in Machine Learning, a cutting-edge approach to understanding the underlying causes of complex data patterns. By incorporating causal inference techniques, we can gain a deeper understanding of how different variables interact and affect each other, leading to more accurate predictions and informed decision-making.</description>
+		</item>
+		<item>
+			<title>Disentangling the Latent Space: A Guide to Beta-VAE</title>
+			<link>https://kibromhft.github.io/posts/2022-11-27-vae/</link>
+			<pubDate>Thu, 24 Feb 2022:00:00 +0000</pubDate>
+			<guid>https://kibromhft.github.io/posts/2022-11-27-vae/</guid>
+			<description> 
+Autocoder is invented to reconstruct high-dimensional data using a neural network model with a narrow bottleneck layer in the middle (oops, this is probably not true for Variational Autoencoder, and we will investigate it in details in later sections). A nice byproduct is dimension reduction: the bottleneck layer captures a compressed latent encoding.</description>
+		</item>
+		<item>
+			<title>Learning with not Enough Data Part 1: Semi-Supervised Learning</title>
+			<link>https://kibromhft.github.io/posts/2021-12-05-semi-supervised/</link>
+			<pubDate>Sun, 05 Dec 2021 00:00:00 +0000</pubDate>
+			<guid>https://kibromhft.github.io/posts/2021-12-05-semi-supervised/</guid>
+			<description>When facing a limited amount of labeled data for supervised learning tasks, four approaches are commonly discussed.
+ Pre-training + fine-tuning: Pre-train a powerful task-agnostic model on a large unsupervised data corpus, e.g. pre-training LMs on free text, or pre-training vision models on unlabelled images via self-supervised learning, and then fine-tune it on the downstream task with a small set of labeled samples. Semi-supervised learning: Learn from the labelled and unlabeled samples together.</description>
+		</item>
+		<item>
+			<title>How to Train Really Large Models on Many GPUs?</title>
+			<link>https://kibromhft.github.io/posts/2021-09-25-train-large/</link>
+			<pubDate>Fri, 24 Sep 2021 00:00:00 +0000</pubDate>
+			<guid>https://kibromhft.github.io/posts/2021-09-25-train-large/</guid>
+			<description>[Updated on 2022-03-13: add expert choice routing.] [Updated on 2022-06-10]: Greg and I wrote a shorted and upgraded version of this post, published on OpenAI Blog: &amp;ldquo;Techniques for Training Large Neural Networks&amp;rdquo;
+In recent years, we are seeing better results on many NLP benchmark tasks with larger pre-trained language models. How to train large and deep neural networks is challenging, as it demands a large amount of GPU memory and a long horizon of training time.</description>
+		</item>
+		<item>
+			<title>What are Diffusion Models?</title>
+			<link>https://kibromhft.github.io/posts/2021-07-11-diffusion-models/</link>
+			<pubDate>Sun, 11 Jul 2021 00:00:00 +0000</pubDate>
+			<guid>https://kibromhft.github.io/posts/2021-07-11-diffusion-models/</guid>
+			<description>[Updated on 2021-09-19: Highly recommend this blog post on score-based generative modeling by Yang Song (author of several key papers in the references)]. [Updated on 2022-08-27: Added classifier-free guidance, GLIDE, unCLIP and Imagen. [Updated on 2022-08-31: Added latent diffusion model.
+So far, I&amp;rsquo;ve written about three types of generative models, GAN, VAE, and Flow-based models. They have shown great success in generating high-quality samples, but each has some limitations of its own.</description>
+		</item>
+
+		<item>
+			<title>Reducing Toxicity in Language Models</title>
+			<link>https://kibromhft.github.io/posts/2021-03-21-lm-toxicity/</link>
+			<pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate>
+			<guid>https://kibromhft.github.io/posts/2021-03-21-lm-toxicity/</guid>
+			<description>Large pretrained language models are trained over a sizable collection of online data. They unavoidably acquire certain toxic behavior and biases from the Internet. Pretrained language models are very powerful and have shown great success in many NLP tasks. However, to safely deploy them for practical real-world applications demands a strong safety control over the model generation process.
+Many challenges are associated with the effort to diminish various types of unsafe content:</description>
+		</item>
+		<item>
+			<title>Controllable Neural Text Generation</title>
+			<link>https://kibromhft.github.io/posts/2021-01-02-controllable-text-generation/</link>
+			<pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
+			<guid>https://kibromhft.github.io/posts/2021-01-02-controllable-text-generation/</guid>
+			<description>[Updated on 2021-02-01: Updated to version 2.0 with several work added and many typos fixed.] [Updated on 2021-05-26: Add P-tuning and Prompt Tuning in the &amp;ldquo;prompt design&amp;rdquo; section.] [Updated on 2021-09-19: Add &amp;ldquo;unlikelihood training&amp;rdquo;.]
+There is a gigantic amount of free text on the Web, several magnitude more than labelled benchmark datasets. The state-of-the-art language models (LM) are trained with unsupervised Web data in large scale. When generating samples from LM by iteratively sampling the next token, we do not have much control over attributes of the output text, such as the topic, the style, the sentiment, etc.</description>
+		</item>
+		<item>
+			<title>How to Build an Open-Domain Question Answering System?</title>
+			<link>https://kibromhft.github.io/posts/2020-10-29-odqa/</link>
+			<pubDate>Thu, 29 Oct 2020 00:00:00 +0000</pubDate>
+			<guid>https://kibromhft.github.io/posts/2020-10-29-odqa/</guid>
+			<description>[Updated on 2020-11-12: add an example on closed-book factual QA using OpenAI API (beta).
+A model that can answer any question with regard to factual knowledge can lead to many useful and practical applications, such as working as a chatbot or an AI assistant🤖. In this post, we will review several common approaches for building such an open-domain question answering system.
+Disclaimers given so many papers in the wild:
+ Assume we have access to a powerful pretrained language model.</description>
+		</item>
+		<item>
+			<title>2022-10-06-overfit_DNNDemystifying Overfitting in Deep Neural Networks: Separating Fact from Fiction</title>
+			<link>https://kibromhft.github.io/posts/2022-10-06-overfit_DNN/</link>
+			<pubDate>Thu, 06 Aug 2020 00:00:00 +0000</pubDate>
+			<guid>https://kibromhft.github.io/posts/2022-10-06-overfit_DNN/</guid>
+			<description>Although most popular and successful model architectures are designed by human experts, it doesn&amp;rsquo;t mean we have explored the entire network architecture space and settled down with the best option. We would have a better chance to find the optimal solution if we adopt a systematic and automatic way of learning high-performance model architectures.
+Automatically learning and evolving network topologies is not a new idea (Stanley &amp;amp; Miikkulainen, 2002). In recent years, the pioneering work by Zoph &amp;amp; Le 2017 and Baker et al.</description>
+		</item>
+		<item>
+			<title>Exploration Strategies in Deep Reinforcement Learning</title>
+			<link>https://kibromhft.github.io/posts/2020-06-07-exploration-drl/</link>
+			<pubDate>Sun, 07 Jun 2020 00:00:00 +0000</pubDate>
+			<guid>https://kibromhft.github.io/posts/2020-06-07-exploration-drl/</guid>
+			<description>[Updated on 2020-06-17: Add &amp;ldquo;exploration via disagreement&amp;rdquo; in the &amp;ldquo;Forward Dynamics&amp;rdquo; section.
+Exploitation versus exploration is a critical topic in Reinforcement Learning. We&amp;rsquo;d like the RL agent to find the best solution as fast as possible. However, in the meantime, committing to solutions too quickly without enough exploration sounds pretty bad, as it could lead to local minima or total failure. Modern RL algorithms that optimize for the best returns can achieve good exploitation quite efficiently, while exploration remains more like an open topic.</description>
+		</item>
+
+
+
+
+
+		<item>
+			<title>Data Analysis</title>
+			<link>https://kibromhft.github.io/posts/2022-09-08-data-analysis/</link>
+			<pubDate>Thu, 8 Sep 2022 00:00:00 +0000</pubDate>
+			<guid>https://kibromhft.github.io/posts/2022-09-08-data-analysis/</guid>
+			<description>
+Data analysis is a process where the data is inspected, cleaned, transformed and modeled with the aim of extracting actionable knowledge. This knowledge can support the decision-making process in businesses. As a result, data analysis has become an essential tool for businesses to increase their competitive edge and improve operational efficiency.</description>
+		</item>
+		
+	</channel>
+</rss>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>data on Kb&#39;s Blog</title>
+    <link>https://kibromhft.github.io/keywords/data/</link>
+    <description>Recent content in data on Kb&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Apr 2022 15:10:30 -0700</lastBuildDate><atom:link href="https://kibromhft.github.io/keywords/data/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Learning with not Enough Data Part 3: Data Generation</title>
+      <link>https://kibromhft.github.io/posts/2022-04-15-data-gen/</link>
+      <pubDate>Fri, 15 Apr 2022 15:10:30 -0700</pubDate>
+      
+      <guid>https://kibromhft.github.io/posts/2022-04-15-data-gen/</guid>
+      <description>Here comes the Part 3 on learning with not enough data (Previous: Part 1 and Part 2). Let’s consider two approaches for generating synthetic data for training.
+ Augmented data. Given a set of existing training samples, we can apply a variety of augmentation, distortion and transformation to derive new data points without losing the key attributes. We have covered a bunch of augmentation methods on text and images in a previous post on contrastive learning.</description>
+    </item>
+    
+    <item>
+      <title>Causality in Machine Learning</title>
+      <link>https://kibromhft.github.io/posts/2022-11-20-causality_in_ML/</link>
+      <pubDate>Sun, 20 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://kibromhft.github.io/posts/2022-11-20-causality_in_ML/</guid>
+      <description>Are you tired of making predictions based on correlation rather than causation? Introducing Causality in Machine Learning, a cutting-edge approach to understanding the underlying causes of complex data patterns. By incorporating causal inference techniques, we can gain a deeper understanding of how different variables interact and affect each other, leading to more accurate predictions and informed decision-making.</description>
+    </item>
+    
+    <item>
+      <title>Learning with not Enough Data Part 1: Semi-Supervised Learning</title>
+      <link>https://kibromhft.github.io/posts/2021-12-05-semi-supervised/</link>
+      <pubDate>Sun, 05 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kibromhft.github.io/posts/2021-12-05-semi-supervised/</guid>
+      <description>When facing a limited amount of labeled data for supervised learning tasks, four approaches are commonly discussed.
+ Pre-training + fine-tuning: Pre-train a powerful task-agnostic model on a large unsupervised data corpus, e.g. pre-training LMs on free text, or pre-training vision models on unlabelled images via self-supervised learning, and then fine-tune it on the downstream task with a small set of labeled samples. Semi-supervised learning: Learn from the labelled and unlabeled samples together.</description>
+    </item>
+    
+  </channel>
+</rss>

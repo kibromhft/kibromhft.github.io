@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Causality in Machine Learning | Kb&#39;s Blog</title>
+<meta name="keywords" content="data, active-learning" />
+<meta name="description" content="Are you tired of making predictions based on correlation rather than causation? Introducing Causality in Machine Learning, a cutting-edge approach to understanding the underlying causes of complex data patterns. By incorporating causal inference techniques, we can gain a deeper understanding of how different variables interact and affect each other, leading to more accurate predictions and informed decision-making.">
+<meta name="author" content="kibrom Haftu">
+<link rel="canonical" href="https://kibromhft.github.io/posts/2022-11-20-causality_in_ML/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet_main.css"  rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kibromhft.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kibromhft.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kibromhft.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kibromhft.github.io/safari-pinned-tab.svg">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-8161570-5', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script><meta property="og:title" content="Causality in Machine Learning" />
+<meta property="og:description" content="In ML, we often focus on the relationship between inputs and outputs. But, have you ever wondered if there is more to the story? Are there underlying relationships between variables that we're missing? It is here that causality comes into play. Causality refers to the relationship between an event (the cause) and a second event (the effect), where the second event is a result of the first. Understanding causality is crucial for making accurate predictions and informed decisions. By taking into account the causal relationships between variables, we can improve the performance of our models and gain deeper insights into the underlying mechanisms that generate the data." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kibromhft.github.io/posts/2022-11-20-causality_in_ML/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-02-20T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2022-02-20T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Causality in Machine Learning"/>
+<meta name="twitter:description" content="In ML, we often focus on the relationship between inputs and outputs. But, have you ever wondered if there is more to the story? Are there underlying relationships between variables that we're missing? It is here that causality comes into play. Causality refers to the relationship between an event (the cause) and a second event (the effect), where the second event is a result of the first. Understanding causality is crucial for making accurate predictions and informed decisions. By taking into account the causal relationships between variables, we can improve the performance of our models and gain deeper insights into the underlying mechanisms that generate the data."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kibromhft.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Causality in Machine Learning",
+      "item": "https://kibromhft.github.io/posts/2022-11-20-causality_in_ML/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Causality in Machine Learning",
+  "name": "Causality in Machine Learning",
+  "description": "In ML, we often focus on the relationship between inputs and outputs. But, have you ever wondered if there is more to the story? Are there underlying relationships between variables that we're missing? It is here that causality comes into play. Causality refers to the relationship between an event (the cause) and a second event (the effect), where the second event is a result of the first. Understanding causality is crucial for making accurate predictions and informed decisions. By taking into account the causal relationships between variables, we can improve the performance of our models and gain deeper insights into the underlying mechanisms that generate the data.",
+  "keywords": [
+    "data", "active-learning"
+  ],
+  "articleBody": "In ML, we often focus on the relationship between inputs and outputs. But, have you ever wondered if there is more to the story? Are there underlying relationships between variables that we're missing? It is here that causality comes into play. Causality refers to the relationship between an event (the cause) and a second event (the effect), where the second event is a result of the first. Understanding causality is crucial for making accurate predictions and informed decisions. By taking into account the causal relationships between variables, we can improve the performance of our models and gain deeper insights into the underlying mechanisms that generate the data..\n",
+  "wordCount" : "4584",
+  "inLanguage": "en",
+  "datePublished": "2022-02-20T00:00:00Z",
+  "dateModified": "2022-02-20T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "kibrom Haftu"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kibromhft.github.io/posts/2022-11-20-causality_in_ML/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lil'Log",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kibromhft.github.io/favicon_peach.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kibromhft.github.io/" accesskey="h" title="Kb&#39;s Blog (Alt + H)">Kb&#39;s Blog</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+       <ul id="menu">
+
+		
+		  <li>
+			<a href="https://kibromhft.github.io/" title="Home">
+			  Home <span class="caret fa fa-home"></span>
+			</a>
+		  </li>
+		  
+
+		  <li>
+			<a href="https://kibromhft.github.io/archives/" title="Archives">
+			  <span>Archives</span>
+			</a>
+		  </li>
+		  
+
+
+		  <li>
+			<a href="https://kibromhft.github.io/data/" title="Data">
+			  <span>Data</span>
+			</a>
+		  </li>
+		  <li>
+			<a href="https://kibromhft.github.io/keywords/" title="keywords">
+			  <span>Keywords</span>
+			</a>
+		  </li>
+		  <li>
+			<a href="https://kibromhft.github.io/faq" title="FAQ">
+			  <span>FAQs</span>
+			</a>
+		  </li>
+		  
+<!-- 		  <li>
+			<a href="https://kibromhft.github.io/cv" title="cv">
+			  <span>CV</span>
+			</a>
+		  </li> -->
+
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+			  Insights <span class="caret fa fa-bars" data-toggle="dropdown"></span>
+			</a>
+		  <ul class="dropdown-menu" style="padding: 0px;">
+			<li class="header-height first">
+			  <a href="https://kibromhft.github.io/podcast">Podcast</a>
+			</li>
+			<li class="header-height separator" style="padding: 0px;>
+			  <a href="#">African Innovators</a>
+			</li>
+			<li class="header-height separator" style="padding: 0px;>
+			  <a href="#">Technology Trends</a>
+			</li>
+			<li class="header-height" style="padding: 0px;>
+			  <a href="#">Resources</a>
+			</li>
+		  </ul>
+		</li>
+		
+		</ul>
+		
+    </nav>
+</header>
+
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      Causality in Machine Learning
+    </h1>
+    <div class="post-meta"><span title='2022-02-20 00:00:00 +0000 UTC'>November 20, 2022</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;kibrom Haftu
+
+</div>
+  </header> 
+
+  <div class="post-content">
+  
+<p><strong>Causality in Machine Learning</strong>:</p>
+<p>Uncovering the Hidden Relationships in our Data</p>
+<p>Machine learning (ML) is a rapidly growing field that has the potential to revolutionize many industries. It allows us to extract insights from data and make predictions about the future. However, traditional ML techniques focus mainly on prediction and model accuracy and don't account for the <strong>underlying causal relationships</strong> between variables. This can lead to models that are not robust, do not generalize well, and do not provide clear explanations for their predictions. This is where causality comes in.</p>
+<p>In ML, we often focus on the relationship between inputs and outputs. But, have you ever wondered if there is more to the story? Are there underlying relationships between variables that we're missing? It is here that causality comes into play. <strong>Causality</strong> refers to the relationship between an event (the cause) and a second event (the effect), where the second event is a result of the first. Understanding causality is crucial for making accurate predictions and informed decisions. By taking into account the causal relationships between variables, we can improve the performance of our models and gain deeper insights into the underlying mechanisms that generate the data.</p>
+<p>In this blog post, we will explore the power of causality in ML and how it can be used to uncover hidden relationships in our data, make accurate predictions, and improve our ability to make informed decisions. Don't let your models be limited by correlation. Dive into the world of causality and unlock the full potential of your data.</p>
+<p>Traditional ML techniques are based on correlation, which is the relationship between two variables, where they tend to change together. However, correlation does not imply causation, and so traditional ML models may make predictions based on spurious correlations that do not reflect real causal relationships. Additionally, traditional ML models do not account for the impact of interventions and do not allow for counterfactual reasoning, which is the ability to understand the potential outcomes of different actions. This limits their ability to make optimal decisions and understand the underlying mechanisms that generate the data.</p>
+<p>"Causality is the holy grail of science" - Judea Pearl</p>
+<p><strong>Differentiating Correlation from Causality</strong></p>
+<p>One of the main challenges in understanding causality is differentiating it from correlation. Correlation refers to the relationship between two variables, where they tend to change together. For example, ice cream sales and crime rates may be positively correlated, but it is not reasonable to assume that ice cream causes crime. On the other hand, causality refers to the relationship where a change in one variable directly causes a change in another variable. For example, smoking causes an increased risk of lung cancer.</p>
+<p>"Correlation does not imply causation" - Unknown</p>
+<p><strong>The Gold Standard: Randomized Controlled Experiments</strong></p>
+<p>One of the most reliable ways to establish causality is through randomized controlled experiments. In these experiments, a treatment is applied to a randomly selected group, and the effect of the treatment is compared to a control group that did not receive the treatment. By comparing the outcomes of the two groups, we can establish a causal relationship between the treatment and the outcome. However, it is not always possible to conduct experiments in real-world settings due to ethical, practical and financial constraints.</p>
+<p>The Do-Calculus Framework for Causal Inference</p>
+<p>Another widely used framework for causal inference is the "do-calculus" introduced by Judea Pearl in his book "The Book of Why: The New Science of Cause and Effect". The do-calculus allows us to reason about causality using a set of mathematical rules. By using this framework, we can define the causal effect of one variable on another using the equation:</p>
+<p>$\mathbf{P(y|do(x)) - P(y)}$</p>
+<p>This equation states that the causal effect of $\mathbf{x}$ on $\mathbf{y}$ is the difference between the probability of $\mathbf{y}$ occurring when $\mathbf{x}$ is forced to happen (denoted by $\mathbf{do(x)}$) and the probability of $\mathbf{y}$ occurring without any intervention on $\mathbf{x}$.</p>
+<p><strong>Challenges in Establishing Causality</strong></p>
+<p>Establishing causality is not always a straightforward task, there are several challenges that need to be addressed. For example, in observational studies, it may be difficult to control for all confounding factors that could affect the outcome. Additionally, in complex systems, it may be difficult to identify all the relevant variables and their causal relationships.</p>
+<p><strong>Causality in ML Applications</strong></p>
+<p>Causality can be applied in various ways in ML. For example, <strong>causal inference</strong> can be used to identify the most important features in a dataset, or to understand the impact of a specific intervention on a system. Additionally, causality can be used to improve the performance of predictive models by accounting for the underlying causal relationships in the data.</p>
+<p>One specific application of causality in ML is in <strong>causal discovery</strong>, which is the process of identifying the causal relationships among variables in a dataset. This can be done using methods such as the PC algorithm, which is based on the idea that if two variables are independent given the set of other variables, then there is no direct causal relationship between them. Another method is the IC algorithm, which is based on the concept of d-separation in graphical models. These methods can be used to uncover hidden causal relationships in the data, which can be used to improve the performance of predictive models.</p>
+<p>Another application of causality in ML is in <strong>counterfactual reasoning,</strong> which is the process of understanding the potential outcomes of different actions or interventions. This can be done using methods such as counterfactual fairness, which is a way to ensure that a model's predictions are fair with respect to different subgroups in the population. Additionally, counterfactual reasoning can be used to understand the impact of different interventions on a system, such as the impact of a new policy on crime rates.</p>
+<p><strong>Causality in Causal ML</strong></p>
+<p>Causal ML is a field that uses causality as a guiding principle to design and evaluate ML models. The goal of causal ML is to build models that can predict the consequences of interventions. This is different from traditional ML, which is mainly focused on prediction.</p>
+<p>The main idea behind causal ML is to use causal models to represent the underlying mechanisms that generate the data, and to use these models to make predictions about the consequences of interventions. A causal model is a directed acyclic graph (DAG) that encodes the causal relationships among variables. A DAG is a graphical representation of a set of variables and their relationships.</p>
+<p>One important aspect of Causal ML is the ability to perform counterfactual reasoning, which is the ability to reason about what would have happened if an intervention were applied. This is a powerful tool in decision making as it allows one to understand the potential outcomes of different actions before committing to them.</p>
+<p><strong>Causality in Reinforcement Learning</strong></p>
+<p>Reinforcement learning (RL) is a type of ML where an agent learns to make decisions by interacting with its environment. In RL, causality plays a crucial role as the agent's actions cause changes in the environment that in turn affect the agent's future rewards. In order to make good decisions, the agent needs to understand the causal relationships between its actions and the rewards it receives.</p>
+<p>In RL, the causal relationship between actions and rewards is typically represented using a Markov Decision Process (MDP). An MDP is a mathematical model that describes the agent's decision-making process. It includes a set of states, a set of actions, and a set of rewards. The agent chooses its actions based on the current state of the environment, and the environment's response to the agent's actions is determined by a set of transition probabilities.</p>
+<p><strong>Causality in Transfer Learning</strong></p>
+<p>Transfer learning is a technique that allows a model trained on one task to be applied to another related task. In transfer learning, it is important to understand the causal relationships between the tasks in order to ensure that the model is able to transfer the knowledge learned from the source task to the target task. By understanding the causal relationships between the tasks, we can select the most relevant features to transfer and avoid transferring irrelevant information.</p>
+<p><strong>Causality in Model Interpretation</strong></p>
+<p>Causality is also important for interpreting ML models. In traditional ML, the focus is on prediction and model accuracy. However, in many real-world applications, it is important to understand why a model is making certain predictions. This is where causality comes in. By understanding the causal relationships between the inputs and the outputs, we can gain insights into the underlying mechanisms that generate the data and how a model is making its predictions.</p>
+<p><strong>Causality in Model Explainability</strong></p>
+<p>Explainability is the ability of a model to provide clear and understandable explanations of its predictions. In recent years, there has been a growing interest in developing explainable ML models. One approach to explainable ML is to use causal models to represent the underlying mechanisms that generate the data. By using causal models, we can provide clear and understandable explanations of how a model is making its predictions.</p>
+<p>&nbsp;</p>
+<p><strong>Causality in Time-series Data</strong></p>
+<p>Time-series data is a type of data that is collected over time, and understanding causality in this type of data can be particularly challenging. In traditional time-series analysis, the focus is on finding patterns and trends in the data, but this does not necessarily imply causality. Establishing causality in time-series data requires additional methods and techniques.</p>
+<p>One commonly used method for establishing causality in time-series data is <strong>Granger causality</strong>. This method is based on the idea that if a variable X is found to be useful in predicting the future values of another variable Y, then X is said to have a causal relationship with Y. This method uses statistical tests to determine whether the inclusion of X improves the prediction of Y beyond what would be expected by chance.</p>
+<p>Another method that can be used is <strong>transfer entropy</strong>. This method is based on the concept of information theory and measures the amount of information that is transferred from one time-series to another. It can be used to establish causality by identifying the direction of information flow between variables.</p>
+<p>It is important to note that while these methods can provide strong evidence for causality, they are not conclusive and must be used in conjunction with other methods and domain knowledge. Additionally, in time-series data, the effects of interventions may take time to manifest and may be confounded by other variables that change over time.</p>
+<p><strong>Causality in Causal Inference for Decision Making</strong></p>
+<p>Causality plays a crucial role in decision making as it allows us to understand the potential outcomes of different actions. By understanding causality, we can make better decisions by identifying the cause-and-effect relationships that drive the outcomes we care about.</p>
+<p>One popular method for using causality in decision making is counterfactual reasoning. This method allows us to understand what would have happened if an intervention were applied by comparing the outcome of the actual intervention to the counterfactual outcome of not applying the intervention. This can be used to evaluate the effectiveness of a policy or treatment and identify the potential trade-offs of different actions.</p>
+<p>Another method for using causality in decision making is decision-theoretic causal inference. This method combines causal inference with decision theory to identify the optimal decision based on the causal relationships in the data. This can be used to make decisions about treatment or policy interventions by identifying the intervention that is most likely to achieve a desired outcome.</p>
+<p>It is important to note that causality in decision making requires a clear understanding of the underlying causal mechanisms and the potential confounding factors that may affect the outcome. Additionally, decision-making based on causality can be subject to ethical considerations and trade-offs, such as the potential harm or benefits to different groups in the population.</p>
+<p><strong>Conclusion</strong></p>
+<p>In conclusion, causality is a fundamental concept in ML that can help us understand the underlying relationships between variables and improve the performance of our models. By using methods such as randomized controlled experiments, the do-calculus framework, and causal discovery, we can establish causality and make more informed decisions about how to use our models in the real world.</p>
+<p>Causality has many applications in ML, including in counterfactual reasoning, causal ML, reinforcement learning, transfer learning, model interpretation and explainability. Additionally, causality plays a crucial role in time-series data and decision making, allowing us to identify patterns and trends, and make optimal decisions based on the causal relationships in the data.</p>
+<p>However, it is important to keep in mind that causality is a complex and challenging concept, and there is always a degree of uncertainty in any causal inference. Additionally, the use of causality in ML may raise ethical considerations, such as fairness and bias. It is crucial to understand the limitations and potential biases of the methods used for causal inference, and to use them in conjunction with domain knowledge and other methods to ensure the most accurate and reliable results.</p>
+ 
+
+  </div>
+
+  <footer class="post-footer">
+
+    <ul class="post-tags">
+	  <li><a href="https://kibromhft.github.io/keywords/Causality-in-AI/">Causality in AI</a></li>
+      <li><a href="https://kibromhft.github.io/keywords/data/">data</a></li>
+      <li><a href="https://kibromhft.github.io/keywords/machine-learning/">Machine Learning</a></li>
+	  <li><a href="https://kibromhft.github.io/keywords/causal-inference/">Causal inference</a></li>
+      <li><a href="https://kibromhft.github.io/keywords/causal-models/">Causal models</a></li>
+	  <li><a href="https://kibromhft.github.io/keywords/causal-relationships/">Causal relationships</a></li>
+    </ul>
+
+<nav class="paginav">
+  <a class="prev" href="https://kibromhft.github.io/posts/2022-11-27-vae/">
+    <span class="title"> Recommended Reading: </span>
+    <br>
+    <span>Disentangling the Latent Space: A Guide to Beta-VAE</span>
+  </a>
+  
+ <a class="prev" href="https://kibromhft.github.io/posts/2022-12-19-coding/">
+   
+    <br>
+    <span>Coding AI: The New Literacy</span>
+  </a>
+  
+</nav>
+
+<div class="share-buttons">
+
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Causality in Machine Learning on twitter"
+        href="https://twitter.com/intent/tweet/?text=Causality%in%Machine%Learning&amp;url=https%3a%2f%2fkibromhft.github.io%2fposts%2f2022-11-20-causality_in_ML%2f&amp;hashtags=autoencoder%2cgenerative-model%2cimage-generation">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Causality in Machine Learning on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fkibromhft.github.io%2fposts%2f2022-11-20-causality_in_ML%2f&amp;title=Causality%in%Machine%Learning&amp;summary=From%20Autoencoder%20to%20Beta-VAE&amp;source=https%3a%2f%2fkibromhft.github.io%2fposts%2f2022-11-20-causality_in_ML%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Causality in Machine Learning on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2fkibromhft.github.io%2fposts%2f2022-11-20-causality_in_ML%2f&title=Causality%in%Machine%Learning">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+  
+
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Causality in Machine Learning on telegram"
+        href="https://telegram.me/share/url?text=Causality%in%Machine%Learning&amp;url=https%3a%2f%2fkibromhft.github.io%2fposts%2f2022-11-20-causality_in_ML%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://kibromhft.github.io/">Kb&#39;s Blog</a></span>
+
+</footer>
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g" style="visibility: visible; opacity: 1;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
+        <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="rgb(192, 132, 224)"/>
+            <stop offset="100%" stop-color="rgb(153, 0, 204)"/>
+        </linearGradient>
+        <path d="M12 6H0l6-6z" fill="url(#grad)"></path>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
