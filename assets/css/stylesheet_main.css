@@ -297,10 +297,10 @@ img {
 .nav {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     max-width: calc(var(--nav-width) + var(--gap) * 2);
     margin-inline-start: auto;
-    margin-inline-end: auto;
+    /* margin-inline-end: auto; */
     line-height: var(--header-height)
 }
 
@@ -1489,7 +1489,8 @@ FontAwesome styles
   content: "\f04c";
 }
 
- */
+
+ */
 
 
 
