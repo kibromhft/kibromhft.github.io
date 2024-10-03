@@ -105,6 +105,7 @@ if (!doNotTrack) {
 <body class="list" id="top">
 
 <script>
+    // Existing initial theme setting code
     if (localStorage.getItem("pref-theme") === "dark") {
         document.body.classList.add('dark');
     } else if (localStorage.getItem("pref-theme") === "light") {
@@ -113,6 +114,11 @@ if (!doNotTrack) {
         document.body.classList.add('dark');
     }
 
+    // Add this new code for theme toggle functionality
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+        localStorage.setItem("pref-theme", document.body.classList.contains("dark") ? "dark" : "light");
+    });
 </script>
 
 
