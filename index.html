@@ -203,7 +203,7 @@ if (!doNotTrack) {
 
         /* Fixed logo styles */
         body.dark .nav {
-            position: fixed;
+            position: relative; /* Ensure the nav is a positioning context */
             top: 0;
             left: 0;
             width: 100%;
@@ -213,8 +213,10 @@ if (!doNotTrack) {
         }
 
         body.dark .nav .logo {
-            /* Assuming your logo is inside the nav and has a class 'logo' */
-            display: inline-block;
+            position: fixed;
+            top: 20px; /* Adjust as needed */
+            left: 20px; /* Adjust as needed */
+            z-index: 1001; /* Ensure it's above other fixed elements */
             /* Add any specific styles for your logo here */
         }
 
@@ -225,7 +227,7 @@ if (!doNotTrack) {
 
         /* Ensure other nav items align properly */
         body.dark .nav > *:not(.logo) {
-            margin-left: auto;
+            margin-left: 100px; /* Adjust based on your logo's width */
         }
 
         /* ... existing styles ... */
