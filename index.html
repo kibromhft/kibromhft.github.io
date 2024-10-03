@@ -200,7 +200,21 @@ if (!doNotTrack) {
         body.dark a:hover {
             color: #88C0D0; /* A slightly brighter teal for hover state */
         }
+
+        /* Fixed logo styles */
+        body.dark .logo-container {
+            position: fixed;
+            top: 20px; /* Adjust this value to match your layout */
+            left: 20px; /* Adjust this value to match your layout */
+            z-index: 1000; /* Ensure the logo stays on top of other elements */
+        }
+
+        /* Adjust the main content to prevent overlap with the fixed logo */
+        body.dark .main-content {
+            padding-top: 100px; /* Adjust this value based on your logo's height */
+        }
     </style>
+
 
 
 
