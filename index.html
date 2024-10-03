@@ -215,8 +215,13 @@ if (!doNotTrack) {
         }
 
         body.dark .nav .logo {
-            /* Styles for the logo, if needed */
-            margin-right: auto; /* Push other nav items to the right */
+            /* Adjust the margin-right to move the logo closer to the home button */
+            margin-right: -80px; /* Adjust this value as needed */
+        }
+
+        /* Adjust other nav items to compensate for the logo's negative margin */
+        body.dark .nav > *:not(.logo) {
+            margin-left: 80px; /* Should match the absolute value of the logo's margin-right */
         }
 
         /* Adjust the main content to prevent overlap with the fixed nav */
@@ -224,13 +229,9 @@ if (!doNotTrack) {
             padding-top: calc(var(--header-height) + 20px); /* Adjust based on your nav height */
         }
 
-        /* Ensure other nav items align properly */
-        body.dark .nav > *:not(.logo) {
-            margin-left: 100px; /* Adjust based on your logo's width */
-        }
-
         /* ... existing styles ... */
     </style>
+
 
 
 
