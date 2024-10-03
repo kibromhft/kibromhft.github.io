@@ -121,8 +121,15 @@ if (!doNotTrack) {
     });
 </script>
     
-    <style>
+    
+	    <style>
         /* Dark mode styles */
+        body.dark {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+        /* General content */
         body.dark .first-entry,
         body.dark .entry-header,
         body.dark .entry-content,
@@ -133,20 +140,7 @@ if (!doNotTrack) {
             background-color: #333333;
         }
 
-        body.dark .icon-image {
-            filter: invert(1);
-        }
-
-        body.dark h2 {
-            color: #ffffff;
-        }
-
-        body.dark .social-icon-link-pad img,
-        body.dark .social-icon-cv-link-pad img {
-            filter: invert(1);
-        }
-
-        /* Styles for the Featured Posts section */
+        /* Featured Posts section */
         body.dark .w-col.w-col-6 {
             background-color: #333333 !important;
         }
@@ -155,30 +149,53 @@ if (!doNotTrack) {
             color: #ffffff !important;
         }
 
-        /* Styles for the social media links section */
-        body.dark .about-block {
+        /* Social media links section */
+        body.dark .about-block,
+        body.dark .social-link-group-tight,
+        body.dark .columns-front-page {
             background-color: #333333;
         }
 
         body.dark .social-icon-link-pad img,
-        body.dark .social-icon-cv-link-pad img {
+        body.dark .social-icon-cv-link-pad img,
+        body.dark .social-link-group-tight img,
+        body.dark .icon-image {
             filter: invert(1);
         }
 
-        /* If the background of the icons needs to be adjusted */
         body.dark .social-icon-link-pad,
-        body.dark .social-icon-cv-link-pad {
+        body.dark .social-icon-cv-link-pad,
+        body.dark .social-link-group-tight a {
             background-color: #333333;
         }
 
-        /* Adjust text color if needed */
         body.dark .about-block,
-        body.dark .about-block a {
+        body.dark .about-block a,
+        body.dark .social-link-group-tight,
+        body.dark .social-link-group-tight a,
+        body.dark .columns-front-page {
             color: #ffffff;
         }
-        /* Add more specific styles as needed */
-    </style>
 
+        /* Additional elements */
+        body.dark h2,
+        body.dark .small-heading {
+            color: #ffffff;
+        }
+
+        body.dark .space {
+            background-color: #333333;
+        }
+
+        /* Adjust link colors in dark mode if needed */
+        body.dark a {
+            color: #add8e6; /* Light blue, adjust as needed */
+        }
+
+        body.dark a:hover {
+            color: #ffffff;
+        }
+    </style>
 
 
 <script>
