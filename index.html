@@ -201,23 +201,22 @@ if (!doNotTrack) {
             color: #88C0D0; /* A slightly brighter teal for hover state */
         }
 
-        /* Fixed logo styles */
+        /* Fixed nav styles */
         body.dark .nav {
-            position: relative; /* Ensure the nav is a positioning context */
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             background-color: #222222; /* Match the dark mode background */
             z-index: 1000;
             padding: 10px 20px; /* Adjust padding as needed */
+            display: flex;
+            align-items: center;
         }
 
         body.dark .nav .logo {
-            position: fixed;
-            top: 20px; /* Adjust as needed */
-            left: 20px; /* Adjust as needed */
-            z-index: 1001; /* Ensure it's above other fixed elements */
-            /* Add any specific styles for your logo here */
+            /* Styles for the logo, if needed */
+            margin-right: auto; /* Push other nav items to the right */
         }
 
         /* Adjust the main content to prevent overlap with the fixed nav */
