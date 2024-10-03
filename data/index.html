@@ -139,6 +139,35 @@ if (!doNotTrack) {
 }
 </script>
 
+
+    
+    <style>
+        /* Existing dark mode styles */
+        /* ... (keep all the styles we've discussed before) ... */
+
+        /* New styles for quotes */
+        body.dark .quote {
+            background-color: #3A3A3F; /* Slightly lighter than the main background for contrast */
+            border-left: 4px solid #8FBCBB; /* Using the link color for a subtle accent */
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        body.dark .quote p {
+            color: #FFFFFF; /* White for the main quote text to make it stand out */
+            font-style: italic;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        body.dark .quote cite {
+            color: #BDBDBE; /* Slightly dimmer than the main text color */
+            font-style: normal;
+            font-size: 0.9em;
+        }
+    </style>
+
+
 <style>
   .quote {
     font-size: 20px;
