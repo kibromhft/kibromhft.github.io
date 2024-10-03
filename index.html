@@ -202,17 +202,33 @@ if (!doNotTrack) {
         }
 
         /* Fixed logo styles */
-        body.dark .logo-container {
+        body.dark .nav {
             position: fixed;
-            top: 20px; /* Adjust this value to match your layout */
-            left: 20px; /* Adjust this value to match your layout */
-            z-index: 1000; /* Ensure the logo stays on top of other elements */
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #222222; /* Match the dark mode background */
+            z-index: 1000;
+            padding: 10px 20px; /* Adjust padding as needed */
         }
 
-        /* Adjust the main content to prevent overlap with the fixed logo */
-        body.dark .main-content {
-            padding-top: 100px; /* Adjust this value based on your logo's height */
+        body.dark .nav .logo {
+            /* Assuming your logo is inside the nav and has a class 'logo' */
+            display: inline-block;
+            /* Add any specific styles for your logo here */
         }
+
+        /* Adjust the main content to prevent overlap with the fixed nav */
+        body.dark main {
+            padding-top: calc(var(--header-height) + 20px); /* Adjust based on your nav height */
+        }
+
+        /* Ensure other nav items align properly */
+        body.dark .nav > *:not(.logo) {
+            margin-left: auto;
+        }
+
+        /* ... existing styles ... */
     </style>
 
 
