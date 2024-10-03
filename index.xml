@@ -7,15 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 08 Sep 2022 10:00:00 -0700</lastBuildDate><atom:link href="https://kibromhft.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Jobs in the Digital Era</title>
-      <link>https://kibromhft.github.io/posts/2023-01-03-automation/</link>
-      <pubDate>Thu, 08 Sep 2022 10:00:00 -0700</pubDate>
-      
-      <guid>https://kibromhft.github.io/posts/2023-01-03-automation/</guid>
-      <description>As we enter the digital age, one thing is certain: technology is not just a trend, it's a game-changer. With each passing day, technology is making its way into more and more industries, bringing about a variety of benefits for society such as increased efficiency, improved communication, and access to information. But, with change comes challenges, and one of the biggest concerns is the displacement of jobs.
-Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolution of neural networks during training via gradient descent.</description>
-    </item>
+ 
     
     <item>
       <title>Debugging Deep Learning Models</title>
@@ -35,7 +27,16 @@ Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolu
       <description>Are you tired of making predictions based on correlation rather than causation? Introducing Causality in Machine Learning, a cutting-edge approach to understanding the underlying causes of complex data patterns. By incorporating causal inference techniques, we can gain a deeper understanding of how different variables interact and affect each other, leading to more accurate predictions and informed decision-making.</description>
     </item>
     
-    
+   <item>
+      <title>Jobs in the Digital Era</title>
+      <link>https://kibromhft.github.io/posts/2023-01-03-automation/</link>
+      <pubDate>Thu, 08 Sep 2022 10:00:00 -0700</pubDate>
+      
+      <guid>https://kibromhft.github.io/posts/2023-01-03-automation/</guid>
+      <description>As we enter the digital age, one thing is certain: technology is not just a trend, it's a game-changer. With each passing day, technology is making its way into more and more industries, bringing about a variety of benefits for society such as increased efficiency, improved communication, and access to information. But, with change comes challenges, and one of the biggest concerns is the displacement of jobs.
+Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolution of neural networks during training via gradient descent.</description>
+    </item>
+	  
     <item>
       <title>Demystifying Overfitting in Deep Neural Networks: Separating Fact from Fiction</title>
       <link>https://kibromhft.github.io/posts/2020-08-06-nas/</link>
