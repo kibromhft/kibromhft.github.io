@@ -33,6 +33,14 @@
         .top-link {
             display: none;
         }
+		
+         .image-container {
+            display: flex;
+            justify-content: center; /* Centers the image horizontally */
+            align-items: center; /* Centers the image vertically if needed */
+            height: 100vh; /* Optional: makes the container full height */
+        }
+  
 
     </style>
     <style>
@@ -319,10 +327,11 @@ if (!doNotTrack) {
   <cite>- Tim Berners-Lee, Inventor of the World Wide Web</cite>
 </div>
 
-    <img src="data.jpeg" alt="Data influence decisions">
+    <div class="image-container">
+        <img src="data.jpeg" alt="Data influence decisions">
+    </div>
 
 
-    <h2>The Power of Data</h2>
 
   
     <p>Data is the lifeblood of today’s world. Whether you realize it or not, data is constantly shaping your experiences—from the ads you see online to how governments respond to emergencies.</p>
