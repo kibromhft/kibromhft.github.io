@@ -120,6 +120,35 @@ if (!doNotTrack) {
         localStorage.setItem("pref-theme", document.body.classList.contains("dark") ? "dark" : "light");
     });
 </script>
+    
+    <style>
+        /* Dark mode styles */
+        body.dark .first-entry,
+        body.dark .entry-header,
+        body.dark .entry-content,
+        body.dark .social-icons,
+        body.dark .about-block,
+        body.dark .w-col {
+            color: #ffffff;
+            background-color: #333333;
+        }
+
+        body.dark .icon-image {
+            filter: invert(1);
+        }
+
+        body.dark h2 {
+            color: #ffffff;
+        }
+
+        body.dark .social-icon-link-pad img,
+        body.dark .social-icon-cv-link-pad img {
+            filter: invert(1);
+        }
+
+        /* Add more specific styles as needed */
+    </style>
+
 
 
 <script>
