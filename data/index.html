@@ -179,10 +179,6 @@ if (!doNotTrack) {
 	border-top: 1px solid #ccc;
 	margin: 20px 0;
 }
-ul {
-	list-style-type: disc; /* This ensures bullets are displayed */
-	margin-left: 20px; /* Optional: adds space on the left for indentation */
-}
 </style>
 </head>
 
@@ -363,67 +359,18 @@ ul {
 
 <p>There are some notable chest X-ray datasets out there, like the NIH Chest X-ray and ChestX-ray8 datasets. These have been great for developing machine learning algorithms for cardiorespiratory diseases, but they come with some drawbacks.</p>
 
-<h4>NIH Chest X-ray Dataset</h4>
-<ul>
-    <li><strong>Description:</strong> A large dataset containing over 100,000 frontal-view chest X-ray images with associated labels for 14 diseases.</li>
-    <li><strong>Limitations:</strong>
-        <ul>
-            <li>Excludes patients under 18.</li>
-            <li>Lacks demographic information about patients, which limits the analysis.</li>
-            <li>Predominantly composed of images from the U.S., potentially affecting generalizability to global populations.</li>
-        </ul>
-    </li>
-</ul>
-
-<h4>ChestX-ray8 Dataset</h4>
-<ul>
-    <li><strong>Description:</strong> Contains 108,948 images of chest X-rays with labels for eight common diseases.</li>
-    <li><strong>Limitations:</strong>
-        <ul>
-            <li>Collected from a single hospital, which may introduce biases.</li>
-            <li>Focused on only eight diseases, leaving out others.</li>
-            <li>May not represent diverse populations due to the single-hospital source.</li>
-        </ul>
-    </li>
-</ul>
-
-<h4>MIMIC-CXR Dataset</h4>
-<ul>
-    <li><strong>Description:</strong> A dataset of chest X-rays linked with clinical notes and other data, allowing for richer analyses.</li>
-    <li><strong>Limitations:</strong>
-        <ul>
-            <li>Collected from a single institution (Beth Israel Deaconess Medical Center).</li>
-            <li>Primarily includes patients from high-income countries, which can affect the applicability to global populations.</li>
-        </ul>
-    </li>
-</ul>
-
-<h4>CheXpert Dataset</h4>
-<ul>
-    <li><strong>Description:</strong> A large dataset with over 200,000 chest X-rays labeled for the presence of 14 common diseases and annotated for medical devices and other features.</li>
-    <li><strong>Limitations:</strong>
-        <ul>
-            <li>Contains only adult patients.</li>
-            <li>Primarily from one hospital (Stanford), which can introduce biases.</li>
-            <li>Mainly reflects a U.S. patient population, affecting its global representativeness.</li>
-        </ul>
-    </li>
-</ul>
+<p>
+    The <strong>NIH Chest X-ray dataset</strong> includes over 100,000 frontal-view images labeled for 14 diseases, but it excludes patients under 18 and lacks demographic information, limiting its generalizability, especially since it mostly features U.S. images. The <strong>ChestX-ray8 dataset</strong>, with 108,948 images for eight common diseases, is collected from a single hospital, which may introduce bias and lacks representation for other diseases and diverse populations. The <strong>MIMIC-CXR dataset</strong> offers chest X-rays linked to clinical notes for richer analyses; however, its focus on a single institution and high-income patients can affect its global applicability. Lastly, the <strong>CheXpert dataset</strong> contains over 200,000 labeled images, including details about medical devices, but is limited to adult patients and is primarily sourced from Stanford, which may not reflect a broader demographic.
+</p>
 
 
-<p><strong>Existing Chest Datasets and Their Limitations</strong></p>
-<p><strong>Existing Chest Datasets:</strong></p>
-<p>There are several existing chest datasets available, including the National Institutes of Health (NIH) Chest X-ray dataset and the ChestX-ray8 dataset. While these datasets have been useful in developing machine learning algorithms for cardiorespiratory diseases, they also have some limitations and biases (Wang et al., 2017).</p>
-<p>Medical image analysis is a rapidly evolving field with the potential to significantly improve patient care and diagnosis (Wang et al., 2017). Chest X-ray imaging is one of the most commonly used modalities for the diagnosis and treatment of cardiorespiratory diseases, and machine learning algorithms have been increasingly utilized for analyzing chest X-ray images (Rajpurkar et al., 2017). However, the effectiveness of these algorithms is highly dependent on the quality and diversity of the datasets used for training.</p>
-<ol>
-<li><strong>National Institutes of Health (NIH) Chest X-ray dataset</strong>: The NIH Chest X-ray dataset is one of the most commonly used datasets for chest X-ray image analysis. However, this dataset has some limitations, such as the exclusion of patients under the age of 18, which may affect the generalizability of the results. Additionally, the dataset does not include any patient information or labels, which limits its usefulness in developing predictive models. Moreover, the dataset mainly comprises images from patients from the United States, which may not represent the global population, and may introduce biases (Wang et al., 2017).</li>
-<li><strong>ChestX-ray8 dataset</strong>: The ChestX-ray8 dataset is another commonly used chest X-ray dataset that includes images for eight common cardiorespiratory diseases. However, this dataset has some limitations. For instance, the dataset was collected from a single hospital, which may introduce biases that affect the generalizability of the results. Additionally, the dataset is limited in its scope, as it does not include images for all types of cardiorespiratory diseases, and it may not be representative of other populations (Wang et al., 2017).</li>
-<li><strong>MIMIC-CXR dataset</strong>: The MIMIC-CXR dataset is a recent addition to the available chest X-ray datasets, and it has several advantages over previous datasets. However, it also has some limitations, such as the inclusion of only patients from a single hospital, which may limit the generalizability of the results. Moreover, the dataset mainly comprises images from patients from high-income countries, which may not represent the global population, and may introduce biases (Johnson et al., 2019).</li>
-<li><strong>CheXpert dataset</strong>: The CheXpert dataset is another large-scale chest X-ray dataset that includes detailed patient information such as the presence of medical devices or surgical hardware. However, this dataset also has some limitations, such as the inclusion of only adult patients and patients from a single hospital, which may affect the generalizability of the results. Furthermore, the dataset mainly comprises images from patients from the United States, which may not represent the global population, and may introduce biases (Irvin et al., 2019).</li>
-</ol>
-<p><strong>Limitations: </strong></p>
-<p>Despite their importance, existing chest datasets have some limitations and biases that need to be addressed. One significant issue is the lack of diversity in the datasets. Most datasets have been developed using images from patients in developed countries, leading to a bias towards specific ethnic groups and healthcare systems. This bias limits the generalizability of the datasets to other populations, particularly those in low- and middle-income countries. Another limitation is the lack of clinical information accompanying the images. In many cases, the datasets do not include information such as patient history, laboratory test results, and radiological reports. This lack of information can limit the ability of machine learning algorithms to accurately diagnose diseases and can lead to misinterpretation of the images.</p>
-<p>Additionally, some datasets suffer from selection bias, as they are composed of images that were selected based on certain criteria, such as image quality or disease prevalence. This bias can lead to over-representation of certain diseases and under-representation of others, limiting the usefulness of the dataset for developing models that can accurately diagnose all diseases.</p>
+<p>
+    The <strong>NIH Chest X-ray dataset</strong> includes over 100,000 frontal-view images labeled for 14 diseases, but it excludes patients under 18 and lacks demographic information, limiting its generalizability, especially since it mostly features U.S. images. The <strong>ChestX-ray8 dataset</strong>, with 108,948 images for eight common diseases, is collected from a single hospital, which may introduce bias and lacks representation for other diseases and diverse populations. This bias limits the generalizability of the datasets to other populations, particularly those in low- and middle-income countries. The <strong>MIMIC-CXR dataset</strong> offers chest X-rays linked to clinical notes for richer analyses; however, its focus on a single institution and high-income patients can affect its global applicability. Lastly, the <strong>CheXpert dataset</strong> contains over 200,000 labeled images, including details about medical devices, but is limited to adult patients and is primarily sourced from Stanford, which may not reflect a broader demographic.
+</p>
+
+<p>
+    On top of that, some datasets face selection bias because the images are chosen based on specific criteria like image quality or how common a disease is. This can result in certain diseases being over-represented while others are left out, which limits the dataset's usefulness for creating models that can accurately diagnose a full range of diseases. 
+</p>
 
 <hr style="height: 1px; background-color: blue;">
 <p style="font-family: Patua One; font-size: 28px;"> We are currently working on expanding the <strong>Tikur Chest X-ray Image Dataset</strong> as part of our efforts to improve the quality of the existing datasets, which will help researchers and healthcare providers develop accurate diagnostic tools for the diagnosis of cardiovascular and respiratory diseases. To better equip medical professionals and researchers in the fight against cardiovascular and respiratory diseases, we are proud to announce the upcoming launch of new medical imaging datasets by expanding the Tikur Chest X-ray Dataset that will provide access to high-quality medical imaging data. For instance, the expanded dataset will include images from various sources to help researchers and providers detect diseases such as pneumothorax, pleural effusion, pulmonary edema and congestive heart failure. We hope that this dataset will help address the challenges faced by healthcare providers in low- and middle-income countries and improve health outcomes for individuals and communities affected by cardiovascular and respiratory diseases. Link to the Tikur Chest X-ray Image Dataset is <br> <a href="https://github.com/kibromhft/Tikur_ChestX-ray14" target="_new" id="dataset-link">https://github.com/kibromhft/Tikur_ChestX-ray14</a>.</p>
