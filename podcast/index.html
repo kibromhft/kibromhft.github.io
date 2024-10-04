@@ -193,6 +193,7 @@
             transform: scale(1.05);
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/4.0.0/wavesurfer.min.js"></script>
 </head>
 
 <body class="list" id="top">
@@ -316,6 +317,7 @@
                 <p id="episode-title">Episode Title</p> <!-- This will show the episode title -->
                 <p id="current-duration" style="font-style: italic;">Duration: <span id="duration-display">0:00</span></p> <!-- Italics for duration -->
             </div>
+            <div id="waveform" style="width: 100%; height: 128px;"></div> <!-- Container for the waveform -->
             <div class="audio-player-body">
                 <audio id="audio-element" src=""></audio>
                 <div class="progress-bar">
@@ -352,6 +354,7 @@
             const searchInput = document.getElementById('search-input');
 
             let currentEpisodeIndex = 0;
+            let wavesurfer; // Declare a variable for Wavesurfer
 
             // Podcast episodes data with your original audio files
             const episodes = [
@@ -405,19 +408,6 @@
                     const duration = Math.floor(audio.duration); // Get duration in seconds
                     const formattedDuration = formatDuration(duration); // Format it
                     document.getElementById('duration-display').textContent = formattedDuration; // Update the duration display
-                });
-
-                // Synchronize Wavesurfer with audio playback
-                audio.addEventListener('play', function() {
-                    wavesurfer.play(); // Play the waveform
-                });
-
-                audio.addEventListener('pause', function() {
-                    wavesurfer.pause(); // Pause the waveform
-                });
-
-                audio.addEventListener('timeupdate', function() {
-                    wavesurfer.seekTo(audio.currentTime / audio.duration); // Update the waveform progress
                 });
 
                 currentEpisodeIndex = index;
