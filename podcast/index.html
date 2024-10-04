@@ -354,9 +354,9 @@
 
             // Podcast episodes data with your original audio files
             const episodes = [
-                { title: "Episode 1: Introduction", src: "audio1.mp3", description: "An introduction to the podcast.", duration: 384 }, // 6:24
-                { title: "Episode 2: Deep Dive", src: "audio2.mp3", description: "A deep dive into the topic.", duration: 240 }, // 4:00
-                { title: "Episode 3: Conclusion", src: "audio3.mp3", description: "Wrapping up the discussion.", duration: 150 }, // 2:30
+                { title: "Episode 1: Introduction", src: "audio1.mp3", description: "An introduction to the podcast." },
+                { title: "Episode 2: Deep Dive", src: "audio2.mp3", description: "A deep dive into the topic." },
+                { title: "Episode 3: Conclusion", src: "audio3.mp3", description: "Wrapping up the discussion." },
             ];
 
             // Format duration from seconds to MM:SS
@@ -366,12 +366,11 @@
                 return `${minutes}:${secs < 10 ? '0' : ''}${secs}`; // Ensure seconds are always two digits
             }
 
-            // Load episodes into the playlist with only the episode title and duration
+            // Load episodes into the playlist
             function loadEpisodes() {
                 episodes.forEach((episode, index) => {
-                    console.log(`Duration for ${episode.title}: ${episode.duration} seconds`); // Debugging line
                     const li = document.createElement('li');
-                    li.innerHTML = `<a href="#" data-index="${index}">${episode.title} - ${formatDuration(episode.duration)}</a>`;
+                    li.innerHTML = `<a href="#" data-index="${index}">${episode.title} - <span id="duration-${index}">Loading...</span></a>`;
                     playlistItems.appendChild(li);
                 });
             }
@@ -380,8 +379,21 @@
             function loadEpisode(index) {
                 const episode = episodes[index];
                 audio.src = episode.src;
-                podcastTitleElement.textContent = episode.category; // Set category name dynamically
-                episodeTitleElement.textContent = episode.title; // Set episode title dynamically
+
+                // Set the podcast title and episode title
+                podcastTitleElement.textContent = episode.category; // Assuming category is still set
+                episodeTitleElement.textContent = episode.title;
+
+                // Load the audio metadata to get the duration
+                audio.addEventListener('loadedmetadata', function() {
+                    const duration = Math.floor(audio.duration); // Get duration in seconds
+                    const formattedDuration = formatDuration(duration); // Format it
+                    console.log(`Duration of ${episode.title}: ${formattedDuration}`); // Log the duration
+
+                    // Update the duration in the playlist
+                    document.getElementById(`duration-${index}`).textContent = formattedDuration;
+                });
+
                 currentEpisodeIndex = index;
                 highlightCurrentEpisode();
                 audio.play();
