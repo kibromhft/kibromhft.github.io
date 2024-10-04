@@ -192,6 +192,23 @@
         .control-btn:hover {
             transform: scale(1.05);
         }
+
+        /* Add animation for the waveform lines */
+        @keyframes waveAnimation {
+            0%, 100% {
+                height: 20px; /* Minimum height */
+            }
+            50% {
+                height: 100px; /* Maximum height */
+            }
+        }
+
+        .waveform-line {
+            display: inline-block;
+            width: 5px; /* Width of each line */
+            background-color: #00f; /* Color of the lines */
+            animation: waveAnimation 0.5s infinite alternate; /* Animation applied */
+        }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/4.0.0/wavesurfer.min.js"></script>
 </head>
@@ -317,7 +334,14 @@
                 <p id="episode-title">Episode Title</p> <!-- This will show the episode title -->
                 <p id="current-duration" style="font-style: italic;">Duration: <span id="duration-display">0:00</span></p> <!-- Italics for duration -->
             </div>
-            <div id="waveform" style="width: 100%; height: 128px; margin: 10px 0;"></div> <!-- Added margin for medium spacing -->
+            <div id="waveform" style="width: 100%; height: 128px; margin: 10px 0;">
+                <div class="waveform-line" style="animation-delay: 0s;"></div>
+                <div class="waveform-line" style="animation-delay: 0.1s;"></div>
+                <div class="waveform-line" style="animation-delay: 0.2s;"></div>
+                <div class="waveform-line" style="animation-delay: 0.3s;"></div>
+                <div class="waveform-line" style="animation-delay: 0.4s;"></div>
+                <!-- Add more lines as needed -->
+            </div>
             <div class="audio-player-body">
                 <audio id="audio-element" src=""></audio>
                 <div class="progress-bar" style="display: none;"> <!-- Set display to none -->
