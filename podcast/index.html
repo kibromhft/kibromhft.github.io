@@ -303,6 +303,9 @@
                     <button class="control-btn" id="prev-btn"><i class="fas fa-step-backward"></i></button>
                     <button class="control-btn" id="play-pause-btn"><i class="fas fa-play"></i></button>
                     <button class="control-btn" id="next-btn"><i class="fas fa-step-forward"></i></button>
+                    <!-- Volume Control -->
+                    <!-- Playback Speed Control -->
+                    <!-- Shuffle and Repeat -->
                 </div>
             </div>
             <div class="search-bar">
@@ -311,6 +314,7 @@
             <div class="playlist">
                 <h3>Episodes</h3>
                 <ul id="playlist-items"></ul>
+                <div id="now-playing" style="font-weight: bold; margin-top: 10px;">Now Playing: <span id="current-episode-title">None</span></div>
             </div>
         </div>
 
@@ -357,6 +361,7 @@
                 audio.src = episode.src;
                 podcastTitleElement.textContent = "Podcast Title"; // You can customize this
                 episodeTitleElement.textContent = episode.title;
+                document.getElementById('current-episode-title').textContent = episode.title; // Update now playing
                 currentEpisodeIndex = index;
                 highlightCurrentEpisode();
                 audio.play();
@@ -402,7 +407,11 @@
 
             // Play next episode
             function playNextEpisode() {
-                currentEpisodeIndex = (currentEpisodeIndex + 1) % episodes.length;
+                if (isShuffled) {
+                    currentEpisodeIndex = Math.floor(Math.random() * episodes.length);
+                } else {
+                    currentEpisodeIndex = (currentEpisodeIndex + 1) % episodes.length;
+                }
                 loadEpisode(currentEpisodeIndex);
             }
 
@@ -443,6 +452,56 @@
                     const index = e.target.getAttribute('data-index');
                     loadEpisode(index);
                 }
+            });
+
+            // Add volume control
+            const volumeControl = document.createElement('input');
+            volumeControl.type = 'range';
+            volumeControl.min = 0;
+            volumeControl.max = 1;
+            volumeControl.step = 0.1;
+            volumeControl.value = audio.volume;
+            volumeControl.id = 'volume-control';
+            document.querySelector('.player-controls').appendChild(volumeControl);
+            volumeControl.addEventListener('input', (e) => {
+                audio.volume = e.target.value;
+            });
+
+            // Add playback speed control
+            const speedControl = document.createElement('select');
+            const speeds = [0.5, 1, 1.5, 2];
+            speeds.forEach(speed => {
+                const option = document.createElement('option');
+                option.value = speed;
+                option.textContent = `${speed}x`;
+                speedControl.appendChild(option);
+            });
+            speedControl.value = 1; // Default speed
+            document.querySelector('.player-controls').appendChild(speedControl);
+            speedControl.addEventListener('change', (e) => {
+                audio.playbackRate = e.target.value;
+            });
+
+            // Add shuffle and repeat functionality
+            let isShuffled = false;
+            let isRepeating = false;
+
+            const shuffleBtn = document.createElement('button');
+            shuffleBtn.textContent = 'Shuffle';
+            shuffleBtn.className = 'control-btn';
+            document.querySelector('.player-controls').appendChild(shuffleBtn);
+            shuffleBtn.addEventListener('click', () => {
+                isShuffled = !isShuffled;
+                shuffleBtn.style.backgroundColor = isShuffled ? '#45a049' : ''; // Change color to indicate state
+            });
+
+            const repeatBtn = document.createElement('button');
+            repeatBtn.textContent = 'Repeat';
+            repeatBtn.className = 'control-btn';
+            document.querySelector('.player-controls').appendChild(repeatBtn);
+            repeatBtn.addEventListener('click', () => {
+                isRepeating = !isRepeating;
+                repeatBtn.style.backgroundColor = isRepeating ? '#45a049' : ''; // Change color to indicate state
             });
         </script>
     </main>
