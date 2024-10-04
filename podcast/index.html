@@ -369,6 +369,7 @@
             // Load episodes into the playlist with only the episode title and duration
             function loadEpisodes() {
                 episodes.forEach((episode, index) => {
+                    console.log(`Duration for ${episode.title}: ${episode.duration} seconds`); // Debugging line
                     const li = document.createElement('li');
                     li.innerHTML = `<a href="#" data-index="${index}">${episode.title} - ${formatDuration(episode.duration)}</a>`;
                     playlistItems.appendChild(li);
