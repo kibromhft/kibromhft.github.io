@@ -314,7 +314,7 @@
                 <i class="fa fa-podcast" aria-hidden="true"></i>
                 <h2 id="podcast-title">Category Name</h2> <!-- This will now show the category -->
                 <p id="episode-title">Episode Title</p> <!-- This will show the episode title -->
-                <p id="current-duration">Duration: <span id="duration-display">0:00</span></p> <!-- Placeholder for duration -->
+                <p id="current-duration" style="font-style: italic;">Duration: <span id="duration-display">0:00</span></p> <!-- Italics for duration -->
             </div>
             <div class="audio-player-body">
                 <audio id="audio-element" src=""></audio>
@@ -367,11 +367,11 @@
                 return `${minutes}:${secs < 10 ? '0' : ''}${secs}`; // Ensure seconds are always two digits
             }
 
-            // Load episodes into the playlist
+            // Load episodes into the playlist without displaying duration
             function loadEpisodes() {
                 episodes.forEach((episode, index) => {
                     const li = document.createElement('li');
-                    li.innerHTML = `<a href="#" data-index="${index}">${episode.title} - <span id="duration-${index}">Loading...</span></a>`;
+                    li.innerHTML = `<a href="#" data-index="${index}">${episode.title}</a>`; // No duration displayed here
                     playlistItems.appendChild(li);
                 });
             }
