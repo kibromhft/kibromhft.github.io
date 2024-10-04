@@ -98,6 +98,8 @@
         }
 
         .progress-bar {
+            display: flex;
+            align-items: center;
             width: 100%;
             height: 5px;
             background-color: #ddd;
@@ -105,8 +107,15 @@
             margin-bottom: 10px;
         }
 
+        .control-btn {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+
         .progress {
-            width: 0;
+            flex-grow: 1;
             height: 100%;
             background-color: #4CAF50;
             border-radius: 5px;
@@ -129,6 +138,7 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
+
 
         .control-btn:hover {
             background-color: #45a049;
@@ -173,8 +183,6 @@
             border-radius: 5px;
         }
     </style>
-    <!-- Include Wavesurfer.js in the head section -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/4.0.0/wavesurfer.min.js"></script>
 </head>
 
 <body class="list" id="top">
@@ -293,20 +301,21 @@
 
         <div class="audio-player">
             <div class="audio-player-header">
+                <i class="fa fa-podcast" aria-hidden="true"></i> <!-- Podcast icon -->
                 <h2 id="podcast-title">Podcast Title</h2>
                 <p id="episode-title">Episode Title</p>
-                <i class="fa fa-podcast" aria-hidden="true"></i> <!-- Added podcast icon -->
             </div>
             <div class="audio-player-body">
-                <div id="waveform"></div> <!-- Added waveform container -->
                 <audio id="audio-element" src=""></audio>
                 <div class="progress-bar">
-                    <div class="progress"></div>
+                    <button class="control-btn" id="backward-15s" aria-label="Rewind 15 seconds"><i class="fas fa-backward"></i></button>
+                    <div class="progress" id="progress"></div>
+                    <button class="control-btn" id="forward-30s" aria-label="Forward 30 seconds"><i class="fas fa-forward"></i></button>
                 </div>
                 <div class="player-controls">
-                    <button class="control-btn" id="prev-btn" aria-label="Previous Episode"><i class="fas fa-step-backward"></i></button>
-                    <button class="control-btn" id="play-pause-btn" aria-label="Play/Pause"><i class="fas fa-play"></i></button>
-                    <button class="control-btn" id="next-btn" aria-label="Next Episode"><i class="fas fa-step-forward"></i></button>
+                    <button class="control-btn" id="prev-btn"><i class="fas fa-step-backward"></i></button>
+                    <button class="control-btn" id="play-pause-btn"><i class="fas fa-play"></i></button>
+                    <button class="control-btn" id="next-btn"><i class="fas fa-step-forward"></i></button>
                 </div>
             </div>
             <div class="search-bar">
@@ -329,17 +338,10 @@
             const podcastTitleElement = document.getElementById('podcast-title');
             const episodeTitleElement = document.getElementById('episode-title');
             const searchInput = document.getElementById('search-input');
+            const backward15sBtn = document.getElementById('backward-15s');
+            const forward30sBtn = document.getElementById('forward-30s');
 
             let currentEpisodeIndex = 0;
-
-            // Initialize Wavesurfer
-            const wavesurfer = WaveSurfer.create({
-                container: '#waveform',
-                waveColor: 'violet',
-                progressColor: 'purple',
-                height: 128,
-                responsive: true,
-            });
 
             // Podcast episodes data
             const episodes = [
@@ -361,34 +363,85 @@
             function loadEpisode(index) {
                 const episode = episodes[index];
                 audio.src = episode.src;
-                wavesurfer.load(episode.src); // Load audio into Wavesurfer
                 podcastTitleElement.textContent = "Podcast Title"; // Customize this
                 episodeTitleElement.textContent = episode.title;
                 currentEpisodeIndex = index;
-                wavesurfer.play(); // Play audio using Wavesurfer
+                audio.play();
                 updatePlayPauseIcon();
             }
 
             // Play/Pause functionality
             function togglePlayPause() {
-                if (wavesurfer.isPlaying()) {
-                    wavesurfer.pause();
+                if (audio.paused) {
+                    audio.play();
                 } else {
-                    wavesurfer.play();
+                    audio.pause();
                 }
                 updatePlayPauseIcon();
             }
 
             // Update play/pause button icon
             function updatePlayPauseIcon() {
-                playPauseBtn.innerHTML = wavesurfer.isPlaying() ? '<i class="fas fa-pause"></i>' : '<i class="fas fa-play"></i>';
+                playPauseBtn.innerHTML = audio.paused ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
+            }
+
+            // Update progress bar
+            function updateProgressBar() {
+                const progress = (audio.currentTime / audio.duration) * 100;
+                progressBar.style.width = `${progress}%`;
+            }
+
+            // Set progress on click
+            function setProgress(e) {
+                const width = progressContainer.clientWidth;
+                const clickX = e.offsetX;
+                const duration = audio.duration;
+                audio.currentTime = (clickX / width) * duration;
+            }
+
+            // Play next episode
+            function playNextEpisode() {
+                currentEpisodeIndex = (currentEpisodeIndex + 1) % episodes.length;
+                loadEpisode(currentEpisodeIndex);
+            }
+
+            // Play previous episode
+            function playPreviousEpisode() {
+                currentEpisodeIndex = (currentEpisodeIndex - 1 + episodes.length) % episodes.length;
+                loadEpisode(currentEpisodeIndex);
+            }
+
+            // Search functionality
+            function searchEpisodes() {
+                const query = searchInput.value.toLowerCase();
+                const filteredEpisodes = episodes.filter(episode => episode.title.toLowerCase().includes(query));
+                playlistItems.innerHTML = ''; // Clear current list
+                filteredEpisodes.forEach((episode, index) => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<a href="#" data-index="${index}">${episode.title}</a>`;
+                    playlistItems.appendChild(li);
+                });
+            }
+
+            // Skip backward 15 seconds
+            function skipBackward() {
+                audio.currentTime = Math.max(0, audio.currentTime - 15);
+            }
+
+            // Skip forward 30 seconds
+            function skipForward() {
+                audio.currentTime = Math.min(audio.duration, audio.currentTime + 30);
             }
 
             // Event listeners
             playPauseBtn.addEventListener('click', togglePlayPause);
             prevBtn.addEventListener('click', playPreviousEpisode);
             nextBtn.addEventListener('click', playNextEpisode);
+            audio.addEventListener('timeupdate', updateProgressBar);
+            progressContainer.addEventListener('click', setProgress);
             searchInput.addEventListener('input', searchEpisodes);
+            backward15sBtn.addEventListener('click', skipBackward);
+            forward30sBtn.addEventListener('click', skipForward);
 
             // Load episodes and the first episode
             loadEpisodes();
@@ -405,6 +458,7 @@
         </script>
     </main>
 </body>
+
 
 
 
