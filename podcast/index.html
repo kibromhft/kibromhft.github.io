@@ -182,6 +182,13 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+
+        .time-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 14px;
+        }
     </style>
 </head>
 
@@ -312,6 +319,11 @@
                     <div class="progress" id="progress"></div>
                     <button class="control-btn" id="forward-30s" aria-label="Forward 30 seconds"><i class="fas fa-forward"></i></button>
                 </div>
+                <div class="time-labels">
+                    <span id="backward-label">15s</span>
+                    <span id="duration-label">0:00 / 0:00</span> <!-- Total duration will be updated here -->
+                    <span id="forward-label">30s</span>
+                </div>
                 <div class="player-controls">
                     <button class="control-btn" id="prev-btn"><i class="fas fa-step-backward"></i></button>
                     <button class="control-btn" id="play-pause-btn"><i class="fas fa-play"></i></button>
@@ -340,6 +352,7 @@
             const searchInput = document.getElementById('search-input');
             const backward15sBtn = document.getElementById('backward-15s');
             const forward30sBtn = document.getElementById('forward-30s');
+            const durationLabel = document.getElementById('duration-label');
 
             let currentEpisodeIndex = 0;
 
@@ -368,6 +381,10 @@
                 currentEpisodeIndex = index;
                 audio.play();
                 updatePlayPauseIcon();
+                // Update duration label when metadata is loaded
+                audio.addEventListener('loadedmetadata', () => {
+                    durationLabel.textContent = `0:00 / ${formatTime(audio.duration)}`;
+                });
             }
 
             // Play/Pause functionality
@@ -433,6 +450,18 @@
                 audio.currentTime = Math.min(audio.duration, audio.currentTime + 30);
             }
 
+            // Format time in minutes and seconds
+            function formatTime(seconds) {
+                const minutes = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+
+            // Update duration label during playback
+            audio.addEventListener('timeupdate', () => {
+                durationLabel.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+            });
+
             // Event listeners
             playPauseBtn.addEventListener('click', togglePlayPause);
             prevBtn.addEventListener('click', playPreviousEpisode);
@@ -458,6 +487,7 @@
         </script>
     </main>
 </body>
+
 
 
 
