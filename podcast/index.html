@@ -373,20 +373,18 @@
             <div class="audio-player-body">
                 <audio id="audio-element" src=""></audio>
                 <div class="progress-container">
+                    <button class="control-btn" id="backward-15s" aria-label="Rewind 15 seconds">-15s</button> <!-- Backward button -->
                     <div class="progress-bar">
                         <div class="progress" id="progress"></div>
                     </div>
-                    <div class="time-labels">
-                        <span id="duration-label">0:00 / 0:00</span> <!-- Total duration will be updated here -->
-                    </div>
+                    <button class="control-btn" id="forward-30s" aria-label="Forward 30 seconds">+30s</button> <!-- Forward button -->
+                </div>
+                <div class="time-labels">
+                    <span id="duration-label">0:00 / 0:00</span> <!-- Total duration will be updated here -->
                 </div>
                 <div class="player-controls">
-                    <button class="control-btn" id="backward-15s" aria-label="Rewind 15 seconds">-15s</button>
-                    <button class="control-btn" id="play-pause-btn"><i class="fas fa-play"></i></button>
-                    <button class="control-btn" id="forward-30s" aria-label="Forward 30 seconds">+30s</button>
-                </div>
-                <div class="navigation-controls">
                     <button class="control-btn" id="prev-btn"><i class="fas fa-step-backward"></i></button>
+                    <button class="control-btn" id="play-pause-btn"><i class="fas fa-play"></i></button>
                     <button class="control-btn" id="next-btn"><i class="fas fa-step-forward"></i></button>
                 </div>
             </div>
@@ -543,6 +541,7 @@
         </script>
     </main>
 </body>
+
 
 
 
