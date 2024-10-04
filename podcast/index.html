@@ -444,6 +444,28 @@
                     loadEpisode(index);
                 }
             });
+
+            // Add playback speed control
+            const speedControl = document.getElementById('speed-control');
+
+            // Set default playback speed
+            audio.playbackRate = 1;
+
+            // Event listener for speed control
+            speedControl.addEventListener('change', (e) => {
+                audio.playbackRate = parseFloat(e.target.value);
+            });
+
+            // HTML for speed control
+            <div class="speed-control">
+                <label for="speed-control">Playback Speed:</label>
+                <select id="speed-control">
+                    <option value="0.5">0.5x</option>
+                    <option value="1" selected>1x</option>
+                    <option value="1.5">1.5x</option>
+                    <option value="2">2x</option>
+                </select>
+            </div>
         </script>
     </main>
 </body>
