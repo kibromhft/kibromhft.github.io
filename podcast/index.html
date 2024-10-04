@@ -394,16 +394,21 @@
                 }
                 wavesurfer = WaveSurfer.create({
                     container: '#waveform',
-                    waveColor: 'rgba(255, 0, 0, 0.5)', // Change to a vibrant color
-                    progressColor: 'rgba(0, 255, 0, 0.8)', // Change to a contrasting color
+                    waveColor: 'rgba(0, 255, 0, 0.5)', // Change to a vibrant color
+                    progressColor: 'rgba(255, 0, 0, 0.8)', // Change to a contrasting color
                     height: 128,
                     responsive: true,
                     cursorColor: 'rgba(255, 255, 255, 0.8)', // Cursor color for the current playback position
                     cursorWidth: 2, // Width of the cursor line
-                    barWidth: 2, // Width of the waveform bars
-                    barRadius: 3, // Rounded corners for the bars
+                    barWidth: 3, // Width of the waveform bars
+                    barRadius: 2, // Rounded corners for the bars
                     normalize: true, // Normalize the waveform
-                    partialRender: true // Improve performance for large audio files
+                    partialRender: true, // Improve performance for large audio files
+                    // Add animation effect
+                    waveAnimation: true, // Enable wave animation
+                    // Custom animation settings
+                    barHeight: 1, // Height of the bars
+                    barGap: 1, // Gap between bars
                 });
 
                 // Load the audio file into Wavesurfer
