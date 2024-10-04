@@ -193,6 +193,7 @@
             transform: scale(1.05);
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/4.0.0/wavesurfer.min.js"></script>
 </head>
 
 <body class="list" id="top">
@@ -316,6 +317,7 @@
                 <p id="episode-title">Episode Title</p> <!-- This will show the episode title -->
                 <p id="current-duration" style="font-style: italic;">Duration: <span id="duration-display">0:00</span></p> <!-- Italics for duration -->
             </div>
+            <div id="waveform" style="width: 100%; height: 128px;"></div> <!-- Container for the waveform -->
             <div class="audio-player-body">
                 <audio id="audio-element" src=""></audio>
                 <div class="progress-bar">
@@ -352,6 +354,7 @@
             const searchInput = document.getElementById('search-input');
 
             let currentEpisodeIndex = 0;
+            let wavesurfer; // Declare a variable for Wavesurfer
 
             // Podcast episodes data with your original audio files
             const episodes = [
@@ -384,6 +387,21 @@
                 // Set the podcast title and episode title
                 podcastTitleElement.textContent = episode.category; // Set category name dynamically
                 episodeTitleElement.textContent = episode.title; // Set episode title dynamically
+
+                // Initialize Wavesurfer
+                if (wavesurfer) {
+                    wavesurfer.destroy(); // Destroy previous instance if it exists
+                }
+                wavesurfer = WaveSurfer.create({
+                    container: '#waveform',
+                    waveColor: 'violet',
+                    progressColor: 'purple',
+                    height: 128,
+                    responsive: true,
+                });
+
+                // Load the audio file into Wavesurfer
+                wavesurfer.load(episode.src);
 
                 // Load the audio metadata to get the duration
                 audio.addEventListener('loadedmetadata', function() {
