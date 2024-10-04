@@ -144,6 +144,34 @@ if (!doNotTrack) {
 
 </script>
 
+<style>
+    /* Dark mode styles - - - This part of the script is only applied to the home page. */
+
+    body.dark {
+        background-color: #222222;
+        color: #DADADB;
+    }
+
+    /* ... existing dark mode styles ... */
+
+    /* Dark mode styles for dropdown menu */
+    body.dark .custom-dropdown {
+        background-color: #2E2E33;
+        border: 1px solid #444;
+    }
+
+    body.dark .custom-dropdown li a {
+        color: #DADADB !important;
+    }
+
+    body.dark .custom-dropdown li a:hover {
+        background-color: #3E3E43 !important;
+        color: #FFFFFF !important;
+    }
+
+    /* ... rest of the existing styles ... */
+</style>
+
 <script>
   MathJax = {
     tex: {
