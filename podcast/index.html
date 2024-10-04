@@ -197,15 +197,18 @@
         }
 
         .progress-container {
+            display: flex;
+            align-items: center;
             width: 100%;
             margin-bottom: 10px;
         }
 
         .progress-bar {
-            width: 100%;
+            flex-grow: 1;
             height: 5px;
             background-color: #ddd;
             border-radius: 5px;
+            margin: 0 10px; /* Add margin to separate from buttons */
         }
 
         .progress {
@@ -402,14 +405,12 @@
             const playPauseBtn = document.getElementById('play-pause-btn');
             const backward15sBtn = document.getElementById('backward-15s');
             const forward30sBtn = document.getElementById('forward-30s');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
             const durationLabel = document.getElementById('duration-label');
             const progressBar = document.querySelector('.progress');
-            const playlistItems = document.getElementById('playlist-items');
-            const podcastTitleElement = document.getElementById('podcast-title');
-            const episodeTitleElement = document.getElementById('episode-title');
-            const searchInput = document.getElementById('search-input');
 
-            let currentEpisodeIndex = 0;
+            let currentEpisodeIndex = 0; // Track the current episode index
 
             // Podcast episodes data
             const episodes = [
@@ -418,91 +419,14 @@
                 { title: "Episode 3: Conclusion", src: "audio3.mp3", description: "Wrapping up the discussion." },
             ];
 
-            // Load episodes into the playlist
-            function loadEpisodes() {
-                episodes.forEach((episode, index) => {
-                    const li = document.createElement('li');
-                    li.innerHTML = `<a href="#" data-index="${index}">${episode.title}</a>`;
-                    playlistItems.appendChild(li);
-                });
-            }
-
             // Load episode details
             function loadEpisode(index) {
                 const episode = episodes[index];
                 audio.src = episode.src;
-                podcastTitleElement.textContent = "Podcast Title"; // Customize this
-                episodeTitleElement.textContent = episode.title;
-                currentEpisodeIndex = index;
-                audio.play();
-                updatePlayPauseIcon();
                 // Update duration label when metadata is loaded
                 audio.addEventListener('loadedmetadata', () => {
                     durationLabel.textContent = `0:00 / ${formatTime(audio.duration)}`;
                 });
-            }
-
-            // Play/Pause functionality
-            function togglePlayPause() {
-                if (audio.paused) {
-                    audio.play();
-                } else {
-                    audio.pause();
-                }
-                updatePlayPauseIcon();
-            }
-
-            // Update play/pause button icon
-            function updatePlayPauseIcon() {
-                playPauseBtn.innerHTML = audio.paused ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
-            }
-
-            // Update progress bar
-            function updateProgressBar() {
-                const progress = (audio.currentTime / audio.duration) * 100;
-                progressBar.style.width = `${progress}%`;
-            }
-
-            // Set progress on click
-            function setProgress(e) {
-                const width = progressContainer.clientWidth;
-                const clickX = e.offsetX;
-                const duration = audio.duration;
-                audio.currentTime = (clickX / width) * duration;
-            }
-
-            // Play next episode
-            function playNextEpisode() {
-                currentEpisodeIndex = (currentEpisodeIndex + 1) % episodes.length;
-                loadEpisode(currentEpisodeIndex);
-            }
-
-            // Play previous episode
-            function playPreviousEpisode() {
-                currentEpisodeIndex = (currentEpisodeIndex - 1 + episodes.length) % episodes.length;
-                loadEpisode(currentEpisodeIndex);
-            }
-
-            // Search functionality
-            function searchEpisodes() {
-                const query = searchInput.value.toLowerCase();
-                const filteredEpisodes = episodes.filter(episode => episode.title.toLowerCase().includes(query));
-                playlistItems.innerHTML = ''; // Clear current list
-                filteredEpisodes.forEach((episode, index) => {
-                    const li = document.createElement('li');
-                    li.innerHTML = `<a href="#" data-index="${index}">${episode.title}</a>`;
-                    playlistItems.appendChild(li);
-                });
-            }
-
-            // Skip backward 15 seconds
-            function skipBackward() {
-                audio.currentTime = Math.max(0, audio.currentTime - 15);
-            }
-
-            // Skip forward 30 seconds
-            function skipForward() {
-                audio.currentTime = Math.min(audio.duration, audio.currentTime + 30);
             }
 
             // Format time in minutes and seconds
@@ -519,25 +443,47 @@
                 progressBar.style.width = `${progress}%`;
             });
 
-            // Event listeners
-            playPauseBtn.addEventListener('click', togglePlayPause);
+            // Skip backward 15 seconds
+            function skipBackward() {
+                audio.currentTime = Math.max(0, audio.currentTime - 15);
+            }
+
+            // Skip forward 30 seconds
+            function skipForward() {
+                audio.currentTime = Math.min(audio.duration, audio.currentTime + 30);
+            }
+
+            // Event listeners for skip buttons
             backward15sBtn.addEventListener('click', skipBackward);
             forward30sBtn.addEventListener('click', skipForward);
-            audio.addEventListener('timeupdate', updateProgressBar);
-            searchInput.addEventListener('input', searchEpisodes);
 
-            // Load episodes and the first episode
-            loadEpisodes();
-            loadEpisode(0);
-
-            // Load episode on click
-            playlistItems.addEventListener('click', (e) => {
-                if (e.target.tagName === 'A') {
-                    e.preventDefault();
-                    const index = e.target.getAttribute('data-index');
-                    loadEpisode(index);
+            // Play/Pause functionality
+            function togglePlayPause() {
+                if (audio.paused) {
+                    audio.play();
+                    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                } else {
+                    audio.pause();
+                    playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
                 }
+            }
+
+            playPauseBtn.addEventListener('click', togglePlayPause);
+
+            // Previous episode functionality
+            prevBtn.addEventListener('click', () => {
+                currentEpisodeIndex = (currentEpisodeIndex - 1 + episodes.length) % episodes.length;
+                loadEpisode(currentEpisodeIndex);
             });
+
+            // Next episode functionality
+            nextBtn.addEventListener('click', () => {
+                currentEpisodeIndex = (currentEpisodeIndex + 1) % episodes.length;
+                loadEpisode(currentEpisodeIndex);
+            });
+
+            // Load the first episode
+            loadEpisode(currentEpisodeIndex);
         </script>
     </main>
 </body>
