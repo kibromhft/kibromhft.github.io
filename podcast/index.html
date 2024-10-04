@@ -227,44 +227,6 @@
                 opacity: 0; /* Fully transparent */
             }
         }
-
-        .gradient-container {
-            position: relative;
-            width: 100%;
-            height: 100vh; /* Full height */
-            background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Example gradient */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .play-button {
-            position: relative;
-            z-index: 2; /* Ensure button is above the overlay */
-            font-size: 4rem; /* Increased size for better visibility */
-            background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
-            border: none;
-            border-radius: 50%; /* Circular button */
-            color: #ff7e5f; /* Change color to match the gradient */
-            padding: 20px; /* Add padding for a larger clickable area */
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
-            transition: transform 0.2s; /* Smooth scaling effect */
-        }
-
-        .play-button:hover {
-            transform: scale(1.1); /* Scale up on hover */
-        }
-
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6); /* Darker semi-transparent overlay */
-            z-index: 1; /* Below the button */
-        }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/4.0.0/wavesurfer.min.js"></script>
 </head>
@@ -613,7 +575,6 @@
         </script>
     </main>
 </body>
-
 
 
 
