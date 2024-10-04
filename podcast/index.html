@@ -94,7 +94,7 @@
 
         .audio-player-header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 10px; // Changed from 20px to 10px
         }
 
         .progress-bar {
@@ -317,7 +317,7 @@
                 <p id="episode-title">Episode Title</p> <!-- This will show the episode title -->
                 <p id="current-duration" style="font-style: italic;">Duration: <span id="duration-display">0:00</span></p> <!-- Italics for duration -->
             </div>
-            <div id="waveform" style="width: 100%; height: 128px;"></div> <!-- Container for the waveform -->
+            <div id="waveform" style="width: 100%; height: 128px; margin: 10px 0;"></div> <!-- Added margin for medium spacing -->
             <div class="audio-player-body">
                 <audio id="audio-element" src=""></audio>
                 <div class="progress-bar" style="display: none;"> <!-- Set display to none -->
@@ -394,21 +394,16 @@
                 }
                 wavesurfer = WaveSurfer.create({
                     container: '#waveform',
-                    waveColor: 'rgba(0, 255, 0, 0.5)', // Change to a vibrant color
-                    progressColor: 'rgba(255, 0, 0, 0.8)', // Change to a contrasting color
+                    waveColor: 'rgba(255, 0, 0, 0.5)', // Change to a vibrant color
+                    progressColor: 'rgba(0, 255, 0, 0.8)', // Change to a contrasting color
                     height: 128,
                     responsive: true,
                     cursorColor: 'rgba(255, 255, 255, 0.8)', // Cursor color for the current playback position
                     cursorWidth: 2, // Width of the cursor line
-                    barWidth: 3, // Width of the waveform bars
-                    barRadius: 2, // Rounded corners for the bars
+                    barWidth: 2, // Width of the waveform bars
+                    barRadius: 3, // Rounded corners for the bars
                     normalize: true, // Normalize the waveform
-                    partialRender: true, // Improve performance for large audio files
-                    // Add animation effect
-                    waveAnimation: true, // Enable wave animation
-                    // Custom animation settings
-                    barHeight: 1, // Height of the bars
-                    barGap: 1, // Gap between bars
+                    partialRender: true // Improve performance for large audio files
                 });
 
                 // Load the audio file into Wavesurfer
@@ -524,6 +519,7 @@
         </script>
     </main>
 </body>
+
 
 
 
