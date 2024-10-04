@@ -359,6 +359,13 @@
                 { title: "Episode 3: Conclusion", category: "Conclusion", src: "audio3.mp3", description: "Wrapping up the discussion.", duration: 150 },
             ];
 
+            // Format duration from seconds to MM:SS
+            function formatDuration(seconds) {
+                const minutes = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${minutes}:${secs < 10 ? '0' : ''}${secs}`; // Ensure seconds are always two digits
+            }
+
             // Load episodes into the playlist with only the episode title and duration
             function loadEpisodes() {
                 episodes.forEach((episode, index) => {
@@ -366,13 +373,6 @@
                     li.innerHTML = `<a href="#" data-index="${index}">${episode.title} - ${formatDuration(episode.duration)}</a>`;
                     playlistItems.appendChild(li);
                 });
-            }
-
-            // Format duration from seconds to MM:SS
-            function formatDuration(seconds) {
-                const minutes = Math.floor(seconds / 60);
-                const secs = Math.floor(seconds % 60);
-                return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
             }
 
             // Load episode details
