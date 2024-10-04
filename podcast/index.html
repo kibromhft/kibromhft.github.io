@@ -172,38 +172,6 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-
-        .time-display {
-            text-align: center;
-            margin: 10px 0;
-        }
-
-        .wave-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 50px;
-            margin-bottom: 10px;
-        }
-
-        .wave {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(76, 175, 80, 0.5) 0%, rgba(76, 175, 80, 0.1) 50%, rgba(76, 175, 80, 0.5) 100%);
-            animation: wave-animation 1.5s infinite;
-        }
-
-        @keyframes wave-animation {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
     </style>
 </head>
 
@@ -326,27 +294,15 @@
                 <h2 id="podcast-title">Podcast Title</h2>
                 <p id="episode-title">Episode Title</p>
             </div>
-            <div class="wave-container">
-                <div class="wave"></div>
-            </div>
-            <div class="time-display">
-                <span id="current-time">0:00</span> / <span id="duration-time">0:00</span>
-            </div>
             <div class="audio-player-body">
                 <audio id="audio-element" src=""></audio>
                 <div class="progress-bar">
                     <div class="progress"></div>
                 </div>
                 <div class="player-controls">
-                    <button class="control-btn" id="rewind-btn">-15s</button>
                     <button class="control-btn" id="prev-btn"><i class="fas fa-step-backward"></i></button>
-                    <button class="control-btn" id="play-pause-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="wave-player-play-button-icon">
-                            <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
+                    <button class="control-btn" id="play-pause-btn"><i class="fas fa-play"></i></button>
                     <button class="control-btn" id="next-btn"><i class="fas fa-step-forward"></i></button>
-                    <button class="control-btn" id="fast-forward-btn">+30s</button>
                 </div>
             </div>
             <div class="search-bar">
@@ -363,17 +319,12 @@
             const playPauseBtn = document.getElementById('play-pause-btn');
             const prevBtn = document.getElementById('prev-btn');
             const nextBtn = document.getElementById('next-btn');
-            const rewindBtn = document.getElementById('rewind-btn');
-            const fastForwardBtn = document.getElementById('fast-forward-btn');
             const progressBar = document.querySelector('.progress');
             const progressContainer = document.querySelector('.progress-bar');
             const playlistItems = document.getElementById('playlist-items');
             const podcastTitleElement = document.getElementById('podcast-title');
             const episodeTitleElement = document.getElementById('episode-title');
             const searchInput = document.getElementById('search-input');
-            const currentTimeDisplay = document.getElementById('current-time');
-            const durationTimeDisplay = document.getElementById('duration-time');
-            const wave = document.querySelector('.wave');
 
             let currentEpisodeIndex = 0;
 
@@ -402,7 +353,6 @@
                 currentEpisodeIndex = index;
                 audio.play();
                 updatePlayPauseIcon();
-                updateDuration();
             }
 
             // Play/Pause functionality
@@ -417,32 +367,13 @@
 
             // Update play/pause button icon
             function updatePlayPauseIcon() {
-                playPauseBtn.innerHTML = audio.paused ? `
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="wave-player-play-button-icon">
-                        <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd"></path>
-                    </svg>
-                ` : '<i class="fas fa-pause"></i>';
+                playPauseBtn.innerHTML = audio.paused ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
             }
 
             // Update progress bar
             function updateProgressBar() {
                 const progress = (audio.currentTime / audio.duration) * 100;
                 progressBar.style.width = `${progress}%`;
-                currentTimeDisplay.textContent = formatTime(audio.currentTime);
-            }
-
-            // Update duration display
-            function updateDuration() {
-                audio.addEventListener('loadedmetadata', () => {
-                    durationTimeDisplay.textContent = formatTime(audio.duration);
-                });
-            }
-
-            // Format time in mm:ss
-            function formatTime(seconds) {
-                const minutes = Math.floor(seconds / 60);
-                const secs = Math.floor(seconds % 60);
-                return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
             }
 
             // Set progress on click
@@ -465,16 +396,6 @@
                 loadEpisode(currentEpisodeIndex);
             }
 
-            // Rewind 15 seconds
-            function rewind() {
-                audio.currentTime = Math.max(0, audio.currentTime - 15);
-            }
-
-            // Fast forward 30 seconds
-            function fastForward() {
-                audio.currentTime = Math.min(audio.duration, audio.currentTime + 30);
-            }
-
             // Search functionality
             function searchEpisodes() {
                 const query = searchInput.value.toLowerCase();
@@ -491,8 +412,6 @@
             playPauseBtn.addEventListener('click', togglePlayPause);
             prevBtn.addEventListener('click', playPreviousEpisode);
             nextBtn.addEventListener('click', playNextEpisode);
-            rewindBtn.addEventListener('click', rewind);
-            fastForwardBtn.addEventListener('click', fastForward);
             audio.addEventListener('timeupdate', updateProgressBar);
             progressContainer.addEventListener('click', setProgress);
             searchInput.addEventListener('input', searchEpisodes);
@@ -513,7 +432,6 @@
     </main>
 </body>
 
-</html>
 
 
 
