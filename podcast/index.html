@@ -363,7 +363,7 @@
             function loadEpisodes() {
                 episodes.forEach((episode, index) => {
                     const li = document.createElement('li');
-                    li.innerHTML = `<a href="#" data-index="${index}">${episode.category}: ${episode.title} - ${formatDuration(episode.duration)}</a>`;
+                    li.innerHTML = `<strong>${episode.category}</strong><br><a href="#" data-index="${index}">${episode.title} - ${formatDuration(episode.duration)}</a>`;
                     playlistItems.appendChild(li);
                 });
             }
@@ -443,7 +443,7 @@
                 playlistItems.innerHTML = ''; // Clear current list
                 filteredEpisodes.forEach((episode, index) => {
                     const li = document.createElement('li');
-                    li.innerHTML = `<a href="#" data-index="${index}">${episode.category}: ${episode.title} - ${formatDuration(episode.duration)}</a>`;
+                    li.innerHTML = `<strong>${episode.category}</strong><br><a href="#" data-index="${index}">${episode.title} - ${formatDuration(episode.duration)}</a>`;
                     playlistItems.appendChild(li);
                 });
             }
