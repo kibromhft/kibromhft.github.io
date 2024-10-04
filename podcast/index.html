@@ -312,8 +312,8 @@
         <div class="audio-player">
             <div class="audio-player-header">
                 <i class="fa fa-podcast" aria-hidden="true"></i>
-                <h2 id="podcast-title">Podcast Title</h2>
-                <p id="episode-title">Episode Title</p>
+                <h2 id="podcast-title">Category Name</h2> <!-- This will now show the category -->
+                <p id="episode-title">Episode Title</p> <!-- This will show the episode title -->
             </div>
             <div class="audio-player-body">
                 <audio id="audio-element" src=""></audio>
@@ -379,8 +379,8 @@
             function loadEpisode(index) {
                 const episode = episodes[index];
                 audio.src = episode.src;
-                podcastTitleElement.textContent = episode.title; // Set podcast title dynamically
-                episodeTitleElement.textContent = episode.title;
+                podcastTitleElement.textContent = episode.category; // Set category name dynamically
+                episodeTitleElement.textContent = episode.title; // Set episode title dynamically
                 currentEpisodeIndex = index;
                 highlightCurrentEpisode();
                 audio.play();
