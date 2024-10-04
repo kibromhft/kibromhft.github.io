@@ -173,6 +173,8 @@
             border-radius: 5px;
         }
     </style>
+    <!-- Include Wavesurfer.js in the head section -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/4.0.0/wavesurfer.min.js"></script>
 </head>
 
 <body class="list" id="top">
@@ -296,6 +298,7 @@
                 <i class="fa fa-podcast" aria-hidden="true"></i> <!-- Added podcast icon -->
             </div>
             <div class="audio-player-body">
+                <div id="waveform"></div> <!-- Added waveform container -->
                 <audio id="audio-element" src=""></audio>
                 <div class="progress-bar">
                     <div class="progress"></div>
@@ -329,7 +332,16 @@
 
             let currentEpisodeIndex = 0;
 
-            // Podcast episodes data with your original audio files
+            // Initialize Wavesurfer
+            const wavesurfer = WaveSurfer.create({
+                container: '#waveform',
+                waveColor: 'violet',
+                progressColor: 'purple',
+                height: 128,
+                responsive: true,
+            });
+
+            // Podcast episodes data
             const episodes = [
                 { title: "Episode 1: Introduction", src: "audio1.mp3", description: "An introduction to the podcast." },
                 { title: "Episode 2: Deep Dive", src: "audio2.mp3", description: "A deep dive into the topic." },
@@ -349,72 +361,33 @@
             function loadEpisode(index) {
                 const episode = episodes[index];
                 audio.src = episode.src;
-                podcastTitleElement.textContent = "Podcast Title"; // You can customize this
+                wavesurfer.load(episode.src); // Load audio into Wavesurfer
+                podcastTitleElement.textContent = "Podcast Title"; // Customize this
                 episodeTitleElement.textContent = episode.title;
                 currentEpisodeIndex = index;
-                audio.play();
+                wavesurfer.play(); // Play audio using Wavesurfer
                 updatePlayPauseIcon();
             }
 
             // Play/Pause functionality
             function togglePlayPause() {
-                if (audio.paused) {
-                    audio.play();
+                if (wavesurfer.isPlaying()) {
+                    wavesurfer.pause();
                 } else {
-                    audio.pause();
+                    wavesurfer.play();
                 }
                 updatePlayPauseIcon();
             }
 
             // Update play/pause button icon
             function updatePlayPauseIcon() {
-                playPauseBtn.innerHTML = audio.paused ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
-            }
-
-            // Update progress bar
-            function updateProgressBar() {
-                const progress = (audio.currentTime / audio.duration) * 100;
-                progressBar.style.width = `${progress}%`;
-            }
-
-            // Set progress on click
-            function setProgress(e) {
-                const width = progressContainer.clientWidth;
-                const clickX = e.offsetX;
-                const duration = audio.duration;
-                audio.currentTime = (clickX / width) * duration;
-            }
-
-            // Play next episode
-            function playNextEpisode() {
-                currentEpisodeIndex = (currentEpisodeIndex + 1) % episodes.length;
-                loadEpisode(currentEpisodeIndex);
-            }
-
-            // Play previous episode
-            function playPreviousEpisode() {
-                currentEpisodeIndex = (currentEpisodeIndex - 1 + episodes.length) % episodes.length;
-                loadEpisode(currentEpisodeIndex);
-            }
-
-            // Search functionality
-            function searchEpisodes() {
-                const query = searchInput.value.toLowerCase();
-                const filteredEpisodes = episodes.filter(episode => episode.title.toLowerCase().includes(query));
-                playlistItems.innerHTML = ''; // Clear current list
-                filteredEpisodes.forEach((episode, index) => {
-                    const li = document.createElement('li');
-                    li.innerHTML = `<a href="#" data-index="${index}">${episode.title}</a>`;
-                    playlistItems.appendChild(li);
-                });
+                playPauseBtn.innerHTML = wavesurfer.isPlaying() ? '<i class="fas fa-pause"></i>' : '<i class="fas fa-play"></i>';
             }
 
             // Event listeners
             playPauseBtn.addEventListener('click', togglePlayPause);
             prevBtn.addEventListener('click', playPreviousEpisode);
             nextBtn.addEventListener('click', playNextEpisode);
-            audio.addEventListener('timeupdate', updateProgressBar);
-            progressContainer.addEventListener('click', setProgress);
             searchInput.addEventListener('input', searchEpisodes);
 
             // Load episodes and the first episode
@@ -428,27 +401,6 @@
                     const index = e.target.getAttribute('data-index');
                     loadEpisode(index);
                 }
-            });
-
-            // Error handling for audio loading
-            audio.addEventListener('error', () => {
-                alert('Error loading audio. Please try again later.');
-            });
-
-            // Reset search functionality
-            searchInput.addEventListener('input', () => {
-                if (searchInput.value === '') {
-                    loadEpisodes(); // Reset to show all episodes
-                }
-                searchEpisodes();
-            });
-
-            // Add loading indicator (optional)
-            audio.addEventListener('waiting', () => {
-                // Show loading indicator
-            });
-            audio.addEventListener('playing', () => {
-                // Hide loading indicator
             });
         </script>
     </main>
