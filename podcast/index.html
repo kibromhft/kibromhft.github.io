@@ -376,19 +376,8 @@
                 });
             }
 
-            // Load episode details
-            function loadEpisode(index) {
-                const episode = episodes[index];
-                audio.src = episode.src;
-
-                // Set the podcast title and episode title
-                podcastTitleElement.textContent = episode.category; // Set category name dynamically
-                episodeTitleElement.textContent = episode.title; // Set episode title dynamically
-
-                // Initialize Wavesurfer with enhanced styles
-                if (wavesurfer) {
-                    wavesurfer.destroy(); // Destroy previous instance if it exists
-                }
+            // Initialize Wavesurfer with enhanced styles
+            function initializeWavesurfer() {
                 wavesurfer = WaveSurfer.create({
                     container: '#waveform',
                     waveColor: 'rgba(255, 0, 0, 0.5)', // Change to a vibrant color
@@ -402,6 +391,22 @@
                     normalize: true, // Normalize the waveform
                     partialRender: true // Improve performance for large audio files
                 });
+            }
+
+            // Load episode details
+            function loadEpisode(index) {
+                const episode = episodes[index];
+                audio.src = episode.src;
+
+                // Set the podcast title and episode title
+                podcastTitleElement.textContent = episode.category; // Set category name dynamically
+                episodeTitleElement.textContent = episode.title; // Set episode title dynamically
+
+                // Initialize Wavesurfer
+                if (wavesurfer) {
+                    wavesurfer.destroy(); // Destroy previous instance if it exists
+                }
+                initializeWavesurfer(); // Call the function to initialize Wavesurfer
 
                 // Load the audio file into Wavesurfer
                 wavesurfer.load(episode.src);
