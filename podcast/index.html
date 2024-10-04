@@ -172,6 +172,26 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .audio-player {
+                padding: 10px;
+            }
+
+            .search-bar input {
+                width: 100%;
+            }
+        }
+
+        /* Smooth transitions for buttons */
+        .control-btn {
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .control-btn:hover {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 
