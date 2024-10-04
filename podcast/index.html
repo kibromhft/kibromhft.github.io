@@ -321,9 +321,9 @@
                     <div class="progress"></div>
                 </div>
                 <div class="player-controls">
-                    <button class="control-btn" id="prev-btn"><i class="fas fa-step-backward"></i></button>
-                    <button class="control-btn" id="play-pause-btn"><i class="fas fa-play"></i></button>
-                    <button class="control-btn" id="next-btn"><i class="fas fa-step-forward"></i></button>
+                    <button class="control-btn" id="prev-btn" aria-label="Previous Episode"><i class="fas fa-step-backward"></i></button>
+                    <button class="control-btn" id="play-pause-btn" aria-label="Play/Pause"><i class="fas fa-play"></i></button>
+                    <button class="control-btn" id="next-btn" aria-label="Next Episode"><i class="fas fa-step-forward"></i></button>
                 </div>
             </div>
             <div class="search-bar">
@@ -334,6 +334,9 @@
                 <ul id="playlist-items"></ul>
             </div>
         </div>
+
+        <!-- Add loading indicator -->
+        <div id="loading" style="display: none;">Loading...</div>
 
         <script>
             const audio = document.getElementById('audio-element');
@@ -464,6 +467,19 @@
                     const index = e.target.getAttribute('data-index');
                     loadEpisode(index);
                 }
+            });
+
+            // Show loading indicator when audio is loading
+            audio.addEventListener('loadstart', () => {
+                document.getElementById('loading').style.display = 'block';
+            });
+
+            audio.addEventListener('canplaythrough', () => {
+                document.getElementById('loading').style.display = 'none';
+            });
+
+            audio.addEventListener('error', () => {
+                alert('Error loading audio. Please try again later.');
             });
         </script>
     </main>
