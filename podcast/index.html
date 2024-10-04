@@ -189,6 +189,64 @@
             margin-top: 5px;
             font-size: 14px;
         }
+
+        .audio-player-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .progress-container {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 5px;
+            background-color: #ddd;
+            border-radius: 5px;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: #4CAF50;
+            border-radius: 5px;
+            transition: width 0.1s linear;
+        }
+
+        .time-labels {
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .player-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .control-btn {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .control-btn:hover {
+            background-color: #45a049;
+        }
+
+        .navigation-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 
@@ -314,16 +372,22 @@
             </div>
             <div class="audio-player-body">
                 <audio id="audio-element" src=""></audio>
-                <div class="progress-bar">
-                    <div class="progress" id="progress"></div>
-                </div>
-                <div class="time-labels">
-                    <span id="duration-label">0:00 / 0:00</span> <!-- Total duration will be updated here -->
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress" id="progress"></div>
+                    </div>
+                    <div class="time-labels">
+                        <span id="duration-label">0:00 / 0:00</span> <!-- Total duration will be updated here -->
+                    </div>
                 </div>
                 <div class="player-controls">
-                    <button class="control-btn" id="backward-15s" aria-label="Rewind 15 seconds"><i class="fas fa-backward"></i> 15s</button>
+                    <button class="control-btn" id="backward-15s" aria-label="Rewind 15 seconds">-15s</button>
                     <button class="control-btn" id="play-pause-btn"><i class="fas fa-play"></i></button>
-                    <button class="control-btn" id="forward-30s" aria-label="Forward 30 seconds"><i class="fas fa-forward"></i> 30s</button>
+                    <button class="control-btn" id="forward-30s" aria-label="Forward 30 seconds">+30s</button>
+                </div>
+                <div class="navigation-controls">
+                    <button class="control-btn" id="prev-btn"><i class="fas fa-step-backward"></i></button>
+                    <button class="control-btn" id="next-btn"><i class="fas fa-step-forward"></i></button>
                 </div>
             </div>
             <div class="search-bar">
