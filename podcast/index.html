@@ -329,7 +329,7 @@
             <div class="search-bar">
                 <input type="text" id="search-input" placeholder="Search episodes...">
             </div>
-            <div class="playlist">
+            <div class="playlist" style="max-height: 200px; overflow-y: auto;">
                 <h3>Episodes</h3>
                 <ul id="playlist-items"></ul>
             </div>
@@ -379,7 +379,7 @@
             function loadEpisode(index) {
                 const episode = episodes[index];
                 audio.src = episode.src;
-                podcastTitleElement.textContent = "Podcast Title"; // You can customize this
+                podcastTitleElement.textContent = episode.title; // Set podcast title dynamically
                 episodeTitleElement.textContent = episode.title;
                 currentEpisodeIndex = index;
                 highlightCurrentEpisode();
