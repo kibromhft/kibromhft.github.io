@@ -519,35 +519,35 @@
         </script>
 
         <script>
-            // Function to draw the waveform with dynamic line heights
-            function drawWaveform() {
+            // Assuming you have a function that draws the existing waveform
+            function drawExistingWaveform() {
                 const canvas = document.getElementById('waveformCanvas');
                 const ctx = canvas.getContext('2d');
                 const width = canvas.width;
                 const height = canvas.height;
-                const numberOfLines = 50; // Number of lines in the waveform
+                const numberOfPoints = 100; // Number of points in the waveform
 
                 ctx.clearRect(0, 0, width, height); // Clear the canvas
 
-                for (let i = 0; i < numberOfLines; i++) {
-                    const x = (i / numberOfLines) * width; // X position
-                    const lineHeight = Math.random() * (height - 20) + 10; // Random height for the line
-                    ctx.beginPath();
-                    ctx.moveTo(x, height); // Start from the bottom
-                    ctx.lineTo(x, height - lineHeight); // Draw to a random height
-                    ctx.strokeStyle = '#00f'; // Line color
-                    ctx.lineWidth = 2; // Line width
-                    ctx.stroke();
+                ctx.beginPath();
+                for (let i = 0; i < numberOfPoints; i++) {
+                    const x = (i / numberOfPoints) * width; // X position
+                    const y = (Math.sin(i / 10) + Math.random() * 0.5) * (height / 2) + (height / 2); // Dynamic Y position
+                    ctx.lineTo(x, y); // Draw line to the calculated Y position
                 }
+                ctx.strokeStyle = '#00f'; // Line color
+                ctx.lineWidth = 2; // Line width
+                ctx.stroke();
             }
 
-            // Call the drawWaveform function at intervals to animate
-            setInterval(drawWaveform, 500); // Redraw every 500ms
+            // Call the drawExistingWaveform function at intervals to animate
+            setInterval(drawExistingWaveform, 500); // Redraw every 500ms
         </script>
 
-        <canvas id="waveformCanvas" width="600" height="128"></canvas> <!-- Canvas for the waveform -->
+        <canvas id="waveformCanvas" width="600" height="128"></canvas> <!-- Existing canvas for the waveform -->
     </main>
 </body>
+
 
 
 
