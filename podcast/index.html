@@ -201,6 +201,32 @@
             padding-top: 0; /* Set padding at the top of the main container to zero */
             padding-bottom: 5px; /* Further reduced space at the bottom of the main container */
         }
+
+        .wave-effect {
+            position: absolute;
+            width: 100px; /* Adjust size as needed */
+            height: 100px; /* Adjust size as needed */
+            border-radius: 50%;
+            background: rgba(0, 255, 0, 0.5); /* Color of the wave */
+            animation: wave-animation 1.5s infinite; /* Animation for the wave */
+            display: none; /* Initially hidden */
+            pointer-events: none; /* Prevent interaction */
+        }
+
+        @keyframes wave-animation {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.5); /* Expand */
+                opacity: 0.5; /* Fade out */
+            }
+            100% {
+                transform: scale(1); /* Shrink */
+                opacity: 0; /* Fully transparent */
+            }
+        }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/4.0.0/wavesurfer.min.js"></script>
 </head>
@@ -349,6 +375,8 @@
 
         <!-- Add loading indicator -->
         <div id="loading" style="display: none;">Loading...</div>
+
+        <div class="wave-effect" id="wave-effect"></div> <!-- Added circular wave effect -->
 
         <script>
             const audio = document.getElementById('audio-element');
@@ -525,9 +553,29 @@
             audio.addEventListener('error', () => {
                 alert('Error loading audio. Please try again later.');
             });
+
+            const waveEffect = document.getElementById('wave-effect');
+
+            // Show wave effect when audio is playing
+            function showWaveEffect() {
+                waveEffect.style.display = 'block'; // Show the wave effect
+                waveEffect.style.left = `${audio.offsetLeft + audio.clientWidth / 2 - 50}px`; // Center the wave effect
+                waveEffect.style.top = `${audio.offsetTop + audio.clientHeight / 2 - 50}px`; // Center the wave effect
+            }
+
+            // Hide wave effect when audio is paused
+            function hideWaveEffect() {
+                waveEffect.style.display = 'none'; // Hide the wave effect
+            }
+
+            // Event listeners
+            audio.addEventListener('play', showWaveEffect);
+            audio.addEventListener('pause', hideWaveEffect);
+            audio.addEventListener('ended', hideWaveEffect);
         </script>
     </main>
 </body>
+
 
 
 
