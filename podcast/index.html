@@ -314,6 +314,7 @@
                 <i class="fa fa-podcast" aria-hidden="true"></i>
                 <h2 id="podcast-title">Category Name</h2> <!-- This will now show the category -->
                 <p id="episode-title">Episode Title</p> <!-- This will show the episode title -->
+                <p id="current-duration">Duration: <span id="duration-display">0:00</span></p> <!-- Placeholder for duration -->
             </div>
             <div class="audio-player-body">
                 <audio id="audio-element" src=""></audio>
@@ -354,9 +355,9 @@
 
             // Podcast episodes data with your original audio files
             const episodes = [
-                { title: "Episode 1: Introduction", src: "audio1.mp3", description: "An introduction to the podcast." },
-                { title: "Episode 2: Deep Dive", src: "audio2.mp3", description: "A deep dive into the topic." },
-                { title: "Episode 3: Conclusion", src: "audio3.mp3", description: "Wrapping up the discussion." },
+                { title: "Episode 1: Introduction", category: "Introduction", src: "audio1.mp3", description: "An introduction to the podcast." },
+                { title: "Episode 2: Deep Dive", category: "Deep Dive", src: "audio2.mp3", description: "A deep dive into the topic." },
+                { title: "Episode 3: Conclusion", category: "Conclusion", src: "audio3.mp3", description: "Wrapping up the discussion." },
             ];
 
             // Format duration from seconds to MM:SS
@@ -381,17 +382,14 @@
                 audio.src = episode.src;
 
                 // Set the podcast title and episode title
-                podcastTitleElement.textContent = episode.category; // Assuming category is still set
-                episodeTitleElement.textContent = episode.title;
+                podcastTitleElement.textContent = episode.category; // Set category name dynamically
+                episodeTitleElement.textContent = episode.title; // Set episode title dynamically
 
                 // Load the audio metadata to get the duration
                 audio.addEventListener('loadedmetadata', function() {
                     const duration = Math.floor(audio.duration); // Get duration in seconds
                     const formattedDuration = formatDuration(duration); // Format it
-                    console.log(`Duration of ${episode.title}: ${formattedDuration}`); // Log the duration
-
-                    // Update the duration in the playlist
-                    document.getElementById(`duration-${index}`).textContent = formattedDuration;
+                    document.getElementById('duration-display').textContent = formattedDuration; // Update the duration display
                 });
 
                 currentEpisodeIndex = index;
