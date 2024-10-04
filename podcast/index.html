@@ -315,19 +315,15 @@
             <div class="audio-player-body">
                 <audio id="audio-element" src=""></audio>
                 <div class="progress-bar">
-                    <span id="backward-label">15s</span> <!-- Backward label -->
-                    <div class="progress-container">
-                        <div class="progress" id="progress"></div>
-                    </div>
-                    <span id="forward-label">30s</span> <!-- Forward label -->
+                    <div class="progress" id="progress"></div>
                 </div>
                 <div class="time-labels">
                     <span id="duration-label">0:00 / 0:00</span> <!-- Total duration will be updated here -->
                 </div>
                 <div class="player-controls">
-                    <button class="control-btn" id="prev-btn"><i class="fas fa-step-backward"></i></button>
+                    <button class="control-btn" id="backward-15s" aria-label="Rewind 15 seconds"><i class="fas fa-backward"></i> 15s</button>
                     <button class="control-btn" id="play-pause-btn"><i class="fas fa-play"></i></button>
-                    <button class="control-btn" id="next-btn"><i class="fas fa-step-forward"></i></button>
+                    <button class="control-btn" id="forward-30s" aria-label="Forward 30 seconds"><i class="fas fa-forward"></i> 30s</button>
                 </div>
             </div>
             <div class="search-bar">
@@ -342,17 +338,14 @@
         <script>
             const audio = document.getElementById('audio-element');
             const playPauseBtn = document.getElementById('play-pause-btn');
-            const prevBtn = document.getElementById('prev-btn');
-            const nextBtn = document.getElementById('next-btn');
+            const backward15sBtn = document.getElementById('backward-15s');
+            const forward30sBtn = document.getElementById('forward-30s');
+            const durationLabel = document.getElementById('duration-label');
             const progressBar = document.querySelector('.progress');
-            const progressContainer = document.querySelector('.progress-bar');
             const playlistItems = document.getElementById('playlist-items');
             const podcastTitleElement = document.getElementById('podcast-title');
             const episodeTitleElement = document.getElementById('episode-title');
             const searchInput = document.getElementById('search-input');
-            const backward15sBtn = document.getElementById('backward-15s');
-            const forward30sBtn = document.getElementById('forward-30s');
-            const durationLabel = document.getElementById('duration-label');
 
             let currentEpisodeIndex = 0;
 
@@ -460,17 +453,16 @@
             // Update duration label during playback
             audio.addEventListener('timeupdate', () => {
                 durationLabel.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+                const progress = (audio.currentTime / audio.duration) * 100;
+                progressBar.style.width = `${progress}%`;
             });
 
             // Event listeners
             playPauseBtn.addEventListener('click', togglePlayPause);
-            prevBtn.addEventListener('click', playPreviousEpisode);
-            nextBtn.addEventListener('click', playNextEpisode);
+            backward15sBtn.addEventListener('click', skipBackward);
+            forward30sBtn.addEventListener('click', skipForward);
             audio.addEventListener('timeupdate', updateProgressBar);
-            progressContainer.addEventListener('click', setProgress);
             searchInput.addEventListener('input', searchEpisodes);
-            document.getElementById('backward-label').addEventListener('click', skipBackward);
-            document.getElementById('forward-label').addEventListener('click', skipForward);
 
             // Load episodes and the first episode
             loadEpisodes();
