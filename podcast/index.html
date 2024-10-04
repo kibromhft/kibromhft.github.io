@@ -315,14 +315,14 @@
             <div class="audio-player-body">
                 <audio id="audio-element" src=""></audio>
                 <div class="progress-bar">
-                    <button class="control-btn" id="backward-15s" aria-label="Rewind 15 seconds"><i class="fas fa-backward"></i></button>
-                    <div class="progress" id="progress"></div>
-                    <button class="control-btn" id="forward-30s" aria-label="Forward 30 seconds"><i class="fas fa-forward"></i></button>
+                    <span id="backward-label">15s</span> <!-- Backward label -->
+                    <div class="progress-container">
+                        <div class="progress" id="progress"></div>
+                    </div>
+                    <span id="forward-label">30s</span> <!-- Forward label -->
                 </div>
                 <div class="time-labels">
-                    <span id="backward-label">15s</span>
                     <span id="duration-label">0:00 / 0:00</span> <!-- Total duration will be updated here -->
-                    <span id="forward-label">30s</span>
                 </div>
                 <div class="player-controls">
                     <button class="control-btn" id="prev-btn"><i class="fas fa-step-backward"></i></button>
@@ -469,8 +469,8 @@
             audio.addEventListener('timeupdate', updateProgressBar);
             progressContainer.addEventListener('click', setProgress);
             searchInput.addEventListener('input', searchEpisodes);
-            backward15sBtn.addEventListener('click', skipBackward);
-            forward30sBtn.addEventListener('click', skipForward);
+            document.getElementById('backward-label').addEventListener('click', skipBackward);
+            document.getElementById('forward-label').addEventListener('click', skipForward);
 
             // Load episodes and the first episode
             loadEpisodes();
@@ -487,6 +487,7 @@
         </script>
     </main>
 </body>
+
 
 
 
