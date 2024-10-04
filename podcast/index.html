@@ -227,6 +227,51 @@
                 opacity: 0; /* Fully transparent */
             }
         }
+
+        .play-button {
+            position: relative;
+            width: 100px; /* Adjust size as needed */
+            height: 100px; /* Adjust size as needed */
+            border-radius: 50%;
+            background: #007bff; /* Solid circle color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* Ensure wave effect doesn't overflow */
+        }
+
+        .play-symbol {
+            font-size: 40px; /* Adjust size as needed */
+            color: white; /* Color of the play symbol */
+            z-index: 1; /* Ensure play symbol is above the wave effect */
+        }
+
+        .wave-effect {
+            position: absolute;
+            width: 100%; /* Match the size of the play button */
+            height: 100%; /* Match the size of the play button */
+            border-radius: 50%;
+            background: rgba(0, 255, 0, 0.5); /* Color of the wave */
+            animation: wave-animation 1.5s infinite; /* Animation for the wave */
+            display: none; /* Initially hidden */
+            pointer-events: none; /* Prevent interaction */
+            z-index: 0; /* Ensure wave effect is below the play symbol */
+        }
+
+        @keyframes wave-animation {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.5); /* Expand */
+                opacity: 0.5; /* Fade out */
+            }
+            100% {
+                transform: scale(1); /* Shrink */
+                opacity: 0; /* Fully transparent */
+            }
+        }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/4.0.0/wavesurfer.min.js"></script>
 </head>
@@ -559,8 +604,6 @@
             // Show wave effect when audio is playing
             function showWaveEffect() {
                 waveEffect.style.display = 'block'; // Show the wave effect
-                waveEffect.style.left = `${document.getElementById('waveform').offsetLeft - 50}px`; // Position to the left of the waveform
-                waveEffect.style.top = `${document.getElementById('waveform').offsetTop + document.getElementById('waveform').clientHeight / 2 - 50}px`; // Center vertically
             }
 
             // Hide wave effect when audio is paused
@@ -575,6 +618,7 @@
         </script>
     </main>
 </body>
+
 
 
 
