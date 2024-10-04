@@ -321,7 +321,8 @@
             <div class="audio-player-body">
                 <audio id="audio-element" src=""></audio>
                 <div class="progress-bar">
-                    <div class="progress"></div>
+                    <!-- Remove the progress bar -->
+                    <!-- <div class="progress"></div> -->
                 </div>
                 <div class="player-controls">
                     <button class="control-btn" id="prev-btn" aria-label="Previous Episode"><i class="fas fa-step-backward"></i></button>
@@ -441,8 +442,8 @@
 
             // Update progress bar
             function updateProgressBar() {
-                const progress = (audio.currentTime / audio.duration) * 100;
-                progressBar.style.width = `${progress}%`;
+                // Update the waveform instead of the progress bar
+                wavesurfer.setCurrentTime(audio.currentTime);
             }
 
             // Set progress on click
@@ -513,6 +514,7 @@
         </script>
     </main>
 </body>
+
 
 
 
