@@ -215,170 +215,198 @@ if (!doNotTrack) {
 </header>
 
 <i class="fa fa-podcast" aria-hidden="true"></i>
+
 <div class="audio-player">
-    <div class="audio-player-header">
-      <h1>Podcast Title</h1>
-      
-      <p>Episode Title</p>
+  <div class="audio-player-header">
+    <h2 id="podcast-title">Podcast Title</h2>
+    <p id="episode-title">Episode Title</p>
+  </div>
+  <div class="audio-player-body">
+    <audio id="audio-element" src=""></audio>
+    <div class="progress-bar">
+      <div class="progress"></div>
     </div>
-    <div class="audio-player-body">
-      <audio src="audio1.mp3" controls></audio>
-    </div>
-    <div class="audio-player-footer">
-      <div class="progress-bar">
-        <div class="progress"></div>
-      </div>
-      <div class="player-controls">
-        <button class="play-btn"><i class="fa fa-play"></i></button>
-        <button class="pause-btn"><i class="fa fa-pause"></i></button>
-        <button class="stop-btn"><i class="fa fa-stop"></i></button>
-        <button class="back-btn"><i class="fa fa-backward"></i></button>
-        <button class="forward-btn"><i class="fa fa-forward"></i></button>
-      </div>
-    </div>
-    <div class="playlist">
-      <h2>Episodes</h2>
-      <ul>
-        <li><a href="" data-src="audio1.mp3">Episode 1</a></li>
-        <li><a href="#" data-src="audio2.mp3">Episode 2</a></li>
-        <li><a href="#" data-src="audio3.mp3">Episode 3</a></li>
-      </ul>
+    <div class="player-controls">
+      <button class="control-btn" id="prev-btn"><i class="fas fa-step-backward"></i></button>
+      <button class="control-btn" id="play-pause-btn"><i class="fas fa-play"></i></button>
+      <button class="control-btn" id="next-btn"><i class="fas fa-step-forward"></i></button>
     </div>
   </div>
-    
-      <script>
-          const audio = document.querySelector('audio');
-          const playBtn = document.querySelector('.play-btn');
-          const pauseBtn = document.querySelector('.pause-btn');
-          const stopBtn = document.querySelector('.stop-btn');
-          const progressBar = document.querySelector('.progress');
-          const progressContainer = document.querySelector('.progress-bar');
-          const backBtn = document.querySelector('.back-btn');
-          const forwardBtn = document.querySelector('.forward-btn');
-          const playlistItems = document.querySelectorAll('.playlist li');
-  
-          let currentEpisodeIndex = 0;
-          let isPlaying = false;
-          let isPaused = false;
-          let duration = 0;
-  
-          // Play
-          function play() {
-            audio.play();
-            isPlaying = true;
-            isPaused = false;
-            playBtn.innerHTML = '<i class="fa fa-pause"></i>';
-          }
-  
-          // Pause
-          function pause() {
-            audio.pause();
-            isPaused = true;
-            isPlaying = false;
-            playBtn.innerHTML = '<i class="fa fa-play"></i>';
-          }
-  
-          // Stop
-          function stop() {
-            audio.currentTime = 0;
-            audio.pause();
-            isPlaying = false;
-            isPaused = false;
-            playBtn.innerHTML = '<i class="fa fa-play"></i>';
-          }
-  
-          // Skip forward
-          function skipForward() {
-            audio.currentTime += 10;
-          }
-  
-          // Skip backward
-          function skipBackward() {
-            audio.currentTime -= 10;
-          }
-  
-          // Update progress bar
-          function updateProgressBar() {
-            const { currentTime } = audio;
-            const progressPercent = (currentTime / duration) * 100;
-            progressBar.style.width = `${progressPercent}%`;
-          }
-  
-          // Set progress bar
-          function setProgressBar(e) {
-            const width = progressContainer.clientWidth;
-            const clickX = e.offsetX;
-            const newTime = (clickX / width) * duration;
-  
-            audio.currentTime = newTime;
-          }
-  
-          // Load episode
-          function loadEpisode(index) {
-            const playlistItem = playlistItems[index];
-            const audioSrc = playlistItem.getAttribute('data-src');
-            const podcastTitle = playlistItem.getAttribute('data-podcast-title');
-            const episodeTitle = playlistItem.getAttribute('data-episode-title');
-  
-            currentEpisodeIndex = index;
-            audio.src = audioSrc;
-            document.querySelector('.audio-player-header h1').textContent = podcastTitle;
-            document.querySelector('.audio-player-header p').textContent = episodeTitle;
-            duration = NaN;
-          }
-  
-          // Play/Pause button click event
-          playBtn.addEventListener('click', () => {
-            if (isPlaying) {
-              pause();
-            } else {
-              play();
-            }
-          });
-  
-          // Pause button click event
-          pauseBtn.addEventListener('click', () => {
-            pause();
-          });
-  
-          // Stop button click event
-          stopBtn.addEventListener('click', () => {
-            stop();
-          });
-  
-          // Skip forward button click event
-          backBtn.addEventListener('click', () => {
-            skipBackward();
-          });
-  
-          // Skip backward button click event
-          forwardBtn.addEventListener('click', () => {
-            skipForward();
-          });
-  
-          // Update progress bar
-          audio.addEventListener('timeupdate', () => {
-            updateProgressBar();
-          });
-  
-          // Set progress bar
-          progressContainer.addEventListener('click', (e) => {
-            setProgressBar(e);
-          });
-  
-          // Load first episode in playlist
-          loadEpisode(0);
-  
-          // Playlist item click event
-          playlistItems.forEach((playlistItem, index) => {
-            playlistItem.addEventListener('click', () => {
-              loadEpisode(index);
-              play();
-            });
-          });
-  
-      </script>
-  
+  <div class="playlist">
+    <h3>Episodes</h3>
+    <ul id="playlist-items">
+      <li><a href="#" data-src="audio1.mp3" data-podcast-title="Amazing Podcast" data-episode-title="Episode 1: Introduction">Episode 1: Introduction</a></li>
+      <li><a href="#" data-src="audio2.mp3" data-podcast-title="Amazing Podcast" data-episode-title="Episode 2: Deep Dive">Episode 2: Deep Dive</a></li>
+      <li><a href="#" data-src="audio3.mp3" data-podcast-title="Amazing Podcast" data-episode-title="Episode 3: Conclusion">Episode 3: Conclusion</a></li>
+    </ul>
+  </div>
+</div>
+
+<style>
+.audio-player {
+  max-width: 400px;
+  margin: 20px auto;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.audio-player-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.audio-player-header h2 {
+  margin: 0;
+  color: #333;
+}
+
+.audio-player-header p {
+  margin: 5px 0 0;
+  color: #666;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 5px;
+  background-color: #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.progress {
+  width: 0;
+  height: 100%;
+  background-color: #4CAF50;
+  border-radius: 5px;
+  transition: width 0.1s linear;
+}
+
+.player-controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.control-btn {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.control-btn:hover {
+  background-color: #45a049;
+}
+
+.playlist {
+  margin-top: 20px;
+}
+
+.playlist h3 {
+  margin-bottom: 10px;
+}
+
+.playlist ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.playlist li {
+  margin-bottom: 5px;
+}
+
+.playlist a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.playlist a:hover {
+  color: #4CAF50;
+}
+</style>
+
+<script>
+const audio = document.getElementById('audio-element');
+const playPauseBtn = document.getElementById('play-pause-btn');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const progressBar = document.querySelector('.progress');
+const progressContainer = document.querySelector('.progress-bar');
+const playlistItems = document.querySelectorAll('#playlist-items li a');
+const podcastTitleElement = document.getElementById('podcast-title');
+const episodeTitleElement = document.getElementById('episode-title');
+
+let currentEpisodeIndex = 0;
+
+function loadEpisode(index) {
+  const episode = playlistItems[index];
+  audio.src = episode.getAttribute('data-src');
+  podcastTitleElement.textContent = episode.getAttribute('data-podcast-title');
+  episodeTitleElement.textContent = episode.getAttribute('data-episode-title');
+  currentEpisodeIndex = index;
+  audio.play();
+  updatePlayPauseIcon();
+}
+
+function togglePlayPause() {
+  if (audio.paused) {
+    audio.play();
+  } else {
+    audio.pause();
+  }
+  updatePlayPauseIcon();
+}
+
+function updatePlayPauseIcon() {
+  playPauseBtn.innerHTML = audio.paused ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
+}
+
+function updateProgressBar() {
+  const progress = (audio.currentTime / audio.duration) * 100;
+  progressBar.style.width = `${progress}%`;
+}
+
+function setProgress(e) {
+  const width = progressContainer.clientWidth;
+  const clickX = e.offsetX;
+  const duration = audio.duration;
+  audio.currentTime = (clickX / width) * duration;
+}
+
+function playNextEpisode() {
+  currentEpisodeIndex = (currentEpisodeIndex + 1) % playlistItems.length;
+  loadEpisode(currentEpisodeIndex);
+}
+
+function playPreviousEpisode() {
+  currentEpisodeIndex = (currentEpisodeIndex - 1 + playlistItems.length) % playlistItems.length;
+  loadEpisode(currentEpisodeIndex);
+}
+
+playPauseBtn.addEventListener('click', togglePlayPause);
+prevBtn.addEventListener('click', playPreviousEpisode);
+nextBtn.addEventListener('click', playNextEpisode);
+audio.addEventListener('timeupdate', updateProgressBar);
+progressContainer.addEventListener('click', setProgress);
+
+playlistItems.forEach((item, index) => {
+  item.addEventListener('click', (e) => {
+    e.preventDefault();
+    loadEpisode(index);
+  });
+});
+
+// Load the first episode
+loadEpisode(0);
+</script>
+
 </main>
     
 <footer class="footer">
