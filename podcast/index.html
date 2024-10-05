@@ -230,6 +230,28 @@
                 opacity: 0; /* Fully transparent */
             }
         }
+
+        .mejs-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%; /* Full width of the wave effect */
+            height: 100%; /* Full height of the wave effect */
+        }
+
+        .mejs-time-rail {
+            position: relative;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+        }
+
+        .control-btn {
+            background-color: transparent; /* Transparent background */
+            border: none; /* No border */
+            cursor: pointer; /* Pointer cursor */
+            font-size: 24px; /* Adjust size as needed */
+            color: white; /* Icon color */
+        }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/4.0.0/wavesurfer.min.js"></script>
 </head>
@@ -380,9 +402,13 @@
         <div id="loading" style="display: none;">Loading...</div>
 
         <div class="wave-effect" id="wave-effect">
-            <button id="wave-play-btn" class="control-btn" aria-label="Play/Pause">
-                <i id="wave-icon" class="fas fa-play"></i> <!-- Play icon -->
-            </button>
+            <div class="mejs-controls">
+                <div class="mejs-time-rail" style="width: 100px; height: 100px;">
+                    <button id="wave-play-btn" class="control-btn" aria-label="Play/Pause">
+                        <i id="wave-icon" class="fas fa-play"></i> <!-- Play icon -->
+                    </button>
+                </div>
+            </div>
         </div> <!-- Added circular wave effect -->
 
         <script>
