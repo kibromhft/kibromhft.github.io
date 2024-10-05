@@ -203,10 +203,7 @@
         }
 
         .wave-effect {
-            position: fixed; /* Fixed position */
-            top: 50%; /* Center vertically */
-            left: 50%; /* Center horizontally */
-            transform: translate(-50%, -50%); /* Adjust position to center */
+            position: absolute;
             width: 100px; /* Adjust size as needed */
             height: 100px; /* Adjust size as needed */
             border-radius: 50%;
@@ -217,7 +214,6 @@
             display: flex; /* Center the button */
             justify-content: center; /* Center horizontally */
             align-items: center; /* Center vertically */
-            z-index: 1000; /* Ensure it appears above other elements */
         }
 
         @keyframes wave-animation {
@@ -596,6 +592,8 @@
             // Show wave effect when audio is playing
             function showWaveEffect() {
                 waveEffect.style.display = 'flex'; // Show the wave effect with flex
+                waveEffect.style.left = `${document.getElementById('waveform').offsetLeft - 50}px`; // Position to the left of the waveform
+                waveEffect.style.top = `${document.getElementById('waveform').offsetTop + document.getElementById('waveform').clientHeight / 2 - 50}px`; // Center vertically
                 document.getElementById('wave-icon').classList.remove('fa-play'); // Change to pause icon
                 document.getElementById('wave-icon').classList.add('fa-pause'); // Add pause icon
             }
