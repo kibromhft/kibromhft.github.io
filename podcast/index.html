@@ -211,9 +211,6 @@
             animation: wave-animation 1.5s infinite; /* Animation for the wave */
             display: none; /* Initially hidden */
             pointer-events: none; /* Prevent interaction */
-            display: flex; /* Center the button */
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
         }
 
         @keyframes wave-animation {
@@ -229,28 +226,6 @@
                 transform: scale(1); /* Shrink */
                 opacity: 0; /* Fully transparent */
             }
-        }
-
-        .mejs-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%; /* Full width of the wave effect */
-            height: 100%; /* Full height of the wave effect */
-        }
-
-        .mejs-time-rail {
-            position: relative;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-        }
-
-        .control-btn {
-            background-color: transparent; /* Transparent background */
-            border: none; /* No border */
-            cursor: pointer; /* Pointer cursor */
-            font-size: 24px; /* Adjust size as needed */
-            color: white; /* Icon color */
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/4.0.0/wavesurfer.min.js"></script>
@@ -401,15 +376,7 @@
         <!-- Add loading indicator -->
         <div id="loading" style="display: none;">Loading...</div>
 
-        <div class="wave-effect" id="wave-effect">
-            <div class="mejs-controls">
-                <div class="mejs-time-rail" style="width: 100px; height: 100px;">
-                    <button id="wave-play-btn" class="control-btn" aria-label="Play/Pause">
-                        <i id="wave-icon" class="fas fa-play"></i> <!-- Play icon -->
-                    </button>
-                </div>
-            </div>
-        </div> <!-- Added circular wave effect -->
+        <div class="wave-effect" id="wave-effect"></div> <!-- Added circular wave effect -->
 
         <script>
             const audio = document.getElementById('audio-element');
@@ -591,18 +558,14 @@
 
             // Show wave effect when audio is playing
             function showWaveEffect() {
-                waveEffect.style.display = 'flex'; // Show the wave effect with flex
+                waveEffect.style.display = 'block'; // Show the wave effect
                 waveEffect.style.left = `${document.getElementById('waveform').offsetLeft - 50}px`; // Position to the left of the waveform
                 waveEffect.style.top = `${document.getElementById('waveform').offsetTop + document.getElementById('waveform').clientHeight / 2 - 50}px`; // Center vertically
-                document.getElementById('wave-icon').classList.remove('fa-play'); // Change to pause icon
-                document.getElementById('wave-icon').classList.add('fa-pause'); // Add pause icon
             }
 
             // Hide wave effect when audio is paused
             function hideWaveEffect() {
                 waveEffect.style.display = 'none'; // Hide the wave effect
-                document.getElementById('wave-icon').classList.remove('fa-pause'); // Change back to play icon
-                document.getElementById('wave-icon').classList.add('fa-play'); // Add play icon
             }
 
             // Event listeners
