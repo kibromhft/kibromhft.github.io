@@ -395,9 +395,9 @@
 
             // Podcast episodes data with your original audio files
             const episodes = [
-                { title: "Episode 1: Introduction", category: "Introduction", src: "audio1.mp3", description: "An introduction to the podcast.", url: "https://kibromhft.github.io/episode1" },
-                { title: "Episode 2: Deep Dive", category: "Deep Dive", src: "audio2.mp3", description: "A deep dive into the topic.", url: "https://kibromhft.github.io/episode2" },
-                { title: "Episode 3: Conclusion", category: "Conclusion", src: "audio3.mp3", description: "Wrapping up the discussion.", url: "https://kibromhft.github.io/episode3" },
+                { title: "Episode 1: Introduction", category: "Introduction", src: "audio1.mp3", description: "An introduction to the podcast.", url: "https://kibromhft.github.io/episode1.html" }, // Ensure this URL is correct
+                { title: "Episode 2: Deep Dive", category: "Deep Dive", src: "audio2.mp3", description: "A deep dive into the topic.", url: "https://kibromhft.github.io/episode2.html" }, // Ensure this URL is correct
+                { title: "Episode 3: Conclusion", category: "Conclusion", src: "audio3.mp3", description: "Wrapping up the discussion.", url: "https://kibromhft.github.io/episode3.html" }, // Ensure this URL is correct
             ];
 
             // Format duration from seconds to MM:SS
@@ -410,11 +410,12 @@
             // Load episodes into the playlist without displaying duration
             function loadEpisodes() {
                 episodes.forEach((episode, index) => {
+                    const episodeUrl = `https://kibromhft.github.io/episode/${index}`; // URL for the episode
                     const li = document.createElement('li');
                     li.innerHTML = `
                         <a href="#" data-index="${index}">${episode.title}</a>
-                        <button class="share-link" onclick="shareEpisode('${episode.url}')">Share</button>
-                        <button class="copy-link" onclick="copyToClipboard('${episode.url}')">Copy Link</button>
+                        <button class="share-link" onclick="shareEpisode('${episodeUrl}')">Share</button>
+                        <button class="copy-link" onclick="copyToClipboard('${episodeUrl}')">Copy Link</button>
                     `;
                     playlistItems.appendChild(li);
                 });
