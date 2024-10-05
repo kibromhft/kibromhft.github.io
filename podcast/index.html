@@ -410,9 +410,13 @@
             // Load episodes into the playlist without displaying duration
             function loadEpisodes() {
                 episodes.forEach((episode, index) => {
+                    const episodeUrl = `https://kibromhft.github.io/episode/${index}`; // URL for the episode
                     const li = document.createElement('li');
-                    li.innerHTML = `<a href="#" data-index="${index}">${episode.title}</a> 
-                                    <a href="https://kibromhft.github.io/episode/${index}" target="_blank" class="share-link">Share</a>`; // Added share link
+                    li.innerHTML = `
+                        <a href="#" data-index="${index}">${episode.title}</a>
+                        <button class="share-link" onclick="shareEpisode('${episodeUrl}')">Share</button>
+                        <button class="copy-link" onclick="copyToClipboard('${episodeUrl}')">Copy Link</button>
+                    `;
                     playlistItems.appendChild(li);
                 });
             }
@@ -573,6 +577,24 @@
             audio.addEventListener('play', showWaveEffect);
             audio.addEventListener('pause', hideWaveEffect);
             audio.addEventListener('ended', hideWaveEffect);
+
+            // Function to share episode on social media
+            function shareEpisode(url) {
+                const twitterUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`;
+                const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+                // Open share links in new tabs
+                window.open(twitterUrl, '_blank');
+                window.open(facebookUrl, '_blank');
+            }
+
+            // Function to copy link to clipboard
+            function copyToClipboard(url) {
+                navigator.clipboard.writeText(url).then(() => {
+                    alert('Link copied to clipboard!'); // Notify user
+                }).catch(err => {
+                    console.error('Could not copy text: ', err);
+                });
+            }
         </script>
     </main>
 </body>
