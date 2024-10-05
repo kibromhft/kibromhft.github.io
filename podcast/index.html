@@ -411,7 +411,8 @@
             function loadEpisodes() {
                 episodes.forEach((episode, index) => {
                     const li = document.createElement('li');
-                    li.innerHTML = `<a href="#" data-index="${index}">${episode.title}</a>`; // No duration displayed here
+                    li.innerHTML = `<a href="#" data-index="${index}">${episode.title}</a> 
+                                    <a href="https://kibromhft.github.io/episode/${index}" target="_blank" class="share-link">Share</a>`; // Added share link
                     playlistItems.appendChild(li);
                 });
             }
