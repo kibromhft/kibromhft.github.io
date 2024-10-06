@@ -284,7 +284,7 @@
                             <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
                             <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
                             <line x1="1" y1="12" x2="3" y2="12"></line>
-                            <line x1="21" y1="12" x2="23" y2="23"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
                             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
                             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                         </svg>
@@ -354,8 +354,7 @@
             </div>
             <div id="waveform" style="width: 100%; height: 128px; margin: 0;"></div> <!-- Added margin for medium spacing -->
             <div class="audio-player-body">
-                <audio id="audio" src="your-audio-file.mp3" preload="auto"></audio>
-                <canvas id="waveform" width="600" height="100"></canvas>
+                <audio id="audio-element" src=""></audio>
                 <div class="progress-bar" style="display: none;"> <!-- Set display to none -->
                     <div class="progress"></div>
                 </div>
@@ -380,7 +379,7 @@
         <div class="wave-effect" id="wave-effect"></div> <!-- Added circular wave effect -->
 
         <script>
-            const audio = document.getElementById('audio');
+            const audio = document.getElementById('audio-element');
             const playPauseBtn = document.getElementById('play-pause-btn');
             const prevBtn = document.getElementById('prev-btn');
             const nextBtn = document.getElementById('next-btn');
@@ -573,91 +572,6 @@
             audio.addEventListener('play', showWaveEffect);
             audio.addEventListener('pause', hideWaveEffect);
             audio.addEventListener('ended', hideWaveEffect);
-
-            // Show loading spinner when audio is loading
-            const loadingSpinner = document.getElementById('loading-spinner');
-
-            audio.addEventListener('loadstart', () => {
-                loadingSpinner.style.display = 'block';
-            });
-
-            audio.addEventListener('canplaythrough', () => {
-                loadingSpinner.style.display = 'none';
-            });
-
-            // Volume control functionality
-            const volumeControl = document.getElementById('volume-control');
-            volumeControl.addEventListener('input', (event) => {
-                audio.volume = event.target.value;
-            });
-
-            // Keyboard shortcuts
-            document.addEventListener('keydown', (event) => {
-                switch (event.key) {
-                    case ' ':
-                        // Spacebar for play/pause
-                        if (audio.paused) {
-                            audio.play();
-                            document.getElementById('play-pause-btn').innerText = 'Pause';
-                        } else {
-                            audio.pause();
-                            document.getElementById('play-pause-btn').innerText = 'Play';
-                        }
-                        break;
-                    case 'ArrowRight':
-                        // Next track functionality
-                        // Implement your next track logic here
-                        break;
-                    case 'ArrowLeft':
-                        // Previous track functionality
-                        // Implement your previous track logic here
-                        break;
-                }
-            });
-
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            const analyser = audioContext.createAnalyser();
-            const source = audioContext.createMediaElementSource(audio);
-            source.connect(analyser);
-            analyser.connect(audioContext.destination);
-
-            // Function to draw the waveform
-            function drawWaveform() {
-                const bufferLength = analyser.frequencyBinCount;
-                const dataArray = new Uint8Array(bufferLength);
-                
-                // Get the audio data
-                analyser.getByteTimeDomainData(dataArray);
-                
-                // Clear the canvas
-                clearWaveform();
-                
-                // Draw the waveform
-                waveformContext.beginPath();
-                const sliceWidth = waveformCanvas.width / bufferLength;
-                let x = 0;
-
-                for (let i = 0; i < bufferLength; i++) {
-                    const v = dataArray[i] / 128.0; // Normalize to [0, 1]
-                    const y = v * waveformCanvas.height / 2; // Scale to canvas height
-                    if (i === 0) {
-                        waveformContext.moveTo(x, y);
-                    } else {
-                        waveformContext.lineTo(x, y);
-                    }
-                    x += sliceWidth;
-                }
-                waveformContext.lineTo(waveformCanvas.width, waveformCanvas.height / 2);
-                waveformContext.stroke();
-            }
-
-            // Update the waveform display when audio is playing
-            audio.addEventListener('play', () => {
-                audioContext.resume().then(() => {
-                    drawWaveform();
-                    requestAnimationFrame(drawWaveform); // Continuously update the waveform
-                });
-            });
         </script>
     </main>
 </body>
