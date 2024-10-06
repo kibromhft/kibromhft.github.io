@@ -94,7 +94,7 @@
 
         .audio-player-header {
             text-align: center;
-            margin-bottom: 0; // Changed from 20px to 10px and then zero 
+            margin-bottom: 0; /* Changed from 20px to 10px and then zero */
         }
 
         .progress-bar {
@@ -127,11 +127,12 @@
             margin: 0 5px;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.2s;
         }
 
         .control-btn:hover {
             background-color: #45a049;
+            transform: scale(1.05);
         }
 
         .playlist {
@@ -182,15 +183,6 @@
             .search-bar input {
                 width: 100%;
             }
-        }
-
-        /* Smooth transitions for buttons */
-        .control-btn {
-            transition: background-color 0.3s, transform 0.2s;
-        }
-
-        .control-btn:hover {
-            transform: scale(1.05);
         }
 
         .wave-form {
@@ -400,6 +392,7 @@
                 { title: "Episode 3: Conclusion", category: "Conclusion", src: "audio3.mp3", description: "Wrapping up the discussion." },
             ];
 
+
             // Format duration from seconds to MM:SS
             function formatDuration(seconds) {
                 const minutes = Math.floor(seconds / 60);
@@ -459,6 +452,7 @@
                 updatePlayPauseIcon();
             }
 
+
             // Highlight the currently playing episode
             function highlightCurrentEpisode() {
                 const links = playlistItems.querySelectorAll('a');
@@ -515,9 +509,12 @@
                 playlistItems.innerHTML = ''; // Clear current list
                 filteredEpisodes.forEach((episode, index) => {
                     const li = document.createElement('li');
-                    li.innerHTML = `<a href="#" data-index="${index}">${episode.title} - ${formatDuration(episode.duration)}</a>`;
+                    li.innerHTML = `<a href="#" data-index="${index}">${episode.title}</a>`;
                     playlistItems.appendChild(li);
                 });
+                if (searchInput.value === '') {
+                    loadEpisodes(); // Reload full list if search input is empty
+                }
             }
 
             // Event listeners
@@ -576,33 +573,15 @@
     </main>
 </body>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
 <footer class="footer">
     <span>&copy; 2023 <a href="https://kibromhft.github.io/">Kb&#39;s Blog</a></span>
-
 </footer>
-
 
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g" style="visibility: visible; opacity: 1;">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
         <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="rgb(192, 132, 224)"/>
-            <stop offset="100%" stop-color="rgb(153, 0, 204)"/>
+            <stop offset="0%" stop-color="rgb(192, 132, 224)" />
+            <stop offset="100%" stop-color="rgb(153, 0, 204)" />
         </linearGradient>
         <path d="M12 6H0l6-6z" fill="url(#grad)"></path>
     </svg>
