@@ -395,9 +395,9 @@
 
             // Podcast episodes data with your original audio files
             const episodes = [
-                { title: "Episode 1: Introduction", category: "Introduction", src: "audio1.mp3", description: "An introduction to the podcast.", url: "https://kibromhft.github.io/episode1.html" }, // Ensure this URL is correct
-                { title: "Episode 2: Deep Dive", category: "Deep Dive", src: "audio2.mp3", description: "A deep dive into the topic.", url: "https://kibromhft.github.io/episode2.html" }, // Ensure this URL is correct
-                { title: "Episode 3: Conclusion", category: "Conclusion", src: "audio3.mp3", description: "Wrapping up the discussion.", url: "https://kibromhft.github.io/episode3.html" }, // Ensure this URL is correct
+                { title: "Episode 1: Introduction", category: "Introduction", src: "audio1.mp3", description: "An introduction to the podcast." },
+                { title: "Episode 2: Deep Dive", category: "Deep Dive", src: "audio2.mp3", description: "A deep dive into the topic." },
+                { title: "Episode 3: Conclusion", category: "Conclusion", src: "audio3.mp3", description: "Wrapping up the discussion." },
             ];
 
             // Format duration from seconds to MM:SS
@@ -410,13 +410,8 @@
             // Load episodes into the playlist without displaying duration
             function loadEpisodes() {
                 episodes.forEach((episode, index) => {
-                    const episodeUrl = `https://kibromhft.github.io/episode/${index}`; // URL for the episode
                     const li = document.createElement('li');
-                    li.innerHTML = `
-                        <a href="#" data-index="${index}">${episode.title}</a>
-                        <button class="share-link" onclick="shareEpisode('${episodeUrl}')">Share</button>
-                        <button class="copy-link" onclick="copyToClipboard('${episodeUrl}')">Copy Link</button>
-                    `;
+                    li.innerHTML = `<a href="#" data-index="${index}">${episode.title}</a>`; // No duration displayed here
                     playlistItems.appendChild(li);
                 });
             }
@@ -577,24 +572,6 @@
             audio.addEventListener('play', showWaveEffect);
             audio.addEventListener('pause', hideWaveEffect);
             audio.addEventListener('ended', hideWaveEffect);
-
-            // Function to share episode on social media
-            function shareEpisode(url) {
-                const twitterUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}`;
-                const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-                // Open share links in new tabs
-                window.open(twitterUrl, '_blank');
-                window.open(facebookUrl, '_blank');
-            }
-
-            // Function to copy link to clipboard
-            function copyToClipboard(url) {
-                navigator.clipboard.writeText(url).then(() => {
-                    alert('Link copied to clipboard!'); // Notify user
-                }).catch(err => {
-                    console.error('Could not copy text: ', err);
-                });
-            }
         </script>
     </main>
 </body>
