@@ -392,7 +392,7 @@
                 <i class="fa fa-podcast" aria-hidden="true"></i>
                 <h2 id="podcast-title">Category Name</h2> <!-- This will now show the category -->
                 <p id="episode-title">Episode Title</p> <!-- This will show the episode title -->
-                <p id="current-duration" style="font-style: italic;">Duration: <span id="duration-display">0:00</span></p> <!-- Italics for duration -->
+                <p id="current-duration" style="font-style: italic;">Share Link: <span id="share-link"></span> <button id="copy-btn">Copy</button></p> <!-- Updated to show share link -->
             </div>
             <div id="waveform" style="width: 100%; height: 128px; margin: 0;"></div> <!-- Added margin for medium spacing -->
             <div class="audio-player-body">
@@ -445,13 +445,6 @@
                 { title: "Episode 6: Community Insights", category: "Community", src: "audio6.mp3", description: "Insights from the community." },
             ];
 
-            // Format duration from seconds to MM:SS
-            function formatDuration(seconds) {
-                const minutes = Math.floor(seconds / 60);
-                const secs = Math.floor(seconds % 60);
-                return `${minutes}:${secs < 10 ? '0' : ''}${secs}`; // Ensure seconds are always two digits
-            }
-
             // Load episodes into the playlist
             function loadEpisodes() {
                 episodes.forEach((episode, index) => {
@@ -477,6 +470,10 @@
                 podcastTitleElement.textContent = episode.category; // Set category name dynamically
                 episodeTitleElement.textContent = episode.title; // Set episode title dynamically
 
+                // Set the share link
+                const shareLink = `https://kibromhft.github.io/audio/${episode.src}`; // Update with your actual share link format
+                document.getElementById('share-link').textContent = shareLink; // Display the share link
+
                 // Initialize Wavesurfer with enhanced styles
                 if (wavesurfer) {
                     wavesurfer.destroy(); // Destroy previous instance if it exists
@@ -498,12 +495,12 @@
                 // Load the audio file into Wavesurfer
                 wavesurfer.load(episode.src);
 
-                // Load the audio metadata to get the duration
-                audio.addEventListener('loadedmetadata', function() {
-                    const duration = Math.floor(audio.duration); // Get duration in seconds
-                    const formattedDuration = formatDuration(duration); // Format it
-                    document.getElementById('duration-display').textContent = formattedDuration; // Update the duration display
-                });
+                // Update the copy button functionality
+                document.getElementById('copy-btn').onclick = function() {
+                    navigator.clipboard.writeText(shareLink).then(() => {
+                        alert('Share link copied to clipboard!'); // Notify user
+                    });
+                };
 
                 currentEpisodeIndex = index;
                 highlightCurrentEpisode();
@@ -627,6 +624,7 @@
         </script>
     </main>
 </body>
+
 
 
 
