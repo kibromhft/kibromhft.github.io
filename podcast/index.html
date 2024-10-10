@@ -147,6 +147,7 @@
             box-sizing: border-box; /* Include padding and border in the element's total width */
         }
 
+
         /* For Webkit browsers (Chrome, Safari) */
         .playlist::-webkit-scrollbar {
             width: 8px; /* Width of the scrollbar */
@@ -173,22 +174,11 @@
             transition: background-color 0.3s; /* Smooth background color transition */
             margin-bottom: 0; /* Removed margin between list items */
             background-color: #fff; /* White background for list items */
-            position: relative; /* Position relative for the pseudo-element */
+            border-bottom: 0.1px solid rgba(204, 204, 204, 0.5); /* Very slim line with light color */
         }
 
-        .playlist li::after {
-            content: ""; /* Create a pseudo-element */
-            display: block; /* Make it a block element */
-            height: 0.1px; /* Set the height to a very slim line */
-            background-color: #ccc; /* Color of the line */
-            position: absolute; /* Position it absolutely */
-            left: 0; /* Align to the left */
-            right: 0; /* Align to the right */
-            bottom: 0; /* Position at the bottom of the list item */
-        }
-
-        .playlist li:last-child::after {
-            display: none; /* Remove the line for the last item */
+        .playlist li:last-child {
+            border-bottom: none; /* Remove border for the last item */
         }
 
         .playlist li:hover {
