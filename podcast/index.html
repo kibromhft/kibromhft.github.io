@@ -136,6 +136,12 @@
 
         .playlist {
             margin-top: 20px;
+            max-height: 300px; /* Increased height for better visibility */
+            overflow-y: auto; /* Enable vertical scrolling */
+            border: 1px solid #ccc; /* Add a border for better definition */
+            border-radius: 5px; /* Rounded corners */
+            background-color: #f9f9f9; /* Light background color */
+            padding: 10px; /* Padding for inner spacing */
         }
 
         .playlist h3 {
@@ -148,7 +154,12 @@
         }
 
         .playlist li {
-            margin-bottom: 5px;
+            padding: 5px; /* Add padding for list items */
+            transition: background-color 0.3s; /* Smooth background color transition */
+        }
+
+        .playlist li:hover {
+            background-color: #e0e0e0; /* Highlight on hover */
         }
 
         .playlist a {
