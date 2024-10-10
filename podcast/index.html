@@ -171,13 +171,18 @@
         }
 
         .playlist li {
+            display: flex; /* Use flexbox for alignment */
+            justify-content: space-between; /* Space between title and duration */
             padding: 3px; /* Further reduced padding for list items */
             transition: background-color 0.3s; /* Smooth background color transition */
             margin-bottom: 0; /* Removed margin between list items */
             background-color: #fff; /* White background for list items */
-            border-bottom: 0; /* Removed border for no visible line */
-            /* Alternatively, you can set it to a very small value if you want a line */
-            /* border-bottom: 0.01px solid rgba(204, 204, 204, 0.5); */
+            border-bottom: 1px solid rgba(204, 204, 204, 0.5); /* Slim transparent line */
+        }
+
+        .playlist li .duration {
+            margin-left: auto; /* Push duration to the right */
+            color: #666; /* Optional: Change color for better visibility */
         }
 
         .playlist li:last-child {
@@ -451,7 +456,7 @@
             function loadEpisodes() {
                 episodes.forEach((episode, index) => {
                     const li = document.createElement('li');
-                    li.innerHTML = `<a href="#" data-index="${index}">${episode.title}</a>`; // No duration displayed here
+                    li.innerHTML = `<a href="#" data-index="${index}">${episode.title}</a><span class="duration">${formatDuration(episode.duration)}</span>`; // Added duration span
                     playlistItems.appendChild(li);
                 });
             }
