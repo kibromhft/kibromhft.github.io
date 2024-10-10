@@ -136,7 +136,7 @@
 
         .playlist {
             margin: 0; /* Remove any margin to eliminate extra space */
-            width: 100%; /* Set the width to 100% to match the parent container */
+            width: 100%; /* Set the width to 100% to match the parent <main> class */
             max-height: 300px; /* Increased height for better visibility */
             overflow-y: auto; /* Enable vertical scrolling */
             border: 1px solid #ccc; /* Add a border for better definition */
@@ -144,9 +144,10 @@
             background-color: #f9f9f9; /* Light background color */
             padding: 5px; /* Reduced padding for inner spacing */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            scrollbar-width: thin; /* For Firefox */
+            scrollbar-color: #4CAF50 #f9f9f9; /* For Firefox */
             box-sizing: border-box; /* Include padding and border in the element's total width */
         }
-
 
         /* For Webkit browsers (Chrome, Safari) */
         .playlist::-webkit-scrollbar {
@@ -174,7 +175,8 @@
             transition: background-color 0.3s; /* Smooth background color transition */
             margin-bottom: 0; /* Removed margin between list items */
             background-color: #fff; /* White background for list items */
-            border-bottom: 0.1px solid rgba(204, 204, 204, 0.5); /* Very slim line with light color */
+           /* border-bottom: 0.1px solid #ccc;  Slimmer line between episodes */
+			border-bottom: 0.1px solid rgba(204, 204, 204, 0.5); /* Very slim line with light color */
         }
 
         .playlist li:last-child {
