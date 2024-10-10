@@ -452,11 +452,18 @@
                 return `${minutes}:${secs < 10 ? '0' : ''}${secs}`; // Ensure seconds are always two digits
             }
 
-            // Load episodes into the playlist without displaying duration
+            // Load episodes into the playlist
             function loadEpisodes() {
                 episodes.forEach((episode, index) => {
                     const li = document.createElement('li');
-                    li.innerHTML = `<a href="#" data-index="${index}">${episode.title}</a><span class="duration">${formatDuration(episode.duration)}</span>`; // Added duration span
+                    const duration = episode.duration; // Get the duration
+
+                    // Check if duration is a valid number
+                    const formattedDuration = (typeof duration === 'number' && !isNaN(duration)) 
+                        ? formatDuration(duration) 
+                        : 'N/A'; // Fallback if duration is invalid
+
+                    li.innerHTML = `<a href="#" data-index="${index}">${episode.title}</a><span class="duration">${formattedDuration}</span>`;
                     playlistItems.appendChild(li);
                 });
             }
