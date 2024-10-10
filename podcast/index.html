@@ -142,15 +142,22 @@
             border-radius: 5px; /* Rounded corners */
             background-color: #f9f9f9; /* Light background color */
             padding: 10px; /* Padding for inner spacing */
+            scrollbar-width: thin; /* For Firefox */
+            scrollbar-color: #4CAF50 #f9f9f9; /* For Firefox */
         }
 
-        .playlist h3 {
-            margin-bottom: 10px;
+        /* For Webkit browsers (Chrome, Safari) */
+        .playlist::-webkit-scrollbar {
+            width: 8px; /* Width of the scrollbar */
         }
 
-        .playlist ul {
-            list-style-type: none;
-            padding: 0;
+        .playlist::-webkit-scrollbar-track {
+            background: #f9f9f9; /* Background of the scrollbar track */
+        }
+
+        .playlist::-webkit-scrollbar-thumb {
+            background-color: #4CAF50; /* Color of the scrollbar thumb */
+            border-radius: 10px; /* Rounded corners for the scrollbar thumb */
         }
 
         .playlist li {
