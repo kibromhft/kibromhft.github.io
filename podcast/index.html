@@ -142,22 +142,15 @@
             border-radius: 5px; /* Rounded corners */
             background-color: #f9f9f9; /* Light background color */
             padding: 10px; /* Padding for inner spacing */
-            scrollbar-width: thin; /* For Firefox */
-            scrollbar-color: #4CAF50 #f9f9f9; /* For Firefox */
         }
 
-        /* For Webkit browsers (Chrome, Safari) */
-        .playlist::-webkit-scrollbar {
-            width: 8px; /* Width of the scrollbar */
+        .playlist h3 {
+            margin-bottom: 10px;
         }
 
-        .playlist::-webkit-scrollbar-track {
-            background: #f9f9f9; /* Background of the scrollbar track */
-        }
-
-        .playlist::-webkit-scrollbar-thumb {
-            background-color: #4CAF50; /* Color of the scrollbar thumb */
-            border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+        .playlist ul {
+            list-style-type: none;
+            padding: 0;
         }
 
         .playlist li {
@@ -416,6 +409,9 @@
                 { title: "Episode 1: Introduction", category: "Introduction", src: "audio1.mp3", description: "An introduction to the podcast." },
                 { title: "Episode 2: Deep Dive", category: "Deep Dive", src: "audio2.mp3", description: "A deep dive into the topic." },
                 { title: "Episode 3: Conclusion", category: "Conclusion", src: "audio3.mp3", description: "Wrapping up the discussion." },
+                { title: "Episode 4: Advanced Topics", category: "Advanced", src: "audio4.mp3", description: "Exploring advanced topics." },
+                { title: "Episode 5: Future Trends", category: "Future", src: "audio5.mp3", description: "Discussing future trends." },
+                { title: "Episode 6: Community Insights", category: "Community", src: "audio6.mp3", description: "Insights from the community." },
             ];
 
             // Format duration from seconds to MM:SS
@@ -593,7 +589,6 @@
         </script>
     </main>
 </body>
-
 
 
 
