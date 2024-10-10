@@ -175,7 +175,9 @@
             transition: background-color 0.3s; /* Smooth background color transition */
             margin-bottom: 0; /* Removed margin between list items */
             background-color: #fff; /* White background for list items */
-            border-bottom: 0.05px solid rgba(204, 204, 204, 0.5); /* Slimmer line with lighter color */
+            border-bottom: 0; /* Removed border for no visible line */
+            /* Alternatively, you can set it to a very small value if you want a line */
+            /* border-bottom: 0.01px solid rgba(204, 204, 204, 0.5); */
         }
 
         .playlist li:last-child {
@@ -613,6 +615,7 @@
         </script>
     </main>
 </body>
+
 
 
 
