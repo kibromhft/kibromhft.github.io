@@ -169,17 +169,19 @@
         }
 
         .playlist li {
-            padding: 10px; /* Add padding for list items */
-            transition: background-color 0.3s, transform 0.2s; /* Smooth background color transition */
-            border-radius: 5px; /* Rounded corners for list items */
-            margin-bottom: 5px; /* Space between list items */
+            padding: 8px; /* Reduced padding for list items */
+            transition: background-color 0.3s; /* Smooth background color transition */
+            margin-bottom: 2px; /* Reduced space between list items */
             background-color: #fff; /* White background for list items */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for list items */
+            border-bottom: 1px solid #ccc; /* Slim line between episodes */
+        }
+
+        .playlist li:last-child {
+            border-bottom: none; /* Remove border for the last item */
         }
 
         .playlist li:hover {
             background-color: #e0e0e0; /* Highlight on hover */
-            transform: scale(1.02); /* Slightly enlarge on hover */
         }
 
         .playlist a {
