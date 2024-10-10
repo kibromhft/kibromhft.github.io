@@ -136,12 +136,13 @@
 
         .playlist {
             margin-top: 20px;
+            width: 100%; /* Make the container equal to its parent class */
             max-height: 300px; /* Increased height for better visibility */
             overflow-y: auto; /* Enable vertical scrolling */
             border: 1px solid #ccc; /* Add a border for better definition */
             border-radius: 10px; /* Rounded corners */
             background-color: #f9f9f9; /* Light background color */
-            padding: 15px; /* Padding for inner spacing */
+            padding: 10px; /* Padding for inner spacing */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
             scrollbar-width: thin; /* For Firefox */
             scrollbar-color: #4CAF50 #f9f9f9; /* For Firefox */
@@ -162,16 +163,16 @@
         }
 
         .playlist h3 {
-            margin-bottom: 15px; /* Space below the heading */
+            margin-bottom: 10px; /* Space below the heading */
             font-size: 1.5em; /* Larger font size for the heading */
             color: #333; /* Darker color for better contrast */
             text-align: center; /* Center the heading */
         }
 
         .playlist li {
-            padding: 8px; /* Reduced padding for list items */
+            padding: 5px; /* Reduced padding for list items */
             transition: background-color 0.3s; /* Smooth background color transition */
-            margin-bottom: 2px; /* Reduced space between list items */
+            margin-bottom: 1px; /* Further reduced space between list items */
             background-color: #fff; /* White background for list items */
             border-bottom: 1px solid #ccc; /* Slim line between episodes */
         }
