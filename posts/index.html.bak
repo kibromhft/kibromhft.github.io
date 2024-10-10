@@ -5,19 +5,21 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>404 Page not found | Kb&#39;s Blog</title>
+<title>Posts | Kb&#39;s Blog</title>
 <meta name="keywords" content="" />
-<meta name="description" content="Document my learning notes.">
+<meta name="description" content="Posts - Kb&#39;s Blog">
 <meta name="author" content="kibrom Haftu">
-<link rel="canonical" href="https://kibromhft.github.io/404.html" />
+<link rel="canonical" href="https://kibromhft.github.io/posts/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet_main.css"  rel="preload stylesheet" as="style">
 <link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kibromhft.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kibromhft.github.io/favicon-32x32.png">
 <link rel="apple-touch-icon" href="https://kibromhft.github.io/apple-touch-icon.png">
 <link rel="mask-icon" href="https://kibromhft.github.io/safari-pinned-tab.svg">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://kibromhft.github.io/posts/index.xml">
 <noscript>
     <style>
         #theme-toggle,
@@ -66,15 +68,30 @@ if (!doNotTrack) {
 	
 	ga('send', 'pageview');
 }
-</script><meta property="og:title" content="404 Page not found" />
+</script><meta property="og:title" content="Posts" />
 <meta property="og:description" content="Document my learning notes." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://kibromhft.github.io/404.html" />
+<meta property="og:url" content="https://kibromhft.github.io/posts/" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="404 Page not found"/>
+<meta name="twitter:title" content="Posts"/>
 <meta name="twitter:description" content="Document my learning notes."/>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kibromhft.github.io/posts/"
+    }
+  ]
+}
+</script>
 </head>
 
 <body class="list" id="top">
@@ -111,6 +128,7 @@ if (!doNotTrack) {
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 
 
 <header class="header">
@@ -182,68 +200,98 @@ if (!doNotTrack) {
 
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-			  Resources <span class="caret fa fa-bars" data-toggle="dropdown"></span>
+			  Insights <span class="caret fa fa-bars" data-toggle="dropdown"></span>
 			</a>
-		  <ul class="dropdown-menu custom-dropdown">
-			<li>
+		  <ul class="dropdown-menu" style="padding: 0px;">
+			<li class="header-height first">
 			  <a href="https://kibromhft.github.io/podcast">Podcast</a>
 			</li>
-			<li>
+			<li class="header-height separator" style="padding: 0px;>
 			  <a href="#">AI in Africa</a>
 			</li>
-			<li>
+			<li class="header-height separator" style="padding: 0px;>
 			  <a href="#">Technology Trends</a>
 			</li>
-			<li>
+			<li class="header-height" style="padding: 0px;>
 			  <a href="#">Resources</a>
 			</li>
 		  </ul>
 		</li>
-
-		<style>
-		.custom-dropdown {
-		  padding: 8px 0 !important;
-		  margin: 0 !important;
-		  list-style-type: none !important;
-		  /* Removed min-width to allow natural width */
-		}
-
-		.custom-dropdown li {
-		  padding: 0 !important;
-		  margin: 0 !important;
-		}
-
-		.custom-dropdown li a {
-		  display: block !important;
-		  width: 100% !important;
-		  padding: 8px 20px !important;
-		  margin: 0 !important;
-		  box-sizing: border-box !important;
-		  text-decoration: none !important;
-		  color: #333 !important;
-		  font-size: 16px !important; /* Increased font size */
-		  line-height: 1.5 !important;
-		}
-
-		.custom-dropdown li a:hover {
-		  background-color: #f8f9fa !important;
-		  color: #000 !important;
-		}
-		</style>
-
+		
 		</ul>
-
 		
     </nav>
 </header>
-<main class="main">
-<div class="not-found">404</div>
+
+<main class="main"> 
+<header class="page-header">
+  <h1>Posts</h1>
+</header>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Jobs in the Digital Era
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>As we enter the digital age, one thing is certain: technology is not just a trend, it's a game-changer. With each passing day, technology is making its way into more and more industries, bringing about a variety of benefits for society such as increased efficiency, improved communication, and access to information. But, with change comes challenges, and one of the biggest concerns is the displacement of jobs.
+Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolution of neural networks during training via gradient descent....</p>
+  </section>
+  <footer class="entry-footer"><span title='2023-01-03 10:00:00 -0700 PDT'>October 19, 2022</span>&nbsp;·&nbsp;11 min&nbsp;·&nbsp;kibrom Haftu</footer>
+  <a class="entry-link" aria-label="post link to Jobs in the Digital Era" href="https://kibromhft.github.io/posts/2022-10-19-automation/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Debugging Deep Learning Models: Strategies and Best Practices
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>Debugging deep learning models is a complex and challenging task that requires significant expertise and experience. One of the main reasons for this complexity is that deep learning models involve multiple layers of interconnected nodes, which can make it difficult to pinpoint the source of errors or identify areas where optimization is needed. Additionally, deep learning models often rely on large amounts of data to train, which can increase the risk of overfitting or underfitting the model. This is why it is essential to have a deep understanding of both the deep learning model itself, as well as the data from which the model is being trained, when it comes to debugging deep learning models.....</p>
+  </section>
+  <footer class="entry-footer"><span title='2022-09-23 15:10:30 -0700 PDT'>June 9, 2022</span>&nbsp;·&nbsp;13 min&nbsp;·&nbsp;kibrom Haftu</footer>
+  <a class="entry-link" aria-label="post link to Debugging Deep Learning Models" href="https://kibromhft.github.io/posts/2022-09-23-vlm/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Causality in Machine Learning
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>Are you tired of making predictions based on correlation rather than causation? Introducing Causality in Machine Learning, a cutting-edge approach to understanding the underlying causes of complex data patterns. By incorporating causal inference techniques, we can gain a deeper understanding of how different variables interact and affect each other, leading to more accurate predictions and informed decision-making....</p>
+  </section>
+  <footer class="entry-footer"><span title='2022-02-20 00:00:00 +0000 UTC'>November 20, 2022</span>&nbsp;·&nbsp;22 min&nbsp;·&nbsp;kibrom Haftu</footer>
+  <a class="entry-link" aria-label="post link to Causality in Machine Learning" href="https://kibromhft.github.io/posts/2022-11-20-causality_in_ML/"></a>
+</article>
+
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Demystifying Overfitting in Deep Neural Networks: Separating Fact from Fiction
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>Although most popular and successful model architectures are designed by human experts, it doesn’t mean we have explored the entire network architecture space and settled down with the best option. We would have a better chance to find the optimal solution if we adopt a systematic and automatic way of learning high-performance model architectures.
+Automatically learning and evolving network topologies is not a new idea (Stanley &amp; Miikkulainen, 2002). In recent years, the pioneering work by Zoph &amp; Le 2017 and Baker et al....</p>
+  </section>
+  <footer class="entry-footer"><span title='2020-08-06 00:00:00 +0000 UTC'>August 6, 2020</span>&nbsp;·&nbsp;32 min&nbsp;·&nbsp;kibrom Haftu</footer>
+  <a class="entry-link" aria-label="post link to 2022-10-06-overfit_DNNDemystifying Overfitting in Deep Neural Networks: Separating Fact from Fiction" href="https://kibromhft.github.io/posts/2022-10-06-overfit_DNN/"></a>
+</article>
+
+
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="https://kibromhft.github.io/posts/page/2/"> »</a>
+  </nav>
+</footer>
     </main>
     
 <footer class="footer">
     <span>&copy; 2023 <a href="https://kibromhft.github.io/">Kb&#39;s Blog</a></span>
 
 </footer>
+
 
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g" style="visibility: visible; opacity: 1;">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">

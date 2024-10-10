@@ -5,19 +5,21 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>404 Page not found | Kb&#39;s Blog</title>
+<title>Computer Vision Models | Kb&#39;s Blog</title>
 <meta name="keywords" content="" />
 <meta name="description" content="Document my learning notes.">
 <meta name="author" content="kibrom Haftu">
-<link rel="canonical" href="https://kibromhft.github.io/404.html" />
+<link rel="canonical" href="https://kibromhft.github.io/keywords/vision-model/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet_main.css"  rel="preload stylesheet" as="style">
 <link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kibromhft.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kibromhft.github.io/favicon-32x32.png">
 <link rel="apple-touch-icon" href="https://kibromhft.github.io/apple-touch-icon.png">
 <link rel="mask-icon" href="https://kibromhft.github.io/safari-pinned-tab.svg">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://kibromhft.github.io/keywords/vision-model/index.xml">
 <noscript>
     <style>
         #theme-toggle,
@@ -66,13 +68,13 @@ if (!doNotTrack) {
 	
 	ga('send', 'pageview');
 }
-</script><meta property="og:title" content="404 Page not found" />
+</script><meta property="og:title" content="vision-model" />
 <meta property="og:description" content="Document my learning notes." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://kibromhft.github.io/404.html" />
+<meta property="og:url" content="https://kibromhft.github.io/keywords/vision-model/" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="404 Page not found"/>
+<meta name="twitter:title" content="vision-model"/>
 <meta name="twitter:description" content="Document my learning notes."/>
 
 </head>
@@ -111,7 +113,6 @@ if (!doNotTrack) {
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
 
 <header class="header">
     <nav class="nav">
@@ -182,7 +183,7 @@ if (!doNotTrack) {
 
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-			  Resources <span class="caret fa fa-bars" data-toggle="dropdown"></span>
+			  Insights <span class="caret fa fa-bars" data-toggle="dropdown"></span>
 			</a>
 		  <ul class="dropdown-menu custom-dropdown">
 			<li>
@@ -234,24 +235,51 @@ if (!doNotTrack) {
 		</ul>
 
 		
+		</ul>
+		
     </nav>
 </header>
-<main class="main">
-<div class="not-found">404</div>
+
+
+<main class="main"> 
+<header class="page-header">
+  <h1>vision-model</h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2>Demystifying Overfitting in Deep Neural Networks: Separating Fact from Fiction
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>Although most popular and successful model architectures are designed by human experts, it doesn’t mean we have explored the entire network architecture space and settled down with the best option. We would have a better chance to find the optimal solution if we adopt a systematic and automatic way of learning high-performance model architectures.
+Automatically learning and evolving network topologies is not a new idea (Stanley &amp; Miikkulainen, 2002). In recent years, the pioneering work by Zoph &amp; Le 2017 and Baker et al....</p>
+  </section>
+  <footer class="entry-footer"><span title='2020-08-06 00:00:00 +0000 UTC'>August 6, 2020</span>&nbsp;·&nbsp;32 min&nbsp;·&nbsp;kibrom Haftu</footer>
+  <a class="entry-link" aria-label="post link to 2022-10-06-overfit_DNNDemystifying Overfitting in Deep Neural Networks: Separating Fact from Fiction" href="https://kibromhft.github.io/posts/2022-10-06-overfit_DNN/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2>Debugging Deep Learning Models: Strategies and Best Practices
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>Debugging deep learning models is a complex and challenging task that requires significant expertise and experience. One of the main reasons for this complexity is that deep learning models involve multiple layers of interconnected nodes, which can make it difficult to pinpoint the source of errors or identify areas where optimization is needed....</p>
+  </section>
+  <footer class="entry-footer"><span title='2020-09-23 00:00:00 +0000 UTC'>September 23, 2022</span>&nbsp;·&nbsp;32 min&nbsp;·&nbsp;kibrom Haftu</footer>
+  <a class="entry-link" aria-label="post link to Debugging Deep Learning Models: Strategies and Best Practices" href="https://kibromhft.github.io/posts/2022-09-23-debug/"></a>
+</article>
+
     </main>
     
 <footer class="footer">
     <span>&copy; 2023 <a href="https://kibromhft.github.io/">Kb&#39;s Blog</a></span>
 
 </footer>
-
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g" style="visibility: visible; opacity: 1;">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
-        <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="rgb(192, 132, 224)"/>
-            <stop offset="100%" stop-color="rgb(153, 0, 204)"/>
-        </linearGradient>
-        <path d="M12 6H0l6-6z" fill="url(#grad)"></path>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
     </svg>
 </a>
 

@@ -5,20 +5,24 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Archives | Kb&#39;s Blog</title>
+<title>FAQ | Kb&#39;s Blog</title>
 <meta name="keywords" content="" />
-<meta name="description" content="archives">
+<meta name="description" content="FAQ - Kb&#39;s Blog">
 <meta name="author" content="kibrom Haftu">
-<link rel="canonical" href="https://kibromhft.github.io/archives/" />
+<link rel="canonical" href="https://kibromhft.github.io/faq/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet_main.css"  rel="preload stylesheet" as="style">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+    onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kibromhft.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kibromhft.github.io/favicon-32x32.png">
 <link rel="apple-touch-icon" href="https://kibromhft.github.io/apple-touch-icon.png">
 <link rel="mask-icon" href="https://kibromhft.github.io/safari-pinned-tab.svg">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 <noscript>
     <style>
         #theme-toggle,
@@ -67,16 +71,16 @@ if (!doNotTrack) {
 	
 	ga('send', 'pageview');
 }
-</script><meta property="og:title" content="Archive" />
-<meta property="og:description" content="archives" />
+</script><meta property="og:title" content="FAQ" />
+<meta property="og:description" content="" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kibromhft.github.io/archives/" /><meta property="article:section" content="" />
+<meta property="og:url" content="https://kibromhft.github.io/faq/" /><meta property="article:section" content="" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Archive"/>
-<meta name="twitter:description" content="archives"/>
+<meta name="twitter:title" content="FAQ"/>
+<meta name="twitter:description" content=""/>
 
 
 <script type="application/ld+json">
@@ -87,8 +91,8 @@ if (!doNotTrack) {
     {
       "@type": "ListItem",
       "position":  1 ,
-      "name": "Archive",
-      "item": "https://kibromhft.github.io/archives/"
+      "name": "FAQ",
+      "item": "https://kibromhft.github.io/faq/"
     }
   ]
 }
@@ -97,9 +101,9 @@ if (!doNotTrack) {
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Archive",
-  "name": "Archive",
-  "description": "archives",
+  "headline": "FAQ",
+  "name": "FAQ",
+  "description": "",
   "keywords": [
     
   ],
@@ -114,7 +118,7 @@ if (!doNotTrack) {
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://kibromhft.github.io/archives/"
+    "@id": "https://kibromhft.github.io/faq/"
   },
   "publisher": {
     "@type": "Organization",
@@ -128,7 +132,7 @@ if (!doNotTrack) {
 </script>
 </head>
 
-<body class="list" id="top">
+<body class="" id="top">
 <script>
     if (localStorage.getItem("pref-theme") === "dark") {
         document.body.classList.add('dark');
@@ -139,7 +143,6 @@ if (!doNotTrack) {
     }
 
 </script>
-
 
 <style>
     /* Dark mode styles - - - This part of the script is only applied to the home page. */
@@ -262,7 +265,7 @@ if (!doNotTrack) {
 
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-			  Resources <span class="caret fa fa-bars" data-toggle="dropdown"></span>
+			  Insights <span class="caret fa fa-bars" data-toggle="dropdown"></span>
 			</a>
 		  <ul class="dropdown-menu custom-dropdown">
 			<li>
@@ -312,6 +315,7 @@ if (!doNotTrack) {
 		</style>
 
 		</ul>
+
 		
     </nav>
 </header>
@@ -319,200 +323,79 @@ if (!doNotTrack) {
 <main class="main">
 
 <header class="page-header">
-  <h1>Archives</h1>
+  <h1>FAQ</h1>
 </header>
 
-<div class="archive-year">
-  <h2 class="archive-year-header">2023<sup class="archive-count">&nbsp;&nbsp;1</sup>
-  </h2>
-  <div class="archive-month">
-    <h3 class="archive-month-header">October<sup class="archive-count">&nbsp;&nbsp;1</sup></h3>
-    <div class="archive-posts">
-      <div class="archive-entry">
-        <h3 class="archive-entry-title">Jobs in the Digital Era
-        </h3>
-        <div class="archive-meta"><span title='2023-01-03 10:00:00 -0700 PDT'>October 19, 2022</span>&nbsp;·&nbsp;11 min&nbsp;·&nbsp;kibrom Haftu</div>
-        <a class="entry-link" aria-label="post link to Jobs in the Digital Era" href="https://kibromhft.github.io/posts/2022-10-19-automation/"></a>
-      </div>
-    </div>
-  </div>
+<div class='post-content'>
 
-<div class="archive-year">
-  <h2 class="archive-year-header">2022<sup class="archive-count">&nbsp;&nbsp;7</sup>
-  </h2>
-  <div class="archive-month">
-    <h3 class="archive-month-header">December<sup class="archive-count">&nbsp;&nbsp;1</sup></h3>
-    <div class="archive-posts">
-      <div class="archive-entry">
-        <h3 class="archive-entry-title">Coding AI: The New Literacy
-        </h3>
-        <div class="archive-meta"><span title='2023-01-03 10:00:00 -0700 PDT'>December 19, 2022</span>&nbsp;·&nbsp;18 min&nbsp;·&nbsp;kibrom Haftu</div>
-        <a class="entry-link" aria-label="post link to Jobs in the Digital Era" href="https://kibromhft.github.io/posts/2022-10-19-automation/"></a>
-      </div>
-    </div>
-  </div>
+	<div class='qa'>
+	<b>Q: How can I get an update when a new post comes out?</b>
+	<p><b>A:</b> Follow me on Twitter: I post about my new posts on this Twitter account: <a href="https://twitter.com/coding_era/" style="color:blue;">@coding_era</a>. You can follow me to get notified when a new post is published. You can also subscribe to my <a href="../index.xml" target="_blank" style="color:blue;">RSS feed</a>. This will notify you when a new post is published on my blog.</p> 
+	</div>
+	
+		<div class='qa'>
+	<b>Q: How can I improve my coding skills?</b>
+	<p><b>A:</b> Practice regularly by solving coding challenges, work on personal projects that challenge you, and collaborate with others on coding projects to learn from their techniques and approaches.</p>
+	</div>
+	
+	<div class='qa'>
+	<b>Q: What is P.R.E.P. and how does it work?</b>
+	<p><b>A:</b> P.R.E.P. is a four-step problem-solving approach used in programming and software development. By following these steps, you can break down complex problems into smaller, more manageable pieces and approach them in a systematic and efficient way. P.R.E.P. can be used by programmers at all levels of experience.</p>
+		<p>Here's what each step involves:</p>
+		<ul>
+		<li><strong>Parameters</strong>: In this step, you define the inputs to your function or program. This includes specifying the data types, format, and range of values that are acceptable. Defining the parameters of your function or program upfront can help you identify any potential problems or issues before you start coding.</li>
+		<li><strong>Return</strong>: In this step, you define the outputs of your function or program. This includes specifying the data type, format, and range of values that are expected. Defining the return values of your function or program upfront can help you ensure that your code is working as expected and can help you catch any errors or issues early on.</li>
+		<li><strong>Examples</strong>: In this step, you look for similar code examples to get a better understanding of the problem and possible solutions. This can help you learn from others' experiences and avoid common mistakes. By studying examples of similar problems and solutions, you can gain a deeper understanding of the problem you're trying to solve and identify potential pitfalls or issues.</li>
+		<li><strong>Pseudocode</strong>: In this step, you write an English-based algorithm or outline of the solution, breaking it down into small, clear, and manageable steps. This can help you think through the problem before you start coding and can make it easier to write the actual code later. By breaking down the problem into smaller, more manageable steps, you can create a roadmap for your code and identify any potential issues or challenges.</li>
+		</ul>
+	
+	</div>
 
-  
-    <div class="archive-month">
-  	<h3 class="archive-month-header">November<sup class="archive-count">&nbsp;&nbsp;2</sup></h3>
-    <div class="archive-posts">
-      <div class="archive-entry">
-        <h3 class="archive-entry-title">Disentangling the Latent Space: A Guide to Beta-VAE
-        </h3>
-        <div class="archive-meta"><span title='2022-02-27 00:00:00 +0000 UTC'>November 27, 2022</span>&nbsp;·&nbsp;21 min&nbsp;·&nbsp;kibrom Haftu</div>
-        <a class="entry-link" aria-label="post link to Disentangling the Latent Space: A Guide to Beta-VAE" href="https://kibromhft.github.io/posts/2022-11-27-vae/"></a>
-      </div>
-    </div>
-  </div>
-  <div class="archive-month">
-     <h3 class="archive-month-header"><sup class="archive-count"></sup></h3>
-    <div class="archive-posts">
-      <div class="archive-entry">
-        <h3 class="archive-entry-title">Causality in Machine Learning
-        </h3>
-        <div class="archive-meta"><span title='2022-02-20 00:00:00 +0000 UTC'>November 20, 2022</span>&nbsp;·&nbsp;22 min&nbsp;·&nbsp;kibrom Haftu</div>
-        <a class="entry-link" aria-label="post link to Causality in Machine Learning" href="https://kibromhft.github.io/posts/2022-11-20-causality_in_ML/"></a>
-      </div>
-    </div>
-  </div>
-  
-  
-   <div class="archive-month">
-    <h3 class="archive-month-header">October<sup class="archive-count">&nbsp;&nbsp;2</sup></h3>
-    <div class="archive-posts">
-      <div class="archive-entry">
-        <h3 class="archive-entry-title">Jobs in the Digital Era
-        </h3>
-        <div class="archive-meta"><span title='2023-01-03 10:00:00 -0700 PDT'>October 19, 2022</span>&nbsp;·&nbsp;11 min&nbsp;·&nbsp;kibrom Haftu</div>
-        <a class="entry-link" aria-label="post link to Jobs in the Digital Era" href="https://kibromhft.github.io/posts/2022-10-19-automation/"></a>
-      </div>
-    </div>
-  </div>
-  
-  
-  <div class="archive-month">
-    <h3 class="archive-month-header"><sup class="archive-count"></sup></h3>
-    <div class="archive-posts">
-      <div class="archive-entry">
-        <h3 class="archive-entry-title">Demystifying Overfitting in Deep Neural Networks: Separating Fact from Fiction
-        </h3>
-        <div class="archive-meta"><span title='2022-10-06 00:00:00 +0000 UTC'>October 6, 2022</span>&nbsp;·&nbsp;12 min&nbsp;·&nbsp;kibrom Haftu</div>
-        <a class="entry-link" aria-label="Demystifying Overfitting in Deep Neural Networks: Separating Fact from Fiction" href="https://kibromhft.github.io/posts/2022-10-06-overfit_DNN/"></a>
-      </div>
-    </div>
-  </div>
-  
-    <div class="archive-month">
-    <h3 class="archive-month-header">September<sup class="archive-count">&nbsp;&nbsp;2</sup></h3>
-    <div class="archive-posts">
-      <div class="archive-entry">
-        <h3 class="archive-entry-title">Debugging Deep Learning Models: Strategies and Best Practices
-        </h3>
-        <div class="archive-meta"><span title='2022-09-23 00:00:00 +0000 UTC'>September 23, 2022</span>&nbsp;·&nbsp;13 min&nbsp;·&nbsp;kibrom Haftu</div>
-        <a class="entry-link" aria-label="Debugging Deep Learning Models: Strategies and Best Practices" href="https://kibromhft.github.io/posts/2022-09-23-debug/"></a>
-      </div>
-    </div>
-  </div>
-  
-    <div class="archive-month">
-     <h3 class="archive-month-header"><sup class="archive-count"></sup></h3>
-    <div class="archive-posts">
-      <div class="archive-entry">
-        <h3 class="archive-entry-title">Data Analysis
-        </h3>
-        <div class="archive-meta"><span title='2022-09-08 00:00:00 +0000 UTC'>September 8, 2022</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;kibrom Haftu</div>
-        <a class="entry-link" aria-label="post link to Data Analysis" href="https://kibromhft.github.io/posts/2022-09-08-data-analysis/"></a>
-      </div>
-    </div>
-  </div>
+	<div class='qa'>
+	<b>Q: How do you deal with missing data??</b>
+	<p><b>A:</b> Missing data is a common challenge in data science, and there are several ways to handle it. Imputation, deletion, and using machine learning algorithms that can handle missing values are some of the common techniques used to deal with missing data. However, the choice of method depends on the type and amount of missing data, and the goals of the analysis..</p>
+	</div>
+
+	<div class='qa'>
+	<b>Q: What if I see something incorrect in the post?</b>
+	<p><b>A:</b> Send me an email: kibromhft AT gmail.com if you have questions or find errors.</p>
+	</div>
+
+
+	<div class='qa'>
+	<b>Q: How do you select the best ML algorithm for a specific problem?</b>
+	<p><b>A:</b> It depends on the type of data, the size of the dataset, the complexity of the problem, and the performance metrics. For instance, if you are interested in medical imaging data, you will need to consider large-scale datasets, complex algorithms and accuracy metrics when selecting the right type of data. I usually start with simple models and gradually increase the complexity until I reach a satisfactory level of performance. I also use cross-validation and grid search techniques to fine-tune the hyperparameters of the models.
+	</p>
+	</div>
+
+	<div class='qa'>
+	<b>Q: What are some common pitfalls in data science?</b>
+	<p><b>A:</b> Some common pitfalls include overfitting, underfitting, bias, and incorrect assumptions about the data. For example, if the data being used to train a machine learning model is biased, it can lead to incorrect conclusions being made when the model is applied to new data. It is imperative to validate the models and results using different techniques and to have a good understanding of the data and the problem.
+	</p>
+	</div>
+	
+	<div class='qa'>
+	<b>Q: How do you stay updated with the latest trends and techniques in data science?</b>
+	<p><b>A:</b> I continuously stay updated with the latest trends and techniques in data science. Reading research papers, following blogs and social media accounts related to data science, collaborating with other data scientists, and participating in online communities are some of the effective ways to stay updated with the latest developments in the field.</p>
+	</div>
+	
+	<div class='qa'>
+	<b>Q: What are your dreams for data science in Africa?</b>
+	<p><b>A:</b> As an African data scientist, my dream is to see more Africans involved in data science, AI, and machine learning. I would love to see more investment in research and development, more collaborations between academia and industry, and more initiatives to bridge the gender and digital divide in the field.
+	</p>
+	</div>
+	
+
+
+	<p style="color: #aaaaaa; font-size: 85%;"> If my posts have inspired you or helped you in any way, please consider sharing them with others who might benefit from them.</p>
 
 </div>
-
-<!-- <div class="archive-year">
-  <h2 class="archive-year-header">2020<sup class="archive-count">&nbsp;&nbsp;5</sup>
-  </h2>
-
-
-  <div class="archive-month">
-    <h3 class="archive-month-header">June<sup class="archive-count">&nbsp;&nbsp;1</sup></h3>
-
-  </div>
-
-
-</div>
-<div class="archive-year">
-  <h2 class="archive-year-header">2019<sup class="archive-count">&nbsp;&nbsp;6</sup>
-  </h2>
-
-
-
-
-  <div class="archive-month">
-    <h3 class="archive-month-header">March<sup class="archive-count">&nbsp;&nbsp;1</sup></h3>
-    <div class="archive-posts">
-      <div class="archive-entry">
-        <h3 class="archive-entry-title">Are Deep Neural Networks Dramatically Overfitted?
-        </h3>
-        <div class="archive-meta"><span title='2019-03-14 00:00:00 +0000 UTC'>March 14, 2019</span>&nbsp;·&nbsp;22 min&nbsp;·&nbsp;kibrom Haftu</div>
-        <a class="entry-link" aria-label="post link to Are Deep Neural Networks Dramatically Overfitted?" href="https://kibromhft.github.io/posts/2019-03-14-overfit/"></a>
-      </div>
-    </div>
-  </div>
-
-</div>
-<div class="archive-year">
-  <h2 class="archive-year-header">2018<sup class="archive-count">&nbsp;&nbsp;9</sup>
-  </h2>
-
-
-
-  <div class="archive-month">
-    <h3 class="archive-month-header">May<sup class="archive-count">&nbsp;&nbsp;1</sup></h3>
-    <div class="archive-posts">
-      <div class="archive-entry">
-        <h3 class="archive-entry-title">Implementing Deep Reinforcement Learning Models with Tensorflow + OpenAI Gym
-        </h3>
-        <div class="archive-meta"><span title='2018-05-05 00:00:00 +0000 UTC'>May 5, 2018</span>&nbsp;·&nbsp;13 min&nbsp;·&nbsp;kibrom Haftu</div>
-        <a class="entry-link" aria-label="post link to Implementing Deep Reinforcement Learning Models with Tensorflow &#43; OpenAI Gym" href="https://kibromhft.github.io/posts/2018-05-05-drl-implementation/"></a>
-      </div>
-    </div>
-  </div>
-
-
-
-</div>
-<div class="archive-year">
-  <h2 class="archive-year-header">2017<sup class="archive-count">&nbsp;&nbsp;10</sup>
-  </h2>
-
-
-
-  <div class="archive-month">
-    <h3 class="archive-month-header">July<sup class="archive-count">&nbsp;&nbsp;2</sup></h3>
-    <div class="archive-posts">
-      <div class="archive-entry">
-        <h3 class="archive-entry-title">Predict Stock Prices Using RNN: Part 2
-        </h3>
-        <div class="archive-meta"><span title='2017-07-22 00:00:00 +0000 UTC'>July 22, 2017</span>&nbsp;·&nbsp;9 min&nbsp;·&nbsp;kibrom Haftu</div>
-        <a class="entry-link" aria-label="post link to Predict Stock Prices Using RNN: Part 2" href="https://kibromhft.github.io/posts/2017-07-22-stock-rnn-part-2/"></a>
-      </div>
-      <div class="archive-entry">
-        <h3 class="archive-entry-title">Predict Stock Prices Using RNN: Part 1
-        </h3>
-        <div class="archive-meta"><span title='2017-07-08 00:00:00 +0000 UTC'>July 8, 2017</span>&nbsp;·&nbsp;12 min&nbsp;·&nbsp;kibrom Haftu</div>
-        <a class="entry-link" aria-label="post link to Predict Stock Prices Using RNN: Part 1" href="https://kibromhft.github.io/posts/2017-07-08-stock-rnn-part-1/"></a>
-      </div>
-    </div>
-  </div>
-
-</div> -->
     </main>
     
 <footer class="footer">
     <span>&copy; 2023 <a href="https://kibromhft.github.io/">Kb&#39;s Blog</a></span>
-
+   
 </footer>
-
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g" style="visibility: visible; opacity: 1;">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
         <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
@@ -576,6 +459,53 @@ if (!doNotTrack) {
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
 </script>
 </body>
 

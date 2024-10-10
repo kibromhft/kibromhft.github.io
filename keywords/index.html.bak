@@ -5,19 +5,22 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>404 Page not found | Kb&#39;s Blog</title>
+<title>Keywords | Kb&#39;s Blog</title>
 <meta name="keywords" content="" />
 <meta name="description" content="Document my learning notes.">
 <meta name="author" content="kibrom Haftu">
-<link rel="canonical" href="https://kibromhft.github.io/404.html" />
+<link rel="canonical" href="https://kibromhft.github.io/keywords/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet_main.css"  rel="preload stylesheet" as="style">
 <link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kibromhft.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kibromhft.github.io/favicon-32x32.png">
 <link rel="apple-touch-icon" href="https://kibromhft.github.io/apple-touch-icon.png">
 <link rel="mask-icon" href="https://kibromhft.github.io/safari-pinned-tab.svg">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://kibromhft.github.io/keywords/index.xml">
 <noscript>
     <style>
         #theme-toggle,
@@ -66,13 +69,13 @@ if (!doNotTrack) {
 	
 	ga('send', 'pageview');
 }
-</script><meta property="og:title" content="404 Page not found" />
+</script><meta property="og:title" content="Keywords" />
 <meta property="og:description" content="Document my learning notes." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://kibromhft.github.io/404.html" />
+<meta property="og:url" content="https://kibromhft.github.io/keywords/" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="404 Page not found"/>
+<meta name="twitter:title" content="Keywords"/>
 <meta name="twitter:description" content="Document my learning notes."/>
 
 </head>
@@ -111,7 +114,6 @@ if (!doNotTrack) {
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
 
 <header class="header">
     <nav class="nav">
@@ -182,7 +184,7 @@ if (!doNotTrack) {
 
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-			  Resources <span class="caret fa fa-bars" data-toggle="dropdown"></span>
+			  Insights <span class="caret fa fa-bars" data-toggle="dropdown"></span>
 			</a>
 		  <ul class="dropdown-menu custom-dropdown">
 			<li>
@@ -236,22 +238,47 @@ if (!doNotTrack) {
 		
     </nav>
 </header>
+
 <main class="main">
-<div class="not-found">404</div>
+<header class="page-header">
+    <h1>Keywords</h1>
+</header>
+
+<ul class="terms-tags">
+
+    <li>
+        <a href="https://kibromhft.github.io/keywords/architecture/">architecture <sup><strong><sup>2</sup></strong></sup> </a>
+    </li>
+ 
+    <li>
+        <a href="https://kibromhft.github.io/keywords/auto-ml/">auto-ML <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="https://kibromhft.github.io/keywords/autoencoder/">autoencoder <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+	 <li>
+        <a href="https://kibromhft.github.io/keywords/tutorial/">tutorial <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="https://kibromhft.github.io/keywords/data/"> data <sup><strong><sup>2</sup></strong></sup> </a>
+    </li>
+    <li>
+        <a href="https://kibromhft.github.io/keywords/data-augmentation/">data-augmentation <sup><strong><sup>2</sup></strong></sup> </a>
+    </li>
+   
+    <li>
+        <a href="https://kibromhft.github.io/keywords/vision-model/">vision-model <sup><strong><sup>1</sup></strong></sup> </a>
+    </li>
+</ul>
     </main>
     
 <footer class="footer">
     <span>&copy; 2023 <a href="https://kibromhft.github.io/">Kb&#39;s Blog</a></span>
 
 </footer>
-
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g" style="visibility: visible; opacity: 1;">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
-        <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="rgb(192, 132, 224)"/>
-            <stop offset="100%" stop-color="rgb(153, 0, 204)"/>
-        </linearGradient>
-        <path d="M12 6H0l6-6z" fill="url(#grad)"></path>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
     </svg>
 </a>
 
@@ -309,6 +336,37 @@ if (!doNotTrack) {
     })
 
 </script>
+
+
+<style>
+    /* Dark mode styles - - - This part of the script is only applied to the home page. */
+
+    body.dark {
+        background-color: #222222;
+        color: #DADADB;
+    }
+
+    /* ... existing dark mode styles ... */
+
+    /* Dark mode styles for dropdown menu */
+    body.dark .custom-dropdown {
+        background-color: #2E2E33;
+        border: 1px solid #444;
+    }
+
+    body.dark .custom-dropdown li a {
+        color: #DADADB !important;
+    }
+
+    body.dark .custom-dropdown li a:hover {
+        background-color: #3E3E43 !important;
+        color: #FFFFFF !important;
+    }
+
+    /* ... rest of the existing styles ... */
+</style>
+
+
 </body>
 
 </html>

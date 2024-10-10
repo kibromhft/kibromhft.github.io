@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><meta charset="utf-8">
+<head>
+	<meta name="generator" content="Hugo 0.92.2" /><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>autoencoder | Kb&#39;s Blog</title>
-<meta name="keywords" content="" />
+<title>Kb&#39;s Blog</title>
+
 <meta name="description" content="Document my learning notes.">
 <meta name="author" content="kibrom Haftu">
-<link rel="canonical" href="https://kibromhft.github.io/keywords/autoencoder/" />
+<link rel="canonical" href="https://kibromhft.github.io/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet_main.css"  rel="preload stylesheet" as="style">
 <link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kibromhft.github.io/favicon-16x16.png">
@@ -19,7 +20,8 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://kibromhft.github.io/keywords/autoencoder/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://kibromhft.github.io/index.xml">
+<link rel="alternate" type="application/json" href="https://kibromhft.github.io/index.json">
 <noscript>
     <style>
         #theme-toggle,
@@ -68,15 +70,28 @@ if (!doNotTrack) {
 	
 	ga('send', 'pageview');
 }
-</script><meta property="og:title" content="autoencoder" />
+</script><meta property="og:title" content="Kb&#39;s Blog" />
 <meta property="og:description" content="Document my learning notes." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://kibromhft.github.io/keywords/autoencoder/" />
+<meta property="og:url" content="https://kibromhft.github.io/" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="autoencoder"/>
+<meta name="twitter:title" content="Kb&#39;s Blog"/>
 <meta name="twitter:description" content="Document my learning notes."/>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Lil'Log",
+  "url": "https://kibromhft.github.io/",
+  "description": "Document my learning notes.",
+  "thumbnailUrl": "https://kibromhft.github.io/favicon_peach.ico",
+  "sameAs": [
+      "index.xml", "https://scholar.google.com/citations?user=dCa-pW8AAAAJ\u0026hl=en\u0026oi=ao", "https://github.com/kibromhaftu", "https://www.instagram.com/kibromhaftu/", "https://twitter.com/kibromhaftu/", "https://paypal.me/kibromhaftu", "https://venmo.com/kibromhaftu"
+  ]
+}
+</script>
 </head>
 
 <body class="list" id="top">
@@ -183,7 +198,7 @@ if (!doNotTrack) {
 
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-			  Resources <span class="caret fa fa-bars" data-toggle="dropdown"></span>
+			  Insights <span class="caret fa fa-bars" data-toggle="dropdown"></span>
 			</a>
 		  <ul class="dropdown-menu custom-dropdown">
 			<li>
@@ -238,12 +253,41 @@ if (!doNotTrack) {
     </nav>
 </header>
 
-<main class="main"> 
-<header class="page-header">
-  <h1>autoencoder</h1>
-</header>
 
-<article class="post-entry tag-entry"> 
+<main class="main"> 
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Debugging Deep Learning Models: Strategies and Best Practices
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>Debugging deep learning models is a complex and challenging task that requires significant expertise and experience. One of the main reasons for this complexity is that deep learning models involve multiple layers of interconnected nodes, which can make it difficult to pinpoint the source of errors or identify areas where optimization is needed. Additionally, deep learning models often rely on large amounts of data to train, which can increase the risk of overfitting or underfitting the model. This is why it is essential to have a deep understanding of both the deep learning model itself, as well as the data from which the model is being trained, when it comes to debugging deep learning models.....</p>
+  </section>
+  <footer class="entry-footer"><span title='2022-09-23 00:00:00 +0000 UTC'>September 23, 2022</span>&nbsp;·&nbsp;13 min&nbsp;·&nbsp;kibrom Haftu</footer>
+  <a class="entry-link" aria-label="post link to Debugging Deep Learning Models: Strategies and Best Practices" href="https://kibromhft.github.io/posts/2022-09-23-debug/"></a>
+</article>
+
+
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Data Analysis
+    </h2>
+  </header>
+  <section class="entry-content">
+   <img src="business-data-analysis.jpg" class="center" style="opacity: 0.8; border-radius: 10px;" />
+
+    <p>
+Data analysis is a process where the data is inspected, cleaned, transformed and modeled with the aim of extracting actionable knowledge. This knowledge can support the decision-making process in businesses. As a result, data analysis has become an essential tool for businesses to increase their competitive edge and improve operational efficiency.....</p>
+  </section>
+  <footer class="entry-footer"><span title='2022-09-08 00:00:00 +0000 UTC'>September 8, 2022</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;kibrom Haftu</footer>
+  <a class="entry-link" aria-label="post link to Data Analysis" href="https://kibromhft.github.io/posts/2022-09-08-data-analysis/"></a>
+</article>
+
+
+
+<article class="post-entry"> 
   <header class="entry-header">
     <h2>Disentangling the Latent Space: A Guide to Beta-VAE
     </h2>
@@ -255,15 +299,112 @@ Autoencoders are a type of neural network that can be used to learn a compressed
   <footer class="entry-footer"><span title='2022-02-27 00:00:00 +0000 UTC'>November 27, 2022</span>&nbsp;·&nbsp;21 min&nbsp;·&nbsp;kibrom Haftu</footer>
   <a class="entry-link" aria-label="post link to Disentangling the Latent Space: A Guide to Beta-VAE" href="https://kibromhft.github.io/posts/2022-11-27-vae/"></a>
 </article>
+
+
+<!-- <article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Implementing Deep Reinforcement Learning Models with Tensorflow &#43; OpenAI Gym
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>The full implementation is available in kibromhaftu/deep-reinforcement-learning-gym
+In the previous two posts, I have introduced the algorithms of many deep reinforcement learning models. Now it is the time to get our hands dirty and practice how to implement the models in the wild. The implementation is gonna be built in Tensorflow and OpenAI gym environment. The full version of the code in this tutorial is available in [lilian/deep-reinforcement-learning-gym].
+Environment Setup Make sure you have Homebrew installed:  /usr/bin/ruby -e &#34;$(curl -fsSL https://raw....</p>
+  </section>
+  <footer class="entry-footer"><span title='2018-05-05 00:00:00 +0000 UTC'>May 5, 2018</span>&nbsp;·&nbsp;13 min&nbsp;·&nbsp;kibrom Haftu</footer>
+  <a class="entry-link" aria-label="post link to Implementing Deep Reinforcement Learning Models with Tensorflow &#43; OpenAI Gym" href="https://kibromhft.github.io/posts/2018-05-05-drl-implementation/"></a>
+</article>
+
+
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Object Detection for Dummies Part 2: CNN, DPM and Overfeat
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>Part 1 of the “Object Detection for Dummies” series introduced: (1) the concept of image gradient vector and how HOG algorithm summarizes the information across all the gradient vectors in one image; (2) how the image segmentation algorithm works to detect regions that potentially contain objects; (3) how the Selective Search algorithm refines the outcomes of image segmentation for better region proposal.
+In Part 2, we are about to find out more on the classic convolution neural network architectures for image classification....</p>
+  </section>
+  <footer class="entry-footer"><span title='2017-12-15 00:00:00 +0000 UTC'>December 15, 2017</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;kibrom Haftu</footer>
+  <a class="entry-link" aria-label="post link to Object Detection for Dummies Part 2: CNN, DPM and Overfeat" href="https://kibromhft.github.io/posts/2017-12-15-object-recognition-part-2/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Object Detection for Dummies Part 1: Gradient Vector, HOG, and SS
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>I’ve never worked in the field of computer vision and has no idea how the magic could work when an autonomous car is configured to tell apart a stop sign from a pedestrian in a red hat. To motivate myself to look into the maths behind object recognition and detection algorithms, I’m writing a few posts on this topic “Object Detection for Dummies”. This post, part 1, starts with super rudimentary concepts in image processing and a few methods for image segmentation....</p>
+  </section>
+  <footer class="entry-footer"><span title='2017-10-29 00:00:00 +0000 UTC'>October 29, 2017</span>&nbsp;·&nbsp;15 min&nbsp;·&nbsp;kibrom Haftu</footer>
+  <a class="entry-link" aria-label="post link to Object Detection for Dummies Part 1: Gradient Vector, HOG, and SS" href="https://kibromhft.github.io/posts/2017-10-29-object-recognition-part-1/"></a>
+</article>
+
+
+
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>How to Explain the Prediction of a Machine Learning Model?
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>The machine learning models have started penetrating into critical areas like health care, justice systems, and financial industry. Thus to figure out how the models make the decisions and make sure the decisioning process is aligned with the ethnic requirements or legal regulations becomes a necessity.
+Meanwhile, the rapid growth of deep learning models pushes the requirement of interpreting complicated models further. People are eager to apply the power of AI fully on key aspects of everyday life....</p>
+  </section>
+  <footer class="entry-footer"><span title='2017-08-01 00:00:00 +0000 UTC'>August 1, 2017</span>&nbsp;·&nbsp;18 min&nbsp;·&nbsp;kibrom Haftu</footer>
+  <a class="entry-link" aria-label="post link to How to Explain the Prediction of a Machine Learning Model?" href="https://kibromhft.github.io/posts/2017-08-01-interpretation/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Predict Stock Prices Using RNN: Part 2
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>In the Part 2 tutorial, I would like to continue the topic on stock price prediction and to endow the recurrent neural network that I have built in Part 1 with the capability of responding to multiple stocks. In order to distinguish the patterns associated with different price sequences, I use the stock symbol embedding vectors as part of the input.
+ Dataset During the search, I found this library for querying Yahoo!...</p>
+  </section>
+  <footer class="entry-footer"><span title='2017-07-22 00:00:00 +0000 UTC'>July 22, 2017</span>&nbsp;·&nbsp;9 min&nbsp;·&nbsp;kibrom Haftu</footer>
+  <a class="entry-link" aria-label="post link to Predict Stock Prices Using RNN: Part 2" href="https://kibromhft.github.io/posts/2017-07-22-stock-rnn-part-2/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Predict Stock Prices Using RNN: Part 1
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>This is a tutorial for how to build a recurrent neural network using Tensorflow to predict stock market prices. The full working code is available in github.com/kibromhaftu/stock-rnn. If you don’t know what is recurrent neural network or LSTM cell, feel free to check my previous post.
+ One thing I would like to emphasize that because my motivation for writing this post is more on demonstrating how to build and train an RNN model in Tensorflow and less on solve the stock prediction problem, I didn’t try hard on improving the prediction outcomes....</p>
+  </section>
+  <footer class="entry-footer"><span title='2017-07-08 00:00:00 +0000 UTC'>July 8, 2017</span>&nbsp;·&nbsp;12 min&nbsp;·&nbsp;kibrom Haftu</footer>
+  <a class="entry-link" aria-label="post link to Predict Stock Prices Using RNN: Part 1" href="https://kibromhft.github.io/posts/2017-07-08-stock-rnn-part-1/"></a>
+</article>
+ -->
+
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="https://kibromhft.github.io/">Previous </a>
+  </nav>
+</footer>
     </main>
     
 <footer class="footer">
     <span>&copy; 2023 <a href="https://kibromhft.github.io/">Kb&#39;s Blog</a></span>
 
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
+
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g" style="visibility: visible; opacity: 1;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
+        <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="rgb(192, 132, 224)"/>
+            <stop offset="100%" stop-color="rgb(153, 0, 204)"/>
+        </linearGradient>
+        <path d="M12 6H0l6-6z" fill="url(#grad)"></path>
     </svg>
 </a>
 
