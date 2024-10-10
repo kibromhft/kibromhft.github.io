@@ -411,17 +411,7 @@
             </div>
             <div class="playlist" style="max-height: 200px; overflow-y: auto;">
                 <h3>Episodes</h3>
-                <ul id="playlist-items">
-                    <li>
-                        <a href="#" data-index="0">Episode 1: Introduction</a>
-                        <button class="share-btn" data-index="0">Share</button> <!-- Share button instead of duration -->
-                    </li>
-                    <li>
-                        <a href="#" data-index="1">Episode 2: Deep Dive</a>
-                        <button class="share-btn" data-index="1">Share</button>
-                    </li>
-                    <!-- More episodes... -->
-                </ul>
+                <ul id="playlist-items"></ul>
             </div>
         </div>
 
@@ -466,15 +456,19 @@
             function loadEpisodes() {
                 episodes.forEach((episode, index) => {
                     const li = document.createElement('li');
-                    const duration = episode.duration; // Get the duration
+                    
+                    // Create a new audio element to get the duration
+                    const tempAudio = new Audio(episode.src);
+                    tempAudio.addEventListener('loadedmetadata', function() {
+                        const duration = Math.floor(tempAudio.duration); // Get duration in seconds
+                        episode.duration = duration; // Store duration in the episode object
 
-                    // Check if duration is a valid number
-                    const formattedDuration = (typeof duration === 'number' && !isNaN(duration)) 
-                        ? formatDuration(duration) 
-                        : 'N/A'; // Fallback if duration is invalid
-
-                    li.innerHTML = `<a href="#" data-index="${index}">${episode.title}</a><span class="duration">${formattedDuration}</span>`;
-                    playlistItems.appendChild(li);
+                        // Format the duration and update the list item
+                        const formattedDuration = formatDuration(duration);
+                        li.innerHTML = `<a href="#" data-index="${index}">${episode.title}</a><span class="duration">${formattedDuration}</span>`;
+                        playlistItems.appendChild(li);
+                    });
+                    tempAudio.load(); // Load the audio to get metadata
                 });
             }
 
