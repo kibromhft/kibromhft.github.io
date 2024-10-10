@@ -449,14 +449,9 @@
             function loadEpisodes() {
                 episodes.forEach((episode, index) => {
                     const li = document.createElement('li');
-                    const duration = episode.duration; // Get the duration
-
-                    // Check if duration is a valid number
-                    const formattedDuration = (typeof duration === 'number' && !isNaN(duration)) 
-                        ? formatDuration(duration) 
-                        : 'N/A'; // Fallback if duration is invalid
-
-                    li.innerHTML = `<a href="#" data-index="${index}">${episode.title}</a><span class="duration">${formattedDuration}</span>`;
+                    
+                    // Removed duration calculation
+                    li.innerHTML = `<a href="#" data-index="${index}">${episode.title}</a>`; // Removed duration display
                     playlistItems.appendChild(li);
                 });
             }
@@ -564,7 +559,7 @@
                 playlistItems.innerHTML = ''; // Clear current list
                 filteredEpisodes.forEach((episode, index) => {
                     const li = document.createElement('li');
-                    li.innerHTML = `<a href="#" data-index="${index}">${episode.title} - ${formatDuration(episode.duration)}</a>`;
+                    li.innerHTML = `<a href="#" data-index="${index}">${episode.title}</a>`;
                     playlistItems.appendChild(li);
                 });
             }
@@ -624,6 +619,7 @@
         </script>
     </main>
 </body>
+
 
 
 
