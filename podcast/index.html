@@ -135,7 +135,7 @@
         }
 
         .playlist {
-            margin-top: 20px;
+            margin: 0; /* Remove any margin to eliminate extra space */
             width: 100%; /* Set the width to 100% to match the parent <main> class */
             max-height: 300px; /* Increased height for better visibility */
             overflow-y: auto; /* Enable vertical scrolling */
@@ -146,6 +146,7 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
             scrollbar-width: thin; /* For Firefox */
             scrollbar-color: #4CAF50 #f9f9f9; /* For Firefox */
+            box-sizing: border-box; /* Include padding and border in the element's total width */
         }
 
         /* For Webkit browsers (Chrome, Safari) */
