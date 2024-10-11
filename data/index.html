@@ -226,6 +226,20 @@ if (!doNotTrack) {
 	border-top: 1px solid #ccc;
 	margin: 20px 0;
 }
+    /* New styles for paragraphs */
+    .custom-paragraph {
+        font-family: 'MessinaModern';
+        font-weight: 400;
+        font-style: normal;
+        font-size: 16px !important;
+        color: #414141;
+        letter-spacing: .025em !important;
+        line-height: 1.6rem !important;
+        font-feature-settings: 'kern' !important;
+        text-rendering: optimizeLegibility !important;
+        -webkit-font-smoothing: auto !important;
+        -moz-osx-font-smoothing: grayscale !important;
+    }
 </style>
 </head>
 
@@ -422,28 +436,28 @@ if (!doNotTrack) {
 <hr>
 
   
-	<p style="text-align: justify;"><strong>Data</strong> is the lifeblood of today’s world. Whether you realize it or not, data is constantly shaping your experiences—from the ads you see online to how businesses customize their services to meet their needs.</p>
+	<p class="custom-paragraph" style="text-align: justify;"><strong>Data</strong> is the lifeblood of today’s world. Whether you realize it or not, data is constantly shaping your experiences—from the ads you see online to how businesses customize their services to meet their needs.</p>
 
-	<p style="text-align: justify;">For <strong>businesses</strong>, data means smarter decisions. By analyzing trends, companies can refine their products and reduce costs. Retailers, for example, can optimize inventory management and minimize waste—saving money while enhancing customer satisfaction. According to a <a href="https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/five-facts-how-customer-analytics-boosts-corporate-performance" style="color: blue;">McKinsey report</a>, data-driven organizations are 23 times more likely to acquire customers and 19 times more likely to be profitable. </p>
+	<p class="custom-paragraph" style="text-align: justify;">For <strong>businesses</strong>, data means smarter decisions. By analyzing trends, companies can refine their products and reduce costs. Retailers, for example, can optimize inventory management and minimize waste—saving money while enhancing customer satisfaction. According to a <a href="https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/five-facts-how-customer-analytics-boosts-corporate-performance" style="color: blue;">McKinsey report</a>, data-driven organizations are 23 times more likely to acquire customers and 19 times more likely to be profitable. </p>
 
-	<p style="text-align: justify;">In the <strong>software</strong> world, data helps developers spot patterns, write better code, and fix bugs faster. It's like having a map when you're lost—it just makes everything easier. GitHub’s use of data analytics, for instance, has significantly improved code review processes and collaboration among developers.</p>
+	<p class="custom-paragraph" style="text-align: justify;">In the <strong>software</strong> world, data helps developers spot patterns, write better code, and fix bugs faster. It's like having a map when you're lost—it just makes everything easier. GitHub’s use of data analytics, for instance, has significantly improved code review processes and collaboration among developers.</p>
 
-	<p style="text-align: justify;">Similarly, in <strong>healthcare</strong>, data can literally save lives. Access to accurate data ensures that resources are allocated efficiently, trends are identified, and targeted interventions are developed. This data-driven approach empowers policymakers and healthcare professionals to make informed decisions that can significantly improve patient outcomes.</p>
+	<p class="custom-paragraph" style="text-align: justify;">Similarly, in <strong>healthcare</strong>, data can literally save lives. Access to accurate data ensures that resources are allocated efficiently, trends are identified, and targeted interventions are developed. This data-driven approach empowers policymakers and healthcare professionals to make informed decisions that can significantly improve patient outcomes.</p>
 
-	<p style="text-align: justify;">In short, data is not just a resource; it’s a powerful tool that drives progress across all sectors of society.</p>
+	<p class="custom-paragraph" style="text-align: justify;">In short, data is not just a resource; it’s a powerful tool that drives progress across all sectors of society.</p>
 
 
 
 <h3 style="margin-bottom: 20px;">Existing Chest X-ray Datasets</h3>
 
-<p style="text-align: justify;"> There are some popular chest X-ray datasets out there, like the NIH Chest X-ray and ChestX-ray8 datasets. These have been great for developing machine learning algorithms for cardiorespiratory diseases, but they come with some drawbacks.</p>
+<p class="custom-paragraph" style="text-align: justify;"> There are some popular chest X-ray datasets out there, like the NIH Chest X-ray and ChestX-ray8 datasets. These have been great for developing machine learning algorithms for cardiorespiratory diseases, but they come with some drawbacks.</p>
 
 
-<p style="text-align: justify;">
+<p class="custom-paragraph" style="text-align: justify;">
     The <strong>NIH Chest X-ray dataset</strong> includes over 100,000 frontal-view images labeled for 14 diseases, but it excludes patients under 18 and lacks demographic information, limiting its generalizability, especially since it mostly features U.S. images. The <strong>ChestX-ray8 dataset</strong>, with 108,948 images for eight common diseases, is collected from a single hospital, which may introduce bias and lacks representation for other diseases and diverse populations. This bias limits the generalizability of the datasets to other populations, particularly those in low- and middle-income countries. The <strong>MIMIC-CXR dataset</strong> offers chest X-rays linked to clinical notes for richer analyses; however, its focus on a single institution and high-income patients can affect its global applicability. Lastly, the <strong>CheXpert dataset</strong> contains over 200,000 labeled images, including details about medical devices, but is limited to adult patients and is primarily sourced from Stanford, which may not reflect a broader demographic.
 </p>
 
-<p style="text-align: justify;">
+<p class="custom-paragraph" style="text-align: justify;">
     On top of that, some datasets face selection bias because the images are chosen based on specific criteria like image quality or how common a disease is. This can result in certain diseases being over-represented while others are left out, which limits the dataset's usefulness for creating models that can accurately diagnose a full range of diseases. 
 </p>
 
