@@ -226,33 +226,43 @@ if (!doNotTrack) {
 	border-top: 1px solid #ccc;
 	margin: 20px 0;
 }
-    /* General body styles */
-    body {
-        font-family: "Libertine", Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif !important; /* Font family */
-        font-size: large !important; /* Base font size */
-        line-height: 1.556 !important; /* Line height for readability */
-        word-spacing: 0.1em !important; /* Slightly increased word spacing */
-        max-width: 680px !important; /* Maximum width for better readability */
-        margin: 0 auto !important; /* Center the body content */
-        padding-bottom: 2em !important; /* Space at the bottom */
-        background: #fff !important; /* Background color */
-        color: #000 !important; /* Text color */
-    }
+</style>
 
-    /* Styles for paragraphs, unordered lists, and ordered lists */
-    p, ul, ol {
-        margin: 1.556em 0 !important; /* Vertical margin for spacing */
-    }
+<style>
+  :root {
+      --totl-primary-background: rgba(255, 255, 255, .8); /* Background color */
+      --totl-primary-font-color: #000; /* Primary font color */
+      --totl-primate-font-descolor: #565656; /* Secondary font color */
+  }
 
-    /* Paragraph specific styles */
-    p {
-        display: block !important; /* Ensure paragraphs are block elements */
-        margin-block-start: 1em !important; /* Space before the paragraph */
-        margin-block-end: 1em !important; /* Space after the paragraph */
-        margin-inline-start: 0px !important; /* No left margin */
-        margin-inline-end: 0px !important; /* No right margin */
-        unicode-bidi: isolate !important; /* Isolate the text direction */
-    }
+  /* Styles specifically for paragraphs with the custom-paragraph class */
+  .custom-paragraph {
+      margin-top: 1.556em !important; /* Space above the paragraph */
+      margin-right: 0px !important; /* No right margin */
+      margin-bottom: 1.556em !important; /* Space below the paragraph */
+      margin-left: 0px !important; /* No left margin */
+      
+      font-style: normal !important; /* Normal font style */
+      font-variant-caps: normal !important; /* Normal variant caps */
+      font-variant-ligatures: normal !important; /* Normal ligatures */
+      font-variant-numeric: normal !important; /* Normal numeric variant */
+      font-variant-east-asian: normal !important; /* Normal East Asian variant */
+      font-variant-alternates: normal !important; /* Normal alternates */
+      font-size-adjust: none !important; /* No font size adjustment */
+      font-kerning: auto !important; /* Automatic font kerning */
+      font-optical-sizing: auto !important; /* Automatic optical sizing */
+      font-feature-settings: normal !important; /* Normal feature settings */
+      font-variation-settings: normal !important; /* Normal variation settings */
+      font-variant-position: normal !important; /* Normal variant position */
+      font-weight: normal !important; /* Normal font weight */
+      font-stretch: normal !important; /* Normal font stretch */
+      font-size: large !important; /* Base font size */
+      line-height: 1.556 !important; /* Line height for readability */
+      font-family: "Libertine", Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif !important; /* Font family */
+      word-spacing: 0.1em !important; /* Slightly increased word spacing */
+      color: var(--totl-primary-font-color) !important; /* Use the primary font color */
+      background: var(--totl-primary-background) !important; /* Use the background color */
+  }
 </style>
 </head>
 
