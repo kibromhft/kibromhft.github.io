@@ -226,17 +226,23 @@ if (!doNotTrack) {
 	border-top: 1px solid #ccc;
 	margin: 20px 0;
 }
-    /* Updated styles for custom-paragraph */
+    /* Styles specifically for paragraphs with the custom-paragraph class */
     .custom-paragraph {
+        display: block; /* Ensures the paragraph behaves as a block element */
+        margin-block-start: 1em; /* Space before the paragraph */
+        margin-block-end: 1em; /* Space after the paragraph */
+        margin-inline-start: 0px; /* No left margin */
+        margin-inline-end: 0px; /* No right margin */
+        unicode-bidi: isolate; /* Isolate the text direction */
+        
         font-family: "Libertine", Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif !important;
         font-weight: 400 !important;
         font-style: normal !important;
-        font-size: 18px !important; /* Slightly larger for better readability */
+        font-size: 16px !important; /* Slightly larger for better readability */
         color: #333 !important; /* Darker color for better contrast */
         letter-spacing: 0.5px !important; /* Slightly increased letter spacing */
         line-height: 1.8 !important; /* Increased line height for better readability */
         word-spacing: 0.1em !important; /* Added word spacing */
-        margin-bottom: 20px !important; /* Space between paragraphs */
         text-align: justify !important; /* Justified text for a cleaner look */
     }
 </style>
