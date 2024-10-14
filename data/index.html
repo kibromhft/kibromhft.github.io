@@ -262,6 +262,9 @@ if (!doNotTrack) {
       word-spacing: 0.1em !important; /* Slightly increased word spacing */
       color: var(--totl-primary-font-color) !important; /* Use the primary font color */
       background: var(--totl-primary-background) !important; /* Use the background color */
+      overflow-y: scroll; /* This would allow scrolling if the paragraph content exceeds the height */
+      -webkit-font-smoothing: antialiased; /* This would improve font rendering */
+      -webkit-tap-highlight-color: transparent; /* This would remove the tap highlight on touch devices */
   }
 </style>
 </head>
