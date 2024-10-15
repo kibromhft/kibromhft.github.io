@@ -282,7 +282,13 @@ if (!doNotTrack) {
     width: 680px !important; /* Updated width */
     text-decoration: none !important; /* Underline text */
     text-decoration-color: rgb(0, 0, 0) !important; /* Set underline color to black */
+    --primary: #000000 !important;
 }
+
+    /* Set --code-bg for all elements except the header */
+    body:not(.header) {
+        --code-bg: rgb(255, 255, 255) !important; /* Set code background color to white */
+    }
 
 </style>
 </head>
