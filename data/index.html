@@ -1,15 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
-
-<head><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>Data | Kb&#39;s Blog</title>
-<meta name="keywords" content="" />
-<meta name="description" content="data">
-<meta name="author" content="kibrom Haftu">
-<link rel="canonical" href="https://kibromhft.github.io/data/" />
+<meta charset="utf-8">
+<title>On Different Degrees of Smallness | Calculus Made Easy</title>
 <link rel="stylesheet" href="screen.css">
 <style>
 body{counter-reset:h1 2}
@@ -20,375 +11,209 @@ body{counter-reset:h1 2}
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://kibromhft.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://kibromhft.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://kibromhft.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://kibromhft.github.io/safari-pinned-tab.svg">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-		
-    </style>
-    
-</noscript>
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-8161570-5', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script><meta property="og:title" content="Data" />
-<meta property="og:description" content="data" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://kibromhft.github.io/data/" /><meta property="article:section" content="" />
+<h1><br>On Different Degrees of Smallness</h1>
+<p class="a rotatedFloralHeartBullet">
 
-
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Data"/>
-<meta name="twitter:description" content="data"/>
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Archive",
-      "item": "https://kibromhft.github.io/data/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Archive",
-  "name": "Archive",
-  "description": "data",
-  "keywords": [
-    
-  ],
-  "articleBody": "",
-  "wordCount" : "0",
-  "inLanguage": "en",
-  "datePublished": "0001-01-01T00:00:00Z",
-  "dateModified": "0001-01-01T00:00:00Z",
-  "author":{
-    "@type": "Person",
-    "name": "kibrom Haftu"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://kibromhft.github.io/data/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Lil'Log",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://kibromhft.github.io/favicon_peach.ico"
-    }
-  }
-}
-</script>
-
-
-    
-</head>
-
-<body class="list" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$','$$'], ['\\[', '\\]']],
-      processEscapes: true,
-      processEnvironments: true
-    },
-    options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-    }
-  };
-
-  window.addEventListener('load', (event) => {
-      document.querySelectorAll("mjx-container").forEach(function(x){
-        x.parentElement.classList += 'has-jax'})
-    });
-
-</script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-<header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="https://kibromhft.github.io/" accesskey="h" title="Kb&#39;s Blog (Alt + H)">Kb&#39;s Blog</a>
-            <span class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </span>
-        </div>
-       <ul id="menu">
-
-		
-		  <li>
-			<a href="https://kibromhft.github.io/" title="Home">
-			  Home <span class="caret fa fa-home"></span>
-			</a>
-		  </li>
-		  
-
-		  <li>
-			<a href="https://kibromhft.github.io/archives/" title="Archives">
-			  <span>Archives</span>
-			</a>
-		  </li>
-		  
-
-
-		  <li>
-			<a href="https://kibromhft.github.io/data/" title="Data">
-			  <span>Data</span>
-			</a>
-		  </li>
-		  <li>
-			<a href="https://kibromhft.github.io/keywords/" title="keywords">
-			  <span>Keywords</span>
-			</a>
-		  </li>
-		  <li>
-			<a href="https://kibromhft.github.io/faq" title="FAQ">
-			  <span>FAQs</span>
-			</a>
-		  </li>
-		  
-<!-- 		  <li>
-			<a href="https://kibromhft.github.io/cv" title="cv">
-			  <span>CV</span>
-			</a>
-		  </li> -->
-
-		<li class="dropdown">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-			  Resources <span class="caret fa fa-bars" data-toggle="dropdown"></span>
-			</a>
-		  <ul class="dropdown-menu custom-dropdown">
-			<li>
-			  <a href="https://kibromhft.github.io/podcast">Podcast</a>
-			</li>
-			<li>
-			  <a href="#">Algorithms</a>
-			</li>
-			<li>
-			  <a href="#">Funding & Grants</a>
-			</li>
-			<li>
-			  <a href="#">Startup Toolkit</a>
-			</li>
-		  </ul>
-		</li>
-
-		
-		</ul>
-
-		
-    </nav>
-</header>
-
-<main class="main">
-
-<header class="page-header">
-  <h1>The Power of Data</h1>
-</header>
 <p>We shall find that in our processes of calculation we
 have to deal with small quantities of various degrees
 of smallness.
-<p style="color:#007bffe7; font-family: Carter One; /* font-size: larger; */">What drives the world more than data?</p>
+
+<p>We shall have also to learn under what circumstances
+we may consider small quantities to be so minute
+that we may omit them from consideration. Everything
+depends upon relative minuteness.
+
+<p>Before we fix any rules let us think of some
+familiar cases. There are $60$ minutes in the hour,
+$24$ hours in the day, $7$ days in the week. There are
+therefore $1440$ minutes in the day and $10080$ minutes
+in the week.
+
+<p>Obviously $1$ minute is a very small quantity of
+time compared with a whole week. Indeed, our
+forefathers considered it small as compared with an
+
+hour, and called it “one minùte,” meaning a minute
+fraction–namely one sixtieth–of an hour. When
+they came to require still smaller subdivisions of time,
+they divided each minute into $60$ still smaller parts,
+which, in Queen Elizabeth's days, they called “second
+minùtes” (<em>i.e.:</em> small quantities of the second order of
+minuteness). Nowadays we call these small quantities
+
+of the second order of smallness “seconds.” But few
+people know <em>why</em> they are so called.
+
+<p>Now if one minute is so small as compared with a
+whole day, how much smaller by comparison is one
+second!
+
+<p>Again, think of a farthing as compared with a
+sovereign: it is barely worth more than $\frac{1}{1000}$ part.
+A farthing more or less is of precious little importance
+compared with a sovereign: it may certainly be regarded
+as a <em>small</em> quantity. But compare a farthing
+with £$1000$: relatively to this greater sum, the
+farthing is of no more importance than $\frac{1}{1000}$ of a
+farthing would be to a sovereign. Even a golden
+sovereign is relatively a negligible quantity in the
+wealth of a millionaire.
+
+<p>Now if we fix upon any numerical fraction as
+constituting the proportion which for any purpose
+we call relatively small, we can easily state other
+fractions of a higher degree of smallness. Thus if,
+for the purpose of time, $\frac{1}{60}$ be called a <em>small</em> fraction,
+then $\frac{1}{60}$ of $\frac{1}{60}$ (being a <em>small</em> fraction of a <em>small</em>
+fraction) may be regarded as a <em>small quantity of the
+second order</em><a name="smallness"></a> of smallness.*
+<p><note>*The mathematicians talk about the second order of “magnitude”
+  (<em>i.e.:</em> greatness) when they really mean second order of <em>smallness</em>.
+  This is very confusing to beginners.</note>
+
+<p>Or, if for any purpose we were to take $1$ per cent. (<em>i.e.:</em> $\frac{1}{100}$) as a <em>small</em> fraction, then $1$ per cent. of
+$1$ per cent. (<em>i.e.:</em> $\frac{1}{10,000}$) would be a small fraction
+of the second order of smallness; and $\frac{1}{1,000,000}$ would
+
+be a small fraction of the third order of smallness,
+being $1$ per cent. of $1$ per cent. of $1$ per cent.
+<a id="fn1-top">
+<p>Lastly, suppose that for some very precise purpose
+we should regard $\frac{1}{1,000,000}$ as “small.” Thus, if a
+first-rate chronometer is not to lose or gain more than
+half a minute in a year, it must keep time with an
+accuracy of $1$ part in $1,051,200$. Now if, for such a
+purpose, we regard $\frac{1}{1,000,000}$ (or one millionth) as a
+small quantity, then $\frac{1}{1,000,000}$ of $\frac{1}{1,000,000}$, that is
+$\frac{1}{1,000,000,000,000}$ (or one billionth<sup><a href="#fn1">†</a></sup>) will be a small
+quantity of the second order of smallness, and may
+be utterly disregarded, by comparison.
+
+
+<p>Then we see that the smaller a small quantity itself
+is, the more negligible does the corresponding small
+quantity of the second order become. Hence we
+know that <em>in all cases we are justified in neglecting
+the small quantities of the second–or third (or
+higher)–orders</em>, if only we take the small quantity
+of the first order small enough in itself.
+
+<p>But, it must be remembered, that small quantities
+if they occur in our expressions as factors multiplied
+by some other factor, may become important if the
+other factor is itself large. Even a farthing becomes
+important if only it is multiplied by a few hundred.
+
+<p>Now in the calculus we write $dx$ for a little bit
+of $x$. These things such as $dx$, and $du$, and $dy$, are
+called “differentials,” the differential of $x$, or of $u$,
+or of $y$, as the case may be. [You <em>read</em> them as
+<em>dee-eks</em>, or <em>dee-you</em>, or <em>dee-wy</em>.] If $dx$ be a small bit
+of $x$, and relatively small of itself, it does not follow
+that such quantities as $x · dx$, or $x^2\, dx$, or $a^x\, dx$ are
+negligible. But $dx × dx$ would be negligible, being a
+small quantity of the second order.
+
+<p>A very simple example will serve as illustration.
+
+<p>Let us think of $x$ as a quantity that can grow by
+a small amount so as to become $x + dx$, where $dx$ is
+the small increment added by growth. The square
+of this is $x^2 + 2x · dx + (dx)^2$. The second term is
+not negligible because it is a first-order quantity;
+while the third term is of the second order of smallness,
+being a bit of,
+a bit of $x^2$. Thus if we took
+$dx$ to mean numerically, say, $\frac{1}{60}$ of $x$, then the second
+term would be $\frac{2}{60}$ of $x^2$, whereas the third term would
+be $\frac{1}{3600}$ of $x^2$. This last term is clearly less important
+than the second. But if we go further and take
+$dx$ to mean only $\frac{1}{1000}$ of $x$, then the second term
+will be $\frac{2}{1000}$ of $x^2$, while the third term will be
+only $\frac{1}{1,000,000}$ of $x^2$.
+
+<p><a name="figure1">
+<img src="33283-t/images/018a.pdf.png-1.png">
+
+<p><a name="figure2">
+<img src="33283-t/images/019a.pdf.png-1.png">
+
+
+<p>Geometrically this may be depicted as follows:
+Draw a square (<a href="#figure1">Figure 1</a>) the side of which we will
+take to represent $x$. Now suppose the square to
+grow by having a bit $dx$ added to its size each
+way. The enlarged square is made up of the original
+square $x^2$, the two rectangles at the top and on the
+right, each of which is of area $x · dx$ (or together
+$2x · dx$), and the little square at the top right-hand
+corner which is $(dx)^2$. In <a href="#figure2">Figure 2</a> we have taken $dx$ as
+quite a big fraction of $x$–about $\frac{1}{5}$. But suppose we
+had taken it only $\frac{1}{100}$–about the thickness of an
+inked line drawn with a fine pen. Then the little
+corner square will have an area of only $\frac{1}{10,000}$ of $x^2$,
+and be practically invisible. Clearly $(dx)^2$ is negligible
+if only we consider the increment $dx$ to be itself
+small enough.
+<p><a name="figure3">
+<img src="33283-t/images/019b.pdf.png-1.png">
+
+<p>Let us consider a simile.
+
+<p>Suppose a millionaire were to say to his secretary:
+next week I will give you a small fraction of any
+money that comes in to me. Suppose that the
+secretary were to say to his boy: I will give you a
+small fraction of what I get. Suppose the fraction
+in each case to be $\frac{1}{100}$ part. Now if Mr. Millionaire
+received during the next week £$1000$, the secretary
+
+would receive £$10$ and the boy $2$ shillings. Ten
+pounds would be a small quantity compared with
+£$1000$; but two shillings is a small small quantity
+indeed, of a very secondary order. But what would
+be the disproportion if the fraction, instead of being $\frac{1}{100}$,
+had been settled at $\frac{1}{1000}$ part? Then, while
+Mr. Millionaire got his £$1000$, Mr. Secretary would
+get only £$1$, and the boy less than one farthing!
+
+<p>The witty Dean Swift*
+once wrote:
+<blockquote><pre>
+So, Nat'ralists observe, a Flea
+Hath smaller Fleas that on him prey.
+And these have smaller Fleas to bite 'em,
+And so proceed ad infinitum." </pre>
+</blockquote>
+  <p><note><em>*On Poetry: a Rhapsody</em> (p. 20), printed 1733–usually misquoted.</note>
+
+<p>An ox might worry about a flea of ordinary
+size–a small creature of the first order of smallness.
+But he would probably not trouble himself about a
+flea's flea; being of the second order of smallness, it
+would be negligible. Even a gross of fleas' fleas
+would not be of much account to the ox.
 <br>
-<p style="font-family: Gloria Hallelujah; font-size: 21px;">Alright, before we get into the nitty-gritty of data, let’s check out some mind-blowing quotes that really capture what data is all about. People have shared some seriously inspiring insights over the years. So, here are a few famous quotes that resonate deeply when we think about the power of data: </p>
-<br>
-
-
-<div class="quote">
-  <p>"Data is the new oil."</p>
-  <cite>- Clive Humby, Data Science Entrepreneur</cite>
-</div>
-
-<div class="quote">
-  <p>"Data is the currency of the 21st century."</p>
-  <cite>- Thomas Redman, Data Management Expert</cite>
-</div>
-
-<div class="quote">
-  <p>"Data is a precious thing and will last longer than the systems themselves."</p>
-  <cite>- Tim Berners-Lee, Inventor of the World Wide Web</cite>
-</div>
-
-    <div class="image-container">
-        <img src="data.jpeg" alt="Data influence decisions">
-    </div>
-
 <hr>
 
-  
-	<p><strong>Data</strong> is the lifeblood of today’s world. Whether you realize it or not, data is constantly shaping your experiences—from the ads you see online to how businesses customize their services to meet their needs.</p>
-
-	<p>For <strong>businesses</strong>, data means smarter decisions. By analyzing trends, companies can refine their products and reduce costs. Retailers, for example, can optimize inventory management and minimize waste—saving money while enhancing customer satisfaction. According to a <a href="https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/five-facts-how-customer-analytics-boosts-corporate-performance" style="color: blue;">McKinsey report</a>, data-driven organizations are 23 times more likely to acquire customers and 19 times more likely to be profitable. </p>
-
-	<p>In the <strong>software</strong> world, data helps developers spot patterns, write better code, and fix bugs faster. It's like having a map when you're lost—it just makes everything easier. GitHub’s use of data analytics, for instance, has significantly improved code review processes and collaboration among developers.</p>
-
-	<p>Similarly, in <strong>healthcare</strong>, data can literally save lives. Access to accurate data ensures that resources are allocated efficiently, trends are identified, and targeted interventions are developed. This data-driven approach empowers policymakers and healthcare professionals to make informed decisions that can significantly improve patient outcomes.</p>
-
-	<p>In short, data is not just a resource; it’s a powerful tool that drives progress across all sectors of society.</p>
+<p><a id="fn1"></a><note><sup><a href="#fn1-top">†</a></sup>The term <em>billion</em> here means $10^{12}$ in old British
+English, ie, trillion in <a href="https://en.wikipedia.org/wiki/Long_and_short_scales">modern use</a>.</note>
+<hr>
+<a href="3.html">Next &rarr;</a><br>
+<a href="index.htm">Main Page &uarr;</a><br>
 
 
-<h3 style="margin-bottom: 20px;">Existing Chest X-ray Datasets</h3>
-
-<p> There are some popular chest X-ray datasets out there, like the NIH Chest X-ray and ChestX-ray8 datasets. These have been great for developing machine learning algorithms for cardiorespiratory diseases, but they come with some drawbacks.</p>
-
-
-<p>
-    The <strong>NIH Chest X-ray dataset</strong> includes over 100,000 images labeled for 14 diseases, but it excludes patients under 18 and lacks demographic information, limiting its generalizability, especially since it mostly features U.S. images. The <strong>ChestX-ray8 dataset</strong>, with 108,948 images for eight common diseases, is collected from a single hospital, which may introduce bias and lacks representation for other diseases and diverse populations. This bias limits the generalizability of the datasets to other populations, particularly those in low- and middle-income countries. The <strong>MIMIC-CXR dataset</strong> offers chest X-rays linked to clinical notes for richer analyses; however, its focus on a single institution and high-income patients can affect its global applicability. Lastly, the <strong>CheXpert dataset</strong> contains over 200,000 labeled images, including details about medical devices, but is limited to adult patients and is primarily sourced from Stanford, which may not reflect a broader demographic.
-</p>
-
-<p>
-    On top of that, some datasets face selection bias because the images are chosen based on specific criteria like image quality or how common a disease is. This can result in certain diseases being over-represented while others are left out, which limits the dataset's usefulness for creating models that can accurately diagnose a full range of diseases. 
-</p>
-
-<hr style="height: 1px; background-color: blue;">
-<p style="font-family: Patua One; font-size: 24px;"> We are currently working on expanding the <strong>Tikur Chest X-ray Image Dataset</strong> as part of our efforts to improve the quality of the existing datasets, which will help researchers and healthcare providers develop accurate diagnostic tools for the diagnosis of cardiovascular and respiratory diseases. To better equip medical professionals and researchers in the fight against cardiovascular and respiratory diseases, we are proud to announce the upcoming launch of new medical imaging datasets by expanding the Tikur Chest X-ray Dataset that will provide access to high-quality medical imaging data. For instance, the expanded dataset will include images from various sources to help researchers and providers detect diseases such as pneumothorax, pleural effusion, pulmonary edema and congestive heart failure. We hope that this dataset will help address the challenges faced by healthcare providers in low- and middle-income countries and improve health outcomes for individuals and communities affected by cardiovascular and respiratory diseases. Link to the Tikur Chest X-ray Image Dataset is <br> <a href="https://github.com/kibromhft/Tikur_ChestX-ray14" target="_new" id="dataset-link">https://github.com/kibromhft/Tikur_ChestX-ray14</a>.</p>
-
-<hr class="transparent-hr">
-
-<hr class="fade-out">
-
-<p>
-    We are grateful to <strong>Lacuna Fund</strong> for initiating our collaborative efforts, which help us double our impact in medical imaging research. We look forward to making an even greater difference in this important field.
-</p>
-
-
-<p style="font-family: Carter One; /* font-size: larger; */">
-    Stay tuned for our upcoming large representative dataset that will make a significant impact in medical imaging.
-</p>
-
-    </main>
-    
-<footer class="footer">
-    <span>&copy; 2023 <a href="https://kibromhft.github.io/">Kb&#39;s Blog</a></span>
-
-</footer>
-
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g" style="visibility: visible; opacity: 1;">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
-        <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="rgb(192, 132, 224)"/>
-            <stop offset="100%" stop-color="rgb(153, 0, 204)"/>
-        </linearGradient>
-        <path d="M12 6H0l6-6z" fill="url(#grad)"></path>
-    </svg>
-</a>
-
+<script src="j/jquery.js"></script>
+<script src="j/modernizr.js"></script>
+<script src="j/dih5.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-101178221-1"></script>
 <script>
-    let menu = document.getElementById('menu')
-    if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
+  gtag('config', 'UA-101178221-1');
 </script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
 
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-</body>
-
-</html>
+</p></a></p></a></p></a></p>
