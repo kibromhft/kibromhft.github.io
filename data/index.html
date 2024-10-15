@@ -269,8 +269,9 @@ if (!doNotTrack) {
 <style>
     body {
         background-color: rgb(255, 255, 255) !important; /* Set body background to white */
-        max-width: 680px !important; /* Set maximum width to 680px */
+        max-width: 720px !important; /* Set maximum width to match parent */
         margin: 0 auto !important; /* Center the body content */
+        padding: 0 20px !important; /* Optional: Add padding for better spacing */
         box-sizing: border-box !important; /* Include padding and border in width calculation */
     }
 
@@ -288,7 +289,7 @@ if (!doNotTrack) {
 
     /* Ensure paragraphs respect the max width */
     p {
-        width: 100%; /* Ensure paragraphs take full width */
+        width: calc(100% - 40px); /* Adjust width to account for padding (20px on each side) */
         margin: 0 0 20px; /* Adjust margin as needed */
         padding: 0; /* Remove padding if any */
     }
