@@ -1,133 +1,213 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<title>Calculus Made Easy</title>
+<title>On Different Degrees of Smallness | Calculus Made Easy</title>
 <link rel="stylesheet" href="screen.css">
 <style>
-h1:before{content:''}
-h1,h2,h3{padding:0;margin:0;border:0;line-height:128px;text-align:center;clear:both}
-h1{margin-top:128px;font-size:72px;text-transform:uppercase}
-h2{font-size:48px}
-ol{margin:1em 0 0 0;padding:0}
-/*li{clear:both;width:100%;margin:0 0 1em 0;padding:0;overflow:hidden}*/
-.title,.number{background:#fff}
-.title{float:left;padding-right:3px}
-.number{margin:0;float:right;padding-left:3px}
-.f{margin-top:6.224em}
+body{counter-reset:h1 2}
 </style>
-<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="mobile.css">
-<hgroup>
-<h1>Calculus Made Easy</h1>
-<h2>by<br>Silvanus P. Thompson</h2>
-</hgroup>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript" src="ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
-<center>	<h4>What one fool can do, another can.</h4></center>
-<center><h5>(Ancient Simian Proverb.)</h5></center>
-<p class="a rotatedFloralHeartBullet">
-<p>
-
-<h3>Table of Contents</h3>
-
-<ul>
-<li><a href="prologue.html">Prologue</a>
-<li><a href="1.html"> I. To Deliver You From The Preliminary Terrors</a>
-<li><a href="2.html"> II. On Different Degrees of Smallness</a>
-<li><a href="3.html"> III. On Relative Growings</a>
-<li><a href="4.html"> IV. Simplest Cases</a>
-<li><a href="5.html"> V. Next Stage. What to do with Constants</a>
-<li><a href="6.html"> VI. Sums, Differences, Products and Quotients</a>
-<li><a href="7.html"> VII. Successive Differentiation</a>
-<li><a href="8.html"> VIII. When Time Varies</a>
-<li><a href="9.html"> IX. Introducing a Useful Dodge</a>
-<li><a href="10.html"> X. Geometrical Meaning of Differentiation</a>
-<li><a href="11.html"> XI Maxima and Minima</a>
-<li><a href="12.html"> XII. Curvature of Curves </a>
-<li><a href="13.html"> XIII. Other Useful Dodges</a>
-<li><a href="14.html"> XIV. (a) On true Compound Interest and the Law of Organic Growth</a>
-<li><a href="14b.html"> XIV. (b) The Die-away Curve</a>
-<li><a href="15.html"> XV. How To Deal With Sines And Cosines</a>
-<li><a href="16.html"> XVI. Partial Differentiation</a>
-<li><a href="17.html"> XVII. Integration</a>
-<li><a href="18.html"> XVIII. Integrating as the Reverse of Differentiating</a>
-<li><a href="19.html"> XIX. On Finding Areas by Integrating</a>
-<li><a href="20.html"> XX. Dodges, Pitfalls, and Triumphs</a>
-<li><a href="21.html"> XXI. Finding some Solutions</a>
-<li><a href="epilogue.html"> Epilogue and Apologue</a>
-<li><a href="table.html"> Table of Standard Forms</a>
-</li></ul>
-
+<h1><br>On Different Degrees of Smallness</h1>
 <p class="a rotatedFloralHeartBullet">
 
-<h3></h3>
+<p>We shall find that in our processes of calculation we
+have to deal with small quantities of various degrees
+of smallness.
 
-<div class="pf clear">
+<p>We shall have also to learn under what circumstances
+we may consider small quantities to be so minute
+that we may omit them from consideration. Everything
+depends upon relative minuteness.
 
-<h4>About this book</h4>
-<blockquote class="note">
-<p>
-  Calculus Made Easy is a book on calculus originally published in 1910 by Silvanus P. Thompson, considered a classic and elegant introduction to the subject.
-  <div style="text-align:right">From <a href="http://en.wikipedia.org/wiki/Calculus_Made_Easy" style="width:5em">Wikipedia</a></div>
+<p>Before we fix any rules let us think of some
+familiar cases. There are $60$ minutes in the hour,
+$24$ hours in the day, $7$ days in the week. There are
+therefore $1440$ minutes in the day and $10080$ minutes
+in the week.
+
+<p>Obviously $1$ minute is a very small quantity of
+time compared with a whole week. Indeed, our
+forefathers considered it small as compared with an
+
+hour, and called it “one minùte,” meaning a minute
+fraction–namely one sixtieth–of an hour. When
+they came to require still smaller subdivisions of time,
+they divided each minute into $60$ still smaller parts,
+which, in Queen Elizabeth's days, they called “second
+minùtes” (<em>i.e.:</em> small quantities of the second order of
+minuteness). Nowadays we call these small quantities
+
+of the second order of smallness “seconds.” But few
+people know <em>why</em> they are so called.
+
+<p>Now if one minute is so small as compared with a
+whole day, how much smaller by comparison is one
+second!
+
+<p>Again, think of a farthing as compared with a
+sovereign: it is barely worth more than $\frac{1}{1000}$ part.
+A farthing more or less is of precious little importance
+compared with a sovereign: it may certainly be regarded
+as a <em>small</em> quantity. But compare a farthing
+with £$1000$: relatively to this greater sum, the
+farthing is of no more importance than $\frac{1}{1000}$ of a
+farthing would be to a sovereign. Even a golden
+sovereign is relatively a negligible quantity in the
+wealth of a millionaire.
+
+<p>Now if we fix upon any numerical fraction as
+constituting the proportion which for any purpose
+we call relatively small, we can easily state other
+fractions of a higher degree of smallness. Thus if,
+for the purpose of time, $\frac{1}{60}$ be called a <em>small</em> fraction,
+then $\frac{1}{60}$ of $\frac{1}{60}$ (being a <em>small</em> fraction of a <em>small</em>
+fraction) may be regarded as a <em>small quantity of the
+second order</em><a name="smallness"></a> of smallness.*
+<p><note>*The mathematicians talk about the second order of “magnitude”
+  (<em>i.e.:</em> greatness) when they really mean second order of <em>smallness</em>.
+  This is very confusing to beginners.</note>
+
+<p>Or, if for any purpose we were to take $1$ per cent. (<em>i.e.:</em> $\frac{1}{100}$) as a <em>small</em> fraction, then $1$ per cent. of
+$1$ per cent. (<em>i.e.:</em> $\frac{1}{10,000}$) would be a small fraction
+of the second order of smallness; and $\frac{1}{1,000,000}$ would
+
+be a small fraction of the third order of smallness,
+being $1$ per cent. of $1$ per cent. of $1$ per cent.
+<a id="fn1-top">
+<p>Lastly, suppose that for some very precise purpose
+we should regard $\frac{1}{1,000,000}$ as “small.” Thus, if a
+first-rate chronometer is not to lose or gain more than
+half a minute in a year, it must keep time with an
+accuracy of $1$ part in $1,051,200$. Now if, for such a
+purpose, we regard $\frac{1}{1,000,000}$ (or one millionth) as a
+small quantity, then $\frac{1}{1,000,000}$ of $\frac{1}{1,000,000}$, that is
+$\frac{1}{1,000,000,000,000}$ (or one billionth<sup><a href="#fn1">†</a></sup>) will be a small
+quantity of the second order of smallness, and may
+be utterly disregarded, by comparison.
+
+
+<p>Then we see that the smaller a small quantity itself
+is, the more negligible does the corresponding small
+quantity of the second order become. Hence we
+know that <em>in all cases we are justified in neglecting
+the small quantities of the second–or third (or
+higher)–orders</em>, if only we take the small quantity
+of the first order small enough in itself.
+
+<p>But, it must be remembered, that small quantities
+if they occur in our expressions as factors multiplied
+by some other factor, may become important if the
+other factor is itself large. Even a farthing becomes
+important if only it is multiplied by a few hundred.
+
+<p>Now in the calculus we write $dx$ for a little bit
+of $x$. These things such as $dx$, and $du$, and $dy$, are
+called “differentials,” the differential of $x$, or of $u$,
+or of $y$, as the case may be. [You <em>read</em> them as
+<em>dee-eks</em>, or <em>dee-you</em>, or <em>dee-wy</em>.] If $dx$ be a small bit
+of $x$, and relatively small of itself, it does not follow
+that such quantities as $x · dx$, or $x^2\, dx$, or $a^x\, dx$ are
+negligible. But $dx × dx$ would be negligible, being a
+small quantity of the second order.
+
+<p>A very simple example will serve as illustration.
+
+<p>Let us think of $x$ as a quantity that can grow by
+a small amount so as to become $x + dx$, where $dx$ is
+the small increment added by growth. The square
+of this is $x^2 + 2x · dx + (dx)^2$. The second term is
+not negligible because it is a first-order quantity;
+while the third term is of the second order of smallness,
+being a bit of,
+a bit of $x^2$. Thus if we took
+$dx$ to mean numerically, say, $\frac{1}{60}$ of $x$, then the second
+term would be $\frac{2}{60}$ of $x^2$, whereas the third term would
+be $\frac{1}{3600}$ of $x^2$. This last term is clearly less important
+than the second. But if we go further and take
+$dx$ to mean only $\frac{1}{1000}$ of $x$, then the second term
+will be $\frac{2}{1000}$ of $x^2$, while the third term will be
+only $\frac{1}{1,000,000}$ of $x^2$.
+
+<p><a name="figure1">
+<img src="33283-t/images/018a.pdf.png-1.png">
+
+<p><a name="figure2">
+<img src="33283-t/images/019a.pdf.png-1.png">
+
+
+<p>Geometrically this may be depicted as follows:
+Draw a square (<a href="#figure1">Figure 1</a>) the side of which we will
+take to represent $x$. Now suppose the square to
+grow by having a bit $dx$ added to its size each
+way. The enlarged square is made up of the original
+square $x^2$, the two rectangles at the top and on the
+right, each of which is of area $x · dx$ (or together
+$2x · dx$), and the little square at the top right-hand
+corner which is $(dx)^2$. In <a href="#figure2">Figure 2</a> we have taken $dx$ as
+quite a big fraction of $x$–about $\frac{1}{5}$. But suppose we
+had taken it only $\frac{1}{100}$–about the thickness of an
+inked line drawn with a fine pen. Then the little
+corner square will have an area of only $\frac{1}{10,000}$ of $x^2$,
+and be practically invisible. Clearly $(dx)^2$ is negligible
+if only we consider the increment $dx$ to be itself
+small enough.
+<p><a name="figure3">
+<img src="33283-t/images/019b.pdf.png-1.png">
+
+<p>Let us consider a simile.
+
+<p>Suppose a millionaire were to say to his secretary:
+next week I will give you a small fraction of any
+money that comes in to me. Suppose that the
+secretary were to say to his boy: I will give you a
+small fraction of what I get. Suppose the fraction
+in each case to be $\frac{1}{100}$ part. Now if Mr. Millionaire
+received during the next week £$1000$, the secretary
+
+would receive £$10$ and the boy $2$ shillings. Ten
+pounds would be a small quantity compared with
+£$1000$; but two shillings is a small small quantity
+indeed, of a very secondary order. But what would
+be the disproportion if the fraction, instead of being $\frac{1}{100}$,
+had been settled at $\frac{1}{1000}$ part? Then, while
+Mr. Millionaire got his £$1000$, Mr. Secretary would
+get only £$1$, and the boy less than one farthing!
+
+<p>The witty Dean Swift*
+once wrote:
+<blockquote><pre>
+So, Nat'ralists observe, a Flea
+Hath smaller Fleas that on him prey.
+And these have smaller Fleas to bite 'em,
+And so proceed ad infinitum." </pre>
 </blockquote>
+  <p><note><em>*On Poetry: a Rhapsody</em> (p. 20), printed 1733–usually misquoted.</note>
 
-<blockquote class="note">
-<p>
-	I read "Calculus Made Easy" by Silvanus P. Thompson and it's still to this day my inspiration for explaining complex technical topics to lay people. It's a fantastic book, and even if you know math you <em>must</em> read it if you want to understand how to teach complexity to others. <small><em><a href="http://news.ycombinator.com/item?id=1299805">(source)</a></em></small>
-	<div style="text-align:right">-- <a href="http://zedshaw.com/" style="width:5em">Zed Shaw</a><br>Author of <a href="http://learncodethehardway.org/">Learn Code the Hard Way</a></div>
-</blockquote>
-
-<blockquote class="note">
-<p>
-	Thompson creates a warm, inviting environment where students will learn and grasp the true essence of calculus without any added fluff or overt technicality. <small><em><a href="http://mathblog.com/mathematics-books/">(source)</a></em></small>
-	<div style="text-align:right">-- <a href="http://mathblog.com/mathematics-books/" style="width:5em">MathBlog</a></div>
-</blockquote>
-
-<blockquote class="note">
-    <p>
-	      Most college calculus texts weigh a ton; this one does not — it just gets to the point. This is how I learned calculus: my uncle gave me a copy. <small><em><a href="http://math.ucr.edu/home//baez/books.html">(source)</a></em></small>
-	      <div style="text-align:right">-- <a href="https://en.wikipedia.org/wiki/John_C._Baez">John Baez</a><br> Mathematical physicist, author of <a href="https://golem.ph.utexas.edu/category/">n-Category Café</a></div>
-</blockquote>
-
-</div>
-
-<h3>Buy paper version</h3>
-<a href="https://www.amazon.com/gp/product/0312185480/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0312185480&linkCode=as2&tag=calculusma00d-20&linkId=349b72d6c16a7a454af34fe78ba419c4"><img class="cover" src="cover.jpg"></a>
-<p> <a href="https://www.amazon.com/gp/product/0312185480/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0312185480&linkCode=as2&tag=calculusma00d-20&linkId=349b72d6c16a7a454af34fe78ba419c4">On Amazon.com</a>*
-<p> <a href="http://www.shareasale.com/r.cfm?u=740877&b=385748&m=40674&afftrack=&urllink=www%2Ebiblio%2Ecom%2Fsearch%2Ephp%3Ftitle%3Dcalculus%2Bmade%2Beasy">Second hand from Biblio.com</a>*
-
-<h3>What next?</h3>
-<ul>
-    <a href="https://www.amazon.com/Calculus-3rd-Gilbert-Strang/dp/0980232759/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=calculusmad0b-20&linkId=bff7f0d5786f75c16ea3b5ecdb44d32f&language=en_US"><img class="cover" src="strang.jpg" width="186">
-	</a>
-	<li>I have enjoyed <a href="https://www.amazon.com/Calculus-3rd-Gilbert-Strang/dp/0980232759/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=calculusmad0b-20&linkId=bff7f0d5786f75c16ea3b5ecdb44d32f&language=en_US">Calculus, Second edition</a>* by Gilbert Strang. It is similar to Calculus Made Easy but is more advanced.
-</li></ul>
-<br clear="all">
-<ul>
-    <a href="https://www.amazon.com/Visual-Complex-Analysis-Tristan-Needham/dp/0198534469/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=calculusmad0b-20&linkId=36f5fedef340e5c0c152cf95aa4f00c6&language=en_US"><img class="cover" src="needham.jpg" width="186">
-	  </a>
-	  <li><a href="https://www.amazon.com/Visual-Complex-Analysis-Tristan-Needham/dp/0198534469/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=calculusmad0b-20&linkId=36f5fedef340e5c0c152cf95aa4f00c6&language=en_US">Visual Complex Analysis</a>* is legendary. Just as Calculus Made Easy, it uses a geometrical approach instead of the usual symbolic one.
-</li></ul>
-<br clear="all">
-<ul>
-    <a href="https://www.amazon.com/Nonlinear-Dynamics-Chaos-Applications-Nonlinearity/dp/0813349109/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=calculusmad0b-20&linkId=a8fbc09ac32d738609c9ff150c749a97&language=en_US"><img class="cover" src="strogatz.jpg" width="186">
-	  </a>
-	  <li><a href="https://www.amazon.com/Nonlinear-Dynamics-Chaos-Applications-Nonlinearity/dp/0813349109/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=calculusmad0b-20&linkId=a8fbc09ac32d738609c9ff150c749a97&language=en_US">Nonlinear Dynamics and Chaos</a>* is another more advanced textbook that is famous for its great pedagogy. You can also find <a href="https://www.youtube.com/playlist?list=PLbN57C5Zdl6j_qJA-pARJnKsmROzPnO9V">Strogatz's lectures on youtube.</a>
-</li></ul>
-<p><small><small>* Affiliate link</small></small>
+<p>An ox might worry about a flea of ordinary
+size–a small creature of the first order of smallness.
+But he would probably not trouble himself about a
+flea's flea; being of the second order of smallness, it
+would be negligible. Even a gross of fleas' fleas
+would not be of much account to the ox.
 <br>
-<br>
-<br>
-<br>
-<h3>About this edition &amp; thanks</h3>
-This text is based on <a href="http://www.gutenberg.org/ebooks/33283">the PDF version</a> from Project Gutenberg converted to html by hand.<p>Thanks to Paula Appling, Don Bindner, Chris Curnow, Andrew D. Hwang
-and
-Project Gutenberg Online Distributed Proofreading Team for preparing the original PDF.
-<p>The theme is borrowed from <a href="http://diveinto.html5doctor.com/">Dive Into HTML5</a> by <a href="http://diveintohtml5.info/about.html">Mark Pilgrim</a> released under the <a href="http://creativecommons.org/licenses/by/3.0/">CC-BY-3.0</a> license.
-	  <p><a href="http://diveintohtml5.info/legal.html">Full legal notices</a>. <a href="https://github.com/nadvornix/calculus-made-easy">Github page</a>.
-        <p>Please send corrections, suggestions, and comments to <a href="cdn-cgi/l/email-protection.html" class="__cf_email__" data-cfemail="deb0bfbaa8b1acb0b7b5f0b4b7acb79eb9b3bfb7b2f0bdb1b3">[email&#160;protected]</a>
+<hr>
 
-<script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="j/jquery.js"></script>
+<p><a id="fn1"></a><note><sup><a href="#fn1-top">†</a></sup>The term <em>billion</em> here means $10^{12}$ in old British
+English, ie, trillion in <a href="https://en.wikipedia.org/wiki/Long_and_short_scales">modern use</a>.</note>
+<hr>
+<a href="3.html">Next &rarr;</a><br>
+<a href="index.htm">Main Page &uarr;</a><br>
+
+
+<script src="j/jquery.js"></script>
+<script src="j/modernizr.js"></script>
 <script src="j/dih5.js"></script>
 <!-- Google tag (gtag.js) -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-101178221-1"></script>
+<script async="" src="gtag/js?id=UA-101178221-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -136,4 +216,4 @@ Project Gutenberg Online Distributed Proofreading Team for preparing the origina
   gtag('config', 'UA-101178221-1');
 </script>
 
-</p>
+</p></a></p></a></p></a></p>
