@@ -269,19 +269,22 @@ if (!doNotTrack) {
 <style>
     body {
         background-color: rgb(255, 255, 255) !important; /* Set body background to white */
-        max-width: 680px; /* Set maximum width to 680px */
-        margin: 0 auto; /* Center the body content */
-        box-sizing: border-box; /* Include padding and border in width calculation */
+        max-width: 680px !important; /* Set maximum width to 680px */
+        margin: 0 auto !important; /* Center the body content */
+        padding: 0 15px !important; /* Optional: Add padding for better spacing */
+        box-sizing: border-box !important; /* Include padding and border in width calculation */
     }
 
     * {
-        box-sizing: inherit; /* Inherit box-sizing from body */
+        box-sizing: inherit !important; /* Inherit box-sizing from body */
     }
 
     /* Styles for the header */
     header {
         background-color: rgb(245, 245, 245) !important; /* Set header background color */
-        /* ... existing styles ... */
+        width: 100% !important; /* Ensure header takes 100% width */
+        margin: 0 !important; /* Remove any default margin */
+        padding: 0 !important; /* Remove any default padding */
     }
 
 
