@@ -271,6 +271,11 @@ if (!doNotTrack) {
         background-color: rgb(255, 255, 255) !important; /* Set body background to white */
         max-width: 680px; /* Set maximum width to 680px */
         margin: 0 auto; /* Center the body content */
+        box-sizing: border-box; /* Include padding and border in width calculation */
+    }
+
+    * {
+        box-sizing: inherit; /* Inherit box-sizing from body */
     }
 
     /* Styles for the header */
