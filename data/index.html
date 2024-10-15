@@ -271,7 +271,6 @@ if (!doNotTrack) {
         background-color: rgb(255, 255, 255) !important; /* Set body background to white */
         max-width: 680px !important; /* Set maximum width to 680px */
         margin: 0 auto !important; /* Center the body content */
-        padding: 0 15px !important; /* Optional: Add padding for better spacing */
         box-sizing: border-box !important; /* Include padding and border in width calculation */
     }
 
@@ -287,7 +286,12 @@ if (!doNotTrack) {
         padding: 0 !important; /* Remove any default padding */
     }
 
-
+    /* Ensure paragraphs respect the max width */
+    p {
+        width: 100%; /* Ensure paragraphs take full width */
+        margin: 0 0 20px; /* Adjust margin as needed */
+        padding: 0; /* Remove padding if any */
+    }
 
     /* Styles for the main header and quotes */
     .page-header, .quote {
