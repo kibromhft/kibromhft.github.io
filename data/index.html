@@ -144,13 +144,10 @@ if (!doNotTrack) {
     <style>
         /* Importing the necessary fonts */
         @import url('https://fonts.googleapis.com/css2?family=Essays+1743:wght@400;700&display=swap');
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Linux+Libertine:wght@400;700&display=swap"> <!-- Added import for Linux Libertine -->
+        /* Removed the <link> tag from here */
 
         /* Updated styles specifically for Linux Libertine */
-        .custom-paragraph {
-            font-family: "Linux Libertine" !important; /* Ensures Linux Libertine is used */
-            /* ... other styles ... */
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Linux+Libertine:wght@400;700&display=swap'); /* Added import for Linux Libertine */
 
         /* Other styles using Essays 1743 or Libertine */
         .some-other-class {
