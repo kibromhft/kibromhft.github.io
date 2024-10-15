@@ -10,7 +10,7 @@
 <meta name="description" content="data">
 <meta name="author" content="kibrom Haftu">
 <link rel="canonical" href="https://kibromhft.github.io/data/" />
-<link rel="stylesheet" href="screen.css">
+<link crossorigin="anonymous" href="/assets/css/stylesheet_main.css"  rel="preload stylesheet" as="style">
 <link rel="stylesheet"
   href="https://fonts.googleapis.com/css?family=Carter+One">
   <link rel="stylesheet"
