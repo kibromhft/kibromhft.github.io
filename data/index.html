@@ -142,22 +142,6 @@ if (!doNotTrack) {
 
     
     <style>
-        /* Importing the necessary fonts */
-        @import url('https://fonts.googleapis.com/css2?family=Essays+1743:wght@400;700&display=swap');
-        /* Removed the <link> tag from here */
-
-        /* Updated styles specifically for Linux Libertine */
-        @import url('https://fonts.googleapis.com/css2?family=Linux+Libertine:wght@400;700&display=swap'); /* Added import for Linux Libertine */
-
-        /* Other styles using Essays 1743 or Libertine */
-        .some-other-class {
-            font-family: "Essays 1743", serif; /* Use Essays 1743 font */
-        }
-
-        .another-class {
-            font-family: "Libertine", serif; /* Use Libertine font */
-        }
-
         /* Existing dark mode styles */
         /* ... (keep all the styles we've discussed before) ... */
 
@@ -242,92 +226,21 @@ if (!doNotTrack) {
 	border-top: 1px solid #ccc;
 	margin: 20px 0;
 }
-</style>
-
-<style>
-
-
-  /* Styles specifically for paragraphs with the custom-paragraph class */
-  .custom-paragraph {
-      margin: 1.556em 0 !important; /* Updated margin to have vertical spacing */
-      font-size: large !important; /* Base font size */
-      line-height: 1.556 !important; /* Line height for readability */
-      font-family: "Linux Libertine" !important; /* Ensures Linux Libertine is used */
-      word-spacing: 0.1em !important; /* Slightly increased word spacing */
-      font-weight: 400 !important; /* Adjust weight for clarity */
-      -webkit-font-smoothing: antialiased !important; /* Improve font rendering */
-      -moz-osx-font-smoothing: grayscale !important; /* Improve font rendering */
-      text-rendering: optimizeLegibility !important; /* Improve text rendering */
-      letter-spacing: 0 !important; /* Adjust letter spacing */
-      box-sizing: content-box !important; /* Changed from border-box to content-box */
-  }
-</style>
-
-<style>
-    body {
-        background-color: rgb(255, 255, 255) !important; /* Set body background to white */
-        margin: 0; /* Remove default body margin */
+    /* New styles for paragraphs */
+    .custom-paragraph {
+        font-family: 'MessinaModern';
+        font-weight: 400;
+        font-style: normal;
+        font-size: 16px !important;
+        color: #414141;
+        letter-spacing: .025em !important;
+        line-height: 1.6rem !important;
+        word-spacing: 0.1em; /* Added word spacing */
+        font-feature-settings: 'kern' !important;
+        text-rendering: optimizeLegibility !important;
+        -webkit-font-smoothing: auto !important;
+        -moz-osx-font-smoothing: grayscale !important;
     }
-
-
-    /* Styles for the header */
-    header {
-        background-color: rgb(245, 245, 245) !important; /* Set header background color */
-        width: 100% !important; /* Ensure header takes 100% width */
-        margin: 0; /* Remove any default margin */
-        padding: 0; /* Remove any default padding */
-    }
-
-    /* Ensure body respects the max width */
-    .container {
-        width: 720px; /* Set width to match parent */
-        margin: 0 auto; /* Center the container */
-        padding: 0; /* Remove padding to avoid reducing width */
-    }
-
-    p {
-        width: 680px; /* Set paragraphs to the exact desired width */
-        margin: 0 auto 20px; /* Center paragraphs and add bottom margin */
-        padding: 0; /* Remove padding if any */
-    }
-
-    hr {
-        width: 100%; /* Ensure the horizontal line spans the full width */
-        border: none; /* Remove default border */
-        border-top: 1px solid #ccc; /* Set the color and style of the line */
-        margin: 20px 0; /* Add vertical spacing */
-    }
-
-    /* Styles for the main header and quotes */
-    .page-header, .quote {
-        background-color: rgb(240, 240, 240); /* Light gray background for the header and quotes */
-        padding: 10px; /* Optional: Add some padding for better spacing */
-        border-radius: 5px; /* Optional: Add rounded corners */
-    }
-
-    /* Additional styles for quotes */
-    .quote {
-        margin: 15px 0; /* Add margin for spacing between quotes */
-    }
-
-    /* Styles for the main header text */
-    .page-header h1 {
-        font-family: "Essays 1743", serif; /* Use Essays 1743 font */
-        font-style: italic; /* Set font style to italic */
-        font-weight: bold; /* Set font weight to bold */
-        color: #000000; /* Optional: Set text color to dark */
-    }
-</style>
-
-<style>
-html {
-    overflow-y: scroll !important; /* Ensures a vertical scrollbar is always visible */
-    -webkit-font-smoothing: antialiased !important; /* Improves font rendering for WebKit browsers */
-    -moz-osx-font-smoothing: grayscale !important; /* Improves font rendering for Firefox on macOS */
-    text-rendering: optimizeLegibility !important; /* Enhances text rendering for better clarity */
-    font-weight: 400 !important; /* Sets a default font weight for thinness */
-    -webkit-tap-highlight-color: transparent !important; /* Prevents tap highlight on touch devices */
-}
 </style>
 </head>
 
@@ -524,17 +437,15 @@ html {
 <hr>
 
   
-	<p class="custom-paragraph"><strong>Data</strong> is the lifeblood of today’s world. Whether you realize it or not, data is constantly shaping your experiences—from the ads you see online to how businesses customize their services to meet their needs.</p>
+	<p class="custom-paragraph" style="text-align: justify;"><strong>Data</strong> is the lifeblood of today’s world. Whether you realize it or not, data is constantly shaping your experiences—from the ads you see online to how businesses customize their services to meet their needs.</p>
 
-	<p class="custom-paragraph">For <strong>businesses</strong>, data means smarter decisions. By analyzing trends, companies can refine their products and reduce costs. Retailers, for example, can optimize inventory management and minimize waste—saving money while enhancing customer satisfaction. According to a <a href="https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/five-facts-how-customer-analytics-boosts-corporate-performance" style="color: blue;">McKinsey report</a>, data-driven organizations are 23 times more likely to acquire customers and 19 times more likely to be profitable. </p>
+	<p class="custom-paragraph" style="text-align: justify;">For <strong>businesses</strong>, data means smarter decisions. By analyzing trends, companies can refine their products and reduce costs. Retailers, for example, can optimize inventory management and minimize waste—saving money while enhancing customer satisfaction. According to a <a href="https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/five-facts-how-customer-analytics-boosts-corporate-performance" style="color: blue;">McKinsey report</a>, data-driven organizations are 23 times more likely to acquire customers and 19 times more likely to be profitable. </p>
 
-	<p class="custom-paragraph">In the <strong>software</strong> world, data helps developers spot patterns, write better code, and fix bugs faster. It's like having a map when you're lost—it just makes everything easier. GitHub’s use of data analytics, for instance, has significantly improved code review processes and collaboration among developers.</p>
+	<p class="custom-paragraph" style="text-align: justify;">In the <strong>software</strong> world, data helps developers spot patterns, write better code, and fix bugs faster. It's like having a map when you're lost—it just makes everything easier. GitHub’s use of data analytics, for instance, has significantly improved code review processes and collaboration among developers.</p>
 
-	<p class="custom-paragraph">Similarly, in <strong>healthcare</strong>, data can literally save lives. Access to accurate data ensures that resources are allocated efficiently, trends are identified, and targeted interventions are developed. This data-driven approach empowers policymakers and healthcare professionals to make informed decisions that can significantly improve patient outcomes.</p>
+	<p class="custom-paragraph" style="text-align: justify;">Similarly, in <strong>healthcare</strong>, data can literally save lives. Access to accurate data ensures that resources are allocated efficiently, trends are identified, and targeted interventions are developed. This data-driven approach empowers policymakers and healthcare professionals to make informed decisions that can significantly improve patient outcomes.</p>
 
-	<p class="custom-paragraph">
-        We shall find that in our processes of calculation we have to deal with small quantities of various degrees of smallness.
-    </p>
+	<p class="custom-paragraph" style="text-align: justify;">In short, data is not just a resource; it’s a powerful tool that drives progress across all sectors of society.</p>
 
 
 
@@ -564,7 +475,7 @@ html {
 
 
 <p style="font-family: Carter One; /* font-size: larger; */">
-Stay tuned for our upcoming large representative dataset that will make a significant impact in medical imaging.
+    Stay tuned for our upcoming large representative dataset that will make a significant impact in medical imaging.
 </p>
 
     </main>
