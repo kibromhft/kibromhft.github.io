@@ -269,10 +269,7 @@ if (!doNotTrack) {
 <style>
     body {
         background-color: rgb(255, 255, 255) !important; /* Set body background to white */
-        width: 720px !important; /* Set width to match parent */
-        margin: 0 auto !important; /* Center the body content */
-        padding: 0 !important; /* Remove padding to avoid reducing width */
-        box-sizing: border-box !important; /* Include padding and border in width calculation */
+        margin: 0; /* Remove default body margin */
     }
 
     * {
@@ -283,15 +280,28 @@ if (!doNotTrack) {
     header {
         background-color: rgb(245, 245, 245) !important; /* Set header background color */
         width: 100% !important; /* Ensure header takes 100% width */
-        margin: 0 !important; /* Remove any default margin */
-        padding: 0 !important; /* Remove any default padding */
+        margin: 0; /* Remove any default margin */
+        padding: 0; /* Remove any default padding */
     }
 
-    /* Ensure paragraphs respect the max width */
+    /* Ensure body respects the max width */
+    .container {
+        width: 720px; /* Set width to match parent */
+        margin: 0 auto; /* Center the container */
+        padding: 0; /* Remove padding to avoid reducing width */
+    }
+
     p {
         width: 680px; /* Set paragraphs to the exact desired width */
         margin: 0 auto 20px; /* Center paragraphs and add bottom margin */
         padding: 0; /* Remove padding if any */
+    }
+
+    hr {
+        width: 100%; /* Ensure the horizontal line spans the full width */
+        border: none; /* Remove default border */
+        border-top: 1px solid #ccc; /* Set the color and style of the line */
+        margin: 20px 0; /* Add vertical spacing */
     }
 
     /* Styles for the main header and quotes */
