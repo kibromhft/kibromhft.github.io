@@ -136,6 +136,95 @@ if (!doNotTrack) {
 </script>
 
 <style>
+        /* Font-face declarations for custom fonts */
+        @font-face {
+            font-family: "Essays 1743";
+            src: url("../assets/f/Essays1743.eot") format("eot"), url("../assets/f/Essays1743.woff") format("woff"), url("../assets/f/Essays1743.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Essays 1743";
+            font-weight: bold;
+            src: url("../assets/f/Essays1743-bold.eot") format("eot"), url("../assets/f/Essays1743-bold.woff") format("woff"), url("../assets/f/Essays1743-bold.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Essays 1743";
+            font-style: italic;
+            src: url("../assets/f/Essays1743-italic.eot") format("eot"), url("../assets/f/Essays1743-italic.woff") format("woff"), url("../assets/f/Essays1743-italic.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Essays 1743";
+            font-style: italic;
+            font-weight: bold;
+            src: url("../assets/f/Essays1743-bold-italic.eot") format("eot"), url("../assets/f/Essays1743-bold-italic.woff") format("woff"), url("../assets/f/Essays1743-bold-italic.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Alphabet of Children";
+            src: url("../assets/f/Alphabet-of-Children.eot") format("eot"), url("../assets/f/Alphabet-of-Children.woff") format("woff"), url("../assets/f/Alphabet-of-Children.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Libertine";
+            src: url("../assets/f/Libertine.eot") format("eot"), url("../assets/f/Libertine.woff") format("woff"), url("../assets/f/Libertine.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Libertine";
+            font-weight: bold;
+            src: url("../assets/f/Libertine-bold.eot") format("eot"), url("../assets/f/Libertine-bold.woff") format("woff"), url("../assets/f/Libertine-bold.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Libertine";
+            font-style: italic;
+            src: url("../assets/f/Libertine-italic.eot") format("eot"), url("../assets/f/Libertine-italic.woff") format("woff"), url("../assets/f/Libertine-italic.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Libertine";
+            font-style: italic;
+            font-weight: bold;
+            src: url("../assets/f/Libertine-bold-italic.eot") format("eot"), url("../assets/f/Libertine-bold-italic.woff") format("woff"), url("../assets/f/Libertine-bold-italic.ttf") format("truetype");
+        }
+        
+        /* Existing dark mode styles */
+        /* ... (keep all the styles we've discussed before) ... */
+
+        /* Updated styles for quotes */
+        body.dark .quote {
+            background-color: #222222; /* Matching the main background color */
+            border-left: 4px solid #8FBCBB; /* Keeping the accent color for the left border */
+            padding: 15px;
+            margin: 15px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+        }
+
+        body.dark .quote p {
+            color: #FFFFFF; /* White for the main quote text to make it stand out */
+            font-style: italic;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        body.dark .quote cite {
+            color: #BDBDBE; /* Slightly dimmer than the main text color */
+            font-style: normal;
+            font-size: 0.9em;
+        }
+		
+		    /* Dark mode styles for dropdown menu */
+    body.dark .custom-dropdown {
+        background-color: #2E2E33;
+        border: 1px solid #444;
+    }
+
+    body.dark .custom-dropdown li a {
+        color: #DADADB !important;
+    }
+
+    body.dark .custom-dropdown li a:hover {
+        background-color: #3E3E43 !important;
+        color: #FFFFFF !important;
+    }
+    </style>
+
+
+<style>
 .quote {
   font-size: 1.5em;
   font-style: italic;
@@ -157,20 +246,17 @@ if (!doNotTrack) {
 
     /* New styles for paragraphs */
     .custom-paragraph {
-        font-family: 'MessinaModern';
-        font-weight: 400;
-        font-style: normal;
-        font-size: 16.5px !important;
-        color: #414141;
-        letter-spacing: .025em !important;
-        line-height: 1.6rem !important;
-        font-feature-settings: 'kern' !important;
-        text-rendering: optimizeLegibility !important;
-        -webkit-font-smoothing: auto !important;
-        -moz-osx-font-smoothing: grayscale !important;
+		font-family: Libertine, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
+		font-size: large !important; /* Updated font size */
+		line-height: 1.556 !important; /* Updated line height */
+		word-spacing: 0.1em !important; /* Updated word spacing */
+		margin: 28.008px 0px !important; /* Updated margin for vertical spacing */
+		text-decoration: none !important; /* Underline text */
+		text-decoration-color: rgb(0, 0, 0) !important; /* Set underline color to black */
+		--primary: #000000 !important;
     }
 	    /* Set --code-bg for all elements except the header */
-    body:not(.header) {
+    body{
         --code-bg: rgb(255, 255, 255) !important; /* Set code background color to white */
     }
 		/* headers */
