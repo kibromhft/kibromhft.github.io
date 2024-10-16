@@ -284,6 +284,33 @@ if (!doNotTrack) {
 	  line-height: 1.167;
 	  margin: 1.556em 0;
 	}
+
+    /* New styles for the Python roadmap table */
+    .python-roadmap {
+        width: 100%; /* Full width */
+        border-collapse: collapse; /* Remove space between borders */
+        margin: 20px 0; /* Add margin for spacing */
+    }
+
+    .python-roadmap th, .python-roadmap td {
+        padding: 12px; /* Add padding for better spacing */
+        text-align: left; /* Align text to the left */
+        border: 1px solid #ddd; /* Add border */
+    }
+
+    .python-roadmap th {
+        background-color: #f2f2f2; /* Light gray background for header */
+        color: #333; /* Darker text color for header */
+        font-weight: bold; /* Bold text for header */
+    }
+
+    .python-roadmap tr:nth-child(even) {
+        background-color: #f9f9f9; /* Zebra striping for even rows */
+    }
+
+    .python-roadmap tr:hover {
+        background-color: #f1f1f1; /* Highlight row on hover */
+    }
 </style>
 
 </head>
@@ -523,7 +550,7 @@ if (!doNotTrack) {
 <p class="custom-paragraph">To become proficient in coding AI, you need to have a range of skills, including:</p>
 <ol>
 <li class = "custom-paragraph" style="text-align: justify;"><strong>Programming Skills</strong>: To excel in AI development, one must possess a strong foundation in programming languages such as Python, C, and C++. Python, in particular, is a popular choice among developers for AI applications because of its simplicity and rich ecosystem of libraries and frameworks, such as TensorFlow, PyTorch, and Scikit-Learn, which simplify the implementation of complex AI models, making it easier to create efficient and scalable code. However, it's worth noting that AI applications can also be developed using other programming languages such as R and MATLAB. For example, the C and C++ languages are widely used in AI development due to their flexibility and high-performance capabilities. In general, it is crucial to have the ability to write efficient and scalable code that can run on distributed systems to handle the large amounts of data typically involved in AI projects.</li>
-<table>
+<table class="python-roadmap">
   <thead>
     <tr>
       <th>Python Roadmap</th>
