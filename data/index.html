@@ -145,47 +145,47 @@ if (!doNotTrack) {
         /* Font-face declarations for custom fonts */
         @font-face {
             font-family: "Essays 1743";
-            src: url("f/Essays1743.eot") format("eot"), url("f/Essays1743.woff") format("woff"), url("f/Essays1743.ttf") format("truetype");
+            src: url("../assets/f/Essays1743.eot") format("eot"), url("../assets/f/Essays1743.woff") format("woff"), url("../assets/f/Essays1743.ttf") format("truetype");
         }
         @font-face {
             font-family: "Essays 1743";
             font-weight: bold;
-            src: url("f/Essays1743-bold.eot") format("eot"), url("f/Essays1743-bold.woff") format("woff"), url("f/Essays1743-bold.ttf") format("truetype");
+            src: url("../assets/f/Essays1743-bold.eot") format("eot"), url("../assets/f/Essays1743-bold.woff") format("woff"), url("../assets/f/Essays1743-bold.ttf") format("truetype");
         }
         @font-face {
             font-family: "Essays 1743";
             font-style: italic;
-            src: url("f/Essays1743-italic.eot") format("eot"), url("f/Essays1743-italic.woff") format("woff"), url("f/Essays1743-italic.ttf") format("truetype");
+            src: url("../assets/f/Essays1743-italic.eot") format("eot"), url("../assets/f/Essays1743-italic.woff") format("woff"), url("../assets/f/Essays1743-italic.ttf") format("truetype");
         }
         @font-face {
             font-family: "Essays 1743";
             font-style: italic;
             font-weight: bold;
-            src: url("f/Essays1743-bold-italic.eot") format("eot"), url("f/Essays1743-bold-italic.woff") format("woff"), url("f/Essays1743-bold-italic.ttf") format("truetype");
+            src: url("../assets/f/Essays1743-bold-italic.eot") format("eot"), url("../assets/f/Essays1743-bold-italic.woff") format("woff"), url("../assets/f/Essays1743-bold-italic.ttf") format("truetype");
         }
         @font-face {
             font-family: "Alphabet of Children";
-            src: url("f/Alphabet-of-Children.eot") format("eot"), url("f/Alphabet-of-Children.woff") format("woff"), url("f/Alphabet-of-Children.ttf") format("truetype");
+            src: url("../assets/f/Alphabet-of-Children.eot") format("eot"), url("../assets/f/Alphabet-of-Children.woff") format("woff"), url("../assets/f/Alphabet-of-Children.ttf") format("truetype");
         }
         @font-face {
             font-family: "Libertine";
-            src: url("f/Libertine.eot") format("eot"), url("f/Libertine.woff") format("woff"), url("f/Libertine.ttf") format("truetype");
+            src: url("../assets/f/Libertine.eot") format("eot"), url("../assets/f/Libertine.woff") format("woff"), url("../assets/f/Libertine.ttf") format("truetype");
         }
         @font-face {
             font-family: "Libertine";
             font-weight: bold;
-            src: url("f/Libertine-bold.eot") format("eot"), url("f/Libertine-bold.woff") format("woff"), url("f/Libertine-bold.ttf") format("truetype");
+            src: url("../assets/f/Libertine-bold.eot") format("eot"), url("../assets/f/Libertine-bold.woff") format("woff"), url("../assets/f/Libertine-bold.ttf") format("truetype");
         }
         @font-face {
             font-family: "Libertine";
             font-style: italic;
-            src: url("f/Libertine-italic.eot") format("eot"), url("f/Libertine-italic.woff") format("woff"), url("f/Libertine-italic.ttf") format("truetype");
+            src: url("../assets/f/Libertine-italic.eot") format("eot"), url("../assets/f/Libertine-italic.woff") format("woff"), url("../assets/f/Libertine-italic.ttf") format("truetype");
         }
         @font-face {
             font-family: "Libertine";
             font-style: italic;
             font-weight: bold;
-            src: url("f/Libertine-bold-italic.eot") format("eot"), url("f/Libertine-bold-italic.woff") format("woff"), url("f/Libertine-bold-italic.ttf") format("truetype");
+            src: url("../assets/f/Libertine-bold-italic.eot") format("eot"), url("../assets/f/Libertine-bold-italic.woff") format("woff"), url("../assets/f/Libertine-bold-italic.ttf") format("truetype");
         }
         
         /* Existing dark mode styles */
@@ -321,16 +321,7 @@ if (!doNotTrack) {
 </head>
 
 <body class="list" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
 
-</script>
 
 <script>
   MathJax = {
@@ -359,28 +350,6 @@ if (!doNotTrack) {
     <nav class="nav">
         <div class="logo">
             <a href="https://kibromhft.github.io/" accesskey="h" title="Kb&#39;s Blog (Alt + H)">Kb&#39;s Blog</a>
-            <span class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </span>
         </div>
        <ul id="menu">
 
