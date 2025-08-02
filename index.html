@@ -11,7 +11,7 @@
 <meta name="description" content="Document my learning notes.">
 <meta name="author" cfontent="kibrom Haftu">
 <link rel="canonical" href="https://kibromhft.github.io/" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet_main.css"  rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/main.css"  rel="preload stylesheet" as="style">
 <link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kibromhft.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kibromhft.github.io/favicon-32x32.png">
@@ -24,46 +24,11 @@
 <link rel="alternate" type="application/rss+xml" href="https://kibromhft.github.io/index.xml">
 <link rel="alternate" type="application/json" href="https://kibromhft.github.io/index.json">
 <noscript>
-    <style>
+    	<style>
         #theme-toggle,
         .top-link {
             display: none;
         }
-
-    </style>
-	<style>
-	  hr {
-		border: 1px solid black;
-		width: 100%;
-	  }
-</style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
     </style>
 </noscript>
 <script type="application/javascript">
@@ -126,174 +91,47 @@ if (!doNotTrack) {
     
 
 <style>
-
-        /* Font-face declarations for custom fonts */
-        @font-face {
-            font-family: "Essays 1743";
-            src: url("assets/f/Essays1743.eot") format("eot"), url("assets/f/Essays1743.woff") format("woff"), url("assets/f/Essays1743.ttf") format("truetype");
-        }
-        @font-face {
-            font-family: "Essays 1743";
-            font-weight: bold;
-            src: url("assets/f/Essays1743-bold.eot") format("eot"), url("assets/f/Essays1743-bold.woff") format("woff"), url("assets/f/Essays1743-bold.ttf") format("truetype");
-        }
-        @font-face {
-            font-family: "Essays 1743";
-            font-style: italic;
-            src: url("assets/f/Essays1743-italic.eot") format("eot"), url("assets/f/Essays1743-italic.woff") format("woff"), url("assets/f/Essays1743-italic.ttf") format("truetype");
-        }
-        @font-face {
-            font-family: "Essays 1743";
-            font-style: italic;
-            font-weight: bold;
-            src: url("assets/f/Essays1743-bold-italic.eot") format("eot"), url("assets/f/Essays1743-bold-italic.woff") format("woff"), url("assets/f/Essays1743-bold-italic.ttf") format("truetype");
-        }
-        @font-face {
-            font-family: "Alphabet of Children";
-            src: url("assets/f/Alphabet-of-Children.eot") format("eot"), url("assets/f/Alphabet-of-Children.woff") format("woff"), url("assets/f/Alphabet-of-Children.ttf") format("truetype");
-        }
-        @font-face {
-            font-family: "Libertine";
-            src: url("assets/f/Libertine.eot") format("eot"), url("assets/f/Libertine.woff") format("woff"), url("assets/f/Libertine.ttf") format("truetype");
-        }
-        @font-face {
-            font-family: "Libertine";
-            font-weight: bold;
-            src: url("assets/f/Libertine-bold.eot") format("eot"), url("assets/f/Libertine-bold.woff") format("woff"), url("assets/f/Libertine-bold.ttf") format("truetype");
-        }
-        @font-face {
-            font-family: "Libertine";
-            font-style: italic;
-            src: url("assets/f/Libertine-italic.eot") format("eot"), url("assets/f/Libertine-italic.woff") format("woff"), url("assets/f/Libertine-italic.ttf") format("truetype");
-        }
-        @font-face {
-            font-family: "Libertine";
-            font-style: italic;
-            font-weight: bold;
-            src: url("assets/f/Libertine-bold-italic.eot") format("eot"), url("assets/f/Libertine-bold-italic.woff") format("woff"), url("assets/f/Libertine-bold-italic.ttf") format("truetype");
-        }
-    /* Dark mode styles - - - This part of the script is only applied to the home page. */
-
-    body.dark {
-        background-color: #222222;
-        color: #DADADB;
+    /* Font-face declarations for custom fonts */
+    @font-face {
+        font-family: "Essays 1743";
+        src: url("assets/f/Essays1743.eot") format("eot"), url("assets/f/Essays1743.woff") format("woff"), url("assets/f/Essays1743.ttf") format("truetype");
     }
-
-    /* Navigation menu */
-    body.dark .nav a {
-        color: #DADADB;
+    @font-face {
+        font-family: "Essays 1743";
+        font-weight: bold;
+        src: url("assets/f/Essays1743-bold.eot") format("eot"), url("assets/f/Essays1743-bold.woff") format("woff"), url("assets/f/Essays1743-bold.ttf") format("truetype");
     }
-
-    /* General content and divisions */
-    body.dark .first-entry,
-    body.dark .entry-header,
-    body.dark .entry-content,
-    body.dark .social-icons,
-    body.dark .about-block,
-    body.dark .w-col,
-    body.dark .space {
-        color: #DADADB;
-        background-color: #2E2E33;
+    @font-face {
+        font-family: "Essays 1743";
+        font-style: italic;
+        src: url("assets/f/Essays1743-italic.eot") format("eot"), url("assets/f/Essays1743-italic.woff") format("woff"), url("assets/f/Essays1743-italic.ttf") format("truetype");
     }
-
-    /* Featured Posts section */
-    body.dark .w-col.w-col-6 {
-        background-color: #2E2E33 !important;
+    @font-face {
+        font-family: "Essays 1743";
+        font-style: italic;
+        font-weight: bold;
+        src: url("assets/f/Essays1743-bold-italic.eot") format("eot"), url("assets/f/Essays1743-bold-italic.woff") format("woff"), url("assets/f/Essays1743-bold-italic.ttf") format("truetype");
     }
-    
-    body.dark .w-col.w-col-6 h2.small-heading {
-        color: #DADADB !important;
+    @font-face {
+        font-family: "Libertine";
+        src: url("assets/f/Libertine.eot") format("eot"), url("assets/f/Libertine.woff") format("woff"), url("assets/f/Libertine.ttf") format("truetype");
     }
-	
-	h2.small-heading {
-	   font-family: "Essays 1743", Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
-	   font-weight: normal;
-	   text-shadow: 0 0 1px #667;
-	   font-size: 28px;  /* Adjusted font size */
-	   line-height: 36px;  /* Adjusted line height */
-	   word-spacing: 0.1em; 
-	   margin-top: 0;
-	}
-	
-	.first-entry.home-info {
-	   margin-bottom: 24px; /* reduced from 48px */
-	}
-    .logo {
-	font-family: "Palatino Linotype", Libertine, Palatino, "Book Antiqua", Georgia, "Times New Roman", serif;
-	}
-    /* Social media links section */
-    body.dark .about-block,
-    body.dark .social-link-group-tight,
-    body.dark .columns-front-page {
-        background-color: #2E2E33;
+    @font-face {
+        font-family: "Libertine";
+        font-weight: bold;
+        src: url("assets/f/Libertine-bold.eot") format("eot"), url("assets/f/Libertine-bold.woff") format("woff"), url("assets/f/Libertine-bold.ttf") format("truetype");
     }
-
-    body.dark .social-icon-link-pad img,
-    body.dark .social-icon-cv-link-pad img,
-    body.dark .social-link-group-tight img,
-    body.dark .icon-image {
-        filter: brightness(0.9) contrast(1.1);
+    @font-face {
+        font-family: "Libertine";
+        font-style: italic;
+        src: url("assets/f/Libertine-italic.eot") format("eot"), url("assets/f/Libertine-italic.woff") format("woff"), url("assets/f/Libertine-italic.ttf") format("truetype");
     }
-
-    body.dark .social-icon-link-pad,
-    body.dark .social-icon-cv-link-pad,
-    body.dark .social-link-group-tight a {
-        background-color: #2E2E33;
+    @font-face {
+        font-family: "Libertine";
+        font-style: italic;
+        font-weight: bold;
+        src: url("assets/f/Libertine-bold-italic.eot") format("eot"), url("assets/f/Libertine-bold-italic.woff") format("woff"), url("assets/f/Libertine-bold-italic.ttf") format("truetype");
     }
-
-    body.dark .about-block,
-    body.dark .about-block a,
-    body.dark .social-link-group-tight,
-    body.dark .social-link-group-tight a,
-    body.dark .columns-front-page {
-        color: #DADADB;
-    }
-
-    /* Additional elements */
-    body.dark h2,
-    body.dark .small-heading {
-        color: #FFFFFF;
-    }
-
-    /* Adjust link colors in dark mode */
-    body.dark a {
-        color: #8FBCBB; /* A muted teal color that complements #DADADB */
-    }
-
-    body.dark a:hover {
-        color: #88C0D0; /* A slightly brighter teal for hover state */
-    }
-
-    /* Dark mode styles for dropdown menu */
-    body.dark .custom-dropdown {
-        background-color: #2E2E33;
-        border: 1px solid #444;
-    }
-
-    body.dark .custom-dropdown li a {
-        color: #DADADB !important;
-    }
-
-    body.dark .custom-dropdown li a:hover {
-        background-color: #3E3E43 !important;
-        color: #FFFFFF !important;
-    }
-	
-	    /* New styles for paragraphs */
-    .custom-paragraph {
-        font-family: 'MessinaModern';
-        font-weight: 400;
-        font-style: normal;
-        font-size: 16px !important;
-        color: #414141;
-        letter-spacing: .025em !important;
-        line-height: 1.6rem !important;
-        font-feature-settings: 'kern' !important;
-        text-rendering: optimizeLegibility !important;
-        -webkit-font-smoothing: auto !important;
-        -moz-osx-font-smoothing: grayscale !important;
-    }
-
 </style>
 
 
@@ -391,10 +229,10 @@ if (!doNotTrack) {
 
 
 		<li class="dropdown">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-			  Resources <span class="caret fa fa-bars" data-toggle="dropdown"></span>
+			<a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">
+			  Resources <span class="caret fa fa-chevron-down"></span>
 			</a>
-		  <ul class="dropdown-menu custom-dropdown">
+		  <ul class="dropdown-menu">
 			<li>
 			  <a href="https://kibromhft.github.io/podcast">Podcast</a>
 			</li>
@@ -410,36 +248,7 @@ if (!doNotTrack) {
 		  </ul>
 		</li>
 
-		<style>
-		.custom-dropdown {
-		  padding: 8px 0 !important;
-		  margin: 0 !important;
-		  list-style-type: none !important;
-		  /* Removed min-width to allow natural width */
-		}
 
-		.custom-dropdown li {
-		  padding: 0 !important;
-		  margin: 0 !important;
-		}
-
-		.custom-dropdown li a {
-		  display: block !important;
-		  width: 100% !important;
-		  padding: 8px 20px !important;
-		  margin: 0 !important;
-		  box-sizing: border-box !important;
-		  text-decoration: none !important;
-		  color: #333 !important;
-		  font-size: 16px !important; /* Increased font size */
-		  line-height: 1.5 !important;
-		}
-
-		.custom-dropdown li a:hover {
-		  background-color: #f8f9fa !important;
-		  color: #000 !important;
-		}
-		</style>
 
 		</ul>
 
