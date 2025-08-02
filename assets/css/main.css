@@ -120,14 +120,14 @@ a {
     margin: 0 auto;
     padding: 0 var(--gap);
     height: var(--header-height);
-    gap: 24px;
+    gap: 16px;
 }
 
 /* Logo styles */
 .logo {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
     flex-shrink: 0;
 }
 
@@ -136,28 +136,11 @@ a {
     font-weight: 700;
     font-family: var(--font-serif);
     color: var(--primary);
-    transition: all 0.3s ease;
-    position: relative;
+    transition: color 0.2s ease;
 }
 
 .logo a:hover {
     color: var(--brand-blue);
-    transform: translateY(-1px);
-}
-
-.logo a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--brand-blue);
-    transition: width 0.3s ease;
-}
-
-.logo a:hover::after {
-    width: 100%;
 }
 
 /* Theme toggle */
@@ -165,41 +148,19 @@ a {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 10px;
+    padding: 8px;
     border-radius: 50%;
-    transition: all 0.3s ease;
+    transition: background-color 0.2s ease;
     color: var(--primary);
-    position: relative;
-    overflow: hidden;
-}
-
-#theme-toggle::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: var(--tertiary);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: all 0.3s ease;
-}
-
-#theme-toggle:hover::before {
-    width: 100%;
-    height: 100%;
 }
 
 #theme-toggle:hover {
-    transform: scale(1.1);
+    background-color: var(--tertiary);
 }
 
 #theme-toggle svg {
     height: 20px;
     width: 20px;
-    position: relative;
-    z-index: 1;
 }
 
 body.dark #moon {
@@ -216,7 +177,7 @@ body:not(.dark) #sun {
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 8px;
+    gap: 12px;
     align-items: center;
     flex-wrap: wrap;
 }
@@ -229,51 +190,31 @@ body:not(.dark) #sun {
     display: flex;
     align-items: center;
     gap: 6px;
-    padding: 10px 16px;
-    border-radius: 8px;
+    padding: 8px 16px;
+    border-radius: 6px;
     font-size: 15px;
     font-weight: 500;
     color: var(--primary);
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     white-space: nowrap;
     text-decoration: none;
-    position: relative;
-    overflow: hidden;
-}
-
-#menu a::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s ease;
-}
-
-#menu a:hover::before {
-    left: 100%;
 }
 
 #menu a:hover {
-    background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-hover));
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+    background-color: var(--tertiary);
+    color: var(--primary);
 }
 
 #menu .active {
-    background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-hover));
+    background-color: var(--brand-blue);
     color: white;
     font-weight: 600;
-    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
 }
 
 /* Caret icon for dropdown */
 .caret {
-    font-size: 11px;
-    transition: transform 0.3s ease;
+    font-size: 12px;
+    transition: transform 0.2s ease;
     opacity: 0.7;
 }
 
@@ -298,25 +239,24 @@ body:not(.dark) #sun {
     position: absolute;
     top: calc(100% + 8px);
     right: 0;
-    min-width: 220px;
+    min-width: 200px;
     background: var(--entry);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px) scale(0.95);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(-8px);
+    transition: all 0.2s ease;
     z-index: 1000;
     padding: 8px 0;
     list-style: none;
-    backdrop-filter: blur(10px);
 }
 
 .dropdown:hover .dropdown-menu {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
 }
 
 .dropdown-menu li {
@@ -325,40 +265,20 @@ body:not(.dark) #sun {
 
 .dropdown-menu a {
     display: block;
-    padding: 12px 20px;
+    padding: 8px 16px;
     color: var(--primary);
-    font-size: 14px;
-    border-radius: 0;
-    transition: all 0.2s ease;
-    position: relative;
-}
-
-.dropdown-menu a::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 3px;
-    height: 0;
-    background: var(--brand-blue);
-    transition: height 0.2s ease;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
 }
 
 .dropdown-menu a:hover {
     background-color: var(--tertiary);
-    color: var(--brand-blue);
-    padding-left: 25px;
+    color: var(--primary);
 }
 
-.dropdown-menu a:hover::before {
-    height: 100%;
-}
-
-/* Dark mode dropdown adjustments */
 .dark .dropdown-menu {
     background: var(--entry);
     border-color: var(--border);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
 }
 
 /* ===== MAIN CONTENT ===== */
@@ -435,31 +355,30 @@ body:not(.dark) #sun {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
     flex-wrap: wrap;
     background-color: var(--brand-light-gray);
-    padding: 20px;
+    padding: 16px;
     border-radius: var(--radius);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .dark .social-link-group-tight {
     background-color: var(--entry);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .social-icon-link-pad,
 .social-icon-cv-link-pad {
     display: inline-block;
-    padding: 8px;
+    padding: 6px;
     border-radius: 50%;
-    transition: all 0.3s ease;
+    transition: background-color 0.2s ease;
     background-color: var(--theme);
 }
 
 .social-icon-link-pad:hover,
 .social-icon-cv-link-pad:hover {
-    transform: scale(1.1);
     background-color: var(--tertiary);
 }
 
