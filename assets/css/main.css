@@ -192,12 +192,14 @@ body:not(.dark) #sun {
     gap: 6px;
     padding: 8px 16px;
     border-radius: 6px;
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: var(--font-primary);
     color: var(--primary);
     transition: all 0.2s ease;
     white-space: nowrap;
     text-decoration: none;
+    letter-spacing: 0.025em;
 }
 
 #menu a:hover {
@@ -213,9 +215,10 @@ body:not(.dark) #sun {
 
 /* Caret icon for dropdown */
 .caret {
-    font-size: 12px;
+    font-size: 11px;
     transition: transform 0.2s ease;
-    opacity: 0.7;
+    opacity: 0.8;
+    margin-left: 2px;
 }
 
 .dropdown:hover .caret {
@@ -269,6 +272,10 @@ body:not(.dark) #sun {
     color: var(--primary);
     text-decoration: none;
     transition: background-color 0.2s ease;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--font-primary);
+    letter-spacing: 0.025em;
 }
 
 .dropdown-menu a:hover {
