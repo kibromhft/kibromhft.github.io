@@ -312,9 +312,9 @@ body:not(.dark) #sun {
 
 /* Original home-info styling */
 .first-entry.home-info {
-    background-color: #f7f7f7;
-    padding: 10px 20px 20px 20px;
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
+    background-color: var(--entry);
+    padding: 20px;
+    border: 1px solid var(--border);
 }
 
 .home-info .entry-content {
@@ -339,10 +339,10 @@ body:not(.dark) #sun {
 .custom-paragraph {
     font-family: var(--font-primary);
     font-weight: 400;
-    font-size: 16px !important;
+    font-size: 16px;
     color: var(--content);
-    letter-spacing: 0.025em !important;
-    line-height: 1.6 !important;
+    letter-spacing: 0.025em;
+    line-height: 1.6;
     text-align: justify;
 }
 
@@ -395,7 +395,7 @@ body:not(.dark) #sun {
 
 /* Featured posts section */
 .w-col.w-col-6 {
-    background-color: var(--entry) !important;
+    background-color: var(--entry);
     padding: 20px;
     border-radius: var(--radius);
     margin-top: -10px;
@@ -403,7 +403,7 @@ body:not(.dark) #sun {
 }
 
 .dark .w-col.w-col-6 {
-    background-color: var(--entry) !important;
+    background-color: var(--entry);
 }
 
 .small-heading {
@@ -412,7 +412,7 @@ body:not(.dark) #sun {
     font-size: 20px;
     line-height: 1.3;
     margin: 0;
-    color: var(--primary) !important;
+    color: var(--primary);
 }
 
 /* ===== POST ENTRIES ===== */
