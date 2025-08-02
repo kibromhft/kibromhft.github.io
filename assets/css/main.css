@@ -25,9 +25,6 @@
     --brand-gray: rgb(108, 108, 108);
     --brand-light-gray: rgb(247, 247, 247);
     
-    /* RGB values for transparency */
-    --primary-rgb: 30, 30, 30;
-    
     /* Typography */
     --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     --font-serif: 'Essays 1743', Palatino, 'Palatino Linotype', 'Book Antiqua', Georgia, 'Times New Roman', serif;
@@ -47,7 +44,6 @@
     --border: rgb(51, 51, 51);
     --brand-blue: rgb(88, 192, 208);
     --brand-blue-hover: rgb(136, 208, 224);
-    --primary-rgb: 218, 218, 219;
 }
 
 /* ===== RESET & BASE STYLES ===== */
@@ -77,38 +73,24 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
     margin: 0;
     font-family: var(--font-serif);
-    color: var(--primary);
 }
 
 p {
     margin: 0;
-    color: var(--content);
-    line-height: 1.6;
 }
 
 a {
     text-decoration: none;
     color: inherit;
-    transition: color 0.2s ease;
-}
-
-a:hover {
-    color: var(--brand-blue);
 }
 
 /* ===== LAYOUT ===== */
 .list {
     background: var(--code-bg);
-    min-height: 100vh;
 }
 
 .dark.list {
     background: var(--theme);
-}
-
-/* Smooth page transitions */
-* {
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* ===== HEADER & NAVIGATION ===== */
