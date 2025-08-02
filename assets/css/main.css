@@ -424,42 +424,7 @@ body:not(.dark) #sun {
     text-align: justify;
 }
 
-/* Social icons section */
-.social-icons {
-    padding: 20px 0;
-    background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.8) 0%, 
-        rgba(248, 250, 252, 0.8) 100%);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    border-radius: 12px;
-    margin-top: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(10px);
-}
 
-.dark .social-icons {
-    background: linear-gradient(135deg, 
-        rgba(46, 46, 51, 0.8) 0%, 
-        rgba(55, 56, 62, 0.8) 100%);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.social-icons a:not(:last-of-type) {
-    margin-right: 16px;
-}
-
-.social-icons a svg {
-    height: 28px;
-    width: 28px;
-    transition: all 0.3s ease;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-}
-
-.social-icons a:hover svg {
-    transform: translateY(-2px) scale(1.1);
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
-}
 
 /* About block */
 .about-block {
