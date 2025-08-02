@@ -187,67 +187,76 @@ if (!doNotTrack) {
                 </button>
             </span>
         </div>
-        
-        <!-- Mobile menu button -->
-        <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-        </button>
-        
-        <ul id="menu" class="nav-menu">
-            <li>
-                <a href="https://kibromhft.github.io/" title="Home" class="nav-link">
-                    <span>Home</span>
-                    <span class="caret fa fa-home"></span>
-                </a>
-            </li>
-            
-            <li>
-                <a href="https://kibromhft.github.io/archives/" title="Archives" class="nav-link">
-                    <span>Archives</span>
-                </a>
-            </li>
-            
-            <li>
-                <a href="https://kibromhft.github.io/data/" title="Data" class="nav-link">
-                    <span>Data</span>
-                </a>
-            </li>
-            
-            <li>
-                <a href="https://kibromhft.github.io/keywords/" title="Keywords" class="nav-link">
-                    <span>Keywords</span>
-                </a>
-            </li>
-            
-            <li>
-                <a href="https://kibromhft.github.io/faq" title="FAQ" class="nav-link">
-                    <span>FAQs</span>
-                </a>
-            </li>
-            
-            <li class="dropdown">
-                <button class="dropdown-toggle nav-link" aria-haspopup="true" aria-expanded="false">
-                    <span>Resources</span>
-                    <span class="caret fa fa-chevron-down"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="https://kibromhft.github.io/podcast" class="dropdown-link">Podcast</a>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-link">Algorithms</a>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-link">Funding & Grants</a>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-link">Startup Toolkit</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+       <ul id="menu">
+
+		
+		  <li>
+			<a href="https://kibromhft.github.io/" title="Home">
+			  Home <span class="caret fa fa-home"></span>
+			</a>
+		  </li>
+		  
+
+		  <li>
+			<a href="https://kibromhft.github.io/archives/" title="Archives">
+			  <span>Archives</span>
+			</a>
+		  </li>
+		  
+
+
+		  <li>
+			<a href="https://kibromhft.github.io/data/" title="Data">
+			  <span>Data</span>
+			</a>
+		  </li>
+		  <li>
+			<a href="https://kibromhft.github.io/keywords/" title="keywords">
+			  <span>Keywords</span>
+			</a>
+		  </li>
+		  <li>
+			<a href="https://kibromhft.github.io/faq" title="FAQ">
+			  <span>FAQs</span>
+			</a>
+		  </li>
+		  
+<!-- 		  <li>
+			<a href="https://kibromhft.github.io/cv" title="cv">
+			  <span>CV</span>
+			</a>
+		  </li> -->
+
+
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">
+			  Resources <span class="caret fa fa-chevron-down"></span>
+			</a>
+		  <ul class="dropdown-menu">
+			<li>
+			  <a href="https://kibromhft.github.io/podcast">Podcast</a>
+			</li>
+			<li>
+			  <a href="#">Algorithms</a>
+			</li>
+			<li>
+			  <a href="#">Funding & Grants</a>
+			</li>
+			<li>
+			  <a href="#">Startup Toolkit</a>
+			</li>
+		  </ul>
+		</li>
+
+
+
+		</ul>
+
+
+
+
+
+		
     </nav>
 </header>	
 
@@ -412,82 +421,14 @@ Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolu
 
 
 <script>
-    // Mobile menu functionality
-    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-    const navMenu = document.getElementById('menu');
-    
-    if (mobileMenuToggle && navMenu) {
-        mobileMenuToggle.addEventListener('click', () => {
-            const isExpanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
-            mobileMenuToggle.setAttribute('aria-expanded', !isExpanded);
-            mobileMenuToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-        
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!mobileMenuToggle.contains(e.target) && !navMenu.contains(e.target)) {
-                mobileMenuToggle.setAttribute('aria-expanded', 'false');
-                mobileMenuToggle.classList.remove('active');
-                navMenu.classList.remove('active');
-            }
-        });
-    }
-    
-    // Dropdown functionality
-    const dropdowns = document.querySelectorAll('.dropdown');
-    
-    dropdowns.forEach(dropdown => {
-        const toggle = dropdown.querySelector('.dropdown-toggle');
-        const menu = dropdown.querySelector('.dropdown-menu');
-        
-        if (toggle && menu) {
-            // Click to toggle dropdown
-            toggle.addEventListener('click', (e) => {
-                e.preventDefault();
-                const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-                toggle.setAttribute('aria-expanded', !isExpanded);
-                dropdown.classList.toggle('active');
-                
-                // Close other dropdowns
-                dropdowns.forEach(otherDropdown => {
-                    if (otherDropdown !== dropdown) {
-                        otherDropdown.classList.remove('active');
-                        const otherToggle = otherDropdown.querySelector('.dropdown-toggle');
-                        if (otherToggle) {
-                            otherToggle.setAttribute('aria-expanded', 'false');
-                        }
-                    }
-                });
-            });
-            
-            // Keyboard navigation
-            toggle.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    toggle.click();
-                }
-            });
-            
-            // Close dropdown when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!dropdown.contains(e.target)) {
-                    dropdown.classList.remove('active');
-                    toggle.setAttribute('aria-expanded', 'false');
-                }
-            });
-        }
-    });
-    
-    // Menu scroll position persistence
-    if (navMenu) {
-        navMenu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        navMenu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", navMenu.scrollLeft);
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
     }
 
-    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
             e.preventDefault();
@@ -507,17 +448,9 @@ Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolu
         });
     });
 
-    // Active page highlighting
-    const currentPath = window.location.pathname;
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    navLinks.forEach(link => {
-        if (link.href && link.href.includes(currentPath)) {
-            link.classList.add('active');
-        }
-    });
+</script>
 
-    // Top link functionality
+<script>
     var mybutton = document.getElementById("top-link");
     window.onscroll = function () {
         if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
@@ -528,8 +461,8 @@ Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolu
             mybutton.style.opacity = "0";
         }
     };
-    
-    // Theme toggle functionality
+</script>
+<script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
         if (document.body.className.includes("dark")) {
             document.body.classList.remove('dark');
@@ -539,6 +472,9 @@ Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolu
             localStorage.setItem("pref-theme", 'dark');
         }
     });
+</script>
+
+
 </script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
