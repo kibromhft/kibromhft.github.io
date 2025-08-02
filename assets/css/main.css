@@ -695,18 +695,7 @@ body:not(.dark) #sun {
         padding: 20px;
     }
     
-    .first-entry.home-info {
-        padding: 24px;
-        border-radius: 12px;
-    }
-    
-    .first-entry .entry-header h2 {
-        font-size: 28px;
-    }
-    
-    .first-entry.home-info .entry-header h2 {
-        font-size: 28px;
-    }
+
     
     .social-link-group-tight {
         gap: 12px;
