@@ -188,7 +188,7 @@ body:not(.dark) #sun {
     gap: 6px;
     padding: 8px 16px;
     border-radius: 6px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     font-family: var(--font-primary);
     color: var(--primary);
@@ -561,7 +561,7 @@ body:not(.dark) #sun {
     }
     
     #menu a {
-        font-size: 14px;
+        font-size: 15px;
         padding: 8px 12px;
         border-radius: 6px;
     }
@@ -607,7 +607,7 @@ body:not(.dark) #sun {
     }
     
     #menu a {
-        font-size: 13px;
+        font-size: 14px;
         padding: 4px 6px;
     }
 }
