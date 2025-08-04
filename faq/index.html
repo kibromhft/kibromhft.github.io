@@ -149,94 +149,57 @@ if (!doNotTrack) {
 </script>
 
 <style>
-    /* Expert-Level Design System */
+    /* Design System - CSS Custom Properties */
     :root {
-        /* Color System - WCAG 2.1 AA Compliant */
+        /* Colors */
         --primary-color: rgb(13, 110, 253);
         --primary-hover: rgb(10, 88, 202);
         --primary-light: rgb(59, 130, 246);
-        --primary-dark: rgb(8, 66, 152);
-        
         --text-primary: rgb(15, 23, 42);
         --text-secondary: rgb(51, 65, 85);
         --text-muted: rgb(108, 117, 125);
-        --text-inverse: rgb(255, 255, 255);
-        
         --bg-primary: rgb(255, 255, 255);
         --bg-secondary: rgb(248, 250, 252);
         --bg-card: rgb(255, 255, 255);
-        --bg-overlay: rgba(0, 0, 0, 0.05);
-        
         --border-color: rgba(226, 232, 240, 0.8);
-        --border-focus: rgb(13, 110, 253);
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.02);
+        --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.03);
+        --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.05);
         
-        /* Shadow System */
-        --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
-        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
-        --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-        --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
-        --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.25);
+        /* Typography */
+        --font-heading: "Essays 1743", serif;
+        --font-body: Libertine, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
+        --font-size-xs: 0.875rem;
+        --font-size-sm: 1rem;
+        --font-size-base: 1.1rem;
+        --font-size-lg: 1.25rem;
+        --font-size-xl: 1.4rem;
+        --font-size-2xl: 2rem;
+        --font-size-3xl: 3.5rem;
         
-        /* Typography Scale - Perfect Fourth */
-        --font-size-xs: 0.75rem;    /* 12px */
-        --font-size-sm: 0.875rem;   /* 14px */
-        --font-size-base: 1rem;     /* 16px */
-        --font-size-lg: 1.125rem;   /* 18px */
-        --font-size-xl: 1.25rem;    /* 20px */
-        --font-size-2xl: 1.5rem;    /* 24px */
-        --font-size-3xl: 1.875rem;  /* 30px */
-        --font-size-4xl: 2.25rem;   /* 36px */
-        --font-size-5xl: 3rem;      /* 48px */
+        /* Spacing */
+        --space-xs: 0.5rem;
+        --space-sm: 1rem;
+        --space-md: 1.5rem;
+        --space-lg: 2rem;
+        --space-xl: 2.5rem;
+        --space-2xl: 3rem;
+        --space-3xl: 4rem;
         
-        /* Font Families */
-        --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-        --font-serif: Libertine, 'Times New Roman', Georgia, serif;
-        --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
-        
-        /* Spacing Scale - 8pt Grid */
-        --space-0: 0;
-        --space-1: 0.25rem;   /* 4px */
-        --space-2: 0.5rem;    /* 8px */
-        --space-3: 0.75rem;   /* 12px */
-        --space-4: 1rem;      /* 16px */
-        --space-5: 1.25rem;   /* 20px */
-        --space-6: 1.5rem;    /* 24px */
-        --space-8: 2rem;      /* 32px */
-        --space-10: 2.5rem;   /* 40px */
-        --space-12: 3rem;     /* 48px */
-        --space-16: 4rem;     /* 64px */
-        --space-20: 5rem;     /* 80px */
-        --space-24: 6rem;     /* 96px */
-        
-        /* Border Radius */
-        --radius-none: 0;
-        --radius-sm: 0.125rem;   /* 2px */
-        --radius-md: 0.375rem;   /* 6px */
-        --radius-lg: 0.5rem;     /* 8px */
-        --radius-xl: 0.75rem;    /* 12px */
-        --radius-2xl: 1rem;      /* 16px */
-        --radius-full: 9999px;
+        /* Border radius */
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 16px;
         
         /* Transitions */
-        --transition-none: none;
-        --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-        --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-        --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         
-        /* Layout */
-        --container-max-width: min(65ch, 90vw);
+        /* Container */
+        --container-max-width: min(900px, 90vw);
         --container-padding: clamp(1rem, 5vw, 2rem);
-        --content-max-width: 65ch;
-        
-        /* Z-Index Scale */
-        --z-dropdown: 1000;
-        --z-sticky: 1020;
-        --z-fixed: 1030;
-        --z-modal-backdrop: 1040;
-        --z-modal: 1050;
-        --z-popover: 1060;
-        --z-tooltip: 1070;
     }
 
     /* Dark mode variables */
@@ -413,47 +376,31 @@ if (!doNotTrack) {
         font-style: normal;
     }
 
-    /* Expert-Level Layout System */
+    /* Container and layout with CSS variables */
     .post-content {
         color: var(--text-primary);
-        max-width: var(--content-max-width);
+        max-width: var(--container-max-width);
         margin: 0 auto;
         padding: 0 var(--container-padding);
-        font-family: var(--font-serif);
+        font-family: var(--font-body);
         font-size: var(--font-size-base);
-        line-height: 1.75;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+        line-height: 1.7;
     }
 
     /* Container queries for responsive design */
     @container (max-width: 600px) {
         .post-content {
             font-size: var(--font-size-sm);
-            padding: 0 var(--space-4);
+            padding: 0 var(--space-sm);
         }
         
         .qa {
-            padding: var(--space-6);
-            margin: var(--space-6) 0;
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
         }
         
         .qa b {
             font-size: var(--font-size-lg);
-        }
-    }
-
-    /* Fluid typography */
-    @media (min-width: 640px) {
-        .post-content {
-            font-size: var(--font-size-lg);
-        }
-    }
-
-    @media (min-width: 1024px) {
-        .post-content {
-            font-size: var(--font-size-xl);
         }
     }
 
@@ -491,120 +438,99 @@ if (!doNotTrack) {
         outline-offset: 2px;
     }
 
-    /* Expert-Level FAQ Card System */
+    /* Premium FAQ Q&A styling with CSS variables */
     .qa {
-        background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
+        background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
         border: 1px solid var(--border-color);
-        border-radius: var(--radius-xl);
-        padding: var(--space-10);
-        margin: var(--space-10) 0;
-        box-shadow: var(--shadow-sm);
-        transition: var(--transition-base);
+        border-radius: var(--radius-lg);
+        padding: var(--space-xl);
+        margin: var(--space-xl) 0;
+        box-shadow: var(--shadow-sm), var(--shadow-md), var(--shadow-lg);
+        transition: var(--transition-slow);
         position: relative;
         overflow: hidden;
         container-type: inline-size;
-        isolation: isolate;
     }
 
-    /* Progressive enhancement for backdrop-filter */
+    /* Fallback for browsers that don't support backdrop-filter */
     @supports (backdrop-filter: blur(10px)) {
         .qa {
             backdrop-filter: blur(10px);
-            background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.9) 0%, 
-                rgba(248, 250, 252, 0.8) 100%);
         }
     }
 
-    /* Accent bar with improved gradient */
     .qa::before {
         content: '';
         position: absolute;
         top: 0;
         left: 0;
-        width: 4px;
+        width: 5px;
         height: 100%;
         background: linear-gradient(180deg, 
             var(--primary-color) 0%, 
             var(--primary-light) 50%, 
             var(--primary-hover) 100%);
-        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-        z-index: 1;
+        border-radius: 0 2px 2px 0;
     }
 
-    /* Decorative corner element */
     .qa::after {
         content: '';
         position: absolute;
         top: 0;
         right: 0;
-        width: 80px;
-        height: 80px;
-        background: radial-gradient(circle at top right, 
-            rgba(13, 110, 253, 0.08) 0%, 
-            transparent 70%);
-        border-radius: 0 var(--radius-xl) 0 80px;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, 
+            rgba(13, 110, 253, 0.1) 0%, 
+            rgba(59, 130, 246, 0.05) 100%);
+        border-radius: 0 var(--radius-lg) 0 60px;
         pointer-events: none;
-        z-index: 0;
     }
 
-    /* Enhanced hover and focus states */
     .qa:hover,
     .qa:focus-within {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-lg);
-        border-color: var(--primary-color);
+        transform: translateY(-4px) scale(1.01);
+        box-shadow: var(--shadow-md), var(--shadow-lg), var(--shadow-xl);
+        border-color: rgba(13, 110, 253, 0.3);
     }
 
     /* Focus styles for accessibility */
     .qa:focus-within {
-        outline: 2px solid var(--border-focus);
+        outline: 2px solid var(--primary-color);
         outline-offset: 2px;
     }
 
-    /* Reduced motion support */
-    @media (prefers-reduced-motion: reduce) {
-        .qa:hover,
-        .qa:focus-within {
-            transform: none;
-        }
-    }
-
-    /* Expert-Level Typography System */
     .qa b {
         color: var(--text-primary);
-        font-size: var(--font-size-2xl);
+        font-size: var(--font-size-xl);
         font-weight: 600;
-        font-family: var(--font-serif);
+        font-family: var(--font-body);
         display: block;
-        margin-bottom: var(--space-6);
-        line-height: 1.3;
+        margin-bottom: var(--space-md);
+        line-height: 1.4;
         position: relative;
-        letter-spacing: -0.025em;
-        text-rendering: optimizeLegibility;
+        letter-spacing: -0.02em;
     }
 
     .qa > b:first-of-type::before {
         content: 'Q:';
         color: var(--primary-color);
         font-weight: 700;
-        margin-right: var(--space-3);
+        margin-right: var(--space-sm);
         font-size: var(--font-size-lg);
         background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        display: inline-block;
     }
 
     .qa p {
-        margin: var(--space-6) 0;
-        line-height: 1.75;
+        margin: var(--space-md) 0;
+        line-height: 1.8;
         color: var(--text-secondary);
         font-size: var(--font-size-base);
         font-weight: 400;
-        font-family: var(--font-serif);
-        text-rendering: optimizeLegibility;
+        font-family: var(--font-body);
     }
 
     .qa p:first-of-type b {
@@ -1063,17 +989,17 @@ if (!doNotTrack) {
 <div class='post-content'>
 
 	<div class='qa'>
-	<b>How can I get an update when a new post comes out?</b>
+	<b>Q: How can I get an update when a new post comes out?</b>
 	<p><b>A:</b> Follow me on Twitter: I post about my new posts on this Twitter account: <a href="https://twitter.com/coding_era/">@coding_era</a>. You can follow me to get notified when a new post is published. You can also subscribe to my <a href="../index.xml" target="_blank">RSS feed</a>. This will notify you when a new post is published on my blog.</p> 
 	</div>
 	
 		<div class='qa'>
-	<b>How can I improve my coding skills?</b>
+	<b>Q: How can I improve my coding skills?</b>
 	<p><b>A:</b> Practice regularly by solving coding challenges, work on personal projects that challenge you, and collaborate with others on coding projects to learn from their techniques and approaches.</p>
 	</div>
 	
 	<div class='qa'>
-	<b>What is P.R.E.P. and how does it work?</b>
+	<b>Q: What is P.R.E.P. and how does it work?</b>
 	<p><b>A:</b> P.R.E.P. is a four-step problem-solving approach used in programming and software development. By following these steps, you can break down complex problems into smaller, more manageable pieces and approach them in a systematic and efficient way. P.R.E.P. can be used by programmers at all levels of experience.</p>
 		<p>Here's what each step involves:</p>
 		<ul>
@@ -1086,35 +1012,35 @@ if (!doNotTrack) {
 	</div>
 
 	<div class='qa'>
-	<b>How do you deal with missing data?</b>
-	<p><b>A:</b> Missing data is a common challenge in data science, and there are several ways to handle it. Imputation, deletion, and using machine learning algorithms that can handle missing values are some of the common techniques used to deal with missing data. However, the choice of method depends on the type and amount of missing data, and the goals of the analysis.</p>
+	<b>Q: How do you deal with missing data??</b>
+	<p><b>A:</b> Missing data is a common challenge in data science, and there are several ways to handle it. Imputation, deletion, and using machine learning algorithms that can handle missing values are some of the common techniques used to deal with missing data. However, the choice of method depends on the type and amount of missing data, and the goals of the analysis..</p>
 	</div>
 
 	<div class='qa'>
-	<b>What if I see something incorrect in the post?</b>
+	<b>Q: What if I see something incorrect in the post?</b>
 	<p><b>A:</b> Send me an email: kibromhft AT gmail.com if you have questions or find errors.</p>
 	</div>
 
 
 	<div class='qa'>
-	<b>How do you select the best ML algorithm for a specific problem?</b>
+	<b>Q: How do you select the best ML algorithm for a specific problem?</b>
 	<p><b>A:</b> It depends on the type of data, the size of the dataset, the complexity of the problem, and the performance metrics. For instance, if you are interested in medical imaging data, you will need to consider large-scale datasets, complex algorithms and accuracy metrics when selecting the right type of data. I usually start with simple models and gradually increase the complexity until I reach a satisfactory level of performance. I also use cross-validation and grid search techniques to fine-tune the hyperparameters of the models.
 	</p>
 	</div>
 
 	<div class='qa'>
-	<b>What are some common pitfalls in data science?</b>
+	<b>Q: What are some common pitfalls in data science?</b>
 	<p><b>A:</b> Some common pitfalls include overfitting, underfitting, bias, and incorrect assumptions about the data. For example, if the data being used to train a machine learning model is biased, it can lead to incorrect conclusions being made when the model is applied to new data. It is imperative to validate the models and results using different techniques and to have a good understanding of the data and the problem.
 	</p>
 	</div>
 	
 	<div class='qa'>
-	<b>How do you stay updated with the latest trends and techniques in data science?</b>
+	<b>Q: How do you stay updated with the latest trends and techniques in data science?</b>
 	<p><b>A:</b> I continuously stay updated with the latest trends and techniques in data science. Reading research papers, following blogs and social media accounts related to data science, collaborating with other data scientists, and participating in online communities are some of the effective ways to stay updated with the latest developments in the field.</p>
 	</div>
 	
 	<div class='qa'>
-	<b>What are your dreams for data science in Africa?</b>
+	<b>Q: What are your dreams for data science in Africa?</b>
 	<p><b>A:</b> As an African data scientist, my dream is to see more Africans involved in data science, AI, and machine learning. I would love to see more investment in research and development, more collaborations between academia and industry, and more initiatives to bridge the gender and digital divide in the field.
 	</p>
 	</div>
