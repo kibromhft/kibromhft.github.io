@@ -237,6 +237,38 @@ if (!doNotTrack) {
         align-items: center !important;
         position: relative !important;
     }
+
+    /* FAQ content color consistency */
+    .post-content {
+        color: rgb(30, 30, 30);
+    }
+
+    .post-content a {
+        color: rgb(13, 110, 253);
+        text-decoration: none;
+    }
+
+    .post-content a:hover {
+        text-decoration: underline;
+    }
+
+    /* Dark mode FAQ content colors */
+    body.dark .post-content {
+        color: rgb(218, 218, 219);
+    }
+
+    body.dark .post-content a {
+        color: rgb(13, 202, 240);
+    }
+
+    /* Page header color consistency */
+    .page-header h1 {
+        color: rgb(30, 30, 30);
+    }
+
+    body.dark .page-header h1 {
+        color: rgb(218, 218, 219);
+    }
 </style>
 
 <script>
@@ -368,7 +400,7 @@ if (!doNotTrack) {
 
 	<div class='qa'>
 	<b>Q: How can I get an update when a new post comes out?</b>
-	<p><b>A:</b> Follow me on Twitter: I post about my new posts on this Twitter account: <a href="https://twitter.com/coding_era/" style="color:blue;">@coding_era</a>. You can follow me to get notified when a new post is published. You can also subscribe to my <a href="../index.xml" target="_blank" style="color:blue;">RSS feed</a>. This will notify you when a new post is published on my blog.</p> 
+	<p><b>A:</b> Follow me on Twitter: I post about my new posts on this Twitter account: <a href="https://twitter.com/coding_era/">@coding_era</a>. You can follow me to get notified when a new post is published. You can also subscribe to my <a href="../index.xml" target="_blank">RSS feed</a>. This will notify you when a new post is published on my blog.</p> 
 	</div>
 	
 		<div class='qa'>
