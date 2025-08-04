@@ -630,6 +630,24 @@ body:not(.dark) #sun {
     background: var(--secondary);
 }
 
+/* ===== ACCESSIBILITY ===== */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--primary);
+    color: var(--theme);
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 1001;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
 /* ===== UTILITY CLASSES ===== */
 .center {
     display: block;
