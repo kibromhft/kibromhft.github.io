@@ -198,7 +198,7 @@ if (!doNotTrack) {
         font-size: 16px !important;
         font-weight: 600 !important;
         font-family: var(--font-primary) !important;
-        color: var(--primary) !important;
+        color: #333 !important;
         transition: all 0.2s ease !important;
         white-space: nowrap !important;
         text-decoration: none !important;
@@ -206,8 +206,8 @@ if (!doNotTrack) {
     }
 
     #menu a:hover {
-        background-color: var(--tertiary) !important;
-        color: var(--primary) !important;
+        background-color: #f5f5f5 !important;
+        color: #000 !important;
     }
 
     /* Override dropdown styles to match main CSS */
@@ -227,8 +227,8 @@ if (!doNotTrack) {
         top: calc(100% + 8px) !important;
         right: 0 !important;
         min-width: 200px !important;
-        background: var(--entry) !important;
-        border: 1px solid var(--border) !important;
+        background: #fff !important;
+        border: 1px solid #ccc !important;
         border-radius: 8px !important;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
         opacity: 0 !important;
@@ -260,7 +260,7 @@ if (!doNotTrack) {
     .dropdown-menu a {
         display: block !important;
         padding: 8px 16px !important;
-        color: var(--primary) !important;
+        color: #333 !important;
         text-decoration: none !important;
         transition: background-color 0.2s ease !important;
         border-radius: 0 !important;
@@ -269,8 +269,8 @@ if (!doNotTrack) {
     }
 
     .dropdown-menu a:hover {
-        background-color: var(--tertiary) !important;
-        color: var(--primary) !important;
+        background-color: #f5f5f5 !important;
+        color: #000 !important;
     }
 
     /* Caret icon styles */
@@ -284,6 +284,18 @@ if (!doNotTrack) {
     .dropdown:hover .caret {
         transform: rotate(180deg) !important;
         opacity: 1 !important;
+    }
+
+    /* Fix dropdown functionality */
+    .dropdown-menu {
+        display: none !important;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translateY(0) !important;
     }
 
     /* ... rest of the existing styles ... */
