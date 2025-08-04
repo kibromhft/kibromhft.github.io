@@ -268,6 +268,43 @@ if (!doNotTrack) {
     body:not(.dark) #sun {
         display: none !important;
     }
+
+    /* Ensure theme toggle button is visible and clickable */
+    #theme-toggle {
+        background: none !important;
+        border: none !important;
+        cursor: pointer !important;
+        padding: 8px !important;
+        border-radius: 50% !important;
+        transition: background-color 0.2s ease !important;
+        color: var(--primary) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    #theme-toggle:hover {
+        background-color: var(--tertiary) !important;
+    }
+
+    #theme-toggle svg {
+        height: 20px !important;
+        width: 20px !important;
+    }
+
+    /* Ensure logo-switches is properly positioned */
+    .logo-switches {
+        display: flex !important;
+        align-items: center !important;
+        margin-left: 10px !important;
+    }
+
+    /* Ensure the button is not being covered by other elements */
+    .logo {
+        display: flex !important;
+        align-items: center !important;
+        position: relative !important;
+    }
     </style>
 
 
@@ -373,10 +410,21 @@ if (!doNotTrack) {
         document.body.classList.add('dark');
     }
 
-    // Add this new code for theme toggle functionality
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        document.body.classList.toggle("dark");
-        localStorage.setItem("pref-theme", document.body.classList.contains("dark") ? "dark" : "light");
+    // Wait for DOM to be ready before adding event listener
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM loaded, looking for theme toggle button...');
+        const themeToggle = document.getElementById("theme-toggle");
+        if (themeToggle) {
+            console.log('Theme toggle button found, adding event listener...');
+            themeToggle.addEventListener("click", () => {
+                console.log('Theme toggle clicked!');
+                document.body.classList.toggle("dark");
+                localStorage.setItem("pref-theme", document.body.classList.contains("dark") ? "dark" : "light");
+                console.log('Theme changed to:', document.body.classList.contains("dark") ? "dark" : "light");
+            });
+        } else {
+            console.log('Theme toggle button not found!');
+        }
     });
 </script>
 
