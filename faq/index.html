@@ -504,7 +504,7 @@ if (!doNotTrack) {
         color: var(--text-primary);
         font-size: var(--font-size-xl);
         font-weight: 600;
-        font-family: var(--font-heading);
+        font-family: var(--font-body);
         display: block;
         margin-bottom: var(--space-md);
         line-height: 1.4;
@@ -512,8 +512,8 @@ if (!doNotTrack) {
         letter-spacing: -0.02em;
     }
 
-    .qa b::before {
-        content: 'Q';
+    .qa > b:first-of-type::before {
+        content: 'Q:';
         color: var(--primary-color);
         font-weight: 700;
         margin-right: var(--space-sm);
@@ -594,6 +594,45 @@ if (!doNotTrack) {
         }
     }
 
+    /* Sharing section styling */
+    .sharing-section {
+        margin-top: var(--space-3xl);
+        padding: var(--space-lg);
+        background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        text-align: center;
+        position: relative;
+    }
+
+    .sharing-section::before {
+        content: '💡';
+        position: absolute;
+        top: var(--space-sm);
+        left: var(--space-sm);
+        font-size: var(--font-size-lg);
+        opacity: 0.6;
+    }
+
+    .sharing-section p {
+        color: var(--text-secondary);
+        font-size: var(--font-size-base);
+        font-family: var(--font-body);
+        margin: 0;
+        line-height: 1.6;
+        font-style: italic;
+    }
+
+    /* Dark mode sharing section */
+    body.dark .sharing-section {
+        background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+        border-color: var(--border-color);
+    }
+
+    body.dark .sharing-section p {
+        color: var(--text-secondary);
+    }
+
     /* Print styles */
     @media print {
         .qa {
@@ -610,6 +649,11 @@ if (!doNotTrack) {
         .post-content a {
             color: #000;
             text-decoration: underline;
+        }
+        
+        .sharing-section {
+            border: 1px solid #000;
+            background: none;
         }
     }
 
@@ -661,12 +705,12 @@ if (!doNotTrack) {
     }
 
     body.dark .qa b {
-        color: rgb(248, 250, 252);
-        font-family: "Essays 1743", serif;
+        color: var(--text-primary);
+        font-family: var(--font-body);
     }
 
-    body.dark .qa b::before {
-        background: linear-gradient(135deg, rgb(34, 211, 238), rgb(6, 182, 212));
+    body.dark .qa > b:first-of-type::before {
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -702,19 +746,18 @@ if (!doNotTrack) {
 
     /* Premium page header */
     .page-header h1 {
-        color: rgb(15, 23, 42);
-        font-size: 3.5rem;
+        color: var(--text-primary);
+        font-size: var(--font-size-3xl);
         font-weight: 700;
-        font-family: "Essays 1743", serif;
-        margin-bottom: 4rem;
+        font-family: var(--font-body);
+        margin-bottom: var(--space-3xl);
         text-align: center;
         position: relative;
-        letter-spacing: -0.03em;
-        background: linear-gradient(135deg, rgb(15, 23, 42) 0%, rgb(30, 41, 59) 100%);
+        letter-spacing: -0.02em;
+        background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        font-style: italic;
     }
 
     .page-header h1::before {
@@ -1004,7 +1047,9 @@ if (!doNotTrack) {
 	
 
 
-	<p style="color: #aaaaaa; font-size: 85%;"> If my posts have inspired you or helped you in any way, please consider sharing them with others who might benefit from them.</p>
+	<div class="sharing-section">
+		<p>If my posts have inspired you or helped you in any way, please consider sharing them with others who might benefit from them.</p>
+	</div>
 
 </div>
     </main>
