@@ -11,7 +11,6 @@
 <meta name="author" content="kibrom Haftu">
 <link rel="canonical" href="https://kibromhft.github.io/archives/" />
 <link crossorigin="anonymous" href="/assets/css/main.css?v=1.1" rel="stylesheet">
-<link crossorigin="anonymous" href="/assets/css/stylesheet_main.css" rel="stylesheet">
 <link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kibromhft.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kibromhft.github.io/favicon-32x32.png">
@@ -252,6 +251,96 @@ if (!doNotTrack) {
     body.dark .dropdown-menu li a:hover {
         background-color: #3E3E43 !important;
         color: #FFFFFF !important;
+    }
+
+    /* Archives-specific styling to replace stylesheet_main.css */
+    .archive-year {
+        margin-bottom: 2rem;
+    }
+
+    .archive-year-header {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--primary);
+    }
+
+    .archive-month {
+        margin-bottom: 1.5rem;
+    }
+
+    .archive-month-header {
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        color: var(--secondary);
+    }
+
+    .archive-posts {
+        margin-left: 1rem;
+    }
+
+    .archive-entry {
+        position: relative;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .archive-entry:last-child {
+        border-bottom: none;
+    }
+
+    .archive-entry-title {
+        font-size: 1rem;
+        font-weight: 500;
+        margin: 0;
+        color: var(--primary);
+    }
+
+    .archive-meta {
+        font-size: 0.875rem;
+        color: var(--secondary);
+        margin-top: 0.25rem;
+    }
+
+    .entry-link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+
+    .archive-count {
+        font-size: 0.75rem;
+        color: var(--secondary);
+        font-weight: normal;
+    }
+
+    /* Page header styling */
+    .page-header h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+        color: var(--primary);
+    }
+
+    /* Dark mode overrides for archives */
+    body.dark .archive-entry-title {
+        color: #DADADB;
+    }
+
+    body.dark .archive-meta {
+        color: #9B9C9D;
+    }
+
+    body.dark .archive-year-header {
+        color: #DADADB;
+    }
+
+    body.dark .archive-month-header {
+        color: #9B9C9D;
     }
 </style>
 
