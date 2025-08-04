@@ -141,10 +141,15 @@ if (!doNotTrack) {
         document.body.classList.add('dark');
     }
 
-    // Add this new code for theme toggle functionality
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        document.body.classList.toggle("dark");
-        localStorage.setItem("pref-theme", document.body.classList.contains("dark") ? "dark" : "light");
+    // Wait for DOM to be ready before adding event listener
+    document.addEventListener('DOMContentLoaded', function() {
+        const themeToggle = document.getElementById("theme-toggle");
+        if (themeToggle) {
+            themeToggle.addEventListener("click", () => {
+                document.body.classList.toggle("dark");
+                localStorage.setItem("pref-theme", document.body.classList.contains("dark") ? "dark" : "light");
+            });
+        }
     });
 </script>
 
@@ -302,6 +307,29 @@ if (!doNotTrack) {
 
     body:not(.dark) #sun {
         display: none !important;
+    }
+
+    /* Ensure theme toggle button is visible and clickable */
+    #theme-toggle {
+        background: none !important;
+        border: none !important;
+        cursor: pointer !important;
+        padding: 8px !important;
+        border-radius: 50% !important;
+        transition: background-color 0.2s ease !important;
+        color: var(--primary) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    #theme-toggle:hover {
+        background-color: var(--tertiary) !important;
+    }
+
+    #theme-toggle svg {
+        height: 20px !important;
+        width: 20px !important;
     }
 </style>
 
