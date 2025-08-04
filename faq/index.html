@@ -238,13 +238,70 @@ if (!doNotTrack) {
         position: relative !important;
     }
 
-    /* Expert-level FAQ styling */
+    /* Font-face declarations for custom fonts */
+    @font-face {
+        font-family: "Essays 1743";
+        src: url("../assets/f/Essays1743.eot") format("eot"), url("../assets/f/Essays1743.woff") format("woff"), url("../assets/f/Essays1743.ttf") format("truetype");
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Essays 1743";
+        font-weight: bold;
+        src: url("../assets/f/Essays1743-bold.eot") format("eot"), url("../assets/f/Essays1743-bold.woff") format("woff"), url("../assets/f/Essays1743-bold.ttf") format("truetype");
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Essays 1743";
+        font-style: italic;
+        src: url("../assets/f/Essays1743-italic.eot") format("eot"), url("../assets/f/Essays1743-italic.woff") format("woff"), url("../assets/f/Essays1743-italic.ttf") format("truetype");
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Essays 1743";
+        font-style: italic;
+        font-weight: bold;
+        src: url("../assets/f/Essays1743-bold-italic.eot") format("eot"), url("../assets/f/Essays1743-bold-italic.woff") format("woff"), url("../assets/f/Essays1743-bold-italic.ttf") format("truetype");
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Alphabet of Children";
+        src: url("../assets/f/Alphabet-of-Children.eot") format("eot"), url("../assets/f/Alphabet-of-Children.woff") format("woff"), url("../assets/f/Alphabet-of-Children.ttf") format("truetype");
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Libertine";
+        src: url("../assets/f/Libertine.eot") format("eot"), url("../assets/f/Libertine.woff") format("woff"), url("../assets/f/Libertine.ttf") format("truetype");
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Libertine";
+        font-weight: bold;
+        src: url("../assets/f/Libertine-bold.eot") format("eot"), url("../assets/f/Libertine-bold.woff") format("woff"), url("../assets/f/Libertine-bold.ttf") format("truetype");
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Libertine";
+        font-style: italic;
+        src: url("../assets/f/Libertine-italic.eot") format("eot"), url("../assets/f/Libertine-italic.woff") format("woff"), url("../assets/f/Libertine-italic.ttf") format("truetype");
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Libertine";
+        font-style: italic;
+        font-weight: bold;
+        src: url("../assets/f/Libertine-bold-italic.eot") format("eot"), url("../assets/f/Libertine-bold-italic.woff") format("woff"), url("../assets/f/Libertine-bold-italic.ttf") format("truetype");
+        font-display: swap;
+    }
+
+    /* Expert-level FAQ styling with premium fonts */
     .post-content {
         color: rgb(30, 30, 30);
         max-width: 900px;
         margin: 0 auto;
         padding: 0 20px;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        font-family: Libertine, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
+        font-size: 1.1rem;
+        line-height: 1.7;
     }
 
     .post-content a {
@@ -331,21 +388,22 @@ if (!doNotTrack) {
 
     .qa b {
         color: rgb(15, 23, 42);
-        font-size: 1.35rem;
-        font-weight: 700;
+        font-size: 1.4rem;
+        font-weight: 600;
+        font-family: "Essays 1743", serif;
         display: block;
-        margin-bottom: 1.25rem;
-        line-height: 1.3;
+        margin-bottom: 1.5rem;
+        line-height: 1.4;
         position: relative;
-        letter-spacing: -0.025em;
+        letter-spacing: -0.02em;
     }
 
     .qa b::before {
         content: 'Q';
         color: rgb(13, 110, 253);
-        font-weight: 800;
+        font-weight: 700;
         margin-right: 0.75rem;
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         background: linear-gradient(135deg, rgb(13, 110, 253), rgb(59, 130, 246));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -353,11 +411,12 @@ if (!doNotTrack) {
     }
 
     .qa p {
-        margin: 1.25rem 0;
-        line-height: 1.75;
+        margin: 1.5rem 0;
+        line-height: 1.8;
         color: rgb(51, 65, 85);
-        font-size: 1.05rem;
+        font-size: 1.15rem;
         font-weight: 400;
+        font-family: Libertine, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
     }
 
     .qa p:first-of-type b {
@@ -371,15 +430,17 @@ if (!doNotTrack) {
     }
 
     .qa ul {
-        margin: 1.25rem 0;
-        padding-left: 1.75rem;
+        margin: 1.5rem 0;
+        padding-left: 2rem;
     }
 
     .qa li {
-        margin: 0.875rem 0;
-        line-height: 1.7;
+        margin: 1rem 0;
+        line-height: 1.8;
         color: rgb(51, 65, 85);
         position: relative;
+        font-family: Libertine, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
+        font-size: 1.1rem;
     }
 
     .qa li::before {
@@ -387,8 +448,8 @@ if (!doNotTrack) {
         color: rgb(13, 110, 253);
         font-weight: bold;
         position: absolute;
-        left: -1.25rem;
-        font-size: 1.2rem;
+        left: -1.5rem;
+        font-size: 1.3rem;
     }
 
     .qa li strong {
@@ -449,6 +510,7 @@ if (!doNotTrack) {
 
     body.dark .qa b {
         color: rgb(248, 250, 252);
+        font-family: "Essays 1743", serif;
     }
 
     body.dark .qa b::before {
@@ -460,6 +522,7 @@ if (!doNotTrack) {
 
     body.dark .qa p {
         color: rgb(203, 213, 225);
+        font-family: Libertine, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
     }
 
     body.dark .qa p:first-of-type b {
@@ -471,6 +534,7 @@ if (!doNotTrack) {
 
     body.dark .qa li {
         color: rgb(203, 213, 225);
+        font-family: Libertine, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
     }
 
     body.dark .qa li::before {
@@ -487,16 +551,18 @@ if (!doNotTrack) {
     /* Premium page header */
     .page-header h1 {
         color: rgb(15, 23, 42);
-        font-size: 3rem;
-        font-weight: 800;
+        font-size: 3.5rem;
+        font-weight: 700;
+        font-family: "Essays 1743", serif;
         margin-bottom: 4rem;
         text-align: center;
         position: relative;
-        letter-spacing: -0.05em;
+        letter-spacing: -0.03em;
         background: linear-gradient(135deg, rgb(15, 23, 42) 0%, rgb(30, 41, 59) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        font-style: italic;
     }
 
     .page-header h1::before {
@@ -527,6 +593,7 @@ if (!doNotTrack) {
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        font-family: "Essays 1743", serif;
     }
 
     body.dark .page-header h1::after {
