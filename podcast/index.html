@@ -82,6 +82,99 @@
     <meta name="twitter:title" content="Tags" />
     <meta name="twitter:description" content="Document my learning notes." />
     <style>
+        /* Navigation color consistency - using main.css colors */
+        #menu a {
+            color: rgb(30, 30, 30) !important;
+        }
+
+        #menu a:hover {
+            background-color: rgb(214, 214, 214) !important;
+            color: rgb(30, 30, 30) !important;
+        }
+
+        .dropdown-menu a {
+            color: rgb(30, 30, 30) !important;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: rgb(214, 214, 214) !important;
+            color: rgb(30, 30, 30) !important;
+        }
+
+        /* Dark mode navigation consistency */
+        body.dark #menu a {
+            color: rgb(218, 218, 219) !important;
+        }
+
+        body.dark #menu a:hover {
+            background-color: rgb(65, 66, 68) !important;
+            color: rgb(218, 218, 219) !important;
+        }
+
+        body.dark .dropdown-menu a {
+            color: rgb(218, 218, 219) !important;
+        }
+
+        body.dark .dropdown-menu a:hover {
+            background-color: rgb(65, 66, 68) !important;
+            color: rgb(218, 218, 219) !important;
+        }
+
+        /* Logo color consistency */
+        .logo a {
+            color: rgb(30, 30, 30) !important;
+        }
+
+        body.dark .logo a {
+            color: rgb(218, 218, 219) !important;
+        }
+
+        /* Theme toggle icon consistency */
+        body.dark #moon {
+            display: none !important;
+        }
+
+        body:not(.dark) #sun {
+            display: none !important;
+        }
+
+        /* Ensure theme toggle button is visible and clickable */
+        #theme-toggle {
+            background: none !important;
+            border: none !important;
+            cursor: pointer !important;
+            padding: 8px !important;
+            border-radius: 50% !important;
+            transition: background-color 0.2s ease !important;
+            color: var(--primary) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        #theme-toggle:hover {
+            background-color: var(--tertiary) !important;
+        }
+
+        #theme-toggle svg {
+            height: 20px !important;
+            width: 20px !important;
+        }
+
+        /* Ensure logo-switches is properly positioned */
+        .logo-switches {
+            display: flex !important;
+            align-items: center !important;
+            margin-left: 10px !important;
+        }
+
+        /* Ensure the button is not being covered by other elements */
+        .logo {
+            display: flex !important;
+            align-items: center !important;
+            position: relative !important;
+        }
+
         /* Styles for the audio player */
         .audio-player {
             max-width: 600px;
@@ -360,10 +453,10 @@
                     </a>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        Resources <span class="caret fa fa-bars" data-toggle="dropdown"></span>
+                    <a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">
+                        Resources <span class="caret fa fa-chevron-down"></span>
                     </a>
-                    <ul class="dropdown-menu" style="padding: 0px;">
+                    <ul class="dropdown-menu">
                         <li class="header-height first">
                             <a href="https://kibromhft.github.io/podcast">Podcast</a>
                         </li>
@@ -706,16 +799,22 @@
 
 </script>
 <script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
+    // Wait for DOM to be ready before adding event listener
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM loaded, looking for theme toggle button...');
+        const themeToggle = document.getElementById("theme-toggle");
+        if (themeToggle) {
+            console.log('Theme toggle button found, adding event listener...');
+            themeToggle.addEventListener("click", () => {
+                console.log('Theme toggle clicked!');
+                document.body.classList.toggle("dark");
+                localStorage.setItem("pref-theme", document.body.classList.contains("dark") ? "dark" : "light");
+                console.log('Theme changed to:', document.body.classList.contains("dark") ? "dark" : "light");
+            });
         } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
+            console.log('Theme toggle button not found!');
         }
-    })
-
+    });
 </script>
 </body>
 
