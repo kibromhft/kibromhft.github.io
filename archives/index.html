@@ -167,7 +167,7 @@ if (!doNotTrack) {
         font-size: 1.5rem;
         font-weight: 600;
         margin-bottom: 1rem;
-        color: var(--primary);
+        color: #333;
     }
 
     .archive-month {
@@ -178,7 +178,7 @@ if (!doNotTrack) {
         font-size: 1.2rem;
         font-weight: 500;
         margin-bottom: 0.5rem;
-        color: var(--secondary);
+        color: #666;
     }
 
     .archive-posts {
@@ -188,7 +188,7 @@ if (!doNotTrack) {
     .archive-entry {
         position: relative;
         padding: 0.5rem 0;
-        border-bottom: 1px solid var(--border);
+        border-bottom: 1px solid #ddd;
     }
 
     .archive-entry:last-child {
@@ -199,12 +199,12 @@ if (!doNotTrack) {
         font-size: 1rem;
         font-weight: 500;
         margin: 0;
-        color: var(--primary);
+        color: #333;
     }
 
     .archive-meta {
         font-size: 0.875rem;
-        color: var(--secondary);
+        color: #666;
         margin-top: 0.25rem;
     }
 
@@ -219,7 +219,7 @@ if (!doNotTrack) {
 
     .archive-count {
         font-size: 0.75rem;
-        color: var(--secondary);
+        color: #666;
         font-weight: normal;
     }
 
@@ -228,7 +228,26 @@ if (!doNotTrack) {
         font-size: 2rem;
         font-weight: 600;
         margin-bottom: 2rem;
-        color: var(--primary);
+        color: #333;
+    }
+
+    /* Navigation color consistency */
+    #menu a {
+        color: #333 !important;
+    }
+
+    #menu a:hover {
+        background-color: #f5f5f5 !important;
+        color: #333 !important;
+    }
+
+    .dropdown-menu a {
+        color: #333 !important;
+    }
+
+    .dropdown-menu a:hover {
+        background-color: #f5f5f5 !important;
+        color: #333 !important;
     }
 
     /* Dark mode overrides for archives */
@@ -246,6 +265,25 @@ if (!doNotTrack) {
 
     body.dark .archive-month-header {
         color: #9B9C9D;
+    }
+
+    /* Dark mode navigation consistency */
+    body.dark #menu a {
+        color: #DADADB !important;
+    }
+
+    body.dark #menu a:hover {
+        background-color: #3E3E43 !important;
+        color: #DADADB !important;
+    }
+
+    body.dark .dropdown-menu a {
+        color: #DADADB !important;
+    }
+
+    body.dark .dropdown-menu a:hover {
+        background-color: #3E3E43 !important;
+        color: #DADADB !important;
     }
 </style>
 
