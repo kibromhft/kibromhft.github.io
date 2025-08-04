@@ -345,12 +345,22 @@ if (!doNotTrack) {
 		margin-bottom: 20px; /* Adjust the value for more or less space */
     color: #000 !important;
 	}
+
+    /* Dark mode paragraph overrides */
+    body.dark p {
+        color: rgb(218, 218, 219) !important;
+    }
 	
 	hr {
 	border: none;
 	border-top: 1px solid #ccc;
 	margin: 20px 0;
 }
+
+    /* Dark mode horizontal rule override */
+    body.dark hr {
+        border-top: 1px solid rgb(155, 156, 157) !important;
+    }
     /* New styles for paragraphs */
     .custom-paragraph {
     font-family: Libertine, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
@@ -363,6 +373,13 @@ if (!doNotTrack) {
     --primary: #000000 !important;
 }
 
+    /* Dark mode custom paragraph overrides */
+    body.dark .custom-paragraph {
+        color: rgb(218, 218, 219) !important;
+        text-decoration-color: rgb(218, 218, 219) !important;
+        --primary: rgb(218, 218, 219) !important;
+    }
+
     /* Set --code-bg for all elements except the header */
     body:not(.header) {
         --code-bg: rgb(255, 255, 255) !important; /* Set code background color to white */
@@ -373,6 +390,11 @@ if (!doNotTrack) {
         font-family: "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
         font-weight: normal;
         text-shadow: 0 0 1px #667;
+    }
+
+    /* Dark mode heading overrides */
+    body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark caption, body.dark thead th {
+        color: rgb(218, 218, 219) !important;
     }
 
     /* Styles for the main header and quotes */
@@ -393,6 +415,11 @@ if (!doNotTrack) {
         font-style: italic; /* Set font style to italic */
         font-weight: bold; /* Set font weight to bold */
         color: #000000; /* Optional: Set text color to dark */
+    }
+
+    /* Dark mode page header override */
+    body.dark .page-header h1 {
+        color: rgb(218, 218, 219) !important;
     }
 
 </style>
