@@ -858,69 +858,6 @@ if (!doNotTrack) {
         .page-header h1 {
             font-size: 2rem;
         }
-        
-        /* Mobile dropdown improvements */
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: auto;
-            min-width: 200px;
-            max-width: 250px;
-            background: var(--theme);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            z-index: 1000;
-            margin-top: 4px;
-        }
-        
-        .dropdown-menu li {
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .dropdown-menu li:last-child {
-            border-bottom: none;
-        }
-        
-        .dropdown-menu a {
-            display: block;
-            padding: 12px 16px;
-            font-size: 14px;
-            color: var(--primary);
-            transition: background-color 0.2s ease;
-        }
-        
-        .dropdown-menu a:hover {
-            background-color: var(--tertiary);
-        }
-        
-        /* Dark mode dropdown */
-        .dark .dropdown-menu {
-            background: var(--entry);
-            border-color: var(--border);
-        }
-        
-        .dark .dropdown-menu a {
-            color: var(--primary);
-        }
-        
-        .dark .dropdown-menu a:hover {
-            background-color: var(--tertiary);
-        }
-    }
-    
-    @media (max-width: 480px) {
-        /* Small mobile dropdown improvements */
-        .dropdown-menu {
-            min-width: 180px;
-            max-width: 220px;
-        }
-        
-        .dropdown-menu a {
-            padding: 10px 14px;
-            font-size: 13px;
-        }
     }
 </style>
 
