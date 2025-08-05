@@ -859,29 +859,9 @@ if (!doNotTrack) {
             font-size: 2rem;
         }
         
-        /* Override main.css mobile navigation to match blog post behavior */
+        /* Match blog post mobile behavior - only set --gap like stylesheet_main.css */
         :root {
             --gap: 14px;
-        }
-        
-        /* Remove aggressive mobile navigation overrides from main.css */
-        .nav {
-            padding: initial;
-            gap: initial;
-        }
-        
-        #menu {
-            gap: initial;
-        }
-        
-        #menu a {
-            font-size: initial;
-            padding: initial;
-            border-radius: initial;
-        }
-        
-        .logo a {
-            font-size: initial;
         }
         
         /* Keep the dropdown menu styling */
@@ -936,28 +916,6 @@ if (!doNotTrack) {
     }
     
     @media (max-width: 480px) {
-        /* Remove aggressive mobile navigation overrides from main.css */
-        .nav {
-            flex-direction: initial;
-            height: initial;
-            padding: initial;
-        }
-        
-        .logo {
-            margin-bottom: initial;
-        }
-        
-        #menu {
-            flex-wrap: initial;
-            justify-content: initial;
-            gap: initial;
-        }
-        
-        #menu a {
-            font-size: initial;
-            padding: initial;
-        }
-        
         /* Keep the dropdown menu styling for small screens */
         .dropdown-menu {
             min-width: 180px;
