@@ -863,6 +863,50 @@ if (!doNotTrack) {
         :root {
             --gap: 14px;
         }
+        
+        /* Remove aggressive mobile navigation overrides from main.css */
+        .nav {
+            padding: initial;
+            gap: initial;
+        }
+        
+        #menu {
+            gap: initial;
+        }
+        
+        #menu a {
+            font-size: initial;
+            padding: initial;
+            border-radius: initial;
+        }
+        
+        .logo a {
+            font-size: initial;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        /* Remove aggressive mobile navigation overrides from main.css */
+        .nav {
+            flex-direction: initial;
+            height: initial;
+            padding: initial;
+        }
+        
+        .logo {
+            margin-bottom: initial;
+        }
+        
+        #menu {
+            flex-wrap: initial;
+            justify-content: initial;
+            gap: initial;
+        }
+        
+        #menu a {
+            font-size: initial;
+            padding: initial;
+        }
     }
     
 
