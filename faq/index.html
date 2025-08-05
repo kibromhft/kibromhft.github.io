@@ -373,32 +373,31 @@ if (!doNotTrack) {
         font-weight: 600;
     }
 
-    /* High contrast mode support */
-    @media (prefers-contrast: high) {
-        .qa {
-            border: 2px solid var(--text-primary);
-        }
-        
-        .qa::before {
-            width: 8px;
-        }
-        
-        .post-content a {
-            text-decoration: underline;
-        }
-        
-        .post-content a::after {
-            display: none;
-        }
+    /* Dark mode FAQ styling */
+    body.dark .qa {
+        background: var(--entry);
+        border-color: var(--border);
+    }
+
+    body.dark .qa b {
+        color: var(--primary);
+    }
+
+    body.dark .qa p {
+        color: var(--content);
+    }
+
+    body.dark .qa li {
+        color: var(--content);
     }
 
     /* Sharing section styling */
     .sharing-section {
-        margin-top: var(--space-3xl);
-        padding: var(--space-lg);
-        background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
-        border: 1px solid var(--border-color);
-        border-radius: var(--radius-md);
+        margin-top: 40px;
+        padding: 20px;
+        background: var(--entry);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
         text-align: center;
         position: relative;
     }
@@ -406,156 +405,28 @@ if (!doNotTrack) {
     .sharing-section::before {
         content: '💡';
         position: absolute;
-        top: var(--space-sm);
-        left: var(--space-sm);
-        font-size: var(--font-size-lg);
+        top: 10px;
+        left: 10px;
+        font-size: 18px;
         opacity: 0.6;
     }
 
     .sharing-section p {
-        color: var(--text-secondary);
-        font-size: var(--font-size-base);
-        font-family: var(--font-body);
+        color: var(--content);
+        font-size: 16px;
         margin: 0;
         line-height: 1.6;
         font-style: italic;
     }
 
-    /* Dark mode sharing section */
-    body.dark .sharing-section {
-        background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
-        border-color: var(--border-color);
-    }
-
-    body.dark .sharing-section p {
-        color: var(--text-secondary);
-    }
-
-    /* Print styles */
-    @media print {
-        .qa {
-            break-inside: avoid;
-            box-shadow: none;
-            border: 1px solid #000;
-        }
-        
-        .qa::before,
-        .qa::after {
-            display: none;
-        }
-        
-        .post-content a {
-            color: #000;
-            text-decoration: underline;
-        }
-        
-        .sharing-section {
-            border: 1px solid #000;
-            background: none;
-        }
-    }
-
-    /* Premium Dark Mode FAQ styling */
-    body.dark .post-content {
-        color: rgb(226, 232, 240);
-    }
-
-    body.dark .post-content a {
-        color: rgb(34, 211, 238);
-    }
-
-    body.dark .post-content a::after {
-        background: linear-gradient(90deg, rgb(34, 211, 238), rgb(6, 182, 212));
-    }
-
-    body.dark .post-content a:hover {
-        color: rgb(6, 182, 212);
-    }
-
-    body.dark .qa {
-        background: linear-gradient(145deg, rgb(30, 41, 59) 0%, rgb(15, 23, 42) 100%);
-        border-color: rgba(51, 65, 85, 0.8);
-        box-shadow: 
-            0 1px 3px rgba(0, 0, 0, 0.3),
-            0 4px 6px rgba(0, 0, 0, 0.2),
-            0 10px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    body.dark .qa::before {
-        background: linear-gradient(180deg, 
-            rgb(34, 211, 238) 0%, 
-            rgb(6, 182, 212) 50%, 
-            rgb(8, 145, 178) 100%);
-    }
-
-    body.dark .qa::after {
-        background: linear-gradient(135deg, 
-            rgba(34, 211, 238, 0.15) 0%, 
-            rgba(6, 182, 212, 0.08) 100%);
-    }
-
-    body.dark .qa:hover {
-        box-shadow: 
-            0 4px 6px rgba(0, 0, 0, 0.3),
-            0 10px 15px rgba(0, 0, 0, 0.2),
-            0 20px 25px rgba(0, 0, 0, 0.1);
-        border-color: rgba(34, 211, 238, 0.4);
-    }
-
-    body.dark .qa b {
-        color: var(--text-primary);
-        font-family: var(--font-body);
-    }
-
-    body.dark .qa > b:first-of-type::before {
-        background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    body.dark .qa p {
-        color: rgb(203, 213, 225);
-        font-family: Libertine, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
-    }
-
-    body.dark .qa p:first-of-type b {
-        background: linear-gradient(135deg, rgb(34, 211, 238), rgb(6, 182, 212));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    body.dark .qa li {
-        color: rgb(203, 213, 225);
-        font-family: Libertine, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
-    }
-
-    body.dark .qa li::before {
-        color: rgb(34, 211, 238);
-    }
-
-    body.dark .qa li strong {
-        background: linear-gradient(135deg, rgb(34, 211, 238), rgb(6, 182, 212));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    /* Premium page header */
+    /* Page header styling */
     .page-header h1 {
-        color: var(--text-primary);
-        font-size: var(--font-size-3xl);
+        color: var(--primary);
+        font-size: 2.5rem;
         font-weight: 700;
-        font-family: var(--font-body);
-        margin-bottom: var(--space-3xl);
+        margin-bottom: 40px;
         text-align: center;
         position: relative;
-        letter-spacing: -0.02em;
-        background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
     }
 
     .page-header h1::before {
@@ -576,66 +447,8 @@ if (!doNotTrack) {
         transform: translateX(-50%);
         width: 80px;
         height: 4px;
-        background: linear-gradient(90deg, rgb(13, 110, 253) 0%, rgb(59, 130, 246) 50%, rgb(10, 88, 202) 100%);
+        background: #007bff;
         border-radius: 2px;
-        box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3);
-    }
-
-    body.dark .page-header h1 {
-        background: linear-gradient(135deg, rgb(248, 250, 252) 0%, rgb(226, 232, 240) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        font-family: "Essays 1743", serif;
-    }
-
-    body.dark .page-header h1::after {
-        background: linear-gradient(90deg, rgb(34, 211, 238) 0%, rgb(6, 182, 212) 50%, rgb(8, 145, 178) 100%);
-        box-shadow: 0 2px 8px rgba(34, 211, 238, 0.3);
-    }
-
-    /* Premium footer styling */
-    .footer {
-        margin-top: 6rem;
-        padding: 3rem 0;
-        text-align: center;
-        border-top: 1px solid rgba(226, 232, 240, 0.8);
-        background: linear-gradient(135deg, rgba(248, 250, 252, 0.5) 0%, rgba(255, 255, 255, 0.8) 100%);
-        backdrop-filter: blur(10px);
-    }
-
-    .footer span {
-        font-weight: 500;
-        color: rgb(51, 65, 85);
-    }
-
-    .footer a {
-        color: rgb(13, 110, 253);
-        text-decoration: none;
-        font-weight: 600;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .footer a:hover {
-        color: rgb(10, 88, 202);
-        text-decoration: underline;
-    }
-
-    body.dark .footer {
-        border-top-color: rgba(51, 65, 85, 0.8);
-        background: linear-gradient(135deg, rgba(15, 23, 42, 0.5) 0%, rgba(30, 41, 59, 0.8) 100%);
-    }
-
-    body.dark .footer span {
-        color: rgb(203, 213, 225);
-    }
-
-    body.dark .footer a {
-        color: rgb(34, 211, 238);
-    }
-
-    body.dark .footer a:hover {
-        color: rgb(6, 182, 212);
     }
 
     /* Responsive design */
@@ -645,12 +458,12 @@ if (!doNotTrack) {
         }
         
         .qa {
-            padding: 1.5rem;
-            margin: 1.5rem 0;
+            padding: 15px;
+            margin: 15px 0;
         }
         
         .qa b {
-            font-size: 1.1rem;
+            font-size: 16px;
         }
         
         .page-header h1 {
