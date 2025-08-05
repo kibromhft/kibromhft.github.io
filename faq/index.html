@@ -10,7 +10,7 @@
 <meta name="description" content="FAQ - Kb&#39;s Blog">
 <meta name="author" content="kibrom Haftu">
 <link rel="canonical" href="https://kibromhft.github.io/faq/" />
-<link crossorigin="anonymous" href="/assets/css/main.css?v=1.1" rel="stylesheet">
+<link crossorigin="anonymous" href="/assets/css/stylesheet_main.css"  rel="preload stylesheet" as="style">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
 
 <!-- Font preloading for performance -->
@@ -857,6 +857,116 @@ if (!doNotTrack) {
         
         .page-header h1 {
             font-size: 2rem;
+        }
+        
+        /* Override main.css mobile navigation to match blog post behavior */
+        :root {
+            --gap: 14px;
+        }
+        
+        /* Remove aggressive mobile navigation overrides from main.css */
+        .nav {
+            padding: initial;
+            gap: initial;
+        }
+        
+        #menu {
+            gap: initial;
+        }
+        
+        #menu a {
+            font-size: initial;
+            padding: initial;
+            border-radius: initial;
+        }
+        
+        .logo a {
+            font-size: initial;
+        }
+        
+        /* Keep the dropdown menu styling */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: auto;
+            min-width: 200px;
+            max-width: 250px;
+            background: var(--theme);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            margin-top: 4px;
+        }
+        
+        .dropdown-menu li {
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .dropdown-menu li:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: var(--primary);
+            transition: background-color 0.2s ease;
+        }
+        
+        .dropdown-menu a:hover {
+            background-color: var(--tertiary);
+        }
+        
+        /* Dark mode dropdown */
+        .dark .dropdown-menu {
+            background: var(--entry);
+            border-color: var(--border);
+        }
+        
+        .dark .dropdown-menu a {
+            color: var(--primary);
+        }
+        
+        .dark .dropdown-menu a:hover {
+            background-color: var(--tertiary);
+        }
+    }
+    
+    @media (max-width: 480px) {
+        /* Remove aggressive mobile navigation overrides from main.css */
+        .nav {
+            flex-direction: initial;
+            height: initial;
+            padding: initial;
+        }
+        
+        .logo {
+            margin-bottom: initial;
+        }
+        
+        #menu {
+            flex-wrap: initial;
+            justify-content: initial;
+            gap: initial;
+        }
+        
+        #menu a {
+            font-size: initial;
+            padding: initial;
+        }
+        
+        /* Keep the dropdown menu styling for small screens */
+        .dropdown-menu {
+            min-width: 180px;
+            max-width: 220px;
+        }
+        
+        .dropdown-menu a {
+            padding: 10px 14px;
+            font-size: 13px;
         }
     }
 </style>
