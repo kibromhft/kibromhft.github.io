@@ -1104,6 +1104,16 @@ if (!doNotTrack) {
 
 		/* Mobile navigation - keep horizontal with scrolling like keywords page */
 		@media screen and (max-width: 768px) {
+			/* Prevent wrapping and ensure horizontal layout */
+			.nav {
+				display: flex !important;
+				align-items: center !important;
+				justify-content: flex-start !important;
+				flex-wrap: nowrap !important;
+				overflow-x: auto !important;
+				white-space: nowrap !important;
+			}
+
 			/* Ensure horizontal scrollable menu behavior */
 			#menu {
 				overflow-x: auto !important;
@@ -1111,23 +1121,20 @@ if (!doNotTrack) {
 				-webkit-overflow-scrolling: touch !important;
 				display: flex !important;
 				flex-direction: row !important;
+				flex-wrap: nowrap !important;
+				min-width: max-content !important;
 			}
 
 			#menu li {
 				display: inline-block !important;
 				white-space: nowrap !important;
 				flex-shrink: 0 !important;
-			}
-
-			/* Ensure proper font and alignment */
-			.nav {
-				display: flex !important;
-				align-items: center !important;
-				justify-content: flex-start !important;
+				flex-wrap: nowrap !important;
 			}
 
 			.logo {
 				margin-right: auto !important;
+				flex-shrink: 0 !important;
 			}
 
 			/* Better touch targets for mobile */
@@ -1135,6 +1142,7 @@ if (!doNotTrack) {
 				padding: 12px 16px !important;
 				font-size: 16px !important;
 				line-height: 1.4 !important;
+				white-space: nowrap !important;
 			}
 
 			/* Larger caret for mobile */
