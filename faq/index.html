@@ -859,31 +859,9 @@ if (!doNotTrack) {
             font-size: 2rem;
         }
         
-        /* Match blog post mobile behavior exactly */
+        /* Match blog post mobile behavior - only set --gap like stylesheet_main.css */
         :root {
             --gap: 14px;
-        }
-        
-        /* Copy the exact mobile navigation behavior from stylesheet_main.css */
-        .nav {
-            display: flex;
-            flex-wrap: wrap;
-            max-width: calc(var(--nav-width) + var(--gap) * 2);
-            margin-inline-start: auto;
-            line-height: var(--header-height);
-        }
-        
-        #menu {
-            list-style: none;
-            word-break: keep-all;
-            overflow-x: auto;
-            white-space: nowrap;
-            display: flex;
-            margin: auto var(--gap);
-        }
-        
-        #menu a {
-            font-size: 16px;
         }
         
         /* Keep the dropdown menu styling */
