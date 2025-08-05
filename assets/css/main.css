@@ -551,170 +551,64 @@ body:not(.dark) #sun {
         --gap: 14px;
     }
     
-    /* Keep the premium desktop look but use better mobile navigation */
     .nav {
-        display: flex;
-        flex-wrap: wrap;
-        max-width: calc(var(--nav-width) + var(--gap) * 2);
-        margin-inline-start: auto;
-        line-height: var(--header-height);
-    }
-    
-    .nav a {
-        display: block;
-    }
-    
-    .logo, #menu {
-        display: flex;
-        margin: auto var(--gap);
-    }
-    
-    .logo {
-        flex-wrap: inherit;
-    }
-    
-    .logo a {
-        font-size: 24px;
-        font-weight: 700;
-    }
-    
-    .logo a img {
-        display: inline;
-        vertical-align: middle;
-        pointer-events: none;
-        transform: translate(0, -10%);
-        border-radius: 6px;
-        margin-inline-end: 8px;
-    }
-    
-    #theme-toggle svg {
-        height: 18px;
-    }
-    
-    button#theme-toggle {
-        font-size: 26px;
-        margin: auto 4px;
-    }
-    
-    body.dark #moon {
-        vertical-align: middle;
-        display: none;
-    }
-    
-    body:not(.dark) #sun {
-        display: none;
+        padding: 0 16px;
+        gap: 16px;
     }
     
     #menu {
-        list-style: none;
-        word-break: keep-all;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-    
-    #menu li+li {
-        margin-inline-start: var(--gap);
+        gap: 6px;
     }
     
     #menu a {
-        font-size: 16px;
-    }
-    
-    #menu .active {
-        font-weight: 500;
-        border-bottom: 2px solid;
-    }
-    
-    .lang-switch li, .lang-switch ul, .logo-switches {
-        display: inline-flex;
-        margin: auto 4px;
-    }
-    
-    .lang-switch {
-        display: flex;
-        flex-wrap: inherit;
-    }
-    
-    .lang-switch a {
-        margin: auto 3px;
-        font-size: 16px;
-        font-weight: 500;
-    }
-    
-    .logo-switches {
-        flex-wrap: inherit;
-    }
-    
-    /* Better dropdown styles for mobile */
-    .dropdown-menu {
-        position: absolute;
-        top: 100%;
-        z-index: 1000;
-        display: none;
-        float: left;
-        min-width: 160px;
-        padding: 5px 0;
-        font-size: 14px;
-        text-align: left;
-        list-style: none;
-        background-color: #fff;
-        background-clip: padding-box;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-        transition: opacity 0.3s ease-in-out;
-    }
-    
-    .dropdown:hover .dropdown-menu {
-        display: block;
-        opacity: 1;
-    }
-    
-    .dropdown-menu li {
-        position: relative;
-    }
-    
-    .dropdown-menu li a {
-        color: #333;
-        text-decoration: none;
-        display: block;
-    }
-    
-    .dropdown-menu li a:hover {
-        background-color: #f5f5f5;
-    }
-    
-    .dropdown-toggle {
-        position: relative;
-    }
-    
-    .dropdown-menu li:not(.header-height) {
-        margin-top: 5px;
-    }
-    
-    .header-height a {
-        height: 45px;
-        display: block;
-        text-align: justify;
-        width: 150px;
-        padding: 0;
-    }
-    
-    .first a {
-        padding-left: 20px;
+        font-size: 15px;
+        padding: 8px 12px;
+        border-radius: 6px;
     }
     
     .dropdown-menu {
-        width: 150px;
+        right: auto;
+        left: 0;
+        min-width: 200px;
+        border-radius: 8px;
     }
     
     .first-entry {
         padding: 20px;
     }
     
+
+    
     .social-link-group-tight {
         gap: 12px;
         padding: 16px;
+    }
+    
+    .logo a {
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .nav {
+        flex-direction: column;
+        height: auto;
+        padding: 12px 16px;
+    }
+    
+    .logo {
+        margin-bottom: 12px;
+    }
+    
+    #menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    #menu a {
+        font-size: 14px;
+        padding: 4px 6px;
     }
 }
 
