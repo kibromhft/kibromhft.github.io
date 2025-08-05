@@ -1223,6 +1223,173 @@ h6:hover .anchor {
     .footer {
         padding: calc((var(--footer-height) - var(--gap) - 10px)/2)var(--gap)
     }
+
+    /* Enhanced mobile navigation for FAQ page */
+    .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 0;
+        width: 100%;
+    }
+
+    #menu {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+        overflow-x: visible;
+        white-space: normal;
+    }
+
+    #menu li {
+        width: 100%;
+        margin: 0;
+        border-bottom: 1px solid var(--border);
+        display: block;
+    }
+
+    #menu li:last-child {
+        border-bottom: none;
+    }
+
+    #menu a {
+        padding: 15px 20px;
+        display: block;
+        width: 100%;
+        font-size: 16px;
+        line-height: 1.4;
+        border-radius: 0;
+        transition: background-color 0.2s ease;
+    }
+
+    #menu a:hover {
+        background-color: var(--tertiary);
+    }
+
+    /* Mobile dropdown styles */
+    .dropdown {
+        position: relative;
+        width: 100%;
+    }
+
+    .dropdown-menu {
+        position: static;
+        display: none;
+        width: 100%;
+        box-shadow: none;
+        border: none;
+        background: var(--code-bg);
+        margin-top: 0;
+        padding: 0;
+        border-radius: 0;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu li {
+        border-bottom: none;
+        margin: 0;
+        width: 100%;
+    }
+
+    .dropdown-menu li a {
+        padding: 12px 30px;
+        color: var(--secondary);
+        font-size: 14px;
+        background: transparent;
+    }
+
+    .dropdown-menu li a:hover {
+        background: var(--border);
+        color: var(--primary);
+    }
+
+    /* Logo and theme toggle mobile layout */
+    .logo {
+        width: 100%;
+        justify-content: space-between;
+        margin: 0;
+        padding: 10px 20px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .logo-switches {
+        margin: 0;
+    }
+
+    /* FAQ specific mobile styles */
+    .page-header h1 {
+        font-size: 28px;
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    .post-content {
+        padding: 0 15px;
+    }
+
+    .qa {
+        margin-bottom: 25px;
+        padding: 15px;
+        background: var(--entry);
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+    }
+
+    .qa b {
+        font-size: 16px;
+        color: var(--primary);
+        display: block;
+        margin-bottom: 10px;
+        line-height: 1.4;
+    }
+
+    .qa p {
+        font-size: 14px;
+        line-height: 1.6;
+        margin: 0;
+        color: var(--content);
+    }
+
+    .qa ul {
+        margin: 10px 0;
+        padding-left: 20px;
+    }
+
+    .qa li {
+        margin: 5px 0;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    /* Better touch targets */
+    .qa a {
+        padding: 2px 4px;
+        border-radius: 3px;
+        background: var(--tertiary);
+        color: var(--primary);
+        text-decoration: none;
+    }
+
+    .qa a:hover {
+        background: var(--border);
+    }
+
+    /* Sharing section mobile optimization */
+    .sharing-section {
+        margin: 30px 0;
+        padding: 20px;
+        background: var(--entry);
+        border-radius: var(--radius);
+        text-align: center;
+    }
+
+    .sharing-section p {
+        font-size: 14px;
+        line-height: 1.6;
+        margin: 0;
+    }
 }
 
 @media screen and (min-width:768px) {
