@@ -859,72 +859,9 @@ if (!doNotTrack) {
             font-size: 2rem;
         }
         
-        /* Match blog post mobile behavior exactly */
+        /* Match blog post mobile behavior exactly - only set --gap like stylesheet_main.css */
         :root {
             --gap: 14px;
-        }
-        
-        /* Copy exact dropdown menu styles from stylesheet_main.css */
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            z-index: 1000;
-            display: none;
-            float: left;
-            min-width: 160px;
-            padding: 5px 0;
-            font-size: 14px;
-            text-align: left;
-            list-style: none;
-            background-color: #fff;
-            background-clip: padding-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-            transition: opacity 0.3s ease-in-out;
-        }
-        
-        .dropdown:hover .dropdown-menu {
-            display: block;
-            opacity: 1;
-        }
-        
-        .dropdown-menu li {
-            position: relative;
-        }
-        
-        .dropdown-menu li a {
-            color: #333;
-            text-decoration: none;
-            display: block;
-        }
-        
-        .dropdown-menu li a:hover {
-            background-color: #f5f5f5;
-        }
-        
-        .dropdown-toggle {
-            position: relative;
-        }
-        
-        .dropdown-menu li:not(.header-height) {
-            margin-top: 5px;
-        }
-        
-        .header-height a {
-            height: 45px;
-            display: block;
-            text-align: justify;
-            width: 150px;
-            padding: 0;
-        }
-        
-        .first a {
-            padding-left: 20px;
-        }
-        
-        .dropdown-menu {
-            width: 150px;
         }
     }
     
