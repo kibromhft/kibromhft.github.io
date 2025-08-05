@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Debugging Deep Learning Models | Kb&#39;s Blog</title>
+<meta name="keywords" content="automation, digitization, learning-dynamics" />
+<meta name="description" content="In today's digital age, computer literacy is a basic requirement for most people. Centuries ago, people relied on oral communication to pass on information from one generation to the next. The ability to read and write was a privilege reserved for the elite few because language literacy was not considered an essential skill. Those who were literate were often looked up to and held in high regard. This created a stark division between the literate and the illiterate, with the latter relying on the former for even the most basic communication needs. It wasn't until several centuries later that society began to see the value in literacy for all.">
+<meta name="author" content="kibrom Haftu">
+<link rel="canonical" href="https://kibromhft.github.io/posts/2022-09-23-debug/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet_main.css"  rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kibromhft.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kibromhft.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kibromhft.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kibromhft.github.io/safari-pinned-tab.svg">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-8161570-5', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script><meta property="og:title" content="Debugging Deep Learning Models" />
+<meta property="og:description" content="As we enter the digital age, one thing is certain: technology is not just a trend, it's a game-changer. With each passing day, technology is making its way into more and more industries, bringing about a variety of benefits for society such as increased efficiency, improved communication, and access to information. But, with change comes challenges, and one of the biggest concerns is the displacement of jobs." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kibromhft.github.io/posts/2022-09-23-debug/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-12-19T10:00:00-07:00" />
+<meta property="article:modified_time" content="2022-12-19T10:00:00-07:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Debugging Deep Learning Models"/>
+<meta name="twitter:description" content="In today's digital age, computer literacy is a basic requirement for most people. Centuries ago, people relied on oral communication to pass on information from one generation to the next. The ability to read and write was a privilege reserved for the elite few because language literacy was not considered an essential skill. Those who were literate were often looked up to and held in high regard. This created a stark division between the literate and the illiterate, with the latter relying on the former for even the most basic communication needs. It wasn't until several centuries later that society began to see the value in literacy for all."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kibromhft.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Debugging Deep Learning Models",
+      "item": "https://kibromhft.github.io/posts/2022-09-23-debug/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Debugging Deep Learning Models",
+  "name": "Debugging Deep Learning Models",
+  "description": "Despite the challenges associated with debugging deep learning models, it is an essential step in the model development process. Without effective debugging, we cannot be confident that our models are performing as intended or delivering accurate results. Moreover, without proper debugging, we may not be able to identify and address errors that could significantly impact the model's performance. In short, debugging deep learning models is a critical part of ensuring that the models are effective, efficient, and reliable.",
+  "keywords": [
+    "debug", "deep learning", "learning-dynamics"
+  ],
+  "articleBody": "Debugging deep learning models is a complex and challenging task that requires significant expertise and experience. One of the main reasons for this complexity is that deep learning models involve multiple layers of interconnected nodes, which can make it difficult to pinpoint the source of errors or identify areas where optimization is needed. Additionally, deep learning models often rely on large amounts of data to train, which can increase the risk of overfitting or underfitting the model. This is why it is essential to have a deep understanding of both the deep learning model itself, as well as the data from which the model is being trained, when it comes to debugging deep learning models..\n",
+  "wordCount" : "3539",
+  "inLanguage": "en",
+  "datePublished": "2022-12-19T10:00:00-07:00",
+  "dateModified": "2022-12-19T10:00:00-07:00",
+  "author":{
+    "@type": "Person",
+    "name": "kibrom Haftu"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kibromhft.github.io/posts/2022-09-23-debug/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lil'Log",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kibromhft.github.io/favicon_peach.ico"
+    }
+  }
+}
+</script>
+
+<style>
+.quote {
+  font-size: 1.5em;
+  font-style: italic;
+  margin: 2em;
+  padding: 1em;
+  border-left: solid 3px #ddd;
+}
+
+.quote p {
+  margin: 0;
+}
+
+.quote cite {
+  display: block;
+  font-size: 0.9em;
+  margin-top: 1em;
+  text-align: right;
+}
+</style>
+
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kibromhft.github.io/" accesskey="h" title="Kb&#39;s Blog (Alt + H)">Kb&#39;s Blog</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+       <ul id="menu">
+
+		
+		  <li>
+			<a href="https://kibromhft.github.io/" title="Home">
+			  Home <span class="caret fa fa-home"></span>
+			</a>
+		  </li>
+		  
+
+		  <li>
+			<a href="https://kibromhft.github.io/archives/" title="Archives">
+			  <span>Archives</span>
+			</a>
+		  </li>
+		  
+
+
+		  <li>
+			<a href="https://kibromhft.github.io/data/" title="Data">
+			  <span>Data</span>
+			</a>
+		  </li>
+		  <li>
+			<a href="https://kibromhft.github.io/keywords/" title="keywords">
+			  <span>Keywords</span>
+			</a>
+		  </li>
+		  <li>
+			<a href="https://kibromhft.github.io/faq" title="FAQ">
+			  <span>FAQs</span>
+			</a>
+		  </li>
+		  
+<!-- 		  <li>
+			<a href="https://kibromhft.github.io/cv" title="cv">
+			  <span>CV</span>
+			</a>
+		  </li> -->
+
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+			  Resources <span class="caret fa fa-bars" data-toggle="dropdown"></span>
+			</a>
+		  <ul class="dropdown-menu custom-dropdown">
+			<li>
+			  <a href="https://kibromhft.github.io/podcast">Podcast</a>
+			</li>
+			<li>
+			  <a href="#">Algorithms</a>
+			</li>
+			<li>
+			  <a href="#">Funding & Grants</a>
+			</li>
+			<li>
+			  <a href="#">Startup Toolkit</a>
+			</li>
+		  </ul>
+		</li>
+
+		<style>
+		.custom-dropdown {
+		  padding: 8px 0 !important;
+		  margin: 0 !important;
+		  list-style-type: none !important;
+		  /* Removed min-width to allow natural width */
+		}
+
+		.custom-dropdown li {
+		  padding: 0 !important;
+		  margin: 0 !important;
+		}
+
+		.custom-dropdown li a {
+		  display: block !important;
+		  width: 100% !important;
+		  padding: 8px 20px !important;
+		  margin: 0 !important;
+		  box-sizing: border-box !important;
+		  text-decoration: none !important;
+		  color: #333 !important;
+		  font-size: 16px !important; /* Increased font size */
+		  line-height: 1.5 !important;
+		}
+
+		.custom-dropdown li a:hover {
+		  background-color: #f8f9fa !important;
+		  color: #000 !important;
+		}
+		</style>
+
+		</ul>
+
+		
+    </nav>
+</header>
+
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h3 class="post-title">
+      Debugging Deep Learning Models: Strategies and Best Practices
+    </h3>
+    <div class="post-meta"><span title='2022-12-19 10:00:00 -0700 PDT'>September 23, 2022</span>&nbsp;·&nbsp;13 min&nbsp;·&nbsp;kibrom Haftu
+
+</div>
+  </header> 
+
+<div class="post-content">
+
+<p>Debugging deep learning models is a <strong>complex</strong> and <strong>challenging</strong> task that requires significant expertise and experience. One of the main reasons for this complexity is that deep learning models involve multiple layers of interconnected nodes, which can make it difficult to pinpoint the source of errors or identify areas where optimization is needed. Additionally, deep learning models often rely on <strong>large amounts of data</strong> to train, which can increase the risk of overfitting or underfitting the model. This is why it is essential to have a <strong>deep understanding</strong> of both the deep learning model itself, as well as the data from which the model is being trained, when it comes to debugging deep learning models.</p>
+<p>Despite the challenges associated with debugging deep learning models, it is an <strong>essential step</strong> in the model development process. Without effective debugging, we cannot be confident that our models are performing as intended or delivering accurate results. Moreover, without proper debugging, we may not be able to identify and address errors that could significantly impact the model's performance. In short, debugging deep learning models is a <strong>critical part</strong> of ensuring that the models are effective, efficient, and reliable.</p>
+<p>One of the main benefits of debugging deep learning models is that it enables developers to <strong>identify and fix errors</strong>. These errors can take many forms, such as incorrect parameter settings, improperly structured data, or even coding errors. By identifying and fixing these errors, we can improve the accuracy and reliability of the model. Additionally, debugging can help identify areas where the model may be <strong>underperforming</strong>. This is the case in cases where the model is struggling to generalize to new data or when it is not producing the expected output. Another benefit of debugging deep learning models is that it allows developers to <strong>optimize the models</strong> for specific tasks. This optimization can take many forms, such as adjusting the number of layers in the model, tweaking the learning rate, or fine-tuning the weights of the model. By optimizing the model in this way, we can improve its performance and efficiency, making it better suited to the specific problem it is designed to solve.</p>
+<p>To effectively debug deep learning models, we must understand the internal structure of the models themselves. In the case of a <strong>convolutional neural network (CNN)</strong>, for instance, understanding the kernels used in the convolution layer and their parameters can provide valuable insight into areas of the model that aren't performing according to expectations. This understanding requires knowledge of the underlying algorithms and techniques used in deep learning, as well as an understanding of the data used to train the model. By understanding the structure of the model, we can more easily identify areas where the model may be struggling, such as in cases where the model is overfitting or underfitting the data.</p>
+<p>In this post, we will delve into the process of debugging deep learning models and examine some of the most effective strategies and best practices for doing so. Our focus will be on providing a comprehensive overview of the different approaches that can be used to <strong>identify and address errors</strong>, <strong>optimize the model</strong> for specific tasks, and ensure that it is <strong>effective, efficient, and reliable</strong>. We will discuss the importance of having a systematic approach to debugging, keeping detailed logs, and using visualization tools. We will also explore the role of <strong>hyperparameters</strong> and <strong>regularization techniques</strong> in improving model performance, as well as techniques for data <strong>preprocessing</strong> and <strong>augmentation</strong>. Additionally, we will highlight common pitfalls that AI developers encounter when debugging deep learning models, such as gradient vanishing and exploding, and discuss how to address these issues.</p>
+<p>By following the approaches outlined in this post, we can effectively debug our deep learning models and improve their accuracy, reliability, and efficiency. As Albert Einstein famously said: &ldquo;Any fool can know. The point is to understand.&rdquo;</p>
+<p>Let&rsquo;s get started! &nbsp; </p> <p><strong>Sources of Error in Deep Learning Models</strong></p>
+<p>There are several sources of error that can arise when training deep learning models. Some of the most common sources include <strong>data quality issues</strong>, <strong>model architecture issues</strong>, and <strong>hyperparameter tuning issues</strong>.</p>
+<p><strong>Data quality issues</strong> can arise from incorrect labels, missing data, noisy data, or biased data. Preprocessing and cleaning the data before training the model is a critical step to mitigate these issues. Preprocessing involves tasks like scaling the data to a common range, normalizing the data, handling missing values, and encoding categorical variables.</p>
+<p><strong>Model architecture issues</strong> can arise from choosing an architecture that is too simple or too complex for the task at hand. A simple model may not capture complex patterns in the data, while a complex model may overfit to the training data and perform poorly on new data. Choosing the right architecture involves understanding the nature of the problem, the available data, and the available computing resources. Some common architectures for deep learning models include <strong>feedforward neural networks</strong>, <strong>convolutional neural networks</strong>, <strong>recurrent neural networks</strong>, and <strong>transformer networks</strong>.</p>
+<p><strong>Hyperparameter tuning issues</strong> can arise from selecting inappropriate values for the settings that control the behavior of the model during training. Improperly tuned hyperparameters can prevent the model from converging to a good solution or cause it to overfit to the training data. Some common hyperparameters include <strong>learning rate</strong>, <strong>batch size</strong>, <strong>number of epochs</strong>, <strong>activation functions</strong>, <strong>regularization strength</strong>, and <strong>optimization algorithm</strong>.</p>
+<p><strong>Strategies for Debugging Deep Learning Models</strong></p>
+<ol>
+<li><strong>Visualize the Data</strong>: Data visualization is a powerful tool for identifying patterns and anomalies in the data. By visualizing the data before training the model, you can detect any data quality issues that need to be addressed. For example, let's consider a dataset of images of handwritten digits, like the MNIST dataset. By visualizing the images, we can get a sense of the variety of handwriting styles and any potential issues with the quality of the images.</li>
+<li><strong>Check the Model Architecture</strong>: If the model is not performing well, it may be due to an inappropriate architecture for the task at hand. Experimenting with different architectures can help improve model performance. For example, let's consider the task of classifying images of dogs and cats. A simple model like logistic regression may not be able to capture the complex patterns in the images, while a deep convolutional neural network like VGG-16 may perform better.</li>
+<li><strong>Tune the Hyperparameters</strong>: It is important to keep in mind that incorrectly tuned hyperparameters can prevent the model from converging to a good solution or could cause the model to overfit to the training data. Careful tuning of the hyperparameters using techniques like cross-validation can help mitigate these issues. Cross-validation involves splitting the data into training and validation sets, and testing different combinations of hyperparameters on the validation set to find the best set of hyperparameters.</li>
+<li><strong>Check the Loss Function</strong>: The loss function measures the difference between the predicted outputs of the model and the true labels. If the loss function is inappropriate for the task at hand, the model may not be able to learn the correct patterns in the data. Experimenting with different loss functions can help improve model performance.</li>
+<li><strong>Use Regularization Techniques:</strong> Regularization techniques like L1 and L2 regularization can help prevent overfitting to the training data by adding penalties to the weights of the model. Dropout is another technique that can help prevent overfitting by randomly dropping out units in the network during training.</li>
+<li><strong>Start Small</strong>: Starting with a simpler model can help identify any issues with the data or model architecture before moving on to more complex models. This can save time and resources, as it allows for more efficient debugging. For example, let's consider the task of predicting house prices based on various features like number of bedrooms and square footage. Starting with a simple linear regression model can help identify any data quality issues or issues with feature engineering before moving on to more complex models like neural networks.</li>
+<li><strong>Monitor</strong><strong> Model Performance</strong>: Monitoring the performance of the model during training can help identify issues like overfitting or underfitting. Common performance metrics for classification tasks include accuracy, precision, recall, and F1-score, while common metrics for regression tasks include mean squared error, mean absolute error, and R-squared. Visualizing the performance metrics over time can help identify any issues that need to be addressed.</li>
+<li><strong>Use</strong><strong> Transfer Learning</strong>: Transfer learning involves using pre-trained models as a starting point for your own model. This can be particularly useful if you don't have a lot of data or if you are working on a similar task to the one the pre-trained model was trained By using transfer learning, you can often achieve better results with less training data and in less time.</li>
+<li><strong>Check</strong><strong> for Class Imbalance</strong>: Class imbalance can occur when there are significantly more samples of one class than the other in a classification task. This can result in a model that performs well on the majority class but poorly on the minority class. To address this issue, you can use techniques like oversampling or undersampling to balance the classes, or use weighted loss functions that give more weight to the minority class.</li>
+<li><strong>Use</strong><strong> Visualization Techniques</strong>: Visualization techniques can help you better understand the data and identify patterns that may not be apparent from just looking at the numbers. For example, you can use scatter plots to visualize the relationship between two features, or heatmaps to visualize the correlation between multiple features. You can also use visualization techniques to identify outliers or anomalies in the data.</li>
+<li><strong>Check</strong><strong> for Data Leakage</strong>: Data leakage occurs when information from the test set is inadvertently used to train the model. This can result in an over-optimistic evaluation of the model's performance, as it has effectively seen the test data during training. To avoid data leakage, it's important to split the data into separate training, validation, and test sets, and only use the training set to train the model.</li>
+</ol>
+
+
+<h1 id="citation">Citation<a hidden class="anchor" aria-hidden="true" href="#citation">#</a></h1>
+<p>Cited as:</p>
+<blockquote>
+<p>kibrom, Haftu. (Sep 2022). Debugging Deep Learning Models. Kb&rsquo;s Blog. https://kibromhft.github.io/posts/2022-09-23-debug/.</p>
+</blockquote>
+<p>Or</p>
+<pre tabindex="0"><code>@article{kibrom2022_debugging_DNN,
+  title   = &quot;Debugging Deep Learning Models&quot;,
+  author  = &quot;kibrom, Haftu&quot;,
+  journal = &quot;Kb&#39;s Blog&quot;,
+  year    = &quot;2022&quot;,
+  month   = &quot;Sep&quot;,
+  url     = &quot;https://kibromhft.github.io/posts/2022-09-23-debug/&quot;
+}
+</code></pre>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://kibromhft.github.io/keywords/automation/">automation</a></li>
+      <li><a href="https://kibromhft.github.io/keywords/digitization/">digitization</a></li>
+      <li><a href="https://kibromhft.github.io/keywords/learning-dynamics/">learning-dynamics</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://kibromhft.github.io/posts/2022-12-19-automation/">
+    <span class="title"> »</span>
+    <br>
+    <span>Jobs in the Digital Era</span>
+  </a>
+</nav>
+
+
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://kibromhft.github.io/">Kb&#39;s Blog</a></span>
+
+</footer>
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g" style="visibility: visible; opacity: 1;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
+        <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="rgb(192, 132, 224)"/>
+            <stop offset="100%" stop-color="rgb(153, 0, 204)"/>
+        </linearGradient>
+        <path d="M12 6H0l6-6z" fill="url(#grad)"></path>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
