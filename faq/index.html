@@ -774,6 +774,55 @@ if (!doNotTrack) {
             font-size: 2rem;
         }
     }
+
+    /* Mobile navigation - keywords style (768px and below) */
+    @media screen and (max-width: 768px) {
+        #menu {
+            display: flex;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            gap: 8px;
+            padding: 8px 0;
+        }
+
+        #menu::-webkit-scrollbar {
+            display: none;
+        }
+
+        #menu a {
+            white-space: nowrap;
+            font-size: 14px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            background: var(--entry);
+            border: 1px solid var(--border);
+            color: var(--primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        #menu a:hover {
+            background: var(--tertiary);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-menu {
+            position: static;
+            display: block;
+            background: none;
+            border: none;
+            box-shadow: none;
+            padding: 0;
+            margin-top: 8px;
+        }
+
+        .dropdown-menu a {
+            font-size: 13px;
+            padding: 6px 10px;
+            margin: 2px 0;
+        }
+    }
 </style>
 
 <script>
