@@ -13,7 +13,9 @@
 <link crossorigin="anonymous" href="/assets/css/main.css?v=1.1" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
 
-
+<!-- Font preloading for performance -->
+<link rel="preload" href="../assets/f/Essays1743.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="../assets/f/Libertine.woff" as="font" type="font/woff" crossorigin>
 
 <script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
     onload="hljs.initHighlightingOnLoad();"></script>
@@ -147,7 +149,7 @@ if (!doNotTrack) {
 </script>
 
 <style>
-    /* Design System - CSS Custom Properties for Desktop */
+    /* Design System - CSS Custom Properties */
     :root {
         /* Colors */
         --primary-color: rgb(13, 110, 253);
@@ -253,45 +255,128 @@ if (!doNotTrack) {
         }
     }
 
-
-
-    /* Enhanced link styling with focus states */
-    .post-content a {
-        color: var(--primary-color);
-        text-decoration: none;
+    /* Navigation styles with CSS variables */
+    #menu a {
+        color: var(--text-primary);
         transition: var(--transition-base);
-        position: relative;
-        font-weight: 500;
-        border-radius: 2px;
     }
 
-    .post-content a::after {
-        content: '';
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
-        transition: width var(--transition-base);
-        border-radius: 1px;
-    }
-
-    .post-content a:hover::after,
-    .post-content a:focus::after {
-        width: 100%;
-    }
-
-    .post-content a:hover,
-    .post-content a:focus {
-        color: var(--primary-hover);
+    #menu a:hover,
+    #menu a:focus {
+        background-color: var(--bg-secondary);
+        color: var(--text-primary);
         outline: 2px solid var(--primary-color);
         outline-offset: 2px;
     }
 
+    .dropdown-menu a {
+        color: var(--text-primary);
+        transition: var(--transition-base);
+    }
 
+    .dropdown-menu a:hover,
+    .dropdown-menu a:focus {
+        background-color: var(--bg-secondary);
+        color: var(--text-primary);
+    }
 
-    /* Desktop FAQ content styling - keeping the premium design */
+    /* Logo and theme toggle */
+    .logo a {
+        color: var(--text-primary);
+        transition: var(--transition-base);
+    }
+
+    .logo a:hover,
+    .logo a:focus {
+        color: var(--primary-color);
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+    }
+
+    #theme-toggle {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: var(--space-xs);
+        border-radius: 50%;
+        transition: var(--transition-base);
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #theme-toggle:hover,
+    #theme-toggle:focus {
+        background-color: var(--bg-secondary);
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+    }
+
+    #theme-toggle svg {
+        height: 20px;
+        width: 20px;
+    }
+
+    .logo-switches {
+        display: flex;
+        align-items: center;
+        margin-left: var(--space-sm);
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    /* Theme toggle visibility */
+    body.dark #moon {
+        display: none;
+    }
+
+    body:not(.dark) #sun {
+        display: none;
+    }
+
+    /* Optimized font loading with fallbacks */
+    @font-face {
+        font-family: "Essays 1743";
+        src: url("../assets/f/Essays1743.woff2") format("woff2"), url("../assets/f/Essays1743.woff") format("woff");
+        font-display: swap;
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: "Essays 1743";
+        src: url("../assets/f/Essays1743-bold.woff2") format("woff2"), url("../assets/f/Essays1743-bold.woff") format("woff");
+        font-display: swap;
+        font-weight: bold;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: "Essays 1743";
+        src: url("../assets/f/Essays1743-italic.woff2") format("woff2"), url("../assets/f/Essays1743-italic.woff") format("woff");
+        font-display: swap;
+        font-weight: normal;
+        font-style: italic;
+    }
+    @font-face {
+        font-family: "Libertine";
+        src: url("../assets/f/Libertine.woff2") format("woff2"), url("../assets/f/Libertine.woff") format("woff");
+        font-display: swap;
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: "Libertine";
+        src: url("../assets/f/Libertine-bold.woff2") format("woff2"), url("../assets/f/Libertine-bold.woff") format("woff");
+        font-display: swap;
+        font-weight: bold;
+        font-style: normal;
+    }
+
+    /* Container and layout with CSS variables */
     .post-content {
         color: var(--text-primary);
         max-width: var(--container-max-width);
@@ -353,7 +438,7 @@ if (!doNotTrack) {
         outline-offset: 2px;
     }
 
-    /* Desktop Premium FAQ Q&A styling - keeping the premium design */
+    /* Premium FAQ Q&A styling with CSS variables */
     .qa {
         background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
         border: 1px solid var(--border-color);
@@ -772,140 +857,6 @@ if (!doNotTrack) {
         
         .page-header h1 {
             font-size: 2rem;
-        }
-    }
-
-    /* Desktop navigation - preserve original 8.5/10 premium styling */
-    @media screen and (min-width: 769px) {
-        #menu {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            gap: 8px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        #menu li {
-            position: relative;
-        }
-
-        #menu a {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: 600;
-            font-family: var(--font-primary);
-            color: var(--primary);
-            transition: all 0.2s ease;
-            white-space: nowrap;
-            text-decoration: none;
-            letter-spacing: 0.025em;
-        }
-
-        #menu a:hover {
-            background-color: var(--tertiary);
-            color: var(--primary);
-        }
-
-        #menu .active {
-            background-color: var(--brand-blue);
-            color: white;
-            font-weight: 600;
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            top: calc(100% + 8px);
-            right: 0;
-            min-width: 200px;
-            background: var(--entry);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-8px);
-            transition: all 0.2s ease;
-            z-index: 1000;
-            padding: 8px 0;
-            list-style: none;
-        }
-
-        .dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-menu a {
-            display: block;
-            padding: 8px 16px;
-            color: var(--primary);
-            text-decoration: none;
-            transition: background-color 0.2s ease;
-            font-size: 14px;
-            font-weight: 500;
-            font-family: var(--font-primary);
-            letter-spacing: 0.025em;
-        }
-
-        .dropdown-menu a:hover {
-            background-color: var(--tertiary);
-            color: var(--primary);
-        }
-    }
-
-    /* Mobile navigation - keywords style (768px and below) */
-    @media screen and (max-width: 768px) {
-        #menu {
-            display: flex;
-            overflow-x: auto;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            gap: 8px;
-            padding: 8px 0;
-        }
-
-        #menu::-webkit-scrollbar {
-            display: none;
-        }
-
-        #menu a {
-            white-space: nowrap;
-            font-size: 14px;
-            padding: 8px 12px;
-            border-radius: 6px;
-            background: var(--entry);
-            border: 1px solid var(--border);
-            color: var(--primary);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        }
-
-        #menu a:hover {
-            background: var(--tertiary);
-            transform: translateY(-1px);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .dropdown-menu {
-            position: static;
-            display: block;
-            background: none;
-            border: none;
-            box-shadow: none;
-            padding: 0;
-            margin-top: 8px;
-        }
-
-        .dropdown-menu a {
-            font-size: 13px;
-            padding: 6px 10px;
-            margin: 2px 0;
         }
     }
 </style>
