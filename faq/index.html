@@ -859,53 +859,202 @@ if (!doNotTrack) {
             font-size: 2rem;
         }
         
-        /* Override main.css mobile navigation to match keywords page behavior */
+        /* Copy exact keywords page CSS for mobile navigation */
         :root {
             --gap: 14px;
         }
         
-        /* Remove aggressive mobile navigation overrides from main.css */
-        .nav {
-            padding: initial;
-            gap: initial;
-        }
-        
-        #menu {
-            gap: initial;
-        }
-        
+        /* Navigation color consistency - using main.css colors */
         #menu a {
-            font-size: initial;
-            padding: initial;
-            border-radius: initial;
+            color: rgb(30, 30, 30) !important;
         }
-        
+
+        #menu a:hover {
+            background-color: rgb(214, 214, 214) !important;
+            color: rgb(30, 30, 30) !important;
+        }
+
+        .dropdown-menu a {
+            color: rgb(30, 30, 30) !important;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: rgb(214, 214, 214) !important;
+            color: rgb(30, 30, 30) !important;
+        }
+
+        /* Dark mode navigation consistency */
+        body.dark #menu a {
+            color: rgb(218, 218, 219) !important;
+        }
+
+        body.dark #menu a:hover {
+            background-color: rgb(65, 66, 68) !important;
+            color: rgb(218, 218, 219) !important;
+        }
+
+        body.dark .dropdown-menu a {
+            color: rgb(218, 218, 219) !important;
+        }
+
+        body.dark .dropdown-menu a:hover {
+            background-color: rgb(65, 66, 68) !important;
+            color: rgb(218, 218, 219) !important;
+        }
+
+        /* Logo color consistency */
         .logo a {
-            font-size: initial;
+            color: rgb(30, 30, 30) !important;
+        }
+
+        body.dark .logo a {
+            color: rgb(218, 218, 219) !important;
+        }
+
+        /* Theme toggle icon consistency */
+        body.dark #moon {
+            display: none !important;
+        }
+
+        body:not(.dark) #sun {
+            display: none !important;
+        }
+
+        /* Ensure theme toggle button is visible and clickable */
+        #theme-toggle {
+            background: none !important;
+            border: none !important;
+            cursor: pointer !important;
+            padding: 8px !important;
+            border-radius: 50% !important;
+            transition: background-color 0.2s ease !important;
+            color: var(--primary) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        #theme-toggle:hover {
+            background-color: var(--tertiary) !important;
+        }
+
+        #theme-toggle svg {
+            height: 20px !important;
+            width: 20px !important;
+        }
+
+        /* Ensure logo-switches is properly positioned */
+        .logo-switches {
+            display: flex !important;
+            align-items: center !important;
+            margin-left: 10px !important;
+        }
+
+        /* Ensure the button is not being covered by other elements */
+        .logo {
+            display: flex !important;
+            align-items: center !important;
+            position: relative !important;
         }
     }
     
     @media (max-width: 480px) {
-        /* Remove aggressive mobile navigation overrides from main.css */
-        .nav {
-            flex-direction: initial;
-            height: initial;
-            padding: initial;
+        /* Copy exact keywords page CSS for small mobile screens */
+        :root {
+            --gap: 14px;
         }
         
-        .logo {
-            margin-bottom: initial;
-        }
-        
-        #menu {
-            flex-wrap: initial;
-            justify-content: initial;
-            gap: initial;
-        }
-        
+        /* Navigation color consistency - using main.css colors */
         #menu a {
-            font-size: initial;
-            padding: initial;
+            color: rgb(30, 30, 30) !important;
+        }
+
+        #menu a:hover {
+            background-color: rgb(214, 214, 214) !important;
+            color: rgb(30, 30, 30) !important;
+        }
+
+        .dropdown-menu a {
+            color: rgb(30, 30, 30) !important;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: rgb(214, 214, 214) !important;
+            color: rgb(30, 30, 30) !important;
+        }
+
+        /* Dark mode navigation consistency */
+        body.dark #menu a {
+            color: rgb(218, 218, 219) !important;
+        }
+
+        body.dark #menu a:hover {
+            background-color: rgb(65, 66, 68) !important;
+            color: rgb(218, 218, 219) !important;
+        }
+
+        body.dark .dropdown-menu a {
+            color: rgb(218, 218, 219) !important;
+        }
+
+        body.dark .dropdown-menu a:hover {
+            background-color: rgb(65, 66, 68) !important;
+            color: rgb(218, 218, 219) !important;
+        }
+
+        /* Logo color consistency */
+        .logo a {
+            color: rgb(30, 30, 30) !important;
+        }
+
+        body.dark .logo a {
+            color: rgb(218, 218, 219) !important;
+        }
+
+        /* Theme toggle icon consistency */
+        body.dark #moon {
+            display: none !important;
+        }
+
+        body:not(.dark) #sun {
+            display: none !important;
+        }
+
+        /* Ensure theme toggle button is visible and clickable */
+        #theme-toggle {
+            background: none !important;
+            border: none !important;
+            cursor: pointer !important;
+            padding: 8px !important;
+            border-radius: 50% !important;
+            transition: background-color 0.2s ease !important;
+            color: var(--primary) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        #theme-toggle:hover {
+            background-color: var(--tertiary) !important;
+        }
+
+        #theme-toggle svg {
+            height: 20px !important;
+            width: 20px !important;
+        }
+
+        /* Ensure logo-switches is properly positioned */
+        .logo-switches {
+            display: flex !important;
+            align-items: center !important;
+            margin-left: 10px !important;
+        }
+
+        /* Ensure the button is not being covered by other elements */
+        .logo {
+            display: flex !important;
+            align-items: center !important;
+            position: relative !important;
         }
     }
     
