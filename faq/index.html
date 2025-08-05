@@ -896,6 +896,70 @@ if (!doNotTrack) {
 
 		</ul>
 
+		<style>
+		.custom-dropdown {
+		  padding: 8px 0 !important;
+		  margin: 0 !important;
+		  list-style-type: none !important;
+		  /* Removed min-width to allow natural width */
+		}
+
+		.custom-dropdown li {
+		  padding: 0 !important;
+		  margin: 0 !important;
+		}
+
+		.custom-dropdown li a {
+		  display: block !important;
+		  width: 100% !important;
+		  padding: 8px 20px !important;
+		  margin: 0 !important;
+		  box-sizing: border-box !important;
+		  text-decoration: none !important;
+		  color: #333 !important;
+		  font-size: 16px !important; /* Increased font size */
+		  line-height: 1.5 !important;
+		}
+
+		.custom-dropdown li a:hover {
+		  background-color: #f8f9fa !important;
+		  color: #000 !important;
+		}
+
+		/* Ensure horizontal scrollable menu behavior */
+		#menu {
+		  overflow-x: auto;
+		  white-space: nowrap;
+		  -webkit-overflow-scrolling: touch;
+		}
+
+		#menu li {
+		  display: inline-block;
+		  white-space: nowrap;
+		}
+
+		/* Ensure proper font and alignment */
+		.nav {
+		  display: flex;
+		  align-items: center;
+		  justify-content: flex-start;
+		}
+
+		.logo {
+		  margin-right: auto;
+		}
+
+		/* Dark mode support for dropdown */
+		body.dark .custom-dropdown li a {
+		  color: rgb(218, 218, 219) !important;
+		}
+
+		body.dark .custom-dropdown li a:hover {
+		  background-color: rgb(65, 66, 68) !important;
+		  color: rgb(218, 218, 219) !important;
+		}
+		</style>
+
 		
     </nav>
 </header>
