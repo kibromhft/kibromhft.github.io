@@ -775,6 +775,91 @@ if (!doNotTrack) {
         }
     }
 
+    /* Desktop navigation - preserve original 8.5/10 premium styling */
+    @media screen and (min-width: 769px) {
+        #menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        #menu li {
+            position: relative;
+        }
+
+        #menu a {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: var(--font-primary);
+            color: var(--primary);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            text-decoration: none;
+            letter-spacing: 0.025em;
+        }
+
+        #menu a:hover {
+            background-color: var(--tertiary);
+            color: var(--primary);
+        }
+
+        #menu .active {
+            background-color: var(--brand-blue);
+            color: white;
+            font-weight: 600;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            min-width: 200px;
+            background: var(--entry);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: all 0.2s ease;
+            z-index: 1000;
+            padding: 8px 0;
+            list-style: none;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 8px 16px;
+            color: var(--primary);
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: var(--font-primary);
+            letter-spacing: 0.025em;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: var(--tertiary);
+            color: var(--primary);
+        }
+    }
+
     /* Mobile navigation - keywords style (768px and below) */
     @media screen and (max-width: 768px) {
         #menu {
