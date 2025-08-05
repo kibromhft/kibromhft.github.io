@@ -859,9 +859,36 @@ if (!doNotTrack) {
             font-size: 2rem;
         }
         
-        /* Copy exact keywords page CSS for mobile navigation */
+        /* Override main.css aggressive mobile styles to match keywords page minimal behavior */
         :root {
             --gap: 14px;
+        }
+        
+        /* Remove main.css aggressive mobile navigation overrides */
+        .nav {
+            padding: initial !important;
+            gap: initial !important;
+        }
+        
+        #menu {
+            gap: initial !important;
+        }
+        
+        #menu a {
+            font-size: initial !important;
+            padding: initial !important;
+            border-radius: initial !important;
+        }
+        
+        .dropdown-menu {
+            right: initial !important;
+            left: initial !important;
+            min-width: initial !important;
+            border-radius: initial !important;
+        }
+        
+        .logo a {
+            font-size: initial !important;
         }
         
         /* Navigation color consistency - using main.css colors */
@@ -959,9 +986,31 @@ if (!doNotTrack) {
     }
     
     @media (max-width: 480px) {
-        /* Copy exact keywords page CSS for small mobile screens */
+        /* Override main.css aggressive mobile styles to match keywords page minimal behavior */
         :root {
             --gap: 14px;
+        }
+        
+        /* Remove main.css aggressive mobile navigation overrides */
+        .nav {
+            flex-direction: initial !important;
+            height: initial !important;
+            padding: initial !important;
+        }
+        
+        .logo {
+            margin-bottom: initial !important;
+        }
+        
+        #menu {
+            flex-wrap: initial !important;
+            justify-content: initial !important;
+            gap: initial !important;
+        }
+        
+        #menu a {
+            font-size: initial !important;
+            padding: initial !important;
         }
         
         /* Navigation color consistency - using main.css colors */
