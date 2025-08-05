@@ -10,7 +10,7 @@
 <meta name="description" content="FAQ - Kb&#39;s Blog">
 <meta name="author" content="kibrom Haftu">
 <link rel="canonical" href="https://kibromhft.github.io/faq/" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet_main.css"  rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/main.css?v=1.1" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
 
 <!-- Font preloading for performance -->
@@ -857,6 +857,62 @@ if (!doNotTrack) {
         
         .page-header h1 {
             font-size: 2rem;
+        }
+        
+        /* Override main.css mobile navigation to match keywords page behavior */
+        :root {
+            --gap: 14px;
+        }
+        
+        /* Remove aggressive mobile navigation overrides from main.css */
+        .nav {
+            padding: initial;
+            gap: initial;
+        }
+        
+        #menu {
+            gap: initial;
+        }
+        
+        #menu a {
+            font-size: initial;
+            padding: initial;
+            border-radius: initial;
+        }
+        
+        .dropdown-menu {
+            right: initial;
+            left: initial;
+            min-width: initial;
+            border-radius: initial;
+        }
+        
+        .logo a {
+            font-size: initial;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        /* Remove aggressive mobile navigation overrides from main.css */
+        .nav {
+            flex-direction: initial;
+            height: initial;
+            padding: initial;
+        }
+        
+        .logo {
+            margin-bottom: initial;
+        }
+        
+        #menu {
+            flex-wrap: initial;
+            justify-content: initial;
+            gap: initial;
+        }
+        
+        #menu a {
+            font-size: initial;
+            padding: initial;
         }
     }
 </style>
