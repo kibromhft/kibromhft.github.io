@@ -1006,7 +1006,14 @@ if (!doNotTrack) {
 			color: #000 !important;
 		}
 
+		/* Caret size improvements */
+		.caret {
+			font-size: 12px !important;
+			opacity: 0.8 !important;
+		}
+
 		/* Mobile-specific overrides to match keywords page behavior */
+		/* Note: Horizontal scrolling is enabled (overflow-x: auto) to match keywords page UX */
 		@media screen and (max-width: 768px) {
 			/* Override main.css mobile navigation with keywords-style behavior */
 			.nav {
@@ -1025,29 +1032,28 @@ if (!doNotTrack) {
 
 			#menu {
 				gap: 6px !important;
-				/* Remove overflow-x that causes horizontal lines */
-				overflow: visible !important;
-				white-space: normal !important;
+				/* Match keywords page horizontal scrolling behavior */
+				overflow-x: auto !important;
+				white-space: nowrap !important;
 				display: flex !important;
 				flex-direction: row !important;
-				flex-wrap: wrap !important;
+				flex-wrap: nowrap !important;
 			}
 
 			#menu li {
-				/* Remove inline-block that causes layout issues */
+				/* Match keywords page behavior */
 				display: flex !important;
-				white-space: normal !important;
-				flex-shrink: 1 !important;
+				white-space: nowrap !important;
+				flex-shrink: 0 !important;
 			}
 
 			#menu a {
-				font-size: 15px !important;
+				font-size: 16px !important;
 				padding: 8px 12px !important;
 				border-radius: 6px !important;
-				white-space: normal !important;
-				/* Ensure text wrapping works properly */
-				word-wrap: break-word !important;
-				overflow-wrap: break-word !important;
+				white-space: nowrap !important;
+				/* Match keywords page behavior */
+				word-break: keep-all !important;
 			}
 
 			.dropdown-menu {
@@ -1076,20 +1082,21 @@ if (!doNotTrack) {
 			}
 
 			#menu {
-				flex-wrap: wrap !important;
+				flex-wrap: nowrap !important;
 				justify-content: flex-start !important;
 				gap: 6px !important;
 				display: flex !important;
 				flex-direction: row !important;
+				overflow-x: auto !important;
+				white-space: nowrap !important;
 			}
 
 			#menu a {
-				font-size: 14px !important;
+				font-size: 16px !important;
 				padding: 6px 8px !important;
-				white-space: normal !important;
-				/* Ensure text wrapping works properly */
-				word-wrap: break-word !important;
-				overflow-wrap: break-word !important;
+				white-space: nowrap !important;
+				/* Match keywords page behavior */
+				word-break: keep-all !important;
 			}
 		}
 		</style>
