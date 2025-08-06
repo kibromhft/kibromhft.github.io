@@ -1291,6 +1291,7 @@ if (!doNotTrack) {
         
         if (isTouchDevice || isSmallScreen) {
             const dropdowns = document.querySelectorAll('.dropdown');
+            let toggleClicked = false;
             
             // Disable hover behavior on mobile by removing hover styles
             dropdowns.forEach(dropdown => {
@@ -1308,8 +1309,11 @@ if (!doNotTrack) {
                 if (toggle && menu) {
                     // Add click event to toggle dropdown
                     toggle.addEventListener('click', function(e) {
+                        console.log('Dropdown toggle clicked!');
                         e.preventDefault();
                         e.stopPropagation();
+                        
+                        toggleClicked = true;
                         
                         // Close all other dropdowns
                         dropdowns.forEach(otherDropdown => {
@@ -1320,28 +1324,50 @@ if (!doNotTrack) {
                         
                         // Toggle current dropdown
                         const isOpen = dropdown.classList.contains('dropdown-open');
+                        console.log('Is dropdown open?', isOpen);
+                        
                         if (isOpen) {
                             dropdown.classList.remove('dropdown-open');
+                            console.log('Closing dropdown');
                         } else {
                             dropdown.classList.add('dropdown-open');
+                            console.log('Opening dropdown');
                         }
+                        
+                        // Reset flag after a short delay
+                        setTimeout(() => {
+                            toggleClicked = false;
+                        }, 100);
+                    });
+                    
+                    // Also add click event to the dropdown itself to prevent closing when clicking inside
+                    dropdown.addEventListener('click', function(e) {
+                        e.stopPropagation();
                     });
                 }
             });
             
             // Close dropdown when clicking outside
             document.addEventListener('click', function(e) {
-                // Don't close if clicking on the dropdown toggle
-                if (e.target.closest('.dropdown-toggle')) {
+                console.log('Document clicked on:', e.target);
+                
+                // Don't close if toggle was just clicked
+                if (toggleClicked) {
+                    console.log('Toggle was just clicked, not closing');
+                    return;
+                }
+                
+                // Don't close if clicking on the dropdown toggle or inside dropdown
+                if (e.target.closest('.dropdown-toggle') || e.target.closest('.dropdown')) {
+                    console.log('Clicked on dropdown or toggle, not closing');
                     return;
                 }
                 
                 // Close if clicking outside dropdown
-                if (!e.target.closest('.dropdown')) {
-                    dropdowns.forEach(dropdown => {
-                        dropdown.classList.remove('dropdown-open');
-                    });
-                }
+                console.log('Clicked outside dropdown, closing all');
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('dropdown-open');
+                });
             });
             
             // Close dropdown when pressing Escape key
