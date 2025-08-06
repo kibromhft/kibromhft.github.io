@@ -735,7 +735,515 @@ if (!doNotTrack) {
             background-clip: text;
         }
 
-        /* Premium page header - EXACT same as FAQ page */
+        /* Data Page Specific Styles */
+        
+        /* Hero Section */
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-2xl);
+            align-items: center;
+            margin: var(--space-3xl) 0;
+            padding: var(--space-xl);
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .hero-title {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-md);
+            line-height: 1.3;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: var(--font-size-lg);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--space-lg);
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition-base);
+        }
+
+        .hero-img:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* Quotes Section */
+        .quotes-section {
+            margin: var(--space-3xl) 0;
+        }
+
+        .section-title {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--text-primary);
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
+            border-radius: 2px;
+        }
+
+        .quotes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .quote-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--space-xl);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
+        }
+
+        .quote-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .quote-icon {
+            font-size: 2rem;
+            margin-bottom: var(--space-md);
+            display: block;
+        }
+
+        .quote-card blockquote {
+            font-size: var(--font-size-lg);
+            font-style: italic;
+            color: var(--text-primary);
+            margin: var(--space-md) 0;
+            line-height: 1.5;
+        }
+
+        .quote-card cite {
+            color: var(--text-muted);
+            font-size: var(--font-size-sm);
+            font-style: normal;
+        }
+
+        /* Impact Section */
+        .impact-section {
+            margin: var(--space-3xl) 0;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .impact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-base);
+            position: relative;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .impact-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--space-md);
+            display: block;
+        }
+
+        .impact-card h4 {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-md);
+        }
+
+        .impact-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--space-md);
+        }
+
+        .learn-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition-base);
+        }
+
+        .learn-more:hover {
+            color: var(--primary-hover);
+        }
+
+        /* Datasets Section */
+        .datasets-section {
+            margin: var(--space-3xl) 0;
+        }
+
+        .dataset-overview {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .overview-text {
+            font-size: var(--font-size-lg);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .datasets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .dataset-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-base);
+        }
+
+        .dataset-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .dataset-card h4 {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-md);
+        }
+
+        .dataset-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .dataset-card li {
+            margin: var(--space-sm) 0;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .challenges-section {
+            margin-top: var(--space-2xl);
+        }
+
+        .challenges-section h4 {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--text-primary);
+            text-align: center;
+            margin-bottom: var(--space-lg);
+        }
+
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .challenge-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-md);
+            background: var(--bg-secondary);
+            border-radius: var(--radius-sm);
+            color: var(--text-secondary);
+        }
+
+        .challenge-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Tikur Section */
+        .tikur-section {
+            margin: var(--space-3xl) 0;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
+            border: 1px solid var(--border-color);
+        }
+
+        .tikur-hero {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .tikur-content h3 {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-md);
+        }
+
+        .tikur-description {
+            font-size: var(--font-size-lg);
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .tikur-features {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-md);
+            background: var(--bg-card);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+        }
+
+        .disease-coverage {
+            margin: var(--space-2xl) 0;
+        }
+
+        .disease-coverage h4 {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-md);
+        }
+
+        .diseases-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            margin-top: var(--space-md);
+        }
+
+        .disease-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+        }
+
+        .dataset-link {
+            text-align: center;
+            margin-top: var(--space-2xl);
+        }
+
+        .dataset-link h4 {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-md);
+        }
+
+        .dataset-button {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+            color: white;
+            padding: var(--space-md) var(--space-xl);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition-base);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .dataset-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .button-arrow {
+            transition: var(--transition-base);
+        }
+
+        .dataset-button:hover .button-arrow {
+            transform: translateX(4px);
+        }
+
+        /* Lacuna Section */
+        .lacuna-section {
+            margin: var(--space-3xl) 0;
+            text-align: center;
+            padding: var(--space-2xl);
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .lacuna-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-md);
+            display: block;
+        }
+
+        .lacuna-content h4 {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-md);
+        }
+
+        .lacuna-content p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            margin: var(--space-3xl) 0;
+            text-align: center;
+            padding: var(--space-2xl);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+            border-radius: var(--radius-lg);
+            color: white;
+        }
+
+        .cta-content h3 {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+        }
+
+        .cta-content p {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--space-lg);
+            opacity: 0.9;
+        }
+
+        .cta-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: rgba(255, 255, 255, 0.2);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+        }
+
+        .badge-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Dark mode adjustments */
+        body.dark .hero-section {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+        }
+
+        body.dark .tikur-section {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+        }
+
+        body.dark .challenge-item {
+            background: var(--bg-card);
+        }
+
+        body.dark .feature-item {
+            background: var(--bg-secondary);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .tikur-hero {
+                grid-template-columns: 1fr;
+            }
+
+            .quotes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .datasets-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .challenges-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .diseases-grid {
+                justify-content: center;
+            }
+        }
+
+        /* Page header for data page */
         .page-header h1 {
             color: var(--text-primary);
             font-size: var(--font-size-3xl);
@@ -752,7 +1260,7 @@ if (!doNotTrack) {
         }
 
         .page-header h1::before {
-            content: '❓';
+            content: '📊';
             position: absolute;
             top: -2rem;
             left: 50%;
@@ -1144,73 +1652,212 @@ if (!doNotTrack) {
 <main class="main">
 
 <header class="page-header">
-  <h1>FAQ</h1>
+  <h1>The Power of Data</h1>
 </header>
 
 <div class='post-content'>
 
-	<div class='qa'>
-	<b>Q: How can I get an update when a new post comes out?</b>
-	<p><b>A:</b> Follow me on Twitter: I post about my new posts on this Twitter account: <a href="https://twitter.com/coding_era/">@coding_era</a>. You can follow me to get notified when a new post is published. You can also subscribe to my <a href="../index.xml" target="_blank">RSS feed</a>. This will notify you when a new post is published on my blog.</p> 
-	</div>
-	
-		<div class='qa'>
-	<b>Q: How can I improve my coding skills?</b>
-	<p><b>A:</b> Practice regularly by solving coding challenges, work on personal projects that challenge you, and collaborate with others on coding projects to learn from their techniques and approaches.</p>
-	</div>
-	
-	<div class='qa'>
-	<b>Q: What is P.R.E.P. and how does it work?</b>
-	<p><b>A:</b> P.R.E.P. is a four-step problem-solving approach used in programming and software development. By following these steps, you can break down complex problems into smaller, more manageable pieces and approach them in a systematic and efficient way. P.R.E.P. can be used by programmers at all levels of experience.</p>
-		<p>Here's what each step involves:</p>
-		<ul>
-		<li><strong>Parameters</strong>: In this step, you define the inputs to your function or program. This includes specifying the data types, format, and range of values that are acceptable. Defining the parameters of your function or program upfront can help you identify any potential problems or issues before you start coding.</li>
-		<li><strong>Return</strong>: In this step, you define the outputs of your function or program. This includes specifying the data type, format, and range of values that are expected. Defining the return values of your function or program upfront can help you ensure that your code is working as expected and can help you catch any errors or issues early on.</li>
-		<li><strong>Examples</strong>: In this step, you look for similar code examples to get a better understanding of the problem and possible solutions. This can help you learn from others' experiences and avoid common mistakes. By studying examples of similar problems and solutions, you can gain a deeper understanding of the problem you're trying to solve and identify potential pitfalls or issues.</li>
-		<li><strong>Pseudocode</strong>: In this step, you write an English-based algorithm or outline of the solution, breaking it down into small, clear, and manageable steps. This can help you think through the problem before you start coding and can make it easier to write the actual code later. By breaking down the problem into smaller, more manageable steps, you can create a roadmap for your code and identify any potential issues or challenges.</li>
-		</ul>
-	
-	</div>
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <div class="hero-content">
+      <h2 class="hero-title">What drives the world more than data?</h2>
+      <p class="hero-subtitle">In today's digital age, data is the foundation of innovation, decision-making, and progress across every sector of society.</p>
+    </div>
+    <div class="hero-image">
+      <img src="data.jpeg" alt="Data visualization and analytics" class="hero-img">
+    </div>
+  </div>
 
-	<div class='qa'>
-	<b>Q: How do you deal with missing data??</b>
-	<p><b>A:</b> Missing data is a common challenge in data science, and there are several ways to handle it. Imputation, deletion, and using machine learning algorithms that can handle missing values are some of the common techniques used to deal with missing data. However, the choice of method depends on the type and amount of missing data, and the goals of the analysis..</p>
-	</div>
+  <!-- Inspirational Quotes Section -->
+  <section class="quotes-section">
+    <h3 class="section-title">Inspiring Perspectives on Data</h3>
+    <div class="quotes-grid">
+      <div class="quote-card">
+        <div class="quote-icon">💎</div>
+        <blockquote>"Data is the new oil."</blockquote>
+        <cite>- Clive Humby, Data Science Entrepreneur</cite>
+      </div>
+      
+      <div class="quote-card">
+        <div class="quote-icon">💰</div>
+        <blockquote>"Data is the currency of the 21st century."</blockquote>
+        <cite>- Thomas Redman, Data Management Expert</cite>
+      </div>
+      
+      <div class="quote-card">
+        <div class="quote-icon">🌐</div>
+        <blockquote>"Data is a precious thing and will last longer than the systems themselves."</blockquote>
+        <cite>- Tim Berners-Lee, Inventor of the World Wide Web</cite>
+      </div>
+    </div>
+  </section>
 
-	<div class='qa'>
-	<b>Q: What if I see something incorrect in the post?</b>
-	<p><b>A:</b> Send me an email: kibromhft AT gmail.com if you have questions or find errors.</p>
-	</div>
+  <!-- Data Impact Section -->
+  <section class="impact-section">
+    <h3 class="section-title">Data's Transformative Impact</h3>
+    
+    <div class="impact-grid">
+      <div class="impact-card">
+        <div class="impact-icon">🏢</div>
+        <h4>Business Intelligence</h4>
+        <p>Data enables smarter decisions, optimized operations, and enhanced customer experiences. According to McKinsey, data-driven organizations are <strong>23 times more likely to acquire customers</strong> and <strong>19 times more likely to be profitable</strong>.</p>
+        <a href="https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/five-facts-how-customer-analytics-boosts-corporate-performance" class="learn-more">Learn More →</a>
+      </div>
+      
+      <div class="impact-card">
+        <div class="impact-icon">💻</div>
+        <h4>Software Development</h4>
+        <p>Data helps developers identify patterns, write better code, and fix bugs faster. GitHub's analytics have significantly improved code review processes and collaboration among developers worldwide.</p>
+      </div>
+      
+      <div class="impact-card">
+        <div class="impact-icon">🏥</div>
+        <h4>Healthcare Innovation</h4>
+        <p>Data can literally save lives through accurate diagnostics, efficient resource allocation, and targeted interventions. This empowers healthcare professionals to make informed decisions that significantly improve patient outcomes.</p>
+      </div>
+    </div>
+  </section>
 
+  <!-- Medical Imaging Datasets Section -->
+  <section class="datasets-section">
+    <h3 class="section-title">Medical Imaging Datasets: Current Landscape</h3>
+    
+    <div class="dataset-overview">
+      <p class="overview-text">While existing chest X-ray datasets have advanced medical AI research, they face significant limitations that impact their global applicability and effectiveness.</p>
+    </div>
+    
+    <div class="datasets-grid">
+      <div class="dataset-card">
+        <h4>NIH Chest X-ray Dataset</h4>
+        <ul>
+          <li><strong>Size:</strong> 100,000+ images</li>
+          <li><strong>Diseases:</strong> 14 conditions</li>
+          <li><strong>Limitation:</strong> Excludes patients under 18, lacks demographic diversity</li>
+        </ul>
+      </div>
+      
+      <div class="dataset-card">
+        <h4>ChestX-ray8 Dataset</h4>
+        <ul>
+          <li><strong>Size:</strong> 108,948 images</li>
+          <li><strong>Diseases:</strong> 8 common conditions</li>
+          <li><strong>Limitation:</strong> Single hospital source, potential bias</li>
+        </ul>
+      </div>
+      
+      <div class="dataset-card">
+        <h4>MIMIC-CXR Dataset</h4>
+        <ul>
+          <li><strong>Feature:</strong> Linked clinical notes</li>
+          <li><strong>Analysis:</strong> Rich contextual data</li>
+          <li><strong>Limitation:</strong> Single institution, high-income focus</li>
+        </ul>
+      </div>
+      
+      <div class="dataset-card">
+        <h4>CheXpert Dataset</h4>
+        <ul>
+          <li><strong>Size:</strong> 200,000+ labeled images</li>
+          <li><strong>Feature:</strong> Medical device details</li>
+          <li><strong>Limitation:</strong> Adult patients only, Stanford-focused</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="challenges-section">
+      <h4>Key Challenges</h4>
+      <div class="challenges-grid">
+        <div class="challenge-item">
+          <span class="challenge-icon">🌍</span>
+          <span>Limited global representation</span>
+        </div>
+        <div class="challenge-item">
+          <span class="challenge-icon">⚖️</span>
+          <span>Selection bias in data collection</span>
+        </div>
+        <div class="challenge-item">
+          <span class="challenge-icon">🏥</span>
+          <span>Single-institution limitations</span>
+        </div>
+        <div class="challenge-item">
+          <span class="challenge-icon">📊</span>
+          <span>Insufficient disease coverage</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-	<div class='qa'>
-	<b>Q: How do you select the best ML algorithm for a specific problem?</b>
-	<p><b>A:</b> It depends on the type of data, the size of the dataset, the complexity of the problem, and the performance metrics. For instance, if you are interested in medical imaging data, you will need to consider large-scale datasets, complex algorithms and accuracy metrics when selecting the right type of data. I usually start with simple models and gradually increase the complexity until I reach a satisfactory level of performance. I also use cross-validation and grid search techniques to fine-tune the hyperparameters of the models.
-	</p>
-	</div>
+  <!-- Tikur Dataset Section -->
+  <section class="tikur-section">
+    <div class="tikur-hero">
+      <div class="tikur-content">
+        <h3 class="section-title">Introducing the Tikur Chest X-ray Dataset</h3>
+        <p class="tikur-description">We are expanding the <strong>Tikur Chest X-ray Image Dataset</strong> to address the limitations of existing datasets and provide researchers and healthcare providers with high-quality, diverse medical imaging data.</p>
+      </div>
+      <div class="tikur-features">
+        <div class="feature-item">
+          <span class="feature-icon">🔬</span>
+          <span>Comprehensive disease coverage</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🌍</span>
+          <span>Global demographic representation</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🏥</span>
+          <span>Multiple healthcare institutions</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">📈</span>
+          <span>High-quality diagnostic tools</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="disease-coverage">
+      <h4>Disease Coverage</h4>
+      <p>Our expanded dataset will include comprehensive coverage for cardiovascular and respiratory diseases, including:</p>
+      <div class="diseases-grid">
+        <span class="disease-tag">Pneumothorax</span>
+        <span class="disease-tag">Pleural Effusion</span>
+        <span class="disease-tag">Pulmonary Edema</span>
+        <span class="disease-tag">Congestive Heart Failure</span>
+        <span class="disease-tag">Pneumonia</span>
+        <span class="disease-tag">Tuberculosis</span>
+      </div>
+    </div>
+    
+    <div class="dataset-link">
+      <h4>Access the Dataset</h4>
+      <p>Explore the Tikur Chest X-ray Image Dataset:</p>
+      <a href="https://github.com/kibromhft/Tikur_ChestX-ray14" target="_blank" class="dataset-button">
+        <span class="button-icon">📊</span>
+        <span>View on GitHub</span>
+        <span class="button-arrow">→</span>
+      </a>
+    </div>
+  </section>
 
-	<div class='qa'>
-	<b>Q: What are some common pitfalls in data science?</b>
-	<p><b>A:</b> Some common pitfalls include overfitting, underfitting, bias, and incorrect assumptions about the data. For example, if the data being used to train a machine learning model is biased, it can lead to incorrect conclusions being made when the model is applied to new data. It is imperative to validate the models and results using different techniques and to have a good understanding of the data and the problem.
-	</p>
-	</div>
-	
-	<div class='qa'>
-	<b>Q: How do you stay updated with the latest trends and techniques in data science?</b>
-	<p><b>A:</b> I continuously stay updated with the latest trends and techniques in data science. Reading research papers, following blogs and social media accounts related to data science, collaborating with other data scientists, and participating in online communities are some of the effective ways to stay updated with the latest developments in the field.</p>
-	</div>
-	
-	<div class='qa'>
-	<b>Q: What are your dreams for data science in Africa?</b>
-	<p><b>A:</b> As an African data scientist, my dream is to see more Africans involved in data science, AI, and machine learning. I would love to see more investment in research and development, more collaborations between academia and industry, and more initiatives to bridge the gender and digital divide in the field.
-	</p>
-	</div>
-	
+  <!-- Lacuna Fund Section -->
+  <section class="lacuna-section">
+    <div class="lacuna-content">
+      <div class="lacuna-icon">🤝</div>
+      <h4>Supported by Lacuna Fund</h4>
+      <p>We are grateful to <strong>Lacuna Fund</strong> for initiating our collaborative efforts, which help us double our impact in medical imaging research. We look forward to making an even greater difference in this important field.</p>
+    </div>
+  </section>
 
-
-	<div class="sharing-section">
-		<p>If my posts have inspired you or helped you in any way, please consider sharing them with others who might benefit from them.</p>
-	</div>
+  <!-- Call to Action -->
+  <section class="cta-section">
+    <div class="cta-content">
+      <h3>Stay Tuned</h3>
+      <p>We're working on an upcoming large representative dataset that will make a significant impact in medical imaging research and healthcare delivery worldwide.</p>
+      <div class="cta-badge">
+        <span class="badge-icon">🚀</span>
+        <span>Coming Soon</span>
+      </div>
+    </div>
+  </section>
 
 </div>
     </main>
