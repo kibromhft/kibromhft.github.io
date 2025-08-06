@@ -561,8 +561,12 @@ if (!doNotTrack) {
 
     /* Ensure proper spacing and layering */
     .header {
-        position: relative;
-        z-index: 10;
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 1000 !important;
+        background: var(--bg-primary) !important;
+        backdrop-filter: blur(10px) !important;
+        border-bottom: 1px solid var(--border-color) !important;
     }
 
     .main {
