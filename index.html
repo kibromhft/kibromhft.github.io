@@ -149,6 +149,47 @@ if (!doNotTrack) {
     body.dark .small-heading {
         color: rgb(218, 218, 219) !important;
     }
+
+    /* Mobile dropdown functionality */
+    @media screen and (max-width: 768px) {
+        /* Completely disable hover behavior on touch devices */
+        .dropdown .dropdown-menu {
+            opacity: 0 !important;
+            visibility: hidden !important;
+            transform: translateY(-8px) !important;
+        }
+
+        /* Show dropdown when dropdown-open class is present */
+        .dropdown.dropdown-open .dropdown-menu {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateY(0) !important;
+        }
+
+        /* Rotate caret when dropdown is open */
+        .dropdown.dropdown-open .caret {
+            transform: rotate(180deg) !important;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        /* Mobile dropdown functionality for smaller screens */
+        .dropdown .dropdown-menu {
+            opacity: 0 !important;
+            visibility: hidden !important;
+            transform: translateY(-8px) !important;
+        }
+
+        .dropdown.dropdown-open .dropdown-menu {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateY(0) !important;
+        }
+
+        .dropdown.dropdown-open .caret {
+            transform: rotate(180deg) !important;
+        }
+    }
 </style>
 
 
@@ -487,6 +528,76 @@ Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolu
         } else {
             document.body.classList.add('dark');
             localStorage.setItem("pref-theme", 'dark');
+        }
+    });
+</script>
+
+<script>
+    // Mobile dropdown functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check if device is touch-based (mobile) or small screen
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        const isSmallScreen = window.innerWidth <= 768;
+        
+        if (isTouchDevice || isSmallScreen) {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            // Disable hover behavior on mobile by removing hover styles
+            dropdowns.forEach(dropdown => {
+                const menu = dropdown.querySelector('.dropdown-menu');
+                if (menu) {
+                    // Force mobile styles
+                    menu.style.transition = 'all 0.2s ease';
+                }
+            });
+            
+            dropdowns.forEach(dropdown => {
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+                const menu = dropdown.querySelector('.dropdown-menu');
+                
+                if (toggle && menu) {
+                    // Add click event to toggle dropdown
+                    toggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        // Close all other dropdowns
+                        dropdowns.forEach(otherDropdown => {
+                            if (otherDropdown !== dropdown) {
+                                otherDropdown.classList.remove('dropdown-open');
+                            }
+                        });
+                        
+                        // Toggle current dropdown
+                        dropdown.classList.toggle('dropdown-open');
+                    });
+                }
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.dropdown')) {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('dropdown-open');
+                    });
+                }
+            });
+            
+            // Close dropdown when pressing Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('dropdown-open');
+                    });
+                }
+            });
+            
+            // Close dropdown when window is resized
+            window.addEventListener('resize', function() {
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('dropdown-open');
+                });
+            });
         }
     });
 </script>
