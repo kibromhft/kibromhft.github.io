@@ -575,6 +575,7 @@ body:not(.dark) #sun {
     
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     /* Mobile: Override hover behavior - use JavaScript instead */
     .dropdown:hover .dropdown-menu {
         opacity: 0;
@@ -598,6 +599,8 @@ body:not(.dark) #sun {
         }
     }
     
+=======
+>>>>>>> parent of 3b83ade (dropdown js)
 =======
 >>>>>>> parent of 3b83ade (dropdown js)
 =======
