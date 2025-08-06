@@ -5,20 +5,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const caret = document.querySelector('.dropdown-toggle .caret');
     
     if (dropdownToggle && dropdownMenu) {
+        let isDropdownOpen = false;
+        
         // Toggle dropdown on click
         dropdownToggle.addEventListener('click', function(event) {
             event.preventDefault();
             event.stopPropagation();
             
-            const isExpanded = dropdownMenu.classList.contains('show');
-            
-            if (isExpanded) {
+            if (isDropdownOpen) {
                 // Close dropdown
                 dropdownMenu.classList.remove('show');
                 if (caret) {
                     caret.style.transform = 'rotate(0deg)';
                 }
                 dropdownToggle.setAttribute('aria-expanded', 'false');
+                isDropdownOpen = false;
             } else {
                 // Open dropdown
                 dropdownMenu.classList.add('show');
@@ -26,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     caret.style.transform = 'rotate(180deg)';
                 }
                 dropdownToggle.setAttribute('aria-expanded', 'true');
+                isDropdownOpen = true;
             }
         });
         
@@ -33,12 +35,13 @@ document.addEventListener('DOMContentLoaded', function() {
         document.addEventListener('click', function(event) {
             const isClickInsideDropdown = dropdownToggle.contains(event.target) || dropdownMenu.contains(event.target);
             
-            if (!isClickInsideDropdown) {
+            if (!isClickInsideDropdown && isDropdownOpen) {
                 dropdownMenu.classList.remove('show');
                 if (caret) {
                     caret.style.transform = 'rotate(0deg)';
                 }
                 dropdownToggle.setAttribute('aria-expanded', 'false');
+                isDropdownOpen = false;
             }
         });
         
@@ -51,6 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     caret.style.transform = 'rotate(0deg)';
                 }
                 dropdownToggle.setAttribute('aria-expanded', 'false');
+                isDropdownOpen = false;
             }
         });
         
