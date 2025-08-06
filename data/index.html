@@ -748,15 +748,6 @@ if (!doNotTrack) {
 
 		/* Mobile-specific overrides to match keywords page behavior */
 		@media screen and (max-width: 768px) {
-			/* Ensure sticky navigation works on mobile */
-			.header {
-				position: sticky !important;
-				top: 0 !important;
-				z-index: 1000 !important;
-				background: var(--theme) !important;
-				border-bottom: 1px solid var(--border) !important;
-			}
-			
 			/* Override main.css mobile navigation with keywords-style behavior */
 			.nav {
 				padding: 0 16px !important;
@@ -828,15 +819,6 @@ if (!doNotTrack) {
 
 		/* Override the problematic 480px breakpoint from main.css */
 		@media screen and (max-width: 480px) {
-			/* Ensure sticky navigation works on mobile */
-			.header {
-				position: sticky !important;
-				top: 0 !important;
-				z-index: 1000 !important;
-				background: var(--theme) !important;
-				border-bottom: 1px solid var(--border) !important;
-			}
-			
 			.nav {
 				flex-direction: row !important;
 				height: auto !important;
