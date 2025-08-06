@@ -1007,24 +1007,7 @@ if (!doNotTrack) {
     };
 
 </script>
-<script>
-    // Wait for DOM to be ready before adding event listener
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('DOM loaded, looking for theme toggle button...');
-        const themeToggle = document.getElementById("theme-toggle");
-        if (themeToggle) {
-            console.log('Theme toggle button found, adding event listener...');
-            themeToggle.addEventListener("click", () => {
-                console.log('Theme toggle clicked!');
-                document.body.classList.toggle("dark");
-                localStorage.setItem("pref-theme", document.body.classList.contains("dark") ? "dark" : "light");
-                console.log('Theme changed to:', document.body.classList.contains("dark") ? "dark" : "light");
-            });
-        } else {
-            console.log('Theme toggle button not found!');
-        }
-    });
-</script>
+
 
 <script>
     // Mobile dropdown functionality
