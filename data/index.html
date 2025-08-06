@@ -19,13 +19,12 @@
 
 <script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
     onload="hljs.initHighlightingOnLoad();"></script>
-  
 <link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kibromhft.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kibromhft.github.io/favicon-32x32.png">
 <link rel="apple-touch-icon" href="https://kibromhft.github.io/apple-touch-icon.png">
 <link rel="mask-icon" href="https://kibromhft.github.io/safari-pinned-tab.svg">
-
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <noscript>
@@ -61,10 +60,6 @@
             .list:not(.dark)::-webkit-scrollbar-thumb {
                 border-color: var(--theme);
             }
-			.highlight {
-            color: #e74c3c;
-            font-weight: bold;
-        }
         }
 
     </style>
@@ -558,50 +553,6 @@ if (!doNotTrack) {
     body.dark .page-header h1::after {
         background: linear-gradient(90deg, rgb(34, 211, 238) 0%, rgb(6, 182, 212) 50%, rgb(8, 145, 178) 100%);
         box-shadow: 0 2px 8px rgba(34, 211, 238, 0.3);
-    }
-
-    /* Premium footer styling - same as FAQ page */
-    .footer {
-        margin-top: 6rem;
-        padding: 3rem 0;
-        text-align: center;
-        border-top: 1px solid rgba(226, 232, 240, 0.8);
-        background: linear-gradient(135deg, rgba(248, 250, 252, 0.5) 0%, rgba(255, 255, 255, 0.8) 100%);
-        backdrop-filter: blur(10px);
-    }
-
-    .footer span {
-        font-weight: 500;
-        color: rgb(51, 65, 85);
-    }
-
-    .footer a {
-        color: rgb(13, 110, 253);
-        text-decoration: none;
-        font-weight: 600;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .footer a:hover {
-        color: rgb(10, 88, 202);
-        text-decoration: underline;
-    }
-
-    body.dark .footer {
-        border-top-color: rgba(51, 65, 85, 0.8);
-        background: linear-gradient(135deg, rgba(15, 23, 42, 0.5) 0%, rgba(30, 41, 59, 0.8) 100%);
-    }
-
-    body.dark .footer span {
-        color: rgb(203, 213, 225);
-    }
-
-    body.dark .footer a {
-        color: rgb(34, 211, 238);
-    }
-
-    body.dark .footer a:hover {
-        color: rgb(6, 182, 212);
     }
 
     /* Let main.css handle sticky navigation - same as FAQ page */
