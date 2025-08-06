@@ -1018,6 +1018,9 @@ if (!doNotTrack) {
 				flex-wrap: wrap !important;
 				overflow: visible !important;
 				white-space: normal !important;
+				/* Override max-width and height constraints */
+				max-width: none !important;
+				height: auto !important;
 			}
 
 			#menu {
@@ -1042,6 +1045,9 @@ if (!doNotTrack) {
 				padding: 8px 12px !important;
 				border-radius: 6px !important;
 				white-space: normal !important;
+				/* Ensure text wrapping works properly */
+				word-wrap: break-word !important;
+				overflow-wrap: break-word !important;
 			}
 
 			.dropdown-menu {
@@ -1049,6 +1055,41 @@ if (!doNotTrack) {
 				left: 0 !important;
 				min-width: 200px !important;
 				border-radius: 8px !important;
+			}
+		}
+
+		/* Override the problematic 480px breakpoint from main.css */
+		@media screen and (max-width: 480px) {
+			.nav {
+				flex-direction: row !important;
+				height: auto !important;
+				padding: 0 16px !important;
+				display: flex !important;
+				align-items: center !important;
+				flex-wrap: wrap !important;
+				/* Override max-width constraints */
+				max-width: none !important;
+			}
+
+			.logo {
+				margin-bottom: 0 !important;
+			}
+
+			#menu {
+				flex-wrap: wrap !important;
+				justify-content: flex-start !important;
+				gap: 6px !important;
+				display: flex !important;
+				flex-direction: row !important;
+			}
+
+			#menu a {
+				font-size: 14px !important;
+				padding: 6px 8px !important;
+				white-space: normal !important;
+				/* Ensure text wrapping works properly */
+				word-wrap: break-word !important;
+				overflow-wrap: break-word !important;
 			}
 		}
 		</style>
