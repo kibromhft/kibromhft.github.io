@@ -960,7 +960,35 @@ if (!doNotTrack) {
     </svg>
 </a>
 
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
 
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
 <script>
     var mybutton = document.getElementById("top-link");
     window.onscroll = function () {
@@ -974,20 +1002,40 @@ if (!doNotTrack) {
     };
 
 </script>
+<script>
+    // Wait for DOM to be ready before adding event listener
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM loaded, looking for theme toggle button...');
+        const themeToggle = document.getElementById("theme-toggle");
+        if (themeToggle) {
+            console.log('Theme toggle button found, adding event listener...');
+            themeToggle.addEventListener("click", () => {
+                console.log('Theme toggle clicked!');
+                document.body.classList.toggle("dark");
+                localStorage.setItem("pref-theme", document.body.classList.contains("dark") ? "dark" : "light");
+                console.log('Theme changed to:', document.body.classList.contains("dark") ? "dark" : "light");
+            });
+        } else {
+            console.log('Theme toggle button not found!');
+        }
+    });
+</script>
 
 <script>
     // Mobile dropdown functionality
     document.addEventListener('DOMContentLoaded', function() {
+        // Check if device is touch-based (mobile) or small screen
         const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
         const isSmallScreen = window.innerWidth <= 768;
         
         if (isTouchDevice || isSmallScreen) {
             const dropdowns = document.querySelectorAll('.dropdown');
-            let toggleClicked = false; // Flag to manage timing conflicts
             
+            // Disable hover behavior on mobile by removing hover styles
             dropdowns.forEach(dropdown => {
                 const menu = dropdown.querySelector('.dropdown-menu');
                 if (menu) {
+                    // Force mobile styles
                     menu.style.transition = 'all 0.2s ease';
                 }
             });
@@ -997,52 +1045,45 @@ if (!doNotTrack) {
                 const menu = dropdown.querySelector('.dropdown-menu');
                 
                 if (toggle && menu) {
+                    // Add click event to toggle dropdown
                     toggle.addEventListener('click', function(e) {
-                        console.log('Dropdown toggle clicked!');
                         e.preventDefault();
                         e.stopPropagation();
                         
-                        toggleClicked = true; // Set flag to prevent immediate closing
-                        
+                        // Close all other dropdowns
                         dropdowns.forEach(otherDropdown => {
                             if (otherDropdown !== dropdown) {
                                 otherDropdown.classList.remove('dropdown-open');
                             }
                         });
                         
+                        // Toggle current dropdown
                         const isOpen = dropdown.classList.contains('dropdown-open');
-                        console.log('Is dropdown open?', isOpen);
                         if (isOpen) {
                             dropdown.classList.remove('dropdown-open');
-                            console.log('Closing dropdown');
                         } else {
                             dropdown.classList.add('dropdown-open');
-                            console.log('Opening dropdown');
                         }
-                        
-                        setTimeout(() => {
-                            toggleClicked = false;
-                        }, 100);
                     });
                 }
             });
             
+            // Close dropdown when clicking outside
             document.addEventListener('click', function(e) {
-                console.log('Document clicked on:', e.target);
-                if (toggleClicked) {
-                    console.log('Toggle was just clicked, not closing');
+                // Don't close if clicking on the dropdown toggle
+                if (e.target.closest('.dropdown-toggle')) {
                     return;
                 }
-                if (e.target.closest('.dropdown-toggle') || e.target.closest('.dropdown')) {
-                    console.log('Clicked on dropdown or toggle, not closing');
-                    return;
+                
+                // Close if clicking outside dropdown
+                if (!e.target.closest('.dropdown')) {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('dropdown-open');
+                    });
                 }
-                console.log('Clicked outside dropdown, closing all');
-                dropdowns.forEach(dropdown => {
-                    dropdown.classList.remove('dropdown-open');
-                });
             });
             
+            // Close dropdown when pressing Escape key
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
                     dropdowns.forEach(dropdown => {
@@ -1051,11 +1092,58 @@ if (!doNotTrack) {
                 }
             });
             
+            // Close dropdown when window is resized
             window.addEventListener('resize', function() {
                 dropdowns.forEach(dropdown => {
                     dropdown.classList.remove('dropdown-open');
                 });
             });
+        }
+    });
+
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
         }
     });
 </script>
