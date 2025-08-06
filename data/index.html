@@ -1006,12 +1006,23 @@ if (!doNotTrack) {
         }
 
         .tikur-description strong {
-            color: #1e40af;
-            font-weight: 600;
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff00);
+            background-size: 200% 200%;
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            animation: neonPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes neonPulse {
+            0%, 100% { 
+                text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            }
+            50% { 
+                text-shadow: 0 0 40px rgba(0, 255, 255, 1);
+            }
         }
 
         .tikur-description a {
@@ -1721,7 +1732,7 @@ if (!doNotTrack) {
   <!-- Tikur Dataset Section -->
   <section class="tikur-section">
     <div class="tikur-content">
-              <h3>Advancing Medical AI: The Tikur Chest X-ray Dataset Initiative</h3>
+              <h3>Advancing Medical AI</h3>
       <p class="tikur-description">We are currently working on expanding the <strong>Tikur Chest X-ray Image Dataset</strong> as part of our efforts to improve the quality of the existing datasets, which will help researchers and healthcare providers develop accurate diagnostic tools for the diagnosis of cardiovascular and respiratory diseases. To better equip medical professionals and researchers in the fight against cardiovascular and respiratory diseases, we are proud to announce the upcoming launch of new medical imaging datasets by expanding the Tikur Chest X-ray Dataset that will provide access to high-quality medical imaging data. For instance, the expanded dataset will include images from various sources to help researchers and providers detect diseases such as pneumothorax, pleural effusion, pulmonary edema and congestive heart failure. We hope that this dataset will help address the challenges faced by healthcare providers in low- and middle-income countries and improve health outcomes for individuals and communities affected by cardiovascular and respiratory diseases. Link to the Tikur Chest X-ray Image Dataset is <br> <a href="https://github.com/kibromhft/Tikur_ChestX-ray14" target="_new" id="dataset-link">https://github.com/kibromhft/Tikur_ChestX-ray14</a>.</p>
     </div>
   </section>
