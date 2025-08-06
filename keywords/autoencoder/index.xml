@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>autoencoder on Kb&#39;s Blog</title>
+    <link>https://kibromhft.github.io/keywords/autoencoder/</link>
+    <description>Recent content in autoencoder on Kb&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 12 Aug 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://kibromhft.github.io/keywords/autoencoder/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Disentangling the Latent Space: A Guide to Beta-VAE</title>
+      <link>https://kibromhft.github.io/posts/2022-11-27-vae/</link>
+      <pubDate>Sun, 12 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://kibromhft.github.io/posts/2022-11-27-vae/</guid>
+      <description>
+Autocoder is invented to reconstruct high-dimensional data using a neural network model with a narrow bottleneck layer in the middle (oops, this is probably not true for Variational Autoencoder, and we will investigate it in details in later sections). A nice byproduct is dimension reduction: the bottleneck layer captures a compressed latent encoding.</description>
+    </item>
+    
+  </channel>
+</rss>
