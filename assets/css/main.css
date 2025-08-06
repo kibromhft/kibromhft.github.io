@@ -573,7 +573,7 @@ body:not(.dark) #sun {
         border-radius: 8px;
     }
     
-    /* Override hover behavior for mobile - use JavaScript instead */
+    /* Mobile: Override hover behavior - use JavaScript instead */
     .dropdown:hover .dropdown-menu {
         opacity: 0;
         visibility: hidden;
@@ -585,6 +585,15 @@ body:not(.dark) #sun {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
+    }
+    
+    /* Desktop: Allow hover behavior to work normally */
+    @media (min-width: 769px) {
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
     }
     
     .first-entry {
