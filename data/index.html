@@ -531,15 +531,7 @@ if (!doNotTrack) {
         z-index: 1; /* Ensure proper layering */
     }
 
-    .page-header h1::before {
-        content: '📊';
-        position: absolute;
-        top: -2rem;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 2rem;
-        opacity: 0.1;
-    }
+    /* Removed the ::before pseudo-element to eliminate the unnecessary rectangle */
 
     .page-header h1::after {
         content: '';
@@ -547,7 +539,7 @@ if (!doNotTrack) {
         bottom: -15px;
         left: 50%;
         transform: translateX(-50%);
-        width: 80px;
+        width: 140px; /* Increased from 80px to 140px for longer title */
         height: 4px;
         background: linear-gradient(90deg, rgb(13, 110, 253) 0%, rgb(59, 130, 246) 50%, rgb(10, 88, 202) 100%);
         border-radius: 2px;
