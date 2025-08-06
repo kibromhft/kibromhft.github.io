@@ -506,20 +506,20 @@ if (!doNotTrack) {
 
     /* Clean page header styling for data page - exact same as FAQ */
     .page-header h1 {
-        color: var(--text-primary);
-        font-size: var(--font-size-2xl); /* Reduced from 3xl to 2xl */
-        font-weight: 700;
-        font-family: var(--font-body); /* Same as FAQ - Libertine font */
-        margin-bottom: var(--space-lg); /* Reduced spacing */
-        margin-top: 1rem; /* Reduced top margin */
-        text-align: center;
-        position: relative;
-        letter-spacing: -0.02em;
-        background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        z-index: 1;
+        color: var(--text-primary) !important;
+        font-size: var(--font-size-2xl) !important; /* Reduced from 3xl to 2xl */
+        font-weight: 700 !important;
+        font-family: var(--font-body) !important; /* Same as FAQ - Libertine font */
+        margin-bottom: var(--space-lg) !important; /* Reduced spacing */
+        margin-top: 1rem !important; /* Reduced top margin */
+        text-align: center !important;
+        position: relative !important;
+        letter-spacing: -0.02em !important;
+        background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        background-clip: text !important;
+        z-index: 1 !important;
     }
 
     /* Removed the ::before pseudo-element (rectangle/icon) */
@@ -538,11 +538,12 @@ if (!doNotTrack) {
     }
 
     body.dark .page-header h1 {
-        background: linear-gradient(135deg, rgb(248, 250, 252) 0%, rgb(226, 232, 240) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        font-family: "Essays 1743", serif; /* Same as FAQ - switches to Essays 1743 in dark mode */
+        background: linear-gradient(135deg, rgb(248, 250, 252) 0%, rgb(226, 232, 240) 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        background-clip: text !important;
+        font-family: "Essays 1743", serif !important; /* Same as FAQ - switches to Essays 1743 in dark mode */
+        color: transparent !important; /* Ensure text is transparent for gradient */
     }
 
     body.dark .page-header h1::after {
