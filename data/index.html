@@ -295,10 +295,7 @@ if (!doNotTrack) {
     }
 
 
-    /* Set --code-bg for all elements except the header */
-    body:not(.header) {
-        --code-bg: rgb(255, 255, 255) !important; /* Set code background color to white */
-    }
+
 
 
 
@@ -1087,9 +1084,8 @@ if (!doNotTrack) {
 				flex-wrap: wrap !important;
 				overflow: visible !important;
 				white-space: normal !important;
-				/* Override max-width and height constraints */
+				/* Override max-width constraints but keep sticky behavior */
 				max-width: none !important;
-				height: auto !important;
 			}
 
 			#menu {
@@ -1150,12 +1146,11 @@ if (!doNotTrack) {
 		@media screen and (max-width: 480px) {
 			.nav {
 				flex-direction: row !important;
-				height: auto !important;
 				padding: 0 16px !important;
 				display: flex !important;
 				align-items: center !important;
 				flex-wrap: wrap !important;
-				/* Override max-width constraints */
+				/* Override max-width constraints but keep sticky behavior */
 				max-width: none !important;
 			}
 
