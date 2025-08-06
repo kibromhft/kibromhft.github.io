@@ -1038,6 +1038,8 @@ if (!doNotTrack) {
 				display: flex !important;
 				flex-direction: row !important;
 				flex-wrap: nowrap !important;
+				/* Allow dropdowns to break out of scroll container */
+				overflow: visible !important;
 			}
 
 			#menu li {
@@ -1045,6 +1047,8 @@ if (!doNotTrack) {
 				display: flex !important;
 				white-space: nowrap !important;
 				flex-shrink: 0 !important;
+				/* Ensure dropdown positioning works correctly */
+				position: relative !important;
 			}
 
 			#menu a {
@@ -1061,6 +1065,18 @@ if (!doNotTrack) {
 				left: 0 !important;
 				min-width: 200px !important;
 				border-radius: 8px !important;
+				/* Fix dropdown positioning to break out of scrolling container */
+				position: absolute !important;
+				top: calc(100% + 8px) !important;
+				transform: none !important;
+				z-index: 1001 !important;
+				/* Ensure dropdown is not clipped by overflow */
+				overflow: visible !important;
+			}
+
+			/* Ensure parent container doesn't clip the dropdown */
+			.nav {
+				overflow: visible !important;
 			}
 		}
 
@@ -1075,6 +1091,8 @@ if (!doNotTrack) {
 				flex-wrap: wrap !important;
 				/* Override max-width constraints */
 				max-width: none !important;
+				/* Ensure dropdowns are not clipped */
+				overflow: visible !important;
 			}
 
 			.logo {
@@ -1089,6 +1107,13 @@ if (!doNotTrack) {
 				flex-direction: row !important;
 				overflow-x: auto !important;
 				white-space: nowrap !important;
+				/* Allow dropdowns to break out of scroll container */
+				overflow: visible !important;
+			}
+
+			#menu li {
+				/* Ensure dropdown positioning works correctly */
+				position: relative !important;
 			}
 
 			#menu a {
@@ -1097,6 +1122,20 @@ if (!doNotTrack) {
 				white-space: nowrap !important;
 				/* Match keywords page behavior */
 				word-break: keep-all !important;
+			}
+
+			.dropdown-menu {
+				right: auto !important;
+				left: 0 !important;
+				min-width: 200px !important;
+				border-radius: 8px !important;
+				/* Fix dropdown positioning to break out of scrolling container */
+				position: absolute !important;
+				top: calc(100% + 8px) !important;
+				transform: none !important;
+				z-index: 1001 !important;
+				/* Ensure dropdown is not clipped by overflow */
+				overflow: visible !important;
 			}
 		}
 		</style>
