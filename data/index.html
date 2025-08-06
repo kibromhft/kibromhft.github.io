@@ -414,6 +414,7 @@ if (!doNotTrack) {
         font-weight: 700;
         font-family: var(--font-body);
         margin-bottom: var(--space-3xl);
+        margin-top: 2rem; /* Add top margin to prevent overlap */
         text-align: center;
         position: relative;
         letter-spacing: -0.02em;
@@ -421,6 +422,7 @@ if (!doNotTrack) {
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        z-index: 1; /* Ensure proper layering */
     }
 
     .page-header h1::before {
@@ -457,6 +459,22 @@ if (!doNotTrack) {
     body.dark .page-header h1::after {
         background: linear-gradient(90deg, rgb(34, 211, 238) 0%, rgb(6, 182, 212) 50%, rgb(8, 145, 178) 100%);
         box-shadow: 0 2px 8px rgba(34, 211, 238, 0.3);
+    }
+
+    /* Ensure proper spacing and layering */
+    .header {
+        position: relative;
+        z-index: 10;
+    }
+
+    .main {
+        margin-top: 1rem; /* Add space between nav and main content */
+        position: relative;
+        z-index: 1;
+    }
+
+    .page-header {
+        padding-top: 1rem; /* Additional padding for the header */
     }
 
 </style>
