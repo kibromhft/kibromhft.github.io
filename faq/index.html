@@ -1056,20 +1056,6 @@ if (!doNotTrack) {
 				min-width: 200px !important;
 				border-radius: 8px !important;
 			}
-			
-			/* Override hover behavior for mobile - use JavaScript instead */
-			.dropdown:hover .dropdown-menu {
-				opacity: 0 !important;
-				visibility: hidden !important;
-				transform: translateY(-8px) !important;
-			}
-			
-			/* Show dropdown when JavaScript adds 'show' class */
-			.dropdown-menu.show {
-				opacity: 1 !important;
-				visibility: visible !important;
-				transform: translateY(0) !important;
-			}
 		}
 
 		/* Override the problematic 480px breakpoint from main.css */
@@ -1307,8 +1293,6 @@ if (!doNotTrack) {
         }
     });
 </script>
-
-<script src="/assets/js/dropdown.js"></script>
 </body>
 
 </html>
