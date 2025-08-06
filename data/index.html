@@ -559,41 +559,10 @@ if (!doNotTrack) {
         box-shadow: 0 2px 8px rgba(34, 211, 238, 0.3);
     }
 
-    /* Ensure proper spacing and layering */
+    /* Ensure proper spacing and layering - same as FAQ page */
     .header {
-        position: sticky !important;
-        top: 0 !important;
-        z-index: 1000 !important;
-        background: var(--bg-primary) !important;
-        backdrop-filter: blur(10px) !important;
-        border-bottom: 1px solid var(--border-color) !important;
-    }
-
-    /* Mobile sticky navigation fix */
-    @media screen and (max-width: 768px) {
-        .header {
-            position: sticky !important;
-            top: 0 !important;
-            z-index: 1000 !important;
-            background: var(--bg-primary) !important;
-            backdrop-filter: blur(10px) !important;
-            border-bottom: 1px solid var(--border-color) !important;
-            -webkit-transform: translateZ(0) !important; /* Force hardware acceleration */
-            transform: translateZ(0) !important;
-        }
-    }
-
-    @media screen and (max-width: 480px) {
-        .header {
-            position: sticky !important;
-            top: 0 !important;
-            z-index: 1000 !important;
-            background: var(--bg-primary) !important;
-            backdrop-filter: blur(10px) !important;
-            border-bottom: 1px solid var(--border-color) !important;
-            -webkit-transform: translateZ(0) !important;
-            transform: translateZ(0) !important;
-        }
+        position: relative;
+        z-index: 10;
     }
 
     .main {
