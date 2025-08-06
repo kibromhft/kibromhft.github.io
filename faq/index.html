@@ -1060,17 +1060,22 @@ if (!doNotTrack) {
 				word-break: keep-all !important;
 			}
 
+			/* Force dropdown to break out of any scrolling containers */
+			.dropdown {
+				position: relative !important;
+				overflow: visible !important;
+			}
+
+			/* Ensure dropdown menu breaks out of scroll container */
 			.dropdown-menu {
-				right: auto !important;
-				left: 0 !important;
-				min-width: 200px !important;
-				border-radius: 8px !important;
-				/* Fix dropdown positioning to break out of scrolling container */
 				position: absolute !important;
 				top: calc(100% + 8px) !important;
+				left: 0 !important;
+				right: auto !important;
+				min-width: 200px !important;
+				border-radius: 8px !important;
 				transform: none !important;
 				z-index: 1001 !important;
-				/* Ensure dropdown is not clipped by overflow */
 				overflow: visible !important;
 			}
 
@@ -1124,21 +1129,68 @@ if (!doNotTrack) {
 				word-break: keep-all !important;
 			}
 
+			/* Force dropdown to break out of any scrolling containers */
+			.dropdown {
+				position: relative !important;
+				overflow: visible !important;
+			}
+
+			/* Ensure dropdown menu breaks out of scroll container */
 			.dropdown-menu {
-				right: auto !important;
-				left: 0 !important;
-				min-width: 200px !important;
-				border-radius: 8px !important;
-				/* Fix dropdown positioning to break out of scrolling container */
 				position: absolute !important;
 				top: calc(100% + 8px) !important;
+				left: 0 !important;
+				right: auto !important;
+				min-width: 200px !important;
+				border-radius: 8px !important;
 				transform: none !important;
 				z-index: 1001 !important;
-				/* Ensure dropdown is not clipped by overflow */
 				overflow: visible !important;
 			}
 		}
 		</style>
+
+		<script>
+		// Fix dropdown positioning on mobile to break out of scroll containers
+		document.addEventListener('DOMContentLoaded', function() {
+			const dropdowns = document.querySelectorAll('.dropdown');
+			
+			dropdowns.forEach(function(dropdown) {
+				const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+				const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
+				
+				if (dropdownMenu && dropdownToggle) {
+					// Handle hover events for mobile dropdown positioning
+					dropdown.addEventListener('mouseenter', function() {
+						if (window.innerWidth <= 768) {
+							// Position dropdown relative to viewport, not scroll container
+							const toggleRect = dropdownToggle.getBoundingClientRect();
+							const navRect = dropdown.closest('.nav').getBoundingClientRect();
+							
+							dropdownMenu.style.position = 'fixed';
+							dropdownMenu.style.top = (toggleRect.bottom + 8) + 'px';
+							dropdownMenu.style.left = toggleRect.left + 'px';
+							dropdownMenu.style.right = 'auto';
+							dropdownMenu.style.zIndex = '1001';
+							dropdownMenu.style.overflow = 'visible';
+						}
+					});
+					
+					dropdown.addEventListener('mouseleave', function() {
+						if (window.innerWidth <= 768) {
+							// Reset to default positioning
+							dropdownMenu.style.position = '';
+							dropdownMenu.style.top = '';
+							dropdownMenu.style.left = '';
+							dropdownMenu.style.right = '';
+							dropdownMenu.style.zIndex = '';
+							dropdownMenu.style.overflow = '';
+						}
+					});
+				}
+			});
+		});
+		</script>
 
 		
     </nav>
