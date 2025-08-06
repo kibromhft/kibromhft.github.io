@@ -1040,6 +1040,15 @@ if (!doNotTrack) {
 
 		/* Mobile-first responsive navigation */
 		@media screen and (max-width: 768px) {
+			/* Ensure header stays fixed */
+			.header {
+				position: sticky !important;
+				top: 0 !important;
+				z-index: 1000 !important;
+				background: var(--theme) !important;
+				border-bottom: 1px solid var(--border) !important;
+			}
+
 			/* Simplified mobile navigation */
 			.nav {
 				padding: 0 16px;
@@ -1054,6 +1063,12 @@ if (!doNotTrack) {
 				position: relative;
 			}
 
+			/* Logo left alignment like keywords */
+			.logo {
+				margin-right: auto;
+				flex-shrink: 0;
+			}
+
 			#menu {
 				gap: 6px;
 				overflow-x: auto;
@@ -1062,6 +1077,7 @@ if (!doNotTrack) {
 				flex-direction: row;
 				flex-wrap: nowrap;
 				position: relative;
+				margin-left: auto;
 			}
 
 			#menu li {
@@ -1079,16 +1095,16 @@ if (!doNotTrack) {
 				word-break: keep-all;
 			}
 
-			/* Simplified dropdown positioning */
+			/* Click-based dropdown positioning */
 			.dropdown {
 				position: relative;
 				overflow: visible;
 			}
 
 			.dropdown-menu {
-				position: absolute;
-				top: calc(100% + 8px);
-				left: 0;
+				position: fixed;
+				top: auto;
+				left: auto;
 				right: auto;
 				min-width: 200px;
 				border-radius: 8px;
@@ -1098,9 +1114,12 @@ if (!doNotTrack) {
 				opacity: 0;
 				visibility: hidden;
 				transition: opacity 0.2s ease, transform 0.2s ease;
+				background: var(--theme);
+				border: 1px solid var(--border);
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 			}
 
-			.dropdown:hover .dropdown-menu {
+			.dropdown-menu.show {
 				opacity: 1;
 				visibility: visible;
 				transform: translateY(0);
@@ -1110,7 +1129,7 @@ if (!doNotTrack) {
 		/* Improved mobile experience for very small screens */
 		@media screen and (max-width: 480px) {
 			.nav {
-				flex-direction: column;
+				flex-direction: row;
 				height: auto;
 				padding: 12px 16px;
 				display: flex;
@@ -1123,6 +1142,7 @@ if (!doNotTrack) {
 
 			.logo {
 				margin-bottom: 0;
+				margin-right: auto;
 			}
 
 			#menu {
@@ -1134,6 +1154,7 @@ if (!doNotTrack) {
 				overflow-x: auto;
 				white-space: nowrap;
 				position: relative;
+				margin-left: auto;
 			}
 
 			#menu li {
@@ -1147,16 +1168,16 @@ if (!doNotTrack) {
 				word-break: keep-all;
 			}
 
-			/* Simplified dropdown for small screens */
+			/* Click-based dropdown for small screens */
 			.dropdown {
 				position: relative;
 				overflow: visible;
 			}
 
 			.dropdown-menu {
-				position: absolute;
-				top: calc(100% + 8px);
-				left: 0;
+				position: fixed;
+				top: auto;
+				left: auto;
 				right: auto;
 				min-width: 200px;
 				border-radius: 8px;
@@ -1166,9 +1187,12 @@ if (!doNotTrack) {
 				opacity: 0;
 				visibility: hidden;
 				transition: opacity 0.2s ease, transform 0.2s ease;
+				background: var(--theme);
+				border: 1px solid var(--border);
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 			}
 
-			.dropdown:hover .dropdown-menu {
+			.dropdown-menu.show {
 				opacity: 1;
 				visibility: visible;
 				transform: translateY(0);
@@ -1200,9 +1224,10 @@ if (!doNotTrack) {
 		</style>
 
 		<script>
-		// Simplified mobile navigation with performance optimizations
+		// Enhanced mobile navigation with click-based dropdowns
 		document.addEventListener('DOMContentLoaded', function() {
 			const header = document.querySelector('.header');
+			const dropdowns = document.querySelectorAll('.dropdown');
 			
 			// Performance-optimized scroll handling
 			let lastScrollTop = 0;
@@ -1233,6 +1258,65 @@ if (!doNotTrack) {
 			// Add scroll listener with passive option for performance
 			window.addEventListener('scroll', requestTick, { passive: true });
 			
+			// Click-based dropdown functionality for mobile
+			dropdowns.forEach(function(dropdown) {
+				const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
+				const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+				
+				if (dropdownToggle && dropdownMenu) {
+					// Handle click events for mobile dropdown
+					dropdownToggle.addEventListener('click', function(e) {
+						e.preventDefault();
+						e.stopPropagation();
+						
+						// Close all other dropdowns
+						document.querySelectorAll('.dropdown-menu.show').forEach(function(menu) {
+							if (menu !== dropdownMenu) {
+								menu.classList.remove('show');
+							}
+						});
+						
+						// Toggle current dropdown
+						dropdownMenu.classList.toggle('show');
+						
+						// Position dropdown properly on mobile
+						if (window.innerWidth <= 768 && dropdownMenu.classList.contains('show')) {
+							const toggleRect = dropdownToggle.getBoundingClientRect();
+							const viewportWidth = window.innerWidth;
+							const dropdownWidth = 200; // min-width from CSS
+							
+							// Calculate optimal position
+							let leftPosition = toggleRect.left;
+							
+							// Ensure dropdown doesn't overflow right edge
+							if (leftPosition + dropdownWidth > viewportWidth) {
+								leftPosition = viewportWidth - dropdownWidth - 16;
+							}
+							
+							// Ensure dropdown doesn't overflow left edge
+							if (leftPosition < 16) {
+								leftPosition = 16;
+							}
+							
+							// Apply positioning
+							dropdownMenu.style.position = 'fixed';
+							dropdownMenu.style.top = (toggleRect.bottom + 8) + 'px';
+							dropdownMenu.style.left = leftPosition + 'px';
+							dropdownMenu.style.right = 'auto';
+						}
+					});
+				}
+			});
+			
+			// Close dropdowns when clicking outside
+			document.addEventListener('click', function(e) {
+				if (!e.target.closest('.dropdown')) {
+					document.querySelectorAll('.dropdown-menu.show').forEach(function(menu) {
+						menu.classList.remove('show');
+					});
+				}
+			});
+			
 			// Handle window resize for responsive behavior
 			let resizeTimeout;
 			window.addEventListener('resize', function() {
@@ -1240,6 +1324,10 @@ if (!doNotTrack) {
 				resizeTimeout = setTimeout(function() {
 					// Reset any dynamic styles on resize
 					header.style.boxShadow = '';
+					// Close all dropdowns on resize
+					document.querySelectorAll('.dropdown-menu.show').forEach(function(menu) {
+						menu.classList.remove('show');
+					});
 				}, 250);
 			}, { passive: true });
 		});
