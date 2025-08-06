@@ -1319,13 +1319,24 @@ if (!doNotTrack) {
                         });
                         
                         // Toggle current dropdown
-                        dropdown.classList.toggle('dropdown-open');
+                        const isOpen = dropdown.classList.contains('dropdown-open');
+                        if (isOpen) {
+                            dropdown.classList.remove('dropdown-open');
+                        } else {
+                            dropdown.classList.add('dropdown-open');
+                        }
                     });
                 }
             });
             
             // Close dropdown when clicking outside
             document.addEventListener('click', function(e) {
+                // Don't close if clicking on the dropdown toggle
+                if (e.target.closest('.dropdown-toggle')) {
+                    return;
+                }
+                
+                // Close if clicking outside dropdown
                 if (!e.target.closest('.dropdown')) {
                     dropdowns.forEach(dropdown => {
                         dropdown.classList.remove('dropdown-open');
