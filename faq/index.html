@@ -1034,282 +1034,214 @@ if (!doNotTrack) {
 
 		/* Caret size improvements */
 		.caret {
-			font-size: 12px !important;
-			opacity: 0.8 !important;
+			font-size: 12px;
+			opacity: 0.8;
 		}
 
-		/* Mobile-specific overrides to match keywords page behavior */
-		/* Note: Horizontal scrolling is enabled (overflow-x: auto) to match keywords page UX */
+		/* Mobile-first responsive navigation */
 		@media screen and (max-width: 768px) {
-			/* Override main.css mobile navigation with keywords-style behavior */
+			/* Simplified mobile navigation */
 			.nav {
-				padding: 0 16px !important;
-				gap: 16px !important;
-				/* Remove complex flex overrides that cause horizontal lines */
-				display: flex !important;
-				align-items: center !important;
-				flex-wrap: wrap !important;
-				/* Ensure proper overflow handling for sticky navigation */
-				overflow: visible !important;
-				white-space: normal !important;
-				/* Override max-width and height constraints */
-				max-width: none !important;
-				height: auto !important;
-				/* Ensure sticky navigation works properly */
-				position: relative !important;
+				padding: 0 16px;
+				gap: 16px;
+				display: flex;
+				align-items: center;
+				flex-wrap: wrap;
+				overflow: visible;
+				white-space: normal;
+				max-width: none;
+				height: auto;
+				position: relative;
 			}
 
 			#menu {
-				gap: 6px !important;
-				/* Match keywords page horizontal scrolling behavior */
-				overflow-x: auto !important;
-				white-space: nowrap !important;
-				display: flex !important;
-				flex-direction: row !important;
-				flex-wrap: nowrap !important;
-				/* Ensure dropdowns can break out of scroll container */
-				position: relative !important;
+				gap: 6px;
+				overflow-x: auto;
+				white-space: nowrap;
+				display: flex;
+				flex-direction: row;
+				flex-wrap: nowrap;
+				position: relative;
 			}
 
 			#menu li {
-				/* Match keywords page behavior */
-				display: flex !important;
-				white-space: nowrap !important;
-				flex-shrink: 0 !important;
-				/* Ensure dropdown positioning works correctly */
-				position: relative !important;
+				display: flex;
+				white-space: nowrap;
+				flex-shrink: 0;
+				position: relative;
 			}
 
 			#menu a {
-				font-size: 16px !important;
-				padding: 8px 12px !important;
-				border-radius: 6px !important;
-				white-space: nowrap !important;
-				/* Match keywords page behavior */
-				word-break: keep-all !important;
+				font-size: 16px;
+				padding: 8px 12px;
+				border-radius: 6px;
+				white-space: nowrap;
+				word-break: keep-all;
 			}
 
-			/* Force dropdown to break out of any scrolling containers */
+			/* Simplified dropdown positioning */
 			.dropdown {
-				position: relative !important;
-				overflow: visible !important;
+				position: relative;
+				overflow: visible;
 			}
 
-			/* Ensure dropdown menu breaks out of scroll container */
 			.dropdown-menu {
-				position: absolute !important;
-				top: calc(100% + 8px) !important;
-				left: 0 !important;
-				right: auto !important;
-				min-width: 200px !important;
-				border-radius: 8px !important;
-				transform: none !important;
-				/* Ensure dropdown appears above sticky header */
-				z-index: 1002 !important;
-				overflow: visible !important;
+				position: absolute;
+				top: calc(100% + 8px);
+				left: 0;
+				right: auto;
+				min-width: 200px;
+				border-radius: 8px;
+				transform: none;
+				z-index: 1002;
+				overflow: visible;
+				opacity: 0;
+				visibility: hidden;
+				transition: opacity 0.2s ease, transform 0.2s ease;
 			}
 
-			/* Ensure parent container doesn't clip the dropdown */
-			.nav {
-				overflow: visible !important;
+			.dropdown:hover .dropdown-menu {
+				opacity: 1;
+				visibility: visible;
+				transform: translateY(0);
 			}
 		}
 
-		/* Override the problematic 480px breakpoint from main.css */
+		/* Improved mobile experience for very small screens */
 		@media screen and (max-width: 480px) {
 			.nav {
-				flex-direction: row !important;
-				height: auto !important;
-				padding: 0 16px !important;
-				display: flex !important;
-				align-items: center !important;
-				flex-wrap: wrap !important;
-				/* Override max-width constraints */
-				max-width: none !important;
-				/* Ensure dropdowns are not clipped */
-				overflow: visible !important;
-				/* Ensure sticky navigation works properly */
-				position: relative !important;
+				flex-direction: column;
+				height: auto;
+				padding: 12px 16px;
+				display: flex;
+				align-items: center;
+				flex-wrap: wrap;
+				max-width: none;
+				overflow: visible;
+				position: relative;
 			}
 
 			.logo {
-				margin-bottom: 0 !important;
+				margin-bottom: 0;
 			}
 
 			#menu {
-				flex-wrap: nowrap !important;
-				justify-content: flex-start !important;
-				gap: 6px !important;
-				display: flex !important;
-				flex-direction: row !important;
-				overflow-x: auto !important;
-				white-space: nowrap !important;
-				/* Ensure dropdowns can break out of scroll container */
-				position: relative !important;
+				flex-wrap: nowrap;
+				justify-content: flex-start;
+				gap: 6px;
+				display: flex;
+				flex-direction: row;
+				overflow-x: auto;
+				white-space: nowrap;
+				position: relative;
 			}
 
 			#menu li {
-				/* Ensure dropdown positioning works correctly */
-				position: relative !important;
+				position: relative;
 			}
 
 			#menu a {
-				font-size: 16px !important;
-				padding: 6px 8px !important;
-				white-space: nowrap !important;
-				/* Match keywords page behavior */
-				word-break: keep-all !important;
+				font-size: 16px;
+				padding: 6px 8px;
+				white-space: nowrap;
+				word-break: keep-all;
 			}
 
-			/* Force dropdown to break out of any scrolling containers */
+			/* Simplified dropdown for small screens */
 			.dropdown {
-				position: relative !important;
-				overflow: visible !important;
+				position: relative;
+				overflow: visible;
 			}
 
-			/* Ensure dropdown menu breaks out of scroll container */
 			.dropdown-menu {
-				position: absolute !important;
-				top: calc(100% + 8px) !important;
-				left: 0 !important;
-				right: auto !important;
-				min-width: 200px !important;
-				border-radius: 8px !important;
-				transform: none !important;
-				/* Ensure dropdown appears above sticky header */
-				z-index: 1002 !important;
-				overflow: visible !important;
+				position: absolute;
+				top: calc(100% + 8px);
+				left: 0;
+				right: auto;
+				min-width: 200px;
+				border-radius: 8px;
+				transform: none;
+				z-index: 1002;
+				overflow: visible;
+				opacity: 0;
+				visibility: hidden;
+				transition: opacity 0.2s ease, transform 0.2s ease;
+			}
+
+			.dropdown:hover .dropdown-menu {
+				opacity: 1;
+				visibility: visible;
+				transform: translateY(0);
+			}
+		}
+
+		/* Enhanced touch experience for very small screens */
+		@media screen and (max-width: 320px) {
+			.nav {
+				padding: 8px 12px;
+			}
+
+			#menu {
+				gap: 4px;
+			}
+
+			#menu a {
+				font-size: 14px;
+				padding: 8px 10px;
+				min-height: 44px; /* Touch-friendly minimum height */
+				display: flex;
+				align-items: center;
+			}
+
+			.logo a {
+				font-size: 20px;
 			}
 		}
 		</style>
 
 		<script>
-		// Enhanced dropdown positioning and fixed navigation best practices
+		// Simplified mobile navigation with performance optimizations
 		document.addEventListener('DOMContentLoaded', function() {
-			const dropdowns = document.querySelectorAll('.dropdown');
 			const header = document.querySelector('.header');
 			
-			// Best practices for fixed navigation during scrolling
+			// Performance-optimized scroll handling
 			let lastScrollTop = 0;
-			let scrollThreshold = 10; // Minimum scroll distance to trigger header behavior
+			let ticking = false;
 			
-			// Optimize scroll performance with throttling
-			function throttle(func, limit) {
-				let inThrottle;
-				return function() {
-					const args = arguments;
-					const context = this;
-					if (!inThrottle) {
-						func.apply(context, args);
-						inThrottle = true;
-						setTimeout(() => inThrottle = false, limit);
-					}
+			function updateHeaderOnScroll() {
+				const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+				
+				// Add subtle shadow when scrolling down
+				if (scrollTop > lastScrollTop && scrollTop > 50) {
+					header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+				} else if (scrollTop < lastScrollTop && scrollTop < 50) {
+					header.style.boxShadow = 'none';
+				}
+				
+				lastScrollTop = scrollTop;
+				ticking = false;
+			}
+			
+			// Request animation frame for smooth scrolling
+			function requestTick() {
+				if (!ticking) {
+					requestAnimationFrame(updateHeaderOnScroll);
+					ticking = true;
 				}
 			}
 			
-			// Handle scroll events for enhanced fixed navigation
-			const handleScroll = throttle(function() {
-				const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-				const scrollDelta = Math.abs(scrollTop - lastScrollTop);
-				
-				if (scrollDelta > scrollThreshold) {
-					// Add subtle shadow when scrolling down
-					if (scrollTop > lastScrollTop && scrollTop > 50) {
-						header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-					} else if (scrollTop < lastScrollTop && scrollTop < 50) {
-						header.style.boxShadow = 'none';
-					}
-					
-					lastScrollTop = scrollTop;
-				}
-			}, 16); // ~60fps
-			
-			// Add scroll listener for enhanced fixed navigation
-			window.addEventListener('scroll', handleScroll, { passive: true });
-			
-			// Enhanced dropdown positioning for mobile
-			dropdowns.forEach(function(dropdown) {
-				const dropdownMenu = dropdown.querySelector('.dropdown-menu');
-				const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
-				
-				if (dropdownMenu && dropdownToggle) {
-					// Handle hover events for mobile dropdown positioning
-					dropdown.addEventListener('mouseenter', function() {
-						if (window.innerWidth <= 768) {
-							// Use getBoundingClientRect for accurate positioning
-							const toggleRect = dropdownToggle.getBoundingClientRect();
-							const viewportWidth = window.innerWidth;
-							
-							// Calculate optimal position to prevent overflow
-							let leftPosition = toggleRect.left;
-							const dropdownWidth = 200; // min-width from CSS
-							
-							// Ensure dropdown doesn't overflow right edge
-							if (leftPosition + dropdownWidth > viewportWidth) {
-								leftPosition = viewportWidth - dropdownWidth - 16; // 16px margin
-							}
-							
-							// Ensure dropdown doesn't overflow left edge
-							if (leftPosition < 16) {
-								leftPosition = 16;
-							}
-							
-							// Apply fixed positioning with optimized coordinates
-							dropdownMenu.style.position = 'fixed';
-							dropdownMenu.style.top = (toggleRect.bottom + 8) + 'px';
-							dropdownMenu.style.left = leftPosition + 'px';
-							dropdownMenu.style.right = 'auto';
-							dropdownMenu.style.zIndex = '1002'; // Above sticky header
-							dropdownMenu.style.overflow = 'visible';
-							
-							// Add smooth transition
-							dropdownMenu.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
-							dropdownMenu.style.opacity = '1';
-							dropdownMenu.style.transform = 'translateY(0)';
-						}
-					});
-					
-					dropdown.addEventListener('mouseleave', function() {
-						if (window.innerWidth <= 768) {
-							// Smooth fade out
-							dropdownMenu.style.opacity = '0';
-							dropdownMenu.style.transform = 'translateY(-10px)';
-							
-							// Reset positioning after transition
-							setTimeout(() => {
-								dropdownMenu.style.position = '';
-								dropdownMenu.style.top = '';
-								dropdownMenu.style.left = '';
-								dropdownMenu.style.right = '';
-								dropdownMenu.style.zIndex = '';
-								dropdownMenu.style.overflow = '';
-								dropdownMenu.style.transition = '';
-								dropdownMenu.style.opacity = '';
-								dropdownMenu.style.transform = '';
-							}, 200);
-						}
-					});
-				}
-			});
+			// Add scroll listener with passive option for performance
+			window.addEventListener('scroll', requestTick, { passive: true });
 			
 			// Handle window resize for responsive behavior
-			window.addEventListener('resize', throttle(function() {
-				// Reset any dynamic positioning on resize
-				dropdowns.forEach(function(dropdown) {
-					const dropdownMenu = dropdown.querySelector('.dropdown-menu');
-					if (dropdownMenu) {
-						dropdownMenu.style.position = '';
-						dropdownMenu.style.top = '';
-						dropdownMenu.style.left = '';
-						dropdownMenu.style.right = '';
-						dropdownMenu.style.zIndex = '';
-						dropdownMenu.style.overflow = '';
-						dropdownMenu.style.transition = '';
-						dropdownMenu.style.opacity = '';
-						dropdownMenu.style.transform = '';
-					}
-				});
-			}, 250));
+			let resizeTimeout;
+			window.addEventListener('resize', function() {
+				clearTimeout(resizeTimeout);
+				resizeTimeout = setTimeout(function() {
+					// Reset any dynamic styles on resize
+					header.style.boxShadow = '';
+				}, 250);
+			}, { passive: true });
 		});
 		</script>
 
