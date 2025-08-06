@@ -213,90 +213,88 @@ if (!doNotTrack) {
             font-size: 0.9em;
         }
 		
-    /* Navigation color consistency - using main.css colors */
+    /* Navigation styles with CSS variables */
     #menu a {
-        color: rgb(30, 30, 30) !important;
+        color: var(--text-primary);
+        transition: var(--transition-base);
     }
 
-    #menu a:hover {
-        background-color: rgb(214, 214, 214) !important;
-        color: rgb(30, 30, 30) !important;
+    #menu a:hover,
+    #menu a:focus {
+        background-color: var(--bg-secondary);
+        color: var(--text-primary);
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
     }
 
     .dropdown-menu a {
-        color: rgb(30, 30, 30) !important;
+        color: var(--text-primary);
+        transition: var(--transition-base);
     }
 
-    .dropdown-menu a:hover {
-        background-color: rgb(214, 214, 214) !important;
-        color: rgb(30, 30, 30) !important;
+    .dropdown-menu a:hover,
+    .dropdown-menu a:focus {
+        background-color: var(--bg-secondary);
+        color: var(--text-primary);
     }
 
-    /* Dark mode navigation consistency */
-    body.dark #menu a {
-        color: rgb(218, 218, 219) !important;
-    }
-
-    body.dark #menu a:hover {
-        background-color: rgb(65, 66, 68) !important;
-        color: rgb(218, 218, 219) !important;
-    }
-
-    body.dark .dropdown-menu a {
-        color: rgb(218, 218, 219) !important;
-    }
-
-    body.dark .dropdown-menu a:hover {
-        background-color: rgb(65, 66, 68) !important;
-        color: rgb(218, 218, 219) !important;
-    }
-
-    /* Logo color consistency */
+    /* Logo and theme toggle */
     .logo a {
-        color: rgb(30, 30, 30) !important;
+        color: var(--text-primary);
+        transition: var(--transition-base);
     }
 
-    body.dark .logo a {
-        color: rgb(218, 218, 219) !important;
+    .logo a:hover,
+    .logo a:focus {
+        color: var(--primary-color);
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
     }
 
-    /* Theme toggle icon consistency */
-    body.dark #moon {
-        display: none !important;
-    }
-
-    body:not(.dark) #sun {
-        display: none !important;
-    }
-
-    /* Ensure theme toggle button is visible and clickable */
     #theme-toggle {
-        background: none !important;
-        border: none !important;
-        cursor: pointer !important;
-        padding: 8px !important;
-        border-radius: 50% !important;
-        transition: background-color 0.2s ease !important;
-        color: var(--primary) !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: var(--space-xs);
+        border-radius: 50%;
+        transition: var(--transition-base);
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    #theme-toggle:hover {
-        background-color: var(--tertiary) !important;
+    #theme-toggle:hover,
+    #theme-toggle:focus {
+        background-color: var(--bg-secondary);
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
     }
 
     #theme-toggle svg {
-        height: 20px !important;
-        width: 20px !important;
+        height: 20px;
+        width: 20px;
     }
 
-    /* Ensure logo-switches is properly positioned */
     .logo-switches {
-        display: flex !important;
-        align-items: center !important;
-        margin-left: 10px !important;
+        display: flex;
+        align-items: center;
+        margin-left: var(--space-sm);
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    /* Theme toggle visibility */
+    body.dark #moon {
+        display: none;
+    }
+
+    body:not(.dark) #sun {
+        display: none;
     }
 
     /* Ensure the button is not being covered by other elements */
@@ -567,6 +565,160 @@ if (!doNotTrack) {
 
 		</ul>
 
+		<style>
+		/* Simple navigation styles - same as keywords page */
+		.custom-dropdown {
+		  padding: 8px 0 !important;
+		  margin: 0 !important;
+		  list-style-type: none !important;
+		}
+
+		.custom-dropdown li {
+		  padding: 0 !important;
+		  margin: 0 !important;
+		}
+
+		.custom-dropdown li a {
+		  display: block !important;
+		  width: 100% !important;
+		  padding: 8px 20px !important;
+		  margin: 0 !important;
+		  box-sizing: border-box !important;
+		  text-decoration: none !important;
+		  color: #333 !important;
+		  font-size: 16px !important;
+		  line-height: 1.5 !important;
+		}
+
+		.custom-dropdown li a:hover {
+			background-color: #f8f9fa !important;
+			color: #000 !important;
+		}
+
+		/* Mobile-specific overrides to match keywords page behavior */
+		@media screen and (max-width: 768px) {
+			/* Override main.css mobile navigation with keywords-style behavior */
+			.nav {
+				padding: 0 16px !important;
+				gap: 16px !important;
+				/* Remove complex flex overrides that cause horizontal lines */
+				display: flex !important;
+				align-items: center !important;
+				flex-wrap: wrap !important;
+				overflow: visible !important;
+				white-space: normal !important;
+				/* Override max-width and height constraints */
+				max-width: none !important;
+				height: auto !important;
+			}
+
+			#menu {
+				gap: 6px !important;
+				/* Remove overflow-x that causes horizontal lines */
+				overflow: visible !important;
+				white-space: normal !important;
+				display: flex !important;
+				flex-direction: row !important;
+				flex-wrap: wrap !important;
+			}
+
+			#menu li {
+				/* Remove inline-block that causes layout issues */
+				display: flex !important;
+				white-space: normal !important;
+				flex-shrink: 1 !important;
+			}
+
+			#menu a {
+				font-size: 15px !important;
+				padding: 8px 12px !important;
+				border-radius: 6px !important;
+				white-space: normal !important;
+				/* Ensure text wrapping works properly */
+				word-wrap: break-word !important;
+				overflow-wrap: break-word !important;
+			}
+
+			.dropdown-menu {
+				right: auto !important;
+				left: 0 !important;
+				min-width: 200px !important;
+				border-radius: 8px !important;
+			}
+
+			/* Mobile dropdown functionality - completely disable hover behavior on touch devices */
+			.dropdown .dropdown-menu {
+				opacity: 0 !important;
+				visibility: hidden !important;
+				transform: translateY(-8px) !important;
+			}
+
+			/* Show dropdown when dropdown-open class is present */
+			.dropdown.dropdown-open .dropdown-menu {
+				opacity: 1 !important;
+				visibility: visible !important;
+				transform: translateY(0) !important;
+			}
+
+			/* Rotate caret when dropdown is open */
+			.dropdown.dropdown-open .caret {
+				transform: rotate(180deg) !important;
+			}
+		}
+
+		/* Override the problematic 480px breakpoint from main.css */
+		@media screen and (max-width: 480px) {
+			.nav {
+				flex-direction: row !important;
+				height: auto !important;
+				padding: 0 16px !important;
+				display: flex !important;
+				align-items: center !important;
+				flex-wrap: wrap !important;
+				/* Override max-width constraints */
+				max-width: none !important;
+			}
+
+			.logo {
+				margin-bottom: 0 !important;
+			}
+
+			#menu {
+				flex-wrap: wrap !important;
+				justify-content: flex-start !important;
+				gap: 6px !important;
+				display: flex !important;
+				flex-direction: row !important;
+			}
+
+			#menu a {
+				font-size: 14px !important;
+				padding: 6px 8px !important;
+				white-space: normal !important;
+				/* Ensure text wrapping works properly */
+				word-wrap: break-word !important;
+				overflow-wrap: break-word !important;
+			}
+
+			/* Mobile dropdown functionality for smaller screens */
+			.dropdown .dropdown-menu {
+				opacity: 0 !important;
+				visibility: hidden !important;
+				transform: translateY(-8px) !important;
+			}
+
+			.dropdown.dropdown-open .dropdown-menu {
+				opacity: 1 !important;
+				visibility: visible !important;
+				transform: translateY(0) !important;
+			}
+
+			.dropdown.dropdown-open .caret {
+				transform: rotate(180deg) !important;
+			}
+		}
+		</style>
+
 		
     </nav>
 </header>
@@ -674,6 +826,91 @@ if (!doNotTrack) {
         }
     };
 
+</script>
+
+<script>
+    // Mobile dropdown functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        const isSmallScreen = window.innerWidth <= 768;
+        
+        if (isTouchDevice || isSmallScreen) {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            let toggleClicked = false; // Flag to manage timing conflicts
+            
+            dropdowns.forEach(dropdown => {
+                const menu = dropdown.querySelector('.dropdown-menu');
+                if (menu) {
+                    menu.style.transition = 'all 0.2s ease';
+                }
+            });
+            
+            dropdowns.forEach(dropdown => {
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+                const menu = dropdown.querySelector('.dropdown-menu');
+                
+                if (toggle && menu) {
+                    toggle.addEventListener('click', function(e) {
+                        console.log('Dropdown toggle clicked!');
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        toggleClicked = true; // Set flag to prevent immediate closing
+                        
+                        dropdowns.forEach(otherDropdown => {
+                            if (otherDropdown !== dropdown) {
+                                otherDropdown.classList.remove('dropdown-open');
+                            }
+                        });
+                        
+                        const isOpen = dropdown.classList.contains('dropdown-open');
+                        console.log('Is dropdown open?', isOpen);
+                        if (isOpen) {
+                            dropdown.classList.remove('dropdown-open');
+                            console.log('Closing dropdown');
+                        } else {
+                            dropdown.classList.add('dropdown-open');
+                            console.log('Opening dropdown');
+                        }
+                        
+                        setTimeout(() => {
+                            toggleClicked = false;
+                        }, 100);
+                    });
+                }
+            });
+            
+            document.addEventListener('click', function(e) {
+                console.log('Document clicked on:', e.target);
+                if (toggleClicked) {
+                    console.log('Toggle was just clicked, not closing');
+                    return;
+                }
+                if (e.target.closest('.dropdown-toggle') || e.target.closest('.dropdown')) {
+                    console.log('Clicked on dropdown or toggle, not closing');
+                    return;
+                }
+                console.log('Clicked outside dropdown, closing all');
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('dropdown-open');
+                });
+            });
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('dropdown-open');
+                    });
+                }
+            });
+            
+            window.addEventListener('resize', function() {
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('dropdown-open');
+                });
+            });
+        }
+    });
 </script>
 </body>
 

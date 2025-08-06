@@ -861,18 +861,16 @@
 <script>
     // Mobile dropdown functionality
     document.addEventListener('DOMContentLoaded', function() {
-        // Check if device is touch-based (mobile) or small screen
         const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
         const isSmallScreen = window.innerWidth <= 768;
         
         if (isTouchDevice || isSmallScreen) {
             const dropdowns = document.querySelectorAll('.dropdown');
+            let toggleClicked = false; // Flag to manage timing conflicts
             
-            // Disable hover behavior on mobile by removing hover styles
             dropdowns.forEach(dropdown => {
                 const menu = dropdown.querySelector('.dropdown-menu');
                 if (menu) {
-                    // Force mobile styles
                     menu.style.transition = 'all 0.2s ease';
                 }
             });
@@ -882,45 +880,52 @@
                 const menu = dropdown.querySelector('.dropdown-menu');
                 
                 if (toggle && menu) {
-                    // Add click event to toggle dropdown
                     toggle.addEventListener('click', function(e) {
+                        console.log('Dropdown toggle clicked!');
                         e.preventDefault();
                         e.stopPropagation();
                         
-                        // Close all other dropdowns
+                        toggleClicked = true; // Set flag to prevent immediate closing
+                        
                         dropdowns.forEach(otherDropdown => {
                             if (otherDropdown !== dropdown) {
                                 otherDropdown.classList.remove('dropdown-open');
                             }
                         });
                         
-                        // Toggle current dropdown
                         const isOpen = dropdown.classList.contains('dropdown-open');
+                        console.log('Is dropdown open?', isOpen);
                         if (isOpen) {
                             dropdown.classList.remove('dropdown-open');
+                            console.log('Closing dropdown');
                         } else {
                             dropdown.classList.add('dropdown-open');
+                            console.log('Opening dropdown');
                         }
+                        
+                        setTimeout(() => {
+                            toggleClicked = false;
+                        }, 100);
                     });
                 }
             });
             
-            // Close dropdown when clicking outside
             document.addEventListener('click', function(e) {
-                // Don't close if clicking on the dropdown toggle
-                if (e.target.closest('.dropdown-toggle')) {
+                console.log('Document clicked on:', e.target);
+                if (toggleClicked) {
+                    console.log('Toggle was just clicked, not closing');
                     return;
                 }
-                
-                // Close if clicking outside dropdown
-                if (!e.target.closest('.dropdown')) {
-                    dropdowns.forEach(dropdown => {
-                        dropdown.classList.remove('dropdown-open');
-                    });
+                if (e.target.closest('.dropdown-toggle') || e.target.closest('.dropdown')) {
+                    console.log('Clicked on dropdown or toggle, not closing');
+                    return;
                 }
+                console.log('Clicked outside dropdown, closing all');
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('dropdown-open');
+                });
             });
             
-            // Close dropdown when pressing Escape key
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
                     dropdowns.forEach(dropdown => {
@@ -929,7 +934,6 @@
                 }
             });
             
-            // Close dropdown when window is resized
             window.addEventListener('resize', function() {
                 dropdowns.forEach(dropdown => {
                     dropdown.classList.remove('dropdown-open');
