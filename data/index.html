@@ -293,6 +293,7 @@ if (!doNotTrack) {
     .logo {
         display: flex !important;
         align-items: center !important;
+        position: relative !important;
     }
     </style>
 
@@ -505,23 +506,25 @@ if (!doNotTrack) {
     }
 
     /* Premium page header - EXACT same as FAQ page but smaller font */
+    /* Premium page header - EXACT same as FAQ page but smaller font */
     .page-header h1 {
-        color: var(--text-primary);
-        font-size: var(--font-size-3xl);
-        font-weight: 700;
-        font-family: var(--font-body);
-        margin-bottom: var(--space-3xl);
-        text-align: center;
-        position: relative;
-        letter-spacing: -0.02em;
-        background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        color: var(--text-primary) !important;
+        font-size: var(--font-size-2xl) !important; /* Reduced from 3xl to 2xl */
+        font-weight: 700 !important;
+        font-family: var(--font-body) !important;
+        margin-bottom: var(--space-lg) !important; /* Reduced spacing */
+        text-align: center !important;
+        position: relative !important;
+        letter-spacing: -0.02em !important;
+        background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        background-clip: text !important;
+        text-shadow: none !important; /* Override the conflicting text-shadow */
     }
 
     .page-header h1::before {
-        content: '❓';
+        content: '📊';
         position: absolute;
         top: -2rem;
         left: 50%;
@@ -536,7 +539,7 @@ if (!doNotTrack) {
         bottom: -15px;
         left: 50%;
         transform: translateX(-50%);
-        width: 80px;
+        width: 140px; /* Adjusted for longer title */
         height: 4px;
         background: linear-gradient(90deg, rgb(13, 110, 253) 0%, rgb(59, 130, 246) 50%, rgb(10, 88, 202) 100%);
         border-radius: 2px;
@@ -544,11 +547,13 @@ if (!doNotTrack) {
     }
 
     body.dark .page-header h1 {
-        background: linear-gradient(135deg, rgb(248, 250, 252) 0%, rgb(226, 232, 240) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        font-family: "Essays 1743", serif;
+        background: linear-gradient(135deg, rgb(248, 250, 252) 0%, rgb(226, 232, 240) 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        background-clip: text !important;
+        font-family: "Essays 1743", serif !important;
+        color: transparent !important; /* Override the conflicting dark mode color */
+        text-shadow: none !important; /* Override the conflicting text-shadow */
     }
 
     body.dark .page-header h1::after {
@@ -556,75 +561,12 @@ if (!doNotTrack) {
         box-shadow: 0 2px 8px rgba(34, 211, 238, 0.3);
     }
 
-    /* Premium footer styling */
-    .footer {
-        margin-top: 6rem;
-        padding: 3rem 0;
-        text-align: center;
-        border-top: 1px solid rgba(226, 232, 240, 0.8);
-        background: linear-gradient(135deg, rgba(248, 250, 252, 0.5) 0%, rgba(255, 255, 255, 0.8) 100%);
-        backdrop-filter: blur(10px);
-    }
-
-    .footer span {
-        font-weight: 500;
-        color: rgb(51, 65, 85);
-    }
-
-    .footer a {
-        color: rgb(13, 110, 253);
-        text-decoration: none;
-        font-weight: 600;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .footer a:hover {
-        color: rgb(10, 88, 202);
-        text-decoration: underline;
-    }
-
-    body.dark .footer {
-        border-top-color: rgba(51, 65, 85, 0.8);
-        background: linear-gradient(135deg, rgba(15, 23, 42, 0.5) 0%, rgba(30, 41, 59, 0.8) 100%);
-    }
-
-    body.dark .footer span {
-        color: rgb(203, 213, 225);
-    }
-
-    body.dark .footer a {
-        color: rgb(34, 211, 238);
-    }
-
-    body.dark .footer a:hover {
-        color: rgb(6, 182, 212);
-    }
-
-    /* Responsive design */
-    @media (max-width: 768px) {
-        .post-content {
-            padding: 0 15px;
-        }
-        
-        .qa {
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        
-        .qa b {
-            font-size: 1.1rem;
-        }
-        
-        .page-header h1 {
-            font-size: 2rem;
-        }
-    }
-
     /* Let main.css handle sticky navigation - same as FAQ page */
 
     .main {
         margin-top: 0; /* Remove extra space between nav and main content */
         position: relative;
+        z-index: 1;
     }
 
     .page-header {
