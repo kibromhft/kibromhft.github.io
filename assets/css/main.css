@@ -573,6 +573,20 @@ body:not(.dark) #sun {
         border-radius: 8px;
     }
     
+    /* Override hover behavior for mobile - use JavaScript instead */
+    .dropdown:hover .dropdown-menu {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+    }
+    
+    /* Show dropdown when JavaScript adds 'show' class */
+    .dropdown-menu.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
     .first-entry {
         padding: 20px;
     }
