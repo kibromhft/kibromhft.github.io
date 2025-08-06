@@ -1058,11 +1058,24 @@ if (!doNotTrack) {
             text-decoration: underline;
             font-weight: 500;
             transition: color 0.2s ease;
+            position: relative;
+        }
+
+        #dataset-link::after {
+            content: '🔗';
+            margin-left: 0.3rem;
+            font-size: 0.9em;
+            opacity: 0.8;
+            transition: opacity 0.2s ease;
         }
 
         #dataset-link:hover {
             color: #1e40af;
             text-decoration: underline;
+        }
+
+        #dataset-link:hover::after {
+            opacity: 1;
         }
 
         @media (max-width: 768px) {
