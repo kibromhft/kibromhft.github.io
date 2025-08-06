@@ -560,31 +560,6 @@ if (!doNotTrack) {
     }
 
     /* Let main.css handle sticky navigation - same as FAQ page */
-    
-    /* Mobile sticky navigation fix */
-    @media screen and (max-width: 768px) {
-        .header {
-            position: sticky !important;
-            top: 0 !important;
-            z-index: 1000 !important;
-            background: var(--theme) !important;
-            border-bottom: 1px solid var(--border) !important;
-            -webkit-transform: translateZ(0) !important; /* Force hardware acceleration */
-            transform: translateZ(0) !important;
-        }
-    }
-    
-    @media screen and (max-width: 480px) {
-        .header {
-            position: sticky !important;
-            top: 0 !important;
-            z-index: 1000 !important;
-            background: var(--theme) !important;
-            border-bottom: 1px solid var(--border) !important;
-            -webkit-transform: translateZ(0) !important;
-            transform: translateZ(0) !important;
-        }
-    }
 
     .main {
         margin-top: 0; /* Remove extra space between nav and main content */
@@ -773,6 +748,15 @@ if (!doNotTrack) {
 
 		/* Mobile-specific overrides to match keywords page behavior */
 		@media screen and (max-width: 768px) {
+			/* Ensure sticky navigation works on mobile */
+			.header {
+				position: sticky !important;
+				top: 0 !important;
+				z-index: 1000 !important;
+				background: var(--theme) !important;
+				border-bottom: 1px solid var(--border) !important;
+			}
+			
 			/* Override main.css mobile navigation with keywords-style behavior */
 			.nav {
 				padding: 0 16px !important;
@@ -844,6 +828,15 @@ if (!doNotTrack) {
 
 		/* Override the problematic 480px breakpoint from main.css */
 		@media screen and (max-width: 480px) {
+			/* Ensure sticky navigation works on mobile */
+			.header {
+				position: sticky !important;
+				top: 0 !important;
+				z-index: 1000 !important;
+				background: var(--theme) !important;
+				border-bottom: 1px solid var(--border) !important;
+			}
+			
 			.nav {
 				flex-direction: row !important;
 				height: auto !important;
