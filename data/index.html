@@ -936,94 +936,88 @@ if (!doNotTrack) {
             font-size: 1.5rem;
         }
 
-        /* Tikur Section */
+        /* Tikur Section - Redesigned */
         .tikur-section {
-            margin: clamp(3rem, 6vw, 4rem) 0;
-            background: var(--bg-secondary);
-            border-radius: 1rem;
-            padding: clamp(1.5rem, 3vw, 2rem);
-            border: 1px solid var(--border-color);
+            margin: clamp(4rem, 8vw, 6rem) 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 1.5rem;
+            padding: clamp(2.5rem, 5vw, 3.5rem);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
         }
 
-        .tikur-hero {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
+        .tikur-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .tikur-section * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .tikur-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
         }
 
         .tikur-content h3 {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .tikur-description {
-            font-size: 1.125rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
+            font-size: clamp(1.125rem, 2vw, 1.25rem);
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         }
 
-        .tikur-features {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+        .tikur-description strong {
+            color: #ffd700;
+            font-weight: 700;
         }
 
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1rem;
-            background: var(--bg-card);
+        .tikur-description a {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tikur-description a:hover {
+            color: #fff;
+            border-bottom-color: #ffd700;
+        }
+
+        #dataset-link {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
             border-radius: 0.5rem;
-            border: 1px solid var(--border-color);
+            margin-top: 0.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
         }
 
-        .feature-icon {
-            font-size: 1.5rem;
-        }
-
-        /* Disease Tags */
-        .disease-coverage {
-            margin: 2rem 0;
-        }
-
-        .disease-coverage h4 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-        }
-
-        .diseases-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .disease-tag {
-            background: var(--primary-color);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 0.25rem;
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-
-        /* Dataset Link */
-        .dataset-link {
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        .dataset-link h4 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
+        #dataset-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
 
         .dataset-button {
@@ -1670,52 +1664,9 @@ if (!doNotTrack) {
 
   <!-- Tikur Dataset Section -->
   <section class="tikur-section">
-    <div class="tikur-hero">
-      <div class="tikur-content">
-        <h3 class="section-title">Introducing the Tikur Chest X-ray Dataset</h3>
-        <p class="tikur-description">We are expanding the <strong>Tikur Chest X-ray Image Dataset</strong> to address the limitations of existing datasets and provide researchers and healthcare providers with high-quality, diverse medical imaging data.</p>
-      </div>
-      <div class="tikur-features">
-        <div class="feature-item">
-          <span class="feature-icon">🔬</span>
-          <span>Comprehensive disease coverage</span>
-        </div>
-        <div class="feature-item">
-          <span class="feature-icon">🌍</span>
-          <span>Global demographic representation</span>
-        </div>
-        <div class="feature-item">
-          <span class="feature-icon">🏥</span>
-          <span>Multiple healthcare institutions</span>
-        </div>
-        <div class="feature-item">
-          <span class="feature-icon">📈</span>
-          <span>High-quality diagnostic tools</span>
-        </div>
-      </div>
-    </div>
-    
-    <div class="disease-coverage">
-      <h4>Disease Coverage</h4>
-      <p>Our expanded dataset will include comprehensive coverage for cardiovascular and respiratory diseases, including:</p>
-      <div class="diseases-grid">
-        <span class="disease-tag">Pneumothorax</span>
-        <span class="disease-tag">Pleural Effusion</span>
-        <span class="disease-tag">Pulmonary Edema</span>
-        <span class="disease-tag">Congestive Heart Failure</span>
-        <span class="disease-tag">Pneumonia</span>
-        <span class="disease-tag">Tuberculosis</span>
-      </div>
-    </div>
-    
-    <div class="dataset-link">
-      <h4>Access the Dataset</h4>
-      <p>Explore the Tikur Chest X-ray Image Dataset:</p>
-      <a href="https://github.com/kibromhft/Tikur_ChestX-ray14" target="_blank" class="dataset-button">
-        <span class="button-icon">📊</span>
-        <span>View on GitHub</span>
-        <span class="button-arrow">→</span>
-      </a>
+    <div class="tikur-content">
+      <h3>Tikur Chest X-ray Image Dataset</h3>
+      <p class="tikur-description">We are currently working on expanding the <strong>Tikur Chest X-ray Image Dataset</strong> as part of our efforts to improve the quality of the existing datasets, which will help researchers and healthcare providers develop accurate diagnostic tools for the diagnosis of cardiovascular and respiratory diseases. To better equip medical professionals and researchers in the fight against cardiovascular and respiratory diseases, we are proud to announce the upcoming launch of new medical imaging datasets by expanding the Tikur Chest X-ray Dataset that will provide access to high-quality medical imaging data. For instance, the expanded dataset will include images from various sources to help researchers and providers detect diseases such as pneumothorax, pleural effusion, pulmonary edema and congestive heart failure. We hope that this dataset will help address the challenges faced by healthcare providers in low- and middle-income countries and improve health outcomes for individuals and communities affected by cardiovascular and respiratory diseases. Link to the Tikur Chest X-ray Image Dataset is <br> <a href="https://github.com/kibromhft/Tikur_ChestX-ray14" target="_new" id="dataset-link">https://github.com/kibromhft/Tikur_ChestX-ray14</a>.</p>
     </div>
   </section>
 
