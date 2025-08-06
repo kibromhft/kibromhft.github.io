@@ -513,14 +513,14 @@ if (!doNotTrack) {
         margin: 15px 0; /* Add margin for spacing between quotes */
     }
 
-    /* Premium page header styling - exact same as FAQ page */
+    /* Clean page header styling for data page */
     .page-header h1 {
         color: var(--text-primary);
-        font-size: var(--font-size-3xl);
+        font-size: var(--font-size-2xl); /* Reduced from 3xl to 2xl */
         font-weight: 700;
         font-family: var(--font-body);
-        margin-bottom: var(--space-3xl);
-        margin-top: 2rem; /* Add top margin to prevent overlap */
+        margin-bottom: var(--space-lg); /* Reduced spacing */
+        margin-top: 1rem; /* Reduced top margin */
         text-align: center;
         position: relative;
         letter-spacing: -0.02em;
@@ -528,18 +528,10 @@ if (!doNotTrack) {
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        z-index: 1; /* Ensure proper layering */
+        z-index: 1;
     }
 
-    .page-header h1::before {
-        content: '📊';
-        position: absolute;
-        top: -2rem;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 2rem;
-        opacity: 0.1;
-    }
+    /* Removed the ::before pseudo-element (rectangle/icon) */
 
     .page-header h1::after {
         content: '';
