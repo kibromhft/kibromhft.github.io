@@ -506,18 +506,19 @@ if (!doNotTrack) {
 
     /* Premium page header - EXACT same as FAQ page */
     .page-header h1 {
-        color: var(--text-primary);
-        font-size: var(--font-size-3xl);
-        font-weight: 700;
-        font-family: var(--font-body);
-        margin-bottom: var(--space-3xl);
-        text-align: center;
-        position: relative;
-        letter-spacing: -0.02em;
-        background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        color: var(--text-primary) !important;
+        font-size: var(--font-size-3xl) !important;
+        font-weight: 700 !important;
+        font-family: var(--font-body) !important;
+        margin-bottom: var(--space-3xl) !important;
+        text-align: center !important;
+        position: relative !important;
+        letter-spacing: -0.02em !important;
+        background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        background-clip: text !important;
+        text-shadow: none !important; /* Override the conflicting text-shadow */
     }
 
     .page-header h1::before {
@@ -544,11 +545,13 @@ if (!doNotTrack) {
     }
 
     body.dark .page-header h1 {
-        background: linear-gradient(135deg, rgb(248, 250, 252) 0%, rgb(226, 232, 240) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        font-family: "Essays 1743", serif;
+        background: linear-gradient(135deg, rgb(248, 250, 252) 0%, rgb(226, 232, 240) 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        background-clip: text !important;
+        font-family: "Essays 1743", serif !important;
+        color: transparent !important; /* Override the conflicting dark mode color */
+        text-shadow: none !important; /* Override the conflicting text-shadow */
     }
 
     body.dark .page-header h1::after {
