@@ -560,6 +560,31 @@ if (!doNotTrack) {
     }
 
     /* Let main.css handle sticky navigation - same as FAQ page */
+    
+    /* Mobile sticky navigation fix */
+    @media screen and (max-width: 768px) {
+        .header {
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 1000 !important;
+            background: var(--theme) !important;
+            border-bottom: 1px solid var(--border) !important;
+            -webkit-transform: translateZ(0) !important; /* Force hardware acceleration */
+            transform: translateZ(0) !important;
+        }
+    }
+    
+    @media screen and (max-width: 480px) {
+        .header {
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 1000 !important;
+            background: var(--theme) !important;
+            border-bottom: 1px solid var(--border) !important;
+            -webkit-transform: translateZ(0) !important;
+            transform: translateZ(0) !important;
+        }
+    }
 
     .main {
         margin-top: 0; /* Remove extra space between nav and main content */
