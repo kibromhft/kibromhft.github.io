@@ -936,46 +936,32 @@ if (!doNotTrack) {
             font-size: 1.5rem;
         }
 
-        /* Tikur Section - Advanced Professional Design */
+        /* Tikur Section - Futuristic Medical Design */
         .tikur-section {
             margin: clamp(5rem, 10vw, 8rem) 0;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%),
-                linear-gradient(135deg, 
-                    #667eea 0%, 
-                    #764ba2 25%, 
-                    #f093fb 50%, 
-                    #f5576c 75%, 
-                    #4facfe 100%);
-            background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+                radial-gradient(ellipse at top, rgba(0, 255, 255, 0.1) 0%, transparent 70%),
+                radial-gradient(ellipse at bottom, rgba(255, 0, 255, 0.1) 0%, transparent 70%),
+                linear-gradient(45deg, 
+                    #0a0a0a 0%, 
+                    #1a1a2e 25%, 
+                    #16213e 50%, 
+                    #0f3460 75%, 
+                    #533483 100%);
             border-radius: 2rem;
             padding: clamp(3rem, 6vw, 4.5rem);
             box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                0 0 50px rgba(0, 255, 255, 0.3),
+                0 0 100px rgba(255, 0, 255, 0.2),
+                inset 0 0 50px rgba(0, 0, 0, 0.5);
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            animation: pulse 4s ease-in-out infinite;
         }
 
         .tikur-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            right: -50%;
-            bottom: -50%;
-            background: 
-                radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
-            animation: float 20s ease-in-out infinite;
-            z-index: 0;
-        }
-
-        .tikur-section::after {
             content: '';
             position: absolute;
             top: 0;
@@ -983,16 +969,49 @@ if (!doNotTrack) {
             right: 0;
             bottom: 0;
             background: 
-                linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.03) 50%, transparent 70%);
-            pointer-events: none;
+                radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 0, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(0, 255, 0, 0.05) 0%, transparent 50%);
+            animation: rotate 20s linear infinite;
             z-index: 1;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(-10px, -10px) rotate(1deg); }
-            50% { transform: translate(10px, -5px) rotate(-1deg); }
-            75% { transform: translate(-5px, 10px) rotate(0.5deg); }
+        .tikur-section::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff00, #ffff00, #ff0080, #00ffff);
+            border-radius: 2rem;
+            z-index: -1;
+            animation: borderRotate 3s linear infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                box-shadow: 
+                    0 0 50px rgba(0, 255, 255, 0.3),
+                    0 0 100px rgba(255, 0, 255, 0.2),
+                    inset 0 0 50px rgba(0, 0, 0, 0.5);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 80px rgba(0, 255, 255, 0.5),
+                    0 0 150px rgba(255, 0, 255, 0.4),
+                    inset 0 0 80px rgba(0, 0, 0, 0.7);
+            }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes borderRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .tikur-section * {
@@ -1010,29 +1029,55 @@ if (!doNotTrack) {
         .tikur-content h3 {
             font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 900;
-            background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 50%, #e6f3ff 100%);
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff00);
+            background-size: 300% 300%;
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 2rem;
             text-shadow: 
-                0 0 30px rgba(255, 255, 255, 0.5),
-                0 0 60px rgba(255, 255, 255, 0.3);
+                0 0 30px rgba(0, 255, 255, 0.8),
+                0 0 60px rgba(255, 0, 255, 0.6),
+                0 0 90px rgba(0, 255, 0, 0.4);
             letter-spacing: -0.02em;
             line-height: 1.2;
             position: relative;
+            animation: textGlow 2s ease-in-out infinite alternate;
         }
 
-        .tikur-content h3::after {
+        .tikur-content h3::before {
             content: '';
             position: absolute;
-            bottom: -0.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #ffffff, transparent);
-            border-radius: 2px;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff00, #ffff00);
+            background-size: 300% 300%;
+            border-radius: 1rem;
+            z-index: -1;
+            opacity: 0.3;
+            animation: borderGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes textGlow {
+            0% { 
+                text-shadow: 
+                    0 0 30px rgba(0, 255, 255, 0.8),
+                    0 0 60px rgba(255, 0, 255, 0.6),
+                    0 0 90px rgba(0, 255, 0, 0.4);
+            }
+            100% { 
+                text-shadow: 
+                    0 0 50px rgba(0, 255, 255, 1),
+                    0 0 100px rgba(255, 0, 255, 0.8),
+                    0 0 150px rgba(0, 255, 0, 0.6);
+            }
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
         }
 
         .tikur-description {
@@ -1042,22 +1087,53 @@ if (!doNotTrack) {
             margin-bottom: 2.5rem;
             text-shadow: 
                 0 2px 4px rgba(0, 0, 0, 0.3),
-                0 0 20px rgba(255, 255, 255, 0.1);
+                0 0 20px rgba(0, 255, 255, 0.2);
             font-weight: 400;
             letter-spacing: 0.01em;
+            position: relative;
+        }
+
+        .tikur-description::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ffff, #ff00ff, transparent);
+            border-radius: 1px;
+            animation: scanLine 3s ease-in-out infinite;
+        }
+
+        @keyframes scanLine {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
         }
 
         .tikur-description strong {
-            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff00);
+            background-size: 200% 200%;
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: 700;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            animation: neonPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes neonPulse {
+            0%, 100% { 
+                text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            }
+            50% { 
+                text-shadow: 0 0 40px rgba(0, 255, 255, 1);
+            }
         }
 
         .tikur-description a {
-            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff00);
+            background-size: 200% 200%;
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -1066,6 +1142,7 @@ if (!doNotTrack) {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border-bottom: 2px solid transparent;
             position: relative;
+            animation: linkGlow 3s ease-in-out infinite;
         }
 
         .tikur-description a::before {
@@ -1075,12 +1152,22 @@ if (!doNotTrack) {
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, #ffd700, #ffed4e);
+            background: linear-gradient(90deg, #00ffff, #ff00ff, #00ff00);
             transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        @keyframes linkGlow {
+            0%, 100% { 
+                text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+            }
+            50% { 
+                text-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+            }
+        }
+
         .tikur-description a:hover {
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            text-shadow: 0 0 30px rgba(0, 255, 255, 1);
+            transform: scale(1.05);
         }
 
         .tikur-description a:hover::before {
@@ -1089,18 +1176,19 @@ if (!doNotTrack) {
 
         #dataset-link {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.15);
-            padding: 0.75rem 1.5rem;
-            border-radius: 1rem;
-            margin-top: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem 2rem;
+            border-radius: 2rem;
+            margin-top: 1.5rem;
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid transparent;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 
-                0 4px 15px rgba(0, 0, 0, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
             position: relative;
             overflow: hidden;
+            animation: buttonFloat 4s ease-in-out infinite;
         }
 
         #dataset-link::before {
@@ -1110,38 +1198,66 @@ if (!doNotTrack) {
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent);
             transition: left 0.6s ease;
         }
 
+        #dataset-link::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff00, #ffff00);
+            border-radius: 2rem;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        @keyframes buttonFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
         #dataset-link:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-3px) scale(1.02);
+            background: rgba(0, 0, 0, 0.5);
+            transform: translateY(-8px) scale(1.05);
             box-shadow: 
-                0 12px 30px rgba(0, 0, 0, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
-            border-color: rgba(255, 255, 255, 0.4);
+                0 20px 60px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            border-color: rgba(0, 255, 255, 0.5);
         }
 
         #dataset-link:hover::before {
             left: 100%;
         }
 
-        .dataset-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            background: var(--primary-color);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.2s ease;
+        #dataset-link:hover::after {
+            opacity: 0.3;
         }
 
-        .dataset-button:hover {
-            transform: translateY(-1px);
+        /* Particle effects */
+        .tikur-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+                radial-gradient(circle at 80% 70%, rgba(255, 0, 255, 0.1) 1px, transparent 1px),
+                radial-gradient(circle at 50% 50%, rgba(0, 255, 0, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px, 30px 30px, 40px 40px;
+            animation: particleMove 20s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes particleMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
         }
 
         /* Lacuna Section */
@@ -1772,7 +1888,7 @@ if (!doNotTrack) {
   <!-- Tikur Dataset Section -->
   <section class="tikur-section">
     <div class="tikur-content">
-      <h3>Advancing Medical AI: The Tikur Chest X-ray Dataset Initiative</h3>
+      <h3>🚀 NEXT-GEN MEDICAL AI: The Tikur X-ray Revolution 🚀</h3>
       <p class="tikur-description">We are currently working on expanding the <strong>Tikur Chest X-ray Image Dataset</strong> as part of our efforts to improve the quality of the existing datasets, which will help researchers and healthcare providers develop accurate diagnostic tools for the diagnosis of cardiovascular and respiratory diseases. To better equip medical professionals and researchers in the fight against cardiovascular and respiratory diseases, we are proud to announce the upcoming launch of new medical imaging datasets by expanding the Tikur Chest X-ray Dataset that will provide access to high-quality medical imaging data. For instance, the expanded dataset will include images from various sources to help researchers and providers detect diseases such as pneumothorax, pleural effusion, pulmonary edema and congestive heart failure. We hope that this dataset will help address the challenges faced by healthcare providers in low- and middle-income countries and improve health outcomes for individuals and communities affected by cardiovascular and respiratory diseases. Link to the Tikur Chest X-ray Image Dataset is <br> <a href="https://github.com/kibromhft/Tikur_ChestX-ray14" target="_new" id="dataset-link">https://github.com/kibromhft/Tikur_ChestX-ray14</a>.</p>
     </div>
   </section>
