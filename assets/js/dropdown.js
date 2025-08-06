@@ -10,11 +10,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const isClickInsideDropdown = dropdownToggle.contains(event.target) || dropdownMenu.contains(event.target);
             
             if (!isClickInsideDropdown) {
-                dropdownMenu.classList.remove('show');
-                if (caret) {
-                    caret.style.transform = 'rotate(0deg)';
-                }
-                dropdownToggle.setAttribute('aria-expanded', 'false');
+                // Add a small delay to prevent interference with dropdown toggle click
+                setTimeout(() => {
+                    dropdownMenu.classList.remove('show');
+                    if (caret) {
+                        caret.style.transform = 'rotate(0deg)';
+                    }
+                    dropdownToggle.setAttribute('aria-expanded', 'false');
+                }, 10);
             }
         });
         
@@ -39,6 +42,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     caret.style.transform = 'rotate(180deg)';
                 }
                 dropdownToggle.setAttribute('aria-expanded', 'true');
+            }
+        });
+        
+        // Close dropdown when clicking on dropdown menu items
+        dropdownMenu.addEventListener('click', function(event) {
+            if (event.target.tagName === 'A') {
+                // Close dropdown when a menu item is clicked
+                dropdownMenu.classList.remove('show');
+                if (caret) {
+                    caret.style.transform = 'rotate(0deg)';
+                }
+                dropdownToggle.setAttribute('aria-expanded', 'false');
             }
         });
         
