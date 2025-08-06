@@ -513,7 +513,7 @@ if (!doNotTrack) {
         margin: 15px 0; /* Add margin for spacing between quotes */
     }
 
-    /* Premium page header styling - same as FAQ page */
+    /* Premium page header styling - exact same as FAQ page */
     .page-header h1 {
         color: var(--text-primary);
         font-size: var(--font-size-3xl);
@@ -531,7 +531,15 @@ if (!doNotTrack) {
         z-index: 1; /* Ensure proper layering */
     }
 
-    /* Removed the ::before pseudo-element to eliminate the unnecessary rectangle */
+    .page-header h1::before {
+        content: '📊';
+        position: absolute;
+        top: -2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 2rem;
+        opacity: 0.1;
+    }
 
     .page-header h1::after {
         content: '';
