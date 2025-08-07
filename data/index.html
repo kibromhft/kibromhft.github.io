@@ -1509,6 +1509,27 @@ if (!doNotTrack) {
 				max-width: none !important;
 			}
 
+			/* Ensure logo is visible in light mode on mobile */
+			.logo {
+				display: flex !important;
+				align-items: center !important;
+				gap: 8px !important;
+				flex-shrink: 0 !important;
+			}
+
+			.logo a {
+				font-size: 22px !important;
+				font-weight: 700 !important;
+				font-family: var(--font-serif) !important;
+				color: var(--primary) !important;
+				text-decoration: none !important;
+			}
+
+			/* Ensure logo text is visible in light mode */
+			body:not(.dark) .logo a {
+				color: rgb(30, 30, 30) !important;
+			}
+
 			#menu {
 				gap: 6px !important;
 				/* Remove overflow-x that causes horizontal lines */
@@ -1534,6 +1555,19 @@ if (!doNotTrack) {
 				/* Ensure text wrapping works properly */
 				word-wrap: break-word !important;
 				overflow-wrap: break-word !important;
+				color: var(--primary) !important;
+				text-decoration: none !important;
+			}
+
+			/* Ensure menu items are visible in light mode */
+			body:not(.dark) #menu a {
+				color: rgb(30, 30, 30) !important;
+			}
+
+			/* Ensure menu items are visible on hover in light mode */
+			body:not(.dark) #menu a:hover {
+				background-color: rgb(214, 214, 214) !important;
+				color: rgb(30, 30, 30) !important;
 			}
 
 			.dropdown-menu {
@@ -1575,8 +1609,26 @@ if (!doNotTrack) {
 				max-width: none !important;
 			}
 
+			/* Ensure logo is visible in light mode on smaller screens */
 			.logo {
 				margin-bottom: 0 !important;
+				display: flex !important;
+				align-items: center !important;
+				gap: 8px !important;
+				flex-shrink: 0 !important;
+			}
+
+			.logo a {
+				font-size: 20px !important;
+				font-weight: 700 !important;
+				font-family: var(--font-serif) !important;
+				color: var(--primary) !important;
+				text-decoration: none !important;
+			}
+
+			/* Ensure logo text is visible in light mode on smaller screens */
+			body:not(.dark) .logo a {
+				color: rgb(30, 30, 30) !important;
 			}
 
 			#menu {
@@ -1594,6 +1646,19 @@ if (!doNotTrack) {
 				/* Ensure text wrapping works properly */
 				word-wrap: break-word !important;
 				overflow-wrap: break-word !important;
+				color: var(--primary) !important;
+				text-decoration: none !important;
+			}
+
+			/* Ensure menu items are visible in light mode on smaller screens */
+			body:not(.dark) #menu a {
+				color: rgb(30, 30, 30) !important;
+			}
+
+			/* Ensure menu items are visible on hover in light mode on smaller screens */
+			body:not(.dark) #menu a:hover {
+				background-color: rgb(214, 214, 214) !important;
+				color: rgb(30, 30, 30) !important;
 			}
 
 			/* Mobile dropdown functionality for smaller screens */
