@@ -152,11 +152,14 @@ if (!doNotTrack) {
             --bg-primary: rgb(255, 255, 255);
             --bg-secondary: rgb(248, 250, 252);
             --bg-card: rgb(255, 255, 255);
+            --bg-primary-transparent: rgba(255, 255, 255, 0.8);
+            --bg-secondary-transparent: rgba(248, 250, 252, 0.5);
             --border-color: rgba(226, 232, 240, 0.8);
             --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
             --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.02);
             --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.03);
             --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.05);
+            --primary-shadow: rgba(13, 110, 253, 0.3);
             
             /* Typography */
             --font-heading: "Essays 1743", serif;
@@ -205,11 +208,14 @@ if (!doNotTrack) {
                 --bg-primary: rgb(15, 23, 42);
                 --bg-secondary: rgb(30, 41, 59);
                 --bg-card: rgb(30, 41, 59);
+                --bg-primary-transparent: rgba(15, 23, 42, 0.5);
+                --bg-secondary-transparent: rgba(30, 41, 59, 0.8);
                 --border-color: rgba(51, 65, 85, 0.8);
                 --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
                 --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
                 --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
                 --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+                --primary-shadow: rgba(34, 211, 238, 0.3);
             }
         }
 
@@ -224,11 +230,14 @@ if (!doNotTrack) {
             --bg-primary: rgb(15, 23, 42);
             --bg-secondary: rgb(30, 41, 59);
             --bg-card: rgb(30, 41, 59);
+            --bg-primary-transparent: rgba(15, 23, 42, 0.5);
+            --bg-secondary-transparent: rgba(30, 41, 59, 0.8);
             --border-color: rgba(51, 65, 85, 0.8);
             --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
             --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
             --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
             --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+            --primary-shadow: rgba(34, 211, 238, 0.3);
         }
 
         /* Reduced motion support */
@@ -1210,7 +1219,7 @@ if (!doNotTrack) {
             height: 4px;
             background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-light) 50%, var(--primary-hover) 100%);
             border-radius: 2px;
-            box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3);
+            box-shadow: 0 2px 8px var(--primary-shadow);
         }
 
         body.dark .page-header h1 {
@@ -1223,7 +1232,7 @@ if (!doNotTrack) {
 
         body.dark .page-header h1::after {
             background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-light) 50%, var(--primary-hover) 100%);
-            box-shadow: 0 2px 8px rgba(34, 211, 238, 0.3);
+            box-shadow: 0 2px 8px var(--primary-shadow);
         }
 
         /* Let main.css handle sticky navigation - same as FAQ page */
@@ -1234,7 +1243,7 @@ if (!doNotTrack) {
             padding: 3rem 0;
             text-align: center;
             border-top: 1px solid var(--border-color);
-            background: linear-gradient(135deg, rgba(248, 250, 252, 0.5) 0%, rgba(255, 255, 255, 0.8) 100%);
+            background: linear-gradient(135deg, var(--bg-secondary-transparent) 0%, var(--bg-primary-transparent) 100%);
             backdrop-filter: blur(10px);
         }
 
@@ -1256,8 +1265,8 @@ if (!doNotTrack) {
         }
 
         body.dark .footer {
-            border-top-color: rgba(51, 65, 85, 0.8);
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.5) 0%, rgba(30, 41, 59, 0.8) 100%);
+            border-top-color: var(--border-color);
+            background: linear-gradient(135deg, var(--bg-primary-transparent) 0%, var(--bg-secondary-transparent) 100%);
         }
 
         body.dark .footer span {
