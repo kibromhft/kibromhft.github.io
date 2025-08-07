@@ -1181,6 +1181,178 @@ if (!doNotTrack) {
             .diseases-grid {
                 justify-content: center;
             }
+            
+            /* Ensure content is properly visible on mobile */
+            .post-content {
+                padding: 0 1rem !important;
+                max-width: 100% !important;
+                margin: 0 auto !important;
+            }
+            
+            /* Fix hero section mobile layout */
+            .hero-section {
+                margin: 2rem 0 !important;
+                padding: 1.5rem !important;
+                gap: 1.5rem !important;
+            }
+            
+            .hero-title {
+                font-size: 1.5rem !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem !important;
+                line-height: 1.5 !important;
+            }
+            
+            .hero-img {
+                max-width: 100% !important;
+                height: auto !important;
+            }
+            
+            /* Fix section titles on mobile */
+            .section-title {
+                font-size: 1.5rem !important;
+                margin-bottom: 2rem !important;
+            }
+            
+            /* Fix card layouts on mobile */
+            .quote-card,
+            .impact-card,
+            .dataset-card {
+                padding: 1rem !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            .quote-card blockquote {
+                font-size: 1rem !important;
+            }
+            
+            .impact-card h4 {
+                font-size: 1.1rem !important;
+            }
+            
+            .dataset-card h4 {
+                font-size: 1.1rem !important;
+            }
+            
+            /* Fix Tikur section on mobile */
+            .tikur-section {
+                margin: 2rem 0 !important;
+                padding: 1.5rem !important;
+            }
+            
+            .tikur-content h3 {
+                font-size: 1.5rem !important;
+            }
+            
+            .tikur-description {
+                font-size: 0.95rem !important;
+                line-height: 1.5 !important;
+            }
+            
+            /* Fix challenges grid on mobile */
+            .challenges-grid {
+                gap: 0.75rem !important;
+            }
+            
+            .challenge-item {
+                padding: 0.75rem !important;
+                font-size: 0.9rem !important;
+            }
+            
+            /* Fix CTA section on mobile */
+            .cta-section {
+                margin: 2rem 0 !important;
+                padding: 1.5rem !important;
+            }
+            
+            .cta-content h3 {
+                font-size: 1.5rem !important;
+            }
+            
+            .cta-content p {
+                font-size: 1rem !important;
+            }
+            
+            /* Ensure proper text colors in light mode */
+            body:not(.dark) .hero-title,
+            body:not(.dark) .section-title,
+            body:not(.dark) .impact-card h4,
+            body:not(.dark) .dataset-card h4,
+            body:not(.dark) .quote-card blockquote,
+            body:not(.dark) .impact-card p,
+            body:not(.dark) .dataset-card li,
+            body:not(.dark) .challenge-item,
+            body:not(.dark) .tikur-description,
+            body:not(.dark) .lacuna-content h4,
+            body:not(.dark) .lacuna-content p,
+            body:not(.dark) .cta-content h3,
+            body:not(.dark) .cta-content p {
+                color: rgb(30, 30, 30) !important;
+            }
+            
+            /* Ensure proper text colors in dark mode */
+            body.dark .hero-title,
+            body.dark .section-title,
+            body.dark .impact-card h4,
+            body.dark .dataset-card h4,
+            body.dark .quote-card blockquote,
+            body.dark .impact-card p,
+            body.dark .dataset-card li,
+            body.dark .challenge-item,
+            body.dark .tikur-description,
+            body.dark .lacuna-content h4,
+            body.dark .lacuna-content p,
+            body.dark .cta-content h3,
+            body.dark .cta-content p {
+                color: rgb(248, 250, 252) !important;
+            }
+        }
+        
+        /* Additional mobile fixes for smaller screens */
+        @media (max-width: 480px) {
+            .post-content {
+                padding: 0 0.75rem !important;
+            }
+            
+            .hero-section {
+                margin: 1.5rem 0 !important;
+                padding: 1rem !important;
+            }
+            
+            .hero-title {
+                font-size: 1.25rem !important;
+            }
+            
+            .section-title {
+                font-size: 1.25rem !important;
+            }
+            
+            .quote-card,
+            .impact-card,
+            .dataset-card {
+                padding: 0.75rem !important;
+            }
+            
+            .tikur-section {
+                margin: 1.5rem 0 !important;
+                padding: 1rem !important;
+            }
+            
+            .tikur-content h3 {
+                font-size: 1.25rem !important;
+            }
+            
+            .cta-section {
+                margin: 1.5rem 0 !important;
+                padding: 1rem !important;
+            }
+            
+            .cta-content h3 {
+                font-size: 1.25rem !important;
+            }
         }
 
         /* Page header for data page */
