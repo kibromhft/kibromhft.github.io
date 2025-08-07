@@ -650,24 +650,24 @@ if (!doNotTrack) {
 
         /* Premium Dark Mode FAQ styling */
         body.dark .post-content {
-            color: rgb(226, 232, 240);
+            color: var(--text-primary);
         }
 
         body.dark .post-content a {
-            color: rgb(34, 211, 238);
+            color: var(--primary-color);
         }
 
         body.dark .post-content a::after {
-            background: linear-gradient(90deg, rgb(34, 211, 238), rgb(6, 182, 212));
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
         }
 
         body.dark .post-content a:hover {
-            color: rgb(6, 182, 212);
+            color: var(--primary-hover);
         }
 
         body.dark .qa {
-            background: linear-gradient(145deg, rgb(30, 41, 59) 0%, rgb(15, 23, 42) 100%);
-            border-color: rgba(51, 65, 85, 0.8);
+            background: linear-gradient(145deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border-color: var(--border-color);
             box-shadow: 
                 0 1px 3px rgba(0, 0, 0, 0.3),
                 0 4px 6px rgba(0, 0, 0, 0.2),
@@ -676,9 +676,9 @@ if (!doNotTrack) {
 
         body.dark .qa::before {
             background: linear-gradient(180deg, 
-                rgb(34, 211, 238) 0%, 
-                rgb(6, 182, 212) 50%, 
-                rgb(8, 145, 178) 100%);
+                var(--primary-color) 0%, 
+                var(--primary-light) 50%, 
+                var(--primary-hover) 100%);
         }
 
         body.dark .qa::after {
@@ -708,28 +708,28 @@ if (!doNotTrack) {
         }
 
         body.dark .qa p {
-            color: rgb(203, 213, 225);
+            color: var(--text-secondary);
             font-family: Libertine, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
         }
 
         body.dark .qa p:first-of-type b {
-            background: linear-gradient(135deg, rgb(34, 211, 238), rgb(6, 182, 212));
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
         body.dark .qa li {
-            color: rgb(203, 213, 225);
+            color: var(--text-secondary);
             font-family: Libertine, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
         }
 
         body.dark .qa li::before {
-            color: rgb(34, 211, 238);
+            color: var(--primary-color);
         }
 
         body.dark .qa li strong {
-            background: linear-gradient(135deg, rgb(34, 211, 238), rgb(6, 182, 212));
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -1208,13 +1208,13 @@ if (!doNotTrack) {
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background: linear-gradient(90deg, rgb(13, 110, 253) 0%, rgb(59, 130, 246) 50%, rgb(10, 88, 202) 100%);
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-light) 50%, var(--primary-hover) 100%);
             border-radius: 2px;
             box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3);
         }
 
         body.dark .page-header h1 {
-            background: linear-gradient(135deg, rgb(248, 250, 252) 0%, rgb(226, 232, 240) 100%);
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -1222,7 +1222,7 @@ if (!doNotTrack) {
         }
 
         body.dark .page-header h1::after {
-            background: linear-gradient(90deg, rgb(34, 211, 238) 0%, rgb(6, 182, 212) 50%, rgb(8, 145, 178) 100%);
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-light) 50%, var(--primary-hover) 100%);
             box-shadow: 0 2px 8px rgba(34, 211, 238, 0.3);
         }
 
@@ -1233,25 +1233,25 @@ if (!doNotTrack) {
             margin-top: 6rem;
             padding: 3rem 0;
             text-align: center;
-            border-top: 1px solid rgba(226, 232, 240, 0.8);
+            border-top: 1px solid var(--border-color);
             background: linear-gradient(135deg, rgba(248, 250, 252, 0.5) 0%, rgba(255, 255, 255, 0.8) 100%);
             backdrop-filter: blur(10px);
         }
 
         .footer span {
             font-weight: 500;
-            color: rgb(51, 65, 85);
+            color: var(--text-secondary);
         }
 
         .footer a {
-            color: rgb(13, 110, 253);
+            color: var(--primary-color);
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .footer a:hover {
-            color: rgb(10, 88, 202);
+            color: var(--primary-hover);
             text-decoration: underline;
         }
 
@@ -1261,15 +1261,15 @@ if (!doNotTrack) {
         }
 
         body.dark .footer span {
-            color: rgb(203, 213, 225);
+            color: var(--text-secondary);
         }
 
         body.dark .footer a {
-            color: rgb(34, 211, 238);
+            color: var(--primary-color);
         }
 
         body.dark .footer a:hover {
-            color: rgb(6, 182, 212);
+            color: var(--primary-hover);
         }
 
         /* Responsive design */
