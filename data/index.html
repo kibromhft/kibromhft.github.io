@@ -1463,6 +1463,36 @@ if (!doNotTrack) {
 			color: #000 !important;
 		}
 
+		/* Fix dropdown menu visibility in light mode */
+		.dropdown-menu {
+			background: var(--entry) !important;
+			border: 1px solid var(--border) !important;
+		}
+
+		.dropdown-menu a {
+			color: var(--primary) !important;
+		}
+
+		.dropdown-menu a:hover {
+			background-color: var(--tertiary) !important;
+			color: var(--primary) !important;
+		}
+
+		/* Ensure proper contrast in light mode */
+		body:not(.dark) .dropdown-menu {
+			background: rgb(255, 255, 255) !important;
+			border: 1px solid rgb(238, 238, 238) !important;
+		}
+
+		body:not(.dark) .dropdown-menu a {
+			color: rgb(30, 30, 30) !important;
+		}
+
+		body:not(.dark) .dropdown-menu a:hover {
+			background-color: rgb(214, 214, 214) !important;
+			color: rgb(30, 30, 30) !important;
+		}
+
 		/* Mobile-specific overrides to match keywords page behavior */
 		@media screen and (max-width: 768px) {
 			/* Override main.css mobile navigation with keywords-style behavior */
