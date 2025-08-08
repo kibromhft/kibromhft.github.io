@@ -316,6 +316,8 @@ if (!doNotTrack) {
         #theme-toggle svg {
             height: 20px;
             width: 20px;
+            stroke: currentColor;
+            fill: none;
         }
 
         .logo-switches {
@@ -339,40 +341,77 @@ if (!doNotTrack) {
             display: none;
         }
 
+        /* Ensure SVG icons are visible and properly colored */
+        #moon, #sun {
+            stroke: currentColor;
+            fill: none;
+            transition: opacity 0.2s ease;
+        }
+
+        /* Ensure proper visibility in light mode */
+        body:not(.dark) #moon {
+            display: block;
+            opacity: 1;
+        }
+
+        body:not(.dark) #sun {
+            display: none;
+            opacity: 0;
+        }
+
+        /* Ensure proper visibility in dark mode */
+        body.dark #moon {
+            display: none;
+            opacity: 0;
+        }
+
+        body.dark #sun {
+            display: block;
+            opacity: 1;
+        }
+
         /* Ensure SVG visibility on mobile */
         @media (max-width: 768px) {
             body.dark #moon {
                 display: none !important;
+                opacity: 0 !important;
             }
 
             body:not(.dark) #sun {
                 display: none !important;
+                opacity: 0 !important;
             }
 
             body.dark #sun {
                 display: block !important;
+                opacity: 1 !important;
             }
 
             body:not(.dark) #moon {
                 display: block !important;
+                opacity: 1 !important;
             }
         }
 
         @media (max-width: 480px) {
             body.dark #moon {
                 display: none !important;
+                opacity: 0 !important;
             }
 
             body:not(.dark) #sun {
                 display: none !important;
+                opacity: 0 !important;
             }
 
             body.dark #sun {
                 display: block !important;
+                opacity: 1 !important;
             }
 
             body:not(.dark) #moon {
                 display: block !important;
+                opacity: 1 !important;
             }
         }
 
@@ -2292,13 +2331,27 @@ if (!doNotTrack) {
 
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
+        console.log("Theme toggle clicked");
+        console.log("Current body classes:", document.body.className);
+        console.log("Current moon display:", getComputedStyle(document.getElementById("moon")).display);
+        console.log("Current sun display:", getComputedStyle(document.getElementById("sun")).display);
+        
         if (document.body.className.includes("dark")) {
             document.body.classList.remove('dark');
             localStorage.setItem("pref-theme", 'light');
+            console.log("Switched to light mode");
         } else {
             document.body.classList.add('dark');
             localStorage.setItem("pref-theme", 'dark');
+            console.log("Switched to dark mode");
         }
+        
+        // Force a reflow to ensure CSS updates
+        setTimeout(() => {
+            console.log("After toggle - body classes:", document.body.className);
+            console.log("After toggle - moon display:", getComputedStyle(document.getElementById("moon")).display);
+            console.log("After toggle - sun display:", getComputedStyle(document.getElementById("sun")).display);
+        }, 100);
     });
 </script>
 <script>
