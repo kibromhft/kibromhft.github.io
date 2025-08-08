@@ -339,6 +339,43 @@ if (!doNotTrack) {
             display: none;
         }
 
+        /* Ensure SVG visibility on mobile */
+        @media (max-width: 768px) {
+            body.dark #moon {
+                display: none !important;
+            }
+
+            body:not(.dark) #sun {
+                display: none !important;
+            }
+
+            body.dark #sun {
+                display: block !important;
+            }
+
+            body:not(.dark) #moon {
+                display: block !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body.dark #moon {
+                display: none !important;
+            }
+
+            body:not(.dark) #sun {
+                display: none !important;
+            }
+
+            body.dark #sun {
+                display: block !important;
+            }
+
+            body:not(.dark) #moon {
+                display: block !important;
+            }
+        }
+
         /* Optimized font loading with fallbacks */
         @font-face {
             font-family: "Essays 1743";
