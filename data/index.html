@@ -1527,6 +1527,20 @@ if (!doNotTrack) {
             box-shadow: 0 2px 8px var(--primary-shadow);
         }
 
+        /* Light mode overrides for page header */
+        body:not(.dark) .page-header h1 {
+            background: linear-gradient(135deg, rgb(30, 30, 30) 0%, rgb(60, 60, 60) 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            color: rgb(30, 30, 30) !important;
+        }
+
+        body:not(.dark) .page-header h1::after {
+            background: linear-gradient(90deg, rgb(13, 110, 253) 0%, rgb(25, 135, 84) 50%, rgb(220, 53, 69) 100%) !important;
+            box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3) !important;
+        }
+
         /* Let main.css handle sticky navigation - same as FAQ page */
 
         /* Premium footer styling */
@@ -1590,6 +1604,20 @@ if (!doNotTrack) {
             
             .page-header h1 {
                 font-size: 2rem;
+            }
+
+            /* Mobile light mode overrides for page header */
+            body:not(.dark) .page-header h1 {
+                background: linear-gradient(135deg, rgb(30, 30, 30) 0%, rgb(60, 60, 60) 100%) !important;
+                -webkit-background-clip: text !important;
+                -webkit-text-fill-color: transparent !important;
+                background-clip: text !important;
+                color: rgb(30, 30, 30) !important;
+            }
+
+            body:not(.dark) .page-header h1::after {
+                background: linear-gradient(90deg, rgb(13, 110, 253) 0%, rgb(25, 135, 84) 50%, rgb(220, 53, 69) 100%) !important;
+                box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3) !important;
             }
         }
     </style>
