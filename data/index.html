@@ -1100,6 +1100,50 @@ if (!doNotTrack) {
             .tikur-description {
                 font-size: 0.95rem;
             }
+
+            /* Ensure proper colors in light mode for Tikur section */
+            body:not(.dark) .tikur-section {
+                background: linear-gradient(135deg, 
+                    rgba(255, 255, 255, 0.95) 0%, 
+                    rgba(248, 250, 252, 0.95) 50%, 
+                    rgba(241, 245, 249, 0.95) 100%);
+                border: 1px solid rgba(226, 232, 240, 0.8);
+            }
+
+            body:not(.dark) .tikur-content h3 {
+                background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #6366f1 100%);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            body:not(.dark) .tikur-description {
+                color: #374151;
+            }
+
+            body:not(.dark) .tikur-description strong {
+                background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff00);
+                background-size: 200% 200%;
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            body:not(.dark) .tikur-description a {
+                color: #3b82f6;
+            }
+
+            body:not(.dark) .tikur-description a:hover {
+                color: #1e40af;
+            }
+
+            body:not(.dark) #dataset-link {
+                color: #3b82f6;
+            }
+
+            body:not(.dark) #dataset-link:hover {
+                color: #1e40af;
+            }
         }
 
         /* Lacuna Section */
@@ -1195,6 +1239,12 @@ if (!doNotTrack) {
                 padding: 1.5rem !important;
                 gap: 1.5rem !important;
             }
+
+            /* Ensure proper hero section background in light mode */
+            body:not(.dark) .hero-section {
+                background: rgb(255, 255, 255) !important;
+                border: 1px solid rgba(226, 232, 240, 0.8) !important;
+            }
             
             .hero-title {
                 font-size: 1.5rem !important;
@@ -1223,6 +1273,20 @@ if (!doNotTrack) {
             .dataset-card {
                 padding: 1rem !important;
                 margin-bottom: 1rem !important;
+            }
+
+            /* Ensure proper card backgrounds in light mode */
+            body:not(.dark) .quote-card,
+            body:not(.dark) .impact-card,
+            body:not(.dark) .dataset-card {
+                background: rgb(255, 255, 255) !important;
+                border: 1px solid rgba(226, 232, 240, 0.8) !important;
+            }
+
+            /* Ensure proper challenge item backgrounds in light mode */
+            body:not(.dark) .challenge-item {
+                background: rgb(248, 250, 252) !important;
+                color: rgb(30, 30, 30) !important;
             }
             
             .quote-card blockquote {
@@ -1267,6 +1331,18 @@ if (!doNotTrack) {
                 margin: 2rem 0 !important;
                 padding: 1.5rem !important;
             }
+
+            /* Ensure proper Lacuna section background in light mode */
+            body:not(.dark) .lacuna-section {
+                background: rgb(255, 255, 255) !important;
+                border: 1px solid rgba(226, 232, 240, 0.8) !important;
+            }
+
+            /* Ensure proper CTA section colors in light mode */
+            body:not(.dark) .cta-section {
+                background: rgb(13, 110, 253) !important;
+                color: rgb(255, 255, 255) !important;
+            }
             
             .cta-content h3 {
                 font-size: 1.5rem !important;
@@ -1276,22 +1352,26 @@ if (!doNotTrack) {
                 font-size: 1rem !important;
             }
             
-            /* Ensure proper text colors in light mode */
-            body:not(.dark) .hero-title,
-            body:not(.dark) .section-title,
-            body:not(.dark) .impact-card h4,
-            body:not(.dark) .dataset-card h4,
-            body:not(.dark) .quote-card blockquote,
-            body:not(.dark) .impact-card p,
-            body:not(.dark) .dataset-card li,
-            body:not(.dark) .challenge-item,
-            body:not(.dark) .tikur-description,
-            body:not(.dark) .lacuna-content h4,
-            body:not(.dark) .lacuna-content p,
-            body:not(.dark) .cta-content h3,
-            body:not(.dark) .cta-content p {
-                color: rgb(30, 30, 30) !important;
-            }
+                    /* Ensure proper text colors in light mode */
+        body:not(.dark) .hero-title,
+        body:not(.dark) .section-title,
+        body:not(.dark) .impact-card h4,
+        body:not(.dark) .dataset-card h4,
+        body:not(.dark) .quote-card blockquote,
+        body:not(.dark) .impact-card p,
+        body:not(.dark) .dataset-card li,
+        body:not(.dark) .challenge-item,
+        body:not(.dark) .tikur-description,
+        body:not(.dark) .lacuna-content h4,
+        body:not(.dark) .lacuna-content p,
+        body:not(.dark) .cta-content h3,
+        body:not(.dark) .cta-content p,
+        body:not(.dark) .hero-subtitle,
+        body:not(.dark) .overview-text,
+        body:not(.dark) .quote-card cite,
+        body:not(.dark) .learn-more {
+            color: rgb(30, 30, 30) !important;
+        }
             
             /* Ensure proper text colors in dark mode */
             body.dark .hero-title,
@@ -1352,6 +1432,46 @@ if (!doNotTrack) {
             
             .cta-content h3 {
                 font-size: 1.25rem !important;
+            }
+
+            /* Ensure proper colors for smaller screens in light mode */
+            body:not(.dark) .hero-title,
+            body:not(.dark) .section-title,
+            body:not(.dark) .hero-subtitle,
+            body:not(.dark) .impact-card h4,
+            body:not(.dark) .dataset-card h4,
+            body:not(.dark) .quote-card blockquote,
+            body:not(.dark) .impact-card p,
+            body:not(.dark) .dataset-card li,
+            body:not(.dark) .challenge-item,
+            body:not(.dark) .tikur-description,
+            body:not(.dark) .lacuna-content h4,
+            body:not(.dark) .lacuna-content p,
+            body:not(.dark) .cta-content h3,
+            body:not(.dark) .cta-content p,
+            body:not(.dark) .overview-text,
+            body:not(.dark) .quote-card cite,
+            body:not(.dark) .learn-more {
+                color: rgb(30, 30, 30) !important;
+            }
+
+            /* Ensure proper backgrounds for smaller screens in light mode */
+            body:not(.dark) .hero-section,
+            body:not(.dark) .quote-card,
+            body:not(.dark) .impact-card,
+            body:not(.dark) .dataset-card,
+            body:not(.dark) .lacuna-section {
+                background: rgb(255, 255, 255) !important;
+                border: 1px solid rgba(226, 232, 240, 0.8) !important;
+            }
+
+            body:not(.dark) .challenge-item {
+                background: rgb(248, 250, 252) !important;
+            }
+
+            body:not(.dark) .cta-section {
+                background: rgb(13, 110, 253) !important;
+                color: rgb(255, 255, 255) !important;
             }
         }
 
@@ -1702,6 +1822,11 @@ if (!doNotTrack) {
 				color: rgb(30, 30, 30) !important;
 			}
 
+			/* Ensure theme toggle is visible in light mode */
+			body:not(.dark) #theme-toggle {
+				color: rgb(30, 30, 30) !important;
+			}
+
 			#menu {
 				gap: 6px !important;
 				/* Remove overflow-x that causes horizontal lines */
@@ -1739,6 +1864,11 @@ if (!doNotTrack) {
 			/* Ensure menu items are visible on hover in light mode */
 			body:not(.dark) #menu a:hover {
 				background-color: rgb(214, 214, 214) !important;
+				color: rgb(30, 30, 30) !important;
+			}
+
+			/* Ensure dropdown carets are visible in light mode */
+			body:not(.dark) .caret {
 				color: rgb(30, 30, 30) !important;
 			}
 
@@ -1803,6 +1933,11 @@ if (!doNotTrack) {
 				color: rgb(30, 30, 30) !important;
 			}
 
+			/* Ensure theme toggle is visible in light mode on smaller screens */
+			body:not(.dark) #theme-toggle {
+				color: rgb(30, 30, 30) !important;
+			}
+
 			#menu {
 				flex-wrap: wrap !important;
 				justify-content: flex-start !important;
@@ -1830,6 +1965,11 @@ if (!doNotTrack) {
 			/* Ensure menu items are visible on hover in light mode on smaller screens */
 			body:not(.dark) #menu a:hover {
 				background-color: rgb(214, 214, 214) !important;
+				color: rgb(30, 30, 30) !important;
+			}
+
+			/* Ensure dropdown carets are visible in light mode on smaller screens */
+			body:not(.dark) .caret {
 				color: rgb(30, 30, 30) !important;
 			}
 
