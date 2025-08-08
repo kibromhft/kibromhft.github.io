@@ -340,67 +340,37 @@ if (!doNotTrack) {
             position: relative;
         }
 
-        /* Theme toggle visibility */
-        body.dark #moon {
-            display: none;
-        }
-
-        body:not(.dark) #sun {
-            display: none;
-        }
-
-        /* Ensure SVG icons are visible and properly colored */
+        /* Theme toggle SVG visibility - consolidated rules */
         #moon, #sun {
             stroke: currentColor;
             fill: none;
             transition: opacity 0.2s ease;
         }
 
-        /* Ensure proper visibility in light mode */
+        /* Light mode: show moon, hide sun */
         body:not(.dark) #moon {
-            display: block;
-            opacity: 1;
+            display: block !important;
+            opacity: 1 !important;
         }
 
         body:not(.dark) #sun {
-            display: none;
-            opacity: 0;
+            display: none !important;
+            opacity: 0 !important;
         }
 
-        /* Ensure proper visibility in dark mode */
+        /* Dark mode: show sun, hide moon */
         body.dark #moon {
-            display: none;
-            opacity: 0;
+            display: none !important;
+            opacity: 0 !important;
         }
 
         body.dark #sun {
-            display: block;
-            opacity: 1;
+            display: block !important;
+            opacity: 1 !important;
         }
 
-        /* Ensure SVG visibility on mobile */
+        /* Mobile light mode theme toggle styling */
         @media (max-width: 768px) {
-            body.dark #moon {
-                display: none !important;
-                opacity: 0 !important;
-            }
-
-            body:not(.dark) #sun {
-                display: none !important;
-                opacity: 0 !important;
-            }
-
-            body.dark #sun {
-                display: block !important;
-                opacity: 1 !important;
-            }
-
-            body:not(.dark) #moon {
-                display: block !important;
-                opacity: 1 !important;
-            }
-
-            /* Mobile light mode theme toggle styling */
             body:not(.dark) #theme-toggle:hover,
             body:not(.dark) #theme-toggle:focus {
                 background-color: rgba(13, 110, 253, 0.1) !important;
@@ -410,26 +380,6 @@ if (!doNotTrack) {
         }
 
         @media (max-width: 480px) {
-            body.dark #moon {
-                display: none !important;
-                opacity: 0 !important;
-            }
-
-            body:not(.dark) #sun {
-                display: none !important;
-                opacity: 0 !important;
-            }
-
-            body.dark #sun {
-                display: block !important;
-                opacity: 1 !important;
-            }
-
-            body:not(.dark) #moon {
-                display: block !important;
-                opacity: 1 !important;
-            }
-
             /* Mobile light mode theme toggle styling */
             body:not(.dark) #theme-toggle:hover,
             body:not(.dark) #theme-toggle:focus {
@@ -2360,22 +2310,79 @@ if (!doNotTrack) {
         console.log("Current moon display:", getComputedStyle(document.getElementById("moon")).display);
         console.log("Current sun display:", getComputedStyle(document.getElementById("sun")).display);
         
-        if (document.body.className.includes("dark")) {
+        // Get current theme state
+        const isDark = document.body.className.includes("dark");
+        
+        if (isDark) {
+            // Switching from dark to light
             document.body.classList.remove('dark');
             localStorage.setItem("pref-theme", 'light');
             console.log("Switched to light mode");
+            
+            // Force immediate update of SVG visibility
+            const moon = document.getElementById("moon");
+            const sun = document.getElementById("sun");
+            if (moon) moon.style.display = "block";
+            if (sun) sun.style.display = "none";
         } else {
+            // Switching from light to dark
             document.body.classList.add('dark');
             localStorage.setItem("pref-theme", 'dark');
             console.log("Switched to dark mode");
+            
+            // Force immediate update of SVG visibility
+            const moon = document.getElementById("moon");
+            const sun = document.getElementById("sun");
+            if (moon) moon.style.display = "none";
+            if (sun) sun.style.display = "block";
         }
         
-        // Force a reflow to ensure CSS updates
-        setTimeout(() => {
+        // Force a reflow and check state after CSS updates
+        requestAnimationFrame(() => {
             console.log("After toggle - body classes:", document.body.className);
             console.log("After toggle - moon display:", getComputedStyle(document.getElementById("moon")).display);
             console.log("After toggle - sun display:", getComputedStyle(document.getElementById("sun")).display);
-        }, 100);
+            
+            // Double-check and force correct state if needed
+            setTimeout(() => {
+                const isDarkAfter = document.body.className.includes("dark");
+                const moon = document.getElementById("moon");
+                const sun = document.getElementById("sun");
+                
+                if (isDarkAfter) {
+                    if (moon) moon.style.display = "none";
+                    if (sun) sun.style.display = "block";
+                } else {
+                    if (moon) moon.style.display = "block";
+                    if (sun) sun.style.display = "none";
+                }
+                
+                console.log("Final state check - body classes:", document.body.className);
+                console.log("Final state check - moon display:", getComputedStyle(document.getElementById("moon")).display);
+                console.log("Final state check - sun display:", getComputedStyle(document.getElementById("sun")).display);
+            }, 50);
+        });
+    });
+    
+    // Initialize theme on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const savedTheme = localStorage.getItem("pref-theme");
+        const moon = document.getElementById("moon");
+        const sun = document.getElementById("sun");
+        
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark');
+            if (moon) moon.style.display = "none";
+            if (sun) sun.style.display = "block";
+        } else {
+            document.body.classList.remove('dark');
+            if (moon) moon.style.display = "block";
+            if (sun) sun.style.display = "none";
+        }
+        
+        console.log("Theme initialized - body classes:", document.body.className);
+        console.log("Theme initialized - moon display:", getComputedStyle(document.getElementById("moon")).display);
+        console.log("Theme initialized - sun display:", getComputedStyle(document.getElementById("sun")).display);
     });
 </script>
 <script>
