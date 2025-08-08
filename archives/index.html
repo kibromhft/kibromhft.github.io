@@ -577,6 +577,104 @@ if (!doNotTrack) {
             text-decoration: underline;
         }
     }
+
+    /* Dark mode styles for archives page */
+    body.dark {
+        background-color: #222222;
+        color: #DADADB;
+    }
+
+
+
+    /* Archives-specific styling to replace stylesheet_main.css */
+    .archive-year {
+        margin-bottom: 2rem;
+    }
+
+    .archive-year-header {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: rgb(30, 30, 30);
+    }
+
+    .archive-month {
+        margin-bottom: 1.5rem;
+    }
+
+    .archive-month-header {
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        color: rgb(108, 108, 108);
+    }
+
+    .archive-posts {
+        margin-left: 1rem;
+    }
+
+    .archive-entry {
+        position: relative;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgb(238, 238, 238);
+    }
+
+    .archive-entry:last-child {
+        border-bottom: none;
+    }
+
+    .archive-entry-title {
+        font-size: 1rem;
+        font-weight: 500;
+        margin: 0;
+        color: rgb(30, 30, 30);
+    }
+
+    .archive-meta {
+        font-size: 0.875rem;
+        color: rgb(108, 108, 108);
+        margin-top: 0.25rem;
+    }
+
+    .entry-link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+
+    .archive-count {
+        font-size: 0.75rem;
+        color: rgb(108, 108, 108);
+        font-weight: normal;
+    }
+
+    /* Page header styling */
+    .page-header h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+        color: rgb(30, 30, 30);
+    }
+
+    /* Dark mode overrides for archives */
+    body.dark .archive-entry-title {
+        color: rgb(218, 218, 219);
+    }
+
+    body.dark .archive-meta {
+        color: rgb(155, 156, 157);
+    }
+
+    body.dark .archive-year-header {
+        color: rgb(218, 218, 219);
+    }
+
+    body.dark .archive-month-header {
+        color: rgb(155, 156, 157);
+    }
 </style>
 
 
@@ -701,6 +799,36 @@ if (!doNotTrack) {
 			color: #000 !important;
 		}
 
+		/* Fix dropdown menu visibility in light mode */
+		.dropdown-menu {
+			background: var(--entry) !important;
+			border: 1px solid var(--border) !important;
+		}
+
+		.dropdown-menu a {
+			color: var(--primary) !important;
+		}
+
+		.dropdown-menu a:hover {
+			background-color: var(--tertiary) !important;
+			color: var(--primary) !important;
+		}
+
+		/* Ensure proper contrast in light mode */
+		body:not(.dark) .dropdown-menu {
+			background: rgb(255, 255, 255) !important;
+			border: 1px solid rgb(238, 238, 238) !important;
+		}
+
+		body:not(.dark) .dropdown-menu a {
+			color: rgb(30, 30, 30) !important;
+		}
+
+		body:not(.dark) .dropdown-menu a:hover {
+			background-color: rgb(214, 214, 214) !important;
+			color: rgb(30, 30, 30) !important;
+		}
+
 		/* Mobile-specific overrides to match keywords page behavior */
 		@media screen and (max-width: 768px) {
 			/* Override main.css mobile navigation with keywords-style behavior */
@@ -713,8 +841,34 @@ if (!doNotTrack) {
 				flex-wrap: wrap !important;
 				overflow: visible !important;
 				white-space: normal !important;
-				/* Override max-width constraints */
+				/* Override max-width constraints but keep sticky behavior */
 				max-width: none !important;
+			}
+
+			/* Ensure logo is visible in light mode on mobile */
+			.logo {
+				display: flex !important;
+				align-items: center !important;
+				gap: 8px !important;
+				flex-shrink: 0 !important;
+			}
+
+			.logo a {
+				font-size: 22px !important;
+				font-weight: 700 !important;
+				font-family: var(--font-serif) !important;
+				color: var(--primary) !important;
+				text-decoration: none !important;
+			}
+
+			/* Ensure logo text is visible in light mode */
+			body:not(.dark) .logo a {
+				color: rgb(30, 30, 30) !important;
+			}
+
+			/* Ensure theme toggle is visible in light mode */
+			body:not(.dark) #theme-toggle {
+				color: rgb(30, 30, 30) !important;
 			}
 
 			#menu {
@@ -742,6 +896,24 @@ if (!doNotTrack) {
 				/* Ensure text wrapping works properly */
 				word-wrap: break-word !important;
 				overflow-wrap: break-word !important;
+				color: var(--primary) !important;
+				text-decoration: none !important;
+			}
+
+			/* Ensure menu items are visible in light mode */
+			body:not(.dark) #menu a {
+				color: rgb(30, 30, 30) !important;
+			}
+
+			/* Ensure menu items are visible on hover in light mode */
+			body:not(.dark) #menu a:hover {
+				background-color: rgb(214, 214, 214) !important;
+				color: rgb(30, 30, 30) !important;
+			}
+
+			/* Ensure dropdown carets are visible in light mode */
+			body:not(.dark) .caret {
+				color: rgb(30, 30, 30) !important;
 			}
 
 			.dropdown-menu {
