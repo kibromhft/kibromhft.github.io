@@ -385,29 +385,37 @@ if (!doNotTrack) {
         font-family: var(--font-serif);
     }
 
-    /* Clean archive styling with proper fonts and colors */
+    /* Clean archive styling with subtle improvements */
     .archive-year {
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .archive-year:last-child {
+        border-bottom: none;
     }
 
     .archive-year-header {
         font-size: 1.5rem;
         font-weight: 600;
-        margin-bottom: 1rem;
+        margin-bottom: 1.25rem;
         color: var(--primary);
         font-family: var(--font-serif);
+        line-height: 1.3;
     }
 
     .archive-month {
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.75rem;
     }
 
     .archive-month-header {
         font-size: 1.2rem;
         font-weight: 500;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.75rem;
         color: var(--secondary);
         font-family: var(--font-primary);
+        line-height: 1.4;
     }
 
     .archive-posts {
@@ -416,8 +424,9 @@ if (!doNotTrack) {
 
     .archive-entry {
         position: relative;
-        padding: 0.5rem 0;
-        border-bottom: 1px solid var(--border);
+        padding: 0.75rem 0.5rem;
+        margin: 0 -0.5rem;
+        border-radius: 4px;
         transition: background-color 0.2s ease;
     }
 
@@ -425,16 +434,13 @@ if (!doNotTrack) {
         background-color: var(--tertiary);
     }
 
-    .archive-entry:last-child {
-        border-bottom: none;
-    }
-
     .archive-entry-title {
         font-size: 1rem;
         font-weight: 500;
-        margin: 0;
+        margin: 0 0 0.3rem 0;
         color: var(--primary);
         font-family: var(--font-primary);
+        line-height: 1.4;
         transition: color 0.2s ease;
     }
 
@@ -445,8 +451,9 @@ if (!doNotTrack) {
     .archive-meta {
         font-size: 0.875rem;
         color: var(--secondary);
-        margin-top: 0.25rem;
+        margin: 0;
         font-family: var(--font-primary);
+        line-height: 1.4;
     }
 
     .entry-link {
@@ -464,6 +471,19 @@ if (!doNotTrack) {
         color: var(--secondary);
         font-weight: normal;
         font-family: var(--font-primary);
+        opacity: 0.8;
+    }
+
+    /* Subtle responsive improvements */
+    @media (max-width: 768px) {
+        .archive-posts {
+            margin-left: 0.5rem;
+        }
+        
+        .archive-entry {
+            padding: 0.6rem 0.3rem;
+            margin: 0 -0.3rem;
+        }
     }
 
     /* Navigation color consistency - using correct main.css variables */
