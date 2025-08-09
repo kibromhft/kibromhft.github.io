@@ -376,15 +376,16 @@ if (!doNotTrack) {
         font-style: normal;
     }
 
-    /* Original Archives styling - completely clean and simple */
+    /* Original Archives styling - using correct main.css variables and fonts */
     .page-header h1 {
         font-size: 2rem;
         font-weight: 600;
         margin-bottom: 2rem;
-        color: var(--text-primary);
+        color: var(--primary);
+        font-family: var(--font-serif);
     }
 
-    /* Original clean archive styling restored */
+    /* Clean archive styling with proper fonts and colors */
     .archive-year {
         margin-bottom: 2rem;
     }
@@ -393,7 +394,8 @@ if (!doNotTrack) {
         font-size: 1.5rem;
         font-weight: 600;
         margin-bottom: 1rem;
-        color: var(--text-primary);
+        color: var(--primary);
+        font-family: var(--font-serif);
     }
 
     .archive-month {
@@ -404,7 +406,8 @@ if (!doNotTrack) {
         font-size: 1.2rem;
         font-weight: 500;
         margin-bottom: 0.5rem;
-        color: var(--text-secondary);
+        color: var(--secondary);
+        font-family: var(--font-primary);
     }
 
     .archive-posts {
@@ -414,7 +417,12 @@ if (!doNotTrack) {
     .archive-entry {
         position: relative;
         padding: 0.5rem 0;
-        border-bottom: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border);
+        transition: background-color 0.2s ease;
+    }
+
+    .archive-entry:hover {
+        background-color: var(--tertiary);
     }
 
     .archive-entry:last-child {
@@ -425,13 +433,20 @@ if (!doNotTrack) {
         font-size: 1rem;
         font-weight: 500;
         margin: 0;
-        color: var(--text-primary);
+        color: var(--primary);
+        font-family: var(--font-primary);
+        transition: color 0.2s ease;
+    }
+
+    .archive-entry:hover .archive-entry-title {
+        color: var(--brand-blue);
     }
 
     .archive-meta {
         font-size: 0.875rem;
-        color: var(--text-secondary);
+        color: var(--secondary);
         margin-top: 0.25rem;
+        font-family: var(--font-primary);
     }
 
     .entry-link {
@@ -441,65 +456,38 @@ if (!doNotTrack) {
         right: 0;
         bottom: 0;
         z-index: 1;
+        text-decoration: none;
     }
 
     .archive-count {
         font-size: 0.75rem;
-        color: var(--text-secondary);
+        color: var(--secondary);
         font-weight: normal;
+        font-family: var(--font-primary);
     }
 
-    /* Navigation color consistency - now using FAQ design system */
+    /* Navigation color consistency - using correct main.css variables */
     #menu a {
-        color: var(--text-primary) !important;
+        color: var(--primary) !important;
     }
 
     #menu a:hover {
-        background-color: var(--bg-secondary) !important;
-        color: var(--text-primary) !important;
-        outline: 2px solid var(--primary-color) !important;
-        outline-offset: 2px !important;
+        background-color: var(--tertiary) !important;
+        color: var(--primary) !important;
     }
 
     .dropdown-menu a {
-        color: var(--text-primary) !important;
+        color: var(--primary) !important;
     }
 
     .dropdown-menu a:hover {
-        background-color: var(--bg-secondary) !important;
-        color: var(--text-primary) !important;
+        background-color: var(--tertiary) !important;
+        color: var(--primary) !important;
     }
 
-
-
-    /* Dark mode navigation consistency - using FAQ design system */
-    body.dark #menu a {
-        color: var(--text-primary) !important;
-    }
-
-    body.dark #menu a:hover {
-        background-color: var(--bg-secondary) !important;
-        color: var(--text-primary) !important;
-        outline: 2px solid var(--primary-color) !important;
-        outline-offset: 2px !important;
-    }
-
-    body.dark .dropdown-menu a {
-        color: var(--text-primary) !important;
-    }
-
-    body.dark .dropdown-menu a:hover {
-        background-color: var(--bg-secondary) !important;
-        color: var(--text-primary) !important;
-    }
-
-    /* Logo color consistency - using FAQ design system */
+    /* Logo color consistency */
     .logo a {
-        color: var(--text-primary) !important;
-    }
-
-    body.dark .logo a {
-        color: var(--text-primary) !important;
+        color: var(--primary) !important;
     }
 
     /* Theme toggle icon consistency */
