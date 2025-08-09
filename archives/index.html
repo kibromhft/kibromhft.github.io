@@ -376,9 +376,9 @@ if (!doNotTrack) {
         font-style: normal;
     }
 
-    /* Archives-specific styling - clean content-focused design */
+    /* Clean Archives styling - keeping original content-focused design */
     
-    /* Enhanced page header only */
+    /* Enhanced page header only - as requested */
     .page-header h1 {
         font-size: 2rem;
         font-weight: 600;
@@ -386,6 +386,11 @@ if (!doNotTrack) {
         color: var(--text-primary);
         text-align: center;
         position: relative;
+        letter-spacing: -0.02em;
+        background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
 
     .page-header h1::after {
@@ -401,7 +406,7 @@ if (!doNotTrack) {
         box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3);
     }
 
-    /* Original clean archive styling */
+    /* Original clean archive styling restored */
     .archive-year {
         margin-bottom: 2rem;
     }
@@ -487,7 +492,7 @@ if (!doNotTrack) {
         color: var(--text-primary) !important;
     }
 
-    /* Dark mode support for title underline only */
+    /* Dark mode support for enhanced title only */
     body.dark .page-header h1::after {
         background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-light) 50%, var(--primary-hover) 100%);
         box-shadow: 0 2px 8px rgba(34, 211, 238, 0.3);
