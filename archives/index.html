@@ -161,290 +161,62 @@ if (!doNotTrack) {
 
 
 <style>
-    /* Design System - CSS Custom Properties */
-    :root {
-        /* Colors - using main theme variables */
-        --primary-color: var(--brand-blue, rgb(13, 110, 253));
-        --primary-hover: var(--brand-blue-hover, rgb(10, 88, 202));
-        --primary-light: rgb(59, 130, 246);
-        --text-primary: var(--primary, rgb(15, 23, 42));
-        --text-secondary: var(--secondary, rgb(51, 65, 85));
-        --text-muted: rgb(108, 117, 125);
-        --bg-primary: var(--theme, rgb(255, 255, 255));
-        --bg-secondary: var(--entry, rgb(248, 250, 252));
-        --bg-card: var(--entry, rgb(255, 255, 255));
-        --border-color: var(--border, rgba(226, 232, 240, 0.8));
-        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.02);
-        --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.03);
-        --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.05);
-        
-        /* Typography */
-        --font-heading: "Essays 1743", serif;
-        --font-body: Libertine, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
-        --font-size-xs: 0.875rem;
-        --font-size-sm: 1rem;
-        --font-size-base: 1.1rem;
-        --font-size-lg: 1.25rem;
-        --font-size-xl: 1.4rem;
-        --font-size-2xl: 2rem;
-        --font-size-3xl: 3.5rem;
-        
-        /* Spacing */
-        --space-xs: 0.5rem;
-        --space-sm: 1rem;
-        --space-md: 1.5rem;
-        --space-lg: 2rem;
-        --space-xl: 2.5rem;
-        --space-2xl: 3rem;
-        --space-3xl: 4rem;
-        
-        /* Border radius */
-        --radius-sm: 8px;
-        --radius-md: 12px;
-        --radius-lg: 16px;
-        
-        /* Transitions */
-        --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        
-        /* Container */
-        --container-max-width: min(900px, 90vw);
-        --container-padding: clamp(1rem, 5vw, 2rem);
-    }
-
-    /* Dark mode variables - using main theme system */
+    /* Dark mode styles for archives page */
     body.dark {
-        --primary-color: rgb(34, 211, 238);
-        --primary-hover: rgb(6, 182, 212);
-        --primary-light: rgb(6, 182, 212);
-        --text-primary: var(--primary, rgb(248, 250, 252));
-        --text-secondary: var(--secondary, rgb(203, 213, 225));
-        --text-muted: rgb(156, 163, 175);
-        --bg-primary: var(--theme, rgb(15, 23, 42));
-        --bg-secondary: var(--entry, rgb(30, 41, 59));
-        --bg-card: var(--entry, rgb(30, 41, 59));
-        --border-color: var(--border, rgba(51, 65, 85, 0.8));
-        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
-        --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-        --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+        background-color: #222222;
+        color: #DADADB;
     }
 
-    /* Reduced motion support */
-    @media (prefers-reduced-motion: reduce) {
-        :root {
-            --transition-fast: 0s;
-            --transition-base: 0s;
-            --transition-slow: 0s;
-        }
-        
-        * {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-        }
-    }
 
-    /* Navigation styles with CSS variables */
-    #menu a {
-        color: var(--text-primary);
-        transition: var(--transition-base);
-    }
 
-    #menu a:hover,
-    #menu a:focus {
-        background-color: var(--bg-secondary);
-        color: var(--text-primary);
-        outline: 2px solid var(--primary-color);
-        outline-offset: 2px;
-    }
-
-    .dropdown-menu a {
-        color: var(--text-primary);
-        transition: var(--transition-base);
-    }
-
-    .dropdown-menu a:hover,
-    .dropdown-menu a:focus {
-        background-color: var(--bg-secondary);
-        color: var(--text-primary);
-    }
-
-    /* Logo and theme toggle */
-    .logo a {
-        color: var(--text-primary);
-        transition: var(--transition-base);
-    }
-
-    .logo a:hover,
-    .logo a:focus {
-        color: var(--primary-color);
-        outline: 2px solid var(--primary-color);
-        outline-offset: 2px;
-    }
-
-    #theme-toggle {
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: var(--space-xs);
-        border-radius: 50%;
-        transition: var(--transition-base);
-        color: var(--text-primary);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    #theme-toggle:hover,
-    #theme-toggle:focus {
-        background-color: var(--bg-secondary);
-        outline: 2px solid var(--primary-color);
-        outline-offset: 2px;
-    }
-
-    #theme-toggle svg {
-        height: 20px;
-        width: 20px;
-    }
-
-    .logo-switches {
-        display: flex;
-        align-items: center;
-        margin-left: var(--space-sm);
-    }
-
-    .logo {
-        display: flex;
-        align-items: center;
-        position: relative;
-    }
-
-    /* Theme toggle visibility */
-    body.dark #moon {
-        display: none;
-    }
-
-    body:not(.dark) #sun {
-        display: none;
-    }
-
-    /* Optimized font loading with fallbacks */
-    @font-face {
-        font-family: "Essays 1743";
-        src: url("../assets/f/Essays1743.woff2") format("woff2"), url("../assets/f/Essays1743.woff") format("woff");
-        font-display: swap;
-        font-weight: normal;
-        font-style: normal;
-    }
-    @font-face {
-        font-family: "Essays 1743";
-        src: url("../assets/f/Essays1743-bold.woff2") format("woff2"), url("../assets/f/Essays1743-bold.woff") format("woff");
-        font-display: swap;
-        font-weight: bold;
-        font-style: normal;
-    }
-    @font-face {
-        font-family: "Essays 1743";
-        src: url("../assets/f/Essays1743-italic.woff2") format("woff2"), url("../assets/f/Essays1743-italic.woff") format("woff");
-        font-display: swap;
-        font-weight: normal;
-        font-style: italic;
-    }
-    @font-face {
-        font-family: "Libertine";
-        src: url("../assets/f/Libertine.woff2") format("woff2"), url("../assets/f/Libertine.woff") format("woff");
-        font-display: swap;
-        font-weight: normal;
-        font-style: normal;
-    }
-    @font-face {
-        font-family: "Libertine";
-        src: url("../assets/f/Libertine-bold.woff2") format("woff2"), url("../assets/f/Libertine-bold.woff") format("woff");
-        font-display: swap;
-        font-weight: bold;
-        font-style: normal;
-    }
-
-    /* Archives-specific styling with modern CSS variables */
+    /* Archives-specific styling to replace stylesheet_main.css */
     .archive-year {
-        margin-bottom: var(--space-2xl);
+        margin-bottom: 2rem;
     }
 
     .archive-year-header {
-        font-size: var(--font-size-2xl);
-        font-weight: 700;
-        margin-bottom: var(--space-lg);
-        color: var(--text-primary);
-        font-family: var(--font-heading);
-        position: relative;
-    }
-
-    .archive-year-header::before {
-        content: '';
-        position: absolute;
-        bottom: -8px;
-        left: 0;
-        width: 60px;
-        height: 3px;
-        background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
-        border-radius: 2px;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: rgb(30, 30, 30);
     }
 
     .archive-month {
-        margin-bottom: var(--space-xl);
+        margin-bottom: 1.5rem;
     }
 
     .archive-month-header {
-        font-size: var(--font-size-xl);
-        font-weight: 600;
-        margin-bottom: var(--space-md);
-        color: var(--text-secondary);
-        font-family: var(--font-body);
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        color: rgb(108, 108, 108);
     }
 
     .archive-posts {
-        margin-left: var(--space-lg);
+        margin-left: 1rem;
     }
 
     .archive-entry {
         position: relative;
-        padding: var(--space-md) 0;
-        border-bottom: 1px solid var(--border-color);
-        transition: var(--transition-base);
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgb(238, 238, 238);
     }
 
     .archive-entry:last-child {
         border-bottom: none;
     }
 
-    .archive-entry:hover {
-        background-color: var(--bg-secondary);
-        border-radius: var(--radius-sm);
-        padding-left: var(--space-sm);
-        margin-left: calc(-1 * var(--space-sm));
-    }
-
     .archive-entry-title {
-        font-size: var(--font-size-base);
-        font-weight: 600;
+        font-size: 1rem;
+        font-weight: 500;
         margin: 0;
-        color: var(--text-primary);
-        font-family: var(--font-body);
-        transition: var(--transition-base);
-    }
-
-    .archive-entry:hover .archive-entry-title {
-        color: var(--primary-color);
+        color: rgb(30, 30, 30);
     }
 
     .archive-meta {
-        font-size: var(--font-size-sm);
-        color: var(--text-secondary);
-        margin-top: var(--space-xs);
-        font-family: var(--font-body);
+        font-size: 0.875rem;
+        color: rgb(108, 108, 108);
+        margin-top: 0.25rem;
     }
 
     .entry-link {
@@ -457,125 +229,127 @@ if (!doNotTrack) {
     }
 
     .archive-count {
-        font-size: var(--font-size-xs);
-        color: var(--text-muted);
+        font-size: 0.75rem;
+        color: rgb(108, 108, 108);
         font-weight: normal;
-        font-family: var(--font-body);
     }
 
     /* Page header styling */
     .page-header h1 {
-        font-size: var(--font-size-3xl);
-        font-weight: 700;
-        margin-bottom: var(--space-3xl);
-        color: var(--text-primary);
-        font-family: var(--font-heading);
-        text-align: center;
-        position: relative;
-    }
-
-    .page-header h1::before {
-        content: '📚';
-        position: absolute;
-        top: -2rem;
-        left: 50%;
-        transform: translateX(-50%);
         font-size: 2rem;
-        opacity: 0.1;
+        font-weight: 600;
+        margin-bottom: 2rem;
+        color: rgb(30, 30, 30);
     }
 
-    .page-header h1::after {
-        content: '';
-        position: absolute;
-        bottom: -15px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80px;
-        height: 4px;
-        background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
-        border-radius: 2px;
-        box-shadow: 0 2px 8px var(--primary-shadow);
+    /* Navigation color consistency - using main.css colors */
+    #menu a {
+        color: rgb(30, 30, 30) !important;
     }
 
-    /* Enhanced link styling */
-    .post-content a {
-        color: var(--primary-color);
-        text-decoration: none;
-        transition: var(--transition-base);
-        position: relative;
-        font-weight: 500;
-        border-radius: 2px;
+    #menu a:hover {
+        background-color: rgb(214, 214, 214) !important;
+        color: rgb(30, 30, 30) !important;
     }
 
-    .post-content a::after {
-        content: '';
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
-        transition: width var(--transition-base);
-        border-radius: 1px;
+    .dropdown-menu a {
+        color: rgb(30, 30, 30) !important;
     }
 
-    .post-content a:hover::after,
-    .post-content a:focus::after {
-        width: 100%;
+    .dropdown-menu a:hover {
+        background-color: rgb(214, 214, 214) !important;
+        color: rgb(30, 30, 30) !important;
     }
 
-    .post-content a:hover,
-    .post-content a:focus {
-        color: var(--primary-hover);
-        outline: 2px solid var(--primary-color);
-        outline-offset: 2px;
+    /* Dark mode overrides for archives */
+    body.dark .archive-entry-title {
+        color: rgb(218, 218, 219);
     }
 
-    /* Responsive design */
-    @media (max-width: 768px) {
-        .archive-year-header {
-            font-size: var(--font-size-xl);
-        }
-        
-        .archive-month-header {
-            font-size: var(--font-size-lg);
-        }
-        
-        .archive-entry-title {
-            font-size: var(--font-size-sm);
-        }
-        
-        .page-header h1 {
-            font-size: var(--font-size-2xl);
-        }
+    body.dark .archive-meta {
+        color: rgb(155, 156, 157);
     }
 
-    /* High contrast mode support */
-    @media (prefers-contrast: high) {
-        .archive-entry {
-            border-bottom: 2px solid var(--text-primary);
-        }
-        
-        .post-content a {
-            text-decoration: underline;
-        }
-        
-        .post-content a::after {
-            display: none;
-        }
+    body.dark .archive-year-header {
+        color: rgb(218, 218, 219);
     }
 
-    /* Print styles */
-    @media print {
-        .archive-entry {
-            break-inside: avoid;
-            border-bottom: 1px solid #000;
-        }
-        
-        .post-content a {
-            color: #000;
-            text-decoration: underline;
-        }
+    body.dark .archive-month-header {
+        color: rgb(155, 156, 157);
+    }
+
+    /* Dark mode navigation consistency */
+    body.dark #menu a {
+        color: rgb(218, 218, 219) !important;
+    }
+
+    body.dark #menu a:hover {
+        background-color: rgb(65, 66, 68) !important;
+        color: rgb(218, 218, 219) !important;
+    }
+
+    body.dark .dropdown-menu a {
+        color: rgb(218, 218, 219) !important;
+    }
+
+    body.dark .dropdown-menu a:hover {
+        background-color: rgb(65, 66, 68) !important;
+        color: rgb(218, 218, 219) !important;
+    }
+
+    /* Logo color consistency */
+    .logo a {
+        color: rgb(30, 30, 30) !important;
+    }
+
+    body.dark .logo a {
+        color: rgb(218, 218, 219) !important;
+    }
+
+    /* Theme toggle icon consistency */
+    body.dark #moon {
+        display: none !important;
+    }
+
+    body:not(.dark) #sun {
+        display: none !important;
+    }
+
+    /* Ensure theme toggle button is visible and clickable */
+    #theme-toggle {
+        background: none !important;
+        border: none !important;
+        cursor: pointer !important;
+        padding: 8px !important;
+        border-radius: 50% !important;
+        transition: background-color 0.2s ease !important;
+        color: var(--primary) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    #theme-toggle:hover {
+        background-color: var(--tertiary) !important;
+    }
+
+    #theme-toggle svg {
+        height: 20px !important;
+        width: 20px !important;
+    }
+
+    /* Ensure logo-switches is properly positioned */
+    .logo-switches {
+        display: flex !important;
+        align-items: center !important;
+        margin-left: 10px !important;
+    }
+
+    /* Ensure the button is not being covered by other elements */
+    .logo {
+        display: flex !important;
+        align-items: center !important;
+        position: relative !important;
     }
 </style>
 
@@ -670,159 +444,6 @@ if (!doNotTrack) {
 		</li>
 
 		</ul>
-
-		<style>
-		/* Simple navigation styles - same as keywords page */
-		.custom-dropdown {
-		  padding: 8px 0 !important;
-		  margin: 0 !important;
-		  list-style-type: none !important;
-		}
-
-		.custom-dropdown li {
-		  padding: 0 !important;
-		  margin: 0 !important;
-		}
-
-		.custom-dropdown li a {
-		  display: block !important;
-		  width: 100% !important;
-		  padding: 8px 20px !important;
-		  margin: 0 !important;
-		  box-sizing: border-box !important;
-		  text-decoration: none !important;
-		  color: #333 !important;
-		  font-size: 16px !important;
-		  line-height: 1.5 !important;
-		}
-
-		.custom-dropdown li a:hover {
-			background-color: #f8f9fa !important;
-			color: #000 !important;
-		}
-
-		/* Mobile-specific overrides to match keywords page behavior */
-		@media screen and (max-width: 768px) {
-			/* Override main.css mobile navigation with keywords-style behavior */
-			.nav {
-				padding: 0 16px !important;
-				gap: 16px !important;
-				/* Remove complex flex overrides that cause horizontal lines */
-				display: flex !important;
-				align-items: center !important;
-				flex-wrap: wrap !important;
-				overflow: visible !important;
-				white-space: normal !important;
-				/* Override max-width constraints */
-				max-width: none !important;
-			}
-
-			#menu {
-				gap: 6px !important;
-				/* Remove overflow-x that causes horizontal lines */
-				overflow: visible !important;
-				white-space: normal !important;
-				display: flex !important;
-				flex-direction: row !important;
-				flex-wrap: wrap !important;
-			}
-
-			#menu li {
-				/* Remove inline-block that causes layout issues */
-				display: flex !important;
-				white-space: normal !important;
-				flex-shrink: 1 !important;
-			}
-
-			#menu a {
-				font-size: 15px !important;
-				padding: 8px 12px !important;
-				border-radius: 6px !important;
-				white-space: normal !important;
-				/* Ensure text wrapping works properly */
-				word-wrap: break-word !important;
-				overflow-wrap: break-word !important;
-			}
-
-			.dropdown-menu {
-				right: auto !important;
-				left: 0 !important;
-				min-width: 200px !important;
-				border-radius: 8px !important;
-			}
-
-			/* Mobile dropdown functionality - completely disable hover behavior on touch devices */
-			.dropdown .dropdown-menu {
-				opacity: 0 !important;
-				visibility: hidden !important;
-				transform: translateY(-8px) !important;
-			}
-
-			/* Show dropdown when dropdown-open class is present */
-			.dropdown.dropdown-open .dropdown-menu {
-				opacity: 1 !important;
-				visibility: visible !important;
-				transform: translateY(0) !important;
-			}
-
-			/* Rotate caret when dropdown is open */
-			.dropdown.dropdown-open .caret {
-				transform: rotate(180deg) !important;
-			}
-		}
-
-		/* Override the problematic 480px breakpoint from main.css */
-		@media screen and (max-width: 480px) {
-			.nav {
-				flex-direction: row !important;
-				padding: 0 16px !important;
-				display: flex !important;
-				align-items: center !important;
-				flex-wrap: wrap !important;
-				/* Override max-width constraints */
-				max-width: none !important;
-			}
-
-			.logo {
-				margin-bottom: 0 !important;
-			}
-
-			#menu {
-				flex-wrap: wrap !important;
-				justify-content: flex-start !important;
-				gap: 6px !important;
-				display: flex !important;
-				flex-direction: row !important;
-			}
-
-			#menu a {
-				font-size: 14px !important;
-				padding: 6px 8px !important;
-				white-space: normal !important;
-				/* Ensure text wrapping works properly */
-				word-wrap: break-word !important;
-				overflow-wrap: break-word !important;
-			}
-
-			/* Mobile dropdown functionality for smaller screens */
-			.dropdown .dropdown-menu {
-				opacity: 0 !important;
-				visibility: hidden !important;
-				transform: translateY(-8px) !important;
-			}
-
-			.dropdown.dropdown-open .dropdown-menu {
-				opacity: 1 !important;
-				visibility: visible !important;
-				transform: translateY(0) !important;
-			}
-
-			.dropdown.dropdown-open .caret {
-				transform: rotate(180deg) !important;
-			}
-		}
-		</style>
-
 		
     </nav>
 </header>
@@ -1075,97 +696,6 @@ if (!doNotTrack) {
         }
     };
 
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.classList.contains("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    });
-</script>
-<script>
-    // Mobile dropdown functionality
-    document.addEventListener('DOMContentLoaded', function() {
-        // Check if device is touch-based (mobile) or small screen
-        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-        const isSmallScreen = window.innerWidth <= 768;
-        
-        if (isTouchDevice || isSmallScreen) {
-            const dropdowns = document.querySelectorAll('.dropdown');
-            
-            // Disable hover behavior on mobile by removing hover styles
-            dropdowns.forEach(dropdown => {
-                const menu = dropdown.querySelector('.dropdown-menu');
-                if (menu) {
-                    // Force mobile styles
-                    menu.style.transition = 'all 0.2s ease';
-                }
-            });
-            
-            dropdowns.forEach(dropdown => {
-                const toggle = dropdown.querySelector('.dropdown-toggle');
-                const menu = dropdown.querySelector('.dropdown-menu');
-                
-                if (toggle && menu) {
-                    // Add click event to toggle dropdown
-                    toggle.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        
-                        // Close all other dropdowns
-                        dropdowns.forEach(otherDropdown => {
-                            if (otherDropdown !== dropdown) {
-                                otherDropdown.classList.remove('dropdown-open');
-                            }
-                        });
-                        
-                        // Toggle current dropdown
-                        const isOpen = dropdown.classList.contains('dropdown-open');
-                        if (isOpen) {
-                            dropdown.classList.remove('dropdown-open');
-                        } else {
-                            dropdown.classList.add('dropdown-open');
-                        }
-                    });
-                }
-            });
-            
-            // Close dropdown when clicking outside
-            document.addEventListener('click', function(e) {
-                // Don't close if clicking on the dropdown toggle
-                if (e.target.closest('.dropdown-toggle')) {
-                    return;
-                }
-                
-                // Close if clicking outside dropdown
-                if (!e.target.closest('.dropdown')) {
-                    dropdowns.forEach(dropdown => {
-                        dropdown.classList.remove('dropdown-open');
-                    });
-                }
-            });
-            
-            // Close dropdown when pressing Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    dropdowns.forEach(dropdown => {
-                        dropdown.classList.remove('dropdown-open');
-                    });
-                }
-            });
-            
-            // Close dropdown when window is resized
-            window.addEventListener('resize', function() {
-                dropdowns.forEach(dropdown => {
-                    dropdown.classList.remove('dropdown-open');
-                });
-            });
-        }
-    });
 </script>
 
 </body>
