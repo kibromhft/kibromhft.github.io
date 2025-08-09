@@ -403,6 +403,7 @@ if (!doNotTrack) {
         color: var(--primary);
         font-family: var(--font-serif);
         line-height: 1.3;
+        letter-spacing: -0.01em;
     }
 
     .archive-month {
@@ -416,6 +417,7 @@ if (!doNotTrack) {
         color: var(--secondary);
         font-family: var(--font-primary);
         line-height: 1.4;
+        letter-spacing: -0.005em;
     }
 
     .archive-posts {
@@ -426,21 +428,30 @@ if (!doNotTrack) {
         position: relative;
         padding: 0.75rem 0.5rem;
         margin: 0 -0.5rem;
-        border-radius: 4px;
-        transition: background-color 0.2s ease;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        cursor: pointer;
     }
 
     .archive-entry:hover {
         background-color: var(--tertiary);
+        transform: translateX(2px);
+    }
+
+    .archive-entry:focus-within {
+        outline: 2px solid var(--brand-blue);
+        outline-offset: 2px;
+        background-color: var(--tertiary);
     }
 
     .archive-entry-title {
-        font-size: 1rem;
+        font-size: 1.05rem;
         font-weight: 500;
-        margin: 0 0 0.3rem 0;
+        margin: 0 0 0.4rem 0;
         color: var(--primary);
         font-family: var(--font-primary);
         line-height: 1.4;
+        letter-spacing: -0.01em;
         transition: color 0.2s ease;
     }
 
@@ -449,11 +460,18 @@ if (!doNotTrack) {
     }
 
     .archive-meta {
-        font-size: 0.875rem;
+        font-size: 0.85rem;
         color: var(--secondary);
         margin: 0;
         font-family: var(--font-primary);
         line-height: 1.4;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .archive-meta span {
+        font-weight: 500;
     }
 
     .entry-link {
@@ -466,12 +484,34 @@ if (!doNotTrack) {
         text-decoration: none;
     }
 
+    .entry-link:focus {
+        outline: none;
+    }
+
     .archive-count {
         font-size: 0.75rem;
         color: var(--secondary);
-        font-weight: normal;
+        font-weight: 500;
         font-family: var(--font-primary);
-        opacity: 0.8;
+        opacity: 0.7;
+        background-color: var(--tertiary);
+        padding: 0.15rem 0.4rem;
+        border-radius: 12px;
+        margin-left: 0.5rem;
+        display: inline-block;
+    }
+
+    /* Better date and reading time separation */
+    .archive-meta span:first-child {
+        color: var(--primary);
+        font-weight: 500;
+    }
+
+    .archive-meta::before {
+        content: "📅";
+        font-size: 0.8rem;
+        opacity: 0.6;
+        margin-right: 0.2rem;
     }
 
     /* Subtle responsive improvements */
@@ -483,6 +523,19 @@ if (!doNotTrack) {
         .archive-entry {
             padding: 0.6rem 0.3rem;
             margin: 0 -0.3rem;
+        }
+
+        .archive-entry:hover {
+            transform: translateX(1px);
+        }
+
+        .archive-meta::before {
+            display: none;
+        }
+
+        .archive-count {
+            padding: 0.1rem 0.3rem;
+            font-size: 0.7rem;
         }
     }
 
