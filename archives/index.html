@@ -407,20 +407,7 @@ if (!doNotTrack) {
         padding: 0.5rem 1rem;
     }
 
-    .archive-stat-number {
-        display: block;
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: var(--brand-blue);
-        line-height: 1;
-    }
 
-    .archive-stat-label {
-        font-size: 0.85rem;
-        color: var(--secondary);
-        margin-top: 0.25rem;
-        font-weight: 500;
-    }
 
     /* Creative timeline-based archive styling */
     .archive-year {
@@ -536,9 +523,9 @@ if (!doNotTrack) {
 
     .archive-entry:hover {
         background-color: var(--tertiary);
-        transform: translateX(4px);
-        border-left-color: var(--brand-blue);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transform: translateX(4px) translateY(-1px);
+        border-left-color: rgb(0, 123, 255);
+        box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
     }
 
     .archive-entry:focus-within {
@@ -566,17 +553,38 @@ if (!doNotTrack) {
 
     .archive-meta {
         font-size: 0.85rem;
-        color: var(--secondary);
         margin: 0;
         font-family: var(--font-primary);
         line-height: 1.4;
         display: flex;
         align-items: center;
         gap: 0.5rem;
+        font-variant-numeric: tabular-nums;
+        color: var(--secondary);
     }
 
-    .archive-meta span {
-        font-weight: 500;
+    /* Enhanced date styling */
+    .archive-meta span:first-child {
+        color: var(--primary);
+        font-weight: 600;
+        padding: 0.1rem 0.3rem;
+        background: rgba(0, 123, 255, 0.06);
+        border-radius: 3px;
+        font-size: 0.8rem;
+    }
+
+    /* Enhanced separator styling */
+    .archive-meta::before {
+        content: "•";
+        color: rgb(0, 123, 255);
+        font-weight: bold;
+        opacity: 0.4;
+        margin: 0 -0.2rem;
+    }
+
+    /* Clean up remaining text */
+    .archive-meta {
+        font-weight: 400;
     }
 
     .entry-link {
@@ -601,10 +609,24 @@ if (!doNotTrack) {
         opacity: 0.9;
     }
 
-    /* Better date and reading time separation */
-    .archive-meta span:first-child {
-        color: var(--primary);
-        font-weight: 500;
+    /* Enhanced summary stats */
+    .archive-stat-number {
+        display: block;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: rgb(0, 123, 255);
+        line-height: 1;
+        font-family: var(--font-primary);
+        margin-bottom: 0.2rem;
+    }
+
+    .archive-stat-label {
+        font-size: 0.8rem;
+        color: var(--secondary);
+        margin: 0;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
 
     /* Creative responsive improvements */
