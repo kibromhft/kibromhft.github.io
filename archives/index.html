@@ -491,27 +491,15 @@ if (!doNotTrack) {
     .archive-count {
         font-size: 0.75rem;
         color: var(--secondary);
-        font-weight: 500;
+        font-weight: normal;
         font-family: var(--font-primary);
-        opacity: 0.7;
-        background-color: var(--tertiary);
-        padding: 0.15rem 0.4rem;
-        border-radius: 12px;
-        margin-left: 0.5rem;
-        display: inline-block;
+        opacity: 0.8;
     }
 
     /* Better date and reading time separation */
     .archive-meta span:first-child {
         color: var(--primary);
         font-weight: 500;
-    }
-
-    .archive-meta::before {
-        content: "📅";
-        font-size: 0.8rem;
-        opacity: 0.6;
-        margin-right: 0.2rem;
     }
 
     /* Subtle responsive improvements */
@@ -529,12 +517,7 @@ if (!doNotTrack) {
             transform: translateX(1px);
         }
 
-        .archive-meta::before {
-            display: none;
-        }
-
         .archive-count {
-            padding: 0.1rem 0.3rem;
             font-size: 0.7rem;
         }
     }
