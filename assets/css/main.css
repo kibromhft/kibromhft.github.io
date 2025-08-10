@@ -180,33 +180,31 @@ a {
     content: '';
     position: absolute;
     width: 0;
-    height: 2px; /* Slightly thinner line */
-    bottom: 4px; /* Position above the box border */
+    height: 3px; /* Slightly thicker line */
+    bottom: -4px; /* Position right under the text */
     left: 0;
     background-color: var(--brand-blue);
     transition: width 0.3s ease, background-color 0.2s ease;
     will-change: width;
-    transform: translateY(0);
+    transform: translateY(0); /* Ensure no vertical movement */
     margin: 0;
     padding: 0;
     border: none;
     box-sizing: border-box;
-    z-index: 1; /* Ensure it appears above box borders */
 }
 
 .dark .logo a::after {
     background-color: var(--brand-blue-hover);
 }
 
-/* Ensure the logo container has proper spacing */
+/* Ensure the logo container doesn't affect positioning */
 .logo {
     display: inline-flex;
     align-items: flex-start;
-    padding: 4px 0; /* Add vertical padding to separate from box border */
+    padding: 0;
     margin: 0;
     height: auto;
-    position: relative;
-    z-index: 0;
+    overflow: visible;
 }
 
 .logo a:hover::after {
