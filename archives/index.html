@@ -1014,6 +1014,67 @@ if (!doNotTrack) {
       <span class="archive-stat-label">Years</span>
     </div>
   </div>
+  <style>
+    .archive-summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin: 1.5rem 0 2rem;
+      justify-content: center;
+    }
+    
+    .archive-stat {
+      text-align: center;
+      min-width: 100px;
+      padding: 0.75rem 1rem;
+      background: var(--entry);
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .archive-stat:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .archive-stat-number {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+    
+    .archive-stat-label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    @media (max-width: 768px) {
+      .archive-summary {
+        gap: 1rem;
+        justify-content: space-between;
+      }
+      
+      .archive-stat {
+        flex: 1;
+        min-width: auto;
+        padding: 0.5rem 0.25rem;
+      }
+      
+      .archive-stat-number {
+        font-size: 1.25rem;
+      }
+      
+      .archive-stat-label {
+        font-size: 0.75rem;
+      }
+    }
+  </style>
 </header>
 
 <div class="archive-year">
