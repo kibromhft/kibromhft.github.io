@@ -72,9 +72,6 @@ if (!doNotTrack) {
 </head>
 
 <body class="list" id="top">
-<div class="reading-progress">
-    <div class="reading-progress-bar"></div>
-</div>
 
 <script>
     // Existing initial theme setting code
@@ -590,43 +587,6 @@ if (!doNotTrack) {
     </section>
     <footer class="entry-footer">
     </footer>
-
-    <script>
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 20,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Reading progress indicator
-        const progressBar = document.querySelector('.reading-progress-bar');
-        
-        function updateProgress() {
-            const windowHeight = window.innerHeight;
-            const docHeight = document.documentElement.scrollHeight - windowHeight;
-            const scrolled = window.scrollY;
-            const progress = (scrolled / docHeight) * 100;
-            
-            progressBar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
-            requestAnimationFrame(updateProgress);
-        }
-        
-        // Start the progress animation
-        if (progressBar) {
-            requestAnimationFrame(updateProgress);
-        }
-    </script>
     <div class="about-block">
       <div class="social-link-group-tight"><a href="https://twitter.com/coding_era" target="_blank"
           class="social-icon-link-pad w-inline-block"><img
