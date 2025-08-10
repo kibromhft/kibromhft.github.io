@@ -396,6 +396,12 @@ body:not(.dark) #sun {
     padding: 24px;
     border: 1px solid var(--border);
     box-shadow: var(--shadow-soft);
+    transition: all 0.3s ease;
+}
+
+.first-entry.home-info:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
 }
 
 .home-info .entry-content {
