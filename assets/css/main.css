@@ -161,6 +161,9 @@ a {
     position: relative;
     transition: all 0.2s ease;
     will-change: transform, color;
+    display: inline-block;
+    padding-bottom: 2px; /* Space for the underline */
+    margin-bottom: -2px; /* Pull up the underline */
 }
 
 .logo a:hover { 
@@ -177,11 +180,12 @@ a {
     position: absolute;
     width: 0;
     height: 2px;
-    bottom: -2px;
+    bottom: 0; /* Moved up to be right under the text */
     left: 0;
     background-color: var(--brand-blue);
     transition: width 0.3s ease, background-color 0.2s ease;
     will-change: width;
+    border-radius: 1px; /* Slight rounding for a softer look */
 }
 
 .dark .logo a::after {
