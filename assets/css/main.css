@@ -299,7 +299,7 @@ body:not(.dark) #sun {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: var(--gap) 0 calc(var(--gap) * 2);
+    margin: var(--gap) 0 var(--gap);
     background-color: var(--entry);
     padding: 20px;
     border-radius: var(--radius);
@@ -350,7 +350,7 @@ body:not(.dark) #sun {
 
 /* About block */
 .about-block {
-    padding: 20px 0;
+    padding: 12px 0;
 }
 
 .social-link-group-tight {
@@ -363,6 +363,7 @@ body:not(.dark) #sun {
     padding: 16px;
     border-radius: var(--radius);
     border: 1px solid var(--border);
+    margin-top: 8px;
 }
 
 .dark .social-link-group-tight {
