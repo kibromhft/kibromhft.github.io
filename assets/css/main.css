@@ -733,29 +733,6 @@ body:not(.dark) #sun {
     }
 }
 
-/* ===== WELCOME MESSAGE ===== */
-.home-info h2 {
-    font-family: var(--font-serif);
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--primary);
-    margin: 0 0 1rem 0;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    background: linear-gradient(90deg, var(--brand-blue), #6c5ce7);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
-    display: inline-block;
-    transition: all 0.3s ease;
-}
-
-.home-info h2:hover {
-    transform: translateY(-2px);
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
 /* ===== PRINT STYLES ===== */
 @media print {
     .header,
