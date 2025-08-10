@@ -553,64 +553,38 @@ if (!doNotTrack) {
 
     .archive-meta {
         font-size: 0.85rem;
-        margin: 0.4rem 0 0;
+        margin: 0;
         font-family: var(--font-primary);
-        line-height: 1.5;
+        line-height: 1.4;
         display: flex;
         align-items: center;
-        gap: 0.6rem;
+        gap: 0.5rem;
         font-variant-numeric: tabular-nums;
         color: var(--secondary);
-        font-weight: 400;
-        letter-spacing: 0.02em;
     }
 
-    /* Date styling */
+    /* Enhanced date styling */
     .archive-meta span:first-child {
         color: var(--primary);
-        font-weight: 500;
-        padding: 0.15rem 0.5rem;
-        background: rgba(var(--primary-rgb, 0, 123, 255), 0.08);
-        border-radius: 4px;
+        font-weight: 600;
+        padding: 0.1rem 0.3rem;
+        background: rgba(0, 123, 255, 0.06);
+        border-radius: 3px;
         font-size: 0.8rem;
-        transition: all 0.2s ease;
-        border-left: 2px solid var(--primary);
     }
 
-    /* Hover effect on date */
-    .archive-entry:hover .archive-meta span:first-child {
-        background: rgba(var(--primary-rgb, 0, 123, 255), 0.15);
-    }
-
-    /* Separator styling */
+    /* Enhanced separator styling */
     .archive-meta::before {
         content: "•";
-        color: var(--primary);
-        opacity: 0.5;
+        color: rgb(0, 123, 255);
         font-weight: bold;
-        margin: 0 0.1rem;
+        opacity: 0.4;
+        margin: 0 -0.2rem;
     }
 
-    /* Author name styling */
-    .archive-meta span:last-child {
-        color: var(--primary);
-        font-weight: 500;
-        opacity: 0.9;
-    }
-
-    /* Read time styling */
-    .archive-meta span:nth-child(2) {
-        color: var(--secondary);
+    /* Clean up remaining text */
+    .archive-meta {
         font-weight: 400;
-    }
-
-    /* Dark mode adjustments */
-    .dark .archive-meta span:first-child {
-        background: rgba(var(--primary-rgb, 0, 123, 255), 0.12);
-    }
-
-    .dark .archive-entry:hover .archive-meta span:first-child {
-        background: rgba(var(--primary-rgb, 0, 123, 255), 0.2);
     }
 
     .entry-link {
