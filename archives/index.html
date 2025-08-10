@@ -563,44 +563,38 @@ if (!doNotTrack) {
         font-weight: 400;
     }
 
-    /* Date styling - Teal color */
+    /* Date styling */
     .archive-meta span:first-child {
-        color: #2e8b8a;
+        color: var(--primary);
         font-weight: 500;
         font-size: 0.85rem;
         letter-spacing: 0.01em;
     }
 
-    /* Read time styling - Muted purple */
-    .archive-meta span:nth-child(2) {
-        color: #6c5b7b;
-        font-size: 0.8rem;
-        font-weight: 400;
-    }
-
-    /* Author name styling - Soft blue */
-    .archive-meta span:last-child {
-        color: #4a6fa5;
-        font-weight: 500;
-    }
-    
     /* Separator styling */
     .archive-meta::before {
         content: "•";
-        color: #a0a0a0;
-        opacity: 0.6;
+        color: var(--secondary);
+        opacity: 0.5;
         margin: 0 0.1rem;
     }
+
+    /* Author name styling */
+    .archive-meta span:last-child {
+        color: var(--secondary);
+        font-weight: 400;
+    }
     
-    /* Hover effects */
-    .archive-entry:hover .archive-meta span:first-child {
-        color: #1a5f5e;
+    /* Read time styling */
+    .archive-meta span:nth-child(2) {
+        color: var(--secondary);
+        font-size: 0.8rem;
+        opacity: 0.9;
     }
-    .archive-entry:hover .archive-meta span:nth-child(2) {
-        color: #5a4a68;
-    }
-    .archive-entry:hover .archive-meta span:last-child {
-        color: #3a5a8c;
+    
+    /* Hover effect on the entire entry */
+    .archive-entry:hover .archive-meta {
+        color: var(--primary);
     }
 
     .entry-link {
