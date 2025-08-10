@@ -261,6 +261,19 @@ if (!doNotTrack) {
         display: none;
     }
 
+    /* Subtle header background improvement */
+    .header {
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    body.dark .header {
+        background: rgba(29, 30, 32, 0.98);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border-color);
+    }
+
     /* Optimized font loading with fallbacks */
     @font-face {
         font-family: "Essays 1743";
