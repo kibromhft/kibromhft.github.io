@@ -369,38 +369,44 @@ body:not(.dark) #sun {
 
 /* About block */
 .about-block {
-    padding: 8px 0;
+    padding: 12px 0;
 }
 
 .social-link-group-tight {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
     flex-wrap: wrap;
     background-color: var(--entry);
-    padding: 16px;
+    padding: 20px;
     border-radius: var(--radius);
     border: 1px solid var(--border);
-    margin-top: 8px;
+    margin-top: 12px;
+    box-shadow: var(--shadow-subtle);
+    transition: all 0.3s ease;
 }
 
 .dark .social-link-group-tight {
     background-color: var(--entry);
+    box-shadow: var(--shadow-subtle);
 }
 
 .social-icon-link-pad,
 .social-icon-cv-link-pad {
     display: inline-block;
-    padding: 6px;
+    padding: 8px;
     border-radius: 50%;
-    transition: background-color 0.2s ease;
+    transition: all 0.3s ease;
     background-color: var(--theme);
+    box-shadow: var(--shadow-subtle);
 }
 
 .social-icon-link-pad:hover,
 .social-icon-cv-link-pad:hover {
     background-color: var(--tertiary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
 }
 
 .icon-image {
@@ -416,14 +422,17 @@ body:not(.dark) #sun {
 /* Featured posts section */
 .w-col.w-col-6 {
     background-color: var(--entry);
-    padding: 20px;
+    padding: 24px;
     border-radius: var(--radius);
     margin-top: -10px;
     border: 1px solid var(--border);
+    box-shadow: var(--shadow-soft);
+    transition: all 0.3s ease;
 }
 
 .dark .w-col.w-col-6 {
     background-color: var(--entry);
+    box-shadow: var(--shadow-soft);
 }
 
 .small-heading {
@@ -431,7 +440,7 @@ body:not(.dark) #sun {
     font-weight: 600;
     font-size: 20px;
     line-height: 1.3;
-    margin: 0;
+    margin: 0 0 16px 0;
     color: var(--primary);
 }
 
@@ -439,36 +448,40 @@ body:not(.dark) #sun {
 .post-entry {
     position: relative;
     margin-bottom: var(--gap);
-    padding: 20px;
+    padding: 24px;
     background: var(--entry);
     border-radius: var(--radius);
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     border: 1px solid var(--border);
+    box-shadow: var(--shadow-subtle);
 }
 
 .post-entry:hover {
     border-color: var(--brand-blue);
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
 }
 
 .dark .post-entry {
     background: var(--entry);
     border-color: var(--border);
+    box-shadow: var(--shadow-subtle);
 }
 
 .dark .post-entry:hover {
     border-color: var(--brand-blue);
+    box-shadow: var(--shadow-medium);
 }
 
 .entry-header h2 {
     font-size: 24px;
     line-height: 1.3;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     color: var(--primary);
 }
 
 .entry-content {
-    margin: 12px 0;
+    margin: 16px 0;
     color: var(--secondary);
     font-size: 14px;
     line-height: 1.6;
@@ -481,7 +494,7 @@ body:not(.dark) #sun {
 .entry-footer {
     color: var(--brand-blue);
     font-size: 12px;
-    margin-top: 12px;
+    margin-top: 16px;
 }
 
 .entry-link {
@@ -496,7 +509,7 @@ body:not(.dark) #sun {
 .pagination {
     display: flex;
     justify-content: center;
-    margin-top: 32px;
+    margin-top: 40px;
 }
 
 .pagination a {
@@ -505,12 +518,15 @@ body:not(.dark) #sun {
     line-height: 36px;
     background: var(--brand-blue);
     border-radius: calc(36px/2);
-    padding: 0 16px;
-    transition: background-color 0.3s ease;
+    padding: 0 20px;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-subtle);
 }
 
 .pagination a:hover {
     background: var(--brand-blue-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-soft);
 }
 
 .pagination .next {
