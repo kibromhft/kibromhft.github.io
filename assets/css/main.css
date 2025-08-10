@@ -277,12 +277,7 @@ body:not(.dark) #sun {
 
 #menu a:hover {
     background-color: var(--tertiary);
-    color: var(--brand-blue);
-}
-
-#menu a:hover .fa,
-#menu a:hover .fa-home {
-    color: var(--brand-blue);
+    color: var(--primary);
 }
 
 #menu .active {
