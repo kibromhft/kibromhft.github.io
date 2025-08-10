@@ -174,58 +174,123 @@ if (!doNotTrack) {
     #menu a {
         color: var(--text-primary);
         transition: var(--transition-base);
+        border-radius: var(--radius-sm);
+        padding: var(--space-xs) var(--space-sm);
+        position: relative;
+        overflow: hidden;
+    }
+
+    #menu a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transition: left var(--transition-base);
+    }
+
+    #menu a:hover::before,
+    #menu a:focus::before {
+        left: 100%;
     }
 
     #menu a:hover,
     #menu a:focus {
-        background-color: var(--bg-secondary);
-        color: var(--text-primary);
-        outline: 2px solid var(--primary-color);
-        outline-offset: 2px;
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+        color: white;
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-sm);
+        outline: none;
+    }
+
+    .dropdown-menu {
+        background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-lg);
+        backdrop-filter: blur(10px);
+        padding: var(--space-xs) 0;
     }
 
     .dropdown-menu a {
         color: var(--text-primary);
         transition: var(--transition-base);
+        padding: var(--space-sm) var(--space-md);
+        margin: 0 var(--space-xs);
+        border-radius: var(--radius-sm);
+        display: block;
     }
 
     .dropdown-menu a:hover,
     .dropdown-menu a:focus {
-        background-color: var(--bg-secondary);
-        color: var(--text-primary);
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+        color: white;
+        transform: translateX(4px);
+        box-shadow: var(--shadow-sm);
     }
 
     /* Logo and theme toggle */
     .logo a {
         color: var(--text-primary);
         transition: var(--transition-base);
+        font-weight: 600;
+        position: relative;
+        text-decoration: none;
+    }
+
+    .logo a::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
+        transition: width var(--transition-base);
+        border-radius: 1px;
+    }
+
+    .logo a:hover::after,
+    .logo a:focus::after {
+        width: 100%;
     }
 
     .logo a:hover,
     .logo a:focus {
         color: var(--primary-color);
-        outline: 2px solid var(--primary-color);
-        outline-offset: 2px;
+        transform: translateY(-1px);
+        outline: none;
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+        border: 1px solid var(--border-color);
         cursor: pointer;
-        padding: var(--space-xs);
+        padding: var(--space-sm);
         border-radius: 50%;
         transition: var(--transition-base);
         color: var(--text-primary);
         display: flex;
         align-items: center;
         justify-content: center;
+        box-shadow: var(--shadow-sm);
+        backdrop-filter: blur(10px);
     }
 
     #theme-toggle:hover,
     #theme-toggle:focus {
-        background-color: var(--bg-secondary);
-        outline: 2px solid var(--primary-color);
-        outline-offset: 2px;
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+        outline: none;
+    }
+
+    #theme-toggle:active {
+        transform: translateY(0);
+        box-shadow: var(--shadow-sm);
     }
 
     #theme-toggle svg {
@@ -252,6 +317,19 @@ if (!doNotTrack) {
 
     body:not(.dark) #sun {
         display: none;
+    }
+
+    /* Enhanced header styling */
+    .header {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: var(--shadow-sm);
+    }
+
+    body.dark .header {
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%);
+        border-bottom-color: var(--border-color);
     }
 
     /* Optimized font loading with fallbacks */
