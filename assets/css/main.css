@@ -162,8 +162,8 @@ a {
     transition: all 0.2s ease;
     will-change: transform, color;
     display: inline-block;
-    padding-bottom: 1px; /* Minimal space for the underline */
-    margin-bottom: -1px; /* Pull up the underline to be very close to text */
+    padding-bottom: 0; /* No extra space below text */
+    margin-bottom: -2px; /* Pull up the underline to be right under the text */
 }
 
 .logo a:hover { 
@@ -179,8 +179,8 @@ a {
     content: '';
     position: absolute;
     width: 0;
-    height: 1.5px; /* Slightly thinner line for elegance */
-    bottom: 0; /* Moved up to be right under the text */
+    height: 2.5px; /* Thicker line for better visibility */
+    bottom: -1px; /* Move up to be right under the text */
     left: 0;
     background-color: var(--brand-blue);
     transition: width 0.3s ease, background-color 0.2s ease;
