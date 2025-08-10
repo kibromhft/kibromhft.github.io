@@ -153,44 +153,61 @@ a {
 }
 
 .logo a {
-    font-family: var(--font-primary);
-    font-size: 24px;
-    font-weight: 500;
-    color: #FF385C; /* Airbnb pink/red */
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
     text-decoration: none;
-    letter-spacing: 0.2px;
+    letter-spacing: -0.5px;
     line-height: 1.2;
-    transition: color 0.25s cubic-bezier(0.2, 0, 0, 1);
+    transition: all 0.3s ease;
     position: relative;
-    display: inline-flex;
-    align-items: center;
-    padding: 4px 0;
+    display: inline-block;
+    padding-bottom: 2px;
 }
 
-/* Subtle hover effect */
+/* Subtle underline effect on hover */
+.logo a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
 .logo a:hover {
-    color: #e51e4e; /* Slightly darker shade on hover */
+    color: var(--primary);
+}
+
+.logo a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
 /* Dark mode adjustments */
 .dark .logo a {
-    color: #ff5a7f; /* Brighter pink for dark mode */
+    color: var(--primary);
 }
 
-.dark .logo a:hover {
-    color: #ff7b9d; /* Lighter shade for dark mode hover */
+.dark .logo a::after {
+    background-color: var(--primary);
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .logo a {
-        font-size: 22px;
+        font-size: 1.6rem;
     }
 }
 
 @media (max-width: 480px) {
     .logo a {
-        font-size: 20px;
+        font-size: 1.4rem;
     }
 }
 
