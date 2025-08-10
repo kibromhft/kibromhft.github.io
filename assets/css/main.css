@@ -374,12 +374,12 @@ body:not(.dark) #sun {
 
 .social-link-group-tight {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 16px;
     flex-wrap: wrap;
     background-color: var(--entry);
-    padding: 20px;
+    padding: 20px 20px 20px 24px;
     border-radius: var(--radius);
     border: 1px solid var(--border);
     margin-top: 12px;
@@ -618,6 +618,7 @@ body:not(.dark) #sun {
     .social-link-group-tight {
         gap: 12px;
         padding: 16px;
+        justify-content: flex-start;
     }
     
     .logo a {
