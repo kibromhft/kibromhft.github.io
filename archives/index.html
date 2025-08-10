@@ -553,38 +553,48 @@ if (!doNotTrack) {
 
     .archive-meta {
         font-size: 0.85rem;
-        margin: 0;
+        margin: 0.3rem 0 0;
         font-family: var(--font-primary);
-        line-height: 1.4;
+        line-height: 1.5;
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        font-variant-numeric: tabular-nums;
         color: var(--secondary);
+        font-weight: 400;
     }
 
-    /* Enhanced date styling */
+    /* Date styling */
     .archive-meta span:first-child {
         color: var(--primary);
-        font-weight: 600;
-        padding: 0.1rem 0.3rem;
-        background: rgba(0, 123, 255, 0.06);
-        border-radius: 3px;
-        font-size: 0.8rem;
+        font-weight: 500;
+        font-size: 0.85rem;
+        letter-spacing: 0.01em;
     }
 
-    /* Enhanced separator styling */
+    /* Separator styling */
     .archive-meta::before {
         content: "•";
-        color: rgb(0, 123, 255);
-        font-weight: bold;
-        opacity: 0.4;
-        margin: 0 -0.2rem;
+        color: var(--secondary);
+        opacity: 0.5;
+        margin: 0 0.1rem;
     }
 
-    /* Clean up remaining text */
-    .archive-meta {
+    /* Author name styling */
+    .archive-meta span:last-child {
+        color: var(--secondary);
         font-weight: 400;
+    }
+    
+    /* Read time styling */
+    .archive-meta span:nth-child(2) {
+        color: var(--secondary);
+        font-size: 0.8rem;
+        opacity: 0.9;
+    }
+    
+    /* Hover effect on the entire entry */
+    .archive-entry:hover .archive-meta {
+        color: var(--primary);
     }
 
     .entry-link {
