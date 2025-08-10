@@ -143,24 +143,72 @@ a {
     gap: 32px;
 }
 
-/* Logo styles */
+/* ===== LOGO STYLES ===== */
 .logo {
     display: flex;
     align-items: center;
     gap: 8px;
     flex-shrink: 0;
+    position: relative;
 }
 
 .logo a {
-    font-size: 24px;
-    font-weight: 700;
     font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 700;
     color: var(--primary);
-    transition: color 0.2s ease;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 2px;
+}
+
+/* Subtle underline effect on hover */
+.logo a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
 }
 
 .logo a:hover {
-    color: var(--brand-blue);
+    color: var(--primary);
+}
+
+.logo a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Dark mode adjustments */
+.dark .logo a {
+    color: var(--primary);
+}
+
+.dark .logo a::after {
+    background-color: var(--primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .logo a {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo a {
+        font-size: 1.4rem;
+    }
 }
 
 /* Theme toggle */
