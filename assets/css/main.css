@@ -416,7 +416,12 @@ body:not(.dark) #sun {
 }
 
 .dark .icon-image {
-    filter: brightness(0.9) contrast(1.1);
+    filter: brightness(0) invert(1);
+}
+
+.dark .social-icon-link-pad:hover .icon-image,
+.dark .social-icon-cv-link-pad:hover .icon-image {
+    filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(180deg);
 }
 
 /* Featured posts section */
