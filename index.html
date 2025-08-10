@@ -191,15 +191,26 @@ if (!doNotTrack) {
         outline-offset: 2px;
     }
 
+    .dropdown-menu {
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 4px 0;
+    }
+
     .dropdown-menu a {
         color: var(--text-primary);
         transition: var(--transition-base);
+        padding: 8px 16px;
+        margin: 0 4px;
+        border-radius: 4px;
     }
 
     .dropdown-menu a:hover,
     .dropdown-menu a:focus {
         background-color: var(--bg-secondary);
         color: var(--text-primary);
+        outline: none;
     }
 
     /* Logo and theme toggle */
@@ -259,6 +270,51 @@ if (!doNotTrack) {
 
     body:not(.dark) #sun {
         display: none;
+    }
+
+    /* Subtle header improvements */
+    .header {
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Subtle navigation improvements */
+    #menu a {
+        border-radius: 4px;
+        padding: 6px 12px;
+    }
+
+    #menu a:hover,
+    #menu a:focus {
+        background-color: var(--bg-secondary);
+        color: var(--text-primary);
+        outline: none;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Subtle theme toggle improvements */
+    #theme-toggle {
+        border-radius: 6px;
+        padding: 8px;
+    }
+
+    #theme-toggle:hover,
+    #theme-toggle:focus {
+        background-color: var(--bg-secondary);
+        outline: none;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Subtle logo improvements */
+    .logo a {
+        font-weight: 600;
+        letter-spacing: -0.02em;
+    }
+
+    .logo a:hover,
+    .logo a:focus {
+        color: var(--primary-color);
+        outline: none;
     }
 
     /* Optimized font loading with fallbacks */
