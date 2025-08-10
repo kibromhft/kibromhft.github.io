@@ -273,29 +273,64 @@ body:not(.dark) #sun {
     white-space: nowrap;
     text-decoration: none;
     letter-spacing: 0.025em;
+    position: relative;
+    overflow: hidden;
+}
+
+#menu a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 6px;
+    left: 16px;
+    right: 16px;
+    background-color: var(--brand-blue);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 1px;
 }
 
 #menu a:hover {
-    background-color: var(--tertiary);
+    background-color: transparent;
     color: var(--primary);
+}
+
+#menu a:hover::after {
+    width: calc(100% - 32px);
+}
+
+.dark #menu a::after {
+    background-color: var(--brand-blue-hover);
 }
 
 #menu .active {
     background-color: var(--brand-blue);
     color: white;
     font-weight: 600;
+    position: relative;
+}
+
+#menu .active::after {
+    display: none; /* Hide underline for active state */
 }
 
 /* Caret icon for dropdown */
 .caret {
     font-size: 11px;
-    transition: transform 0.2s ease;
+    transition: all 0.2s ease;
     opacity: 0.8;
     margin-left: 2px;
+    color: inherit;
 }
 
 .dropdown:hover .caret {
     transform: rotate(180deg);
+    opacity: 1;
+    color: var(--brand-blue);
+}
+
+.dropdown-toggle:hover .caret {
+    color: var(--brand-blue);
     opacity: 1;
 }
 
