@@ -149,6 +149,7 @@ a {
     align-items: center;
     gap: 8px;
     flex-shrink: 0;
+    will-change: transform;
 }
 
 .logo a {
@@ -159,10 +160,16 @@ a {
     text-decoration: none;
     position: relative;
     transition: all 0.2s ease;
+    will-change: transform, color;
 }
 
 .logo a:hover { 
     color: #FF385C;
+    transform: translateY(-1px);
+}
+
+.dark .logo a:hover {
+    color: #FF6B8B; /* Lighter red for better dark mode contrast */
 }
 
 .logo a::after {
@@ -173,7 +180,12 @@ a {
     bottom: -2px;
     left: 0;
     background-color: #FF385C;
-    transition: width 0.3s ease;
+    transition: width 0.3s ease, background-color 0.2s ease;
+    will-change: width;
+}
+
+.dark .logo a::after {
+    background-color: #FF6B8B; /* Lighter red for better dark mode contrast */
 }
 
 .logo a:hover::after {
@@ -665,7 +677,8 @@ body:not(.dark) #sun {
     }
     
     .logo {
-        margin-bottom: 12px;
+        margin-bottom: 16px; /* Increased from 12px for better spacing */
+        padding-top: 8px; /* Added top padding for better touch target */
     }
     
     #menu {
