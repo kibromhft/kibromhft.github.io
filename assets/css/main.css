@@ -159,17 +159,21 @@ a {
     color: var(--primary);
     text-decoration: none;
     position: relative;
-    transition: all 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform, color;
     display: inline-block;
-    line-height: 1.2; /* Tighter line height */
-    padding: 0;
+    line-height: 1.2;
+    padding: 0 0 2px 0;
     margin: 0;
 }
 
 .logo a:hover { 
     color: var(--brand-blue);
     transform: translateY(-1px);
+}
+
+.logo a:hover::after {
+    width: 100%;
 }
 
 .dark .logo a:hover {
@@ -180,17 +184,18 @@ a {
     content: '';
     position: absolute;
     width: 0;
-    height: 3px; /* Slightly thicker line */
-    bottom: -4px; /* Position right under the text */
+    height: 2.5px;
+    bottom: 0;
     left: 0;
     background-color: var(--brand-blue);
-    transition: width 0.3s ease, background-color 0.2s ease;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s ease;
     will-change: width;
-    transform: translateY(0); /* Ensure no vertical movement */
+    transform: translateY(0);
     margin: 0;
     padding: 0;
     border: none;
     box-sizing: border-box;
+    border-radius: 1px;
 }
 
 .dark .logo a::after {
@@ -201,10 +206,10 @@ a {
 .logo {
     display: inline-flex;
     align-items: flex-start;
-    padding: 0;
+    padding: 4px 0; /* Add some vertical padding */
     margin: 0;
     height: auto;
-    overflow: visible;
+    position: relative;
 }
 
 .logo a:hover::after {
