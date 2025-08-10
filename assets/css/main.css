@@ -162,8 +162,9 @@ a {
     transition: all 0.2s ease;
     will-change: transform, color;
     display: inline-block;
-    padding-bottom: 0; /* No extra space below text */
-    margin-bottom: -2px; /* Pull up the underline to be right under the text */
+    line-height: 1.2; /* Tighter line height */
+    padding: 0;
+    margin: 0;
 }
 
 .logo a:hover { 
@@ -179,17 +180,31 @@ a {
     content: '';
     position: absolute;
     width: 0;
-    height: 2.5px; /* Thicker line for better visibility */
-    bottom: -1px; /* Move up to be right under the text */
+    height: 3px; /* Slightly thicker line */
+    bottom: -4px; /* Position right under the text */
     left: 0;
     background-color: var(--brand-blue);
     transition: width 0.3s ease, background-color 0.2s ease;
     will-change: width;
-    border-radius: 0.5px; /* Minimal rounding for a sharp but not harsh line */
+    transform: translateY(0); /* Ensure no vertical movement */
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
 }
 
 .dark .logo a::after {
     background-color: var(--brand-blue-hover);
+}
+
+/* Ensure the logo container doesn't affect positioning */
+.logo {
+    display: inline-flex;
+    align-items: flex-start;
+    padding: 0;
+    margin: 0;
+    height: auto;
+    overflow: visible;
 }
 
 .logo a:hover::after {
