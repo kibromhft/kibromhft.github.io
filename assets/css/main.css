@@ -152,15 +152,32 @@ a {
 }
 
 .logo a {
-    font-size: 24px;
+    font-size: 25px;
     font-weight: 700;
     font-family: var(--font-serif);
     color: var(--primary);
-    transition: color 0.2s ease;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.2s ease;
 }
 
-.logo a:hover {
-    color: var(--brand-blue);
+.logo a:hover { 
+    color: #FF385C;
+}
+
+.logo a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #FF385C;
+    transition: width 0.3s ease;
+}
+
+.logo a:hover::after {
+    width: 100%;
 }
 
 /* Theme toggle */
