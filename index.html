@@ -281,31 +281,10 @@ if (!doNotTrack) {
         margin-left: 6px !important;
         transition: transform 0.2s ease;
         color: var(--text-primary);
-        display: inline-flex;
-        align-items: center;
-    }
-
-    .caret svg {
-        width: 14px;
-        height: 14px;
-        transition: transform 0.2s ease;
     }
 
     .caret:hover {
         color: var(--primary-color);
-    }
-
-    .caret:hover svg {
-        transform: translateY(1px);
-    }
-
-    /* Dropdown caret animation */
-    .dropdown .caret svg {
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .dropdown:hover .caret svg {
-        transform: rotate(180deg);
     }
 
     /* Optimized font loading with fallbacks */
@@ -526,12 +505,7 @@ if (!doNotTrack) {
 		
 		  <li>
 			<a href="https://kibromhft.github.io/" title="Home">
-			  Home <span class="caret">
-			    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-			      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-			      <polyline points="9,22 9,12 15,12 15,22"></polyline>
-			    </svg>
-			  </span>
+			  Home <span class="caret fa fa-home"></span>
 			</a>
 		  </li>
 		  
@@ -569,11 +543,7 @@ if (!doNotTrack) {
 
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">
-			  Resources <span class="caret">
-			    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-			      <polyline points="6,9 12,15 18,9"></polyline>
-			    </svg>
-			  </span>
+			  Resources <span class="caret fa fa-chevron-down"></span>
 			</a>
 		  <ul class="dropdown-menu">
 			<li>
@@ -690,7 +660,7 @@ if (!doNotTrack) {
 			}
 
 			/* Rotate caret when dropdown is open */
-			.dropdown.dropdown-open .caret svg {
+			.dropdown.dropdown-open .caret {
 				transform: rotate(180deg) !important;
 			}
 		}
@@ -741,7 +711,7 @@ if (!doNotTrack) {
 				transform: translateY(0) !important;
 			}
 
-			.dropdown.dropdown-open .caret svg {
+			.dropdown.dropdown-open .caret {
 				transform: rotate(180deg) !important;
 			}
 		}
