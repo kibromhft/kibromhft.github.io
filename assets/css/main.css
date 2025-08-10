@@ -376,7 +376,7 @@ body:not(.dark) #sun {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 16px;
+    gap: 24px;
     flex-wrap: wrap;
     background-color: var(--entry);
     padding: 20px 20px 20px 24px;
@@ -395,7 +395,7 @@ body:not(.dark) #sun {
 .social-icon-link-pad,
 .social-icon-cv-link-pad {
     display: inline-block;
-    padding: 8px;
+    padding: 10px;
     border-radius: 50%;
     transition: all 0.3s ease;
     background-color: var(--theme);
@@ -616,7 +616,7 @@ body:not(.dark) #sun {
 
     
     .social-link-group-tight {
-        gap: 12px;
+        gap: 20px;
         padding: 16px;
         justify-content: flex-start;
     }
