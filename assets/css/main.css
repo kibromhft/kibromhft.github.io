@@ -167,7 +167,7 @@ a {
     margin: 0;
 }
 
-.logo a:hover { 
+.logo a:hover, .logo a:hover .fa-home {
     color: var(--brand-blue);
     transform: translateY(-1px);
 }
@@ -176,7 +176,7 @@ a {
     width: 100%;
 }
 
-.dark .logo a:hover {
+.dark .logo a:hover, .dark .logo a:hover .fa-home {
     color: var(--brand-blue-hover);
 }
 
