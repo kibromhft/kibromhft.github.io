@@ -99,11 +99,13 @@ a {
     top: 0;
     z-index: 1000;
     background: var(--theme);
+    border-bottom: 1px solid var(--border);
     transition: all 0.2s ease;
 }
 
 .dark .header {
     background: var(--theme);
+    border-bottom: 1px solid var(--border);
 }
 
 .nav {
