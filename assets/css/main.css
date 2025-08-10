@@ -164,12 +164,12 @@ a {
 }
 
 .logo a:hover { 
-    color: #FF385C;
+    color: var(--brand-blue);
     transform: translateY(-1px);
 }
 
 .dark .logo a:hover {
-    color: #FF6B8B; /* Lighter red for better dark mode contrast */
+    color: var(--brand-blue-hover);
 }
 
 .logo a::after {
@@ -179,13 +179,13 @@ a {
     height: 2px;
     bottom: -2px;
     left: 0;
-    background-color: #FF385C;
+    background-color: var(--brand-blue);
     transition: width 0.3s ease, background-color 0.2s ease;
     will-change: width;
 }
 
 .dark .logo a::after {
-    background-color: #FF6B8B; /* Lighter red for better dark mode contrast */
+    background-color: var(--brand-blue-hover);
 }
 
 .logo a:hover::after {
