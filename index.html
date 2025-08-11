@@ -750,87 +750,16 @@ Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolu
 </script>
 
 <script>
-    // Enhanced scroll-to-top button with requestAnimationFrame for better performance
-    (function() {
-        const topLink = document.getElementById('top-link');
-        let isScrolling = false;
-        let scrollTimeout;
-        
-        // Throttle scroll events for better performance
-        window.addEventListener('scroll', function() {
-            if (!isScrolling) {
-                window.requestAnimationFrame(function() {
-                    toggleTopLink();
-                    isScrolling = false;
-                });
-                isScrolling = true;
-            }
-            
-            // Clear any existing timeout
-            clearTimeout(scrollTimeout);
-            
-            // Set a timeout to handle the end of scrolling
-            scrollTimeout = setTimeout(function() {
-                // Add a class when scrolling stops for additional effects if needed
-                document.documentElement.classList.remove('scrolling');
-            }, 100);
-            
-            // Add a class while scrolling
-            document.documentElement.classList.add('scrolling');
-        });
-        
-        // Toggle top link visibility based on scroll position
-        function toggleTopLink() {
-            const scrollPosition = window.scrollY || document.documentElement.scrollTop;
-            if (scrollPosition > 600) {
-                topLink.classList.add('visible');
-            } else {
-                topLink.classList.remove('visible');
-            }
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
         }
-        
-        // Smooth scroll to top function
-        topLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Check if prefers-reduced-motion is enabled
-            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            
-            if (prefersReducedMotion) {
-                window.scrollTo({ top: 0, behavior: 'auto' });
-                return;
-            }
-            
-            // Smooth scroll with easing function
-            const startPosition = window.scrollY;
-            const targetPosition = 0;
-            const distance = targetPosition - startPosition;
-            const duration = 600; // ms
-            let start = null;
-            
-            function step(timestamp) {
-                if (!start) start = timestamp;
-                const progress = timestamp - start;
-                const percentage = Math.min(progress / duration, 1);
-                
-                // Easing function (easeInOutCubic)
-                const easeInOutCubic = t => t < 0.5 
-                    ? 4 * t * t * t 
-                    : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
-                
-                window.scrollTo(0, startPosition + (distance * easeInOutCubic(percentage)));
-                
-                if (progress < duration) {
-                    window.requestAnimationFrame(step);
-                }
-            }
-            
-            window.requestAnimationFrame(step);
-        });
-        
-        // Initial check in case page is loaded with scroll position
-        toggleTopLink();
-    })();
+    };
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
