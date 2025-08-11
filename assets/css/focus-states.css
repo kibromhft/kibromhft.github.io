@@ -1,0 +1,101 @@
+/* ===== FOCUS STATES ===== */
+
+/* Base focus styles */
+:focus {
+    outline: none;
+    position: relative;
+}
+
+/* Focus visible polyfill for browsers that don't support :focus-visible */
+.js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+}
+
+/* Custom focus styles */
+:focus-visible,
+.focus-visible {
+    outline: 3px solid var(--brand-blue);
+    outline-offset: 2px;
+    border-radius: 2px;
+    box-shadow: 0 0 0 2px var(--theme), 0 0 0 5px var(--brand-blue);
+}
+
+/* Focus styles for interactive elements */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible,
+[role="button"]:focus-visible,
+[role="tab"]:focus-visible {
+    position: relative;
+    z-index: 1;
+}
+
+/* Focus styles for buttons */
+button:focus-visible,
+.button:focus-visible,
+[role="button"]:focus-visible {
+    background-color: var(--brand-blue-hover);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Focus styles for form elements */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    border-color: var(--brand-blue);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* Focus styles for links */
+a:focus-visible {
+    text-decoration: none;
+    color: var(--brand-blue-hover);
+    border-radius: 2px;
+}
+
+/* Remove focus styles for mouse users */
+:focus:not(:focus-visible) {
+    outline: none;
+    box-shadow: none;
+}
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+    :focus-visible {
+        outline: 3px solid Highlight !important;
+        outline-offset: 2px;
+    }
+    
+    button:focus-visible,
+    [role="button"]:focus-visible {
+        outline: 3px solid Highlight !important;
+        outline-offset: 2px;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        animation: none !important;
+    }
+    
+    :focus-visible {
+        transition: none !important;
+    }
+}
+
+/* Print styles */
+@media print {
+    :focus-visible {
+        outline: 2px solid #000 !important;
+        outline-offset: 2px;
+    }
+}

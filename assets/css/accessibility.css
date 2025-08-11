@@ -1,0 +1,126 @@
+/* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+
+/* Base Contrast Improvements */
+body {
+    color: var(--primary);
+    line-height: 1.6;
+}
+
+/* Links */
+a {
+    color: var(--brand-blue);
+    text-decoration: none;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+a:hover,
+a:focus {
+    color: var(--brand-blue-hover);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--primary);
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+    line-height: 1.3;
+}
+
+/* Buttons */
+button, .button, [role="button"] {
+    background-color: var(--brand-blue);
+    color: white;
+    border: 2px solid transparent;
+    padding: 0.5em 1em;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button:hover, button:focus,
+.button:hover, .button:focus,
+[role="button"]:hover, [role="button"]:focus {
+    background-color: var(--brand-blue-hover);
+    outline: 3px solid rgba(0, 123, 255, 0.5);
+    outline-offset: 2px;
+}
+
+/* Forms */
+input, textarea, select {
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.5em;
+    background: var(--theme);
+    color: var(--primary);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--brand-blue);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+/* Focus styles */
+:focus-visible {
+    outline: 3px solid var(--brand-blue);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* Skip link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--brand-blue);
+    color: white;
+    padding: 0.5em 1em;
+    z-index: 100;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 3px solid white;
+}
+
+/* Dark mode specific adjustments */
+.dark {
+    --brand-blue: #4dabf7;  /* Lighter blue for better contrast in dark mode */
+    --brand-blue-hover: #74c0fc;
+    --primary: #f1f3f5;     /* Brighter text for better contrast */
+    --secondary: #adb5bd;   /* Brighter secondary text */
+}
+
+/* Print styles */
+@media print {
+    * {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    
+    a, a:visited {
+        text-decoration: underline;
+    }
+    
+    a[href^="http"]:after {
+        content: " (" attr(href) ")";
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

@@ -1,0 +1,89 @@
+/* Image Optimization Styles */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1.5rem auto;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-subtle);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;
+}
+
+/* Lazy loading for images */
+img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+img.loaded {
+    opacity: 1;
+}
+
+/* Responsive images */
+.picture-wrapper {
+    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    background: var(--code-bg);
+}
+
+/* Blur-up technique for images */
+.picture-wrapper img {
+    transition: filter 0.3s ease;
+}
+
+.picture-wrapper img.blur-up {
+    filter: blur(5px);
+    transform: scale(1.02);
+}
+
+.picture-wrapper img.blur-up.lazyloaded {
+    filter: blur(0);
+    transform: scale(1);
+}
+
+/* Figure and figcaption styling */
+figure {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+figure img {
+    margin-bottom: 0.5rem;
+}
+
+figcaption {
+    font-size: 0.9em;
+    color: var(--secondary);
+    font-style: italic;
+    margin-top: 0.5rem;
+    padding: 0 1rem;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+    img {
+        opacity: 0.9;
+        transition: opacity 0.3s ease;
+    }
+    
+    img:hover {
+        opacity: 1;
+    }
+}
+
+/* Print styles */
+@media print {
+    img {
+        max-width: 100% !important;
+        page-break-inside: avoid;
+    }
+    
+    .picture-wrapper {
+        page-break-inside: avoid;
+    }
+}

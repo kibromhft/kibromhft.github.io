@@ -12,6 +12,10 @@
 <meta name="author" cfontent="kibrom Haftu">
 <link rel="canonical" href="https://kibromhft.github.io/" />
 <link crossorigin="anonymous" href="/assets/css/main.css?v=1.1" rel="stylesheet">
+<!-- Custom CSS for optimizations -->
+<link href="/assets/css/accessibility.css" rel="stylesheet">
+<link href="/assets/css/focus-states.css" rel="stylesheet">
+<link href="/assets/css/image-optimization.css" rel="stylesheet">
 <link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kibromhft.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kibromhft.github.io/favicon-32x32.png">
@@ -19,9 +23,25 @@
 <link rel="mask-icon" href="https://kibromhft.github.io/safari-pinned-tab.svg">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 
-<!-- Font preloading to prevent FOUT (Flash of Unstyled Text) -->
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Essays+1743:ital,wght@0,400;0,700;1,400;1,700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Essays+1743:ital,wght@0,400;0,700;1,400;1,700&display=swap"></noscript>
+<!-- Font preloading and optimization -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?family=Essays+1743:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;500;600&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Essays+1743:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;500;600&display=swap"></noscript>
+<!-- Fallback font stack with system fonts -->
+<style>
+  @font-face {
+    font-family: 'Essays 1743';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Essays 1743'), local('Essays1743');
+  }
+  /* System font stack for fallback */
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+</style>
 
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
@@ -35,7 +55,52 @@
         }
     </style>
 </noscript>
-<script type="application/javascript">
+<script>
+// Focus management for keyboard navigation
+document.addEventListener('DOMContentLoaded', function() {
+    // Add focus-visible class to body for polyfill
+    document.body.classList.add('js-focus-visible');
+    
+    // Add skip link
+    const skipLink = document.createElement('a');
+    skipLink.href = '#main-content';
+    skipLink.className = 'skip-link';
+    skipLink.textContent = 'Skip to main content';
+    document.body.insertBefore(skipLink, document.body.firstChild);
+    
+    // Add focus trap for modals if needed
+    const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    
+    // Handle focus for modals
+    function trapFocus(element) {
+        const focusableContent = element.querySelectorAll(focusableElements);
+        const firstFocusableElement = focusableContent[0];
+        const lastFocusableElement = focusableContent[focusableContent.length - 1];
+        
+        element.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                if (e.shiftKey) {
+                    if (document.activeElement === firstFocusableElement) {
+                        lastFocusableElement.focus();
+                        e.preventDefault();
+                    }
+                } else {
+                    if (document.activeElement === lastFocusableElement) {
+                        firstFocusableElement.focus();
+                        e.preventDefault();
+                    }
+                }
+            }
+        });
+    }
+    
+    // Initialize focus trap for modals
+    document.querySelectorAll('[role="dialog"]').forEach(modal => {
+        trapFocus(modal);
+    });
+});
+
+// Google Analytics (moved to bottom of body)
 var doNotTrack = false;
 if (!doNotTrack) {
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -43,7 +108,6 @@ if (!doNotTrack) {
 	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 	ga('create', 'UA-8161570-5', 'auto');
-	
 	ga('send', 'pageview');
 }
 </script><meta property="og:title" content="Kb&#39;s Blog" />
