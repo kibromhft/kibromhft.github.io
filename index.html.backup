@@ -19,10 +19,6 @@
 <link rel="mask-icon" href="https://kibromhft.github.io/safari-pinned-tab.svg">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 
-<!-- Font preloading to prevent FOUT (Flash of Unstyled Text) -->
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Essays+1743:ital,wght@0,400;0,700;1,400;1,700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Essays+1743:ital,wght@0,400;0,700;1,400;1,700&display=swap"></noscript>
-
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" type="application/rss+xml" href="https://kibromhft.github.io/index.xml">
@@ -95,237 +91,54 @@ if (!doNotTrack) {
     
 
 <style>
-    /* Design System - CSS Custom Properties */
-    :root {
-        /* Colors - using main theme variables */
-        --primary-color: var(--brand-blue, rgb(13, 110, 253));
-        --primary-hover: var(--brand-blue-hover, rgb(10, 88, 202));
-        --primary-light: rgb(59, 130, 246);
-        --text-primary: var(--primary, rgb(15, 23, 42));
-        --text-secondary: var(--secondary, rgb(51, 65, 85));
-        --text-muted: rgb(108, 117, 125);
-        --bg-primary: var(--theme, rgb(255, 255, 255));
-        --bg-secondary: var(--entry, rgb(248, 250, 252));
-        --bg-card: var(--entry, rgb(255, 255, 255));
-        --border-color: var(--border, rgba(226, 232, 240, 0.8));
-        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.02);
-        --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.03);
-        --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.05);
-        
-        /* Typography */
-        --font-heading: "Essays 1743", serif;
-        --font-body: Libertine, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
-        --font-size-xs: 0.875rem;
-        --font-size-sm: 1rem;
-        --font-size-base: 1.1rem;
-        --font-size-lg: 1.25rem;
-        --font-size-xl: 1.4rem;
-        --font-size-2xl: 2rem;
-        --font-size-3xl: 3.5rem;
-        
-        /* Spacing */
-        --space-xs: 0.5rem;
-        --space-sm: 1rem;
-        --space-md: 1.5rem;
-        --space-lg: 2rem;
-        --space-xl: 2.5rem;
-        --space-2xl: 3rem;
-        --space-3xl: 4rem;
-        
-        /* Border radius */
-        --radius-sm: 8px;
-        --radius-md: 12px;
-        --radius-lg: 16px;
-        
-        /* Transitions */
-        --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        
-        /* Container */
-        --container-max-width: min(900px, 90vw);
-        --container-padding: clamp(1rem, 5vw, 2rem);
-    }
-
-    /* Dark mode variables - using main theme system */
-    body.dark {
-        --primary-color: rgb(34, 211, 238);
-        --primary-hover: rgb(6, 182, 212);
-        --primary-light: rgb(6, 182, 212);
-        --text-primary: var(--primary, rgb(248, 250, 252));
-        --text-secondary: var(--secondary, rgb(203, 213, 225));
-        --text-muted: rgb(156, 163, 175);
-        --bg-primary: var(--theme, rgb(15, 23, 42));
-        --bg-secondary: var(--entry, rgb(30, 41, 59));
-        --bg-card: var(--entry, rgb(30, 41, 59));
-        --border-color: var(--border, rgba(51, 65, 85, 0.8));
-        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
-        --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-        --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Reduced motion support */
-    @media (prefers-reduced-motion: reduce) {
-        :root {
-            --transition-fast: 0s;
-            --transition-base: 0s;
-            --transition-slow: 0s;
-        }
-        
-        * {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-        }
-    }
-
-    /* Navigation styles with CSS variables */
-    #menu a {
-        color: var(--text-primary);
-        transition: var(--transition-base);
-    }
-
-    #menu a:hover,
-    #menu a:focus {
-        background-color: var(--bg-secondary);
-        color: var(--text-primary);
-        outline: 2px solid var(--primary-color);
-        outline-offset: 2px;
-    }
-
-    .dropdown-menu a {
-        color: var(--text-primary);
-        transition: var(--transition-base);
-    }
-
-    .dropdown-menu a:hover,
-    .dropdown-menu a:focus {
-        background-color: var(--bg-secondary);
-        color: var(--text-primary);
-    }
-
-    /* Logo and theme toggle */
-    .logo a {
-        color: var(--text-primary);
-        transition: var(--transition-base);
-    }
-
-    .logo a:hover,
-    .logo a:focus {
-        color: var(--primary-color);
-        outline: 2px solid var(--primary-color);
-        outline-offset: 2px;
-    }
-
-    #theme-toggle {
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: var(--space-xs);
-        border-radius: 50%;
-        transition: var(--transition-base);
-        color: var(--text-primary);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    #theme-toggle:hover,
-    #theme-toggle:focus {
-        background-color: var(--bg-secondary);
-        outline: 2px solid var(--primary-color);
-        outline-offset: 2px;
-    }
-
-    #theme-toggle svg {
-        height: 20px;
-        width: 20px;
-    }
-
-    .logo-switches {
-        display: flex;
-        align-items: center;
-        margin-left: var(--space-sm);
-    }
-
-    .logo {
-        display: flex;
-        align-items: center;
-        position: relative;
-    }
-
-    /* Theme toggle visibility */
-    body.dark #moon {
-        display: none;
-    }
-
-    body:not(.dark) #sun {
-        display: none;
-    }
-
-    /* Subtle header background improvement */
-    .header {
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid var(--border-color);
-    }
-
-    body.dark .header {
-        background: rgba(29, 30, 32, 0.98);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid var(--border-color);
-    }
-
-    /* Improved caret styling */
-    .caret {
-        font-size: 14px !important;
-        opacity: 1 !important;
-        margin-left: 6px !important;
-        transition: transform 0.2s ease;
-        color: var(--text-primary);
-    }
-
-    .caret:hover {
-        color: var(--primary-color);
-    }
-
-    /* Optimized font loading with fallbacks */
+    /* Font-face declarations for custom fonts */
     @font-face {
         font-family: "Essays 1743";
-        src: url("assets/f/Essays1743.woff2") format("woff2"), url("assets/f/Essays1743.woff") format("woff");
+        src: url("assets/f/Essays1743.eot") format("eot"), url("assets/f/Essays1743.woff") format("woff"), url("assets/f/Essays1743.ttf") format("truetype");
         font-display: swap;
-        font-weight: normal;
-        font-style: normal;
     }
     @font-face {
         font-family: "Essays 1743";
-        src: url("assets/f/Essays1743-bold.woff2") format("woff2"), url("assets/f/Essays1743-bold.woff") format("woff");
-        font-display: swap;
         font-weight: bold;
-        font-style: normal;
+        src: url("assets/f/Essays1743-bold.eot") format("eot"), url("assets/f/Essays1743-bold.woff") format("woff"), url("assets/f/Essays1743-bold.ttf") format("truetype");
+        font-display: swap;
     }
     @font-face {
         font-family: "Essays 1743";
-        src: url("assets/f/Essays1743-italic.woff2") format("woff2"), url("assets/f/Essays1743-italic.woff") format("woff");
-        font-display: swap;
-        font-weight: normal;
         font-style: italic;
+        src: url("assets/f/Essays1743-italic.eot") format("eot"), url("assets/f/Essays1743-italic.woff") format("woff"), url("assets/f/Essays1743-italic.ttf") format("truetype");
+        font-display: swap;
     }
     @font-face {
-        font-family: "Libertine";
-        src: url("assets/f/Libertine.woff2") format("woff2"), url("assets/f/Libertine.woff") format("woff");
-        font-display: swap;
-        font-weight: normal;
-        font-style: normal;
-    }
-    @font-face {
-        font-family: "Libertine";
-        src: url("assets/f/Libertine-bold.woff2") format("woff2"), url("assets/f/Libertine-bold.woff") format("woff");
-        font-display: swap;
+        font-family: "Essays 1743";
+        font-style: italic;
         font-weight: bold;
-        font-style: normal;
+        src: url("assets/f/Essays1743-bold-italic.eot") format("eot"), url("assets/f/Essays1743-bold-italic.woff") format("woff"), url("assets/f/Essays1743-bold-italic.ttf") format("truetype");
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Libertine";
+        src: url("assets/f/Libertine.eot") format("eot"), url("assets/f/Libertine.woff") format("woff"), url("assets/f/Libertine.ttf") format("truetype");
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Libertine";
+        font-weight: bold;
+        src: url("assets/f/Libertine-bold.eot") format("eot"), url("assets/f/Libertine-bold.woff") format("woff"), url("assets/f/Libertine-bold.ttf") format("truetype");
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Libertine";
+        font-style: italic;
+        src: url("assets/f/Libertine-italic.eot") format("eot"), url("assets/f/Libertine-italic.woff") format("woff"), url("assets/f/Libertine-italic.ttf") format("truetype");
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Libertine";
+        font-style: italic;
+        font-weight: bold;
+        src: url("assets/f/Libertine-bold-italic.eot") format("eot"), url("assets/f/Libertine-bold-italic.woff") format("woff"), url("assets/f/Libertine-bold-italic.ttf") format("truetype");
+        font-display: swap;
     }
 
     /* Dark mode overrides for featured posts section */
@@ -337,51 +150,8 @@ if (!doNotTrack) {
         color: rgb(218, 218, 219) !important;
     }
 
-    /* Enhanced mobile dropdown functionality */
+    /* Mobile dropdown functionality */
     @media screen and (max-width: 768px) {
-        /* Override main.css mobile navigation with enhanced behavior */
-        .nav {
-            padding: 0 16px !important;
-            gap: 16px !important;
-            display: flex !important;
-            align-items: center !important;
-            flex-wrap: wrap !important;
-            overflow: visible !important;
-            white-space: normal !important;
-            max-width: none !important;
-        }
-
-        #menu {
-            gap: 6px !important;
-            overflow: visible !important;
-            white-space: normal !important;
-            display: flex !important;
-            flex-direction: row !important;
-            flex-wrap: wrap !important;
-        }
-
-        #menu li {
-            display: flex !important;
-            white-space: normal !important;
-            flex-shrink: 1 !important;
-        }
-
-        #menu a {
-            font-size: 15px !important;
-            padding: 8px 12px !important;
-            border-radius: 6px !important;
-            white-space: normal !important;
-            word-wrap: break-word !important;
-            overflow-wrap: break-word !important;
-        }
-
-        .dropdown-menu {
-            right: auto !important;
-            left: 0 !important;
-            min-width: 200px !important;
-            border-radius: 8px !important;
-        }
-
         /* Completely disable hover behavior on touch devices */
         .dropdown .dropdown-menu {
             opacity: 0 !important;
@@ -403,35 +173,6 @@ if (!doNotTrack) {
     }
 
     @media screen and (max-width: 480px) {
-        .nav {
-            flex-direction: row !important;
-            padding: 0 16px !important;
-            display: flex !important;
-            align-items: center !important;
-            flex-wrap: wrap !important;
-            max-width: none !important;
-        }
-
-        .logo {
-            margin-bottom: 0 !important;
-        }
-
-        #menu {
-            flex-wrap: wrap !important;
-            justify-content: flex-start !important;
-            gap: 6px !important;
-            display: flex !important;
-            flex-direction: row !important;
-        }
-
-        #menu a {
-            font-size: 14px !important;
-            padding: 6px 8px !important;
-            white-space: normal !important;
-            word-wrap: break-word !important;
-            overflow-wrap: break-word !important;
-        }
-
         /* Mobile dropdown functionality for smaller screens */
         .dropdown .dropdown-menu {
             opacity: 0 !important;
@@ -480,7 +221,7 @@ if (!doNotTrack) {
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://kibromhft.github.io/" accesskey="h" title="KB&#39;s Blog (Alt + H)">KB&#39;s Blog</a>
+            <a href="https://kibromhft.github.io/" accesskey="h" title="Kb&#39;s Blog (Alt + H)">Kb&#39;s Blog</a>
             <span class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -571,6 +312,8 @@ if (!doNotTrack) {
 
 
 
+
+
 		
     </nav>
 </header>	
@@ -579,15 +322,16 @@ if (!doNotTrack) {
 <main class="main"> 
 <article class="first-entry home-info">
     <header class="entry-header">
-        <h2>👋 Hi, there!</h2>
+        <h2>👋 A Warm Welcome!</h2>
     </header>
     <section class="entry-content">
-    <p class="custom-paragraph" style="text-align: justify;">I'm Kibrom (KB), and this blog is my learning diary, driven by a passion for using AI to solve real-world problems. As a Lead Data Scientist on a Chest X-ray project and a Tech Manager in banking, I optimize data solutions to improve outcomes. Join me on this adventure, where we become <strong>masters of AI</strong> and make a real difference!</p>
+    <p class="custom-paragraph" style="text-align: justify;"> I&rsquo;m Kibrom, and this blog is my learning diary, driven by a passion for using AI to solve real-world problems. As a Lead Data Scientist on a Chest X-ray project and a Tech Manager in banking, I optimize data solutions to improve outcomes. Join me on this adventure, where we become <strong>masters of AI</strong> and make a real difference!</p>
  
     </section>
     <footer class="entry-footer">
     </footer>
     <div class="about-block">
+      <br>
       <div class="social-link-group-tight"><a href="https://twitter.com/coding_era" target="_blank"
           class="social-icon-link-pad w-inline-block"><img
             src="https://uploads-ssl.webflow.com/5fff4548993f61212dec8c3a/5fff4548d36c8606fcf1e6e2_social-18.svg" width="30"
@@ -628,6 +372,11 @@ if (!doNotTrack) {
   <h2 class="small-heading" style="color: #333333;">Featured Posts:</h2>
 </div>
 
+
+
+
+
+
 <article class="post-entry"> 
   <header class="entry-header">
     <h2>Coding AI: The New Literacy
@@ -640,6 +389,7 @@ if (!doNotTrack) {
   <footer class="entry-footer"><span title='2023-01-19 00:00:00 +0000 UTC'>January 19, 2023</span>&nbsp;·&nbsp;18 min&nbsp;·&nbsp;kibrom Haftu</footer>
           <a class="entry-link" aria-label="post link to VAE" href="https://kibromhft.github.io/posts/2023-01-19-coding/"></a>
 </article>
+
 
 <article class="post-entry"> 
   <header class="entry-header">
@@ -666,6 +416,10 @@ if (!doNotTrack) {
   <a class="entry-link" aria-label="post link to Causality in Machine Learning" href="https://kibromhft.github.io/posts/2022-11-20-causality_in_ML/"></a>
 </article>
 
+
+
+
+
 <article class="post-entry"> 
   <header class="entry-header">
     <h2>Jobs in the Digital Era
@@ -680,6 +434,11 @@ Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolu
   <footer class="entry-footer"><span title='2023-01-03 10:00:00 -0700 PDT'>October 19, 2022</span>&nbsp;·&nbsp;11 min&nbsp;·&nbsp;kibrom Haftu</footer>
   <a class="entry-link" aria-label="post link to Jobs in the Digital Era" href="https://kibromhft.github.io/posts/2022-10-19-automation/"></a>
 </article>
+
+
+
+
+
 
 <article class="post-entry"> 
   <header class="entry-header">
@@ -850,53 +609,6 @@ Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolu
                     dropdown.classList.remove('dropdown-open');
                 });
             });
-        }
-    });
-
-    // Enhanced code copy functionality
-    document.querySelectorAll('pre > code').forEach((codeblock) => {
-        const container = codeblock.parentNode.parentNode;
-
-        const copybutton = document.createElement('button');
-        copybutton.classList.add('copy-code');
-        copybutton.innerText = 'copy';
-
-        function copyingDone() {
-            copybutton.innerText = 'copied!';
-            setTimeout(() => {
-                copybutton.innerText = 'copy';
-            }, 2000);
-        }
-
-        copybutton.addEventListener('click', (cb) => {
-            if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
-                copyingDone();
-                return;
-            }
-
-            const range = document.createRange();
-            range.selectNodeContents(codeblock);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            try {
-                document.execCommand('copy');
-                copyingDone();
-            } catch (e) { };
-            selection.removeRange(range);
-        });
-
-        if (container.classList.contains("highlight")) {
-            container.appendChild(copybutton);
-        } else if (container.parentNode.firstChild == container) {
-            
-        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
-            
-            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
-        } else {
-            
-            codeblock.parentNode.appendChild(copybutton);
         }
     });
 </script>
