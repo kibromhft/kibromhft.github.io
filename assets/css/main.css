@@ -27,8 +27,13 @@
     
     /* Typography */
     --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    --font-serif: 'Essays 1743', Palatino, 'Palatino Linotype', 'Book Antiqua', Georgia, 'Times New Roman', serif;
+    --font-serif: 'Essays 1743', 'Palatino', 'Palatino Linotype', 'Book Antiqua', 'Georgia', 'Times New Roman', serif;
     --font-mono: 'Libertine', 'Courier New', monospace;
+    --font-size-base: 16px;
+    --font-size-lg: 18px;
+    --font-size-xl: 20px;
+    --line-height-base: 1.6;
+    --line-height-lg: 1.7;
 }
 
 /* ===== DARK THEME ===== */
@@ -337,15 +342,41 @@ body:not(.dark) #sun {
 
 /* Custom paragraph styles */
 .custom-paragraph {
-    font-family: var(--font-primary);
+    font-family: var(--font-serif), var(--font-primary);
     font-weight: 400;
-    font-size: 16px;
+    font-size: 18px;
     color: var(--content);
-    letter-spacing: 0.025em;
-    line-height: 1.6;
+    letter-spacing: 0.02em;
+    line-height: 1.7;
     text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+    margin-bottom: 1.2em;
 }
 
+/* Enhanced styling for introduction paragraphs */
+.first-entry .custom-paragraph {
+    font-size: 19px;
+    line-height: 1.8;
+    color: var(--primary);
+    font-weight: 500;
+    margin-bottom: 1.5em;
+    padding: 0.5em 0;
+}
+
+/* Better text justification for shorter lines */
+@media (max-width: 768px) {
+    .custom-paragraph {
+        text-align: left;
+        font-size: 17px;
+        line-height: 1.6;
+    }
+    
+    .first-entry .custom-paragraph {
+        font-size: 18px;
+        line-height: 1.7;
+    }
+}
 
 
 /* About block */
