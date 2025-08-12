@@ -417,19 +417,17 @@ body:not(.dark) #sun {
 
 .first-entry .entry-content {
     margin: 20px 0;
-    font-size: 16px;
-    line-height: 1.6;
-    color: var(--secondary);
 }
 
 /* Custom paragraph styles */
 @import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;700&display=swap');
 
-.custom-paragraph {
-    font-family: 'Google Sans Flex', 'Google Sans', 'Helvetica Neue', sans-serif;
-    font-family: var(--font-primary);
-    font-weight: 400;
-    font-size: 16px;
+/* Post excerpts on home page */
+body.home .post-entry .entry-content {
+font-family: 'Google Sans Flex', 'Google Sans', 'Helvetica Neue', sans-serif;
+font-weight: 400;
+line-height: 1.6;
+color: var(--text-secondary);
     color: var(--content);
     letter-spacing: 0.025em;
     line-height: 1.6;
