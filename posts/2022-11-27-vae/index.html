@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Disentangling the Latent Space: A Guide to Beta-VAE | Kb&#39;s Blog</title>
+<meta name="keywords" content="autoencoder, generative-model, image-generation" />
+<meta name="description" content=" Autoencoders are a type of neural network that can be used to learn a compressed representation of input data. They work by training the network to reconstruct the input data from a lower-dimensional latent representation, which is typically obtained using an encoder. Autoencoders are versatile and can be used for a variety of tasks, including data compression, anomaly detection, and feature learning.
+<br/
+One of the main benefits of autoencoders is their ability to reduce the dimensionality of large and complex data sets, making them more manageable for downstream tasks such as classification, clustering, and visualization. They can also be used to identify patterns or anomalies in data that may not be easily detectable by other means.">
+<meta name="author" content="kibrom Haftu">
+<link rel="canonical" href="https://kibromhft.github.io/posts/2022-11-27-vae/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet_main.css"  rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kibromhft.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kibromhft.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kibromhft.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kibromhft.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-8161570-5', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script><meta property="og:title" content="Disentangling the Latent Space: A Guide to Beta-VAE" />
+<meta property="og:description" content=" 
+Autoencoders are a type of neural network that can be used to learn a compressed representation of input data. They work by training the network to reconstruct the input data from a lower-dimensional latent representation, which is typically obtained using an encoder. Autoencoders are versatile and can be used for a variety of tasks, including data compression, anomaly detection, and feature learning.
+<br/
+One of the main benefits of autoencoders is their ability to reduce the dimensionality of large and complex data sets, making them more manageable for downstream tasks such as classification, clustering, and visualization. They can also be used to identify patterns or anomalies in data that may not be easily detectable by other means. />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kibromhft.github.io/posts/2022-11-27-vae/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-02-27T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2022-02-27T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Disentangling the Latent Space: A Guide to Beta-VAE"/>
+<meta name="twitter:description" content=" 
+Autoencoders are a type of neural network that can be used to learn a compressed representation of input data. They work by training the network to reconstruct the input data from a lower-dimensional latent representation, which is typically obtained using an encoder. Autoencoders are versatile and can be used for a variety of tasks, including data compression, anomaly detection, and feature learning high-dimensional data using a neural network model with a narrow bottleneck layer in the middle (oops, this is probably not true for Variational Autoencoder, and we will investigate it in details in later sections). A nice byproduct is dimension reduction: the bottleneck layer captures a compressed latent encoding."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kibromhft.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Disentangling the Latent Space: A Guide to Beta-VAE",
+      "item": "https://kibromhft.github.io/posts/2022-11-27-vae/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Disentangling the Latent Space: A Guide to Beta-VAE",
+  "name": "Disentangling the Latent Space: A Guide to Beta-VAE",
+  "description": "\nAutoencoders are a type of neural network that can be used to learn a compressed representation of input data. They work by training the network to reconstruct the input data from a lower-dimensional latent representation, which is typically obtained using an encoder. Autoencoders are versatile and can be used for a variety of tasks, including data compression, anomaly detection, and feature learning high-dimensional data using a neural network model with a narrow bottleneck layer in the middle (oops, this is probably not true for Variational Autoencoder, and we will investigate it in details in later sections). A nice byproduct is dimension reduction: the bottleneck layer captures a compressed latent encoding.",
+  "keywords": [
+    "autoencoder","generative-model","unsupervised-learning","dimensionality-reduction","neural-networks","reconstruction-error","latent-space","variational-inference","beta-vae","generative-adversarial-networks"
+  ],
+  "articleBody": "\nAutoencoders are a type of neural network that can be used to learn a compressed representation of input data. They work by training the network to reconstruct the input data from a lower-dimensional latent representation, which is typically obtained using an encoder. Autoencoders are versatile and can be used for a variety of tasks, including data compression, anomaly detection, and feature learning high-dimensional data using a neural network model with a narrow bottleneck layer in the middle (oops, this is probably not true for Variational Autoencoder, and we will investigate it in details in later sections). A nice byproduct is dimension reduction: the bottleneck layer captures a compressed latent encoding. Such a low-dimensional representation can be used as en embedding vector in various applications (i.e. search), help data compression, or reveal the underlying data generative factors.\nNotation    Symbol Mean     $\\mathcal{D}$ The dataset, $\\mathcal{D} = \\{ \\mathbf{x}^{(1)}, \\mathbf{x}^{(2)}, \\dots, \\mathbf{x}^{(n)} \\}$, contains $n$ data samples; $\\vert\\mathcal{D}\\vert =n $.   $\\mathbf{x}^{(i)}$ Each data point is a vector of $d$ dimensions, $\\mathbf{x}^{(i)} = [x^{(i)}_1, x^{(i)}_2, \\dots, x^{(i)}_d]$.   $\\mathbf{x}$ One data sample from the dataset, $\\mathbf{x} \\in \\mathcal{D}$.   $\\mathbf{x}’$ The reconstructed version of $\\mathbf{x}$.   $\\tilde{\\mathbf{x}}$ This is the noisy version of the original data $\\mathbf{x}$.   $\\mathbf{z}$ The latent vector.   $a_j^{(l)}$ The activation function for the $j$-th neuron in the $l$-th hidden layer.   $g_{\\phi}(.)$ The encoding function parameterized by $\\phi$.   $f_{\\theta}(.)$ The decoding function parameterized by $\\theta$.   $q_{\\phi}(\\mathbf{z}\\vert\\mathbf{x})$ Estimated posterior probability function, also known as probabilistic encoder.   $p_{\\theta}(\\mathbf{x}\\vert\\mathbf{z})$ Likelihood of generating true data sample given the latent code, also known as probabilistic decoder.    Autoencoder Autoencoder is a neural network designed to learn an identity function in an unsupervised way to reconstruct the original input while compressing the data in the process so as to discover a more efficient and compressed representation. The idea was originated in the 1980s, and later promoted by the seminal paper by Hinton \u0026 Salakhutdinov, 2006.\nIt consists of two networks:\n Encoder network: It translates the original high-dimension input into the latent low-dimensional code. The input size is larger than the output size. Decoder network: The decoder network recovers the data from the code, likely with larger and larger output layers. \n",
+  "wordCount" : "5305",
+  "inLanguage": "en",
+  "datePublished": "2022-02-27T00:00:00Z",
+  "dateModified": "2022-02-27T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "kibrom Haftu"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kibromhft.github.io/posts/2022-11-27-vae/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "KB'Log",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kibromhft.github.io/favicon_peach.ico"
+    }
+  }
+}
+</script>
+<style>
+        /* Font-face declarations for custom fonts */
+        @font-face {
+            font-family: "Essays 1743";
+            src: url("../../assets/f/Essays1743.eot") format("eot"), url("../../assets/f/Essays1743.woff") format("woff"), url("../../assets/f/Essays1743.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Essays 1743";
+            font-weight: bold;
+            src: url("../../assets/f/Essays1743-bold.eot") format("eot"), url("../../assets/f/Essays1743-bold.woff") format("woff"), url("../../assets/f/Essays1743-bold.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Essays 1743";
+            font-style: italic;
+            src: url("../../assets/f/Essays1743-italic.eot") format("eot"), url("../../assets/f/Essays1743-italic.woff") format("woff"), url("../../assets/f/Essays1743-italic.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Essays 1743";
+            font-style: italic;
+            font-weight: bold;
+            src: url("../../assets/f/Essays1743-bold-italic.eot") format("eot"), url("../../assets/f/Essays1743-bold-italic.woff") format("woff"), url("../../assets/f/Essays1743-bold-italic.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Alphabet of Children";
+            src: url("../../assets/f/Alphabet-of-Children.eot") format("eot"), url("../../assets/f/Alphabet-of-Children.woff") format("woff"), url("../../assets/f/Alphabet-of-Children.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Libertine";
+            src: url("../../assets/f/Libertine.eot") format("eot"), url("../../assets/f/Libertine.woff") format("woff"), url("../../assets/f/Libertine.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Libertine";
+            font-weight: bold;
+            src: url("../../assets/f/Libertine-bold.eot") format("eot"), url("../../assets/f/Libertine-bold.woff") format("woff"), url("../../assets/f/Libertine-bold.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Libertine";
+            font-style: italic;
+            src: url("../../assets/f/Libertine-italic.eot") format("eot"), url("../../assets/f/Libertine-italic.woff") format("woff"), url("../../assets/f/Libertine-italic.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "Libertine";
+            font-style: italic;
+            font-weight: bold;
+            src: url("../../assets/f/Libertine-bold-italic.eot") format("eot"), url("../../assets/f/Libertine-bold-italic.woff") format("woff"), url("../../assets/f/Libertine-bold-italic.ttf") format("truetype");
+        }
+        
+        /* Updated styles for quotes */
+        body.dark .quote {
+            background-color: #222222; /* Matching the main background color */
+            border-left: 4px solid #8FBCBB; /* Keeping the accent color for the left border */
+            padding: 15px;
+            margin: 15px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+        }
+
+        body.dark .quote p {
+            color: #FFFFFF; /* White for the main quote text to make it stand out */
+            font-style: italic;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        body.dark .quote cite {
+            color: #BDBDBE; /* Slightly dimmer than the main text color */
+            font-style: normal;
+            font-size: 0.9em;
+        }
+		
+		    /* Dark mode styles for dropdown menu */
+    body.dark .custom-dropdown {
+        background-color: #2E2E33;
+        border: 1px solid #444;
+    }
+
+    body.dark .custom-dropdown li a {
+        color: #DADADB !important;
+    }
+
+    body.dark .custom-dropdown li a:hover {
+        background-color: #3E3E43 !important;
+        color: #FFFFFF !important;
+    }
+    </style>
+
+<style>
+.quote {
+  font-size: 1.5em;
+  font-style: italic;
+  margin: 2em;
+  padding: 1em;
+  border-inline-start: 3px solid #E64632 !important; /* Force override */
+}
+
+.quote p {
+  margin: 0;
+}
+
+.quote cite {
+  display: block;
+  font-size: 0.9em;
+  margin-top: 1em;
+  text-align: right;
+}
+
+    /* New styles for paragraphs */
+    p {
+		font-family: Libertine, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
+		font-size: large !important; /* Updated font size */
+		line-height: 1.556 !important; /* Updated line height */
+		word-spacing: 0.1em !important; /* Updated word spacing */
+		margin: 28.008px 0px !important; /* Updated margin for vertical spacing */
+		text-decoration: none !important; /* Underline text */
+		text-decoration-color: rgb(0, 0, 0) !important; /* Set underline color to black */
+		--primary: #000000 !important;
+		color: rgb(0, 0, 0);
+    }
+	    /* Set --code-bg for all elements except the header 
+    body{
+        --code-bg: rgb(255, 255, 255) !important; 
+    }*/
+		
+		/* headers */
+
+	h1, h2, h3, h4, caption, thead th {
+	  font-family: "Essays 1743", Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
+	  font-weight: normal;
+	  text-shadow: 0 0 1px #667;
+	}
+	h1 {
+	  font-size: 266.7%;
+	  line-height: 1.1;
+	  width: 100%;
+	  margin: 1.49em 0;
+	}
+	h2 {
+	  font-size: 210%;
+	  line-height: 1.3125;
+	  margin: 1.167em 0;
+	  clear: both;
+	}
+	h3 {
+	  font-size: x-large;
+	  line-height: 1.167;
+	  margin: 1.556em 0;
+	}
+	.post-content table th {
+		font-size: 16px;
+		text-align: start;
+	}
+</style>
+
+<style>
+
+/* Dotted red border */
+hr.new3 {
+  border-top: 0.5px dotted gray;
+}
+
+</style>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kibromhft.github.io/" accesskey="h" title="Kb&#39;s Blog (Alt + H)">Kb&#39;s Blog</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+       <ul id="menu">
+
+		
+		  <li>
+			<a href="https://kibromhft.github.io/" title="Home">
+			  Home <span class="caret fa fa-home"></span>
+			</a>
+		  </li>
+		  
+
+		  <li>
+			<a href="https://kibromhft.github.io/archives/" title="Archives">
+			  <span>Archives</span>
+			</a>
+		  </li>
+		  
+
+
+		  <li>
+			<a href="https://kibromhft.github.io/data/" title="Data">
+			  <span>Data</span>
+			</a>
+		  </li>
+		  <li>
+			<a href="https://kibromhft.github.io/keywords/" title="keywords">
+			  <span>Keywords</span>
+			</a>
+		  </li>
+		  <li>
+			<a href="https://kibromhft.github.io/faq" title="FAQ">
+			  <span>FAQs</span>
+			</a>
+		  </li>
+		  
+<!-- 		  <li>
+			<a href="https://kibromhft.github.io/cv" title="cv">
+			  <span>CV</span>
+			</a>
+		  </li> -->
+
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+			  Resources <span class="caret fa fa-bars" data-toggle="dropdown"></span>
+			</a>
+		  <ul class="dropdown-menu custom-dropdown">
+			<li>
+			  <a href="https://kibromhft.github.io/podcast">Podcast</a>
+			</li>
+			<li>
+			  <a href="#">Algorithms</a>
+			</li>
+			<li>
+			  <a href="#">Funding & Grants</a>
+			</li>
+			<li>
+			  <a href="#">Startup Toolkit</a>
+			</li>
+		  </ul>
+		</li>
+
+		<style>
+		.custom-dropdown {
+		  padding: 8px 0 !important;
+		  margin: 0 !important;
+		  list-style-type: none !important;
+		  /* Removed min-width to allow natural width */
+		}
+
+		.custom-dropdown li {
+		  padding: 0 !important;
+		  margin: 0 !important;
+		}
+
+		.custom-dropdown li a {
+		  display: block !important;
+		  width: 100% !important;
+		  padding: 8px 20px !important;
+		  margin: 0 !important;
+		  box-sizing: border-box !important;
+		  text-decoration: none !important;
+		  color: #333 !important;
+		  font-size: 16px !important; /* Increased font size */
+		  line-height: 1.5 !important;
+		}
+
+		.custom-dropdown li a:hover {
+		  background-color: #f8f9fa !important;
+		  color: #000 !important;
+		}
+		</style>
+
+		</ul>
+
+		
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      Disentangling the Latent Space: A Guide to Beta-VAE
+    </h1>
+    <div class="post-meta"><span title='2022-02-27 00:00:00 +0000 UTC'>November 27, 2022</span>&nbsp;·&nbsp;18 min&nbsp;·&nbsp;kibrom Haftu
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+		
+				<li>
+                    <a href="#Autoencoding101" aria-label="Autoencoding101">Autoencoding 101: Types, Beta-VAEs, and Beyond</a></li>
+                <li>
+                    <a href="#notation" aria-label="Notation">Notation</a></li>
+                <li>
+                    <a href="#autoencoder" aria-label="Autoencoder">Autoencoder</a></li>
+                <li>
+                    <a href="#denoising-autoencoder" aria-label="Denoising Autoencoder">Denoising Autoencoder</a></li>
+                <li>
+                    <a href="#vae-variational-autoencoder" aria-label="VAE: Variational Autoencoder">VAE: Variational Autoencoder</a><ul>
+                        
+                <li>
+                    <a href="#loss-function-elbo" aria-label="Loss Function: ELBO">Loss Function: ELBO</a></li>
+                <li>
+                    <a href="#reparameterization-trick" aria-label="Reparameterization Trick">Reparameterization Trick</a></li></ul>
+                </li>
+                <li>
+                    <a href="#beta-vae" aria-label="Beta-VAE">Beta-VAE</a></li>
+
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><!-- Autocoders are a family of neural network models aiming to learn compressed latent variables of high-dimensional data. Starting from the basic autocoder model, this post reviews several variations, including denoising, sparse, and contractive autoencoders, and then Variational Autoencoder (VAE) and its modification beta-VAE. -->
+
+<h1 id="Autoencoding101">Autoencoding 101: Types, Beta-VAEs, and Beyond<a hidden class="anchor" aria-hidden="true" href="#Autoencoding101">#</a></h1>
+<p>Let’s dive straight into the world of autoencoders and their cool variations, especially the game-changing beta-VAEs. We’ll take a look at how these technologies are advancing data representation and generative tasks, and how they’re really pushing the limits of what we can achieve in machine learning.</p>
+
+<p>Autoencoders are a type of neural network that can be used to learn a compressed representation of input data. They work by training the network to reconstruct the input data from a lower-dimensional latent representation, which is typically obtained using an encoder. Autoencoders are versatile and can be used for a variety of tasks, including data compression, anomaly detection, and feature learning.
+</p>
+<p>
+One of the main benefits of autoencoders is their ability to reduce the dimensionality of large and complex data sets, making them more manageable for downstream tasks such as classification, clustering, and visualization. They can also be used to identify patterns or anomalies in data that may not be easily detectable by other means.Using autoencoders, it is also possible to learn useful features from the data they are fed. These features can be used to enhance the performance of other machine learning models. It is also useful for data generation tasks such as generating images or synthesis of speech, which can be generated with them.
+</p>
+<h1 id="notation">Notation<a hidden class="anchor" aria-hidden="true" href="#notation">#</a></h1>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Brief Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\mathcal{D}$</td>
+<td>The dataset, <b>$\mathcal{D}$</b>, contains <b>n</b> data samples, where <b>$\vert\mathcal{D}\vert =n $</b>. Each sample is represented by a feature vector <b>$\mathbf{x}^{(i)}$</b> for <b>i = 1, 2, ..., n</b>.</td>
+</tr>
+<tr>
+<td>$\mathbf{x}^{(i)}$</td>
+<td>Each data point in the dataset is represented as a vector with $d$ dimensions. The vector for the i-th data point is represented as $\mathbf{x}^{(i)}$ and is written as $[x^{(i)}_1, x^{(i)}_2, \dots, x^{(i)}_d]$, where $x^{(i)}_j$ is the value of the j-th dimension for the i-th data point.</td>
+</tr>
+<tr>
+<td>$\mathbf{x}$</td>
+<td>Each data point in the dataset is represented by a feature vector, <b>$\mathbf{x}$</b>. The dataset, <b>$\mathcal{D}$</b>, is a collection of these feature vectors, <b>$\mathbf{x}$</b>.</td>
+</tr>
+<tr>
+<td>$\mathbf{x}’$</td>
+<td>The reconstructed version of a feature vector, <b>$\mathbf{x}$</b>, is a new version of the same vector that is generated through a process such as compression or denoising. This reconstructed version of <b>$\mathbf{x}$</b> aims to closely approximate the original vector, but may have some differences due to the applied process.</td>
+</tr>
+<tr>
+<td>$\tilde{\mathbf{x}}$</td>
+<td>This is the noisy version of the original data $\mathbf{x}$.</td>
+</tr>
+<tr>
+<td>$\mathbf{z}$</td>
+<td>The latent vector.</td>
+</tr>
+<tr>
+<td>$a_j^{(l)}$</td>
+<td>The activation function, represented mathematically as $a(x)$, is applied to the output of neuron $j$ in hidden layer $l$, where $j$ and $l$ are indices in the neural network. This function is used to introduce non-linearity into the network, allowing it to model more complex relationships between inputs and outputs. Common activation functions include sigmoid ($\sigma(x)$), rectified linear unit (ReLU, $max(0,x)$), and hyperbolic tangent (tanh, $\frac{e^x-e^{-x}}{e^x+e^{-x}}$).
+</td>
+</tr>
+<tr>
+  <td>$g_{\phi}(.)$</td>
+  <td>The <strong>encoding</strong> function parameterized by $\phi$. This function is used to <strong>encode</strong> the input data into a compact representation that can be used for further processing in the neural network. The specific form of the encoding function may vary depending on the application, but common examples include convolutional neural networks (CNNs) and autoencoders.</td>
+</tr>
+<tr>
+  <td>$f_{\theta}(.)$</td>
+  <td>The <strong>decoding</strong> function parameterized by $\theta$. This function is used to <strong>decode</strong> the encoded data back to its original form after it has been processed in the neural network. The specific form of the decoding function may vary depending on the application, but common examples include transposed convolutional neural networks (CNNs) and autoencoders.</td>
+</tr>
+<tr>
+  <td>$q_{\phi}(\mathbf{z}\vert\mathbf{x})$</td>
+  <td>Estimated posterior probability function, also known as <strong>probabilistic encoder</strong>, parameterized by $\phi$. This function is used to estimate the probability distribution of latent variables $\mathbf{z}$ given the input data $\mathbf{x}$. This can be useful in certain types of generative models, such as Variational Autoencoders (VAEs), where the goal is to learn a compact and informative representation of the data.
+</td>
+</tr>
+<tr>
+  <td>$p_{\theta}(\mathbf{x}\vert\mathbf{z})$</td>
+  <td>Likelihood function, also known as <strong>probabilistic decoder</strong>, parameterized by $\theta$. This function is used to estimate the probability of generating the true data sample $\mathbf{x}$ given the latent code $\mathbf{z}$. This can be useful in certain types of generative models, such as Variational Autoencoders (VAEs), where the goal is to learn a compact and informative representation of the data.
+</td>
+</tr>
+</tbody>
+</table>
+<h1 id="autoencoder">Autoencoder<a hidden class="anchor" aria-hidden="true" href="#autoencoder">#</a></h1>
+<p>An <strong>Autoencoder</strong> is a type of neural network designed to learn an identity function in an unsupervised way. The main goal of an autoencoder is to reconstruct the original input, while at the same time compressing the data in the process, which allows discovering a more efficient and compressed representation of the input.
+</p>
+<p>An Autoencoder typically consists of two main parts:
+</p>
+<hr class="new3">
+<ul>
+  <li><strong>Encoder network</strong> : The encoder network is responsible for translating the original high-dimensional input into a low-dimensional code, also known as latent representation. The encoder network typically has a smaller output layer than its input layer, which effectively reduces the dimensionality of the input data. It is trained to extract the most important features of the input data and represent them in the lower-dimensional code. The final output of the encoder network is the low-dimensional code, also known as the latent representation of the input data.</li>
+  <li><strong>Decoder network</strong> : The decoder network takes the low-dimensional code produced by the encoder network as input and attempts to reconstruct the original high-dimensional input data. The decoder network typically has a larger output layer than its input layer, which effectively increases the dimensionality of the code to match the original input data. It is trained to map the low-dimensional code back to the high-dimensional space of the original input. The decoder network is typically trained to minimize the difference between the input data and the reconstruction produced by the decoder network.</li>
+</ul>
+<img src="autoencoder-architecture.png" style="width: 100%;" class="center" />
+<figcaption>Fig. 1. Architecture of Autoencoder Models.<hr> The diagram shows the general architecture of an autoencoder, with an encoder network on the left side that compresses the input data into a lower-dimensional code, and a decoder network on the right side that reconstructs the original input data from the code. The encoder and decoder networks are typically composed of multiple layers of neurons, with the number of neurons decreasing in the encoder network and increasing in the decoder network.</figcaption>
+<p>The encoder network in an autoencoder performs a similar function as dimensionality reduction techniques such as Principal Component Analysis (PCA) or Matrix Factorization (MF). However, the autoencoder is unique in that it is explicitly optimized for reconstructing the input data from the compressed code. A good intermediate representation not only captures latent variables in the data, but also benefits the overall process of decompressing the data. </p>
+<p>The autoencoder model contains two main components, an encoder function $g(.)$ parameterized by $\phi$ and a decoder function $f(.)$ parameterized by $\theta$. The encoder function $g(.)$ takes the input data $\mathbf{x}$ and produces a low-dimensional code $\mathbf{z} = g_\phi(\mathbf{x})$ at the bottleneck layer. The decoder function $f(.)$ then takes this code and produces a reconstructed version of the input data $\mathbf{x}' = f_\theta(g_\phi(\mathbf{x}))$. The parameters $(\theta, \phi)$ of the encoder and decoder are learned together during the training process, with the goal of minimizing the difference between the original input and the reconstructed output, $\mathbf{x} \approx f_\theta(g_\phi(\mathbf{x}))$. The difference between the two vectors can be quantified using various metrics, such as cross-entropy when the activation function is sigmoid, or as simple as mean squared error (MSE) loss.
+</p>
+<div>
+$$
+L_\text{AE}(\theta, \phi) = \frac{1}{n}\sum_{i=1}^n (\mathbf{x}^{(i)} - f_\theta(g_\phi(\mathbf{x}^{(i)})))^2
+$$
+</div>
+<p>
+    Where $L_\text{AE}$ is the loss function for the Autoencoder, $n$ is the number of input samples, $\mathbf{x}^{(i)}$ is the $i^{th}$ input sample, $f_\theta(.)$ is the decoder function parameterized by $\theta$, and $g_\phi(.)$ is the encoder function parameterized by $\phi$. This loss function measures the average squared difference between the original input and the reconstructed output, and the goal is to minimize this value during the training process by optimizing the parameters $\theta$ and $\phi$.
+</p>
+
+<h1 id="denoising-autoencoder">Denoising Autoencoder<a hidden class="anchor" aria-hidden="true" href="#denoising-autoencoder">#</a></h1>
+<p>Denoising Autoencoder is a modification to the basic autoencoder architecture that addresses the problem of overfitting. The main idea behind denoising autoencoder is to add noise to the input data, and then train the model to reconstruct the original, non-noisy input. This is done by corrupting the input data in a stochastic manner, creating a noisy version of the input, $\tilde{\mathbf{x}} \sim \mathcal{q}_\mathcal{D}(\tilde{\mathbf{x}} \vert \mathbf{x})$. The denoising autoencoder is then trained to recover the original input from the corrupted version, by minimizing the reconstruction error between the original input and the output produced by the network. This forces the model to learn a more robust representation of the data, as it must be able to reconstruct the original input despite the added noise.</p>
+<p>The denoising autoencoder can be seen as a form of data augmentation, where the model is exposed to different variations of the input data during training. This improves the robustness and generalization of the model, as it is able to handle real-world, noisy data when it is used for inference. Additionally, by training on noisy data, the denoising autoencoder can also be used as a pre-training step for other machine learning tasks, such as classification or segmentation.</p>
+
+
+<div>
+$$
+\begin{aligned}
+\tilde{\mathbf{x}}^{(i)} &\sim \mathcal{q}_\mathcal{D}(\tilde{\mathbf{x}}^{(i)} \vert \mathbf{x}^{(i)})\\
+L_\text{DAE}(\theta, \phi) &= \frac{1}{n} \sum_{i=1}^n (\mathbf{x}^{(i)} - f_\theta(g_\phi(\tilde{\mathbf{x}}^{(i)})))^2
+\end{aligned}
+$$
+</div>
+<p>Where $\mathcal{M}_\mathcal{D}$ defines the mapping from the true data samples to the noisy or corrupted ones. The equation represents the mapping function that transforms the true data samples into their corresponding noisy or corrupted versions. This means that any given true data sample, when passed through this function, will result in a modified version that includes added noise or corruption. This can occur due to various factors such as measurement errors, sensor noise, or external interference. The mapping function $\mathcal{M}_\mathcal{D}$ allows us to understand and model these sources of noise or corruption in our data, allowing us to better analyze and interpret the results.</p>
+
+<p>In the above equation, we can see the mathematical representation of the denoising autoencoder (DAE) algorithm. The first line defines the process of creating the corrupted input, $\tilde{\mathbf{x}}^{(i)}$, by sampling from a noise distribution, $\mathcal{M}_\mathcal{D}(\tilde{\mathbf{x}}^{(i)} \vert \mathbf{x}^{(i)})$. The second line represents the loss function, $L_\text{DAE}(\theta, \phi)$, which measures the difference between the original input, $\mathbf{x}^{(i)}$, and the output of the network, $f_\theta(g_\phi(\tilde{\mathbf{x}}^{(i)}))$. The network consists of two parts: the encoder, $g_\phi$, and the decoder, $f_\theta$. The encoder maps the corrupted input to a hidden representation, and the decoder maps the hidden representation back to the original input. The goal of the DAE is to minimize this loss function, and thus learn a robust and informative representation of the data.</p>
+<p>The DAE is trained by minimizing the reconstruction error of the corrupted input by the original one. The algorithm uses a stochastic approach to add noise to the input data, this way the model is exposed to different variations of the input data during training, which improves the robustness and generalization of the model. As a result, the denoising autoencoder can handle real-world, noisy data when it is used for inference. Additionally, by training on noisy data, the denoising autoencoder can also be used as a pre-training step for other machine learning tasks, such as classification or segmentation.</p>
+<p>In summary, denoising autoencoder is a powerful technique for learning robust and informative representations of data, and it has been widely used in a variety of applications, such as image and speech denoising, anomaly detection, and generative models. The technique was first proposed by Vincent et al. in 2008 and still remains an active research area in the field of deep learning.</p>
+<img src="denoising_DAE.png" style="width: 100%;" class="center" />
+  <figcaption>
+    <p><em><strong> Fig. 2. Denoising autoencoder model architecture.</strong></em></p></figcaption>
+	
+    <p><em>The input, which may be a noisy or corrupted version of the original data, is fed into the encoder network. The encoder compresses the input into a lower-dimensional representation, also known as the bottleneck or latent representation.
+    The decoder network then takes the bottleneck representation and reconstructs the original input, but with the noise removed. The model is trained using backpropagation to minimize the difference between the original input and the reconstructed output, thus removing noise and unwanted variations from the input. The final output is a denoised version of the original input.</em></p>
+  <hr>
+<p>When it comes to dealing with high dimensional input, such as images, it is important to take into account the fact that there may be a high degree of <em>redundancy</em> present. This means that the model will likely rely on evidence gathered from a combination of many input dimensions in order to accurately recover the denoised version, rather than overfitting to just one dimension. This approach is crucial for creating a strong and <em>robust</em> latent representation.</p>
+<p>One way to control the amount of noise present in the input is through the use of a <em>stochastic mapping</em>, represented by the equation $\mathcal{q}_\mathcal{D}(\tilde{\mathbf{x}} \vert \mathbf{x})$. This method is not specific to any one type of <em>corruption process</em>, such as masking noise, Gaussian noise, or salt-and-pepper noise. Instead, it can be adapted to incorporate <em>prior knowledge</em> about the corruption process in order to achieve better results. By incorporating prior knowledge in this way, the model is able to better handle the noise and improve the overall accuracy of the denoised output.</p>
+<p>In addition to this, by using a combination of many input dimensions, the model is able to create a more generalizable and <em>robust</em> latent representation. This is because the model is not relying on just one dimension for its understanding of the image, but rather is able to gather information from multiple dimensions. This improves the overall robustness of the model and allows it to better handle different types of noise and corruption.</p>
+<p>Overall, the use of a stochastic mapping in combination with incorporating prior knowledge about the corruption process and utilizing a combination of many input dimensions, allows for the creation of a strong and robust latent representation for high dimensional input with high redundancy, such as images.</p>
+
+<hr>
+<h1 id="vae-variational-autoencoder">Unveiling the Hidden Structure: A Variational Autoencoder(VAE) Approach<a hidden class="anchor" aria-hidden="true" href="#vae-variational-autoencoder">#</a></h1>
+<p>A <strong>Variational Autoencoder</strong> (VAE) is a type of neural network architecture that combines the features of an <strong>autoencoder</strong> with the principles of <strong>variational bayesian</strong> and <strong>graphical modeling</strong>. The VAE model learns to encode an input data into a lower-dimensional <strong>latent space</strong> and then decode it back into the original space, while also approximating the underlying probability distribution of the data. This allows the VAE to generate new, unseen data samples that are similar to the <strong>training data</strong>.</p>
+<p>A traditional autoencoder is a neural network that is trained to reconstruct its input by encoding it into a lower-dimensional representation and then decoding it back to its original form. The goal is to learn a compact representation of the input data that captures the most important features. However, the traditional autoencoder model assumes that the data is generated by a deterministic process, meaning that a specific input will always result in the same output. But, this is not always the case in real-world scenarios, where data can be generated by a probabilistic process, where a specific input can result in multiple possible outputs. This is where the VAE comes in.</p>
+<p>Instead of mapping the input into a <em>fixed</em> vector, we want to map it into a probability distribution, rather than a fixed vector. The probability distribution is parameterized by $\theta$, and is defined by three components: the <strong>prior</strong> $p_\theta(\mathbf{z})$, the <strong>likelihood</strong> $p_\theta(\mathbf{x}\vert\mathbf{z})$, and the <strong>posterior</strong> $p_\theta(\mathbf{z}\vert\mathbf{x})$.</p>
+<p>
+The <strong>prior distribution</strong>, $p_\theta(\mathbf{z})$, represents our initial belief about the distribution of the latent encoding vector $\mathbf{z}$ before any data is observed. It is a crucial component in Bayesian inference as it encodes our prior knowledge or assumptions about the data. The choice of prior can heavily influence the resulting posterior distribution, and it is important to choose a prior that accurately reflects our knowledge of the problem at hand. A commonly used prior is the standard normal distribution, which is a simple and commonly used distribution. However, in some cases, a different prior distribution may be more suitable for the problem at hand, such as a uniform distribution or a mixture of Gaussians. The choice of prior can also be informed by domain knowledge or previous studies on similar problems.
+</p>
+<p>
+The <strong>likelihood distribution</strong>, $p_\theta(\mathbf{x}\vert\mathbf{z})$, represents the probability of observing a specific data point $\mathbf{x}$ given a particular value of the latent encoding vector $\mathbf{z}$. It is chosen to be a likelihood function that corresponds to the type of data being modeled. For example, for binary data, a Bernoulli likelihood function may be used. The likelihood function is a crucial component in Bayesian inference as it encodes the relationship between the data and the latent variables. The choice of likelihood function should be informed by the type of data being modeled and the research question being addressed. For example, if the data is continuous, a Gaussian likelihood function may be more appropriate.
+</p>
+<p>
+The <strong>posterior distribution</strong>, $p_\theta(\mathbf{z}\vert\mathbf{x})$, represents the probability of the latent encoding vector $\mathbf{z}$ given a particular data point $\mathbf{x}$. It is calculated using Bayes' theorem, which states that the posterior distribution is proportional to the product of the likelihood and the prior. However, the calculation of the posterior distribution is often analytically intractable, and so an approximate posterior is often used such as Variational Inference or Markov Chain Monte Carlo (MCMC). These approximate methods aim to find a close approximation to the true posterior distribution, and the choice of method will depend on the problem at hand and the available computational resources. For example, Variational Inference is often used for large-scale problems where the computation of the true posterior is infeasible, whereas MCMC methods can be used for more complex models.
+</p>
+
+<p> Based on the assumption that we know the true value of the parameter $\theta^{*}$ for this distribution, the process of generating a sample that looks like a real data point $\mathbf{x}^{(i)}$ can be broken down into the following steps:</p> <ul> <li> <p>A sample is taken from the prior distribution $p_{\theta^*}(\mathbf{z})$ to obtain a value for the latent encoding vector $\mathbf{z}^{(i)}$. This distribution encodes our initial beliefs about the distribution of the latent variables before any data is observed. The choice of prior can heavily influence the resulting generated samples, and it is therefore necessary to choose a prior that accurately reflects our knowledge of the problem at hand. A well-known and frequently used prior is the standard normal distribution, which is a simple and commonly used distribution. However, in some cases, a different prior distribution may be more suitable for the problem at hand, such as a uniform distribution or a mixture of Gaussians.</p> </li> <li> <p>Next, a value for the data point $\mathbf{x}^{(i)}$ is generated from the conditional distribution $p_{\theta^*}(\mathbf{x} \vert \mathbf{z} = \mathbf{z}^{(i)})$. This distribution encodes the relationship between the latent variables and the data. The value of $\mathbf{z}^{(i)}$ is used as the condition for this generation, which means that it is used as the value for the latent variable in the conditional distribution. The choice of likelihood function should be informed by the type of data being modeled and the research question being addressed. For example, if the data is continuous, a Gaussian likelihood function may be more appropriate.</p> </li> </ul> <p>The above steps are typically used in generative models, where the goal is to generate new samples that look like real data. By following these steps, we can generate new samples that are similar to the real data, but they will not be exactly the same as the real data. This is because the real data is influenced by factors other than the latent variables and the true parameter values, such as noise or measurement error.</p>
+
+<p>The optimal parameter, denoted as $\theta^{*}$, for a generative model is the one that maximizes the probability of generating real data samples. This is commonly represented mathematically as:</p>
+<div>
+$$
+\theta^{*} = \arg\max_\theta \sum_{i=1}^n \log p_\theta(\mathbf{x}^{(i)})
+$$
+</div>
+<p>Where $\mathbf{x}^{(i)}$ represents a data sample. This equation can be understood as the log probability of all the data samples generated by the model, given a set of parameters $\theta$. The objective is to find the set of parameters that maximizes this probability, and this is the optimum parameters set of the model.</p>
+<p>To better demonstrate the data generation process, the equation can be updated to include the encoding vector $\mathbf{z}$. This results in:</p>
+<div>
+$$
+p_\theta(\mathbf{x}^{(i)}) = \int p_\theta(\mathbf{x}^{(i)}\vert\mathbf{z}) p_\theta(\mathbf{z}) d\mathbf{z} 
+$$
+</div>
+<p>This equation represents the probability of generating a data sample $\mathbf{x}^{(i)}$, given the encoding vector $\mathbf{z}$ and the prior distribution $p_\theta(\mathbf{z})$. The encoding vector $\mathbf{z}$ is usually a lower dimensional representation of the data sample $\mathbf{x}^{(i)}$, and the prior distribution $p_\theta(\mathbf{z})$ is a probability distribution that represents the distribution of all possible encoding vectors. The generative process can be understood as first sampling an encoding vector $\mathbf{z}$ from the prior distribution, and then generating a data sample $\mathbf{x}^{(i)}$ given that encoding vector $\mathbf{z}$. The objective is to find the set of parameters $\theta$ that maximizes the likelihood of the data samples, which is equivalent to maximizes the integral of the product of $p_\theta(\mathbf{x}^{(i)}\vert\mathbf{z})$ and $p_\theta(\mathbf{z})$.</p>
+
+<p>Unfortunately it is not easy to compute $p_\theta(\mathbf{x}^{(i)})$ in this way, as it is very expensive to check all the possible values of $\mathbf{z}$ and sum them up. To narrow down the value space to facilitate faster search, we would like to introduce a new approximation function to output what is a likely code given an input $\mathbf{x}$, $q_\phi(\mathbf{z}\vert\mathbf{x})$, parameterized by $\phi$.</p>
+<p>The approximation function $q_\phi(\mathbf{z}\vert\mathbf{x})$ is typically chosen to be a simple distribution, such as a standard normal distribution. The VAE then uses this approximation function to estimate the true posterior distribution $p_\theta(\mathbf{z}\vert\mathbf{x})$. This is done by minimizing the Kullback-Leibler divergence between the true posterior and the approximation function, which is also known as the variational lower bound.</p>
+<p>Here is a representation of the variational lower bound, which we will examine in more detail in its own section:</p>
+<div>
+$$
+\mathcal{L}(\theta, \phi, \mathbf{x}) = \mathbb{E}_{q_\phi(\mathbf{z}\vert\mathbf{x})}[\log p_\theta(\mathbf{x}\vert\mathbf{z})] - \text{KL}(q_\phi(\mathbf{z}\vert\mathbf{x})\|p_\theta(\mathbf{z}))
+$$
+</div>
+<p>The first term in the variational lower bound is the expected log-likelihood of the data, under the approximation function. The second term is the KL divergence between the approximation function and the prior distribution. The VAE is trained by maximizing the variational lower bound with respect to the parameters $\theta$ and $\phi$. This is done by using gradient-based optimization methods, such as stochastic gradient descent (SGD).</p>
+
+<p>The VAE has several advantages over traditional autoencoder models. First, it allows us to generate new samples from the data distribution, by sampling from the prior distribution and then decoding the samples. This can be useful in various applications, such as image synthesis, anomaly detection, and data generation. Second, it allows us to estimate the true posterior distribution, which can be useful in various applications, such as semi-supervised learning and Bayesian neural networks. Third, it allows us to incorporate prior knowledge about the data distribution, by choosing the prior distribution and the approximation function.</p>
+<p>In general, the VAE is a powerful generative model that allows us to model the data distribution in a probabilistic way, by introducing a latent variable that represents the hidden structure of the data. It is trained by maximizing the variational lower bound, which is a trade-off between the expected log-likelihood of the data and the KL divergence between the approximation function and the prior distribution. The VAE has several advantages over traditional autoencoder models, such as the ability to generate new samples, estimate the true posterior distribution, and incorporate prior knowledge about the data distribution. To further understand the training process of the VAE, it's imperative to delve into two key concepts: <strong> the Loss function and the Reparameterization trick</strong>. The Loss function is used to measure the difference between the predicted and actual data, and the Reparameterization trick is a technique used to ensure the VAE's latent variables are differentiable, making it possible for the model to be trained using gradient-based optimization methods. In the next sections, we will explore these concepts in more detail, and see how they contribute to the overall performance of the VAE model.</p>
+
+<h2 id="loss-function-elbo">Loss Function: ELBO<a hidden class="anchor" aria-hidden="true" href="#loss-function-elbo">#</a></h2>
+<p>In variational inference, we want to approximate the true posterior distribution, $p_\theta(\mathbf{z}\vert\mathbf{x})$, with a simpler distribution, $q_\phi(\mathbf{z}\vert\mathbf{x})$. The goal is to find a $q_\phi(\mathbf{z}\vert\mathbf{x})$ that is as close as possible to $p_\theta(\mathbf{z}\vert\mathbf{x})$. One way to quantify the distance between these two distributions is by using the Kullback-Leibler divergence (KL divergence). 
+KL divergence, denoted as $D_\text{KL}(X|Y)$, measures the amount of information lost when approximating a distribution X with distribution Y. In the context of variational inference, we want to minimize the KL divergence between $q_\phi(\mathbf{z}\vert\mathbf{x})$ and $p_\theta(\mathbf{z}\vert\mathbf{x})$, with respect to $\phi$.
+
+It is important to note that we use the reversed KL divergence, $D_\text{KL}(q_\phi | p_\theta)$ instead of the forward KL divergence, $D_\text{KL}(p_\theta | q_\phi)$. The reason for this is that the forward KL divergence requires the approximating distribution, $q_\phi$, to cover the entire support of the true distribution, $p_\theta$, which can be restrictive. On the other hand, minimizing the reversed KL divergence squeezes the approximating distribution, $q_\phi$, under the true distribution, $p_\theta$, allowing for more flexibility.
+
+Let's now expand the equation for the reversed KL divergence between $q_\phi(\mathbf{z}\vert\mathbf{x})$ and $p_\theta(\mathbf{z}\vert\mathbf{x})$:
+
+<div>
+$$
+\begin{aligned}
+& D_\text{KL}( q_\phi(\mathbf{z}\vert\mathbf{x}) | p_\theta(\mathbf{z}\vert\mathbf{x}) ) & \\
+&=\int q_\phi(\mathbf{z} \vert \mathbf{x}) \log\frac{q_\phi(\mathbf{z} \vert \mathbf{x})}{p_\theta(\mathbf{z} \vert \mathbf{x})} d\mathbf{z} & \\
+&=\int q_\phi(\mathbf{z} \vert \mathbf{x}) \log\frac{q_\phi(\mathbf{z} \vert \mathbf{x})p_\theta(\mathbf{x})}{p_\theta(\mathbf{z}, \mathbf{x})} d\mathbf{z} \\
+&\text{Applying Bayes }p(z \vert x) = p(z, x) / p(x) \\
+&=\int q_\phi(\mathbf{z} \vert \mathbf{x}) \big( \log p_\theta(\mathbf{x}) + \log\frac{q_\phi(\mathbf{z} \vert \mathbf{x})}{p_\theta(\mathbf{z}, \mathbf{x})} \big) d\mathbf{z} & \\
+&=\log p_\theta(\mathbf{x}) + \int q_\phi(\mathbf{z} \vert \mathbf{x})\log\frac{q_\phi(\mathbf{z} \vert \mathbf{x})}{p_\theta(\mathbf{z}, \mathbf{x})} d\mathbf{z} & \\
+&=\log p_\theta(\mathbf{x}) - \int q_\phi(\mathbf{z} \vert \mathbf{x})\log\frac{p_\theta(\mathbf{z}, \mathbf{x})}{q_\phi(\mathbf{z} \vert \mathbf{x})} d\mathbf{z} & \\
+&\text{Switching the order of x, z} \\
+&=\log p_\theta(\mathbf{x}) - \int q_\phi(\mathbf{z} \vert \mathbf{x})\log\frac{p_\theta(\mathbf{x}, \mathbf{z})}{q_\phi(\mathbf{z} \vert \mathbf{x})p_\theta(\mathbf{x})} d\mathbf{z} \\
+
+&\text{ By defining } D_\text{KL}(q_\phi(\mathbf{z}\vert\mathbf{x})||p_\theta(\mathbf{z})) = \int q_\phi(\mathbf{z} \vert \mathbf{x})\log\frac{p_\theta(\mathbf{z})}{q_\phi(\mathbf{z} \vert \mathbf{x})} d\mathbf{z} \\
+&=\log p_\theta(\mathbf{x}) - D_\text{KL}(q_\phi(\mathbf{z}\vert\mathbf{x})||p_\theta(\mathbf{z})) + \mathbb{E}{q\phi(\mathbf{z}\vert\mathbf{x})}\left[\log p_\theta(\mathbf{x},\mathbf{z})\right] \\
+\end{aligned}
+$$
+</div>
+<p>A rearranged version of the equation:</p>
+<div>
+$$
+\log p_\theta(\mathbf{x}) - D_\text{KL}( q_\phi(\mathbf{z}\vert\mathbf{x}) \| p_\theta(\mathbf{z}\vert\mathbf{x}) ) = \mathbb{E}_{\mathbf{z}\sim q_\phi(\mathbf{z}\vert\mathbf{x})}\log p_\theta(\mathbf{x}\vert\mathbf{z}) - D_\text{KL}(q_\phi(\mathbf{z}\vert\mathbf{x}) \| p_\theta(\mathbf{z}))
+$$
+</div>
+<p>A probability of generating real data and the difference between the estimated posterior and the real distribution are represented in the equation on the left, while on the right, the log-likelihood is represented, along with the difference between the prior and approximating latent variables. </p>
+<p>The objective of VAE is to maximize this equation. The loss function for VAE is defined as the negation of this equation:</p>
+<div>
+$$
+\begin{aligned}
+L_\text{VAE}(\theta, \phi) 
+&= -\log p_\theta(\mathbf{x}) + D_\text{KL}( q_\phi(\mathbf{z}\vert\mathbf{x}) \| p_\theta(\mathbf{z}\vert\mathbf{x}) )\\
+&= - \mathbb{E}_{\mathbf{z} \sim q_\phi(\mathbf{z}\vert\mathbf{x})} \log p_\theta(\mathbf{x}\vert\mathbf{z}) + D_\text{KL}( q_\phi(\mathbf{z}\vert\mathbf{x}) \| p_\theta(\mathbf{z}) ) \\
+\end{aligned}
+$$
+Where $\theta^{}, \phi^{}$ are the optimal parameters for the model.
+</div>
+
+
+
+
+<p>The Evidence Lower Bound (ELBO) is an upper bound on the log marginal likelihood of the data, $\log p_\theta(\mathbf{x})$. We can optimize the ELBO with respect to $\phi$ and $\theta$ to find the best approximating distribution, $q_\phi(\mathbf{z}\vert\mathbf{x})$, and the best parameter values, $\theta$.</p> 
+<p>In summary, the ELBO is a scalar value that is used as a loss function in variational inference to approximate the true posterior distribution. It is the sum of two terms: the expected log likelihood of the data under the approximating distribution, and the KL divergence between the approximating distribution and the true posterior. It can be optimized with respect to both the parameters of the approximating distribution and the model, in order to find the best approximation of the true posterior distribution.</p> 
+<p>It is important to note that the ELBO is an lower bound on the true log likelihood of the data, thus, the optimization of ELBO will not give the true maximum likelihood estimate of the parameters. However, it is a practical and commonly used method for approximating the true posterior in Bayesian inference.</p> 
+<p>Also, in practice, the ELBO is usually optimized via Stochastic Gradient Variational Bayes (SGVB) which is an efficient optimization method that utilizes the reparameterization trick and stochastic gradient descent to optimize the ELBO.</p> 
+<p>In a nutshell, Variational Inference is a powerful technique for approximating complex posterior distributions in Bayesian models, and the Evidence Lower Bound (ELBO) is a key component of this method, serving as the loss function to be optimized during the inference process.</p> 
+
+
+
+
+<h2 id="reparameterization-trick">Reparameterization Trick<a hidden class="anchor" aria-hidden="true" href="#reparameterization-trick">#</a></h2>
+<p>The reparameterization trick is a technique used to make stochastic processes differentiable in order to use them in neural networks. It is particularly useful in the context of generative models, where a random variable is typically used to generate data samples. However, as sampling is a stochastic process, it is not differentiable, which makes it difficult to use in a neural network.</p>
+<p>To solve this problem, the reparameterization trick expresses the random variable as a deterministic function of another random variable and some parameters that can be learned by the network. This way, the network can learn the parameters of the distribution while keeping the stochasticity in the auxiliary random variable, making it possible to compute gradients and update the parameters.</p>
+<p>For example, in the case of a multivariate Gaussian distribution, the random variable can be represented as:
+<div>
+$$
+\begin{aligned}
+\mathbf{z} &\sim q_\phi(\mathbf{z}\vert\mathbf{x}^{(i)}) = \mathcal{N}(\mathbf{z}; \boldsymbol{\mu}^{(i)}, \boldsymbol{\sigma}^{2(i)}\boldsymbol{I}) & \\
+\mathbf{z} &= \boldsymbol{\mu} + \boldsymbol{\sigma} \odot \boldsymbol{\epsilon} \text{, where } \boldsymbol{\epsilon} \sim \mathcal{N}(0, \boldsymbol{I}) & \\
+\end{aligned}
+$$
+</div>
+<p>where $\boldsymbol{\mu}^{(i)}$ is the mean of the distribution, $\boldsymbol{\sigma}^{2(i)}$ is the variance of the distribution and $\mathbf{x}^{(i)}$ is the input data. The auxiliary random variable $\boldsymbol{\epsilon}$ is often a standard normal distribution. By expressing the random variable in this way, the network can learn the mean and variance of the distribution explicitly using the reparameterization trick, while the stochasticity remains in the random variable $\boldsymbol{\epsilon}$. Notice that the $\odot$ symbol refers to element-wise product.</p>
+
+<p>This trick allows the network to compute gradients and update the parameters of the distribution, and it is not limited to the Gaussian distribution, it can be applied to other types of distributions as well, such as the Bernoulli, Categorical, etc.</p>
+<p>The reparameterization trick is particularly useful in the context of Variational Autoencoders (VAEs) and their variants, such as Variational Inference Generative Adversarial Networks (VIGANs). VAEs are a type of generative model that use a latent variable to generate data samples. They also include an encoder network that maps data samples to a latent representation, and a decoder network that maps latent representations to data samples. By using the reparameterization trick, VAEs can be trained end-to-end using backpropagation, allowing the network to learn the distributions of the latent variables that generate the data..</p>
+<p>In general terms, the reparameterization trick is a technique used to make stochastic processes trainable for use in neural networks, particularly in generative models. It expresses the random variable as a deterministic function of another random variable and some parameters that can be learned by the network, allowing the network to learn the parameters of the distribution while keeping the stochasticity in the auxiliary random variable. This technique is widely used in VAEs and other variants, making it possible to train them end-to-end via backpropagation.</p>
+
+
+
+<img src="vae-gaussian.png" style="width: 100%;" class="center" />
+<figcaption>Fig. 3. A Diagrammatic Representation of a VAE with Multivariate Gaussian Latent Variables. </figcaption> <p> In the case of a multivariate Gaussian assumption, the encoder network maps the input data to the mean and variance of a Gaussian distribution, and the decoder network samples from this distribution to generate new data.
+
+The goal of the VAE is to learn an encoder and decoder that can generate realistic new data and also reconstruct the input data well. The VAE is trained by minimizing the difference between the input data and the reconstructed data, and also by encouraging the latent code to be distributed as a Gaussian distribution.
+</p>
+
+<h1 id="beta-vae">Beta-VAE<a hidden class="anchor" aria-hidden="true" href="#beta-vae">#</a></h1>
+<p>The equation for the Evidence Lower Bound (ELBO) in Beta-VAE is as follows:</p>
+<div>
+$$
+\begin{aligned}
+ELBO = -\beta * D_\text{KL}( q_\phi(\mathbf{z}\vert\mathbf{x}) \vert p_\theta(\mathbf{z}\vert\mathbf{x}) ) -\log p_\theta(\mathbf{x}\vert\mathbf{z})
+\end{aligned}
+$$
+</div>
+<p>Beta-VAE is a variant of the Variational Autoencoder (VAE) model, which is a generative model that is trained to learn a compact latent representation of data. The main idea behind VAEs is to learn a probabilistic encoding of the data, such that the data can be generated from a simple random noise signal. Beta-VAE modifies the standard VAE objective function by introducing a new hyperparameter, beta, which controls the trade-off between reconstruction error and the KL divergence between the approximate posterior and true posterior.</p>
+<p>The first term in the ELBO equation is the KL divergence between the approximate posterior distribution, $q_\phi(\mathbf{z}\vert\mathbf{x})$, and the true posterior distribution, $p_\theta(\mathbf{z}\vert\mathbf{x})$, scaled by the beta hyperparameter. The KL divergence term measures how different the approximate posterior is from the true posterior. In Beta-VAE, by increasing the value of beta, the weight on the KL divergence term is increased, which in turn encourages the approximate posterior to match the true posterior more closely. This results in a more disentangled representation of the data.</p>
+<p>The second term in the ELBO equation is the negative log-likelihood of the data given the latent variables, $-\log p_\theta(\mathbf{x}\vert\mathbf{z})$. This term measures the difference between the original data and the data generated by the decoder network.</p>
+<p>The encoder and decoder networks, represented by the parameters $\phi$ and $\theta$, are trained to maximize the ELBO with respect to these parameters. The encoder network maps the data to the latent space and the decoder network maps the latent variables back to the original data space. The training process involves minimizing the difference between the original data and the data generated by the decoder network. The objective of the training process is to learn a probabilistic encoding of the data such that the data can be generated from a simple random noise signal.</p>
+<p>The value of beta can be adjusted to prioritize either reconstruction or disentanglement, depending on the task and dataset. For example, in applications where reconstruction accuracy is more important, a smaller value of beta can be used, while in applications where disentanglement is more important, a larger value of beta can be used. Additionally, the value of beta can be adapted during training to achieve a balance between reconstruction and disentanglement.</p>
+<p>In summary, Beta-VAE is a generative model that is trained to learn a compact latent representation of data. It modifies the standard VAE objective function by introducing a new hyperparameter,beta, which controls the trade-off between reconstruction error and the KL divergence between the approximate posterior and true posterior. By increasing the value of beta, the weight on the KL divergence term is increased, which results in a more disentangled representation of the data. The encoder and decoder networks are trained to maximize the ELBO, and the value of beta can be adjusted to prioritize either reconstruction or disentanglement, depending on the task and dataset. This allows for more flexibility and control over the representation learned by the model, and can lead to better performance on certain tasks and datasets. Overall, Beta-VAE is a powerful tool for learning generative models and can be applied to a wide range of problems in computer vision, natural language processing, and other fields.</p>
+
+
+
+<hr>
+
+
+
+
+  </div>
+
+  <footer class="post-footer">
+
+	<ul class="post-tags">
+      <li><a href="https://kibromhft.github.io/keywords/autoencoder/">autoencoder</a></li>
+      <li><a href="https://kibromhft.github.io/keywords/generative-model/">generative-model</a></li>
+      <li><a href="https://kibromhft.github.io/keywords/unsupervised-learning/">unsupervised-learning</a></li>
+      <li><a href="https://kibromhft.github.io/keywords/dimensionality-reduction/">dimensionality-reduction</a></li>
+      <li><a href="https://kibromhft.github.io/keywords/neural-networks/">neural-networks</a></li>
+      <li><a href="https://kibromhft.github.io/keywords/reconstruction-error/">reconstruction-error</a></li>
+      <li><a href="https://kibromhft.github.io/keywords/latent-space/">latent-space</a></li>
+      <li><a href="https://kibromhft.github.io/keywords/variational-inference/">variational-inference</a></li>
+      <li><a href="https://kibromhft.github.io/keywords/beta-vae/">beta-vae</a></li>
+      <li><a href="https://kibromhft.github.io/keywords/generative-adversarial-networks/">generative-adversarial-networks</a></li>
+    </ul>
+
+<nav class="paginav">
+  <a class="prev" href="https://kibromhft.github.io/posts/2022-11-20-causality_in_ML/">
+    <span class="title"> Recommended Reading: </span>
+    <br>
+    <span>Causality in Machine Learning</span>
+  </a>
+</nav>
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Disentangling the Latent Space: A Guide to Beta-VAE on twitter"
+        href="https://twitter.com/intent/tweet/?text=Disentangling%20the%20Latent%20Space:%20A%20Guide%20to%20Beta-VAE&amp;url=https%3a%2f%2fkibromhft.github.io%2fposts%2f2022-11-27-vae%2f&amp;hashtags=autoencoder%2cgenerative-model%2cimage-generation">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Disentangling the Latent Space: A Guide to Beta-VAE on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fkibromhft.github.io%2fposts%2f2022-11-27-vae%2f&amp;title=Disentangling%20the%20Latent%20Space:%20A%20Guide%20to%20Beta-VAE&amp;summary=From%20Autoencoder%20to%20Beta-VAE&amp;source=https%3a%2f%2fkibromhft.github.io%2fposts%2f2022-11-27-vae%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Disentangling the Latent Space: A Guide to Beta-VAE on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2fkibromhft.github.io%2fposts%2f2022-11-27-vae%2f&title=Disentangling%20the%20Latent%20Space:%20A%20Guide%20to%20Beta-VAE">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+  
+
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Disentangling the Latent Space: A Guide to Beta-VAE on telegram"
+        href="https://telegram.me/share/url?text=Disentangling%20the%20Latent%20Space:%20A%20Guide%20to%20Beta-VAE&amp;url=https%3a%2f%2fkibromhft.github.io%2fposts%2f2022-11-27-vae%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://kibromhft.github.io/">Kb&#39;s Blog</a></span>
+
+</footer>
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g" style="visibility: visible; opacity: 1;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
+        <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="rgb(192, 132, 224)"/>
+            <stop offset="100%" stop-color="rgb(153, 0, 204)"/>
+        </linearGradient>
+        <path d="M12 6H0l6-6z" fill="url(#grad)"></path>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

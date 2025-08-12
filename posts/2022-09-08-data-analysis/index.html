@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Data Analysis | Kb&#39;s Blog</title>
+<meta name="keywords" content="data, active-learning" />
+<meta name="description" content="Are you tired of making predictions based on correlation rather than causation? Introducing Data Analysis, a cutting-edge approach to understanding the underlying causes of complex data patterns. By incorporating causal inference techniques, we can gain a deeper understanding of how different variables interact and affect each other, leading to more accurate predictions and informed decision-making.">
+<meta name="author" content="kibrom Haftu">
+<link rel="canonical" href="https://kibromhft.github.io/posts/2022-11-20-causality_in_ML/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet_main.css"  rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kibromhft.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kibromhft.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://kibromhft.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://kibromhft.github.io/safari-pinned-tab.svg">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-8161570-5', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script><meta property="og:title" content="Data Analysis" />
+<meta property="og:description" content="Data analysis is a process where the data is inspected, cleaned, transformed and modeled with the aim of extracting actionable knowledge. This knowledge can support the decision-making process in businesses. As a result, data analysis has become an essential tool for businesses to increase their competitive edge and improve operational efficiency." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kibromhft.github.io/posts/2022-11-20-causality_in_ML/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-09-08T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2022-09-08T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Data Analysis"/>
+<meta name="twitter:description" content="Data analysis is a process where the data is inspected, cleaned, transformed and modeled with the aim of extracting actionable knowledge. This knowledge can support the decision-making process in businesses. As a result, data analysis has become an essential tool for businesses to increase their competitive edge and improve operational efficiency."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://kibromhft.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Data Analysis",
+      "item": "https://kibromhft.github.io/posts/2022-11-20-causality_in_ML/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Data Analysis",
+  "name": "Data Analysis",
+  "description": "In ML, we often focus on the relationship between inputs and outputs. But, have you ever wondered if there is more to the story? Are there underlying relationships between variables that we're missing? It is here that causality comes into play. Causality refers to the relationship between an event (the cause) and a second event (the effect), where the second event is a result of the first. Understanding causality is crucial for making accurate predictions and informed decisions. By taking into account the causal relationships between variables, we can improve the performance of our models and gain deeper insights into the underlying mechanisms that generate the data.",
+  "keywords": [
+    "data", "active-learning"
+  ],
+  "articleBody": "In ML, we often focus on the relationship between inputs and outputs. But, have you ever wondered if there is more to the story? Are there underlying relationships between variables that we're missing? It is here that causality comes into play. Causality refers to the relationship between an event (the cause) and a second event (the effect), where the second event is a result of the first. Understanding causality is crucial for making accurate predictions and informed decisions. By taking into account the causal relationships between variables, we can improve the performance of our models and gain deeper insights into the underlying mechanisms that generate the data..\n",
+  "wordCount" : "4584",
+  "inLanguage": "en",
+  "datePublished": "2022-09-08T00:00:00Z",
+  "dateModified": "2022-09-08T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "kibrom Haftu"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kibromhft.github.io/posts/2022-11-20-causality_in_ML/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lil'Log",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kibromhft.github.io/favicon_peach.ico"
+    }
+  }
+}
+</script>
+	<style>
+	  .main {
+		font-family: "Palatino Linotype", serif;
+		font-size: 18px;
+	  }
+	  
+	ol {
+		margin-left: 20px;
+	  }
+	  
+	  ul {
+		margin-left: 20px;
+	  }
+	</style>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kibromhft.github.io/" accesskey="h" title="Kb&#39;s Blog (Alt + H)">Kb&#39;s Blog</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+       <ul id="menu">
+
+		
+		  <li>
+			<a href="https://kibromhft.github.io/" title="Home">
+			  Home <span class="caret fa fa-home"></span>
+			</a>
+		  </li>
+		  
+
+		  <li>
+			<a href="https://kibromhft.github.io/archives/" title="Archives">
+			  <span>Archives</span>
+			</a>
+		  </li>
+		  
+
+
+		  <li>
+			<a href="https://kibromhft.github.io/data/" title="Data">
+			  <span>Data</span>
+			</a>
+		  </li>
+		  <li>
+			<a href="https://kibromhft.github.io/keywords/" title="keywords">
+			  <span>Keywords</span>
+			</a>
+		  </li>
+		  <li>
+			<a href="https://kibromhft.github.io/faq" title="FAQ">
+			  <span>FAQs</span>
+			</a>
+		  </li>
+		  
+<!-- 		  <li>
+			<a href="https://kibromhft.github.io/cv" title="cv">
+			  <span>CV</span>
+			</a>
+		  </li> -->
+
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+			  Resources <span class="caret fa fa-bars" data-toggle="dropdown"></span>
+			</a>
+		  <ul class="dropdown-menu custom-dropdown">
+			<li>
+			  <a href="https://kibromhft.github.io/podcast">Podcast</a>
+			</li>
+			<li>
+			  <a href="#">Algorithms</a>
+			</li>
+			<li>
+			  <a href="#">Funding & Grants</a>
+			</li>
+			<li>
+			  <a href="#">Startup Toolkit</a>
+			</li>
+		  </ul>
+		</li>
+
+		<style>
+		.custom-dropdown {
+		  padding: 8px 0 !important;
+		  margin: 0 !important;
+		  list-style-type: none !important;
+		  /* Removed min-width to allow natural width */
+		}
+
+		.custom-dropdown li {
+		  padding: 0 !important;
+		  margin: 0 !important;
+		}
+
+		.custom-dropdown li a {
+		  display: block !important;
+		  width: 100% !important;
+		  padding: 8px 20px !important;
+		  margin: 0 !important;
+		  box-sizing: border-box !important;
+		  text-decoration: none !important;
+		  color: #333 !important;
+		  font-size: 16px !important; /* Increased font size */
+		  line-height: 1.5 !important;
+		}
+
+		.custom-dropdown li a:hover {
+		  background-color: #f8f9fa !important;
+		  color: #000 !important;
+		}
+		</style>
+
+		</ul>
+
+		
+    </nav>
+</header>
+
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      Data Analysis
+    </h1>
+    <div class="post-meta"><span title='2022-09-08 00:00:00 +0000 UTC'>September 8, 2022</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;kibrom Haftu
+
+</div>
+  </header> 
+
+  <div class="post-content">
+ 
+ <p><strong>What is data analysis?</strong></p>
+ <img src="data-analysis.jpg" class="center" style="opacity: 0.8; border-radius: 10px;" />
+<p>Data analysis is a process&nbsp;where the data&nbsp;is inspected, cleaned, transformed and modeled with the aim of extracting actionable knowledge. This knowledge can support the decision-making process in businesses. As a result, data analysis has become an essential tool for businesses to increase their competitive edge and improve operational efficiency.</p>
+<p>With data analysis, data passes through the following phases:</p>
+<ul>
+<li>Inspected</li>
+<li>Cleaning</li>
+<li>Transforming</li>
+<li>Modeling</li>
+</ul>
+<p>The results of the data modeling process are used to draw useful&nbsp;inferences,&nbsp;about the data, to help&nbsp;in&nbsp;business decision-making. These inferences can then be used to develop appropriate strategies to support business objectives.</p>
+<p><strong>Various data analysis tools are available to aid in examining datasets (collection of data) and&nbsp;draw&nbsp;conclusions about the information they contain.</strong></p>
+<ul>
+<li style="padding: 0; margin: 0;">The data analysis tools help in</li>
+</ul>
+<p style="text-indent: 60px;">&ndash; Processing&nbsp;datasets</p>
+<p style="text-indent: 60px;">&ndash; Analyzing&nbsp;the relationships and correlations between datasets</p>
+<p style="text-indent: 60px;">&ndash; Identifying&nbsp;patterns and trends in the datasets</p>
+
+<p><strong>Some examples of data analysis tools: Python, R Programming, MATLAB, SaS and Java</strong></p>
+<p><strong>R Programming:</strong></p>
+<ul>
+<li>R is a programming language primarily suited&nbsp;for&nbsp;data analysis, statistical computing and statistical</li>
+<li>It is supported by the R Foundation</li>
+<li>It provides a large and integrated collection of tools for data</li>
+</ul>
+<p><strong>MATLAB:</strong></p>
+<ul>
+<li>It stands for matrix</li>
+<li>It is a high-level programming language and interactive environment built for numerical computation, visualization, image processing and data analysis.</li>
+</ul>
+<p><strong>SaS</strong>:</p>
+<ul>
+<li>It stands for Statistical Analysis</li>
+<li>It is a statistical software suite built for data extraction, data transformation, and predictive and business</li>
+</ul>
+<p><strong>Java:</strong></p>
+<ul>
+<li>Java provides APIs which can be used to perform&nbsp;data Tools&nbsp;like Rapidminer and Weka are built using Java.</li>
+</ul>
+<p><strong>Python:</strong></p>
+<p>Python is extensively used for creating scalable machine learning algorithms and is the most popular language for machine learning applications.</p>
+<ul>
+<li>Python offers ready-made frameworks that enable effective processing of large volumes of data.</li>
+<li>The following are the most commonly used Python libraries for data analysis and machine learning:</li>
+</ul>
+<table style="background-color: #f6f8fa;"> 
+<tbody>
+<tr>
+<th style="width: 66.8958px; font-weight: bold;"><strong>Library</strong></th>
+<th style="width: 66.8958px; font-weight: bold;"><strong>Description</strong></th>
+</tr>
+<tr>
+<td style="width: 66.8958px; color: #ff8000;">NumPy</td>
+<td style="width: 923.771px;">is a fundamental Python package for scientific computing. It extends the capabilities of the Python language by adding support for large, multidimensional arrays and matrices, along with a large collection of high-level mathematical functions to operate on these arrays.</td>
+</tr>
+<tr>
+<td style="width: 66.8958px; color: #ff8000;">Pandas</td>
+
+<td style="width: 923.771px;">is a high-level Python library for data analysis and manipulation. It provides a wide range of powerful data structures and functions for working with structured and unstructured data. It is built on top of the NumPy library and provides an efficient and intuitive way to work with data.</td>
+</tr>
+<tr>
+<td style="width: 66.8958px; color: #ff8000;">SciPy</td>
+
+<td style="width: 923.771px;">is a collection of numerical algorithms and mathematical tools for scientific computing in Python. It provides modules for optimization, integration, linear algebra, and statistics. SciPy also has a wide range of libraries for more specialized tasks such as image processing and signal processing.</td>
+</tr>
+<tr>
+<td style="width: 66.8958px; color: #ff8000;">Scikit-Learn</td>
+
+<td style="width: 923.771px;">(formerly scikits.learn and also known as sklearn) is a free software machine learning library for the Python programming language. It features various classification, regression and clustering algorithms including support vector machines, random forests, gradient boosting, k-means and DBSCAN, and is designed to interoperate with the Python numerical and scientific libraries NumPy and SciPy.</td>
+</tr>
+<tr>
+<td style="width: 66.8958px; color: #ff8000;">Matplotlib</td>
+<td style="width: 923.771px;">is a plotting library for the Python programming language and its numerical mathematics extension NumPy. It provides an object-oriented API for embedding plots into applications using general-purpose GUI toolkits like Tkinter, wxPython, Qt, or GTK+.</td>
+</tr>
+</tbody>
+</table>
+<p>Python libraries make it easy to implement machine learning techniques like classification, regression, recommendation systems, and clustering.</p>
+<p>Python is the most popular ML language because:</p>
+<ul>
+<li>It&nbsp;is simple and consistent</li>
+<li>It&nbsp;has a wide offering of libraries and frameworks</li>
+<li>It&nbsp;is generally platform-independent</li>
+<li>It&nbsp;has a great community base</li>
+</ul>
+<p><strong>Types of&nbsp;Data Analysis</strong></p>
+<p><strong>Text&nbsp;Analysis:</strong></p>
+<ul>
+<li>Text analysis is also&nbsp;referred as&nbsp;text</li>
+<li>It is the process of extracting relevant information from unstructured textual</li>
+<li>It is used to transform raw text data into business</li>
+<li>Business intelligence tools are then used to take critical business decisions based on text</li>
+</ul>
+<p><strong>Statistical Analysis:</strong></p>
+<ul>
+<li>It is a process of:</li>
+<ul>
+<li>Collecting</li>
+<li>Organizing</li>
+<li>Exploring</li>
+<li>Interpreting, and</li>
+<li>Presenting data using statistical techniques</li>
+</ul>
+<li>It allows businesses to make informed decisions considering specific information on the the current situations and the future This information will be in the form of results from statistical operations.</li>
+</ul>
+<ul>
+<li>There are two key types of statistical analysis:</li>
+</ul>
+<ol style="margin-left: 60px;">
+  <li>Descriptive Statistics</li>
+  <li>Inferential Statistics</li>
+</ol>
+<p><strong>Descriptive&nbsp;Statistics:</strong></p>
+<ul>
+<li>It is the process of statistical analysis where the dataset is summarized using two&nbsp;form&nbsp;of measures &ndash; measures of central tendency and measures of</li>
+</ul>
+<p><strong>Inferential&nbsp;Statistics</strong></p>
+<ul>
+<li>The results of descriptive statistics can be used to draw inferences and make&nbsp;business Creating&nbsp;these predictions&nbsp;form&nbsp;the basis for inferential statistics.</li>
+<li>Two main forms of inferential statistics&nbsp;are -&nbsp;<strong>hypothesis&nbsp;testing&nbsp;</strong>and drawing&nbsp;<strong>generalizations</strong> about&nbsp;the broader population by applying statistics to smaller sample data.</li>
+</ul>
+<p><strong>Diagnostic Analysis:</strong></p>
+<ul>
+<li>Diagnostic analysis aims to identify the causes of data being the way&nbsp;it The&nbsp;techniques associated with diagnostic analysis attempt to diagnose a potential problem, as characterized by the data, and determine causative factors using correlation and other statistical/analytical techniques.</li>
+<li>The results of this analysis can be used to&nbsp;pre-empt&nbsp;the occurrence of such problems elsewhere in&nbsp;the business process.</li>
+</ul>
+<p><strong>Predictive&nbsp;Analysis:</strong></p>
+<ul>
+<li>Predictive analysis aims to predict future results by gleaning information from existing data or historical</li>
+<li>It is used to predict trends, behavior patterns of systems or customers, occurrence of bugs/errors/challenges and so</li>
+<li>Predictive analysis includes:</li>
+<ul>
+<li>data&nbsp;modelling</li>
+<li>artificial&nbsp;intelligence and machine learning</li>
+<li>data&nbsp;mining</li>
+</ul>
+</ul>
+<p><strong>Prescriptive&nbsp;Analysis :</strong></p>
+<ul>
+<li>Prescriptive analysis takes predictive and diagnostic analysis one step further, by providing a set of actionable decisions to reach the required business goal, rather than simply providing a root cause analysis of a problem (diagnostic analysis), or predicting future outcomes (predictive analysis).</li>
+<li>The result of prescriptive analysis is a &lsquo;prescription&rsquo; of recommended options we can take to reach a desired business outcome.</li>
+</ul>
+<p><strong>Phases in a Typical Data Analysis Process</strong></p>
+<p><strong>Data Requirement Gathering:</strong></p>
+<ul>
+<li>Here we describe the data analysis problem statement, the data we require for the analysis and the analysis procedures and techniques to be used in the data analysis</li>
+<li>It is analogous to&nbsp;a software requirements&nbsp;We determine the purpose of the analysis, what data will be analyzed, what analysis processes and methods will be employed, and what we anticipate the expected results to be.</li>
+</ul>
+<p><strong>Data&nbsp;Collection:</strong></p>
+<ul>
+<li>Once we determine the data we need, we will have to obtain The data collection step involves collecting data from various sources ranging from organizational databases, survey responses, unstructured text data on websites and other platforms, and so on.</li>
+</ul>
+<p><strong>Data&nbsp;Cleaning</strong></p>
+<ul>
+<li>Data collected for the analysis may contain duplicate records, whitespaces, or&nbsp;errors and&nbsp;The data should be cleaned and made error-free before it can be subjected to any analysis.</li>
+<li>There are multiple ways of cleaning data depending on whether the data is missing or</li>
+</ul>
+<p><strong>Missing Data:&nbsp;</strong>When some attributes in a record&nbsp;is&nbsp;missing. This is illustrated&nbsp;as&nbsp;blank spaces in the dataset. We can:</p>
+<ol>
+<li>Ignore the entire record where there are missing attribute fields</li>
+<li>Fill the missing There&nbsp;are multiple ways this can be done. One example is to employ measures of central tendency like mean or median, where the blank attribute is filled with the mean/median of all values in the attribute column.</li>
+</ol>
+<p><strong>Noisy Data:&nbsp;</strong>This is data that contains errors or outliers. Such data is generated due to faulty data collection, data entry&nbsp;error,&nbsp;damaged sensors, and so on.</p>
+<p>There are different ways to&nbsp;handle the noisy&nbsp;data. They are</p>
+<ol>
+<li>Binning Method</li>
+<li>Regression</li>
+<li>Clustering</li>
+</ol>
+<p><strong>Data Transformation</strong>: Data cleaning falls under the ambit of data pre-processing, along with data transformation. Data transformation involves converting raw data into a form&nbsp;where it can be effectively used in&nbsp;data analysis. For example, data using different scales of measurement will need to be &lsquo;normalized&rsquo; so that some columns do not have undue influence over the&nbsp;results, which&nbsp;leads to biased outcomes. Or we will&nbsp;need&nbsp;to choose only those attributes which are pertinent to the analysis, and remove those which are not. Continuous data (like temperature fluctuations) may need to be discretized so that it can be recorded&nbsp;in easily&nbsp;manageable number of records. To summarize, some of the methods of data transformation are:</p>
+<ul>
+<li>Normalization</li>
+<li>Attribute Selection</li>
+<li>Discretization</li>
+</ul>
+<p><strong>Data&nbsp;Analysis</strong></p>
+<ul>
+<li>Data analysis can then be performed on the&nbsp;preprocessed This&nbsp;involves the application of various statistical techniques to the data.</li>
+<li>The process of data analysis through the application of data analysis tools&nbsp;help&nbsp;us understand the data, interpret the analysis results and make conclusions regarding effective&nbsp;business.</li>
+</ul>
+<p><strong>Data&nbsp;Interpretation:</strong></p>
+<ul>
+<li>The data analysis results will then have to be interpreted in order to draw actionable</li>
+<li>In order to aid the process of data&nbsp;analysis interpretation,&nbsp;we can implement various data visualization&nbsp;methods.</li>
+</ul>
+<p><strong>Data&nbsp;Visualization:</strong></p>
+<ul>
+<li>Data visualization involves the graphical representation of either the preprocessed data, or the results of the data&nbsp;analysis Therefore, this&nbsp;phase can effectively fall before the interpretation phase in the data analysis process.</li>
+<li>Graphical representation of data or analysis results makes it easier to convey findings and inferences to decision-makers or other audience targets of the analysis.</li>
+</ul>
+ 
+  </div>
+
+  <footer class="post-footer">
+
+    <ul class="post-tags">
+      <li><a href="https://kibromhft.github.io/keywords/data-analysis/">Data Analysis</a></li>
+      <li><a href="https://kibromhft.github.io/keywords/machine-learning/">Machine Learning</a></li>
+      <li><a href="https://kibromhft.github.io/keywords/Python/">Python</a></li>
+    </ul>
+
+<nav class="paginav">
+  <a class="prev" href="https://kibromhft.github.io/posts/2022-11-27-vae/">
+    <span class="title"> Recommended Reading: </span>
+    <br>
+    <span>Disentangling the Latent Space: A Guide to Beta-VAE</span>
+  </a>
+  
+         <a class="prev" href="https://kibromhft.github.io/posts/2023-01-19-coding/">
+   
+    <br>
+    <span>Coding AI: The New Literacy</span>
+  </a>
+  
+</nav>
+
+<div class="share-buttons">
+
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Data Analysis on twitter"
+        href="https://twitter.com/intent/tweet/?text=Causality%in%Machine%Learning&amp;url=https%3a%2f%2fkibromhft.github.io%2fposts%2f2022-11-20-causality_in_ML%2f&amp;hashtags=autoencoder%2cgenerative-model%2cimage-generation">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Data Analysis on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fkibromhft.github.io%2fposts%2f2022-11-20-causality_in_ML%2f&amp;title=Causality%in%Machine%Learning&amp;summary=From%20Autoencoder%20to%20Beta-VAE&amp;source=https%3a%2f%2fkibromhft.github.io%2fposts%2f2022-11-20-causality_in_ML%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Data Analysis on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2fkibromhft.github.io%2fposts%2f2022-11-20-causality_in_ML%2f&title=Causality%in%Machine%Learning">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+  
+
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Data Analysis on telegram"
+        href="https://telegram.me/share/url?text=Causality%in%Machine%Learning&amp;url=https%3a%2f%2fkibromhft.github.io%2fposts%2f2022-11-20-causality_in_ML%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://kibromhft.github.io/">Kb&#39;s Blog</a></span>
+
+</footer>
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g" style="visibility: visible; opacity: 1;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
+        <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="rgb(192, 132, 224)"/>
+            <stop offset="100%" stop-color="rgb(153, 0, 204)"/>
+        </linearGradient>
+        <path d="M12 6H0l6-6z" fill="url(#grad)"></path>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
