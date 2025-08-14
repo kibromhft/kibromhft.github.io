@@ -1175,8 +1175,8 @@ if (!doNotTrack) {
 				width: 100%;
 				height: 3px;
 				background: var(--border-color);
-				border-radius: 1px;
-				margin: 0.5rem 0;
+				border-radius: 2px;
+				margin: 0.75rem 0;
 				overflow: hidden;
 			}
 
@@ -1184,9 +1184,10 @@ if (!doNotTrack) {
 				height: 100%;
 				background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
 				width: 0%;
-				transition: width var(--transition-base);
-				border-radius: 1px;
-				box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+				transition: width 0.1s ease-out;
+				border-radius: 2px;
+				box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+				min-width: 10px;
 			}
 
 			/* Enhanced post header styling */
@@ -1656,14 +1657,28 @@ if (!doNotTrack) {
         console.log(`Added ${copyButtons.size} copy buttons to code blocks`);
     });
 
-    // Reading Progress Bar
+    // Enhanced Reading Progress Bar
     const progressBar = document.getElementById('reading-progress');
     if (progressBar) {
+        // Set initial minimum width
+        progressBar.style.width = '10%';
+        
         window.addEventListener('scroll', () => {
             const scrollTop = window.pageYOffset;
             const docHeight = document.body.scrollHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-            progressBar.style.width = scrollPercent + '%';
+            let scrollPercent = (scrollTop / docHeight) * 100;
+            
+            // Apply a non-linear easing to make initial progress more visible
+            if (scrollPercent < 50) {
+                // More aggressive growth in the first half
+                scrollPercent = Math.pow(scrollPercent / 100, 0.7) * 100;
+            }
+            
+            // Ensure minimum width for visibility
+            const minWidth = 10; // 10% minimum width
+            const calculatedWidth = Math.max(minWidth, scrollPercent);
+            
+            progressBar.style.width = calculatedWidth + '%';
         });
     }
 </script>
