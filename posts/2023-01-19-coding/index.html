@@ -433,8 +433,8 @@ if (!doNotTrack) {
 		  </li> -->
 
 		<li class="dropdown">
-			<a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">
-			  Resources <span class="caret fa fa-chevron-down"></span>
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+			  Resources <span class="caret fa fa-bars" data-toggle="dropdown"></span>
 			</a>
 		  <ul class="dropdown-menu custom-dropdown">
 			<li>
@@ -453,11 +453,11 @@ if (!doNotTrack) {
 		</li>
 
 		<style>
-		/* Enhanced navigation styles from FAQ page */
 		.custom-dropdown {
 		  padding: 8px 0 !important;
 		  margin: 0 !important;
 		  list-style-type: none !important;
+		  /* Removed min-width to allow natural width */
 		}
 
 		.custom-dropdown li {
@@ -473,181 +473,13 @@ if (!doNotTrack) {
 		  box-sizing: border-box !important;
 		  text-decoration: none !important;
 		  color: #333 !important;
-		  font-size: 16px !important;
+		  font-size: 16px !important; /* Increased font size */
 		  line-height: 1.5 !important;
 		}
 
 		.custom-dropdown li a:hover {
-			background-color: #f8f9fa !important;
-			color: #000 !important;
-		}
-
-		/* Mobile-specific overrides to match FAQ page behavior */
-		@media screen and (max-width: 768px) {
-			/* Override main.css mobile navigation with FAQ-style behavior */
-			.nav {
-				padding: 0 16px !important;
-				gap: 16px !important;
-				/* Remove complex flex overrides that cause horizontal lines */
-				display: flex !important;
-				align-items: center !important;
-				flex-wrap: wrap !important;
-				overflow: visible !important;
-				white-space: normal !important;
-				/* Override max-width constraints */
-				max-width: none !important;
-			}
-
-			#menu {
-				gap: 6px !important;
-				/* Remove overflow-x that causes horizontal lines */
-				overflow: visible !important;
-				white-space: normal !important;
-				display: flex !important;
-				flex-direction: row !important;
-				flex-wrap: wrap !important;
-			}
-
-			#menu li {
-				/* Remove inline-block that causes layout issues */
-				display: flex !important;
-				white-space: normal !important;
-				flex-shrink: 1 !important;
-			}
-
-			#menu a {
-				font-size: 15px !important;
-				padding: 8px 12px !important;
-				border-radius: 6px !important;
-				white-space: normal !important;
-				/* Ensure text wrapping works properly */
-				word-wrap: break-word !important;
-				overflow-wrap: break-word !important;
-			}
-
-			.dropdown-menu {
-				right: auto !important;
-				left: 0 !important;
-				min-width: 200px !important;
-				border-radius: 8px !important;
-			}
-
-			/* Mobile dropdown functionality - completely disable hover behavior on touch devices */
-			.dropdown .dropdown-menu {
-				opacity: 0 !important;
-				visibility: hidden !important;
-				transform: translateY(-8px) !important;
-			}
-
-			/* Show dropdown when dropdown-open class is present */
-			.dropdown.dropdown-open .dropdown-menu {
-				opacity: 1 !important;
-				visibility: visible !important;
-				transform: translateY(0) !important;
-			}
-
-			/* Rotate caret when dropdown is open */
-			.dropdown.dropdown-open .caret {
-				transform: rotate(180deg) !important;
-			}
-		}
-
-		/* Override the problematic 480px breakpoint from main.css */
-		@media screen and (max-width: 480px) {
-			.nav {
-				flex-direction: row !important;
-				padding: 0 16px !important;
-				display: flex !important;
-				align-items: center !important;
-				flex-wrap: wrap !important;
-				/* Override max-width constraints */
-				max-width: none !important;
-			}
-
-			.logo {
-				margin-bottom: 0 !important;
-			}
-
-			#menu {
-				flex-wrap: wrap !important;
-				justify-content: flex-start !important;
-				gap: 6px !important;
-				display: flex !important;
-				flex-direction: row !important;
-			}
-
-			#menu a {
-				font-size: 14px !important;
-				padding: 6px 8px !important;
-				white-space: normal !important;
-				/* Ensure text wrapping works properly */
-				word-wrap: break-word !important;
-				overflow-wrap: break-word !important;
-			}
-
-			/* Mobile dropdown functionality for smaller screens */
-			.dropdown .dropdown-menu {
-				opacity: 0 !important;
-				visibility: hidden !important;
-				transform: translateY(-8px) !important;
-			}
-
-			.dropdown.dropdown-open .dropdown-menu {
-				opacity: 1 !important;
-				visibility: visible !important;
-				transform: translateY(0) !important;
-			}
-
-			.dropdown.dropdown-open .caret {
-				transform: rotate(180deg) !important;
-			}
-		}
-
-		/* Enhanced theme toggle styles from FAQ page */
-		#theme-toggle {
-			background: none;
-			border: none;
-			cursor: pointer;
-			padding: var(--space-xs, 8px);
-			border-radius: 50%;
-			transition: all 0.3s ease;
-			color: var(--text-primary, #333);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
-
-		#theme-toggle:hover,
-		#theme-toggle:focus {
-			background-color: var(--bg-secondary, #f8f9fa);
-			outline: 2px solid var(--primary-color, #007bff);
-			outline-offset: 2px;
-		}
-
-		#theme-toggle svg {
-			height: 20px;
-			width: 20px;
-		}
-
-		.logo-switches {
-			display: flex;
-			align-items: center;
-			margin-left: var(--space-sm, 16px);
-		}
-
-		.logo {
-			display: flex;
-			align-items: center;
-			position: relative;
-		}
-
-		/* Theme toggle visibility */
-		body.dark #moon {
-			display: none;
-		}
-
-		body:not(.dark) #sun {
-			display: none;
+		  background-color: #f8f9fa !important;
+		  color: #000 !important;
 		}
 		</style>
 
@@ -894,77 +726,6 @@ if (!doNotTrack) {
     };
 
 </script>
-<script>
-    // Enhanced dropdown functionality from FAQ page
-    document.addEventListener('DOMContentLoaded', function() {
-        const dropdowns = document.querySelectorAll('.dropdown');
-        
-        dropdowns.forEach(dropdown => {
-            const toggle = dropdown.querySelector('.dropdown-toggle');
-            
-            // Toggle dropdown on click
-            toggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Close other dropdowns
-                dropdowns.forEach(otherDropdown => {
-                    if (otherDropdown !== dropdown) {
-                        otherDropdown.classList.remove('dropdown-open');
-                    }
-                });
-                
-                // Toggle current dropdown
-                if (dropdown.classList.contains('dropdown-open')) {
-                    dropdown.classList.remove('dropdown-open');
-                } else {
-                    dropdown.classList.add('dropdown-open');
-                }
-            });
-        });
-        
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(e) {
-            // Don't close if clicking on the dropdown toggle
-            if (e.target.closest('.dropdown-toggle')) {
-                return;
-            }
-            
-            // Close if clicking outside dropdown
-            if (!e.target.closest('.dropdown')) {
-                dropdowns.forEach(dropdown => {
-                    dropdown.classList.remove('dropdown-open');
-                });
-            }
-        });
-        
-        // Close dropdown when pressing Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                dropdowns.forEach(dropdown => {
-                    dropdown.classList.remove('dropdown-open');
-                });
-            }
-        });
-        
-        // Close dropdown when window is resized
-        window.addEventListener('resize', function() {
-            dropdowns.forEach(dropdown => {
-                dropdown.classList.remove('dropdown-open');
-            });
-        });
-    });
-</script>
-
-<script>
-    // Theme initialization from FAQ page
-    document.addEventListener('DOMContentLoaded', function() {
-        const theme = localStorage.getItem("pref-theme");
-        if (theme === 'dark') {
-            document.body.classList.add('dark');
-        }
-    });
-</script>
-
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
         if (document.body.className.includes("dark")) {
