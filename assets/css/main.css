@@ -808,4 +808,65 @@ color: var(--text-secondary);
         background: white;
         color: black;
     }
+}
+
+/* ===== POST-SPECIFIC STYLES ===== */
+.post-meta,
+.breadcrumbs {
+    color: rgb(0,123,255);
+    font-size: 14px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.post-meta .i18n_list li {
+    display: inline-flex;
+    list-style: none;
+    margin: auto 3px;
+    box-shadow: 0 1px 0 var(--secondary);
+}
+
+.toc {
+    margin: 0 2px 40px;
+    border: 1px solid var(--border);
+    background: var(--code-bg);
+    border-radius: var(--radius);
+    padding: .4em;
+    font-size: 15px;
+}
+
+.dark .toc {
+    background: var(--entry);
+}
+
+.toc details summary {
+    cursor: zoom-in;
+    margin-inline-start: 20px;
+}
+
+.toc details[open] summary {
+    cursor: zoom-out;
+}
+
+.toc .details {
+    display: inline;
+    font-weight: 500;
+}
+
+.toc .inner {
+    margin: 0 20px;
+    padding: 10px 20px;
+}
+
+.toc li ul {
+    margin-inline-start: var(--gap);
+}
+
+.toc summary:focus {
+    outline: 0;
+}
+
+.post-content a:hover,
+.toc a:hover {
+    box-shadow: 0 1px;
 } 
