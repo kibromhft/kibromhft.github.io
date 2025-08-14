@@ -87,6 +87,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
     font-family: var(--font-serif);
     font-display: swap;
+    scroll-margin-top: calc(var(--header-height) + 20px);
 }
 
 /* Font loading optimization */
