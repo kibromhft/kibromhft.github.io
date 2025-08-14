@@ -10,7 +10,7 @@
 <meta name="description" content="In today's digital age, computer literacy is a basic requirement for most people. Centuries ago, people relied on oral communication to pass on information from one generation to the next. The ability to read and write was a privilege reserved for the elite few because language literacy was not considered an essential skill. Those who were literate were often looked up to and held in high regard. This created a stark division between the literate and the illiterate, with the latter relying on the former for even the most basic communication needs. It wasn't until several centuries later that society began to see the value in literacy for all.">
 <meta name="author" content="kibrom Haftu">
 <link rel="canonical" href="https://kibromhft.github.io/posts/2023-01-19-coding/" />
-<link crossorigin="anonymous" href="/assets/css/main.css?v=1.1" rel="stylesheet">
+<link crossorigin="anonymous" href="/assets/css/stylesheet_main.css"  rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
@@ -58,476 +58,6 @@
 
     </style>
 </noscript>
-
-<style>
-    /* Design System - CSS Custom Properties */
-    :root {
-        /* Core layout variables */
-        --gap: 24px;
-        --content-gap: 20px;
-        --nav-width: 1024px;
-        --main-width: 720px;
-        --header-height: 60px;
-        --footer-height: 60px;
-        --radius: 6px;
-        
-        /* Light theme colors */
-        --theme: rgb(255, 255, 255);
-        --entry: rgb(255, 255, 255);
-        --primary: rgb(30, 30, 30);
-        --secondary: rgb(108, 108, 108);
-        --tertiary: rgb(214, 214, 214);
-        --content: rgb(31, 31, 31);
-        --hljs-bg: rgb(28, 29, 33);
-        --code-bg: rgb(245, 245, 245);
-        --border: rgb(238, 238, 238);
-        
-        /* Brand colors */
-        --brand-blue: rgb(0, 123, 255);
-        --brand-blue-hover: rgb(0, 105, 217);
-        --brand-gray: rgb(108, 108, 108);
-        --brand-light-gray: rgb(247, 247, 247);
-        
-        /* Colors - using main theme variables */
-        --primary-color: var(--brand-blue, rgb(13, 110, 253));
-        --primary-hover: var(--brand-blue-hover, rgb(10, 88, 202));
-        --primary-light: rgb(59, 130, 246);
-        --text-primary: var(--primary, rgb(15, 23, 42));
-        --text-secondary: var(--secondary, rgb(51, 65, 85));
-        --text-muted: rgb(108, 117, 125);
-        --bg-primary: var(--theme, rgb(255, 255, 255));
-        --bg-secondary: var(--entry, rgb(248, 250, 252));
-        --bg-card: var(--entry, rgb(255, 255, 255));
-        --border-color: var(--border, rgba(226, 232, 240, 0.8));
-        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.02);
-        --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.03);
-        --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.05);
-        
-        /* Typography */
-        --font-heading: "Essays 1743", serif;
-        --font-body: Libertine, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
-        --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        --font-size-xs: 0.875rem;
-        --font-size-sm: 1rem;
-        --font-size-base: 1.1rem;
-        --font-size-lg: 1.25rem;
-        --font-size-xl: 1.4rem;
-        --font-size-2xl: 2rem;
-        --font-size-3xl: 3.5rem;
-        
-        /* Spacing */
-        --space-xs: 0.5rem;
-        --space-sm: 1rem;
-        --space-md: 1.5rem;
-        --space-lg: 2rem;
-        --space-xl: 2.5rem;
-        --space-2xl: 3rem;
-        --space-3xl: 4rem;
-        
-        /* Border radius */
-        --radius-sm: 8px;
-        --radius-md: 12px;
-        --radius-lg: 16px;
-        
-        /* Transitions */
-        --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        
-        /* Container */
-        --container-max-width: min(900px, 90vw);
-        --container-padding: clamp(1rem, 5vw, 2rem);
-        
-        /* Enhanced shadows for better depth */
-        --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.08);
-        --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.06);
-        --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.08);
-        --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.12);
-    }
-
-    /* Dark theme overrides */
-    body.dark {
-        --theme: rgb(29, 30, 32);
-        --entry: rgb(46, 46, 51);
-        --primary: rgb(218, 218, 219);
-        --secondary: rgb(155, 156, 157);
-        --tertiary: rgb(65, 66, 68);
-        --content: rgb(196, 196, 197);
-        --hljs-bg: rgb(46, 46, 51);
-        --code-bg: rgb(55, 56, 62);
-        --border: rgb(51, 51, 51);
-        --brand-blue: rgb(88, 192, 208);
-        --brand-blue-hover: rgb(136, 208, 224);
-        
-        --primary-color: rgb(34, 211, 238);
-        --primary-hover: rgb(6, 182, 212);
-        --primary-light: rgb(6, 182, 212);
-        --text-primary: var(--primary, rgb(248, 250, 252));
-        --text-secondary: var(--secondary, rgb(203, 213, 225));
-        --text-muted: rgb(156, 163, 175);
-        --bg-primary: var(--theme, rgb(15, 23, 42));
-        --bg-secondary: var(--entry, rgb(30, 41, 59));
-        --bg-card: var(--entry, rgb(30, 41, 59));
-        --border-color: var(--border, rgba(51, 65, 85, 0.8));
-        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
-        --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-        --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
-        --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.3);
-        --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.25);
-        --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.3);
-        --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.4);
-    }
-
-    /* Enhanced Header and Navigation Styles */
-    .header {
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        background: rgba(255, 255, 255, 0.98);
-        border-bottom: 1px solid var(--border-color);
-        box-shadow: var(--shadow-subtle);
-        backdrop-filter: blur(10px);
-        transition: box-shadow 0.3s ease;
-    }
-
-    body.dark .header {
-        background: rgba(29, 30, 32, 0.98);
-        border-bottom: 1px solid var(--border-color);
-        box-shadow: var(--shadow-subtle);
-        backdrop-filter: blur(10px);
-    }
-
-    .nav {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        max-width: calc(var(--nav-width) + var(--gap) * 2);
-        margin: 0 auto;
-        padding: 0 var(--gap);
-        height: var(--header-height);
-        gap: 32px;
-    }
-
-    /* Logo styles */
-    .logo {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        flex-shrink: 0;
-        will-change: transform;
-    }
-
-    .logo a {
-        font-size: 25px;
-        font-weight: 700;
-        font-family: var(--font-heading);
-        color: var(--text-primary);
-        text-decoration: none;
-        position: relative;
-        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        will-change: transform, color;
-        display: inline-block;
-        line-height: 1.2;
-        padding: 0 0 2px 0;
-        margin: 0;
-    }
-
-    .logo a:hover { 
-        color: var(--primary-color);
-        transform: translateY(-1px);
-    }
-
-    .logo a:hover::after {
-        width: 100%;
-    }
-
-    .dark .logo a:hover {
-        color: var(--primary-hover);
-    }
-
-    .logo a::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2.5px;
-        bottom: 0;
-        left: 0;
-        background-color: var(--primary-color);
-        transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s ease;
-        will-change: width;
-        transform: translateY(0);
-        margin: 0;
-        padding: 0;
-        border: none;
-        box-sizing: border-box;
-        border-radius: 1px;
-    }
-
-    .dark .logo a::after {
-        background-color: var(--primary-hover);
-    }
-
-    /* Theme toggle */
-    #theme-toggle {
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: var(--space-xs);
-        border-radius: 50%;
-        transition: var(--transition-base);
-        color: var(--text-primary);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    #theme-toggle:hover,
-    #theme-toggle:focus {
-        background-color: var(--bg-secondary);
-        outline: 2px solid var(--primary-color);
-        outline-offset: 2px;
-    }
-
-    #theme-toggle svg {
-        height: 20px;
-        width: 20px;
-    }
-
-    body.dark #moon {
-        display: none;
-    }
-
-    body:not(.dark) #sun {
-        display: none;
-    }
-
-    /* Navigation menu */
-    #menu {
-        display: flex;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        gap: 8px;
-        align-items: center;
-        flex-wrap: wrap;
-    }
-
-    #menu li {
-        position: relative;
-    }
-
-    #menu a {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        padding: 8px 16px;
-        border-radius: 6px;
-        font-size: 16px;
-        font-weight: 600;
-        font-family: var(--font-primary);
-        color: var(--text-primary);
-        transition: all 0.2s ease;
-        white-space: nowrap;
-        text-decoration: none;
-        letter-spacing: 0.025em;
-    }
-
-    #menu a:hover {
-        background-color: var(--bg-secondary);
-        color: var(--text-primary);
-        outline: 2px solid var(--primary-color);
-        outline-offset: 2px;
-    }
-
-    #menu .active {
-        background-color: var(--primary-color);
-        color: white;
-        font-weight: 600;
-    }
-
-    /* Caret icon for dropdown */
-    .caret {
-        font-size: 11px;
-        transition: transform 0.2s ease;
-        opacity: 0.8;
-        margin-left: 2px;
-    }
-
-    .dropdown:hover .caret {
-        transform: rotate(180deg);
-        opacity: 1;
-    }
-
-    /* Dropdown styles */
-    .dropdown {
-        position: relative;
-    }
-
-    .dropdown-toggle {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        cursor: pointer;
-    }
-
-    .dropdown-menu {
-        position: absolute;
-        top: calc(100% + 8px);
-        right: 0;
-        min-width: 200px;
-        background: var(--entry);
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-8px);
-        transition: all 0.2s ease;
-        z-index: 1000;
-        padding: 8px 0;
-        list-style: none;
-    }
-
-    .dropdown:hover .dropdown-menu {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
-
-    .dropdown-menu li {
-        margin: 0;
-    }
-
-    .dropdown-menu a {
-        display: block;
-        padding: 8px 16px;
-        color: var(--primary);
-        text-decoration: none;
-        transition: background-color 0.2s ease;
-        font-size: 14px;
-        font-weight: 500;
-        font-family: var(--font-primary);
-        letter-spacing: 0.025em;
-    }
-
-    .dropdown-menu a:hover {
-        background-color: var(--tertiary);
-        color: var(--primary);
-    }
-
-    .dark .dropdown-menu {
-        background: var(--entry);
-        border-color: var(--border);
-    }
-
-    /* Enhanced mobile responsiveness */
-    @media screen and (max-width: 768px) {
-        :root {
-            --gap: 14px;
-        }
-        
-        .nav {
-            padding: 0 16px;
-            gap: 16px;
-        }
-        
-        #menu {
-            gap: 6px;
-        }
-        
-        #menu a {
-            font-size: 15px;
-            padding: 8px 12px;
-            border-radius: 6px;
-        }
-        
-        .dropdown-menu {
-            right: auto;
-            left: 0;
-            min-width: 200px;
-            border-radius: 8px;
-        }
-        
-        .logo a {
-            font-size: 22px;
-        }
-
-        /* Mobile dropdown functionality */
-        .dropdown .dropdown-menu {
-            opacity: 0 !important;
-            visibility: hidden !important;
-            transform: translateY(-8px) !important;
-        }
-
-        .dropdown.dropdown-open .dropdown-menu {
-            opacity: 1 !important;
-            visibility: visible !important;
-            transform: translateY(0) !important;
-        }
-
-        .dropdown.dropdown-open .caret {
-            transform: rotate(180deg) !important;
-        }
-    }
-
-    @media screen and (max-width: 480px) {
-        .nav {
-            flex-direction: column;
-            height: auto;
-            padding: 12px 16px;
-        }
-        
-        .logo {
-            margin-bottom: 16px;
-            padding-top: 8px;
-        }
-        
-        #menu {
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
-        }
-        
-        #menu a {
-            font-size: 14px;
-            padding: 4px 6px;
-        }
-
-        /* Mobile dropdown functionality for smaller screens */
-        .dropdown .dropdown-menu {
-            opacity: 0 !important;
-            visibility: hidden !important;
-            transform: translateY(-8px) !important;
-        }
-
-        .dropdown.dropdown-open .dropdown-menu {
-            opacity: 1 !important;
-            visibility: visible !important;
-            transform: translateY(0) !important;
-        }
-
-        .dropdown.dropdown-open .caret {
-            transform: rotate(180deg) !important;
-        }
-    }
-
-    /* Reduced motion support */
-    @media (prefers-reduced-motion: reduce) {
-        :root {
-            --transition-fast: 0s;
-            --transition-base: 0s;
-            --transition-slow: 0s;
-        }
-        
-        * {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-        }
-    }
-</style>
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
@@ -539,20 +69,7 @@ if (!doNotTrack) {
 	
 	ga('send', 'pageview');
 }
-</script>
-
-<script>
-    // Theme toggle initialization
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-</script>
-
-<meta property="og:title" content="Coding AI: The New Literacy" />
+</script><meta property="og:title" content="Coding AI: The New Literacy" />
 <meta property="og:description" content="As we enter the digital age, one thing is certain: technology is not just a trend, it's a game-changer. With each passing day, technology is making its way into more and more industries, bringing about a variety of benefits for society such as increased efficiency, improved communication, and access to information. But, with change comes challenges, and one of the biggest concerns is the displacement of jobs." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kibromhft.github.io/posts/2023-01-19-coding/" /><meta property="article:section" content="posts" />
@@ -667,6 +184,8 @@ if (!doNotTrack) {
         
         /* Existing dark mode styles */
 
+
+
         /* Updated styles for quotes */
         body.dark .quote {
             background-color: #222222; /* Matching the main background color */
@@ -689,20 +208,7 @@ if (!doNotTrack) {
             font-size: 0.9em;
         }
 		
-		    /* Dark mode styles for dropdown menu */
-    body.dark .custom-dropdown {
-        background-color: #2E2E33;
-        border: 1px solid #444;
-    }
 
-    body.dark .custom-dropdown li a {
-        color: #DADADB !important;
-    }
-
-    body.dark .custom-dropdown li a:hover {
-        background-color: #3E3E43 !important;
-        color: #FFFFFF !important;
-    }
     </style>
 
 
@@ -934,8 +440,6 @@ if (!doNotTrack) {
 			</li>
 		  </ul>
 		</li>
-
-
 
 		</ul>
 
@@ -1181,82 +685,16 @@ if (!doNotTrack) {
 
 </script>
 <script>
-    // Theme toggle functionality - updated to match home page
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        document.body.classList.toggle("dark");
-        localStorage.setItem("pref-theme", document.body.classList.contains("dark") ? "dark" : "light");
-    });
-</script>
-<script>
-    // Enhanced mobile dropdown functionality
-    document.addEventListener('DOMContentLoaded', function() {
-        const dropdowns = document.querySelectorAll('.dropdown');
-        
-        // Handle mobile dropdown functionality
-        dropdowns.forEach(dropdown => {
-            const toggle = dropdown.querySelector('.dropdown-toggle');
-            const menu = dropdown.querySelector('.dropdown-menu');
-            
-            // Close other dropdowns when one is opened
-            function closeOtherDropdowns(currentDropdown) {
-                dropdowns.forEach(otherDropdown => {
-                    if (otherDropdown !== currentDropdown) {
-                        otherDropdown.classList.remove('dropdown-open');
-                    }
-                });
-            }
-            
-            // Toggle dropdown on click for mobile
-            toggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const isOpen = dropdown.classList.contains('dropdown-open');
-                
-                // Close other dropdowns
-                closeOtherDropdowns(dropdown);
-                
-                // Toggle current dropdown
-                if (isOpen) {
-                    dropdown.classList.remove('dropdown-open');
-                } else {
-                    dropdown.classList.add('dropdown-open');
-                }
-            });
-            
-            // Close dropdown when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!dropdown.contains(e.target)) {
-                    dropdown.classList.remove('dropdown-open');
-                }
-            });
-            
-            // Handle escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    dropdown.classList.remove('dropdown-open');
-                }
-            });
-        });
-        
-        // Enhanced theme toggle with smooth transitions
-        const themeToggle = document.getElementById('theme-toggle');
-        if (themeToggle) {
-            themeToggle.addEventListener('click', function() {
-                // Add a subtle animation class
-                document.body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
-                
-                // Toggle theme
-                document.body.classList.toggle('dark');
-                localStorage.setItem('pref-theme', document.body.classList.contains('dark') ? 'dark' : 'light');
-                
-                // Remove transition after animation completes
-                setTimeout(() => {
-                    document.body.style.transition = '';
-                }, 300);
-            });
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
         }
-    });
+    })
+
 </script>
 <script>
     document.querySelectorAll('pre > code').forEach((codeblock) => {
