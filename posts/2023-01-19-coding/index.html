@@ -888,11 +888,13 @@ if (!doNotTrack) {
 				transition: var(--transition-base);
 				opacity: 0;
 				z-index: 10;
+				box-shadow: var(--shadow-sm);
 			}
 
 			.copy-code:hover {
 				background: var(--primary-hover);
 				transform: translateY(-1px);
+				box-shadow: var(--shadow-md);
 			}
 
 			pre:hover .copy-code {
@@ -902,6 +904,12 @@ if (!doNotTrack) {
 			.copy-code:focus {
 				outline: 2px solid var(--primary-color);
 				outline-offset: 2px;
+				opacity: 1;
+			}
+
+			/* Ensure pre elements have relative positioning for copy button */
+			pre {
+				position: relative;
 			}
 
 			/* Dark mode copy button */
@@ -912,6 +920,52 @@ if (!doNotTrack) {
 
 			body.dark .copy-code:hover {
 				background: var(--primary-hover);
+			}
+
+			/* Show copy button on focus for accessibility */
+			pre:focus-within .copy-code {
+				opacity: 1;
+			}
+
+			/* Ensure citation code block has proper styling */
+			#citation pre {
+				background: var(--code-bg);
+				border: 1px solid var(--border-color);
+				border-radius: var(--radius-sm);
+				padding: 16px;
+				overflow-x: auto;
+				position: relative;
+			}
+
+			#citation pre code {
+				font-family: var(--font-mono);
+				font-size: 14px;
+				line-height: 1.5;
+				color: var(--text-primary);
+			}
+
+			/* Make copy button more visible for citation */
+			#citation .copy-code {
+				opacity: 1;
+				background: var(--primary-color);
+				color: white;
+				box-shadow: var(--shadow-md);
+			}
+
+			#citation .copy-code:hover {
+				opacity: 1;
+				background: var(--primary-hover);
+				transform: translateY(-2px);
+				box-shadow: var(--shadow-lg);
+			}
+
+			/* Ensure citation section has proper spacing */
+			#citation {
+				margin: 2rem 0;
+			}
+
+			#citation p {
+				margin-bottom: 1rem;
 			}
 
 			/* Print styles */
@@ -1224,25 +1278,34 @@ if (!doNotTrack) {
     });
 </script>
 <script>
-    // Optimized copy code functionality
+    // Enhanced copy code functionality with better positioning
     document.addEventListener('DOMContentLoaded', function() {
         const copyButtons = new Map();
         
-        document.querySelectorAll('pre > code').forEach((codeblock) => {
-            const container = codeblock.parentNode.parentNode;
+        // Find all code blocks (both pre>code and standalone code)
+        const codeBlocks = document.querySelectorAll('pre > code, pre code');
+        
+        codeBlocks.forEach((codeblock, index) => {
+            // Find the pre element that contains this code
+            let preElement = codeblock.closest('pre');
+            if (!preElement) return;
+            
             const copybutton = document.createElement('button');
             
             copybutton.classList.add('copy-code');
             copybutton.innerText = 'copy';
             copybutton.setAttribute('aria-label', 'Copy code to clipboard');
             copybutton.setAttribute('title', 'Copy code to clipboard');
+            copybutton.setAttribute('data-code-index', index);
 
             const copyingDone = () => {
                 copybutton.innerText = 'copied!';
                 copybutton.setAttribute('aria-label', 'Code copied!');
+                copybutton.style.background = 'var(--primary-hover)';
                 setTimeout(() => {
                     copybutton.innerText = 'copy';
                     copybutton.setAttribute('aria-label', 'Copy code to clipboard');
+                    copybutton.style.background = '';
                 }, 2000);
             };
 
@@ -1273,24 +1336,28 @@ if (!doNotTrack) {
                     }
                 } catch (err) {
                     console.warn('Copy failed:', err);
+                    // Show error feedback
+                    copybutton.innerText = 'error';
+                    copybutton.style.background = '#dc3545';
+                    setTimeout(() => {
+                        copybutton.innerText = 'copy';
+                        copybutton.style.background = '';
+                    }, 2000);
                 }
             });
 
-            // Determine where to place the copy button
-            let targetContainer;
-            if (container.classList.contains("highlight")) {
-                targetContainer = container;
-            } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName === "TABLE") {
-                targetContainer = codeblock.parentNode.parentNode.parentNode.parentNode.parentNode;
-            } else {
-                targetContainer = codeblock.parentNode;
-            }
-            
-            if (targetContainer) {
-                targetContainer.appendChild(copybutton);
-                copyButtons.set(copybutton, targetContainer);
+            // Always place copy button in the pre element
+            if (preElement) {
+                preElement.appendChild(copybutton);
+                copyButtons.set(copybutton, preElement);
+                
+                // Ensure the pre element has relative positioning
+                preElement.style.position = 'relative';
             }
         });
+        
+        // Log for debugging
+        console.log(`Added ${copyButtons.size} copy buttons to code blocks`);
     });
 </script>
 <script>
