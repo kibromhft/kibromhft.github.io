@@ -1192,8 +1192,8 @@ if (!doNotTrack) {
 			/* Enhanced post header styling */
 			.post-header {
 				text-align: center;
-				margin-bottom: 1rem;
-				padding-bottom: 0.5rem;
+				margin-bottom: 0.5rem;
+				padding-bottom: 0.25rem;
 				position: relative;
 			}
 
@@ -1201,7 +1201,7 @@ if (!doNotTrack) {
 
 			.post-title {
 				font-size: var(--font-size-3xl);
-				margin-bottom: 1rem;
+				margin-bottom: 0.5rem;
 				color: var(--text-primary);
 				text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 				transition: var(--transition-base);
@@ -1217,13 +1217,22 @@ if (!doNotTrack) {
 				font-size: 14px;
 				display: flex;
 				flex-wrap: wrap;
-				margin-bottom: 1rem;
+				margin-bottom: 0.5rem;
 				justify-content: center;
 				align-items: center;
 			}
 
 			.post-meta:hover {
 				color: rgb(0,105,217);
+			}
+
+			/* Reduce main content spacing */
+			.main {
+				padding: 1rem;
+			}
+
+			.post-single {
+				margin-top: 0;
 			}
 
 			/* Print styles */
