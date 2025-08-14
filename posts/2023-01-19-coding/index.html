@@ -1386,11 +1386,153 @@ if (!doNotTrack) {
 </blockquote>
 
 <h1 id="skills">Skills<a hidden class="anchor" aria-hidden="true" href="#skills">#</a></h1>
-
-<p class="custom-paragraph">Learning how to code AI requires a combination of theoretical knowledge and practical skills.</p>
 <p class="custom-paragraph">To become proficient in coding AI, you need to have a range of skills, including:</p>
 <ol>
 <li class = "custom-paragraph" style="text-align: justify;"><strong>Programming Skills</strong>: To excel in AI development, one must possess a strong foundation in programming languages such as Python, C, and C++. Python, in particular, is a popular choice among developers for AI applications because of its simplicity and rich ecosystem of libraries and frameworks, such as TensorFlow, PyTorch, and Scikit-Learn, which simplify the implementation of complex AI models, making it easier to create efficient and scalable code. However, it's worth noting that AI applications can also be developed using other programming languages such as R and MATLAB. For example, the C and C++ languages are widely used in AI development due to their flexibility and high-performance capabilities. In general, it is crucial to have the ability to write efficient and scalable code that can run on distributed systems to handle the large amounts of data typically involved in AI projects.</li>
+<style>
+  .python-roadmap {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 2.5rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    background: var(--bg-primary);
+    position: relative;
+    transform: translateZ(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .python-roadmap:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  }
+
+  .python-roadmap thead {
+    background: linear-gradient(135deg, rgba(0, 123, 255, 0.1), rgba(0, 86, 179, 0.1));
+  }
+
+  .python-roadmap th {
+    padding: 1.25rem 1.5rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1.1em;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .python-roadmap th::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+  }
+
+  .python-roadmap th:hover::after {
+    width: 80%;
+  }
+
+  .python-roadmap td {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text-primary);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .python-roadmap tr:last-child td {
+    border-bottom: none;
+  }
+
+  .python-roadmap tr {
+    background: var(--bg-primary);
+    transition: all 0.3s ease;
+  }
+
+  .python-roadmap tr:hover {
+    background: var(--bg-secondary);
+  }
+
+  .python-roadmap tr:hover td {
+    transform: translateX(8px);
+  }
+
+  .python-roadmap a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0 0 2px 0;
+    display: inline-block;
+  }
+
+  .python-roadmap a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1.5px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease, opacity 0.3s ease;
+    opacity: 0.7;
+  }
+
+  .python-roadmap a:hover {
+    color: var(--primary-hover);
+  }
+
+  .python-roadmap a:hover::after {
+    width: 100%;
+    opacity: 1;
+  }
+
+  /* Animation for table rows */
+  .python-roadmap tr {
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Staggered animation for rows */
+  .python-roadmap tr:nth-child(1) { animation-delay: 0.1s; }
+  .python-roadmap tr:nth-child(2) { animation-delay: 0.2s; }
+  .python-roadmap tr:nth-child(3) { animation-delay: 0.3s; }
+  .python-roadmap tr:nth-child(4) { animation-delay: 0.4s; }
+  .python-roadmap tr:nth-child(5) { animation-delay: 0.5s; }
+
+  /* Dark mode specific styles */
+  body.dark .python-roadmap {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  body.dark .python-roadmap:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  body.dark .python-roadmap th {
+    background: linear-gradient(135deg, rgba(0, 123, 255, 0.15), rgba(0, 86, 179, 0.15));
+  }
+
+  body.dark .python-roadmap td {
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+  }
+</style>
+
 <table class="python-roadmap">
   <thead>
     <tr>
@@ -1401,12 +1543,11 @@ if (!doNotTrack) {
   <tbody>
     <tr>
       <td>Beginner Python</td>
-            <td><a href="https://www.youtube.com/watch?v=rfscVS0vtbw">Bootcamp - Python Full Course</a> by freeCodeCamp.org, <a href="https://www.py4e.com/">Python for Everybody</a> by Dr. Chuck Severance, <a href="https://www.codecademy.com/learn/learn-python-3">Codecademy's Learn Python 3</a>, <a href="https://cs50.harvard.edu/python/2022/">Harvard CS50 Introduction to Computer Science with Python</a> [<a href="https://www.youtube.com/playlist?list=PLhQjrBD2T382gdfveyad09Ierl_3Jh_wR">YouTube playlist</a>], <a href="https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/">MIT Introduction to Computer Science and Programming in Python</a> [<a href="https://www.youtube.com/playlist?list=PLUl4u3cNGP63WbdFxL8giv4yhgdMGaZNA">YouTube playlist</a>]</td>
+      <td><a href="https://www.youtube.com/watch?v=rfscVS0vtbw">Bootcamp - Python Full Course</a> by freeCodeCamp.org, <a href="https://www.py4e.com/">Python for Everybody</a> by Dr. Chuck Severance, <a href="https://www.codecademy.com/learn/learn-python-3">Codecademy's Learn Python 3</a>, <a href="https://cs50.harvard.edu/python/2022/">Harvard CS50 Introduction to Computer Science with Python</a> [<a href="https://www.youtube.com/playlist?list=PLhQjrBD2T382gdfveyad09Ierl_3Jh_wR">YouTube playlist</a>], <a href="https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/">MIT Introduction to Computer Science and Programming in Python</a> [<a href="https://www.youtube.com/playlist?list=PLUl4u3cNGP63WbdFxL8giv4yhgdMGaZNA">YouTube playlist</a>]</td>
     </tr>
     <tr>
       <td>Intermediate Python</td>
-            <td><a href="https://book.pythontips.com/en/latest/">Intermediate Python</a> by Muhammad Yasoob Ullah Khalid, <a href="https://www.udacity.com/course/python-intermediate--ud036">Python Intermediate</a> by Udacity, <a href="https://www.coursera.org/professional-certificates/google-it-automation">Google Automation Using Python</a> by Coursera</td>
-
+      <td><a href="https://book.pythontips.com/en/latest/">Intermediate Python</a> by Muhammad Yasoob Ullah Khalid, <a href="https://www.udacity.com/course/python-intermediate--ud036">Python Intermediate</a> by Udacity, <a href="https://www.coursera.org/professional-certificates/google-it-automation">Google Automation Using Python</a> by Coursera</td>
     </tr>
     <tr>
       <td>Advanced Python</td>
