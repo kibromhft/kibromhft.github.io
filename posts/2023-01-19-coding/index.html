@@ -357,13 +357,13 @@ if (!doNotTrack) {
 
     /* Table header enhancement */
     .python-roadmap thead {
-        background: linear-gradient(135deg, #007bff, #0056b3);
+        background: linear-gradient(135deg, #0056b3, #004085);
     }
 
     .python-roadmap th {
         background: transparent;
         color: #ffffff;
-        font-weight: 700;
+        font-weight: 800;
         text-transform: uppercase;
         letter-spacing: 0.1em;
         font-family: var(--font-primary);
@@ -371,7 +371,7 @@ if (!doNotTrack) {
         text-align: left;
         border: none;
         position: relative;
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
     }
 
     .python-roadmap th::after {
@@ -429,6 +429,13 @@ if (!doNotTrack) {
     .python-roadmap a:hover {
         color: var(--primary-hover);
         text-decoration: underline;
+    }
+
+    /* Light mode specific table styles */
+    body:not(.dark) .python-roadmap th {
+        background: linear-gradient(135deg, #004085, #002752);
+        color: #ffffff;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
     }
 
     /* Dark mode specific table styles */
