@@ -784,6 +784,48 @@ if (!doNotTrack) {
 				outline: 2px solid var(--primary-color);
 				outline-offset: 2px;
 			}
+
+			/* Post content dark mode fixes */
+			.post-content {
+				color: var(--text-primary) !important;
+			}
+
+			.post-content p {
+				color: var(--text-primary) !important;
+			}
+
+			.post-content h1,
+			.post-content h2,
+			.post-content h3,
+			.post-content h4,
+			.post-content h5,
+			.post-content h6 {
+				color: var(--text-primary) !important;
+			}
+
+			/* Ensure body text uses our custom variables */
+			body {
+				color: var(--text-primary) !important;
+				background: var(--bg-primary) !important;
+			}
+
+			/* Dark mode specific overrides */
+			body.dark .post-content {
+				color: var(--text-primary) !important;
+			}
+
+			body.dark .post-content p {
+				color: var(--text-primary) !important;
+			}
+
+			body.dark .post-content h1,
+			body.dark .post-content h2,
+			body.dark .post-content h3,
+			body.dark .post-content h4,
+			body.dark .post-content h5,
+			body.dark .post-content h6 {
+				color: var(--text-primary) !important;
+			}
 		</style>
 		
     </nav>
