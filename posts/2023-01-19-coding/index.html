@@ -345,14 +345,14 @@ if (!doNotTrack) {
     .python-roadmap {
         width: 100%;
         border-collapse: collapse;
-        margin: 2.5rem 0;
-        border-radius: 12px;
+        margin: 2rem 0;
+        border-radius: var(--radius-md);
         overflow: hidden;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        box-shadow: var(--shadow-md);
         border: 1px solid var(--border-color);
         background: var(--bg-primary);
         position: relative;
-        /* Enhanced table styling */
+        /* Removed transform that could cause instability */
     }
 
     /* Table header enhancement */
@@ -363,16 +363,15 @@ if (!doNotTrack) {
     .python-roadmap th {
         background: transparent;
         color: var(--text-primary);
-        font-weight: 600;
+        font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.1em;
         font-family: var(--font-primary);
-        padding: 20px 16px;
+        padding: 16px 12px;
         text-align: left;
         border: none;
         position: relative;
         text-shadow: none;
-        font-size: 14px;
     }
 
     .python-roadmap th::after {
@@ -386,17 +385,14 @@ if (!doNotTrack) {
     }
 
     .python-roadmap td {
-        padding: 18px 16px;
+        padding: 16px 12px;
         text-align: left;
         border: none;
         border-bottom: 1px solid var(--border-color);
         vertical-align: top;
-        line-height: 1.7;
-        color: var(--text-primary);
-        font-weight: 400;
-        font-size: 15px;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
+        line-height: 1.6;
+        color: #333333;
+        font-weight: 500;
     }
 
     /* Dark mode table content */
@@ -406,26 +402,19 @@ if (!doNotTrack) {
 
     .python-roadmap tr:nth-child(even) {
         background-color: var(--bg-card);
-        border-left: 3px solid transparent;
     }
 
     .python-roadmap tr:nth-child(odd) {
         background-color: var(--bg-primary);
-        border-left: 3px solid transparent;
     }
 
     .python-roadmap tr {
-        transition: all 0.4s ease;
+        transition: background-color 0.8s ease;
         position: static;
-        border-radius: 4px;
-        margin: 2px 0;
     }
 
     .python-roadmap tr:hover {
         background-color: var(--bg-secondary);
-        border-left: 3px solid var(--primary-color);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        transform: translateX(2px);
     }
 
     /* Removed the left accent bar that was causing visual instability */
@@ -434,23 +423,12 @@ if (!doNotTrack) {
     .python-roadmap a {
         color: var(--primary-color);
         text-decoration: none;
-        transition: all 0.3s ease;
-        padding: 2px 4px;
-        border-radius: 3px;
-        font-weight: 500;
-        position: relative;
+        transition: color 0.6s ease;
     }
 
     .python-roadmap a:hover {
         color: var(--primary-hover);
-        background-color: rgba(0, 123, 255, 0.1);
-        text-decoration: none;
-        transform: translateY(-1px);
-    }
-
-    .python-roadmap a:focus {
-        outline: 2px solid var(--primary-color);
-        outline-offset: 2px;
+        text-decoration: underline;
     }
 
     /* Light mode specific table styles */
@@ -467,38 +445,6 @@ if (!doNotTrack) {
         color: #ffffff;
         border-color: var(--border-color);
         text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
-    }
-
-    /* Responsive table improvements */
-    @media (max-width: 768px) {
-        .python-roadmap {
-            margin: 1.5rem 0;
-            border-radius: 8px;
-        }
-        
-        .python-roadmap th,
-        .python-roadmap td {
-            padding: 14px 12px;
-            font-size: 14px;
-        }
-        
-        .python-roadmap th {
-            font-size: 13px;
-            letter-spacing: 0.05em;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .python-roadmap th,
-        .python-roadmap td {
-            padding: 12px 8px;
-            font-size: 13px;
-        }
-        
-        .python-roadmap th {
-            font-size: 12px;
-            letter-spacing: 0.03em;
-        }
     }
 
     body.dark .python-roadmap tr:nth-child(even) {
