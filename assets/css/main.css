@@ -998,4 +998,86 @@ figcaption a {
     width: 30px;
     fill: currentColor;
     transition: transform .1s;
+}
+
+/* ===== TABLE STYLES ===== */
+.post-content table {
+    margin-bottom: 32px;
+}
+
+.post-content table th,
+.post-content table:not(.highlighttable, .highlight table, .gist .highlight) td {
+    min-width: 80px;
+    padding: 6px 4px;
+    line-height: 1.25;
+    border-bottom: 1px solid var(--border);
+}
+
+.post-content table th {
+    font-size: 14px;
+    text-align: start;
+}
+
+.post-content table:not(.highlighttable) td code:only-child {
+    margin: auto 0;
+}
+
+.post-content .highlight table {
+    border-radius: var(--radius);
+}
+
+.post-content .highlight:not(table),
+.post-content pre {
+    margin: 10px auto;
+    background: var(--hljs-bg) !important;
+    border-radius: var(--radius);
+}
+
+.post-content .highlighttable {
+    table-layout: fixed;
+}
+
+.post-content .highlighttable td:first-child {
+    width: 40px;
+}
+
+.post-content .highlighttable td .linenodiv {
+    padding-inline-end: 0 !important;
+}
+
+.post-content .highlighttable td .highlight,
+.post-content .highlighttable td .linenodiv pre {
+    margin-bottom: 0;
+}
+
+.post-content code {
+    margin: auto 4px;
+    padding: 4px 6px;
+    font-size: .78em;
+    line-height: 1.5;
+    background: var(--code-bg);
+    border-radius: 2px;
+}
+
+.post-content pre code {
+    display: block;
+    margin: auto 0;
+    padding: 10px;
+    color: #d5d5d6;
+    background: 0 0;
+    border-radius: 0;
+    overflow-x: auto;
+    word-break: break-all;
+}
+
+.post-content blockquote {
+    margin: 20px 0;
+    padding: 0 14px;
+    border-inline-start: 3px solid var(--primary);
+}
+
+.post-content hr {
+    margin: 30px 0;
+    border: none;
+    border-top: 1px solid var(--border);
 } 
