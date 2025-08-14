@@ -351,6 +351,8 @@ if (!doNotTrack) {
         box-shadow: var(--shadow-md);
         border: 1px solid var(--border-color);
         background: var(--bg-primary);
+        position: relative;
+        transform: translateZ(0);
     }
 
     /* Table header enhancement */
@@ -399,14 +401,12 @@ if (!doNotTrack) {
     }
 
     .python-roadmap tr {
-        transition: all var(--transition-base);
+        transition: background-color var(--transition-base);
         position: relative;
     }
 
     .python-roadmap tr:hover {
         background-color: var(--bg-secondary);
-        transform: translateX(4px);
-        box-shadow: var(--shadow-sm);
     }
 
     .python-roadmap tr:hover::before {
@@ -414,7 +414,7 @@ if (!doNotTrack) {
         position: absolute;
         left: 0;
         top: 0;
-        width: 4px;
+        width: 3px;
         height: 100%;
         background: var(--primary-color);
         border-radius: 0 2px 2px 0;
