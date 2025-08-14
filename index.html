@@ -337,6 +337,20 @@ if (!doNotTrack) {
         color: rgb(218, 218, 219) !important;
     }
 
+    /* Intro paragraph styling for better visibility */
+    .first-entry .entry-content p {
+        color: var(--text-primary) !important;
+        font-weight: 400 !important;
+        text-rendering: optimizeLegibility !important;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+    }
+
+    body.dark .first-entry .entry-content p {
+        color: var(--text-primary) !important;
+        text-shadow: none !important;
+    }
+
     /* Enhanced mobile dropdown functionality */
     @media screen and (max-width: 768px) {
         /* Override main.css mobile navigation with enhanced behavior */
