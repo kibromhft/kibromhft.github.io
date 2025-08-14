@@ -992,6 +992,173 @@ figcaption a {
     margin-top: 10px;
 }
 
+/* ===== TABLE OF CONTENTS ===== */
+.toc {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    box-shadow: var(--shadow-soft);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.toc::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--brand-blue);
+    transition: all 0.3s ease;
+}
+
+.toc:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+}
+
+.toc:hover::before {
+    width: 6px;
+    background: var(--brand-blue-hover);
+}
+
+.toc .details {
+    display: block;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+    font-family: var(--font-serif);
+    position: relative;
+    padding-left: 1rem;
+}
+
+.toc .details::before {
+    content: '📑';
+    margin-right: 0.5rem;
+    font-size: 1.2em;
+    vertical-align: middle;
+}
+
+.toc ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.toc li {
+    margin: 0.5rem 0;
+    position: relative;
+    padding-left: 1.2rem;
+    line-height: 1.5;
+    transition: all 0.2s ease;
+}
+
+.toc li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--brand-blue);
+    font-size: 1.2em;
+    line-height: 1;
+    transition: all 0.2s ease;
+}
+
+.toc a {
+    color: var(--secondary);
+    text-decoration: none;
+    display: block;
+    padding: 0.3rem 0.5rem;
+    margin: 0 -0.5rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.toc a:hover {
+    color: var(--brand-blue);
+    background: rgba(var(--brand-blue-rgb), 0.1);
+    transform: translateX(4px);
+}
+
+.toc a:active {
+    transform: translateX(4px) scale(0.98);
+}
+
+.toc li:hover::before {
+    color: var(--brand-blue-hover);
+    transform: scale(1.3);
+}
+
+/* Nested TOC items */
+.toc ul ul {
+    margin-left: 1rem;
+    padding-left: 0.5rem;
+    border-left: 2px dashed var(--tertiary);
+}
+
+.toc ul ul li {
+    font-size: 0.95em;
+    opacity: 0.9;
+}
+
+.toc ul ul li::before {
+    content: '◦';
+    font-size: 1.1em;
+}
+
+/* Active TOC item */
+.toc a.active {
+    color: var(--brand-blue);
+    font-weight: 600;
+    background: rgba(var(--brand-blue-rgb), 0.1);
+    border-left: 3px solid var(--brand-blue);
+    padding-left: calc(0.5rem - 1px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .toc {
+        padding: 1rem;
+    }
+    
+    .toc .details {
+        font-size: 1rem;
+    }
+    
+    .toc ul ul {
+        margin-left: 0.5rem;
+    }
+}
+
+/* Dark theme adjustments */
+.dark .toc {
+    background: var(--entry);
+    border-color: var(--tertiary);
+}
+
+.dark .toc a:hover {
+    background: rgba(var(--brand-blue-rgb), 0.15);
+}
+
+.dark .toc a.active {
+    background: rgba(var(--brand-blue-rgb), 0.2);
+}
+
+/* Add RGB variables for brand colors */
+:root {
+    --brand-blue-rgb: 0, 123, 255;
+}
+
+.dark {
+    --brand-blue-rgb: 88, 192, 208;
+}
+
 .share-buttons a:not(:last-of-type) {
     margin-inline-end: 12px;
 }
