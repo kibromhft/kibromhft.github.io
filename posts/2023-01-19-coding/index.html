@@ -838,6 +838,8 @@ if (!doNotTrack) {
 				word-break: normal;
 			}
 
+			/* Post-meta styling restored to original */
+
 			/* Better list styling */
 			.post-content ol, .post-content ul {
 				margin: 1.5rem 0;
@@ -1188,17 +1190,7 @@ if (!doNotTrack) {
 				position: relative;
 			}
 
-			.post-header::after {
-				content: '';
-				position: absolute;
-				bottom: -2px;
-				left: 50%;
-				transform: translateX(-50%);
-				width: 100px;
-				height: 2px;
-				background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
-				border-radius: 1px;
-			}
+			/* Removed duplicate accent line to avoid double horizontal lines */
 
 			.post-title {
 				font-size: var(--font-size-3xl);
@@ -1214,14 +1206,17 @@ if (!doNotTrack) {
 			}
 
 			.post-meta {
-				font-size: var(--font-size-sm);
-				color: var(--text-secondary);
+				color: rgb(0,123,255);
+				font-size: 14px;
+				display: flex;
+				flex-wrap: wrap;
 				margin-bottom: 1rem;
-				transition: var(--transition-base);
+				justify-content: center;
+				align-items: center;
 			}
 
 			.post-meta:hover {
-				color: var(--text-primary);
+				color: rgb(0,105,217);
 			}
 
 			/* Print styles */
@@ -1283,11 +1278,11 @@ if (!doNotTrack) {
       Coding AI: The New Literacy
     </h2>
     <div class="post-meta"><span title='2023-01-19 10:00:00 -0700 PDT'>January 19, 2023</span>&nbsp;·&nbsp;18 min&nbsp;·&nbsp;kibrom Haftu</div>
-    
+
     <!-- Reading Progress Bar -->
     <div class="reading-progress">
       <div class="progress-bar" id="reading-progress"></div>
-    </div>
+</div>
   </header> <div class="toc" role="navigation" aria-label="Table of contents">
     <details>
         <summary accesskey="c" title="(Alt + C)" role="button" aria-expanded="false">
@@ -1476,37 +1471,37 @@ if (!doNotTrack) {
     document.addEventListener('DOMContentLoaded', function() {
         // Menu scroll position management
         const menu = document.getElementById('menu');
-        if (menu) {
-            menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
             menu.addEventListener('scroll', function() {
-                localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
             });
-        }
+    }
 
         // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener("click", function (e) {
-                e.preventDefault();
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
                 const id = this.getAttribute("href").substr(1);
                 const targetElement = document.querySelector(`[id='${decodeURIComponent(id)}']`);
                 
                 if (targetElement) {
-                    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                         targetElement.scrollIntoView({
-                            behavior: "smooth"
-                        });
-                    } else {
+                    behavior: "smooth"
+                });
+            } else {
                         targetElement.scrollIntoView();
-                    }
+            }
                     
-                    if (id === "top") {
-                        history.replaceState(null, null, " ");
-                    } else {
-                        history.pushState(null, null, `#${id}`);
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
                     }
-                }
-            });
+            }
         });
+    });
 
         // Top link visibility management
         const topButton = document.getElementById("top-link");
@@ -1516,7 +1511,7 @@ if (!doNotTrack) {
                 if (scrollTop > 800) {
                     topButton.style.visibility = "visible";
                     topButton.style.opacity = "1";
-                } else {
+        } else {
                     topButton.style.visibility = "hidden";
                     topButton.style.opacity = "0";
                 }
@@ -1548,24 +1543,24 @@ if (!doNotTrack) {
             // Find the pre element that contains this code
             let preElement = codeblock.closest('pre');
             if (!preElement) return;
+
+        const copybutton = document.createElement('button');
             
-            const copybutton = document.createElement('button');
-            
-            copybutton.classList.add('copy-code');
-            copybutton.innerText = 'copy';
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
             copybutton.setAttribute('aria-label', 'Copy code to clipboard');
             copybutton.setAttribute('title', 'Copy code to clipboard');
             copybutton.setAttribute('data-code-index', index);
 
             const copyingDone = () => {
-                copybutton.innerText = 'copied!';
+            copybutton.innerText = 'copied!';
                 copybutton.setAttribute('aria-label', 'Code copied!');
                 copybutton.style.background = 'var(--primary-hover)';
-                setTimeout(() => {
-                    copybutton.innerText = 'copy';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
                     copybutton.setAttribute('aria-label', 'Copy code to clipboard');
                     copybutton.style.background = '';
-                }, 2000);
+            }, 2000);
             };
 
             copybutton.addEventListener('click', async (e) => {
@@ -1573,25 +1568,25 @@ if (!doNotTrack) {
                 e.stopPropagation();
                 
                 try {
-                    if ('clipboard' in navigator) {
+            if ('clipboard' in navigator) {
                         await navigator.clipboard.writeText(codeblock.textContent);
-                        copyingDone();
+                copyingDone();
                     } else {
                         // Fallback for older browsers
-                        const range = document.createRange();
-                        range.selectNodeContents(codeblock);
-                        const selection = window.getSelection();
-                        selection.removeAllRanges();
-                        selection.addRange(range);
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
                         
-                        try {
-                            document.execCommand('copy');
-                            copyingDone();
+            try {
+                document.execCommand('copy');
+                copyingDone();
                         } catch (err) {
                             console.warn('Copy failed:', err);
                         }
                         
-                        selection.removeRange(range);
+            selection.removeRange(range);
                     }
                 } catch (err) {
                     console.warn('Copy failed:', err);
@@ -1670,7 +1665,7 @@ if (!doNotTrack) {
                         const isOpen = dropdown.classList.contains('dropdown-open');
                         if (isOpen) {
                             dropdown.classList.remove('dropdown-open');
-                        } else {
+        } else {
                             dropdown.classList.add('dropdown-open');
                         }
                     });
