@@ -1207,10 +1207,16 @@ if (!doNotTrack) {
 				text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 				transition: var(--transition-base);
 				position: relative;
+				font-weight: 700;
+				letter-spacing: -0.02em;
+				background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
 			}
 
 			.post-title:hover {
-				transform: translateY(-2px);
+				transform: translateY(-2px) scale(1.02);
 				text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 			}
 
@@ -1230,11 +1236,24 @@ if (!doNotTrack) {
 				opacity: 0;
 				transform: translateX(-50%) scaleX(0);
 				transform-origin: center;
+				animation: underline-pulse 3s ease-in-out infinite;
 			}
 
 			.post-title:hover::after {
 				opacity: 1;
 				transform: translateX(-50%) scaleX(1);
+				box-shadow: 0 4px 16px rgba(13, 110, 253, 0.5);
+				height: 3px;
+			}
+
+			/* Pulse animation for underline */
+			@keyframes underline-pulse {
+				0%, 100% { 
+					box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3);
+				}
+				50% { 
+					box-shadow: 0 2px 12px rgba(13, 110, 253, 0.6);
+				}
 			}
 
 			/* Animate underline on page load */
