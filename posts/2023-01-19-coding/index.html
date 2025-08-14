@@ -443,6 +443,77 @@ if (!doNotTrack) {
 
 		</ul>
 
+		<style>
+		/* Simple navigation styles - same as keywords page */
+		.custom-dropdown {
+		  padding: 8px 0 !important;
+		  margin: 0 !important;
+		  list-style-type: none !important;
+		}
+
+		.custom-dropdown li {
+		  padding: 0 !important;
+		  margin: 0 !important;
+		}
+
+		.custom-dropdown li a {
+		  display: block !important;
+		  width: 100% !important;
+		  padding: 8px 20px !important;
+		  margin: 0 !important;
+		  box-sizing: border-box !important;
+		  text-decoration: none !important;
+		  color: #333 !important;
+		  font-size: 16px !important;
+		  line-height: 1.5 !important;
+		}
+
+		.custom-dropdown li a:hover {
+			background-color: #f8f9fa !important;
+			color: #000 !important;
+		}
+
+		/* Mobile-specific overrides to match keywords page behavior */
+		@media screen and (max-width: 768px) {
+			/* Override main.css mobile navigation with keywords-style behavior */
+			.nav {
+				padding: 0 16px !important;
+				gap: 16px !important;
+				/* Remove complex flex overrides that cause horizontal lines */
+				display: flex !important;
+				align-items: center !important;
+				flex-wrap: wrap !important;
+				overflow: visible !important;
+				white-space: normal !important;
+				/* Override max-width constraints */
+				max-width: none !important;
+			}
+
+			#menu {
+				gap: 6px !important;
+				/* Remove overflow-x that causes horizontal lines */
+				overflow: visible !important;
+				white-space: normal !important;
+				display: flex !important;
+				flex-direction: row !important;
+				flex-wrap: wrap !important;
+			}
+
+			#menu li {
+				/* Remove inline-block that causes layout issues */
+				display: flex !important;
+				white-space: normal !important;
+				flex-shrink: 1 !important;
+			}
+
+			#menu a {
+				font-size: 15px !important;
+				padding: 8px 12px !important;
+				border-radius: 6px !important;
+				white-space: normal !important;
+			}
+		}
+		</style>
 		
     </nav>
 </header>
