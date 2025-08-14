@@ -10,7 +10,9 @@
 <meta name="description" content="In today's digital age, computer literacy is a basic requirement for most people. Centuries ago, people relied on oral communication to pass on information from one generation to the next. The ability to read and write was a privilege reserved for the elite few because language literacy was not considered an essential skill. Those who were literate were often looked up to and held in high regard. This created a stark division between the literate and the illiterate, with the latter relying on the former for even the most basic communication needs. It wasn't until several centuries later that society began to see the value in literacy for all.">
 <meta name="author" content="kibrom Haftu">
 <link rel="canonical" href="https://kibromhft.github.io/posts/2023-01-19-coding/" />
-<link crossorigin="anonymous" href="/assets/css/main.css?v=1.1" rel="stylesheet">
+<link crossorigin="anonymous" href="/assets/css/main.css?v=1.2" rel="stylesheet">
+<link rel="preload" href="/assets/f/Essays1743.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/f/Libertine.woff2" as="font" type="font/woff2" crossorigin>
 <script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
@@ -136,76 +138,96 @@ if (!doNotTrack) {
 </script>
 
 <style>
-        /* Font-face declarations for custom fonts */
+        /* Optimized font-face declarations for custom fonts */
         @font-face {
             font-family: "Essays 1743";
-            src: url("../../assets/f/Essays1743.eot") format("eot"), url("../../assets/f/Essays1743.woff") format("woff"), url("../../assets/f/Essays1743.ttf") format("truetype");
-        }
-        @font-face {
-            font-family: "Essays 1743";
-            font-weight: bold;
-            src: url("../../assets/f/Essays1743-bold.eot") format("eot"), url("../../assets/f/Essays1743-bold.woff") format("woff"), url("../../assets/f/Essays1743-bold.ttf") format("truetype");
+            src: url("../../assets/f/Essays1743.woff2") format("woff2"), url("../../assets/f/Essays1743.woff") format("woff");
+            font-display: swap;
+            font-weight: normal;
+            font-style: normal;
         }
         @font-face {
             font-family: "Essays 1743";
-            font-style: italic;
-            src: url("../../assets/f/Essays1743-italic.eot") format("eot"), url("../../assets/f/Essays1743-italic.woff") format("woff"), url("../../assets/f/Essays1743-italic.ttf") format("truetype");
+            src: url("../../assets/f/Essays1743-bold.woff2") format("woff2"), url("../../assets/f/Essays1743-bold.woff") format("woff");
+            font-display: swap;
+            font-weight: bold;
+            font-style: normal;
         }
         @font-face {
             font-family: "Essays 1743";
+            src: url("../../assets/f/Essays1743-italic.woff2") format("woff2"), url("../../assets/f/Essays1743-italic.woff") format("woff");
+            font-display: swap;
+            font-weight: normal;
             font-style: italic;
+        }
+        @font-face {
+            font-family: "Essays 1743";
+            src: url("../../assets/f/Essays1743-bold-italic.woff2") format("woff2"), url("../../assets/f/Essays1743-bold-italic.woff") format("woff");
+            font-display: swap;
             font-weight: bold;
-            src: url("../../assets/f/Essays1743-bold-italic.eot") format("eot"), url("../../assets/f/Essays1743-bold-italic.woff") format("woff"), url("../../assets/f/Essays1743-bold-italic.ttf") format("truetype");
-        }
-        @font-face {
-            font-family: "Alphabet of Children";
-            src: url("../../assets/f/Alphabet-of-Children.eot") format("eot"), url("../../assets/f/Alphabet-of-Children.woff") format("woff"), url("../../assets/f/Alphabet-of-Children.ttf") format("truetype");
-        }
-        @font-face {
-            font-family: "Libertine";
-            src: url("../../assets/f/Libertine.eot") format("eot"), url("../../assets/f/Libertine.woff") format("woff"), url("../../assets/f/Libertine.ttf") format("truetype");
-        }
-        @font-face {
-            font-family: "Libertine";
-            font-weight: bold;
-            src: url("../../assets/f/Libertine-bold.eot") format("eot"), url("../../assets/f/Libertine-bold.woff") format("woff"), url("../../assets/f/Libertine-bold.ttf") format("truetype");
-        }
-        @font-face {
-            font-family: "Libertine";
             font-style: italic;
-            src: url("../../assets/f/Libertine-italic.eot") format("eot"), url("../../assets/f/Libertine-italic.woff") format("woff"), url("../../assets/f/Libertine-italic.ttf") format("truetype");
         }
         @font-face {
             font-family: "Libertine";
-            font-style: italic;
+            src: url("../../assets/f/Libertine.woff2") format("woff2"), url("../../assets/f/Libertine.woff") format("woff");
+            font-display: swap;
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: "Libertine";
+            src: url("../../assets/f/Libertine-bold.woff2") format("woff2"), url("../../assets/f/Libertine-bold.woff") format("woff");
+            font-display: swap;
             font-weight: bold;
-            src: url("../../assets/f/Libertine-bold-italic.eot") format("eot"), url("../../assets/f/Libertine-bold-italic.woff") format("woff"), url("../../assets/f/Libertine-bold-italic.ttf") format("truetype");
+            font-style: normal;
+        }
+        @font-face {
+            font-family: "Libertine";
+            src: url("../../assets/f/Libertine-italic.woff2") format("woff2"), url("../../assets/f/Libertine-italic.woff") format("woff");
+            font-display: swap;
+            font-weight: normal;
+            font-style: italic;
+        }
+        @font-face {
+            font-family: "Libertine";
+            src: url("../../assets/f/Libertine-bold-italic.woff2") format("woff2"), url("../../assets/f/Libertine-bold-italic.woff") format("woff");
+            font-display: swap;
+            font-weight: bold;
+            font-style: italic;
         }
         
         /* Existing dark mode styles */
 
 
 
-        /* Updated styles for quotes */
-        body.dark .quote {
-            background-color: #222222; /* Matching the main background color */
-            border-left: 4px solid #8FBCBB; /* Keeping the accent color for the left border */
+        /* Updated styles for quotes with CSS variables */
+        .quote {
+            background-color: var(--bg-card);
+            border-left: 4px solid var(--primary-color);
             padding: 15px;
             margin: 15px 0;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-base);
         }
 
-        body.dark .quote p {
-            color: #FFFFFF; /* White for the main quote text to make it stand out */
+        .quote p {
+            color: var(--text-primary);
             font-style: italic;
             font-size: 1.1em;
             margin-bottom: 10px;
         }
 
-        body.dark .quote cite {
-            color: #BDBDBE; /* Slightly dimmer than the main text color */
+        .quote cite {
+            color: var(--text-secondary);
             font-style: normal;
             font-size: 0.9em;
+        }
+
+        /* Dark mode specific quote styles */
+        body.dark .quote {
+            background-color: var(--bg-card);
+            border-left-color: var(--primary-color);
+            box-shadow: var(--shadow-sm);
         }
 		
 
@@ -232,88 +254,109 @@ if (!doNotTrack) {
   text-align: right;
 }
 
-    /* New styles for paragraphs */
+    /* New styles for paragraphs with CSS variables */
     .custom-paragraph {
-		font-family: Libertine, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
-		font-size: large !important; /* Updated font size */
-		line-height: 1.556 !important; /* Updated line height */
-		word-spacing: 0.1em !important; /* Updated word spacing */
-		margin: 28.008px 0px !important; /* Updated margin for vertical spacing */
-		text-decoration: none !important; /* Underline text */
-		text-decoration-color: rgb(0, 0, 0) !important; /* Set underline color to black */
-		--primary: #000000 !important;
-		color: rgb(0, 0, 0);
+		font-family: var(--font-body);
+		font-size: var(--font-size-base);
+		line-height: 1.556;
+		word-spacing: 0.1em;
+		margin: 28.008px 0px;
+		color: var(--text-primary);
+		transition: var(--transition-base);
     }
 	    /* Set --code-bg for all elements except the header 
     body{
         --code-bg: rgb(255, 255, 255) !important; 
     }*/
 		
-		/* headers */
-
+		/* headers with CSS variables */
 	h1, h2, h3, h4, caption, thead th {
-	  font-family: "Essays 1743", Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
+	  font-family: var(--font-heading);
 	  font-weight: normal;
-	  text-shadow: 0 0 1px #667;
+	  color: var(--text-primary);
+	  text-shadow: 0 0 1px var(--text-secondary);
 	}
 	h1 {
-	  font-size: 266.7%;
+	  font-size: var(--font-size-3xl);
 	  line-height: 1.1;
 	  width: 100%;
 	  margin: 1.49em 0;
 	}
 	h2 {
-	  font-size: 210%;
+	  font-size: var(--font-size-2xl);
 	  line-height: 1.3125;
 	  margin: 1.167em 0;
 	  clear: both;
 	}
 	h3 {
-	  font-size: x-large;
+	  font-size: var(--font-size-xl);
 	  line-height: 1.167;
 	  margin: 1.556em 0;
 	}
 
-    /* New styles for the Python roadmap table */
+    /* New styles for the Python roadmap table with CSS variables */
     .python-roadmap {
-        width: 100%; /* Full width */
-        border-collapse: collapse; /* Remove space between borders */
-        margin: 20px 0; /* Add margin for spacing */
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
     }
 
     .python-roadmap th, .python-roadmap td {
-        padding: 12px; /* Add padding for better spacing */
-        text-align: left; /* Align text to the left */
-        border: 1px solid #ddd; /* Add border */
+        padding: 12px;
+        text-align: left;
+        border: 1px solid var(--border-color);
     }
 
     .python-roadmap th {
-        background-color: #f2f2f2; /* Light gray background for header */
-        color: #333; /* Darker text color for header */
-        font-weight: bold; /* Bold text for header */
-        text-transform: uppercase; /* Transform text to uppercase for emphasis */
-        letter-spacing: 0.05em; /* Add letter spacing for a more modern look */
-        font-family: sans-serif, serif; /* Change font family to Arial */
+        background-color: var(--bg-secondary);
+        color: var(--text-primary);
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-family: var(--font-primary);
     }
 
     .python-roadmap tr:nth-child(even) {
-        background-color: #f9f9f9; /* Zebra striping for even rows */
+        background-color: var(--bg-card);
+    }
+
+    .python-roadmap tr:nth-child(odd) {
+        background-color: var(--bg-primary);
     }
 
     .python-roadmap tr:hover {
-        background-color: #f1f1f1; /* Highlight row on hover */
+        background-color: var(--bg-secondary);
+        transition: var(--transition-base);
     }
 
     /* Styles for links within the Python roadmap table */
     .python-roadmap a {
-        color: #007BFF; /* Set link color to a blue shade */
-        text-decoration: none; /* Remove underline */
-        transition: color 0.3s ease; /* Smooth transition for color change */
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: var(--transition-base);
     }
 
     .python-roadmap a:hover {
-        color: #0056b3; /* Darker blue on hover */
-        text-decoration: underline; /* Underline on hover for emphasis */
+        color: var(--primary-hover);
+        text-decoration: underline;
+    }
+
+    /* Dark mode specific table styles */
+    body.dark .python-roadmap th {
+        background-color: var(--bg-secondary);
+        color: var(--text-primary);
+        border-color: var(--border-color);
+    }
+
+    body.dark .python-roadmap tr:nth-child(even) {
+        background-color: var(--bg-card);
+    }
+
+    body.dark .python-roadmap tr:nth-child(odd) {
+        background-color: var(--bg-primary);
     }
 </style>
 
@@ -328,16 +371,6 @@ if (!doNotTrack) {
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.body.classList.add('dark');
     }
-</script>
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
 </script>
 
 <script>
@@ -359,7 +392,7 @@ if (!doNotTrack) {
     });
 
 </script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
@@ -695,42 +728,7 @@ if (!doNotTrack) {
 				display: none;
 			}
 
-			/* Optimized font loading with fallbacks */
-			@font-face {
-				font-family: "Essays 1743";
-				src: url("../assets/f/Essays1743.woff2") format("woff2"), url("../assets/f/Essays1743.woff") format("woff");
-				font-display: swap;
-				font-weight: normal;
-				font-style: normal;
-			}
-			@font-face {
-				font-family: "Essays 1743";
-				src: url("../assets/f/Essays1743-bold.woff2") format("woff2"), url("../assets/f/Essays1743-bold.woff") format("woff");
-				font-display: swap;
-				font-weight: bold;
-				font-style: normal;
-			}
-			@font-face {
-				font-family: "Essays 1743";
-				src: url("../assets/f/Essays1743-italic.woff2") format("woff2"), url("../assets/f/Essays1743-italic.woff") format("woff");
-				font-display: swap;
-				font-weight: normal;
-				font-style: italic;
-			}
-			@font-face {
-				font-family: "Libertine";
-				src: url("../assets/f/Libertine.woff2") format("woff2"), url("../assets/f/Libertine.woff") format("woff");
-				font-display: swap;
-				font-weight: normal;
-				font-style: normal;
-			}
-			@font-face {
-				font-family: "Libertine";
-				src: url("../assets/f/Libertine-bold.woff2") format("woff2"), url("../assets/f/Libertine-bold.woff") format("woff");
-				font-display: swap;
-				font-weight: bold;
-				font-style: normal;
-			}
+			/* Font loading optimized - using main font declarations */
 
 			/* Container and layout with CSS variables */
 			.post-content {
@@ -748,6 +746,53 @@ if (!doNotTrack) {
 				.post-content {
 					font-size: var(--font-size-sm);
 					padding: 0 var(--space-sm);
+				}
+			}
+
+			/* Responsive design improvements */
+			@media screen and (max-width: 768px) {
+				.post-content {
+					font-size: var(--font-size-sm);
+					padding: 0 var(--space-sm);
+				}
+
+				.python-roadmap {
+					font-size: 14px;
+				}
+
+				.python-roadmap th,
+				.python-roadmap td {
+					padding: 8px;
+				}
+
+				.quote {
+					margin: 10px 0;
+					padding: 12px;
+				}
+
+				.quote p {
+					font-size: 1em;
+				}
+			}
+
+			@media screen and (max-width: 480px) {
+				.post-content {
+					font-size: var(--font-size-xs);
+					padding: 0 var(--space-xs);
+				}
+
+				.python-roadmap {
+					font-size: 12px;
+				}
+
+				.python-roadmap th,
+				.python-roadmap td {
+					padding: 6px;
+				}
+
+				.copy-code {
+					font-size: 10px;
+					padding: 4px 8px;
 				}
 			}
 
@@ -826,6 +871,93 @@ if (!doNotTrack) {
 			body.dark .post-content h6 {
 				color: var(--text-primary) !important;
 			}
+
+			/* Copy button styling */
+			.copy-code {
+				position: absolute;
+				top: 8px;
+				right: 8px;
+				background: var(--primary-color);
+				color: white;
+				border: none;
+				border-radius: var(--radius-sm);
+				padding: 6px 12px;
+				font-size: 12px;
+				font-weight: 500;
+				cursor: pointer;
+				transition: var(--transition-base);
+				opacity: 0;
+				z-index: 10;
+			}
+
+			.copy-code:hover {
+				background: var(--primary-hover);
+				transform: translateY(-1px);
+			}
+
+			pre:hover .copy-code {
+				opacity: 1;
+			}
+
+			.copy-code:focus {
+				outline: 2px solid var(--primary-color);
+				outline-offset: 2px;
+			}
+
+			/* Dark mode copy button */
+			body.dark .copy-code {
+				background: var(--primary-color);
+				color: var(--bg-primary);
+			}
+
+			body.dark .copy-code:hover {
+				background: var(--primary-hover);
+			}
+
+			/* Print styles */
+			@media print {
+				.header,
+				.footer,
+				.top-link,
+				.copy-code,
+				#theme-toggle {
+					display: none !important;
+				}
+
+				.post-content {
+					font-size: 12pt;
+					line-height: 1.4;
+					color: #000 !important;
+					background: #fff !important;
+				}
+
+				.python-roadmap {
+					border: 1px solid #000;
+					page-break-inside: avoid;
+				}
+
+				.python-roadmap th,
+				.python-roadmap td {
+					border: 1px solid #000;
+					padding: 4px;
+				}
+
+				.quote {
+					border-left: 3px solid #000;
+					background: #f9f9f9 !important;
+					page-break-inside: avoid;
+				}
+
+				a {
+					color: #000 !important;
+					text-decoration: underline;
+				}
+
+				h1, h2, h3, h4, h5, h6 {
+					color: #000 !important;
+					page-break-after: avoid;
+				}
+			}
 		</style>
 		
     </nav>
@@ -843,9 +975,9 @@ if (!doNotTrack) {
     <div class="post-meta"><span title='2023-01-19 10:00:00 -0700 PDT'>January 19, 2023</span>&nbsp;·&nbsp;18 min&nbsp;·&nbsp;kibrom Haftu
 
 </div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
+  </header> <div class="toc" role="navigation" aria-label="Table of contents">
+    <details>
+        <summary accesskey="c" title="(Alt + C)" role="button" aria-expanded="false">
             <span class="details">Table of Contents</span>
         </summary>
 
@@ -1027,104 +1159,138 @@ if (!doNotTrack) {
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
-    if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+    // Optimized JavaScript with performance improvements
+    document.addEventListener('DOMContentLoaded', function() {
+        // Menu scroll position management
+        const menu = document.getElementById('menu');
+        if (menu) {
+            menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+            menu.addEventListener('scroll', function() {
+                localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+            });
         }
-    }
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                const id = this.getAttribute("href").substr(1);
+                const targetElement = document.querySelector(`[id='${decodeURIComponent(id)}']`);
+                
+                if (targetElement) {
+                    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                        targetElement.scrollIntoView({
+                            behavior: "smooth"
+                        });
+                    } else {
+                        targetElement.scrollIntoView();
+                    }
+                    
+                    if (id === "top") {
+                        history.replaceState(null, null, " ");
+                    } else {
+                        history.pushState(null, null, `#${id}`);
+                    }
+                }
+            });
         });
+
+        // Top link visibility management
+        const topButton = document.getElementById("top-link");
+        if (topButton) {
+            const handleScroll = () => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > 800) {
+                    topButton.style.visibility = "visible";
+                    topButton.style.opacity = "1";
+                } else {
+                    topButton.style.visibility = "hidden";
+                    topButton.style.opacity = "0";
+                }
+            };
+            
+            window.addEventListener('scroll', handleScroll, { passive: true });
+        }
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById("theme-toggle");
+        if (themeToggle) {
+            themeToggle.addEventListener("click", () => {
+                const isDark = document.body.classList.contains("dark");
+                document.body.classList.toggle('dark');
+                localStorage.setItem("pref-theme", isDark ? 'light' : 'dark');
+            });
+        }
     });
-
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
+    // Optimized copy code functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const copyButtons = new Map();
+        
+        document.querySelectorAll('pre > code').forEach((codeblock) => {
+            const container = codeblock.parentNode.parentNode;
+            const copybutton = document.createElement('button');
+            
+            copybutton.classList.add('copy-code');
+            copybutton.innerText = 'copy';
+            copybutton.setAttribute('aria-label', 'Copy code to clipboard');
+            copybutton.setAttribute('title', 'Copy code to clipboard');
 
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
+            const copyingDone = () => {
+                copybutton.innerText = 'copied!';
+                copybutton.setAttribute('aria-label', 'Code copied!');
+                setTimeout(() => {
+                    copybutton.innerText = 'copy';
+                    copybutton.setAttribute('aria-label', 'Copy code to clipboard');
+                }, 2000);
+            };
 
-</script>
-<script>
-    document.querySelectorAll('pre > code').forEach((codeblock) => {
-        const container = codeblock.parentNode.parentNode;
+            copybutton.addEventListener('click', async (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                try {
+                    if ('clipboard' in navigator) {
+                        await navigator.clipboard.writeText(codeblock.textContent);
+                        copyingDone();
+                    } else {
+                        // Fallback for older browsers
+                        const range = document.createRange();
+                        range.selectNodeContents(codeblock);
+                        const selection = window.getSelection();
+                        selection.removeAllRanges();
+                        selection.addRange(range);
+                        
+                        try {
+                            document.execCommand('copy');
+                            copyingDone();
+                        } catch (err) {
+                            console.warn('Copy failed:', err);
+                        }
+                        
+                        selection.removeRange(range);
+                    }
+                } catch (err) {
+                    console.warn('Copy failed:', err);
+                }
+            });
 
-        const copybutton = document.createElement('button');
-        copybutton.classList.add('copy-code');
-        copybutton.innerText = 'copy';
-
-        function copyingDone() {
-            copybutton.innerText = 'copied!';
-            setTimeout(() => {
-                copybutton.innerText = 'copy';
-            }, 2000);
-        }
-
-        copybutton.addEventListener('click', (cb) => {
-            if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
-                copyingDone();
-                return;
+            // Determine where to place the copy button
+            let targetContainer;
+            if (container.classList.contains("highlight")) {
+                targetContainer = container;
+            } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName === "TABLE") {
+                targetContainer = codeblock.parentNode.parentNode.parentNode.parentNode.parentNode;
+            } else {
+                targetContainer = codeblock.parentNode;
             }
-
-            const range = document.createRange();
-            range.selectNodeContents(codeblock);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            try {
-                document.execCommand('copy');
-                copyingDone();
-            } catch (e) { };
-            selection.removeRange(range);
+            
+            if (targetContainer) {
+                targetContainer.appendChild(copybutton);
+                copyButtons.set(copybutton, targetContainer);
+            }
         });
-
-        if (container.classList.contains("highlight")) {
-            container.appendChild(copybutton);
-        } else if (container.parentNode.firstChild == container) {
-            
-        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
-            
-            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
-        } else {
-            
-            codeblock.parentNode.appendChild(copybutton);
-        }
     });
 </script>
 <script>
