@@ -1206,11 +1206,32 @@ if (!doNotTrack) {
 				color: var(--text-primary);
 				text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 				transition: var(--transition-base);
+				position: relative;
 			}
 
 			.post-title:hover {
 				transform: translateY(-2px);
 				text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+			}
+
+			/* Add underline like FAQ page */
+			.post-title::after {
+				content: '';
+				position: absolute;
+				bottom: -8px;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 160px;
+				height: 5px;
+				background: linear-gradient(90deg, rgb(13, 110, 253) 0%, rgb(59, 130, 246) 50%, rgb(10, 88, 202) 100%);
+				border-radius: 3px;
+				box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3);
+			}
+
+			/* Dark mode underline */
+			body.dark .post-title::after {
+				background: linear-gradient(90deg, rgb(34, 211, 238) 0%, rgb(6, 182, 212) 50%, rgb(8, 145, 178) 100%);
+				box-shadow: 0 2px 8px rgba(34, 211, 238, 0.3);
 			}
 
 			.post-meta {
