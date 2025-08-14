@@ -71,6 +71,7 @@ html {
     font-family: var(--font-primary);
     font-size: 16px;
     line-height: 1.6;
+    scroll-padding-top: calc(var(--header-height) + 20px);
 }
 
 body {
@@ -947,11 +948,13 @@ figcaption a {
 .post-content h1 {
     margin: 28px auto 20px;
     font-size: 28px;
+    scroll-margin-top: calc(var(--header-height) + 20px);
 }
 
 .post-content h2 {
     margin: 24px auto 16px;
     font-size: 24px;
+    scroll-margin-top: calc(var(--header-height) + 20px);
 }
 
 .post-content h3 {
