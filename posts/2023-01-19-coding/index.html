@@ -362,8 +362,8 @@ if (!doNotTrack) {
 
     .python-roadmap th {
         background: transparent;
-        color: white;
-        font-weight: 600;
+        color: #ffffff;
+        font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.1em;
         font-family: var(--font-primary);
@@ -371,6 +371,7 @@ if (!doNotTrack) {
         text-align: left;
         border: none;
         position: relative;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     }
 
     .python-roadmap th::after {
@@ -390,6 +391,8 @@ if (!doNotTrack) {
         border-bottom: 1px solid var(--border-color);
         vertical-align: top;
         line-height: 1.6;
+        color: var(--text-primary);
+        font-weight: 500;
     }
 
     .python-roadmap tr:nth-child(even) {
@@ -401,7 +404,7 @@ if (!doNotTrack) {
     }
 
     .python-roadmap tr {
-        transition: background-color var(--transition-base);
+        transition: background-color 0.5s ease;
         position: relative;
     }
 
@@ -424,7 +427,7 @@ if (!doNotTrack) {
     .python-roadmap a {
         color: var(--primary-color);
         text-decoration: none;
-        transition: var(--transition-base);
+        transition: color 0.4s ease;
     }
 
     .python-roadmap a:hover {
@@ -434,9 +437,10 @@ if (!doNotTrack) {
 
     /* Dark mode specific table styles */
     body.dark .python-roadmap th {
-        background-color: var(--bg-secondary);
-        color: var(--text-primary);
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+        color: #ffffff;
         border-color: var(--border-color);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
     }
 
     body.dark .python-roadmap tr:nth-child(even) {
