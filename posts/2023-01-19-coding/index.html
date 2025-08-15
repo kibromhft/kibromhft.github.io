@@ -633,6 +633,78 @@ if (!doNotTrack) {
 				padding: 8px 12px !important;
 				border-radius: 6px !important;
 				white-space: normal !important;
+				word-wrap: break-word !important;
+				overflow-wrap: break-word !important;
+			}
+
+			.dropdown-menu {
+				right: auto !important;
+				left: 0 !important;
+				min-width: 200px !important;
+				border-radius: 8px !important;
+			}
+
+			/* Completely disable hover behavior on touch devices */
+			.dropdown .dropdown-menu {
+				opacity: 0 !important;
+				visibility: hidden !important;
+				transform: translateY(-8px) !important;
+			}
+
+			/* Show dropdown when dropdown-open class is present */
+			.dropdown.dropdown-open .dropdown-menu {
+				opacity: 1 !important;
+				visibility: visible !important;
+				transform: translateY(0) !important;
+			}
+
+			/* Rotate caret when dropdown is open */
+			.dropdown.dropdown-open .caret {
+				transform: rotate(180deg) !important;
+			}
+		}
+
+		@media screen and (max-width: 480px) {
+			.nav {
+				flex-direction: row !important;
+				padding: 0 16px !important;
+				display: flex !important;
+				align-items: center !important;
+				flex-wrap: wrap !important;
+				max-width: none !important;
+			}
+
+			.logo {
+				margin-bottom: 0 !important;
+			}
+
+			#menu {
+				flex-wrap: wrap !important;
+				justify-content: flex-start !important;
+				gap: 6px !important;
+				display: flex !important;
+				flex-direction: row !important;
+			}
+
+			#menu a {
+				font-size: 14px !important;
+				padding: 6px 8px !important;
+				white-space: normal !important;
+				word-wrap: break-word !important;
+				overflow-wrap: break-word !important;
+			}
+
+			/* Mobile dropdown functionality for smaller screens */
+			.dropdown .dropdown-menu {
+				opacity: 0 !important;
+				visibility: hidden !important;
+				transform: translateY(-8px) !important;
+			}
+
+			.dropdown.dropdown-open .dropdown-menu {
+				opacity: 1 !important;
+				visibility: visible !important;
+				transform: translateY(0) !important;
 			}
 		}
 		</style>
@@ -939,6 +1011,27 @@ if (!doNotTrack) {
 				.quote p {
 					font-size: 1em;
 				}
+
+				/* Mobile skills list improvements */
+				#skills + p + ol {
+					padding-left: 1rem;
+				}
+
+				#skills + p + ol li {
+					padding-left: 1.5rem;
+					margin-bottom: 1rem;
+				}
+
+				/* Override text-align: justify for mobile */
+				#skills + p + ol li.custom-paragraph {
+					text-align: left !important;
+				}
+
+				/* Ensure proper mobile spacing for custom paragraphs */
+				.custom-paragraph {
+					margin: 1rem 0;
+					text-align: left !important;
+				}
 			}
 
 			@media screen and (max-width: 480px) {
@@ -959,6 +1052,61 @@ if (!doNotTrack) {
 				.copy-code {
 					font-size: 10px;
 					padding: 4px 8px;
+				}
+
+				/* Small mobile skills list improvements */
+				#skills + p + ol {
+					padding-left: 0.5rem;
+				}
+
+				#skills + p + ol li {
+					padding-left: 1rem;
+					margin-bottom: 0.75rem;
+				}
+
+				/* Override text-align: justify for small mobile */
+				#skills + p + ol li.custom-paragraph {
+					text-align: left !important;
+				}
+
+				/* Ensure proper mobile spacing for custom paragraphs */
+				.custom-paragraph {
+					margin: 0.75rem 0;
+					text-align: left !important;
+				}
+
+				/* Mobile header improvements */
+				.post-header {
+					padding: 1rem 0;
+					text-align: center;
+				}
+
+				.post-title {
+					font-size: 2.5rem;
+					margin: 0.5rem 0;
+					line-height: 1.2;
+				}
+
+				.post-meta {
+					font-size: 0.9rem;
+					margin: 0.5rem 0;
+				}
+
+				/* Improve mobile content spacing */
+				.post-content {
+					padding: 0 1rem;
+				}
+
+				/* Better mobile table handling */
+				.python-roadmap {
+					font-size: 13px;
+					margin: 1.5rem 0;
+				}
+
+				.python-roadmap th,
+				.python-roadmap td {
+					padding: 8px 6px;
+					word-wrap: break-word;
 				}
 			}
 
@@ -1210,6 +1358,31 @@ if (!doNotTrack) {
 			#skills + p + ol li::marker {
 				color: #007bff;
 				font-weight: bold;
+			}
+
+			/* Mobile skills list improvements */
+			@media screen and (max-width: 768px) {
+				#skills + p + ol li {
+					padding-left: 1.5rem;
+					margin-bottom: 1rem;
+				}
+
+				/* Override text-align: justify for mobile */
+				#skills + p + ol li.custom-paragraph {
+					text-align: left !important;
+				}
+			}
+
+			@media screen and (max-width: 480px) {
+				#skills + p + ol li {
+					padding-left: 1rem;
+					margin-bottom: 0.75rem;
+				}
+
+				/* Override text-align: justify for small mobile */
+				#skills + p + ol li.custom-paragraph {
+					text-align: left !important;
+				}
 			}
 
 			/* Fix TOC styling - restore blue bullets from main.css and ensure proper spacing */
