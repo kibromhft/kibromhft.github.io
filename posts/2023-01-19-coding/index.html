@@ -1164,6 +1164,55 @@ if (!doNotTrack) {
 				color: rgb(156, 163, 175) !important;
 			}
 
+			/* Recommended Reading Link Styling - matching VAE post */
+			.paginav a {
+				color: var(--primary-color);
+				text-decoration: none;
+				transition: var(--transition-base);
+				display: block;
+				padding: 8px 12px;
+				border-radius: var(--radius-sm);
+			}
+
+			.paginav a:hover {
+				background-color: var(--bg-secondary);
+				color: var(--primary-hover);
+				transform: translateY(-1px);
+				box-shadow: var(--shadow-sm);
+			}
+
+			.paginav span:not(.title) {
+				color: var(--primary-color);
+				font-weight: 500;
+				font-size: 1rem;
+				line-height: 1.4;
+				display: block;
+				margin-top: 4px;
+			}
+
+			.paginav span:not(.title):hover {
+				color: var(--primary-hover);
+				text-decoration: underline;
+			}
+
+			/* Dark mode overrides for recommended reading links */
+			body.dark .paginav a {
+				color: var(--primary-color);
+			}
+
+			body.dark .paginav a:hover {
+				background-color: var(--bg-secondary);
+				color: var(--primary-hover);
+			}
+
+			body.dark .paginav span:not(.title) {
+				color: var(--primary-color);
+			}
+
+			body.dark .paginav span:not(.title):hover {
+				color: var(--primary-hover);
+			}
+
 			/* Copy button styling */
 			.copy-code {
 				position: absolute;
