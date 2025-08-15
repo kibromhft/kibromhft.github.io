@@ -1238,14 +1238,19 @@ if (!doNotTrack) {
 				font-weight: bold;
 			}
 
-			/* Fix TOC styling - remove custom bullets and use default ul styling */
+			/* Fix TOC styling - restore blue bullets from main.css and ensure proper spacing */
 			.toc li::before {
-				content: none !important;
+				content: '•' !important;
+				position: absolute !important;
+				left: 0 !important;
+				color: var(--brand-blue) !important;
+				transition: all 0.2s ease !important;
 			}
 
 			.toc li {
-				list-style: disc;
-				padding-left: 0;
+				position: relative;
+				padding-left: 1.2rem;
+				list-style: none;
 			}
 
 			/* Copy button styling */
