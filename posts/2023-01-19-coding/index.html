@@ -216,7 +216,7 @@ if (!doNotTrack) {
             padding: 2rem 2rem 2rem 4rem;
             margin: 2rem 0;
             box-shadow: var(--shadow-md);
-            transition: var(--transition-base);
+            transition: box-shadow var(--transition-base), transform var(--transition-base);
             border-radius: var(--radius-md);
             position: relative;
             overflow: hidden;
@@ -231,6 +231,8 @@ if (!doNotTrack) {
             color: var(--primary-color);
             opacity: 0.3;
             font-family: var(--font-serif);
+            transition: none;
+            transform: none;
         }
 
         .quote::after {
