@@ -1318,7 +1318,17 @@ if (!doNotTrack) {
 				font-size: 1rem;
 				line-height: 1.4;
 				display: block;
-				margin-top: 4px;
+				margin-top: 2px;
+			}
+
+			.paginav .subtitle {
+				color: var(--primary-color);
+				font-weight: 500;
+				font-size: 0.95rem;
+				line-height: 1.3;
+				display: block;
+				margin-top: 1px;
+				opacity: 0.9;
 			}
 
 			.paginav span:not(.title):hover {
@@ -1342,6 +1352,30 @@ if (!doNotTrack) {
 
 			body.dark .paginav span:not(.title):hover {
 				color: var(--primary-hover);
+			}
+
+			/* Additional paginav improvements for better spacing */
+			.paginav {
+				margin: 12px 0;
+				padding: 8px 0;
+			}
+
+			.paginav a {
+				text-decoration: none;
+				transition: all 0.2s ease;
+			}
+
+			.paginav a:hover {
+				transform: translateY(-1px);
+			}
+
+			/* Ensure proper spacing between title and subtitles */
+			.paginav .title {
+				margin-bottom: 2px;
+			}
+
+			.paginav .subtitle:first-of-type {
+				margin-top: 3px;
 			}
 
 			/* Simple blue numbering for skills list */
@@ -1371,6 +1405,22 @@ if (!doNotTrack) {
 				#skills + p + ol li.custom-paragraph {
 					text-align: left !important;
 				}
+
+				/* Mobile paginav improvements */
+				.paginav {
+					margin: 8px 0;
+				}
+
+				.paginav .title {
+					font-size: 12px;
+					line-height: 1.2;
+				}
+
+				.paginav .subtitle {
+					font-size: 0.9rem;
+					line-height: 1.2;
+					margin-top: 1px;
+				}
 			}
 
 			@media screen and (max-width: 480px) {
@@ -1382,6 +1432,22 @@ if (!doNotTrack) {
 				/* Override text-align: justify for small mobile */
 				#skills + p + ol li.custom-paragraph {
 					text-align: left !important;
+				}
+
+				/* Mobile paginav improvements */
+				.paginav {
+					margin: 6px 0;
+				}
+
+				.paginav .title {
+					font-size: 11px;
+					line-height: 1.1;
+				}
+
+				.paginav .subtitle {
+					font-size: 0.85rem;
+					line-height: 1.1;
+					margin-top: 0.5px;
 				}
 			}
 
@@ -1962,10 +2028,8 @@ if (!doNotTrack) {
 <nav class="paginav">
           <a class="next" href="https://kibromhft.github.io/posts/2022-10-19-automation/">
     <span class="title">Recommended Reading</span>
-    <br>
-    <span>Jobs in the Digital Era</span>
-    <br>
-    <span>Disentangling the Latent Space: A Guide to Beta-VAE</span>
+    <span class="subtitle">Jobs in the Digital Era</span>
+    <span class="subtitle">Disentangling the Latent Space: A Guide to Beta-VAE</span>
   </a>
 </nav>
 
