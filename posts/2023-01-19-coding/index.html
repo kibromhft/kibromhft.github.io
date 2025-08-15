@@ -291,17 +291,77 @@ if (!doNotTrack) {
 
 
 <style>
-    /* Essential styles for the Python roadmap table */
+.quote {
+  font-size: 1.5em;
+  font-style: italic;
+  margin: 2em;
+  padding: 1em;
+  border-inline-start: 3px solid #E64632 !important; /* Force override */
+}
+
+.quote p {
+  margin: 0;
+}
+
+.quote cite {
+  display: block;
+  font-size: 0.9em;
+  margin-top: 1em;
+  text-align: right;
+}
+
+    /* New styles for paragraphs with CSS variables */
+    .custom-paragraph {
+		font-family: var(--font-body);
+		font-size: var(--font-size-base);
+		line-height: 1.556;
+		word-spacing: 0.1em;
+		margin: 28.008px 0px;
+		color: var(--text-primary);
+		transition: var(--transition-base);
+    }
+	    /* Set --code-bg for all elements except the header 
+    body{
+        --code-bg: rgb(255, 255, 255) !important; 
+    }*/
+		
+		/* headers with CSS variables */
+	h1, h2, h3, h4, caption, thead th {
+	  font-family: var(--font-heading);
+	  font-weight: normal;
+	  color: var(--text-primary);
+	  text-shadow: 0 0 1px var(--text-secondary);
+	}
+	h1 {
+	  font-size: var(--font-size-3xl);
+	  line-height: 1.1;
+	  width: 100%;
+	  margin: 1.49em 0;
+	}
+	h2 {
+	  font-size: var(--font-size-2xl);
+	  line-height: 1.3125;
+	  margin: 1.167em 0;
+	  clear: both;
+	}
+	h3 {
+	  font-size: var(--font-size-xl);
+	  line-height: 1.167;
+	  margin: 1.556em 0;
+	}
+
+    /* Enhanced styles for the Python roadmap table with CSS variables */
     .python-roadmap {
         width: 100%;
         border-collapse: collapse;
         margin: 2rem 0;
-        border-radius: 8px;
+        border-radius: var(--radius-md);
         overflow: hidden;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        border: 1px solid #e1e5e9;
-        background: #ffffff;
+        box-shadow: var(--shadow-md);
+        border: 1px solid var(--border-color);
+        background: var(--bg-primary);
         position: relative;
+        /* Removed transform that could cause instability */
     }
 
     /* Table header enhancement */
@@ -310,88 +370,98 @@ if (!doNotTrack) {
     }
 
     .python-roadmap th {
-        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-        color: #495057;
+        background: transparent;
+        color: var(--text-primary);
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.1em;
-        font-family: inherit;
+        font-family: var(--font-primary);
         padding: 16px 12px;
         text-align: left;
         border: none;
         position: relative;
         text-shadow: none;
-        border-bottom: 2px solid #dee2e6;
+    }
+
+    .python-roadmap th::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--border-color);
     }
 
     .python-roadmap td {
         padding: 16px 12px;
         text-align: left;
         border: none;
-        border-bottom: 1px solid #e1e5e9;
+        border-bottom: 1px solid var(--border-color);
         vertical-align: top;
         line-height: 1.6;
         color: #333333;
         font-weight: 500;
     }
 
+    /* Dark mode table content */
+    body.dark .python-roadmap td {
+        color: #e0e0e0;
+    }
+
     .python-roadmap tr:nth-child(even) {
-        background-color: #f8f9fa;
+        background-color: var(--bg-card);
     }
 
     .python-roadmap tr:nth-child(odd) {
-        background-color: #ffffff;
+        background-color: var(--bg-primary);
     }
 
     .python-roadmap tr {
-        transition: background-color 0.3s ease;
+        transition: background-color 0.8s ease;
+        position: static;
     }
 
     .python-roadmap tr:hover {
-        background-color: #e9ecef;
+        background-color: var(--bg-secondary);
     }
+
+    /* Removed the left accent bar that was causing visual instability */
 
     /* Styles for links within the Python roadmap table */
     .python-roadmap a {
-        color: #007bff;
+        color: var(--primary-color);
         text-decoration: none;
-        transition: color 0.3s ease;
+        transition: color 0.6s ease;
     }
 
     .python-roadmap a:hover {
-        color: #0056b3;
+        color: var(--primary-hover);
         text-decoration: underline;
     }
 
-    /* Dark mode table styles */
-    body.dark .python-roadmap {
-        background: #2d3748;
-        border-color: #4a5568;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    /* Light mode specific table styles */
+    body:not(.dark) .python-roadmap th {
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        color: #495057;
+        text-shadow: none;
+        border-bottom: 2px solid #dee2e6;
     }
 
+    /* Dark mode specific table styles */
     body.dark .python-roadmap th {
         background: linear-gradient(135deg, #007bff, #0056b3);
         color: #ffffff;
-        border-bottom-color: #4a5568;
+        border-color: var(--border-color);
         text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
     }
 
-    body.dark .python-roadmap td {
-        color: #e0e0e0;
-        border-bottom-color: #4a5568;
-    }
-
     body.dark .python-roadmap tr:nth-child(even) {
-        background-color: #2d3748;
+        background-color: var(--bg-card);
     }
 
     body.dark .python-roadmap tr:nth-child(odd) {
-        background-color: #1a202c;
-    }
-
-    body.dark .python-roadmap tr:hover {
-        background-color: #4a5568;
+        background-color: var(--bg-primary);
     }
 </style>
 
