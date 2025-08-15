@@ -77,16 +77,21 @@ if (!doNotTrack) {
 <meta property="og:description" content=" 
 Autoencoders are a type of neural network that can be used to learn a compressed representation of input data. They work by training the network to reconstruct the input data from a lower-dimensional latent representation, which is typically obtained using an encoder. Autoencoders are versatile and can be used for a variety of tasks, including data compression, anomaly detection, and feature learning.
 <br/
-One of the main benefits of autoencoders is their ability to reduce the dimensionality of large and complex data sets, making them more manageable for downstream tasks such as classification, clustering, and visualization. They can also be used to identify patterns or anomalies in data that may not be easily detectable by other means. />
+One of the main benefits of autoencoders is their ability to reduce the dimensionality of large and complex data sets, making them more manageable for downstream tasks such as classification, clustering, and visualization. They can also be used to identify patterns or anomalies in data that may not be easily detectable by other means." />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Kb's Blog" />
+<meta property="og:locale" content="en_US" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kibromhft.github.io/posts/2022-11-27-vae/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-02-27T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2022-02-27T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2023-01-19T10:00:00-07:00" />
+<meta property="article:modified_time" content="2023-01-19T10:00:00-07:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Disentangling the Latent Space: A Guide to Beta-VAE"/>
 <meta name="twitter:description" content=" 
 Autoencoders are a type of neural network that can be used to learn a compressed representation of input data. They work by training the network to reconstruct the input data from a lower-dimensional latent representation, which is typically obtained using an encoder. Autoencoders are versatile and can be used for a variety of tasks, including data compression, anomaly detection, and feature learning high-dimensional data using a neural network model with a narrow bottleneck layer in the middle (oops, this is probably not true for Variational Autoencoder, and we will investigate it in details in later sections). A nice byproduct is dimension reduction: the bottleneck layer captures a compressed latent encoding."/>
+<meta name="twitter:site" content="@kibromhft" />
+<meta name="twitter:creator" content="@kibromhft" />
 
 
 <script type="application/ld+json">
@@ -115,11 +120,11 @@ Autoencoders are a type of neural network that can be used to learn a compressed
   "@type": "BlogPosting",
   "headline": "Disentangling the Latent Space: A Guide to Beta-VAE",
   "name": "Disentangling the Latent Space: A Guide to Beta-VAE",
-  "description": "\nAutoencoders are a type of neural network that can be used to learn a compressed representation of input data. They work by training the network to reconstruct the input data from a lower-dimensional latent representation, which is typically obtained using an encoder. Autoencoders are versatile and can be used for a variety of tasks, including data compression, anomaly detection, and feature learning high-dimensional data using a neural network model with a narrow bottleneck layer in the middle (oops, this is probably not true for Variational Autoencoder, and we will investigate it in details in later sections). A nice byproduct is dimension reduction: the bottleneck layer captures a compressed latent encoding. Such a low-dimensional representation can be used as en embedding vector in various applications (i.e. search), help data compression, or reveal the underlying data generative factors.\nNotation    Symbol Mean     $\\mathcal{D}$ The dataset, $\\mathcal{D} = \\{ \\mathbf{x}^{(1)}, \\mathbf{x}^{(2)}, \\dots, \\mathbf{x}^{(n)} \\}$, contains $n$ data samples; $\\vert\\mathcal{D}\\vert =n $.   $\\mathbf{x}^{(i)}$ Each data point is a vector of $d$ dimensions, $\\mathbf{x}^{(i)} = [x^{(i)}_1, x^{(i)}_2, \\dots, x^{(i)}_d]$.   $\\mathbf{x}$ One data sample from the dataset, $\\mathbf{x} \\in \\mathcal{D}$.   $\\mathbf{x}'$ The reconstructed version of $\\mathbf{x}$.   $\\tilde{\\mathbf{x}}$ This is the noisy version of the original data $\\mathbf{x}$.   $\\mathbf{z}$ The latent vector.   $a_j^{(l)}$ The activation function for the $j$-th neuron in the $l$-th hidden layer.   $g_{\\phi}(.)$ The encoding function parameterized by $\\phi$.   $f_{\\theta}(.)$ The decoding function parameterized by $\\theta$.   $q_{\\phi}(\\mathbf{z}\\vert\\mathbf{x})$ Estimated posterior probability function, also known as probabilistic encoder.   $p_{\\theta}(\\mathbf{x}\\vert\\mathbf{z})$ Likelihood of generating true data sample given the latent code, also known as probabilistic decoder.    Autoencoder Autoencoder is a neural network designed to learn an identity function in an unsupervised way to reconstruct the original input while compressing the data in the process so as to discover a more efficient and compressed representation. The idea was originated in the 1980s, and later promoted by the seminal paper by Hinton \u0026 Salakhutdinov, 2006.\nIt consists of two networks:\n Encoder network: It translates the original high-dimension input into the latent low-dimensional code. The input size is larger than the output size. Decoder network: The decoder network recovers the data from the code, likely with larger and larger output layers. \n",
+  "description": "\nAutoencoders are a type of neural network that can be used to learn a compressed representation of input data. They work by training the network to reconstruct the input data from a lower-dimensional latent representation, which is typically obtained using an encoder. Autoencoders are versatile and can be used for a variety of tasks, including data compression, anomaly detection, and feature learning high-dimensional data using a neural network model with a narrow bottleneck layer in the middle (oops, this is probably not true for Variational Autoencoder, and we will investigate it in details in later sections). A nice byproduct is dimension reduction: the bottleneck layer captures a compressed latent encoding.",
   "keywords": [
     "autoencoder","generative-model","unsupervised-learning","dimensionality-reduction","neural-networks","reconstruction-error","latent-space","variational-inference","beta-vae","generative-adversarial-networks"
   ],
-  "articleBody": "\nAutoencoders are a type of neural network that can be used to learn a compressed representation of input data. They work by training the network to reconstruct the input data from a lower-dimensional latent representation, which is typically obtained using an encoder. Autoencoders are versatile and can be used for a variety of tasks, including data compression, anomaly detection, and feature learning high-dimensional data using a neural network model with a narrow bottleneck layer in the middle (oops, this is probably not true for Variational Autoencoder, and we will investigate it in details in later sections). A nice byproduct is dimension reduction: the bottleneck layer captures a compressed latent encoding. Such a low-dimensional representation can be used as en embedding vector in various applications (i.e. search), help data compression, or reveal the underlying data generative factors.\nNotation    Symbol Mean     $\\mathcal{D}$ The dataset, $\\mathcal{D} = \\{ \\mathbf{x}^{(1)}, \\mathbf{x}^{(2)}, \\dots, \\mathbf{x}^{(n)} \\}$, contains $n$ data samples; $\\vert\\mathcal{D}\\vert =n $.   $\\mathbf{x}^{(i)}$ Each data point is a vector of $d$ dimensions, $\\mathbf{x}^{(i)} = [x^{(i)}_1, x^{(i)}_2, \\dots, x^{(i)}_d]$.   $\\mathbf{x}$ One data sample from the dataset, $\\mathbf{x} \\in \\mathcal{D}$.   $\\mathbf{x}'$ The reconstructed version of $\\mathbf{x}$.   $\\tilde{\\mathbf{x}}$ This is the noisy version of the original data $\\mathbf{x}$.   $\\mathbf{z}$ The latent vector.   $a_j^{(l)}$ The activation function for the $j$-th neuron in the $l$-th hidden layer.   $g_{\\phi}(.)$ The encoding function parameterized by $\\phi$.   $f_{\\theta}(.)$ The decoding function parameterized by $\\theta$.   $q_{\\phi}(\\mathbf{z}\vert\mathbf{x})$ Estimated posterior probability function, also known as probabilistic encoder.   $p_{\\theta}(\\mathbf{x}\vert\mathbf{z})$ Likelihood of generating true data sample given the latent code, also known as probabilistic decoder.    Autoencoder Autoencoder is a neural network designed to learn an identity function in an unsupervised way to reconstruct the original input while compressing the data in the process so as to discover a more efficient and compressed representation. The idea was originated in the 1980s, and later promoted by the seminal paper by Hinton \u0026 Salakhutdinov, 2006.\nIt consists of two networks:\n Encoder network: It translates the original high-dimension input into the latent low-dimensional code. The input size is larger than the output size. Decoder network: The decoder network recovers the data from the code, likely with larger and larger output layers. \n",
+  "articleBody": "\nAutoencoders are a type of neural network that can be used to learn a compressed representation of input data. They work by training the network to reconstruct the input data from a lower-dimensional latent representation, which is typically obtained using an encoder. Autoencoders are versatile and can be used for a variety of tasks, including data compression, anomaly detection, and feature learning high-dimensional data using a neural network model with a narrow bottleneck layer in the middle (oops, this is probably not true for Variational Autoencoder, and we will investigate it in details in later sections). A nice byproduct is dimension reduction: the bottleneck layer captures a compressed latent encoding. Such a low-dimensional representation can be used as en embedding vector in various applications (i.e. search), help data compression, or reveal the underlying data generative factors.\nNotation    Symbol Mean     $\\mathcal{D}$ The dataset, $\\mathcal{D} = \\{ \\mathbf{x}^{(1)}, \\mathbf{x}^{(2)}, \\dots, \\mathbf{x}^{(n)} \\}$, contains $n$ data samples; $\\vert\\mathcal{D}\\vert =n $.   $\\mathbf{x}^{(i)}$ Each data point is a vector of $d$ dimensions, $\\mathbf{x}^{(i)} = [x^{(i)}_1, x^{(i)}_2, \\dots, x^{(i)}_d]$.   $\\mathbf{x}$ One data sample from the dataset, $\\mathbf{x} \\in \\mathcal{D}$.   $\\mathbf{x}'$ The reconstructed version of $\\mathbf{x}$.   $\\tilde{\\mathbf{x}}$ This is the noisy version of the original data $\\mathbf{x}$.   $\\mathbf{z}$ The latent vector.   $a_j^{(l)}$ The activation function for the $j$-th neuron in the $l$-th hidden layer.   $g_{\\phi}(.)$ The encoding function parameterized by $\\phi$.   $f_{\\theta}(.)$ The decoding function parameterized by $\\theta$.   $q_{\\phi}(\\mathbf{z}\\vert\\mathbf{x})$ Estimated posterior probability function, also known as probabilistic encoder.   $p_{\\theta}(\\mathbf{x}\\vert\\mathbf{z})$ Likelihood of generating true data sample given the latent code, also known as probabilistic decoder.    Autoencoder Autoencoder is a neural network designed to learn an identity function in an unsupervised way to reconstruct the original input while compressing the data in the process so as to discover a more efficient and compressed representation. The idea was originated in the 1980s, and later promoted by the seminal paper by Hinton \u0026 Salakhutdinov, 2006.\nIt consists of two networks:\n Encoder network: It translates the original high-dimension input into the latent low-dimensional code. The input size is larger than the output size. Decoder network: The decoder network recovers the data from the code, likely with larger and larger output layers. \n",
   "wordCount" : "5305",
   "inLanguage": "en",
   "datePublished": "2022-02-27T00:00:00Z",
@@ -491,7 +496,7 @@ Autoencoders are a type of neural network that can be used to learn a compressed
                         <line x1="12" y1="1" x2="12" y2="3"></line>
                         <line x1="12" y1="21" x2="12" y2="23"></line>
                         <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="18.36"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
                         <line x1="1" y1="12" x2="3" y2="12"></line>
                         <line x1="21" y1="12" x2="23" y2="12"></line>
                         <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
@@ -595,78 +600,107 @@ Autoencoders are a type of neural network that can be used to learn a compressed
 		/* Mobile-specific overrides to match keywords page behavior */
 		@media screen and (max-width: 768px) {
 			/* Override main.css mobile navigation with keywords-style behavior */
-			#menu {
-				position: static !important;
-				background: transparent !important;
-				box-shadow: none !important;
-				width: auto !important;
-				max-height: none !important;
+			.nav {
+				padding: 0 16px !important;
+				gap: 16px !important;
+				/* Remove complex flex overrides that cause horizontal lines */
+				display: flex !important;
+				align-items: center !important;
+				flex-wrap: wrap !important;
 				overflow: visible !important;
-				transform: none !important;
-				opacity: 1 !important;
-				visibility: visible !important;
+				white-space: normal !important;
+				/* Override max-width constraints */
+				max-width: none !important;
+			}
+
+			#menu {
+				gap: 6px !important;
+				/* Remove overflow-x that causes horizontal lines */
+				overflow: visible !important;
+				white-space: normal !important;
 				display: flex !important;
 				flex-direction: row !important;
-				align-items: center !important;
-				gap: 0.5rem !important;
-				padding: 0 !important;
-				margin: 0 !important;
+				flex-wrap: wrap !important;
 			}
 
 			#menu li {
-				position: relative !important;
-				margin: 0 !important;
-				padding: 0 !important;
+				/* Remove inline-block that causes layout issues */
+				display: flex !important;
+				white-space: normal !important;
+				flex-shrink: 1 !important;
 			}
 
 			#menu a {
-				display: flex !important;
-				align-items: center !important;
-				gap: 0.25rem !important;
-				padding: 0.5rem 0.75rem !important;
-				margin: 0 !important;
-				font-size: 0.9rem !important;
-				white-space: nowrap !important;
-				text-decoration: none !important;
-				color: var(--text-primary) !important;
-				background: transparent !important;
-				border: none !important;
-				border-radius: var(--radius-sm) !important;
-				transition: all 0.2s ease !important;
+				font-size: 15px !important;
+				padding: 8px 12px !important;
+				border-radius: 6px !important;
+				white-space: normal !important;
 				word-wrap: break-word !important;
 				overflow-wrap: break-word !important;
 			}
 
-			#menu a:hover {
-				background: var(--bg-secondary) !important;
-				color: var(--text-primary) !important;
-				transform: none !important;
-			}
-
-			/* Dropdown styles for mobile */
 			.dropdown-menu {
-				position: absolute !important;
-				top: 100% !important;
-				right: 0 !important;
-				left: auto !important;
+				right: auto !important;
+				left: 0 !important;
 				min-width: 200px !important;
-				background: var(--bg-primary) !important;
-				border: 1px solid var(--border-color) !important;
-				border-radius: var(--radius-md) !important;
-				box-shadow: var(--shadow-lg) !important;
-				padding: 0.5rem 0 !important;
-				margin: 0 !important;
-				z-index: 1000 !important;
-				opacity: 0 !important;
-				visibility: hidden !important;
-				transform: translateY(-10px) !important;
-				transition: all 0.2s ease !important;
+				border-radius: 8px !important;
 			}
 
+			/* Completely disable hover behavior on touch devices */
 			.dropdown .dropdown-menu {
 				opacity: 0 !important;
 				visibility: hidden !important;
-				transform: translateY(-10px) !important;
+				transform: translateY(-8px) !important;
+			}
+
+			/* Show dropdown when dropdown-open class is present */
+			.dropdown.dropdown-open .dropdown-menu {
+				opacity: 1 !important;
+				visibility: visible !important;
+				transform: translateY(0) !important;
+			}
+
+			/* Rotate caret when dropdown is open */
+			.dropdown.dropdown-open .caret {
+				transform: rotate(180deg) !important;
+			}
+		}
+
+		@media screen and (max-width: 480px) {
+			.nav {
+				flex-direction: row !important;
+				padding: 0 16px !important;
+				display: flex !important;
+				align-items: center !important;
+				flex-wrap: wrap !important;
+				max-width: none !important;
+			}
+
+			.logo {
+				margin-bottom: 0 !important;
+			}
+
+			#menu {
+				flex-wrap: wrap !important;
+				justify-content: flex-start !important;
+				gap: 6px !important;
+				display: flex !important;
+				flex-direction: row !important;
+			}
+
+			#menu a {
+				font-size: 14px !important;
+				padding: 6px 8px !important;
+				white-space: normal !important;
+				word-wrap: break-word !important;
+				overflow-wrap: break-word !important;
+			}
+
+			/* Mobile dropdown functionality for smaller screens */
+			.dropdown .dropdown-menu {
+				opacity: 0 !important;
+				visibility: hidden !important;
+				transform: translateY(-8px) !important;
 			}
 
 			.dropdown.dropdown-open .dropdown-menu {
@@ -674,370 +708,1030 @@ Autoencoders are a type of neural network that can be used to learn a compressed
 				visibility: visible !important;
 				transform: translateY(0) !important;
 			}
-
-			.dropdown.dropdown-open .caret {
-				transform: rotate(180deg) !important;
+		}
+		</style>
+		
+		<style>
+			/* Design System - CSS Custom Properties */
+			:root {
+				/* Colors - using main theme variables */
+				--primary-color: var(--brand-blue, rgb(13, 110, 253));
+				--primary-hover: var(--brand-blue-hover, rgb(10, 88, 202));
+				--primary-light: rgb(59, 130, 246);
+				--text-primary: var(--primary, rgb(15, 23, 42));
+				--text-secondary: var(--secondary, rgb(51, 65, 85));
+				--text-muted: rgb(108, 117, 125);
+				--bg-primary: var(--theme, rgb(255, 255, 255));
+				--bg-secondary: var(--entry, rgb(248, 250, 252));
+				--bg-card: var(--entry, rgb(255, 255, 255));
+				--border-color: var(--border, rgba(226, 232, 240, 0.8));
+				--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+				--shadow-md: 0 4px 6px rgba(0, 0, 0, 0.02);
+				--shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.03);
+				--shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.05);
+				
+				/* Typography */
+				--font-heading: "Essays 1743", serif;
+				--font-body: Libertine, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
+				--font-size-xs: 0.875rem;
+				--font-size-sm: 1rem;
+				--font-size-base: 1.1rem;
+				--font-size-lg: 1.25rem;
+				--font-size-xl: 1.4rem;
+				--font-size-2xl: 2rem;
+				--font-size-3xl: 3.5rem;
+				
+				/* Spacing */
+				--space-xs: 0.5rem;
+				--space-sm: 1rem;
+				--space-md: 1.5rem;
+				--space-lg: 2rem;
+				--space-xl: 2.5rem;
+				--space-2xl: 3rem;
+				--space-3xl: 4rem;
+				
+				/* Border radius */
+				--radius-sm: 8px;
+				--radius-md: 12px;
+				--radius-lg: 16px;
+				
+				/* Transitions */
+				--transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+				--transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+				--transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+				
+				/* Container */
+				--container-max-width: min(900px, 90vw);
+				--container-padding: clamp(1rem, 5vw, 2rem);
 			}
 
-			/* Mobile-specific adjustments */
+			/* Dark mode variables - using main theme system */
+			body.dark {
+				--primary-color: rgb(34, 211, 238);
+				--primary-hover: rgb(6, 182, 212);
+				--primary-light: rgb(6, 182, 212);
+				--text-primary: var(--primary, rgb(248, 250, 252));
+				--text-secondary: var(--secondary, rgb(203, 213, 225));
+				--text-muted: rgb(156, 163, 175);
+				--bg-primary: var(--theme, rgb(15, 23, 42));
+				--bg-secondary: var(--entry, rgb(30, 41, 59));
+				--bg-card: var(--entry, rgb(30, 41, 59));
+				--border-color: var(--border, rgba(51, 65, 85, 0.8));
+				--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+				--shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
+				--shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+				--shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+			}
+
+			/* Reduced motion support */
+			@media (prefers-reduced-motion: reduce) {
+				:root {
+					--transition-fast: 0s;
+					--transition-base: 0s;
+					--transition-slow: 0s;
+				}
+				
+				* {
+					animation-duration: 0.01ms !important;
+					animation-iteration-count: 1 !important;
+					transition-duration: 0.01ms !important;
+				}
+			}
+
+			/* Navigation styles with CSS variables */
+			#menu a {
+				color: var(--text-primary);
+				transition: var(--transition-base);
+			}
+
+			#menu a:hover,
+			#menu a:focus {
+				background-color: var(--bg-secondary);
+				color: var(--text-primary);
+				outline: 2px solid var(--primary-color);
+				outline-offset: 2px;
+			}
+
+			.dropdown-menu a {
+				color: var(--text-primary);
+				transition: var(--transition-base);
+			}
+
+			.dropdown-menu a:hover,
+			.dropdown-menu a:focus {
+				background-color: var(--bg-secondary);
+				color: var(--text-primary);
+			}
+
+			/* Logo and theme toggle */
+			.logo a {
+				color: var(--text-primary);
+				transition: var(--transition-base);
+			}
+
+			.logo a:hover,
+			.logo a:focus {
+				color: var(--primary-color);
+				outline: 2px solid var(--primary-color);
+				outline-offset: 2px;
+			}
+
+			#theme-toggle {
+				background: none;
+				border: none;
+				cursor: pointer;
+				padding: var(--space-xs);
+				border-radius: 50%;
+				transition: var(--transition-base);
+				color: var(--text-primary);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			#theme-toggle:hover,
+			#theme-toggle:focus {
+				background-color: var(--bg-secondary);
+				outline: 2px solid var(--primary-color);
+				outline-offset: 2px;
+			}
+
+			#theme-toggle svg {
+				height: 20px;
+				width: 20px;
+			}
+
+			.logo-switches {
+				display: flex;
+				align-items: center;
+				margin-left: var(--space-sm);
+			}
+
+			.logo {
+				display: flex;
+				align-items: center;
+				position: relative;
+			}
+
+			/* Theme toggle visibility */
+			body.dark #moon {
+				display: none;
+			}
+
+			body:not(.dark) #sun {
+				display: none;
+			}
+
+			/* Font loading optimized - using main font declarations */
+
+			/* Container and layout with CSS variables */
+			.post-content {
+				color: var(--text-primary);
+				max-width: var(--container-max-width);
+				margin: 0 auto;
+				padding: 0 var(--container-padding);
+				font-family: var(--font-body);
+				font-size: var(--font-size-base);
+				line-height: 1.8;
+				text-align: justify;
+			}
+
+			/* Enhanced paragraph spacing and readability */
+			.post-content p {
+				margin-bottom: 1.5rem;
+				text-align: justify;
+				hyphens: auto;
+				word-break: normal;
+			}
+
+			/* Post-meta styling restored to original */
+
+			/* Better list styling */
+			.post-content ol, .post-content ul {
+				margin: 1.5rem 0;
+				padding-left: 2rem;
+			}
+
+			.post-content li {
+				margin-bottom: 0.75rem;
+				line-height: 1.6;
+			}
+
+			.post-content ol li {
+				padding-left: 0.5rem;
+			}
+
+			.post-content ul li {
+				list-style-type: disc;
+			}
+
+			/* Enhanced section headers */
+			.post-content h1, .post-content h2, .post-content h3 {
+				margin-top: 3rem;
+				margin-bottom: 1.5rem;
+				padding-bottom: 0.5rem;
+				border-bottom: 2px solid var(--border-color);
+				position: relative;
+				transition: var(--transition-base);
+			}
+
+			.post-content h1::after, .post-content h2::after, .post-content h3::after {
+				content: '';
+				position: absolute;
+				bottom: -2px;
+				left: 0;
+				width: 60px;
+				height: 2px;
+				background: var(--primary-color);
+				transition: width var(--transition-base);
+			}
+
+			.post-content h1:hover::after, .post-content h2:hover::after, .post-content h3:hover::after {
+				width: 100px;
+			}
+
+			.post-content h1:hover, .post-content h2:hover, .post-content h3:hover {
+				color: var(--primary-color);
+				transform: translateX(4px);
+			}
+
+			/* Enhanced list styling */
+			.post-content ol li, .post-content ul li {
+				position: relative;
+				padding-left: 1rem;
+			}
+
+			.post-content ol li::marker {
+				color: var(--primary-color);
+				font-weight: bold;
+			}
+
+			.post-content ul li::marker {
+				color: var(--primary-color);
+			}
+
+			/* Enhanced blockquote styling */
+			.post-content blockquote {
+				border-left: 4px solid var(--primary-color);
+				padding: 1.5rem;
+				margin: 2rem 0;
+				font-style: italic;
+				color: var(--text-secondary);
+				background: var(--bg-secondary);
+				border-radius: var(--radius-sm);
+			}
+
+			/* Container queries for responsive design */
+			@container (max-width: 600px) {
+				.post-content {
+					font-size: var(--font-size-sm);
+					padding: 0 var(--space-sm);
+				}
+			}
+
+			/* Responsive design improvements */
+			@media screen and (max-width: 768px) {
+				.post-content {
+					font-size: var(--font-size-sm);
+					padding: 0 var(--space-sm);
+				}
+
+				.python-roadmap {
+					font-size: 14px;
+				}
+
+				.python-roadmap th,
+				.python-roadmap td {
+					padding: 8px;
+				}
+
+				.quote {
+					margin: 1rem 0;
+					padding: 1rem;
+				}
+
+				.quote p {
+					font-size: 1em;
+				}
+
+				/* Mobile skills list improvements */
+				#skills + p + ol {
+					padding-left: 1rem;
+				}
+
+				#skills + p + ol li {
+					padding-left: 1.5rem;
+					margin-bottom: 1rem;
+				}
+
+				/* Override text-align: justify for mobile */
+				#skills + p + ol li.custom-paragraph {
+					text-align: left !important;
+				}
+
+				/* Ensure proper mobile spacing for custom paragraphs */
+				.custom-paragraph {
+					margin: 1rem 0;
+					text-align: left !important;
+				}
+			}
+
 			@media screen and (max-width: 480px) {
-				.nav {
-					flex-direction: column !important;
-					padding: 0.5rem 1rem !important;
-					gap: 0.5rem !important;
+				.post-content {
+					font-size: var(--font-size-xs);
+					padding: 0 var(--space-xs);
 				}
 
-				.logo {
-					margin-bottom: 0.5rem !important;
+				.python-roadmap {
+					font-size: 12px;
 				}
 
-				#menu {
-					justify-content: center !important;
-					gap: 0.25rem !important;
-					flex-wrap: wrap !important;
+				.python-roadmap th,
+				.python-roadmap td {
+					padding: 6px;
 				}
 
-				#menu a {
-					font-size: 0.8rem !important;
-					padding: 0.4rem 0.6rem !important;
+				.copy-code {
+					font-size: 10px;
+					padding: 4px 8px;
+				}
+
+				/* Small mobile skills list improvements */
+				#skills + p + ol {
+					padding-left: 0.5rem;
+				}
+
+				#skills + p + ol li {
+					padding-left: 1rem;
+					margin-bottom: 0.75rem;
+				}
+
+				/* Override text-align: justify for small mobile */
+				#skills + p + ol li.custom-paragraph {
+					text-align: left !important;
+				}
+
+				/* Ensure proper mobile spacing for custom paragraphs */
+				.custom-paragraph {
+					margin: 0.75rem 0;
+					text-align: left !important;
+				}
+
+				/* Mobile header improvements */
+				.post-header {
+					padding: 1rem 0;
+					text-align: center;
+				}
+
+				.post-title {
+					font-size: 2.5rem;
+					margin: 0.5rem 0;
+					line-height: 1.2;
+				}
+
+				.post-meta {
+					font-size: 0.9rem;
+					margin: 0.5rem 0;
+				}
+
+				/* Improve mobile content spacing */
+				.post-content {
+					padding: 0 1rem;
+				}
+
+				/* Better mobile table handling */
+				.python-roadmap {
+					font-size: 13px;
+					margin: 1.5rem 0;
+				}
+
+				.python-roadmap th,
+				.python-roadmap td {
+					padding: 8px 6px;
+					word-wrap: break-word;
 				}
 			}
-		}
 
-		/* Ensure dropdown menu is properly styled */
-		.dropdown-menu {
-			position: absolute;
-			top: 100%;
-			left: 0;
-			min-width: 200px;
-			background: var(--bg-primary);
-			border: 1px solid var(--border-color);
-			border-radius: var(--radius-md);
-			box-shadow: var(--shadow-lg);
-			padding: 0.5rem 0;
-			margin: 0;
-			z-index: 1000;
-			opacity: 0;
-			visibility: hidden;
-			transform: translateY(-10px);
-			transition: all 0.2s ease;
-		}
+			/* Enhanced link styling with focus states */
+			.post-content a {
+				color: var(--primary-color);
+				text-decoration: none;
+				transition: var(--transition-base);
+				position: relative;
+				font-weight: 500;
+				border-radius: 2px;
+				padding: 2px 4px;
+				margin: 0 2px;
+			}
 
-		.dropdown:hover .dropdown-menu {
-			opacity: 1;
-			visibility: visible;
-			transform: translateY(0);
-		}
+			.post-content a::after {
+				content: '';
+				position: absolute;
+				bottom: -2px;
+				left: 0;
+				width: 0;
+				height: 2px;
+				background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
+				transition: width var(--transition-base);
+				border-radius: 1px;
+			}
 
-		.dropdown-menu li {
-			list-style: none;
-			margin: 0;
-			padding: 0;
-		}
+			.post-content a:hover::after,
+			.post-content a:focus::after {
+				width: 100%;
+			}
 
-		.dropdown-menu a {
-			display: block;
-			padding: 0.5rem 1rem;
-			color: var(--text-primary);
-			text-decoration: none;
-			transition: background-color 0.2s ease;
-		}
+			.post-content a:hover,
+			.post-content a:focus {
+				color: var(--primary-hover);
+				background: var(--bg-secondary);
+				border-radius: 4px;
+				transform: translateY(-1px);
+				box-shadow: var(--shadow-sm);
+			}
 
-		.dropdown-menu a:hover {
-			background-color: var(--bg-secondary);
-		}
+			/* External link indicators */
+			.post-content a[href^="http"]::before {
+				content: '↗';
+				margin-right: 4px;
+				font-size: 0.8em;
+				opacity: 0.7;
+				transition: var(--transition-base);
+			}
 
-		.caret {
-			transition: transform 0.2s ease;
-		}
+			.post-content a[href^="http"]:hover::before {
+				opacity: 1;
+				transform: translateX(2px);
+			}
 
-		.dropdown:hover .caret {
-			transform: rotate(180deg);
-		}
+			/* Post content dark mode fixes */
+			.post-content {
+				color: var(--text-primary) !important;
+			}
+
+			.post-content p {
+				color: var(--text-primary) !important;
+			}
+
+			.post-content h1,
+			.post-content h2,
+			.post-content h3,
+			.post-content h4,
+			.post-content h5,
+			.post-content h6 {
+				color: var(--text-primary) !important;
+			}
+
+			/* Ensure body text uses our custom variables */
+			body {
+				color: var(--text-primary) !important;
+				background: var(--bg-primary) !important;
+			}
+
+			/* Dark mode specific overrides */
+			body.dark .post-content {
+				color: var(--text-primary) !important;
+			}
+
+			body.dark .post-content p {
+				color: var(--text-primary) !important;
+			}
+
+			body.dark .post-content h1,
+			body.dark .post-content h2,
+			body.dark .post-content h3,
+			body.dark .post-content h4,
+			body.dark .post-content h5,
+			body.dark .post-content h6 {
+				color: var(--text-primary) !important;
+			}
+
+			/* Beautiful Recommended Reading Title Styling */
+			.paginav .title {
+				/* Font & Text */
+				font-family: -apple-system, BlinkMacSystemFont, "segoe ui", Roboto, Oxygen, Ubuntu, Cantarell, "open sans", "helvetica neue", sans-serif;
+				font-size: 13px;
+				font-style: normal;
+				font-variant: normal;
+				font-weight: 400;
+				letter-spacing: 1px;
+				line-height: 30px;
+				text-decoration: none solid rgb(108, 108, 108);
+				text-align: start;
+				text-indent: 0px;
+				text-transform: uppercase;
+				vertical-align: baseline;
+				white-space: normal;
+				word-spacing: 0px;
+
+				/* Color & Background */
+				background-attachment: scroll;
+				background-color: rgba(0, 0, 0, 0);
+				background-image: none;
+				background-position: 0% 0%;
+				background-repeat: repeat;
+				color: rgb(108, 108, 108);
+
+				/* Box */
+				height: auto;
+				width: auto;
+				border: 0px none rgb(108, 108, 108);
+				border-top: 0px none rgb(108, 108, 108);
+				border-right: 0px none rgb(108, 108, 108);
+				border-bottom: 0px none rgb(108, 108, 108);
+				border-left: 0px none rgb(108, 108, 108);
+				margin: 0px;
+				padding: 0px;
+				max-height: none;
+				min-height: 0px;
+				max-width: none;
+				min-width: 0px;
+
+				/* Positioning */
+				position: static;
+				top: auto;
+				bottom: auto;
+				right: auto;
+				left: auto;
+				float: none;
+				display: inline;
+				clear: none;
+				z-index: auto;
+
+				/* List */
+				list-style-image: none;
+				list-style-type: disc;
+				list-style-position: outside;
+
+				/* Table */
+				border-collapse: separate;
+				border-spacing: 0px;
+				caption-side: top;
+				empty-cells: show;
+				table-layout: auto;
+
+				/* Miscellaneous */
+				overflow: visible;
+				cursor: pointer;
+				visibility: visible;
+
+				/* Effects */
+				transform: none;
+				transition: all;
+				outline: rgb(255, 0, 0) dashed 1px;
+				outline-offset: 0px;
+				box-sizing: border-box;
+				resize: none;
+				text-shadow: none;
+				text-overflow: clip;
+				word-wrap: normal;
+				box-shadow: none;
+				border-top-left-radius: 0px;
+				border-top-right-radius: 0px;
+				border-bottom-left-radius: 0px;
+				border-bottom-right-radius: 0px;
+			}
+
+			/* Dark mode override for recommended reading title */
+			body.dark .paginav .title {
+				color: rgb(156, 163, 175) !important;
+			}
+
+			/* Recommended Reading Link Styling - matching VAE post */
+			.paginav a {
+				color: var(--primary-color);
+				text-decoration: none;
+				transition: var(--transition-base);
+				display: block;
+				padding: 8px 12px;
+				border-radius: var(--radius-sm);
+			}
+
+			.paginav a:hover {
+				background-color: var(--bg-secondary);
+				color: var(--primary-hover);
+				transform: translateY(-1px);
+				box-shadow: var(--shadow-sm);
+			}
+
+			.paginav span:not(.title) {
+				color: var(--primary-color);
+				font-weight: 500;
+				font-size: 1rem;
+				line-height: 1.4;
+				display: block;
+				margin-top: 2px;
+			}
+
+			.paginav .subtitle {
+				color: var(--primary-color);
+				font-weight: 500;
+				font-size: 0.95rem;
+				line-height: 1.3;
+				display: block;
+				margin-top: 1px;
+				opacity: 0.9;
+			}
+
+			.paginav span:not(.title):hover {
+				color: var(--primary-hover);
+				text-decoration: underline;
+			}
+
+			/* Dark mode overrides for recommended reading links */
+			body.dark .paginav a {
+				color: var(--primary-color);
+			}
+
+			body.dark .paginav a:hover {
+				background-color: var(--bg-secondary);
+				color: var(--primary-hover);
+			}
+
+			body.dark .paginav span:not(.title) {
+				color: var(--primary-color);
+			}
+
+			body.dark .paginav span:not(.title):hover {
+				color: var(--primary-hover);
+			}
+
+			/* Additional paginav improvements for better spacing */
+			.paginav {
+				margin: 12px 0;
+				padding: 8px 0;
+			}
+
+			.paginav a {
+				text-decoration: none;
+				transition: all 0.2s ease;
+			}
+
+			.paginav a:hover {
+				transform: translateY(-1px);
+			}
+
+			/* Ensure proper spacing between title and subtitles */
+			.paginav .title {
+				margin-bottom: 2px;
+			}
+
+			.paginav .subtitle:first-of-type {
+				margin-top: 3px;
+			}
+
+			/* Simple blue numbering for skills list */
+			#skills + p + ol {
+				counter-reset: skill-counter;
+			}
+
+			#skills + p + ol li {
+				counter-increment: skill-counter;
+				position: relative;
+				padding-left: 1.2rem;
+			}
+
+			#skills + p + ol li::marker {
+				color: #007bff;
+				font-weight: bold;
+			}
+
+			/* Mobile skills list improvements */
+			@media screen and (max-width: 768px) {
+				#skills + p + ol li {
+					padding-left: 1rem;
+					margin-bottom: 1rem;
+				}
+
+				/* Override text-align: justify for mobile */
+				#skills + p + ol li.custom-paragraph {
+					text-align: left !important;
+				}
+
+				/* Mobile paginav improvements */
+				.paginav {
+					margin: 8px 0;
+				}
+
+				.paginav .title {
+					font-size: 12px;
+					line-height: 1.2;
+				}
+
+				.paginav .subtitle {
+					font-size: 0.9rem;
+					line-height: 1.2;
+					margin-top: 1px;
+				}
+			}
+
+			@media screen and (max-width: 480px) {
+				#skills + p + ol li {
+					padding-left: 0.8rem;
+					margin-bottom: 0.75rem;
+				}
+
+				/* Override text-align: justify for small mobile */
+				#skills + p + ol li.custom-paragraph {
+					text-align: left !important;
+				}
+
+				/* Mobile paginav improvements */
+				.paginav {
+					margin: 6px 0;
+				}
+
+				.paginav .title {
+					font-size: 11px;
+					line-height: 1.1;
+				}
+
+				.paginav .subtitle {
+					font-size: 0.85rem;
+					line-height: 1.1;
+					margin-top: 0.5px;
+				}
+			}
+
+			/* Fix TOC styling - restore blue bullets from main.css and ensure proper spacing */
+			.toc li::before {
+				content: '•' !important;
+				position: absolute !important;
+				left: 0 !important;
+				color: var(--brand-blue) !important;
+				transition: all 0.2s ease !important;
+			}
+
+			.toc li {
+				position: relative;
+				padding-left: 1.2rem;
+				list-style: none;
+			}
+
+			/* Copy button styling */
+			.copy-code {
+				position: absolute;
+				top: 8px;
+				right: 8px;
+				background: var(--primary-color);
+				color: white;
+				border: none;
+				border-radius: var(--radius-sm);
+				padding: 6px 12px;
+				font-size: 12px;
+				font-weight: 500;
+				cursor: pointer;
+				transition: var(--transition-base);
+				opacity: 0;
+				z-index: 10;
+				box-shadow: var(--shadow-sm);
+			}
+
+			.copy-code:hover {
+				background: var(--primary-hover);
+				transform: translateY(-1px);
+				box-shadow: var(--shadow-md);
+			}
+
+			pre:hover .copy-code {
+				opacity: 1;
+			}
+
+			.copy-code:focus {
+				outline: 2px solid var(--primary-color);
+				outline-offset: 2px;
+				opacity: 1;
+			}
+
+			/* Ensure pre elements have relative positioning for copy button */
+			pre {
+				position: relative;
+			}
+
+			/* Dark mode copy button */
+			body.dark .copy-code {
+				background: var(--primary-color);
+				color: var(--bg-primary);
+			}
+
+			body.dark .copy-code:hover {
+				background: var(--primary-hover);
+			}
+
+			/* Show copy button on focus for accessibility */
+			pre:focus-within .copy-code {
+				opacity: 1;
+			}
+
+			/* Ensure citation code block has proper styling */
+			#citation pre {
+				background: var(--code-bg);
+				border: 1px solid var(--border-color);
+				border-radius: var(--radius-sm);
+				padding: 16px;
+				overflow-x: auto;
+				position: relative;
+			}
+
+			#citation pre code {
+				font-family: var(--font-mono);
+				font-size: 14px;
+				line-height: 1.5;
+				color: var(--text-primary);
+			}
+
+			/* Make copy button more visible for citation */
+			#citation .copy-code {
+				opacity: 1;
+				background: var(--primary-color);
+				color: white;
+				box-shadow: var(--shadow-md);
+			}
+
+			#citation .copy-code:hover {
+				opacity: 1;
+				background: var(--primary-hover);
+				transform: translateY(-2px);
+				box-shadow: var(--shadow-lg);
+			}
+
+			/* Ensure citation section has proper spacing */
+			#citation {
+				margin: 2rem 0;
+			}
+
+			#citation p {
+				margin-bottom: 1rem;
+			}
+
+			/* Reading Progress Bar */
+			.reading-progress {
+				position: relative;
+				width: 100%;
+				height: 2px;
+				background: var(--border-color);
+				border-radius: 1px;
+				margin: 0.5rem 0;
+				overflow: hidden;
+			}
+
+			.progress-bar {
+				height: 100%;
+				background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
+				width: 0%;
+				transition: width var(--transition-base);
+				border-radius: 1px;
+				box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+			}
+
+			/* Dotted red border */
+			hr.new3 {
+			  border-top: 0.5px dotted gray;
+			}
+
+			/* Enhanced post header styling */
+			.post-header {
+				text-align: center;
+				margin-bottom: 1rem;
+				padding-bottom: 0.5rem;
+				margin-top: 0.5rem;
+				position: relative;
+			}
+
+			/* Removed duplicate accent line to avoid double horizontal lines */
+
+			.post-title {
+				font-size: var(--font-size-2xl);
+				margin-bottom: 1rem;
+				color: var(--text-primary);
+				transition: var(--transition-base);
+				position: relative;
+			}
+
+			.post-title:hover {
+				transform: translateY(-2px) scale(1.02);
+			}
+
+			/* Add underline like FAQ page */
+			.post-title::after {
+				content: '';
+				position: absolute;
+				bottom: -8px;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 160px;
+				height: 2px;
+				background: linear-gradient(90deg, rgb(13, 110, 253) 0%, rgb(59, 130, 246) 50%, rgb(10, 88, 202) 100%);
+				border-radius: 1px;
+				transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+				opacity: 0;
+				transform: translateX(-50%) scaleX(0);
+				transform-origin: center;
+			}
+
+			.post-title:hover::after {
+				opacity: 1;
+				transform: translateX(-50%) scaleX(1);
+				height: 3px;
+			}
+
+
+
+			/* Animate underline on page load */
+			.post-title.loaded::after {
+				opacity: 1;
+				transform: translateX(-50%) scaleX(1);
+			}
+
+			/* Dark mode underline */
+			body.dark .post-title::after {
+				background: linear-gradient(90deg, rgb(34, 211, 238) 0%, rgb(6, 182, 212) 50%, rgb(8, 145, 178) 100%);
+				box-shadow: 0 2px 8px rgba(34, 211, 238, 0.3);
+			}
+
+			.post-meta {
+				color: rgb(0,123,255);
+				font-size: 14px;
+				display: flex;
+				flex-wrap: wrap;
+				margin-bottom: 1rem;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.post-meta:hover {
+				color: rgb(0,105,217);
+			}
+
+			/* Print styles */
+			@media print {
+				.header,
+				.footer,
+				.top-link,
+				.copy-code,
+				#theme-toggle {
+					display: none !important;
+				}
+
+				.post-content {
+					font-size: 12pt;
+					line-height: 1.4;
+					color: #000 !important;
+					background: #fff !important;
+				}
+
+				.python-roadmap {
+					border: 1px solid #000;
+					page-break-inside: avoid;
+				}
+
+				.python-roadmap th,
+				.python-roadmap td {
+					border: 1px solid #000;
+					padding: 4px;
+				}
+
+				.quote {
+					border-left: 4px solid #000;
+					background: #f9f9f9 !important;
+					page-break-inside: avoid;
+					font-size: 1.2em;
+					font-style: italic;
+				}
+
+				a {
+					color: #000 !important;
+					text-decoration: underline;
+				}
+
+				h1, h2, h3, h4, h5, h6 {
+					color: #000 !important;
+					page-break-after: avoid;
+				}
+			}
 		</style>
 		
     </nav>
 </header>
 
-<style>
-/* Mobile responsiveness styles */
-@media screen and (max-width: 768px) {
-    /* Mobile navigation improvements */
-    #menu a {
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-    }
-
-    /* Mobile dropdown menu styles */
-    .dropdown-menu {
-        right: 0;
-        left: auto;
-        min-width: 200px;
-        border-radius: var(--radius-md);
-    }
-
-    /* Disable hover on mobile */
-    .dropdown .dropdown-menu {
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-10px);
-    }
-
-    .dropdown.dropdown-open .dropdown-menu {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
-
-    .dropdown.dropdown-open .caret {
-        transform: rotate(180deg);
-    }
-
-    /* Mobile skills list improvements */
-    #skills + p + ol {
-        padding-left: 1rem;
-    }
-
-    #skills + p + ol li {
-        padding-left: 1rem;
-        margin-bottom: 1rem;
-    }
-
-    #skills + p + ol li.custom-paragraph {
-        text-align: left !important;
-    }
-
-    /* Mobile custom paragraph improvements */
-    .custom-paragraph {
-        margin: 1rem 0;
-        text-align: left !important;
-    }
-
-    /* Mobile post header improvements */
-    .post-header {
-        padding: 1rem 0;
-        text-align: center;
-    }
-
-    .post-title {
-        font-size: 2.5rem;
-        margin: 0.5rem 0;
-        line-height: 1.2;
-    }
-
-    .post-meta {
-        font-size: 0.9rem;
-        margin: 0.5rem 0;
-    }
-
-    /* Improve mobile content spacing */
-    .post-content {
-        padding: 0 1rem;
-    }
-
-    /* Better mobile table handling */
-    .python-roadmap {
-        font-size: 13px;
-        margin: 1.5rem 0;
-    }
-
-    .python-roadmap th,
-    .python-roadmap td {
-        padding: 8px 6px;
-        word-wrap: break-word;
-    }
-
-    /* Mobile paginav improvements */
-    .paginav {
-        margin: 8px 0;
-    }
-
-    .paginav .title {
-        font-size: 12px;
-        line-height: 1.2;
-    }
-
-    .paginav .subtitle {
-        font-size: 0.9rem;
-        line-height: 1.2;
-        margin-top: 1px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .nav {
-        flex-direction: column;
-        padding: 0.5rem 1rem;
-        gap: 0.5rem;
-    }
-
-    .logo {
-        margin-bottom: 0.5rem;
-    }
-
-    #menu {
-        justify-content: center;
-        gap: 0.25rem;
-        flex-wrap: wrap;
-    }
-
-    #menu a {
-        font-size: 0.8rem;
-        padding: 0.4rem 0.6rem;
-    }
-
-    /* Small mobile skills list improvements */
-    #skills + p + ol {
-        padding-left: 0.5rem;
-    }
-
-    #skills + p + ol li {
-        padding-left: 0.8rem;
-        margin-bottom: 0.75rem;
-    }
-
-    #skills + p + ol li.custom-paragraph {
-        text-align: left !important;
-    }
-
-    /* Small mobile custom paragraph improvements */
-    .custom-paragraph {
-        margin: 0.75rem 0;
-        text-align: left !important;
-    }
-
-    /* Small mobile post header improvements */
-    .post-header {
-        padding: 0.75rem 0;
-        text-align: center;
-    }
-
-    .post-title {
-        font-size: 2rem;
-        margin: 0.5rem 0;
-        line-height: 1.1;
-    }
-
-    .post-meta {
-        font-size: 0.8rem;
-        margin: 0.5rem 0;
-    }
-
-    /* Improve small mobile content spacing */
-    .post-content {
-        padding: 0 0.75rem;
-    }
-
-    /* Better small mobile table handling */
-    .python-roadmap {
-        font-size: 12px;
-        margin: 1rem 0;
-    }
-
-    .python-roadmap th,
-    .python-roadmap td {
-        padding: 6px 4px;
-        word-wrap: break-word;
-    }
-
-    /* Small mobile paginav improvements */
-    .paginav {
-        margin: 6px 0;
-    }
-
-    .paginav .title {
-        font-size: 11px;
-        line-height: 1.1;
-    }
-
-    .paginav .subtitle {
-        font-size: 0.85rem;
-        line-height: 1.1;
-        margin-top: 0.5px;
-    }
-}
-
-/* Additional paginav improvements for better spacing */
-.paginav {
-    margin: 12px 0;
-    padding: 8px 0;
-}
-
-.paginav a {
-    text-decoration: none;
-    transition: all 0.2s ease;
-}
-
-.paginav a:hover {
-    transform: translateY(-1px);
-}
-
-/* Ensure proper spacing between title and subtitles */
-.paginav .title {
-    margin-bottom: 2px;
-}
-
-.paginav .subtitle:first-of-type {
-    margin-top: 3px;
-}
-
-/* Simple blue numbering for skills list */
-#skills + p + ol {
-    counter-reset: skill-counter;
-    list-style: none;
-    padding-left: 1.2rem;
-}
-
-#skills + p + ol li {
-    counter-increment: skill-counter;
-    position: relative;
-    padding-left: 1.2rem;
-}
-
-#skills + p + ol li::marker {
-    content: counter(skill-counter);
-    color: var(--primary-color);
-    font-weight: bold;
-    font-size: 1.1em;
-}
-
-/* Custom paragraph styles */
-.custom-paragraph {
-    font-family: var(--font-body);
-    font-size: var(--font-size-base);
-    line-height: 1.556;
-    word-spacing: 0.1em;
-    margin: 28.008px 0px;
-    color: var(--text-primary);
-    transition: var(--transition-base);
-}
-
-/* Post content blockquote styles */
-.post-content blockquote {
-    border-left: 4px solid var(--primary-color);
-    padding: 1.5rem;
-    margin: 2rem 0;
-    font-style: italic;
-    color: var(--text-secondary);
-    background: var(--bg-secondary);
-    border-radius: var(--radius-sm);
-}
-</style>
 
 <main class="main">
 
 <article class="post-single">
   <header class="post-header">
     
-    <h1 class="post-title">
+    <h2 class="post-title">
       Disentangling the Latent Space: A Guide to Beta-VAE
-    </h1>
-    <div class="post-meta"><span title='2022-02-27 00:00:00 +0000 UTC'>November 27, 2022</span>&nbsp;·&nbsp;18 min&nbsp;·&nbsp;kibrom Haftu
+    </h2>
+    <div class="post-meta"><span title='2022-02-27 00:00:00 +0000 UTC'>November 27, 2022</span>&nbsp;·&nbsp;18 min&nbsp;·&nbsp;kibrom Haftu</div>
 
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress">
+      <div class="progress-bar" id="reading-progress"></div>
 </div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
+  </header> <div class="toc" role="navigation" aria-label="Table of contents">
+    <details>
+        <summary accesskey="c" title="(Alt + C)" role="button" aria-expanded="false">
             <span class="details">Table of Contents</span>
         </summary>
 
@@ -1070,6 +1764,8 @@ Autoencoders are a type of neural network that can be used to learn a compressed
   <div class="post-content"><!-- Autocoders are a family of neural network models aiming to learn compressed latent variables of high-dimensional data. Starting from the basic autocoder model, this post reviews several variations, including denoising, sparse, and contractive autoencoders, and then Variational Autoencoder (VAE) and its modification beta-VAE. -->
 
 <h1 id="Autoencoding101">Autoencoding 101: Types, Beta-VAEs, and Beyond<a hidden class="anchor" aria-hidden="true" href="#Autoencoding101">#</a></h1>
+
+
 <p>Let's dive straight into the world of autoencoders and their cool variations, especially the game-changing beta-VAEs. We'll take a look at how these technologies are advancing data representation and generative tasks, and how they're really pushing the limits of what we can achieve in machine learning.</p>
 
 <p>Autoencoders are a type of neural network that can be used to learn a compressed representation of input data. They work by training the network to reconstruct the input data from a lower-dimensional latent representation, which is typically obtained using an encoder. Autoencoders are versatile and can be used for a variety of tasks, including data compression, anomaly detection, and feature learning.
@@ -1077,6 +1773,7 @@ Autoencoders are a type of neural network that can be used to learn a compressed
 <p>
 One of the main benefits of autoencoders is their ability to reduce the dimensionality of large and complex data sets, making them more manageable for downstream tasks such as classification, clustering, and visualization. They can also be used to identify patterns or anomalies in data that may not be easily detectable by other means.Using autoencoders, it is also possible to learn useful features from the data they are fed. These features can be used to enhance the performance of other machine learning models. It is also useful for data generation tasks such as generating images or synthesis of speech, which can be generated with them.
 </p>
+<p class="custom-paragraph" style="text-align: justify;">The spread of literacy was slow and gradual, with schools and educational institutions being established to teach the masses how to read and write. At first, literacy was only available to the privileged few, but as time went on, more and more people gained access to education. This brought about a significant change in society, as people became more informed and knowledgeable about the world around them. Consequently, more opportunities have emerged, especially with the advent of technology and the internet, making educational resources increasingly accessible to all. This shift has ushered in a new era of opportunities for those who previously lacked access to educational materials, paving the way for a more level playing field for the benefit of all. The democratization of knowledge has facilitated a more connected and equitable global population, breaking down traditional barriers to education and promoting greater social justice.</p>
 <h1 id="notation">Notation<a hidden class="anchor" aria-hidden="true" href="#notation">#</a></h1>
 <table>
 <thead>
@@ -1130,7 +1827,7 @@ One of the main benefits of autoencoders is their ability to reduce the dimensio
 </tr>
 <tr>
   <td>$p_{\theta}(\mathbf{x}\vert\mathbf{z})$</td>
-  <td>Likelihood function, also known as <strong>probabilistic decoder</strong>, parameterized by $\theta$. This function is used to estimate the probability of generating the true data sample $\mathbf{x}$ given the latent code $\mathbf{z}$. This can be useful in certain types of generative models, such as Variational Autoencoders (VAEs), where the goal is to learn a compact and informative representation of the data.
+  <td>Likelihood function, also known as <strong>probabilistic decoder</strong>, parameterized by $\theta$. This function is used to estimate the probability of generating the true data sample $\mathbf{x}$ given the latent code $\mathbf{z}$. This can be useful in certain types of generative models, such as Variational Autoencoder (VAEs), where the goal is to learn a compact and informative representation of the data.
 </td>
 </tr>
 </tbody>
@@ -1158,7 +1855,6 @@ $$
 <p>
     Where $L_\text{AE}$ is the loss function for the Autoencoder, $n$ is the number of input samples, $\mathbf{x}^{(i)}$ is the $i^{th}$ input sample, $f_\theta(.)$ is the decoder function parameterized by $\theta$, and $g_\phi(.)$ is the encoder function parameterized by $\phi$. This loss function measures the average squared difference between the original input and the reconstructed output, and the goal is to minimize this value during the training process by optimizing the parameters $\theta$ and $\phi$.
 </p>
-
 <h1 id="denoising-autoencoder">Denoising Autoencoder<a hidden class="anchor" aria-hidden="true" href="#denoising-autoencoder">#</a></h1>
 <p>Denoising Autoencoder is a modification to the basic autoencoder architecture that addresses the problem of overfitting. The main idea behind denoising autoencoder is to add noise to the input data, and then train the model to reconstruct the original, non-noisy input. This is done by corrupting the input data in a stochastic manner, creating a noisy version of the input, $\tilde{\mathbf{x}} \sim \mathcal{q}_\mathcal{D}(\tilde{\mathbf{x}} \vert \mathbf{x})$. The denoising autoencoder is then trained to recover the original input from the corrupted version, by minimizing the reconstruction error between the original input and the output produced by the network. This forces the model to learn a more robust representation of the data, as it must be able to reconstruct the original input despite the added noise.</p>
 <p>The denoising autoencoder can be seen as a form of data augmentation, where the model is exposed to different variations of the input data during training. This improves the robustness and generalization of the model, as it is able to handle real-world, noisy data when it is used for inference. Additionally, by training on noisy data, the denoising autoencoder can also be used as a pre-training step for other machine learning tasks, such as classification or segmentation.</p>
@@ -1240,7 +1936,7 @@ KL divergence, denoted as $D_\text{KL}(X|Y)$, measures the amount of information
 
 It is important to note that we use the reversed KL divergence, $D_\text{KL}(q_\phi | p_\theta)$ instead of the forward KL divergence, $D_\text{KL}(p_\theta | q_\phi)$. The reason for this is that the forward KL divergence requires the approximating distribution, $q_\phi$, to cover the entire support of the true distribution, $p_\theta$, which can be restrictive. On the other hand, minimizing the reversed KL divergence squeezes the approximating distribution, $q_\phi$, under the true distribution, $p_\theta$, allowing for more flexibility.
 
-Let's now expand the equation for the reversed KL divergence between $q_\phi(\mathbf{z}\vert\mathbf{x})$ and $p_\theta(\mathbf{z}\vert\mathbf{x})$:
+Let's now expand the equation for the reversed KL divergence between $q_\phi(\mathbf{z}\vert\mathbf{x})$ and $p_\theta(\mathbf{z}\vert\mathbf{x})$:</p>
 
 <div>
 $$
@@ -1253,7 +1949,7 @@ $$
 &=\log p_\theta(\mathbf{x}) + \int q_\phi(\mathbf{z} \vert \mathbf{x})\log\frac{q_\phi(\mathbf{z} \vert \mathbf{x})}{p_\theta(\mathbf{z}, \mathbf{x})} d\mathbf{z} & \\
 &=\log p_\theta(\mathbf{x}) - \int q_\phi(\mathbf{z} \vert \mathbf{x})\log\frac{p_\theta(\mathbf{z}, \mathbf{x})}{q_\phi(\mathbf{z} \vert \mathbf{x})} d\mathbf{z} & \\
 &\text{Switching the order of x, z} \\
-&=\log p_\theta(\mathbf{x}) - \int q_\phi(\mathbf{z} \vert \mathbf{x})\log\frac{p_\theta(\mathbf{x}, \mathbf{z})}{q_\phi(\mathbf{z} \vert \mathbf{x})p_\theta(\mathbf{x})} d\mathbf{z} \\
+&=\int q_\phi(\mathbf{z} \vert \mathbf{x}) \log\frac{p_\theta(\mathbf{x}, \mathbf{z})}{q_\phi(\mathbf{z} \vert \mathbf{x})} d\mathbf{z} \\
 
 &\text{ By defining } D_\text{KL}(q_\phi(\mathbf{z}\vert\mathbf{x})||p_\theta(\mathbf{z})) = \int q_\phi(\mathbf{z} \vert \mathbf{x})\log\frac{p_\theta(\mathbf{z})}{q_\phi(\mathbf{z} \vert \mathbf{x})} d\mathbf{z} \\
 &=\log p_\theta(\mathbf{x}) - D_\text{KL}(q_\phi(\mathbf{z}\vert\mathbf{x})||p_\theta(\mathbf{z})) + \mathbb{E}{q\phi(\mathbf{z}\vert\mathbf{x})}\left[\log p_\theta(\mathbf{x},\mathbf{z})\right] \\
@@ -1279,22 +1975,16 @@ $$
 Where $\theta^{}, \phi^{}$ are the optimal parameters for the model.
 </div>
 
-
-
-
 <p>The Evidence Lower Bound (ELBO) is an upper bound on the log marginal likelihood of the data, $\log p_\theta(\mathbf{x})$. We can optimize the ELBO with respect to $\phi$ and $\theta$ to find the best approximating distribution, $q_\phi(\mathbf{z}\vert\mathbf{x})$, and the best parameter values, $\theta$.</p> 
 <p>In summary, the ELBO is a scalar value that is used as a loss function in variational inference to approximate the true posterior distribution. It is the sum of two terms: the expected log likelihood of the data under the approximating distribution, and the KL divergence between the approximating distribution and the true posterior. It can be optimized with respect to both the parameters of the approximating distribution and the model, in order to find the best approximation of the true posterior distribution.</p> 
 <p>It is important to note that the ELBO is an lower bound on the true log likelihood of the data, thus, the optimization of ELBO will not give the true maximum likelihood estimate of the parameters. However, it is a practical and commonly used method for approximating the true posterior in Bayesian inference.</p> 
 <p>Also, in practice, the ELBO is usually optimized via Stochastic Gradient Variational Bayes (SGVB) which is an efficient optimization method that utilizes the reparameterization trick and stochastic gradient descent to optimize the ELBO.</p> 
 <p>In a nutshell, Variational Inference is a powerful technique for approximating complex posterior distributions in Bayesian models, and the Evidence Lower Bound (ELBO) is a key component of this method, serving as the loss function to be optimized during the inference process.</p> 
 
-
-
-
 <h2 id="reparameterization-trick">Reparameterization Trick<a hidden class="anchor" aria-hidden="true" href="#reparameterization-trick">#</a></h2>
 <p>The reparameterization trick is a technique used to make stochastic processes differentiable in order to use them in neural networks. It is particularly useful in the context of generative models, where a random variable is typically used to generate data samples. However, as sampling is a stochastic process, it is not differentiable, which makes it difficult to use in a neural network.</p>
 <p>To solve this problem, the reparameterization trick expresses the random variable as a deterministic function of another random variable and some parameters that can be learned by the network. This way, the network can learn the parameters of the distribution while keeping the stochasticity in the auxiliary random variable, making it possible to compute gradients and update the parameters.</p>
-<p>For example, in the case of a multivariate Gaussian distribution, the random variable can be represented as:
+<p>For example, in the case of a multivariate Gaussian distribution, the random variable can be represented as:</p>
 <div>
 $$
 \begin{aligned}
@@ -1308,8 +1998,6 @@ $$
 <p>This trick allows the network to compute gradients and update the parameters of the distribution, and it is not limited to the Gaussian distribution, it can be applied to other types of distributions as well, such as the Bernoulli, Categorical, etc.</p>
 <p>The reparameterization trick is particularly useful in the context of Variational Autoencoders (VAEs) and their variants, such as Variational Inference Generative Adversarial Networks (VIGANs). VAEs are a type of generative model that use a latent variable to generate data samples. They also include an encoder network that maps data samples to a latent representation, and a decoder network that maps latent representations to data samples. By using the reparameterization trick, VAEs can be trained end-to-end using backpropagation, allowing the network to learn the distributions of the latent variables that generate the data..</p>
 <p>In general terms, the reparameterization trick is a technique used to make stochastic processes trainable for use in neural networks, particularly in generative models. It expresses the random variable as a deterministic function of another random variable and some parameters that can be learned by the network, allowing the network to learn the parameters of the distribution while keeping the stochasticity in the auxiliary random variable. This technique is widely used in VAEs and other variants, making it possible to train them end-to-end via backpropagation.</p>
-
-
 
 <img src="vae-gaussian.png" style="width: 100%;" class="center" />
 <figcaption>Fig. 3. A Diagrammatic Representation of a VAE with Multivariate Gaussian Latent Variables. </figcaption> <p> In the case of a multivariate Gaussian assumption, the encoder network maps the input data to the mean and variance of a Gaussian distribution, and the decoder network samples from this distribution to generate new data.
@@ -1329,34 +2017,247 @@ $$
 <p>Beta-VAE is a variant of the Variational Autoencoder (VAE) model, which is a generative model that is trained to learn a compact latent representation of data. The main idea behind VAEs is to learn a probabilistic encoding of the data, such that the data can be generated from a simple random noise signal. Beta-VAE modifies the standard VAE objective function by introducing a new hyperparameter, beta, which controls the trade-off between reconstruction error and the KL divergence between the approximate posterior and true posterior.</p>
 <p>The first term in the ELBO equation is the KL divergence between the approximate posterior distribution, $q_\phi(\mathbf{z}\vert\mathbf{x})$, and the true posterior distribution, $p_\theta(\mathbf{z}\vert\mathbf{x})$, scaled by the beta hyperparameter. The KL divergence term measures how different the approximate posterior is from the true posterior. In Beta-VAE, by increasing the value of beta, the weight on the KL divergence term is increased, which in turn encourages the approximate posterior to match the true posterior more closely. This results in a more disentangled representation of the data.</p>
 <p>The second term in the ELBO equation is the negative log-likelihood of the data given the latent variables, $-\log p_\theta(\mathbf{x}\vert\mathbf{z})$. This term measures the difference between the original data and the data generated by the decoder network.</p>
-<p>The encoder and decoder networks, represented by the parameters $\phi$ and $\theta$, are trained to maximize the ELBO with respect to these parameters. The encoder network maps the data to the latent space and the decoder network maps the latent variables back to the original data space. The training process involves minimizing the difference between the original data and the data generated by the decoder network. The objective of the training process is to learn a probabilistic encoding of the data such that the data can be generated from a simple random noise signal.</p>
+<p>The encoder and decoder networks, represented by the parameters $\phi$ and $\theta$, are trained to maximize the ELBO with respect to these parameters. The encoder network maps the data to the latent space and the decoder network maps the latent variables back to the original data space. The training process involves minimizing the difference between the original data and the data generated by the decoder network. The objective of the training process is to learn a probabilistic encoding of the data such that the data can be used as en embedding vector in various applications (i.e. search), help data compression, or reveal the underlying data generative factors.</p>
 <p>The value of beta can be adjusted to prioritize either reconstruction or disentanglement, depending on the task and dataset. For example, in applications where reconstruction accuracy is more important, a smaller value of beta can be used, while in applications where disentanglement is more important, a larger value of beta can be used. Additionally, the value of beta can be adapted during training to achieve a balance between reconstruction and disentanglement.</p>
 <p>In summary, Beta-VAE is a generative model that is trained to learn a compact latent representation of data. It modifies the standard VAE objective function by introducing a new hyperparameter,beta, which controls the trade-off between reconstruction error and the KL divergence between the approximate posterior and true posterior. By increasing the value of beta, the weight on the KL divergence term is increased, which results in a more disentangled representation of the data. The encoder and decoder networks are trained to maximize the ELBO, and the value of beta can be adjusted to prioritize either reconstruction or disentanglement, depending on the task and dataset. This allows for more flexibility and control over the representation learned by the model, and can lead to better performance on certain tasks and datasets. Overall, Beta-VAE is a powerful tool for learning generative models and can be applied to a wide range of problems in computer vision, natural language processing, and other fields.</p>
 
-
-
 <hr>
 
+  .python-roadmap:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  }
+
+  .python-roadmap thead {
+    background: linear-gradient(135deg, rgba(0, 123, 255, 0.1), rgba(0, 86, 179, 0.1));
+  }
+
+  .python-roadmap th {
+    padding: 1.25rem 1.5rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1.1em;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .python-roadmap th::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+  }
+
+  .python-roadmap th:hover::after {
+    width: 80%;
+  }
+
+  .python-roadmap td {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text-primary);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .python-roadmap tr:last-child td {
+    border-bottom: none;
+  }
+
+  .python-roadmap tr {
+    background: var(--bg-primary);
+    transition: all 0.3s ease;
+  }
+
+  .python-roadmap tr:hover {
+    background: var(--bg-secondary);
+  }
+
+  .python-roadmap tr:hover td {
+    transform: translateX(8px);
+  }
+
+  .python-roadmap a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0 0 2px 0;
+    display: inline-block;
+  }
+
+  .python-roadmap a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1.5px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease, opacity 0.3s ease;
+    opacity: 0.7;
+  }
+
+  .python-roadmap a:hover {
+    color: var(--primary-hover);
+  }
+
+  .python-roadmap a:hover::after {
+    width: 100%;
+    opacity: 1;
+  }
+
+  /* Animation for table rows */
+  .python-roadmap tr {
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Staggered animation for rows */
+  .python-roadmap tr:nth-child(1) { animation-delay: 0.1s; }
+  .python-roadmap tr:nth-child(2) { animation-delay: 0.2s; }
+  .python-roadmap tr:nth-child(3) { animation-delay: 0.3s; }
+  .python-roadmap tr:nth-child(4) { animation-delay: 0.4s; }
+  .python-roadmap tr:nth-child(5) { animation-delay: 0.5s; }
+
+  /* Dark mode specific styles */
+  body.dark .python-roadmap {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  body.dark .python-roadmap:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  body.dark .python-roadmap th {
+    background: linear-gradient(135deg, rgba(0, 123, 255, 0.15), rgba(0, 86, 179, 0.15));
+  }
+
+  body.dark .python-roadmap td {
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+  }
+</style>
+
+<table class="python-roadmap">
+  <thead>
+    <tr>
+      <th>Python Roadmap</th>
+      <th>Learning Resources</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Beginner Python</td>
+      <td><a href="https://www.youtube.com/watch?v=rfscVS0vtbw">Bootcamp - Python Full Course</a> by freeCodeCamp.org, <a href="https://www.py4e.com/">Python for Everybody</a> by Dr. Chuck Severance, <a href="https://www.codecademy.com/learn/learn-python-3">Codecademy's Learn Python 3</a>, <a href="https://cs50.harvard.edu/python/2022/">Harvard CS50 Introduction to Computer Science with Python</a> [<a href="https://www.youtube.com/playlist?list=PLhQjrBD2T382gdfveyad09Ierl_3Jh_wR">YouTube playlist</a>], <a href="https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/">MIT Introduction to Computer Science and Programming in Python</a> [<a href="https://www.youtube.com/playlist?list=PLUl4u3cNGP63WbdFxL8giv4yhgdMGaZNA">YouTube playlist</a>]</td>
+    </tr>
+    <tr>
+      <td>Intermediate Python</td>
+      <td><a href="https://book.pythontips.com/en/latest/">Intermediate Python</a> by Muhammad Yasoob Ullah Khalid, <a href="https://www.udacity.com/course/python-intermediate--ud036">Python Intermediate</a> by Udacity, <a href="https://www.coursera.org/professional-certificates/google-it-automation">Google Automation Using Python</a> by Coursera</td>
+    </tr>
+    <tr>
+      <td>Advanced Python</td>
+      <td><a href="https://www.oreilly.com/library/view/fluent-python/9781491946237/">Fluent Python</a> by Luciano Ramalho, <a href="https://www.udemy.com/course/python-advanced-topics/">Python Advanced Topics</a> by Fred Baptiste</td>
+    </tr>
+    <tr>
+      <td>Web Development with Python</td>
+      <td><a href="https://djangoforbeginners.com/">Django for Beginners</a> by William S. Vincent, <a href="https://www.fullstackpython.com/">Full Stack Python</a> by Matt Makai</td>
+    </tr>
+    <tr>
+      <td>Data Science with Python</td>
+      <td><a href="https://jakevdp.github.io/PythonDataScienceHandbook/">Python Data Science Handbook</a> by Jake VanderPlas, <a href="https://www.edx.org/course/data-science-with-python">Data Science with Python</a> by edX</td>
+    </tr>
+    <tr>
+      <td>Machine Learning with Python</td>
+      <td><a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/">Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow</a> by Aurélien Géron, <a href="https://www.coursera.org/learn/machine-learning-with-python">Machine Learning with Python</a> by Coursera</td>
+    </tr>
+    <tr>
+      <td>Python Tutorials</td>
+      <td><a href="https://www.youtube.com/c/Coreyms">Corey Schafer's YouTube channel</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<li class="custom-paragraph" style="text-align: justify;"><strong>Mathematical Skills</strong>: Is math a crucial skill for AI? Of course it is! In fact, it's hard to overstate just how important math is in the world of artificial intelligence and machine learning. It's like the air that AI breathes. Math is to AI as oxygen is to humans: essential for life and without it, nothing would survive. But why is math so important? Well, for one thing. Everything we do in AI and ML is based on mathematical algorithms and models, from simple linear regression to complex deep neural networks. And when it comes to building those algorithms, math is the language that computers speak. Of course, with so much to learn, it can be daunting to figure out where to start. But the key is to focus on the areas that are most important for your particular goals. Whether you're building a machine learning model, architecting a system, or trying to land your dream job, understanding the right math is absolutely crucial. For example, understanding the mathematics behind gradient descent helps you to optimize your model's weights, while understanding the mathematics behind linear algebra helps you to understand the underlying operations of neural networks, such as matrix multiplication and dot products.
+<blockquote class="quote">
+  <p>😟 "Mathematics is the language in which God has written the universe." <cite>- Galileo Galilei</cite></p>
+</blockquote>
+ To excel in machine learning, it's crucial to have a solid grasp of certain <strong>mathematical concepts</strong>. Some of the key areas that are essential for success in this field include linear algebra, probability and statistics, calculus, and optimization. Linear algebra is a fundamental concept in AI, involving vectors, matrices, and other mathematical structures. It is essential to gain a solid understanding of linear algebra in order to be able to represent and transform data in a way that is useful for machine learning. Probability and statistics provide the framework for understanding uncertainty and making predictions based on data. Concepts like discrete and continuous probability, standard probability distributions, and hypothesis testing are essential for analyzing data and building effective models. Calculus is also important in AI and ML, particularly in the optimization of models. Concepts like gradient descent, momentum, and the Adam optimization algorithm rely heavily on calculus. Still, deep learning is an emerging technology, and when you train a neural network, understanding the math behind the algorithms can help you make better decisions. Additionally, exploratory data analysis is a skill often underrated but incredibly valuable in data-centric AI development. Through systematic exploration of the data, EDA enables the discovery of errors and insights that can drive progress. But it's not just about knowing the math itself. It's also about having the skills to use that math to solve problems, to debug code, and to make better decisions about how to proceed. However, as machine learning becomes more sophisticated, it's getting easier to use and requires less debugging. This means that you don't need to have an in-depth knowledge of the complex math behind it to make it work. Even so, the fundamentals can still prove to be extremely helpful if you encounter problems or need to make tweaks. Ultimately, it's up to you to decide how deep you want to dive into the math and how it fits into your overall goals for using machine learning techniques.</li>
+<li class="custom-paragraph" style="text-align: justify;"><strong>Data science Skills</strong>: Data science has become a crucial aspect of modern business, research, and technology. The ability to manipulate and visualize data is essential for anyone who needs to code in AI or work with data. Pandas, NumPy, and Matplotlib are three of the most widely used data science tools that enable efficient data manipulation, analysis, and visualization. Pandas offers several data structures and functions for easy and efficient data manipulation and analysis. NumPy offers a powerful array data structure for numerical computations, and Matplotlib offers several plot types and customization options for data visualization. Whether you are a data scientist, a programmer, or a researcher, mastering these tools can help you streamline your workflow and make your data science projects more efficient and effective. Learn more about <a href="https://kibromhft.github.io/posts/2022-09-08-data-analysis/" title="Comprehensive data analysis guide">data analysis techniques</a> and how they complement AI development. So if you want to work with data more effectively, then it is worth spending some time learning some of these powerful tools that will help you to achieve your goals.</li>
+<li class="custom-paragraph" style="text-align: justify;"><strong>Machine Learning Skills</strong>: Have you heard of linear regression, logistic regression, decision trees, and clustering? These are some of the most widely used <a href="https://kibromhft.github.io/posts/2022-11-20-causality_in_ML/" title="Learn about causality vs correlation in ML">machine learning algorithms</a> that are used for a variety of tasks, such as predicting numerical values, classifying data, and grouping similar data points. By mastering these algorithms, you can build and train models that can analyze complex data sets and make predictions with high accuracy.</br> But how do you implement these algorithms in practice? This is where machine learning frameworks such as TensorFlow, Keras, and PyTorch come in. These tools provide a high-level interface that enables you to build, train, and evaluate machine learning models quickly and efficiently. With these frameworks, you can focus on high-level concepts and let the framework handle the low-level implementation details.&nbsp;<strong><a href="https://www.tensorflow.org/">TensorFlow</a></strong>, developed by Google, is an open-source machine learning framework that has gained significant popularity in recent years. It provides a powerful platform for building and training neural networks, and it supports both high-level APIs like Keras and low-level APIs for more advanced users. Keras, on the other hand, is a high-level neural network API that runs on top of TensorFlow. It provides a user-friendly interface that makes it easy to build and train neural networks without requiring extensive knowledge of the underlying implementation details. <a href="https://pytorch.org/"><strong>PyTorch</strong> </a>is another popular machine learning framework that has gained significant traction in recent years. It provides an efficient and flexible platform for building and training neural networks. It's particularly popular among researchers due to its dynamic computation graph and support for automatic differentiation. Personally, I find PyTorch to be an excellent framework for building deep learning applications in the healthcare industry. Its dynamic computation graph and support for automatic differentiation make it easy to experiment with different models and architectures, and its performance optimizations make it possible to train models quickly and efficiently. However, each framework has its strengths and weaknesses, and the choice of the right framework depends on the specific use case and project requirements. For practical troubleshooting strategies when working with these frameworks, check out our guide on <a href="https://kibromhft.github.io/posts/2022-10-06-overfit_DNN/" title="Debugging deep learning models">debugging deep learning models</a>.</li>
+
+<li class="custom-paragraph" style="text-align: justify;"><strong>Deep Learning Skills</strong>: Deep learning is a rapidly expanding field that has enabled significant breakthroughs in areas such as computer vision, natural language processing, and robotics. To become a successful deep learning practitioner, you need to have experience with fundamental deep learning algorithms and frameworks. Convolutional Neural Networks (CNNs), Recurrent Neural Networks (RNNs), and Generative Adversarial Networks (GANs) are the most popular and widely used deep learning algorithms. Meanwhile, TensorFlow, Keras, and PyTorch are essential deep learning libraries that provide a high-level interface for building, training, and evaluating deep learning models quickly and efficiently. Mastering these skills can enable you to analyze complex datasets and make predictions with high accuracy, making a significant impact on your business or research. For an in-depth exploration of neural network architectures, dive into our comprehensive guide on <a href="https://kibromhft.github.io/posts/2022-11-27-vae/" title="Autoencoding 101: Types, Beta-VAEs, and Beyond">autoencoders and variational methods</a>. So, dive into these essential skills today!</li>
+<blockquote class="quote">
+  <p>😟 "Deep learning is not a black box, it's a glass box - you can see what's happening inside if you know where to look." <cite>- Yann LeCun</cite></p>
+</blockquote>
+<li class="custom-paragraph" style="text-align: justify;"><strong>Problem-Solving Skills</strong>: The ability to solve problems is a crucial skill that is applicable in every aspect of our lives, including artificial intelligence. It is crucial in AI that you approach problems systematically and develop solutions that are robust, scalable, and efficient. By mastering this skill, you can become more effective in identifying problems, analyzing them, and developing solutions that meet the requirements of a project. To become a proficient problem solver, you need to be able to evaluate different approaches and select the best one based on performance, accuracy, and computational resources. This involves comparing the strengths and weaknesses of each approach and assessing the trade-offs involved in terms of time, resources, and performance. Developing problem-solving skills takes time and practice. It involves breaking down complex problems into smaller, more manageable sub-problems, identifying the key requirements and constraints, and developing a plan of attack. It also requires the ability to test and validate solutions, iterate on them, and refine them until they meet the project's objectives.</li>
+<li class="custom-paragraph" style="text-align: justify;"><strong>Collaboration Skills</strong>: You need to be able to work effectively in teams and collaborate with other professionals such as data scientists, software engineers, and project managers. To become an effective collaborator, you need to be able to understand and appreciate the perspectives of others. This involves active listening, empathy, and an openness to feedback and constructive criticism. You should also be able to contribute to a team's collective goals, whether that involves sharing knowledge, skills, or resources. Effective collaboration also requires the ability to communicate effectively, both verbally and in writing. You need to be able to explain technical concepts to non-technical stakeholders and convey the implications of technical decisions to other team members. This involves breaking down complex ideas into simple terms, using visual aids, and adapting your communication style to suit your audience.</li>
+</ol>
+<p class="custom-paragraph" style="text-align: justify;">Learning how to code AI has several benefits, including providing career opportunities, contributing to innovation, developing problem-solving skills, and gaining a competitive advantage. With the growing demand for AI professionals, learning how to code AI can position individuals for a lucrative and rewarding career. Furthermore, by learning the skill of programming AI, individuals might be able to develop innovative solutions that will revolutionize industries, and provide solutions to complex problems. Furthermore, developing problem-solving skills while coding AI can be transferable to other domains, making individuals more efficient, scalable, and robust in their approach to problem-solving. For instance, AI engineers can use their problem-solving skills to quickly identify bugs in the code and rapidly develop efficient solutions to any programming problems. Finally, gaining expertise in coding AI can offer a competitive advantage over other professionals in the field. This will enable individuals to develop innovative solutions that give their organizations a competitive edge.</p>
 
 
+<blockquote class="quote">
+  <p>😟 "The key to addressing job displacement is to focus on the opportunities created by technology, not just the challenges." <cite>- Tony Robbins</cite></p>
+</blockquote>
+<h2 id="related-topics">Related Topics & Further Reading</h2>
+<p class="custom-paragraph">To deepen your understanding of AI programming, explore these related topics:</p>
+<ul>
+    <li><a href="https://kibromhft.github.io/posts/2022-11-20-causality_in_ML/">Causality in Machine Learning</a> - Understanding cause vs. correlation</li>
+    <li><a href="https://kibromhft.github.io/posts/2022-10-06-overfit_DNN/">Debugging Deep Learning Models</a> - Practical troubleshooting strategies</li>
+    <li><a href="https://kibromhft.github.io/posts/2022-11-27-vae/">Autoencoding 101</a> - Neural network architectures and VAEs</li>
+    <li><a href="https://kibromhft.github.io/posts/2022-09-08-data-analysis/">Data Analysis Fundamentals</a> - Essential skills for AI development</li>
+    <li><a href="https://kibromhft.github.io/posts/2022-10-19-automation/">Jobs in the Digital Era</a> - Understanding automation's impact on employment</li>
+</ul>
+
+<h1 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h1>
+<p class="custom-paragraph" style="text-align: justify;">AI is transforming every aspect of our lives, and the ability to code AI has become the new literacy. People are writing codes to create incredible things, from self-driving cars to advanced medical technologies. By learning how to code AI, you can develop the skills needed to create intelligent systems that can solve complex problems and improve our lives. To learn coding AI, you need to have a strong foundation in programming fundamentals, a deep understanding of machine learning algorithms and AI applications, and a range of technical and non-technical skills. There are many benefits to learning how to code AI, including career opportunities, innovation, problem-solving skills, and a competitive advantage. As a person with the right training and dedication, it is possible to develop a proficient AI coder and contribute to the development of novel solutions that will have a lasting impact on the world we live in.</p>
+
+
+
+<h1 id="citation">Citation<a hidden class="anchor" aria-hidden="true" href="#citation">#</a></h1>
+<p>Cited as:</p>
+<blockquote>
+<p>kibrom, Haftu. (Jan 2023). Coding AI: The New Literacy. Kb&rsquo;s Blog. https://kibromhft.github.io/posts/2023-01-19-coding/.</p>
+</blockquote>
+<p>Or</p>
+<pre tabindex="0"><code>@article{kibrom2022coding,
+  title   = &quot;Coding AI: The New Literacy&quot;,
+  author  = &quot;kibrom, Haftu&quot;,
+  journal = &quot;Kb&#39;s Blog&quot;,
+  year    = &quot;2023&quot;,
+  month   = &quot;Jan&quot;,
+  url     = &quot;https://kibromhft.github.io/posts/2023-01-19-coding/&quot;
+}
+</code></pre>
 
   </div>
 
   <footer class="post-footer">
-
-	<ul class="post-tags">
-      <li><a href="https://kibromhft.github.io/keywords/autoencoder/">autoencoder</a></li>
-      <li><a href="https://kibromhft.github.io/keywords/generative-model/">generative-model</a></li>
-      <li><a href="https://kibromhft.github.io/keywords/unsupervised-learning/">unsupervised-learning</a></li>
-      <li><a href="https://kibromhft.github.io/keywords/dimensionality-reduction/">dimensionality-reduction</a></li>
-      <li><a href="https://kibromhft.github.io/keywords/neural-networks/">neural-networks</a></li>
-      <li><a href="https://kibromhft.github.io/keywords/reconstruction-error/">reconstruction-error</a></li>
-      <li><a href="https://kibromhft.github.io/keywords/latent-space/">latent-space</a></li>
-      <li><a href="https://kibromhft.github.io/keywords/variational-inference/">variational-inference</a></li>
-      <li><a href="https://kibromhft.github.io/keywords/beta-vae/">beta-vae</a></li>
-      <li><a href="https://kibromhft.github.io/keywords/generative-adversarial-networks/">generative-adversarial-networks</a></li>
-    </ul>
-
+          <ul class="post-tags">
+        <li><a href="https://kibromhft.github.io/keywords/autoencoder/">autoencoder</a></li>
+        <li><a href="https://kibromhft.github.io/keywords/generative-model/">generative-model</a></li>
+        <li><a href="https://kibromhft.github.io/keywords/unsupervised-learning/">unsupervised-learning</a></li>
+        <li><a href="https://kibromhft.github.io/keywords/dimensionality-reduction/">dimensionality-reduction</a></li>
+        <li><a href="https://kibromhft.github.io/keywords/neural-networks/">neural-networks</a></li>
+        <li><a href="https://kibromhft.github.io/keywords/reconstruction-error/">reconstruction-error</a></li>
+        <li><a href="https://kibromhft.github.io/keywords/latent-space/">latent-space</a></li>
+        <li><a href="https://kibromhft.github.io/keywords/variational-inference/">variational-inference</a></li>
+        <li><a href="https://kibromhft.github.io/keywords/beta-vae/">beta-vae</a></li>
+        <li><a href="https://kibromhft.github.io/keywords/generative-adversarial-networks/">generative-adversarial-networks</a></li>
+      </ul>
 <nav class="paginav">
   <a class="prev" href="https://kibromhft.github.io/posts/2022-11-20-causality_in_ML/">
     <span class="title"> Recommended Reading: </span>
@@ -1364,7 +2265,6 @@ $$
     <span>Causality in Machine Learning</span>
   </a>
 </nav>
-
 
 <div class="share-buttons">
     <a target="_blank" rel="noopener noreferrer" aria-label="share Disentangling the Latent Space: A Guide to Beta-VAE on twitter"
@@ -1419,107 +2319,164 @@ $$
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    // Optimized JavaScript with performance improvements
+    document.addEventListener('DOMContentLoaded', function() {
+        // Menu scroll position management
+        const menu = document.getElementById('menu');
     if (menu) {
         menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
+            menu.addEventListener('scroll', function() {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
+            });
     }
 
+        // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
             e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
+                const id = this.getAttribute("href").substr(1);
+                const targetElement = document.querySelector(`[id='${decodeURIComponent(id)}']`);
+                
+                if (targetElement) {
             if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                        targetElement.scrollIntoView({
                     behavior: "smooth"
                 });
             } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+                        targetElement.scrollIntoView();
             }
+                    
             if (id === "top") {
                 history.replaceState(null, null, " ");
             } else {
                 history.pushState(null, null, `#${id}`);
+                    }
             }
         });
     });
 
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+        // Top link visibility management
+        const topButton = document.getElementById("top-link");
+        if (topButton) {
+            const handleScroll = () => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > 800) {
+                    topButton.style.visibility = "visible";
+                    topButton.style.opacity = "1";
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+                    topButton.style.visibility = "hidden";
+                    topButton.style.opacity = "0";
+                }
+            };
+            
+            window.addEventListener('scroll', handleScroll, { passive: true });
         }
-    };
 
+        // Theme toggle functionality
+        const themeToggle = document.getElementById("theme-toggle");
+        if (themeToggle) {
+            themeToggle.addEventListener("click", () => {
+                const isDark = document.body.classList.contains("dark");
+                document.body.classList.toggle('dark');
+                localStorage.setItem("pref-theme", isDark ? 'light' : 'dark');
+            });
+        }
+    });
 </script>
 <script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-<script>
-    document.querySelectorAll('pre > code').forEach((codeblock) => {
-        const container = codeblock.parentNode.parentNode;
+    // Enhanced copy code functionality with better positioning
+    document.addEventListener('DOMContentLoaded', function() {
+        const copyButtons = new Map();
+        
+        // Find all code blocks (both pre>code and standalone code)
+        const codeBlocks = document.querySelectorAll('pre > code, pre code');
+        
+        codeBlocks.forEach((codeblock, index) => {
+            // Find the pre element that contains this code
+            let preElement = codeblock.closest('pre');
+            if (!preElement) return;
 
         const copybutton = document.createElement('button');
+            
         copybutton.classList.add('copy-code');
         copybutton.innerText = 'copy';
+            copybutton.setAttribute('aria-label', 'Copy code to clipboard');
+            copybutton.setAttribute('title', 'Copy code to clipboard');
+            copybutton.setAttribute('data-code-index', index);
 
-        function copyingDone() {
+            const copyingDone = () => {
             copybutton.innerText = 'copied!';
+                copybutton.setAttribute('aria-label', 'Code copied!');
+                copybutton.style.background = 'var(--primary-hover)';
             setTimeout(() => {
                 copybutton.innerText = 'copy';
+                    copybutton.setAttribute('aria-label', 'Copy code to clipboard');
+                    copybutton.style.background = '';
             }, 2000);
-        }
+            };
 
-        copybutton.addEventListener('click', (cb) => {
+            copybutton.addEventListener('click', async (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                try {
             if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
+                        await navigator.clipboard.writeText(codeblock.textContent);
                 copyingDone();
-                return;
-            }
-
+                    } else {
+                        // Fallback for older browsers
             const range = document.createRange();
             range.selectNodeContents(codeblock);
             const selection = window.getSelection();
             selection.removeAllRanges();
             selection.addRange(range);
+                        
             try {
                 document.execCommand('copy');
                 copyingDone();
-            } catch (e) { };
+                        } catch (err) {
+                            console.warn('Copy failed:', err);
+                        }
+                        
             selection.removeRange(range);
+                    }
+                } catch (err) {
+                    console.warn('Copy failed:', err);
+                    // Show error feedback
+                    copybutton.innerText = 'error';
+                    copybutton.style.background = '#dc3545';
+                    setTimeout(() => {
+                        copybutton.innerText = 'copy';
+                        copybutton.style.background = '';
+                    }, 2000);
+                }
+            });
+
+            // Always place copy button in the pre element
+            if (preElement) {
+                preElement.appendChild(copybutton);
+                copyButtons.set(copybutton, preElement);
+                
+                // Ensure the pre element has relative positioning
+                preElement.style.position = 'relative';
+            }
         });
-
-        if (container.classList.contains("highlight")) {
-            container.appendChild(copybutton);
-        } else if (container.parentNode.firstChild == container) {
-            
-        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
-            
-            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
-        } else {
-            
-            codeblock.parentNode.appendChild(copybutton);
-        }
+        
+        // Log for debugging
+        console.log(`Added ${copyButtons.size} copy buttons to code blocks`);
     });
-</script>
 
+    // Reading Progress Bar
+    const progressBar = document.getElementById('reading-progress');
+    if (progressBar) {
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            progressBar.style.width = scrollPercent + '%';
+        });
+    }
+</script>
 <script>
     // Mobile dropdown functionality
     document.addEventListener('DOMContentLoaded', function() {
@@ -1560,7 +2517,7 @@ $$
                         const isOpen = dropdown.classList.contains('dropdown-open');
                         if (isOpen) {
                             dropdown.classList.remove('dropdown-open');
-                        } else {
+        } else {
                             dropdown.classList.add('dropdown-open');
                         }
                     });
