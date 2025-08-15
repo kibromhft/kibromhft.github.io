@@ -1222,104 +1222,6 @@ if (!doNotTrack) {
 				color: var(--primary-hover);
 			}
 
-			/* Enhanced Skills Section with Numbered Badges */
-			.skills-list {
-				counter-reset: skill-counter;
-				list-style: none;
-				padding: 0;
-				margin: 2rem 0;
-			}
-
-			.skills-list li {
-				position: relative;
-				margin-bottom: 2rem;
-				padding: 1.5rem 1.5rem 1.5rem 4rem;
-				background: var(--bg-card);
-				border-radius: var(--radius-md);
-				border-left: 4px solid var(--primary-color);
-				box-shadow: var(--shadow-sm);
-				transition: var(--transition-base);
-				counter-increment: skill-counter;
-			}
-
-			.skills-list li:hover {
-				transform: translateY(-2px);
-				box-shadow: var(--shadow-md);
-				border-left-width: 6px;
-			}
-
-			.skills-list li::before {
-				content: counter(skill-counter);
-				position: absolute;
-				left: -20px;
-				top: 50%;
-				transform: translateY(-50%);
-				background: var(--primary-color);
-				color: white;
-				width: 40px;
-				height: 40px;
-				border-radius: 50%;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				font-weight: bold;
-				font-size: 1.1rem;
-				box-shadow: var(--shadow-md);
-				z-index: 2;
-			}
-
-			.skills-list li strong {
-				color: var(--primary-color);
-				font-size: 1.2rem;
-				display: block;
-				margin-bottom: 0.5rem;
-			}
-
-			/* Dark mode overrides for skills */
-			body.dark .skills-list li {
-				background: var(--bg-card);
-				border-left-color: var(--primary-color);
-			}
-
-			body.dark .skills-list li::before {
-				background: var(--primary-color);
-				color: var(--bg-primary);
-			}
-
-			/* Responsive design for skills */
-			@media screen and (max-width: 768px) {
-				.skills-list li {
-					padding: 1rem 1rem 1rem 3.5rem;
-					margin-bottom: 1.5rem;
-				}
-
-				.skills-list li::before {
-					width: 35px;
-					height: 35px;
-					left: -17.5px;
-					font-size: 1rem;
-				}
-			}
-
-			/* Skills section header enhancement */
-			#skills {
-				text-align: center;
-				margin-bottom: 2rem;
-				position: relative;
-			}
-
-			#skills::after {
-				content: '';
-				position: absolute;
-				bottom: -10px;
-				left: 50%;
-				transform: translateX(-50%);
-				width: 100px;
-				height: 3px;
-				background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
-				border-radius: 2px;
-			}
-
 			/* Copy button styling */
 			.copy-code {
 				position: absolute;
@@ -1634,8 +1536,8 @@ if (!doNotTrack) {
 
 <h1 id="skills">Skills<a hidden class="anchor" aria-hidden="true" href="#skills">#</a></h1>
 <p class="custom-paragraph">To become proficient in coding AI, you need to have a range of skills, including:</p>
-<ul class="skills-list">
-<li class="custom-paragraph" style="text-align: justify;"><strong>Programming Skills</strong>: To excel in AI development, one must possess a strong foundation in programming languages such as Python, C, and C++. Python, in particular, is a popular choice among developers for AI applications because of its simplicity and rich ecosystem of libraries and frameworks, such as TensorFlow, PyTorch, and Scikit-Learn, which simplify the implementation of complex AI models, making it easier to create efficient and scalable code. However, it's worth noting that AI applications can also be developed using other programming languages such as R and MATLAB. For example, the C and C++ languages are widely used in AI development due to their flexibility and high-performance capabilities. In general, it is crucial to have the ability to write efficient and scalable code that can run on distributed systems to handle the large amounts of data typically involved in AI projects.</li>
+<ol>
+<li class = "custom-paragraph" style="text-align: justify;"><strong>Programming Skills</strong>: To excel in AI development, one must possess a strong foundation in programming languages such as Python, C, and C++. Python, in particular, is a popular choice among developers for AI applications because of its simplicity and rich ecosystem of libraries and frameworks, such as TensorFlow, PyTorch, and Scikit-Learn, which simplify the implementation of complex AI models, making it easier to create efficient and scalable code. However, it's worth noting that AI applications can also be developed using other programming languages such as R and MATLAB. For example, the C and C++ languages are widely used in AI development due to their flexibility and high-performance capabilities. In general, it is crucial to have the ability to write efficient and scalable code that can run on distributed systems to handle the large amounts of data typically involved in AI projects.</li>
 <style>
   .python-roadmap {
     width: 100%;
@@ -1833,7 +1735,7 @@ if (!doNotTrack) {
 </blockquote>
 <li class="custom-paragraph" style="text-align: justify;"><strong>Problem-Solving Skills</strong>: The ability to solve problems is a crucial skill that is applicable in every aspect of our lives, including artificial intelligence. It is crucial in AI that you approach problems systematically and develop solutions that are robust, scalable, and efficient. By mastering this skill, you can become more effective in identifying problems, analyzing them, and developing solutions that meet the requirements of a project. To become a proficient problem solver, you need to be able to evaluate different approaches and select the best one based on performance, accuracy, and computational resources. This involves comparing the strengths and weaknesses of each approach and assessing the trade-offs involved in terms of time, resources, and performance. Developing problem-solving skills takes time and practice. It involves breaking down complex problems into smaller, more manageable sub-problems, identifying the key requirements and constraints, and developing a plan of attack. It also requires the ability to test and validate solutions, iterate on them, and refine them until they meet the project's objectives.</li>
 <li class="custom-paragraph" style="text-align: justify;"><strong>Collaboration Skills</strong>: You need to be able to work effectively in teams and collaborate with other professionals such as data scientists, software engineers, and project managers. To become an effective collaborator, you need to be able to understand and appreciate the perspectives of others. This involves active listening, empathy, and an openness to feedback and constructive criticism. You should also be able to contribute to a team's collective goals, whether that involves sharing knowledge, skills, or resources. Effective collaboration also requires the ability to communicate effectively, both verbally and in writing. You need to be able to explain technical concepts to non-technical stakeholders and convey the implications of technical decisions to other team members. This involves breaking down complex ideas into simple terms, using visual aids, and adapting your communication style to suit your audience.</li>
-</ul>
+</ol>
 <p class="custom-paragraph" style="text-align: justify;">Learning how to code AI has several benefits, including providing career opportunities, contributing to innovation, developing problem-solving skills, and gaining a competitive advantage. With the growing demand for AI professionals, learning how to code AI can position individuals for a lucrative and rewarding career. Furthermore, by learning the skill of programming AI, individuals might be able to develop innovative solutions that will revolutionize industries, and provide solutions to complex problems. Furthermore, developing problem-solving skills while coding AI can be transferable to other domains, making individuals more efficient, scalable, and robust in their approach to problem-solving. For instance, AI engineers can use their problem-solving skills to quickly identify bugs in the code and rapidly develop efficient solutions to any programming problems. Finally, gaining expertise in coding AI can offer a competitive advantage over other professionals in the field. This will enable individuals to develop innovative solutions that give their organizations a competitive edge.</p>
 
 
