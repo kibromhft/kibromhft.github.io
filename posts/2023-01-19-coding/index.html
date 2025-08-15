@@ -207,31 +207,7 @@ if (!doNotTrack) {
         
         /* Existing dark mode styles */
 
-        /* Simple blue numbering for skills list */
-        #skills + p + ol {
-            counter-reset: skill-counter;
-        }
 
-        #skills + p + ol li {
-            counter-increment: skill-counter;
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        #skills + p + ol li::marker {
-            color: #007bff;
-            font-weight: bold;
-        }
-
-        /* Fix TOC styling - remove custom bullets and use default ul styling */
-        .toc li::before {
-            content: none !important;
-        }
-
-        .toc li {
-            list-style: disc;
-            padding-left: 0;
-        }
 
         /* Enhanced styles for quotes with CSS variables */
         .quote {
