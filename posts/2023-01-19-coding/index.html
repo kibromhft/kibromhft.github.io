@@ -213,24 +213,27 @@ if (!doNotTrack) {
         .quote {
             background: linear-gradient(135deg, var(--bg-card), var(--bg-secondary));
             border-left: 4px solid var(--primary-color);
-            padding: 2rem;
+            padding: 2rem 2rem 2rem 3rem;
             margin: 2rem 0;
             box-shadow: var(--shadow-md);
-            transition: var(--transition-base);
+            transition: box-shadow var(--transition-base), transform var(--transition-base);
             border-radius: var(--radius-md);
             position: relative;
-            overflow: hidden;
+            overflow: visible;
         }
 
         .quote::before {
             content: '"';
             position: absolute;
-            top: -10px;
-            left: 20px;
+            top: -5px;
+            left: 25px;
             font-size: 4rem;
             color: var(--primary-color);
             opacity: 0.3;
             font-family: var(--font-serif);
+            z-index: 1;
+            transition: none;
+            transform: none;
         }
 
         .quote::after {
@@ -253,7 +256,7 @@ if (!doNotTrack) {
             margin-bottom: 1rem;
             line-height: 1.6;
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
 
         .quote cite {
@@ -276,7 +279,6 @@ if (!doNotTrack) {
 
         .quote:hover::before {
             opacity: 0.5;
-            transform: scale(1.1);
         }
 
         /* Dark mode specific quote styles */
@@ -290,25 +292,7 @@ if (!doNotTrack) {
     </style>
 
 
-<style>
-.quote {
-  font-size: 1.5em;
-  font-style: italic;
-  margin: 2em;
-  padding: 1em;
-  border-inline-start: 3px solid #E64632 !important; /* Force override */
-}
 
-.quote p {
-  margin: 0;
-}
-
-.quote cite {
-  display: block;
-  font-size: 0.9em;
-  margin-top: 1em;
-  text-align: right;
-}
 
     /* New styles for paragraphs with CSS variables */
     .custom-paragraph {
@@ -959,7 +943,7 @@ if (!doNotTrack) {
 
 				.quote {
 					margin: 10px 0;
-					padding: 12px;
+					padding: 12px 12px 12px 18px;
 				}
 
 				.quote p {
