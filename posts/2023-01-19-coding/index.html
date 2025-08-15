@@ -1073,6 +1073,97 @@ if (!doNotTrack) {
 				color: var(--text-primary) !important;
 			}
 
+			/* Beautiful Recommended Reading Title Styling */
+			.paginav .title {
+				/* Font & Text */
+				font-family: -apple-system, BlinkMacSystemFont, "segoe ui", Roboto, Oxygen, Ubuntu, Cantarell, "open sans", "helvetica neue", sans-serif;
+				font-size: 13px;
+				font-style: normal;
+				font-variant: normal;
+				font-weight: 400;
+				letter-spacing: 1px;
+				line-height: 30px;
+				text-decoration: none solid rgb(108, 108, 108);
+				text-align: start;
+				text-indent: 0px;
+				text-transform: uppercase;
+				vertical-align: baseline;
+				white-space: normal;
+				word-spacing: 0px;
+
+				/* Color & Background */
+				background-attachment: scroll;
+				background-color: rgba(0, 0, 0, 0);
+				background-image: none;
+				background-position: 0% 0%;
+				background-repeat: repeat;
+				color: rgb(108, 108, 108);
+
+				/* Box */
+				height: auto;
+				width: auto;
+				border: 0px none rgb(108, 108, 108);
+				border-top: 0px none rgb(108, 108, 108);
+				border-right: 0px none rgb(108, 108, 108);
+				border-bottom: 0px none rgb(108, 108, 108);
+				border-left: 0px none rgb(108, 108, 108);
+				margin: 0px;
+				padding: 0px;
+				max-height: none;
+				min-height: 0px;
+				max-width: none;
+				min-width: 0px;
+
+				/* Positioning */
+				position: static;
+				top: auto;
+				bottom: auto;
+				right: auto;
+				left: auto;
+				float: none;
+				display: inline;
+				clear: none;
+				z-index: auto;
+
+				/* List */
+				list-style-image: none;
+				list-style-type: disc;
+				list-style-position: outside;
+
+				/* Table */
+				border-collapse: separate;
+				border-spacing: 0px;
+				caption-side: top;
+				empty-cells: show;
+				table-layout: auto;
+
+				/* Miscellaneous */
+				overflow: visible;
+				cursor: pointer;
+				visibility: visible;
+
+				/* Effects */
+				transform: none;
+				transition: all;
+				outline: rgb(255, 0, 0) dashed 1px;
+				outline-offset: 0px;
+				box-sizing: border-box;
+				resize: none;
+				text-shadow: none;
+				text-overflow: clip;
+				word-wrap: normal;
+				box-shadow: none;
+				border-top-left-radius: 0px;
+				border-top-right-radius: 0px;
+				border-bottom-left-radius: 0px;
+				border-bottom-right-radius: 0px;
+			}
+
+			/* Dark mode override for recommended reading title */
+			body.dark .paginav .title {
+				color: rgb(156, 163, 175) !important;
+			}
+
 			/* Copy button styling */
 			.copy-code {
 				position: absolute;
@@ -1624,7 +1715,7 @@ if (!doNotTrack) {
     </ul>
 <nav class="paginav">
           <a class="next" href="https://kibromhft.github.io/posts/2022-10-19-automation/">
-    <span class="title"> Recommended Reading: </span>
+    <span class="title">Recommended Reading</span>
     <br>
     <span>Jobs in the Digital Era</span>
   </a>
