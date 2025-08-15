@@ -12,7 +12,9 @@
 One of the main benefits of autoencoders is their ability to reduce the dimensionality of large and complex data sets, making them more manageable for downstream tasks such as classification, clustering, and visualization. They can also be used to identify patterns or anomalies in data that may not be easily detectable by other means.">
 <meta name="author" content="kibrom Haftu">
 <link rel="canonical" href="https://kibromhft.github.io/posts/2022-11-27-vae/" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet_main.css"  rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/main.css?v=1.2" rel="stylesheet">
+<link rel="preload" href="/assets/f/Essays1743.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/f/Libertine.woff2" as="font" type="font/woff2" crossorigin>
 <script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
@@ -20,8 +22,8 @@ One of the main benefits of autoencoders is their ability to reduce the dimensio
 <link rel="icon" type="image/png" sizes="32x32" href="https://kibromhft.github.io/favicon-32x32.png">
 <link rel="apple-touch-icon" href="https://kibromhft.github.io/apple-touch-icon.png">
 <link rel="mask-icon" href="https://kibromhft.github.io/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+<meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <noscript>
     <style>
@@ -117,7 +119,7 @@ Autoencoders are a type of neural network that can be used to learn a compressed
   "keywords": [
     "autoencoder","generative-model","unsupervised-learning","dimensionality-reduction","neural-networks","reconstruction-error","latent-space","variational-inference","beta-vae","generative-adversarial-networks"
   ],
-  "articleBody": "\nAutoencoders are a type of neural network that can be used to learn a compressed representation of input data. They work by training the network to reconstruct the input data from a lower-dimensional latent representation, which is typically obtained using an encoder. Autoencoders are versatile and can be used for a variety of tasks, including data compression, anomaly detection, and feature learning high-dimensional data using a neural network model with a narrow bottleneck layer in the middle (oops, this is probably not true for Variational Autoencoder, and we will investigate it in details in later sections). A nice byproduct is dimension reduction: the bottleneck layer captures a compressed latent encoding. Such a low-dimensional representation can be used as en embedding vector in various applications (i.e. search), help data compression, or reveal the underlying data generative factors.\nNotation    Symbol Mean     $\\mathcal{D}$ The dataset, $\\mathcal{D} = \\{ \\mathbf{x}^{(1)}, \\mathbf{x}^{(2)}, \\dots, \\mathbf{x}^{(n)} \\}$, contains $n$ data samples; $\\vert\\mathcal{D}\\vert =n $.   $\\mathbf{x}^{(i)}$ Each data point is a vector of $d$ dimensions, $\\mathbf{x}^{(i)} = [x^{(i)}_1, x^{(i)}_2, \\dots, x^{(i)}_d]$.   $\\mathbf{x}$ One data sample from the dataset, $\\mathbf{x} \\in \\mathcal{D}$.   $\\mathbf{x}’$ The reconstructed version of $\\mathbf{x}$.   $\\tilde{\\mathbf{x}}$ This is the noisy version of the original data $\\mathbf{x}$.   $\\mathbf{z}$ The latent vector.   $a_j^{(l)}$ The activation function for the $j$-th neuron in the $l$-th hidden layer.   $g_{\\phi}(.)$ The encoding function parameterized by $\\phi$.   $f_{\\theta}(.)$ The decoding function parameterized by $\\theta$.   $q_{\\phi}(\\mathbf{z}\\vert\\mathbf{x})$ Estimated posterior probability function, also known as probabilistic encoder.   $p_{\\theta}(\\mathbf{x}\\vert\\mathbf{z})$ Likelihood of generating true data sample given the latent code, also known as probabilistic decoder.    Autoencoder Autoencoder is a neural network designed to learn an identity function in an unsupervised way to reconstruct the original input while compressing the data in the process so as to discover a more efficient and compressed representation. The idea was originated in the 1980s, and later promoted by the seminal paper by Hinton \u0026 Salakhutdinov, 2006.\nIt consists of two networks:\n Encoder network: It translates the original high-dimension input into the latent low-dimensional code. The input size is larger than the output size. Decoder network: The decoder network recovers the data from the code, likely with larger and larger output layers. \n",
+  "articleBody": "\nAutoencoders are a type of neural network that can be used to learn a compressed representation of input data. They work by training the network to reconstruct the input data from a lower-dimensional latent representation, which is typically obtained using an encoder. Autoencoders are versatile and can be used for a variety of tasks, including data compression, anomaly detection, and feature learning high-dimensional data using a neural network model with a narrow bottleneck layer in the middle (oops, this is probably not true for Variational Autoencoder, and we will investigate it in details in later sections). A nice byproduct is dimension reduction: the bottleneck layer captures a compressed latent encoding. Such a low-dimensional representation can be used as en embedding vector in various applications (i.e. search), help data compression, or reveal the underlying data generative factors.\nNotation    Symbol Mean     $\\mathcal{D}$ The dataset, $\\mathcal{D} = \\{ \\mathbf{x}^{(1)}, \\mathbf{x}^{(2)}, \\dots, \\mathbf{x}^{(n)} \\}$, contains $n$ data samples; $\\vert\\mathcal{D}\\vert =n $.   $\\mathbf{x}^{(i)}$ Each data point is a vector of $d$ dimensions, $\\mathbf{x}^{(i)} = [x^{(i)}_1, x^{(i)}_2, \\dots, x^{(i)}_d]$.   $\\mathbf{x}$ One data sample from the dataset, $\\mathbf{x} \\in \\mathcal{D}$.   $\\mathbf{x}'$ The reconstructed version of $\\mathbf{x}$.   $\\tilde{\\mathbf{x}}$ This is the noisy version of the original data $\\mathbf{x}$.   $\\mathbf{z}$ The latent vector.   $a_j^{(l)}$ The activation function for the $j$-th neuron in the $l$-th hidden layer.   $g_{\\phi}(.)$ The encoding function parameterized by $\\phi$.   $f_{\\theta}(.)$ The decoding function parameterized by $\\theta$.   $q_{\\phi}(\\mathbf{z}\\vert\\mathbf{x})$ Estimated posterior probability function, also known as probabilistic encoder.   $p_{\\theta}(\\mathbf{x}\\vert\\mathbf{z})$ Likelihood of generating true data sample given the latent code, also known as probabilistic decoder.    Autoencoder Autoencoder is a neural network designed to learn an identity function in an unsupervised way to reconstruct the original input while compressing the data in the process so as to discover a more efficient and compressed representation. The idea was originated in the 1980s, and later promoted by the seminal paper by Hinton \u0026 Salakhutdinov, 2006.\nIt consists of two networks:\n Encoder network: It translates the original high-dimension input into the latent low-dimensional code. The input size is larger than the output size. Decoder network: The decoder network recovers the data from the code, likely with larger and larger output layers. \n",
   "wordCount" : "5305",
   "inLanguage": "en",
   "datePublished": "2022-02-27T00:00:00Z",
@@ -140,166 +142,301 @@ Autoencoders are a type of neural network that can be used to learn a compressed
   }
 }
 </script>
+
 <style>
-        /* Font-face declarations for custom fonts */
+        /* Optimized font-face declarations for custom fonts */
         @font-face {
             font-family: "Essays 1743";
-            src: url("../../assets/f/Essays1743.eot") format("eot"), url("../../assets/f/Essays1743.woff") format("woff"), url("../../assets/f/Essays1743.ttf") format("truetype");
-        }
-        @font-face {
-            font-family: "Essays 1743";
-            font-weight: bold;
-            src: url("../../assets/f/Essays1743-bold.eot") format("eot"), url("../../assets/f/Essays1743-bold.woff") format("woff"), url("../../assets/f/Essays1743-bold.ttf") format("truetype");
+            src: url("../../assets/f/Essays1743.woff2") format("woff2"), url("../../assets/f/Essays1743.woff") format("woff");
+            font-display: swap;
+            font-weight: normal;
+            font-style: normal;
         }
         @font-face {
             font-family: "Essays 1743";
-            font-style: italic;
-            src: url("../../assets/f/Essays1743-italic.eot") format("eot"), url("../../assets/f/Essays1743-italic.woff") format("woff"), url("../../assets/f/Essays1743-italic.ttf") format("truetype");
+            src: url("../../assets/f/Essays1743-bold.woff2") format("woff2"), url("../../assets/f/Essays1743-bold.woff") format("woff");
+            font-display: swap;
+            font-weight: bold;
+            font-style: normal;
         }
         @font-face {
             font-family: "Essays 1743";
+            src: url("../../assets/f/Essays1743-italic.woff2") format("woff2"), url("../../assets/f/Essays1743-italic.woff") format("woff");
+            font-display: swap;
+            font-weight: normal;
             font-style: italic;
+        }
+        @font-face {
+            font-family: "Essays 1743";
+            src: url("../../assets/f/Essays1743-bold-italic.woff2") format("woff2"), url("../../assets/f/Essays1743-bold-italic.woff") format("woff");
+            font-display: swap;
             font-weight: bold;
-            src: url("../../assets/f/Essays1743-bold-italic.eot") format("eot"), url("../../assets/f/Essays1743-bold-italic.woff") format("woff"), url("../../assets/f/Essays1743-bold-italic.ttf") format("truetype");
-        }
-        @font-face {
-            font-family: "Alphabet of Children";
-            src: url("../../assets/f/Alphabet-of-Children.eot") format("eot"), url("../../assets/f/Alphabet-of-Children.woff") format("woff"), url("../../assets/f/Alphabet-of-Children.ttf") format("truetype");
-        }
-        @font-face {
-            font-family: "Libertine";
-            src: url("../../assets/f/Libertine.eot") format("eot"), url("../../assets/f/Libertine.woff") format("woff"), url("../../assets/f/Libertine.ttf") format("truetype");
-        }
-        @font-face {
-            font-family: "Libertine";
-            font-weight: bold;
-            src: url("../../assets/f/Libertine-bold.eot") format("eot"), url("../../assets/f/Libertine-bold.woff") format("woff"), url("../../assets/f/Libertine-bold.ttf") format("truetype");
-        }
-        @font-face {
-            font-family: "Libertine";
             font-style: italic;
-            src: url("../../assets/f/Libertine-italic.eot") format("eot"), url("../../assets/f/Libertine-italic.woff") format("woff"), url("../../assets/f/Libertine-italic.ttf") format("truetype");
         }
         @font-face {
             font-family: "Libertine";
-            font-style: italic;
+            src: url("../../assets/f/Libertine.woff2") format("woff2"), url("../../assets/f/Libertine.woff") format("woff");
+            font-display: swap;
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: "Libertine";
+            src: url("../../assets/f/Libertine-bold.woff2") format("woff2"), url("../../assets/f/Libertine-bold.woff") format("woff");
+            font-display: swap;
             font-weight: bold;
-            src: url("../../assets/f/Libertine-bold-italic.eot") format("eot"), url("../../assets/f/Libertine-bold-italic.woff") format("woff"), url("../../assets/f/Libertine-bold-italic.ttf") format("truetype");
+            font-style: normal;
+        }
+        @font-face {
+            font-family: "Libertine";
+            src: url("../../assets/f/Libertine-italic.woff2") format("woff2"), url("../../assets/f/Libertine-italic.woff") format("woff");
+            font-display: swap;
+            font-weight: normal;
+            font-style: italic;
+        }
+        @font-face {
+            font-family: "Libertine";
+            src: url("../../assets/f/Libertine-bold-italic.woff2") format("woff2"), url("../../assets/f/Libertine-bold-italic.woff") format("woff");
+            font-display: swap;
+            font-weight: bold;
+            font-style: italic;
         }
         
-        /* Updated styles for quotes */
-        body.dark .quote {
-            background-color: #222222; /* Matching the main background color */
-            border-left: 4px solid #8FBCBB; /* Keeping the accent color for the left border */
-            padding: 15px;
-            margin: 15px 0;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Subtle shadow for depth */
-        }
+        /* Existing dark mode styles */
 
-        body.dark .quote p {
-            color: #FFFFFF; /* White for the main quote text to make it stand out */
+
+
+        /* Enhanced styles for quotes with CSS variables */
+        .quote {
+            background: linear-gradient(135deg, var(--bg-card), var(--bg-secondary));
+            border-left: 4px solid var(--primary-color);
+            padding: 2rem 2rem 2rem 2.5rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-base);
+            border-radius: var(--radius-md);
+            position: relative;
+            overflow: hidden;
+            font-size: 1.2em;
             font-style: italic;
-            font-size: 1.1em;
-            margin-bottom: 10px;
         }
 
-        body.dark .quote cite {
-            color: #BDBDBE; /* Slightly dimmer than the main text color */
+        
+
+        .quote::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 20px 20px 0;
+            border-color: transparent var(--primary-color) transparent transparent;
+            opacity: 0.7;
+        }
+
+        .quote p {
+            color: var(--text-primary);
+            font-style: italic;
+            font-size: 1.2em;
+            margin: 0 0 1rem 0;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+            padding-left: 0;
+            text-indent: 0;
+        }
+
+        .quote cite {
+            color: var(--text-secondary);
             font-style: normal;
-            font-size: 0.9em;
+            font-size: 0.95em;
+            display: block;
+            text-align: right;
+            margin-top: 1rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--border-color);
+            font-weight: 500;
+        }
+
+        /* Quote hover effects */
+        .quote:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .quote:hover::before {
+            opacity: 0.5;
+            transform: scale(1.1);
+        }
+
+        /* Dark mode specific quote styles */
+        body.dark .quote {
+            background-color: var(--bg-card);
+            border-left-color: var(--primary-color);
+            box-shadow: var(--shadow-sm);
         }
 		
-		    /* Dark mode styles for dropdown menu */
-    body.dark .custom-dropdown {
-        background-color: #2E2E33;
-        border: 1px solid #444;
-    }
 
-    body.dark .custom-dropdown li a {
-        color: #DADADB !important;
-    }
-
-    body.dark .custom-dropdown li a:hover {
-        background-color: #3E3E43 !important;
-        color: #FFFFFF !important;
-    }
     </style>
 
-<style>
-.quote {
-  font-size: 1.5em;
-  font-style: italic;
-  margin: 2em;
-  padding: 1em;
-  border-inline-start: 3px solid #E64632 !important; /* Force override */
-}
-
-.quote p {
-  margin: 0;
-}
-
-.quote cite {
-  display: block;
-  font-size: 0.9em;
-  margin-top: 1em;
-  text-align: right;
-}
-
-    /* New styles for paragraphs */
-    p {
-		font-family: Libertine, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
-		font-size: large !important; /* Updated font size */
-		line-height: 1.556 !important; /* Updated line height */
-		word-spacing: 0.1em !important; /* Updated word spacing */
-		margin: 28.008px 0px !important; /* Updated margin for vertical spacing */
-		text-decoration: none !important; /* Underline text */
-		text-decoration-color: rgb(0, 0, 0) !important; /* Set underline color to black */
-		--primary: #000000 !important;
-		color: rgb(0, 0, 0);
+    <style>
+    /* New styles for paragraphs with CSS variables */
+    .custom-paragraph {
+		font-family: var(--font-body);
+		font-size: var(--font-size-base);
+		line-height: 1.556;
+		word-spacing: 0.1em;
+		margin: 28.008px 0px;
+		color: var(--text-primary);
+		transition: var(--transition-base);
     }
 	    /* Set --code-bg for all elements except the header 
     body{
         --code-bg: rgb(255, 255, 255) !important; 
     }*/
 		
-		/* headers */
-
+		/* headers with CSS variables */
 	h1, h2, h3, h4, caption, thead th {
-	  font-family: "Essays 1743", Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
+	  font-family: var(--font-heading);
 	  font-weight: normal;
-	  text-shadow: 0 0 1px #667;
+	  color: var(--text-primary);
+	  text-shadow: 0 0 1px var(--text-secondary);
 	}
 	h1 {
-	  font-size: 266.7%;
+	  font-size: var(--font-size-3xl);
 	  line-height: 1.1;
 	  width: 100%;
 	  margin: 1.49em 0;
 	}
 	h2 {
-	  font-size: 210%;
+	  font-size: var(--font-size-2xl);
 	  line-height: 1.3125;
 	  margin: 1.167em 0;
 	  clear: both;
 	}
 	h3 {
-	  font-size: x-large;
+	  font-size: var(--font-size-xl);
 	  line-height: 1.167;
 	  margin: 1.556em 0;
 	}
-	.post-content table th {
-		font-size: 16px;
-		text-align: start;
-	}
+
+    /* Enhanced styles for the Python roadmap table with CSS variables */
+    .python-roadmap {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2rem 0;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        border: 1px solid var(--border-color);
+        background: var(--bg-primary);
+        position: relative;
+        /* Removed transform that could cause instability */
+    }
+
+    /* Table header enhancement */
+    .python-roadmap thead {
+        background: transparent;
+    }
+
+    .python-roadmap th {
+        background: transparent;
+        color: var(--text-primary);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-family: var(--font-primary);
+        padding: 16px 12px;
+        text-align: left;
+        border: none;
+        position: relative;
+        text-shadow: none;
+    }
+
+    .python-roadmap th::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--border-color);
+    }
+
+    .python-roadmap td {
+        padding: 16px 12px;
+        text-align: left;
+        border: none;
+        border-bottom: 1px solid var(--border-color);
+        vertical-align: top;
+        line-height: 1.6;
+        color: #333333;
+        font-weight: 500;
+    }
+
+    /* Dark mode table content */
+    body.dark .python-roadmap td {
+        color: #e0e0e0;
+    }
+
+    .python-roadmap tr:nth-child(even) {
+        background-color: var(--bg-card);
+    }
+
+    .python-roadmap tr:nth-child(odd) {
+        background-color: var(--bg-primary);
+    }
+
+    .python-roadmap tr {
+        transition: background-color 0.8s ease;
+        position: static;
+    }
+
+    .python-roadmap tr:hover {
+        background-color: var(--bg-secondary);
+    }
+
+    /* Removed the left accent bar that was causing visual instability */
+
+    /* Styles for links within the Python roadmap table */
+    .python-roadmap a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.6s ease;
+    }
+
+    .python-roadmap a:hover {
+        color: var(--primary-hover);
+        text-decoration: underline;
+    }
+
+    /* Light mode specific table styles */
+    body:not(.dark) .python-roadmap th {
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        color: #495057;
+        text-shadow: none;
+        border-bottom: 2px solid #dee2e6;
+    }
+
+    /* Dark mode specific table styles */
+    body.dark .python-roadmap th {
+        background: linear-gradient(135deg, #007bff, #0056b3);
+        color: #ffffff;
+        border-color: var(--border-color);
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+    }
+
+    body.dark .python-roadmap tr:nth-child(even) {
+        background-color: var(--bg-card);
+    }
+
+    body.dark .python-roadmap tr:nth-child(odd) {
+        background-color: var(--bg-primary);
+    }
 </style>
 
-<style>
-
-/* Dotted red border */
-hr.new3 {
-  border-top: 0.5px dotted gray;
-}
-
-</style>
 </head>
 
 <body class="" id="top">
@@ -311,7 +448,6 @@ hr.new3 {
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.body.classList.add('dark');
     }
-
 </script>
 
 <script>
@@ -333,10 +469,9 @@ hr.new3 {
     });
 
 </script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
 
 <header class="header">
     <nav class="nav">
@@ -356,7 +491,7 @@ hr.new3 {
                         <line x1="12" y1="1" x2="12" y2="3"></line>
                         <line x1="12" y1="21" x2="12" y2="23"></line>
                         <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="18.36"></line>
                         <line x1="1" y1="12" x2="3" y2="12"></line>
                         <line x1="21" y1="12" x2="23" y2="12"></line>
                         <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
@@ -406,10 +541,10 @@ hr.new3 {
 		  </li> -->
 
 		<li class="dropdown">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-			  Resources <span class="caret fa fa-bars" data-toggle="dropdown"></span>
+			<a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">
+			  Resources <span class="caret fa fa-chevron-down"></span>
 			</a>
-		  <ul class="dropdown-menu custom-dropdown">
+		  <ul class="dropdown-menu">
 			<li>
 			  <a href="https://kibromhft.github.io/podcast">Podcast</a>
 			</li>
@@ -425,12 +560,14 @@ hr.new3 {
 		  </ul>
 		</li>
 
+		</ul>
+
 		<style>
+		/* Simple navigation styles - same as keywords page */
 		.custom-dropdown {
 		  padding: 8px 0 !important;
 		  margin: 0 !important;
 		  list-style-type: none !important;
-		  /* Removed min-width to allow natural width */
 		}
 
 		.custom-dropdown li {
@@ -446,21 +583,447 @@ hr.new3 {
 		  box-sizing: border-box !important;
 		  text-decoration: none !important;
 		  color: #333 !important;
-		  font-size: 16px !important; /* Increased font size */
+		  font-size: 16px !important;
 		  line-height: 1.5 !important;
 		}
 
 		.custom-dropdown li a:hover {
-		  background-color: #f8f9fa !important;
-		  color: #000 !important;
+			background-color: #f8f9fa !important;
+			color: #000 !important;
+		}
+
+		/* Mobile-specific overrides to match keywords page behavior */
+		@media screen and (max-width: 768px) {
+			/* Override main.css mobile navigation with keywords-style behavior */
+			#menu {
+				position: static !important;
+				background: transparent !important;
+				box-shadow: none !important;
+				width: auto !important;
+				max-height: none !important;
+				overflow: visible !important;
+				transform: none !important;
+				opacity: 1 !important;
+				visibility: visible !important;
+				display: flex !important;
+				flex-direction: row !important;
+				align-items: center !important;
+				gap: 0.5rem !important;
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+
+			#menu li {
+				position: relative !important;
+				margin: 0 !important;
+				padding: 0 !important;
+			}
+
+			#menu a {
+				display: flex !important;
+				align-items: center !important;
+				gap: 0.25rem !important;
+				padding: 0.5rem 0.75rem !important;
+				margin: 0 !important;
+				font-size: 0.9rem !important;
+				white-space: nowrap !important;
+				text-decoration: none !important;
+				color: var(--text-primary) !important;
+				background: transparent !important;
+				border: none !important;
+				border-radius: var(--radius-sm) !important;
+				transition: all 0.2s ease !important;
+				word-wrap: break-word !important;
+				overflow-wrap: break-word !important;
+			}
+
+			#menu a:hover {
+				background: var(--bg-secondary) !important;
+				color: var(--text-primary) !important;
+				transform: none !important;
+			}
+
+			/* Dropdown styles for mobile */
+			.dropdown-menu {
+				position: absolute !important;
+				top: 100% !important;
+				right: 0 !important;
+				left: auto !important;
+				min-width: 200px !important;
+				background: var(--bg-primary) !important;
+				border: 1px solid var(--border-color) !important;
+				border-radius: var(--radius-md) !important;
+				box-shadow: var(--shadow-lg) !important;
+				padding: 0.5rem 0 !important;
+				margin: 0 !important;
+				z-index: 1000 !important;
+				opacity: 0 !important;
+				visibility: hidden !important;
+				transform: translateY(-10px) !important;
+				transition: all 0.2s ease !important;
+			}
+
+			.dropdown .dropdown-menu {
+				opacity: 0 !important;
+				visibility: hidden !important;
+				transform: translateY(-10px) !important;
+			}
+
+			.dropdown.dropdown-open .dropdown-menu {
+				opacity: 1 !important;
+				visibility: visible !important;
+				transform: translateY(0) !important;
+			}
+
+			.dropdown.dropdown-open .caret {
+				transform: rotate(180deg) !important;
+			}
+
+			/* Mobile-specific adjustments */
+			@media screen and (max-width: 480px) {
+				.nav {
+					flex-direction: column !important;
+					padding: 0.5rem 1rem !important;
+					gap: 0.5rem !important;
+				}
+
+				.logo {
+					margin-bottom: 0.5rem !important;
+				}
+
+				#menu {
+					justify-content: center !important;
+					gap: 0.25rem !important;
+					flex-wrap: wrap !important;
+				}
+
+				#menu a {
+					font-size: 0.8rem !important;
+					padding: 0.4rem 0.6rem !important;
+				}
+			}
+		}
+
+		/* Ensure dropdown menu is properly styled */
+		.dropdown-menu {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			min-width: 200px;
+			background: var(--bg-primary);
+			border: 1px solid var(--border-color);
+			border-radius: var(--radius-md);
+			box-shadow: var(--shadow-lg);
+			padding: 0.5rem 0;
+			margin: 0;
+			z-index: 1000;
+			opacity: 0;
+			visibility: hidden;
+			transform: translateY(-10px);
+			transition: all 0.2s ease;
+		}
+
+		.dropdown:hover .dropdown-menu {
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0);
+		}
+
+		.dropdown-menu li {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		.dropdown-menu a {
+			display: block;
+			padding: 0.5rem 1rem;
+			color: var(--text-primary);
+			text-decoration: none;
+			transition: background-color 0.2s ease;
+		}
+
+		.dropdown-menu a:hover {
+			background-color: var(--bg-secondary);
+		}
+
+		.caret {
+			transition: transform 0.2s ease;
+		}
+
+		.dropdown:hover .caret {
+			transform: rotate(180deg);
 		}
 		</style>
-
-		</ul>
-
 		
     </nav>
 </header>
+
+<style>
+/* Mobile responsiveness styles */
+@media screen and (max-width: 768px) {
+    /* Mobile navigation improvements */
+    #menu a {
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+
+    /* Mobile dropdown menu styles */
+    .dropdown-menu {
+        right: 0;
+        left: auto;
+        min-width: 200px;
+        border-radius: var(--radius-md);
+    }
+
+    /* Disable hover on mobile */
+    .dropdown .dropdown-menu {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+    }
+
+    .dropdown.dropdown-open .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .dropdown.dropdown-open .caret {
+        transform: rotate(180deg);
+    }
+
+    /* Mobile skills list improvements */
+    #skills + p + ol {
+        padding-left: 1rem;
+    }
+
+    #skills + p + ol li {
+        padding-left: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    #skills + p + ol li.custom-paragraph {
+        text-align: left !important;
+    }
+
+    /* Mobile custom paragraph improvements */
+    .custom-paragraph {
+        margin: 1rem 0;
+        text-align: left !important;
+    }
+
+    /* Mobile post header improvements */
+    .post-header {
+        padding: 1rem 0;
+        text-align: center;
+    }
+
+    .post-title {
+        font-size: 2.5rem;
+        margin: 0.5rem 0;
+        line-height: 1.2;
+    }
+
+    .post-meta {
+        font-size: 0.9rem;
+        margin: 0.5rem 0;
+    }
+
+    /* Improve mobile content spacing */
+    .post-content {
+        padding: 0 1rem;
+    }
+
+    /* Better mobile table handling */
+    .python-roadmap {
+        font-size: 13px;
+        margin: 1.5rem 0;
+    }
+
+    .python-roadmap th,
+    .python-roadmap td {
+        padding: 8px 6px;
+        word-wrap: break-word;
+    }
+
+    /* Mobile paginav improvements */
+    .paginav {
+        margin: 8px 0;
+    }
+
+    .paginav .title {
+        font-size: 12px;
+        line-height: 1.2;
+    }
+
+    .paginav .subtitle {
+        font-size: 0.9rem;
+        line-height: 1.2;
+        margin-top: 1px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .nav {
+        flex-direction: column;
+        padding: 0.5rem 1rem;
+        gap: 0.5rem;
+    }
+
+    .logo {
+        margin-bottom: 0.5rem;
+    }
+
+    #menu {
+        justify-content: center;
+        gap: 0.25rem;
+        flex-wrap: wrap;
+    }
+
+    #menu a {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.6rem;
+    }
+
+    /* Small mobile skills list improvements */
+    #skills + p + ol {
+        padding-left: 0.5rem;
+    }
+
+    #skills + p + ol li {
+        padding-left: 0.8rem;
+        margin-bottom: 0.75rem;
+    }
+
+    #skills + p + ol li.custom-paragraph {
+        text-align: left !important;
+    }
+
+    /* Small mobile custom paragraph improvements */
+    .custom-paragraph {
+        margin: 0.75rem 0;
+        text-align: left !important;
+    }
+
+    /* Small mobile post header improvements */
+    .post-header {
+        padding: 0.75rem 0;
+        text-align: center;
+    }
+
+    .post-title {
+        font-size: 2rem;
+        margin: 0.5rem 0;
+        line-height: 1.1;
+    }
+
+    .post-meta {
+        font-size: 0.8rem;
+        margin: 0.5rem 0;
+    }
+
+    /* Improve small mobile content spacing */
+    .post-content {
+        padding: 0 0.75rem;
+    }
+
+    /* Better small mobile table handling */
+    .python-roadmap {
+        font-size: 12px;
+        margin: 1rem 0;
+    }
+
+    .python-roadmap th,
+    .python-roadmap td {
+        padding: 6px 4px;
+        word-wrap: break-word;
+    }
+
+    /* Small mobile paginav improvements */
+    .paginav {
+        margin: 6px 0;
+    }
+
+    .paginav .title {
+        font-size: 11px;
+        line-height: 1.1;
+    }
+
+    .paginav .subtitle {
+        font-size: 0.85rem;
+        line-height: 1.1;
+        margin-top: 0.5px;
+    }
+}
+
+/* Additional paginav improvements for better spacing */
+.paginav {
+    margin: 12px 0;
+    padding: 8px 0;
+}
+
+.paginav a {
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.paginav a:hover {
+    transform: translateY(-1px);
+}
+
+/* Ensure proper spacing between title and subtitles */
+.paginav .title {
+    margin-bottom: 2px;
+}
+
+.paginav .subtitle:first-of-type {
+    margin-top: 3px;
+}
+
+/* Simple blue numbering for skills list */
+#skills + p + ol {
+    counter-reset: skill-counter;
+    list-style: none;
+    padding-left: 1.2rem;
+}
+
+#skills + p + ol li {
+    counter-increment: skill-counter;
+    position: relative;
+    padding-left: 1.2rem;
+}
+
+#skills + p + ol li::marker {
+    content: counter(skill-counter);
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+/* Custom paragraph styles */
+.custom-paragraph {
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+    line-height: 1.556;
+    word-spacing: 0.1em;
+    margin: 28.008px 0px;
+    color: var(--text-primary);
+    transition: var(--transition-base);
+}
+
+/* Post content blockquote styles */
+.post-content blockquote {
+    border-left: 4px solid var(--primary-color);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    border-radius: var(--radius-sm);
+}
+</style>
+
 <main class="main">
 
 <article class="post-single">
@@ -507,7 +1070,7 @@ hr.new3 {
   <div class="post-content"><!-- Autocoders are a family of neural network models aiming to learn compressed latent variables of high-dimensional data. Starting from the basic autocoder model, this post reviews several variations, including denoising, sparse, and contractive autoencoders, and then Variational Autoencoder (VAE) and its modification beta-VAE. -->
 
 <h1 id="Autoencoding101">Autoencoding 101: Types, Beta-VAEs, and Beyond<a hidden class="anchor" aria-hidden="true" href="#Autoencoding101">#</a></h1>
-<p>Let’s dive straight into the world of autoencoders and their cool variations, especially the game-changing beta-VAEs. We’ll take a look at how these technologies are advancing data representation and generative tasks, and how they’re really pushing the limits of what we can achieve in machine learning.</p>
+<p>Let's dive straight into the world of autoencoders and their cool variations, especially the game-changing beta-VAEs. We'll take a look at how these technologies are advancing data representation and generative tasks, and how they're really pushing the limits of what we can achieve in machine learning.</p>
 
 <p>Autoencoders are a type of neural network that can be used to learn a compressed representation of input data. They work by training the network to reconstruct the input data from a lower-dimensional latent representation, which is typically obtained using an encoder. Autoencoders are versatile and can be used for a variety of tasks, including data compression, anomaly detection, and feature learning.
 </p>
@@ -536,7 +1099,7 @@ One of the main benefits of autoencoders is their ability to reduce the dimensio
 <td>Each data point in the dataset is represented by a feature vector, <b>$\mathbf{x}$</b>. The dataset, <b>$\mathcal{D}$</b>, is a collection of these feature vectors, <b>$\mathbf{x}$</b>.</td>
 </tr>
 <tr>
-<td>$\mathbf{x}’$</td>
+<td>$\mathbf{x}'$</td>
 <td>The reconstructed version of a feature vector, <b>$\mathbf{x}$</b>, is a new version of the same vector that is generated through a process such as compression or denoising. This reconstructed version of <b>$\mathbf{x}$</b> aims to closely approximate the original vector, but may have some differences due to the applied process.</td>
 </tr>
 <tr>
@@ -953,6 +1516,98 @@ $$
         } else {
             
             codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+
+<script>
+    // Mobile dropdown functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check if device is touch-based (mobile) or small screen
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        const isSmallScreen = window.innerWidth <= 768;
+        
+        if (isTouchDevice || isSmallScreen) {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            // Disable hover behavior on mobile by removing hover styles
+            dropdowns.forEach(dropdown => {
+                const menu = dropdown.querySelector('.dropdown-menu');
+                if (menu) {
+                    // Force mobile styles
+                    menu.style.transition = 'all 0.2s ease';
+                }
+            });
+            
+            dropdowns.forEach(dropdown => {
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+                const menu = dropdown.querySelector('.dropdown-menu');
+                
+                if (toggle && menu) {
+                    // Add click event to toggle dropdown
+                    toggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        // Close all other dropdowns
+                        dropdowns.forEach(otherDropdown => {
+                            if (otherDropdown !== dropdown) {
+                                otherDropdown.classList.remove('dropdown-open');
+                            }
+                        });
+                        
+                        // Toggle current dropdown
+                        const isOpen = dropdown.classList.contains('dropdown-open');
+                        if (isOpen) {
+                            dropdown.classList.remove('dropdown-open');
+                        } else {
+                            dropdown.classList.add('dropdown-open');
+                        }
+                    });
+                }
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                // Don't close if clicking on the dropdown toggle
+                if (e.target.closest('.dropdown-toggle')) {
+                    return;
+                }
+                
+                // Close if clicking outside dropdown
+                if (!e.target.closest('.dropdown')) {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('dropdown-open');
+                    });
+                }
+            });
+            
+            // Close dropdown when pressing Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('dropdown-open');
+                    });
+                }
+            });
+            
+            // Close dropdown when window is resized
+            window.addEventListener('resize', function() {
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('dropdown-open');
+                });
+            });
+        }
+    });
+
+    // Animate title underline on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const postTitle = document.querySelector('.post-title');
+        if (postTitle) {
+            // Add a small delay for smooth animation
+            setTimeout(() => {
+                postTitle.classList.add('loaded');
+            }, 300);
         }
     });
 </script>
