@@ -6,11 +6,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>Causality in Machine Learning | Kb&#39;s Blog</title>
-<meta name="keywords" content="data, active-learning" />
+<meta name="keywords" content="causality, machine-learning, causal-inference, causal-models, causal-relationships, data-science, ml-algorithms, correlation-vs-causation, do-calculus, granger-causality, transfer-entropy, counterfactual-reasoning" />
 <meta name="description" content="Are you tired of making predictions based on correlation rather than causation? Introducing Causality in Machine Learning, a cutting-edge approach to understanding the underlying causes of complex data patterns. By incorporating causal inference techniques, we can gain a deeper understanding of how different variables interact and affect each other, leading to more accurate predictions and informed decision-making.">
 <meta name="author" content="kibrom Haftu">
 <link rel="canonical" href="https://kibromhft.github.io/posts/2022-11-20-causality_in_ML/" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet_main.css"  rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/main.css?v=1.2" rel="stylesheet">
+<link rel="preload" href="/assets/f/Essays1743.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/f/Libertine.woff2" as="font" type="font/woff2" crossorigin>
 <script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
@@ -69,16 +71,25 @@ if (!doNotTrack) {
 	
 	ga('send', 'pageview');
 }
-</script><meta property="og:title" content="Causality in Machine Learning" />
-<meta property="og:description" content="In ML, we often focus on the relationship between inputs and outputs. But, have you ever wondered if there is more to the story? Are there underlying relationships between variables that we're missing? It is here that causality comes into play. Causality refers to the relationship between an event (the cause) and a second event (the effect), where the second event is a result of the first. Understanding causality is crucial for making accurate predictions and informed decisions. By taking into account the causal relationships between variables, we can improve the performance of our models and gain deeper insights into the underlying mechanisms that generate the data." />
+</script><meta property="og:title" content="Causality in Machine Learning | Understanding Cause vs. Correlation" />
+<meta property="og:description" content="Are you tired of making predictions based on correlation rather than causation? Introducing Causality in Machine Learning, a cutting-edge approach to understanding the underlying causes of complex data patterns." />
+<meta property="og:image" content="https://kibromhft.github.io/assets/images/causality-ml.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Kb's Blog" />
+<meta property="og:locale" content="en_US" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kibromhft.github.io/posts/2022-11-20-causality_in_ML/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-02-20T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2022-02-20T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2022-11-20T10:00:00-07:00" />
+<meta property="article:modified_time" content="2022-11-20T10:00:00-07:00" />
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Causality in Machine Learning"/>
-<meta name="twitter:description" content="In ML, we often focus on the relationship between inputs and outputs. But, have you ever wondered if there is more to the story? Are there underlying relationships between variables that we're missing? It is here that causality comes into play. Causality refers to the relationship between an event (the cause) and a second event (the effect), where the second event is a result of the first. Understanding causality is crucial for making accurate predictions and informed decisions. By taking into account the causal relationships between variables, we can improve the performance of our models and gain deeper insights into the underlying mechanisms that generate the data."/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Causality in Machine Learning | Understanding Cause vs. Correlation"/>
+<meta name="twitter:description" content="Are you tired of making predictions based on correlation rather than causation? Introducing Causality in Machine Learning, a cutting-edge approach to understanding the underlying causes of complex data patterns."/>
+<meta name="twitter:image" content="https://kibromhft.github.io/assets/images/causality-ml.jpg" />
+<meta name="twitter:site" content="@kibromhft" />
+<meta name="twitter:creator" content="@kibromhft" />
 
 
 <script type="application/ld+json">
@@ -107,15 +118,15 @@ if (!doNotTrack) {
   "@type": "BlogPosting",
   "headline": "Causality in Machine Learning",
   "name": "Causality in Machine Learning",
-  "description": "In ML, we often focus on the relationship between inputs and outputs. But, have you ever wondered if there is more to the story? Are there underlying relationships between variables that we're missing? It is here that causality comes into play. Causality refers to the relationship between an event (the cause) and a second event (the effect), where the second event is a result of the first. Understanding causality is crucial for making accurate predictions and informed decisions. By taking into account the causal relationships between variables, we can improve the performance of our models and gain deeper insights into the underlying mechanisms that generate the data.",
+  "description": "Are you tired of making predictions based on correlation rather than causation? Introducing Causality in Machine Learning, a cutting-edge approach to understanding the underlying causes of complex data patterns. By incorporating causal inference techniques, we can gain a deeper understanding of how different variables interact and affect each other, leading to more accurate predictions and informed decision-making.",
   "keywords": [
-    "data", "active-learning"
+    "causality", "machine-learning", "causal-inference", "causal-models", "causal-relationships"
   ],
-  "articleBody": "In ML, we often focus on the relationship between inputs and outputs. But, have you ever wondered if there is more to the story? Are there underlying relationships between variables that we're missing? It is here that causality comes into play. Causality refers to the relationship between an event (the cause) and a second event (the effect), where the second event is a result of the first. Understanding causality is crucial for making accurate predictions and informed decisions. By taking into account the causal relationships between variables, we can improve the performance of our models and gain deeper insights into the underlying mechanisms that generate the data..\n",
+  "articleBody": "Machine learning (ML) is a rapidly growing field that has the potential to revolutionize many industries. It allows us to extract insights from data and make predictions about the future. However, traditional ML techniques focus mainly on prediction and model accuracy and don't account for the underlying causal relationships between variables. This can lead to models that are not robust, do not generalize well, and do not provide clear explanations for their predictions. This is where causality comes in.",
   "wordCount" : "4584",
   "inLanguage": "en",
-  "datePublished": "2022-02-20T00:00:00Z",
-  "dateModified": "2022-02-20T00:00:00Z",
+  "datePublished": "2022-11-20T10:00:00-07:00",
+  "dateModified": "2022-11-20T10:00:00-07:00",
   "author":{
     "@type": "Person",
     "name": "kibrom Haftu"
@@ -134,6 +145,298 @@ if (!doNotTrack) {
   }
 }
 </script>
+
+<style>
+        /* Optimized font-face declarations for custom fonts */
+        @font-face {
+            font-family: "Essays 1743";
+            src: url("../../assets/f/Essays1743.woff2") format("woff2"), url("../../assets/f/Essays1743.woff") format("woff");
+            font-display: swap;
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: "Essays 1743";
+            src: url("../../assets/f/Essays1743-bold.woff2") format("woff2"), url("../../assets/f/Essays1743-bold.woff") format("woff");
+            font-display: swap;
+            font-weight: bold;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: "Essays 1743";
+            src: url("../../assets/f/Essays1743-italic.woff2") format("woff2"), url("../../assets/f/Essays1743-italic.woff") format("woff");
+            font-display: swap;
+            font-weight: normal;
+            font-style: italic;
+        }
+        @font-face {
+            font-family: "Essays 1743";
+            src: url("../../assets/f/Essays1743-bold-italic.woff2") format("woff2"), url("../../assets/f/Essays1743-bold-italic.woff") format("woff");
+            font-display: swap;
+            font-weight: bold;
+            font-style: italic;
+        }
+        @font-face {
+            font-family: "Libertine";
+            src: url("../../assets/f/Libertine.woff2") format("woff2"), url("../../assets/f/Libertine.woff") format("woff");
+            font-display: swap;
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: "Libertine";
+            src: url("../../assets/f/Libertine-bold.woff2") format("woff2"), url("../../assets/f/Libertine-bold.woff") format("woff");
+            font-display: swap;
+            font-weight: bold;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: "Libertine";
+            src: url("../../assets/f/Libertine-italic.woff2") format("woff2"), url("../../assets/f/Libertine-italic.woff") format("woff");
+            font-display: swap;
+            font-weight: normal;
+            font-style: italic;
+        }
+        @font-face {
+            font-family: "Libertine";
+            src: url("../../assets/f/Libertine-bold-italic.woff2") format("woff2"), url("../../assets/f/Libertine-bold-italic.woff") format("woff");
+            font-display: swap;
+            font-weight: bold;
+            font-style: italic;
+        }
+        
+        /* Existing dark mode styles */
+
+
+
+        /* Enhanced styles for quotes with CSS variables */
+        .quote {
+            background: linear-gradient(135deg, var(--bg-card), var(--bg-secondary));
+            border-left: 4px solid var(--primary-color);
+            padding: 2rem 2rem 2rem 2.5rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-base);
+            border-radius: var(--radius-md);
+            position: relative;
+            overflow: hidden;
+            font-size: 1.2em;
+            font-style: italic;
+        }
+
+        
+
+        .quote::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 20px 20px 0;
+            border-color: transparent var(--primary-color) transparent transparent;
+            opacity: 0.7;
+        }
+
+        .quote p {
+            color: var(--text-primary);
+            font-style: italic;
+            font-size: 1.2em;
+            margin: 0 0 1rem 0;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+            padding-left: 0;
+            text-indent: 0;
+        }
+
+        .quote cite {
+            color: var(--text-secondary);
+            font-style: normal;
+            font-size: 0.95em;
+            display: block;
+            text-align: right;
+            margin-top: 1rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--border-color);
+            font-weight: 500;
+        }
+
+        /* Quote hover effects */
+        .quote:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .quote:hover::before {
+            opacity: 0.5;
+            transform: scale(1.1);
+        }
+
+        /* Dark mode specific quote styles */
+        body.dark .quote {
+            background-color: var(--bg-card);
+            border-left-color: var(--primary-color);
+            box-shadow: var(--shadow-sm);
+        }
+		
+
+    </style>
+
+    <style>
+    /* New styles for paragraphs with CSS variables */
+    .custom-paragraph {
+		font-family: var(--font-body);
+		font-size: var(--font-size-base);
+		line-height: 1.556;
+		word-spacing: 0.1em;
+		margin: 28.008px 0px;
+		color: var(--text-primary);
+		transition: var(--transition-base);
+    }
+	    /* Set --code-bg for all elements except the header 
+    body{
+        --code-bg: rgb(255, 255, 255) !important; 
+    }*/
+		
+		/* headers with CSS variables */
+	h1, h2, h3, h4, caption, thead th {
+	  font-family: var(--font-heading);
+	  font-weight: normal;
+	  color: var(--text-primary);
+	  text-shadow: 0 0 1px var(--text-secondary);
+	}
+	h1 {
+	  font-size: var(--font-size-3xl);
+	  line-height: 1.1;
+	  width: 100%;
+	  margin: 1.49em 0;
+	}
+	h2 {
+	  font-size: var(--font-size-2xl);
+	  line-height: 1.3125;
+	  margin: 1.167em 0;
+	  clear: both;
+	}
+	h3 {
+	  font-size: var(--font-size-xl);
+	  line-height: 1.167;
+	  margin: 1.556em 0;
+	}
+
+    /* Enhanced styles for tables with CSS variables */
+    .causality-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2rem 0;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        border: 1px solid var(--border-color);
+        background: var(--bg-primary);
+        position: relative;
+    }
+
+    /* Table header enhancement */
+    .causality-table thead {
+        background: transparent;
+    }
+
+    .causality-table th {
+        background: transparent;
+        color: var(--text-primary);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-family: var(--font-primary);
+        padding: 16px 12px;
+        text-align: left;
+        border: none;
+        position: relative;
+        text-shadow: none;
+    }
+
+    .causality-table th::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--border-color);
+    }
+
+    .causality-table td {
+        padding: 16px 12px;
+        text-align: left;
+        border: none;
+        border-bottom: 1px solid var(--border-color);
+        vertical-align: top;
+        line-height: 1.6;
+        color: #333333;
+        font-weight: 500;
+    }
+
+    /* Dark mode table content */
+    body.dark .causality-table td {
+        color: #e0e0e0;
+    }
+
+    .causality-table tr:nth-child(even) {
+        background-color: var(--bg-card);
+    }
+
+    .causality-table tr:nth-child(odd) {
+        background-color: var(--bg-primary);
+    }
+
+    .causality-table tr {
+        transition: background-color 0.8s ease;
+        position: static;
+    }
+
+    .causality-table tr:hover {
+        background-color: var(--bg-secondary);
+    }
+
+    /* Styles for links within the table */
+    .causality-table a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.6s ease;
+    }
+
+    .causality-table a:hover {
+        color: var(--primary-hover);
+        text-decoration: underline;
+    }
+
+    /* Light mode specific table styles */
+    body:not(.dark) .causality-table th {
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        color: #495057;
+        text-shadow: none;
+        border-bottom: 2px solid #dee2e6;
+    }
+
+    /* Dark mode specific table styles */
+    body.dark .causality-table th {
+        background: linear-gradient(135deg, #007bff, #0056b3);
+        color: #ffffff;
+        border-color: var(--border-color);
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+    }
+
+    body.dark .causality-table tr:nth-child(even) {
+        background-color: var(--bg-card);
+    }
+
+    body.dark .causality-table tr:nth-child(odd) {
+        background-color: var(--bg-primary);
+    }
+</style>
+
 </head>
 
 <body class="" id="top">
@@ -145,7 +448,6 @@ if (!doNotTrack) {
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.body.classList.add('dark');
     }
-
 </script>
 
 <script>
@@ -167,7 +469,7 @@ if (!doNotTrack) {
     });
 
 </script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
@@ -240,10 +542,10 @@ if (!doNotTrack) {
 		  </li> -->
 
 		<li class="dropdown">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-			  Resources <span class="caret fa fa-bars" data-toggle="dropdown"></span>
+			<a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">
+			  Resources <span class="caret fa fa-chevron-down"></span>
 			</a>
-		  <ul class="dropdown-menu custom-dropdown">
+		  <ul class="dropdown-menu">
 			<li>
 			  <a href="https://kibromhft.github.io/podcast">Podcast</a>
 			</li>
@@ -259,12 +561,14 @@ if (!doNotTrack) {
 		  </ul>
 		</li>
 
+		</ul>
+
 		<style>
+		/* Simple navigation styles - same as keywords page */
 		.custom-dropdown {
 		  padding: 8px 0 !important;
 		  margin: 0 !important;
 		  list-style-type: none !important;
-		  /* Removed min-width to allow natural width */
 		}
 
 		.custom-dropdown li {
@@ -280,18 +584,947 @@ if (!doNotTrack) {
 		  box-sizing: border-box !important;
 		  text-decoration: none !important;
 		  color: #333 !important;
-		  font-size: 16px !important; /* Increased font size */
+		  font-size: 16px !important;
 		  line-height: 1.5 !important;
 		}
 
 		.custom-dropdown li a:hover {
-		  background-color: #f8f9fa !important;
-		  color: #000 !important;
+			background-color: #f8f9fa !important;
+			color: #000 !important;
+		}
+
+		/* Mobile-specific overrides to match keywords page behavior */
+		@media screen and (max-width: 768px) {
+			/* Override main.css mobile navigation with keywords-style behavior */
+			.nav {
+				padding: 0 16px !important;
+				gap: 16px !important;
+				/* Remove complex flex overrides that cause horizontal lines */
+				display: flex !important;
+				align-items: center !important;
+				flex-wrap: wrap !important;
+				overflow: visible !important;
+				white-space: normal !important;
+				/* Override max-width constraints */
+				max-width: none !important;
+			}
+
+			#menu {
+				gap: 6px !important;
+				/* Remove overflow-x that causes horizontal lines */
+				overflow: visible !important;
+				white-space: normal !important;
+				display: flex !important;
+				flex-direction: row !important;
+				flex-wrap: wrap !important;
+			}
+
+			#menu li {
+				/* Remove inline-block that causes layout issues */
+				display: flex !important;
+				white-space: normal !important;
+				flex-shrink: 1 !important;
+			}
+
+			#menu a {
+				font-size: 15px !important;
+				padding: 8px 12px !important;
+				border-radius: 6px !important;
+				white-space: normal !important;
+				word-wrap: break-word !important;
+				overflow-wrap: break-word !important;
+			}
+
+			.dropdown-menu {
+				right: auto !important;
+				left: 0 !important;
+				min-width: 200px !important;
+				border-radius: 8px !important;
+			}
+
+			/* Completely disable hover behavior on touch devices */
+			.dropdown .dropdown-menu {
+				opacity: 0 !important;
+				visibility: hidden !important;
+				transform: translateY(-8px) !important;
+			}
+
+			/* Show dropdown when dropdown-open class is present */
+			.dropdown.dropdown-open .dropdown-menu {
+				opacity: 1 !important;
+				visibility: visible !important;
+				transform: translateY(0) !important;
+			}
+
+			/* Rotate caret when dropdown is open */
+			.dropdown.dropdown-open .caret {
+				transform: rotate(180deg) !important;
+			}
+		}
+
+		@media screen and (max-width: 480px) {
+			.nav {
+				flex-direction: row !important;
+				padding: 0 16px !important;
+				display: flex !important;
+				align-items: center !important;
+				flex-wrap: wrap !important;
+				max-width: none !important;
+			}
+
+			.logo {
+				margin-bottom: 0 !important;
+			}
+
+			#menu {
+				flex-wrap: wrap !important;
+				justify-content: flex-start !important;
+				gap: 6px !important;
+				display: flex !important;
+				flex-direction: row !important;
+			}
+
+			#menu a {
+				font-size: 14px !important;
+				padding: 6px 8px !important;
+				white-space: normal !important;
+				word-wrap: break-word !important;
+				overflow-wrap: break-word !important;
+			}
+
+			/* Mobile dropdown functionality for smaller screens */
+			.dropdown .dropdown-menu {
+				opacity: 0 !important;
+				visibility: hidden !important;
+				transform: translateY(-8px) !important;
+			}
+
+			.dropdown.dropdown-open .dropdown-menu {
+				opacity: 1 !important;
+				visibility: visible !important;
+				transform: translateY(0) !important;
+			}
 		}
 		</style>
+		
+		<style>
+			/* Design System - CSS Custom Properties */
+			:root {
+				/* Colors - using main theme variables */
+				--primary-color: var(--brand-blue, rgb(13, 110, 253));
+				--primary-hover: var(--brand-blue-hover, rgb(10, 88, 202));
+				--primary-light: rgb(59, 130, 246);
+				--text-primary: var(--primary, rgb(15, 23, 42));
+				--text-secondary: var(--secondary, rgb(51, 65, 85));
+				--text-muted: rgb(108, 117, 125);
+				--bg-primary: var(--theme, rgb(255, 255, 255));
+				--bg-secondary: var(--entry, rgb(248, 250, 252));
+				--bg-card: var(--entry, rgb(255, 255, 255));
+				--border-color: var(--border, rgba(226, 232, 240, 0.8));
+				--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+				--shadow-md: 0 4px 6px rgba(0, 0, 0, 0.02);
+				--shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.03);
+				--shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.05);
+				
+				/* Typography */
+				--font-heading: "Essays 1743", serif;
+				--font-body: Libertine, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
+				--font-size-xs: 0.875rem;
+				--font-size-sm: 1rem;
+				--font-size-base: 1.1rem;
+				--font-size-lg: 1.25rem;
+				--font-size-xl: 1.4rem;
+				--font-size-2xl: 2rem;
+				--font-size-3xl: 3.5rem;
+				
+				/* Spacing */
+				--space-xs: 0.5rem;
+				--space-sm: 1rem;
+				--space-md: 1.5rem;
+				--space-lg: 2rem;
+				--space-xl: 2.5rem;
+				--space-2xl: 3rem;
+				--space-3xl: 4rem;
+				
+				/* Border radius */
+				--radius-sm: 8px;
+				--radius-md: 12px;
+				--radius-lg: 16px;
+				
+				/* Transitions */
+				--transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+				--transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+				--transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+				
+				/* Container */
+				--container-max-width: min(900px, 90vw);
+				--container-padding: clamp(1rem, 5vw, 2rem);
+			}
 
-		</ul>
+			/* Dark mode variables - using main theme system */
+			body.dark {
+				--primary-color: rgb(34, 211, 238);
+				--primary-hover: rgb(6, 182, 212);
+				--primary-light: rgb(6, 182, 212);
+				--text-primary: var(--primary, rgb(248, 250, 252));
+				--text-secondary: var(--secondary, rgb(203, 213, 225));
+				--text-muted: rgb(156, 163, 175);
+				--bg-primary: var(--theme, rgb(15, 23, 42));
+				--bg-secondary: var(--entry, rgb(30, 41, 59));
+				--bg-card: var(--entry, rgb(30, 41, 59));
+				--border-color: var(--border, rgba(51, 65, 85, 0.8));
+				--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+				--shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
+				--shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+				--shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+			}
 
+			/* Reduced motion support */
+			@media (prefers-reduced-motion: reduce) {
+				:root {
+					--transition-fast: 0s;
+					--transition-base: 0s;
+					--transition-slow: 0s;
+				}
+				
+				* {
+					animation-duration: 0.01ms !important;
+					animation-iteration-count: 1 !important;
+					transition-duration: 0.01ms !important;
+				}
+			}
+
+			/* Navigation styles with CSS variables */
+			#menu a {
+				color: var(--text-primary);
+				transition: var(--transition-base);
+			}
+
+			#menu a:hover,
+			#menu a:focus {
+				background-color: var(--bg-secondary);
+				color: var(--text-primary);
+				outline: 2px solid var(--primary-color);
+				outline-offset: 2px;
+			}
+
+			.dropdown-menu a {
+				color: var(--text-primary);
+				transition: var(--transition-base);
+			}
+
+			.dropdown-menu a:hover,
+			.dropdown-menu a:focus {
+				background-color: var(--bg-secondary);
+				color: var(--text-primary);
+			}
+
+			/* Logo and theme toggle */
+			.logo a {
+				color: var(--text-primary);
+				transition: var(--transition-base);
+			}
+
+			.logo a:hover,
+			.logo a:focus {
+				color: var(--primary-color);
+				outline: 2px solid var(--primary-color);
+				outline-offset: 2px;
+			}
+
+			#theme-toggle {
+				background: none;
+				border: none;
+				cursor: pointer;
+				padding: var(--space-xs);
+				border-radius: 50%;
+				transition: var(--transition-base);
+				color: var(--text-primary);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			#theme-toggle:hover,
+			#theme-toggle:focus {
+				background-color: var(--bg-secondary);
+				outline: 2px solid var(--primary-color);
+				outline-offset: 2px;
+			}
+
+			#theme-toggle svg {
+				height: 20px;
+				width: 20px;
+			}
+
+			.logo-switches {
+				display: flex;
+				align-items: center;
+				margin-left: var(--space-sm);
+			}
+
+			.logo {
+				display: flex;
+				align-items: center;
+				position: relative;
+			}
+
+			/* Theme toggle visibility */
+			body.dark #moon {
+				display: none;
+			}
+
+			body:not(.dark) #sun {
+				display: none;
+			}
+
+			/* Font loading optimized - using main font declarations */
+
+			/* Container and layout with CSS variables */
+			.post-content {
+				color: var(--text-primary);
+				max-width: var(--container-max-width);
+				margin: 0 auto;
+				padding: 0 var(--container-padding);
+				font-family: var(--font-body);
+				font-size: var(--font-size-base);
+				line-height: 1.8;
+				text-align: justify;
+			}
+
+			/* Enhanced paragraph spacing and readability */
+			.post-content p {
+				margin-bottom: 1.5rem;
+				text-align: justify;
+				hyphens: auto;
+				word-break: normal;
+			}
+
+			/* Post-meta styling restored to original */
+
+			/* Better list styling */
+			.post-content ol, .post-content ul {
+				margin: 1.5rem 0;
+				padding-left: 2rem;
+			}
+
+			.post-content li {
+				margin-bottom: 0.75rem;
+				line-height: 1.6;
+			}
+
+			.post-content ol li {
+				padding-left: 0.5rem;
+			}
+
+			.post-content ul li {
+				list-style-type: disc;
+			}
+
+			/* Enhanced section headers */
+			.post-content h1, .post-content h2, .post-content h3 {
+				margin-top: 3rem;
+				margin-bottom: 1.5rem;
+				padding-bottom: 0.5rem;
+				border-bottom: 2px solid var(--border-color);
+				position: relative;
+				transition: var(--transition-base);
+			}
+
+			.post-content h1::after, .post-content h2::after, .post-content h3::after {
+				content: '';
+				position: absolute;
+				bottom: -2px;
+				left: 0;
+				width: 60px;
+				height: 2px;
+				background: var(--primary-color);
+				transition: width var(--transition-base);
+			}
+
+			.post-content h1:hover::after, .post-content h2:hover::after, .post-content h3:hover::after {
+				width: 100px;
+			}
+
+			.post-content h1:hover, .post-content h2:hover, .post-content h3:hover {
+				color: var(--primary-color);
+				transform: translateX(4px);
+			}
+
+			/* Enhanced list styling */
+			.post-content ol li, .post-content ul li {
+				position: relative;
+				padding-left: 1rem;
+			}
+
+			.post-content ol li::marker {
+				color: var(--primary-color);
+				font-weight: bold;
+			}
+
+			.post-content ul li::marker {
+				color: var(--primary-color);
+			}
+
+			/* Enhanced blockquote styling */
+			.post-content blockquote {
+				border-left: 4px solid var(--primary-color);
+				padding: 1.5rem;
+				margin: 2rem 0;
+				font-style: italic;
+				color: var(--text-secondary);
+				background: var(--bg-secondary);
+				border-radius: var(--radius-sm);
+			}
+
+			/* Container queries for responsive design */
+			@container (max-width: 600px) {
+				.post-content {
+					font-size: var(--font-size-sm);
+					padding: 0 var(--space-sm);
+				}
+			}
+
+			/* Responsive design improvements */
+			@media screen and (max-width: 768px) {
+				.post-content {
+					font-size: var(--font-size-sm);
+					padding: 0 var(--space-sm);
+				}
+
+				.causality-table {
+					font-size: 14px;
+				}
+
+				.causality-table th,
+				.causality-table td {
+					padding: 8px;
+				}
+
+				.quote {
+					margin: 1rem 0;
+					padding: 1rem;
+				}
+
+				.quote p {
+					font-size: 1em;
+				}
+			}
+
+			@media screen and (max-width: 480px) {
+				.post-content {
+					font-size: var(--font-size-xs);
+					padding: 0 var(--space-xs);
+				}
+
+				.causality-table {
+					font-size: 12px;
+				}
+
+				.causality-table th,
+				.causality-table td {
+					padding: 6px;
+				}
+
+				.copy-code {
+					font-size: 10px;
+					padding: 4px 8px;
+				}
+
+				/* Mobile header improvements */
+				.post-header {
+					padding: 1rem 0;
+					text-align: center;
+				}
+
+				.post-title {
+					font-size: 2.5rem;
+					margin: 0.5rem 0;
+					line-height: 1.2;
+				}
+
+				.post-meta {
+					font-size: 0.9rem;
+					margin: 0.5rem 0;
+				}
+
+				/* Improve mobile content spacing */
+				.post-content {
+					padding: 0 1rem;
+				}
+
+				/* Better mobile table handling */
+				.causality-table {
+					font-size: 13px;
+					margin: 1.5rem 0;
+				}
+
+				.causality-table th,
+				.causality-table td {
+					padding: 8px 6px;
+					word-wrap: break-word;
+				}
+			}
+
+			/* Enhanced link styling with focus states */
+			.post-content a {
+				color: var(--primary-color);
+				text-decoration: none;
+				transition: var(--transition-base);
+				position: relative;
+				font-weight: 500;
+				border-radius: 2px;
+				padding: 2px 4px;
+				margin: 0 2px;
+			}
+
+			.post-content a::after {
+				content: '';
+				position: absolute;
+				bottom: -2px;
+				left: 0;
+				width: 0;
+				height: 2px;
+				background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
+				transition: width var(--transition-base);
+				border-radius: 1px;
+			}
+
+			.post-content a:hover::after,
+			.post-content a:focus::after {
+				width: 100%;
+			}
+
+			.post-content a:hover,
+			.post-content a:focus {
+				color: var(--primary-hover);
+				background: var(--bg-secondary);
+				border-radius: 4px;
+				transform: translateY(-1px);
+				box-shadow: var(--shadow-sm);
+			}
+
+			/* External link indicators */
+			.post-content a[href^="http"]::before {
+				content: '↗';
+				margin-right: 4px;
+				font-size: 0.8em;
+				opacity: 0.7;
+				transition: var(--transition-base);
+			}
+
+			.post-content a[href^="http"]:hover::before {
+				opacity: 1;
+				transform: translateX(2px);
+			}
+
+			/* Post content dark mode fixes */
+			.post-content {
+				color: var(--text-primary) !important;
+			}
+
+			.post-content p {
+				color: var(--text-primary) !important;
+			}
+
+			.post-content h1,
+			.post-content h2,
+			.post-content h3,
+			.post-content h4,
+			.post-content h5,
+			.post-content h6 {
+				color: var(--text-primary) !important;
+			}
+
+			/* Ensure body text uses our custom variables */
+			body {
+				color: var(--text-primary) !important;
+				background: var(--bg-primary) !important;
+			}
+
+			/* Dark mode specific overrides */
+			body.dark .post-content {
+				color: var(--text-primary) !important;
+			}
+
+			body.dark .post-content p {
+				color: var(--text-primary) !important;
+			}
+
+			body.dark .post-content h1,
+			body.dark .post-content h2,
+			body.dark .post-content h3,
+			body.dark .post-content h4,
+			body.dark .post-content h5,
+			body.dark .post-content h6 {
+				color: var(--text-primary) !important;
+			}
+
+			/* Beautiful Recommended Reading Title Styling */
+			.paginav .title {
+				/* Font & Text */
+				font-family: -apple-system, BlinkMacSystemFont, "segoe ui", Roboto, Oxygen, Ubuntu, Cantarell, "open sans", "helvetica neue", sans-serif;
+				font-size: 13px;
+				font-style: normal;
+				font-variant: normal;
+				font-weight: 400;
+				letter-spacing: 1px;
+				line-height: 30px;
+				text-decoration: none solid rgb(108, 108, 108);
+				text-align: start;
+				text-indent: 0px;
+				text-transform: uppercase;
+				vertical-align: baseline;
+				white-space: normal;
+				word-spacing: 0px;
+
+				/* Color & Background */
+				background-attachment: scroll;
+				background-color: rgba(0, 0, 0, 0);
+				background-image: none;
+				background-position: 0% 0%;
+				background-repeat: repeat;
+				color: rgb(108, 108, 108);
+
+				/* Box */
+				height: auto;
+				width: auto;
+				border: 0px none rgb(108, 108, 108);
+				border-top: 0px none rgb(108, 108, 108);
+				border-right: 0px none rgb(108, 108, 108);
+				border-bottom: 0px none rgb(108, 108, 108);
+				border-left: 0px none rgb(108, 108, 108);
+				margin: 0px;
+				padding: 0px;
+				max-height: none;
+				min-height: 0px;
+				max-width: none;
+				min-width: 0px;
+
+				/* Positioning */
+				position: static;
+				top: auto;
+				bottom: auto;
+				right: auto;
+				left: auto;
+				float: none;
+				display: inline;
+				clear: none;
+				z-index: auto;
+
+				/* List */
+				list-style-image: none;
+				list-style-type: disc;
+				list-style-position: outside;
+
+				/* Table */
+				border-collapse: separate;
+				border-spacing: 0px;
+				caption-side: top;
+				empty-cells: show;
+				table-layout: auto;
+
+				/* Miscellaneous */
+				overflow: visible;
+				cursor: pointer;
+				visibility: visible;
+
+				/* Effects */
+				transform: none;
+				transition: all;
+				outline: rgb(255, 0, 0) dashed 1px;
+				outline-offset: 0px;
+				box-sizing: border-box;
+				resize: none;
+				text-shadow: none;
+				text-overflow: clip;
+				word-wrap: normal;
+				box-shadow: none;
+				border-top-left-radius: 0px;
+				border-top-right-radius: 0px;
+				border-bottom-left-radius: 0px;
+				border-bottom-right-radius: 0px;
+			}
+
+			/* Dark mode override for recommended reading title */
+			body.dark .paginav .title {
+				color: rgb(156, 163, 175) !important;
+			}
+
+			/* Recommended Reading Link Styling - matching VAE post */
+			.paginav a {
+				color: var(--primary-color);
+				text-decoration: none;
+				transition: var(--transition-base);
+				display: block;
+				padding: 8px 12px;
+				border-radius: var(--radius-sm);
+			}
+
+			.paginav a:hover {
+				background-color: var(--bg-secondary);
+				color: var(--primary-hover);
+				transform: translateY(-1px);
+				box-shadow: var(--shadow-sm);
+			}
+
+			.paginav span:not(.title) {
+				color: var(--primary-color);
+				font-weight: 500;
+				font-size: 1rem;
+				line-height: 1.4;
+				display: block;
+				margin-top: 2px;
+			}
+
+			.paginav .subtitle {
+				color: var(--primary-color);
+				font-weight: 500;
+				font-size: 0.95rem;
+				line-height: 1.3;
+				display: block;
+				margin-top: 1px;
+				opacity: 0.9;
+			}
+
+			.paginav span:not(.title):hover {
+				color: var(--primary-hover);
+				text-decoration: underline;
+			}
+
+			/* Dark mode overrides for recommended reading links */
+			body.dark .paginav a {
+				color: var(--primary-color);
+			}
+
+			body.dark .paginav a:hover {
+				background-color: var(--bg-secondary);
+				color: var(--primary-hover);
+			}
+
+			body.dark .paginav span:not(.title) {
+				color: var(--primary-color);
+			}
+
+			body.dark .paginav span:not(.title):hover {
+				color: var(--primary-hover);
+			}
+
+			/* Additional paginav improvements for better spacing */
+			.paginav {
+				margin: 12px 0;
+				padding: 8px 0;
+			}
+
+			.paginav a {
+				text-decoration: none;
+				transition: all 0.2s ease;
+			}
+
+			.paginav a:hover {
+				transform: translateY(-1px);
+			}
+
+			/* Ensure proper spacing between title and subtitles */
+			.paginav .title {
+				margin-bottom: 2px;
+			}
+
+			.paginav .subtitle:first-of-type {
+				margin-top: 3px;
+			}
+
+			/* Copy button styling */
+			.copy-code {
+				position: absolute;
+				top: 8px;
+				right: 8px;
+				background: var(--primary-color);
+				color: white;
+				border: none;
+				border-radius: var(--radius-sm);
+				padding: 6px 12px;
+				font-size: 12px;
+				font-weight: 500;
+				cursor: pointer;
+				transition: var(--transition-base);
+				opacity: 0;
+				z-index: 10;
+				box-shadow: var(--shadow-sm);
+			}
+
+			.copy-code:hover {
+				background: var(--primary-hover);
+				transform: translateY(-1px);
+				box-shadow: var(--shadow-md);
+			}
+
+			pre:hover .copy-code {
+				opacity: 1;
+			}
+
+			.copy-code:focus {
+				outline: 2px solid var(--primary-color);
+				outline-offset: 2px;
+				opacity: 1;
+			}
+
+			/* Ensure pre elements have relative positioning for copy button */
+			pre {
+				position: relative;
+			}
+
+			/* Dark mode copy button */
+			body.dark .copy-code {
+				background: var(--primary-color);
+				color: var(--bg-primary);
+			}
+
+			body.dark .copy-code:hover {
+				background: var(--primary-hover);
+			}
+
+			/* Show copy button on focus for accessibility */
+			pre:focus-within .copy-code {
+				opacity: 1;
+			}
+
+			/* Reading Progress Bar */
+			.reading-progress {
+				position: relative;
+				width: 100%;
+				height: 2px;
+				background: var(--border-color);
+				border-radius: 1px;
+				margin: 0.5rem 0;
+				overflow: hidden;
+			}
+
+			.progress-bar {
+				height: 100%;
+				background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
+				width: 0%;
+				transition: width var(--transition-base);
+				border-radius: 1px;
+				box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+			}
+
+			/* Enhanced post header styling */
+			.post-header {
+				text-align: center;
+				margin-bottom: 1rem;
+				padding-bottom: 0.5rem;
+				margin-top: 0.5rem;
+				position: relative;
+			}
+
+			.post-title {
+				font-size: var(--font-size-2xl);
+				margin-bottom: 1rem;
+				color: var(--text-primary);
+				transition: var(--transition-base);
+				position: relative;
+			}
+
+			.post-title:hover {
+				transform: translateY(-2px) scale(1.02);
+			}
+
+			/* Add underline like FAQ page */
+			.post-title::after {
+				content: '';
+				position: absolute;
+				bottom: -8px;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 160px;
+				height: 2px;
+				background: linear-gradient(90deg, rgb(13, 110, 253) 0%, rgb(59, 130, 246) 50%, rgb(10, 88, 202) 100%);
+				border-radius: 1px;
+				transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+				opacity: 0;
+				transform: translateX(-50%) scaleX(0);
+				transform-origin: center;
+			}
+
+			.post-title:hover::after {
+				opacity: 1;
+				transform: translateX(-50%) scaleX(1);
+			}
+
+			/* Animate underline on page load */
+			.post-title.loaded::after {
+				opacity: 1;
+				transform: translateX(-50%) scaleX(1);
+			}
+
+			/* Dark mode underline */
+			body.dark .post-title::after {
+				background: linear-gradient(90deg, rgb(34, 211, 238) 0%, rgb(6, 182, 212) 50%, rgb(8, 145, 178) 100%);
+				box-shadow: 0 2px 8px rgba(34, 211, 238, 0.3);
+			}
+
+			.post-meta {
+				color: rgb(0,123,255);
+				font-size: 14px;
+				display: flex;
+				flex-wrap: wrap;
+				margin-bottom: 1rem;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.post-meta:hover {
+				color: rgb(0,105,217);
+			}
+
+			/* Print styles */
+			@media print {
+				.header,
+				.footer,
+				.top-link,
+				.copy-code,
+				#theme-toggle {
+					display: none !important;
+				}
+
+				.post-content {
+					font-size: 12pt;
+					line-height: 1.4;
+					color: #000 !important;
+					background: #fff !important;
+				}
+
+				.causality-table {
+					border: 1px solid #000;
+					page-break-inside: avoid;
+				}
+
+				.causality-table th,
+				.causality-table td {
+					border: 1px solid #000;
+					padding: 4px;
+				}
+
+				.quote {
+					border-left: 4px solid #000;
+					background: #f9f9f9 !important;
+					page-break-inside: avoid;
+					font-size: 1.2em;
+					font-style: italic;
+				}
+
+				a {
+					color: #000 !important;
+					text-decoration: underline;
+				}
+
+				h1, h2, h3, h4, h5, h6 {
+					color: #000 !important;
+					page-break-after: avoid;
+				}
+			}
+		</style>
 		
     </nav>
 </header>
@@ -301,66 +1534,87 @@ if (!doNotTrack) {
 <article class="post-single">
   <header class="post-header">
     
-    <h1 class="post-title">
+    <h2 class="post-title">
       Causality in Machine Learning
-    </h1>
-    <div class="post-meta"><span title='2022-02-20 00:00:00 +0000 UTC'>November 20, 2022</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;kibrom Haftu
+    </h2>
+    <div class="post-meta"><span title='2022-11-20 10:00:00 -0700 PDT'>November 20, 2022</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;kibrom Haftu</div>
 
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress">
+      <div class="progress-bar" id="reading-progress"></div>
 </div>
   </header> 
 
   <div class="post-content">
   
-<p><strong>Causality in Machine Learning</strong>:</p>
-<p>Uncovering the Hidden Relationships in our Data</p>
-<p>Machine learning (ML) is a rapidly growing field that has the potential to revolutionize many industries. It allows us to extract insights from data and make predictions about the future. However, traditional ML techniques focus mainly on prediction and model accuracy and don't account for the <strong>underlying causal relationships</strong> between variables. This can lead to models that are not robust, do not generalize well, and do not provide clear explanations for their predictions. This is where causality comes in.</p>
-<p>In ML, we often focus on the relationship between inputs and outputs. But, have you ever wondered if there is more to the story? Are there underlying relationships between variables that we're missing? It is here that causality comes into play. <strong>Causality</strong> refers to the relationship between an event (the cause) and a second event (the effect), where the second event is a result of the first. Understanding causality is crucial for making accurate predictions and informed decisions. By taking into account the causal relationships between variables, we can improve the performance of our models and gain deeper insights into the underlying mechanisms that generate the data.</p>
-<p>In this blog post, we will explore the power of causality in ML and how it can be used to uncover hidden relationships in our data, make accurate predictions, and improve our ability to make informed decisions. Don't let your models be limited by correlation. Dive into the world of causality and unlock the full potential of your data.</p>
-<p>Traditional ML techniques are based on correlation, which is the relationship between two variables, where they tend to change together. However, correlation does not imply causation, and so traditional ML models may make predictions based on spurious correlations that do not reflect real causal relationships. Additionally, traditional ML models do not account for the impact of interventions and do not allow for counterfactual reasoning, which is the ability to understand the potential outcomes of different actions. This limits their ability to make optimal decisions and understand the underlying mechanisms that generate the data.</p>
-<p>"Causality is the holy grail of science" - Judea Pearl</p>
-<p><strong>Differentiating Correlation from Causality</strong></p>
-<p>One of the main challenges in understanding causality is differentiating it from correlation. Correlation refers to the relationship between two variables, where they tend to change together. For example, ice cream sales and crime rates may be positively correlated, but it is not reasonable to assume that ice cream causes crime. On the other hand, causality refers to the relationship where a change in one variable directly causes a change in another variable. For example, smoking causes an increased risk of lung cancer.</p>
-<p>"Correlation does not imply causation" - Unknown</p>
-<p><strong>The Gold Standard: Randomized Controlled Experiments</strong></p>
-<p>One of the most reliable ways to establish causality is through randomized controlled experiments. In these experiments, a treatment is applied to a randomly selected group, and the effect of the treatment is compared to a control group that did not receive the treatment. By comparing the outcomes of the two groups, we can establish a causal relationship between the treatment and the outcome. However, it is not always possible to conduct experiments in real-world settings due to ethical, practical and financial constraints.</p>
-<p>The Do-Calculus Framework for Causal Inference</p>
-<p>Another widely used framework for causal inference is the "do-calculus" introduced by Judea Pearl in his book "The Book of Why: The New Science of Cause and Effect". The do-calculus allows us to reason about causality using a set of mathematical rules. By using this framework, we can define the causal effect of one variable on another using the equation:</p>
-<p>$\mathbf{P(y|do(x)) - P(y)}$</p>
-<p>This equation states that the causal effect of $\mathbf{x}$ on $\mathbf{y}$ is the difference between the probability of $\mathbf{y}$ occurring when $\mathbf{x}$ is forced to happen (denoted by $\mathbf{do(x)}$) and the probability of $\mathbf{y}$ occurring without any intervention on $\mathbf{x}$.</p>
-<p><strong>Challenges in Establishing Causality</strong></p>
-<p>Establishing causality is not always a straightforward task, there are several challenges that need to be addressed. For example, in observational studies, it may be difficult to control for all confounding factors that could affect the outcome. Additionally, in complex systems, it may be difficult to identify all the relevant variables and their causal relationships.</p>
-<p><strong>Causality in ML Applications</strong></p>
-<p>Causality can be applied in various ways in ML. For example, <strong>causal inference</strong> can be used to identify the most important features in a dataset, or to understand the impact of a specific intervention on a system. Additionally, causality can be used to improve the performance of predictive models by accounting for the underlying causal relationships in the data.</p>
-<p>One specific application of causality in ML is in <strong>causal discovery</strong>, which is the process of identifying the causal relationships among variables in a dataset. This can be done using methods such as the PC algorithm, which is based on the idea that if two variables are independent given the set of other variables, then there is no direct causal relationship between them. Another method is the IC algorithm, which is based on the concept of d-separation in graphical models. These methods can be used to uncover hidden causal relationships in the data, which can be used to improve the performance of predictive models.</p>
-<p>Another application of causality in ML is in <strong>counterfactual reasoning,</strong> which is the process of understanding the potential outcomes of different actions or interventions. This can be done using methods such as counterfactual fairness, which is a way to ensure that a model's predictions are fair with respect to different subgroups in the population. Additionally, counterfactual reasoning can be used to understand the impact of different interventions on a system, such as the impact of a new policy on crime rates.</p>
-<p><strong>Causality in Causal ML</strong></p>
-<p>Causal ML is a field that uses causality as a guiding principle to design and evaluate ML models. The goal of causal ML is to build models that can predict the consequences of interventions. This is different from traditional ML, which is mainly focused on prediction.</p>
-<p>The main idea behind causal ML is to use causal models to represent the underlying mechanisms that generate the data, and to use these models to make predictions about the consequences of interventions. A causal model is a directed acyclic graph (DAG) that encodes the causal relationships among variables. A DAG is a graphical representation of a set of variables and their relationships.</p>
-<p>One important aspect of Causal ML is the ability to perform counterfactual reasoning, which is the ability to reason about what would have happened if an intervention were applied. This is a powerful tool in decision making as it allows one to understand the potential outcomes of different actions before committing to them.</p>
-<p><strong>Causality in Reinforcement Learning</strong></p>
-<p>Reinforcement learning (RL) is a type of ML where an agent learns to make decisions by interacting with its environment. In RL, causality plays a crucial role as the agent's actions cause changes in the environment that in turn affect the agent's future rewards. In order to make good decisions, the agent needs to understand the causal relationships between its actions and the rewards it receives.</p>
-<p>In RL, the causal relationship between actions and rewards is typically represented using a Markov Decision Process (MDP). An MDP is a mathematical model that describes the agent's decision-making process. It includes a set of states, a set of actions, and a set of rewards. The agent chooses its actions based on the current state of the environment, and the environment's response to the agent's actions is determined by a set of transition probabilities.</p>
-<p><strong>Causality in Transfer Learning</strong></p>
-<p>Transfer learning is a technique that allows a model trained on one task to be applied to another related task. In transfer learning, it is important to understand the causal relationships between the tasks in order to ensure that the model is able to transfer the knowledge learned from the source task to the target task. By understanding the causal relationships between the tasks, we can select the most relevant features to transfer and avoid transferring irrelevant information.</p>
-<p><strong>Causality in Model Interpretation</strong></p>
-<p>Causality is also important for interpreting ML models. In traditional ML, the focus is on prediction and model accuracy. However, in many real-world applications, it is important to understand why a model is making certain predictions. This is where causality comes in. By understanding the causal relationships between the inputs and the outputs, we can gain insights into the underlying mechanisms that generate the data and how a model is making its predictions.</p>
-<p><strong>Causality in Model Explainability</strong></p>
-<p>Explainability is the ability of a model to provide clear and understandable explanations of its predictions. In recent years, there has been a growing interest in developing explainable ML models. One approach to explainable ML is to use causal models to represent the underlying mechanisms that generate the data. By using causal models, we can provide clear and understandable explanations of how a model is making its predictions.</p>
-<p>&nbsp;</p>
-<p><strong>Causality in Time-series Data</strong></p>
-<p>Time-series data is a type of data that is collected over time, and understanding causality in this type of data can be particularly challenging. In traditional time-series analysis, the focus is on finding patterns and trends in the data, but this does not necessarily imply causality. Establishing causality in time-series data requires additional methods and techniques.</p>
-<p>One commonly used method for establishing causality in time-series data is <strong>Granger causality</strong>. This method is based on the idea that if a variable X is found to be useful in predicting the future values of another variable Y, then X is said to have a causal relationship with Y. This method uses statistical tests to determine whether the inclusion of X improves the prediction of Y beyond what would be expected by chance.</p>
-<p>Another method that can be used is <strong>transfer entropy</strong>. This method is based on the concept of information theory and measures the amount of information that is transferred from one time-series to another. It can be used to establish causality by identifying the direction of information flow between variables.</p>
-<p>It is important to note that while these methods can provide strong evidence for causality, they are not conclusive and must be used in conjunction with other methods and domain knowledge. Additionally, in time-series data, the effects of interventions may take time to manifest and may be confounded by other variables that change over time.</p>
-<p><strong>Causality in Causal Inference for Decision Making</strong></p>
-<p>Causality plays a crucial role in decision making as it allows us to understand the potential outcomes of different actions. By understanding causality, we can make better decisions by identifying the cause-and-effect relationships that drive the outcomes we care about.</p>
-<p>One popular method for using causality in decision making is counterfactual reasoning. This method allows us to understand what would have happened if an intervention were applied by comparing the outcome of the actual intervention to the counterfactual outcome of not applying the intervention. This can be used to evaluate the effectiveness of a policy or treatment and identify the potential trade-offs of different actions.</p>
-<p>Another method for using causality in decision making is decision-theoretic causal inference. This method combines causal inference with decision theory to identify the optimal decision based on the causal relationships in the data. This can be used to make decisions about treatment or policy interventions by identifying the intervention that is most likely to achieve a desired outcome.</p>
-<p>It is important to note that causality in decision making requires a clear understanding of the underlying causal mechanisms and the potential confounding factors that may affect the outcome. Additionally, decision-making based on causality can be subject to ethical considerations and trade-offs, such as the potential harm or benefits to different groups in the population.</p>
-<p><strong>Conclusion</strong></p>
-<p>In conclusion, causality is a fundamental concept in ML that can help us understand the underlying relationships between variables and improve the performance of our models. By using methods such as randomized controlled experiments, the do-calculus framework, and causal discovery, we can establish causality and make more informed decisions about how to use our models in the real world.</p>
-<p>Causality has many applications in ML, including in counterfactual reasoning, causal ML, reinforcement learning, transfer learning, model interpretation and explainability. Additionally, causality plays a crucial role in time-series data and decision making, allowing us to identify patterns and trends, and make optimal decisions based on the causal relationships in the data.</p>
-<p>However, it is important to keep in mind that causality is a complex and challenging concept, and there is always a degree of uncertainty in any causal inference. Additionally, the use of causality in ML may raise ethical considerations, such as fairness and bias. It is crucial to understand the limitations and potential biases of the methods used for causal inference, and to use them in conjunction with domain knowledge and other methods to ensure the most accurate and reliable results.</p>
+<p class="custom-paragraph"><strong>Causality in Machine Learning</strong>:</p>
+<p class="custom-paragraph">Uncovering the Hidden Relationships in our Data</p>
+<p class="custom-paragraph">Machine learning (ML) is a rapidly growing field that has the potential to revolutionize many industries. It allows us to extract insights from data and make predictions about the future. However, traditional ML techniques focus mainly on prediction and model accuracy and don't account for the underlying causal relationships between variables. This can lead to models that are not robust, do not generalize well, and do not provide clear explanations for their predictions. This is where causality comes in.</p>
+<p class="custom-paragraph">In ML, we often focus on the relationship between inputs and outputs. But, have you ever wondered if there is more to the story? Are there underlying relationships between variables that we're missing? It is here that causality comes into play. <strong>Causality</strong> refers to the relationship between an event (the cause) and a second event (the effect), where the second event is a result of the first. Understanding causality is crucial for making accurate predictions and informed decisions. By taking into account the causal relationships between variables, we can improve the performance of our models and gain deeper insights into the underlying mechanisms that generate the data.</p>
+<p class="custom-paragraph">In this blog post, we will explore the power of causality in ML and how it can be used to uncover hidden relationships in our data, make accurate predictions, and improve our ability to make informed decisions. Don't let your models be limited by correlation. Dive into the world of causality and unlock the full potential of your data.</p>
+<p class="custom-paragraph">Traditional ML techniques are based on correlation, which is the relationship between two variables, where they tend to change together. However, correlation does not imply causation, and so traditional ML models may make predictions based on spurious correlations that do not reflect real causal relationships. Additionally, traditional ML models do not account for the impact of interventions and do not allow for counterfactual reasoning, which is the ability to understand the potential outcomes of different actions. This limits their ability to make optimal decisions and understand the underlying mechanisms that generate the data.</p>
+
+<blockquote class="quote">
+  <p>"Causality is the holy grail of science" <cite>- Judea Pearl</cite></p>
+</blockquote>
+
+<h2><strong>Differentiating Correlation from Causality</strong></h2>
+<p class="custom-paragraph">One of the main challenges in understanding causality is differentiating it from correlation. Correlation refers to the relationship between two variables, where they tend to change together. For example, ice cream sales and crime rates may be positively correlated, but it is not reasonable to assume that ice cream causes crime. On the other hand, causality refers to the relationship where a change in one variable directly causes a change in another variable. For example, smoking causes an increased risk of lung cancer.</p>
+
+<blockquote class="quote">
+  <p>"Correlation does not imply causation" <cite>- Unknown</cite></p>
+</blockquote>
+
+<h2><strong>The Gold Standard: Randomized Controlled Experiments</strong></h2>
+<p class="custom-paragraph">One of the most reliable ways to establish causality is through randomized controlled experiments. In these experiments, a treatment is applied to a randomly selected group, and the effect of the treatment is compared to a control group that did not receive the treatment. By comparing the outcomes of the two groups, we can establish a causal relationship between the treatment and the outcome. However, it is not always possible to conduct experiments in real-world settings due to ethical, practical and financial constraints.</p>
+
+<h2>The Do-Calculus Framework for Causal Inference</h2>
+<p class="custom-paragraph">Another widely used framework for causal inference is the "do-calculus" introduced by Judea Pearl in his book "The Book of Why: The New Science of Cause and Effect". The do-calculus allows us to reason about causality using a set of mathematical rules. By using this framework, we can define the causal effect of one variable on another using the equation:</p>
+<p class="custom-paragraph">$\mathbf{P(y|do(x)) - P(y)}$</p>
+<p class="custom-paragraph">This equation states that the causal effect of $\mathbf{x}$ on $\mathbf{y}$ is the difference between the probability of $\mathbf{y}$ occurring when $\mathbf{x}$ is forced to happen (denoted by $\mathbf{do(x)}$) and the probability of $\mathbf{y}$ occurring without any intervention on $\mathbf{x}$.</p>
+
+<h2><strong>Challenges in Establishing Causality</strong></h2>
+<p class="custom-paragraph">Establishing causality is not always a straightforward task, there are several challenges that need to be addressed. For example, in observational studies, it may be difficult to control for all confounding factors that could affect the outcome. Additionally, in complex systems, it may be difficult to identify all the relevant variables and their causal relationships.</p>
+
+<h2><strong>Causality in ML Applications</strong></h2>
+<p class="custom-paragraph">Causality can be applied in various ways in ML. For example, <strong>causal inference</strong> can be used to identify the most important features in a dataset, or to understand the impact of a specific intervention on a system. Additionally, causality can be used to improve the performance of predictive models by accounting for the underlying causal relationships in the data.</p>
+<p class="custom-paragraph">One specific application of causality in ML is in <strong>causal discovery</strong>, which is the process of identifying the causal relationships among variables in a dataset. This can be done using methods such as the PC algorithm, which is based on the idea that if two variables are independent given the set of other variables, then there is no direct causal relationship between them. Another method is the IC algorithm, which is based on the concept of d-separation in graphical models. These methods can be used to uncover hidden causal relationships in the data, which can be used to improve the performance of predictive models.</p>
+<p class="custom-paragraph">Another application of causality in ML is in <strong>counterfactual reasoning,</strong> which is the process of understanding the potential outcomes of different actions or interventions. This can be done using methods such as counterfactual fairness, which is a way to ensure that a model's predictions are fair with respect to different subgroups in the population. Additionally, counterfactual reasoning can be used to understand the impact of different interventions on a system, such as the impact of a new policy on crime rates.</p>
+
+<h2><strong>Causality in Causal ML</strong></h2>
+<p class="custom-paragraph">Causal ML is a field that uses causality as a guiding principle to design and evaluate ML models. The goal of causal ML is to build models that can predict the consequences of interventions. This is different from traditional ML, which is mainly focused on prediction.</p>
+<p class="custom-paragraph">The main idea behind causal ML is to use causal models to represent the underlying mechanisms that generate the data, and to use these models to make predictions about the consequences of interventions. A causal model is a directed acyclic graph (DAG) that encodes the causal relationships among variables. A DAG is a graphical representation of a set of variables and their relationships.</p>
+<p class="custom-paragraph">One important aspect of Causal ML is the ability to perform counterfactual reasoning, which is the ability to reason about what would have happened if an intervention were applied. This is a powerful tool in decision making as it allows one to understand the potential outcomes of different actions before committing to them.</p>
+
+<h2><strong>Causality in Reinforcement Learning</strong></h2>
+<p class="custom-paragraph">Reinforcement learning (RL) is a type of ML where an agent learns to make decisions by interacting with its environment. In RL, causality plays a crucial role as the agent's actions cause changes in the environment that in turn affect the agent's future rewards. In order to make good decisions, the agent needs to understand the causal relationships between its actions and the rewards it receives.</p>
+<p class="custom-paragraph">In RL, the causal relationship between actions and rewards is typically represented using a Markov Decision Process (MDP). An MDP is a mathematical model that describes the agent's decision-making process. It includes a set of states, a set of actions, and a set of rewards. The agent chooses its actions based on the current state of the environment, and the environment's response to the agent's actions is determined by a set of transition probabilities.</p>
+
+<h2><strong>Causality in Transfer Learning</strong></h2>
+<p class="custom-paragraph">Transfer learning is a technique that allows a model trained on one task to be applied to another related task. In transfer learning, it is important to understand the causal relationships between the tasks in order to ensure that the model is able to transfer the knowledge learned from the source task to the target task. By understanding the causal relationships between the tasks, we can select the most relevant features to transfer and avoid transferring irrelevant information.</p>
+
+<h2><strong>Causality in Model Interpretation</strong></h2>
+<p class="custom-paragraph">Causality is also important for interpreting ML models. In traditional ML, the focus is on prediction and model accuracy. However, in many real-world applications, it is important to understand why a model is making certain predictions. This is where causality comes in. By understanding the causal relationships between the inputs and the outputs, we can gain insights into the underlying mechanisms that generate the data and how a model is making its predictions.</p>
+
+<h2><strong>Causality in Model Explainability</strong></h2>
+<p class="custom-paragraph">Explainability is the ability of a model to provide clear and understandable explanations of its predictions. In recent years, there has been a growing interest in developing explainable ML models. One approach to explainable ML is to use causal models to represent the underlying mechanisms that generate the data. By using causal models, we can provide clear and understandable explanations of how a model is making its predictions.</p>
+
+<h2><strong>Causality in Time-series Data</strong></h2>
+<p class="custom-paragraph">Time-series data is a type of data that is collected over time, and understanding causality in this type of data can be particularly challenging. In traditional time-series analysis, the focus is on finding patterns and trends in the data, but this does not necessarily imply causality. Establishing causality in time-series data requires additional methods and techniques.</p>
+<p class="custom-paragraph">One commonly used method for establishing causality in time-series data is <strong>Granger causality</strong>. This method is based on the idea that if a variable X is found to be useful in predicting the future values of another variable Y, then X is said to have a causal relationship with Y. This method uses statistical tests to determine whether the inclusion of X improves the prediction of Y beyond what would be expected by chance.</p>
+<p class="custom-paragraph">Another method that can be used is <strong>transfer entropy</strong>. This method is based on the concept of information theory and measures the amount of information that is transferred from one time-series to another. It can be used to establish causality by identifying the direction of information flow between variables.</p>
+<p class="custom-paragraph">It is important to note that while these methods can provide strong evidence for causality, they are not conclusive and must be used in conjunction with other methods and domain knowledge. Additionally, in time-series data, the effects of interventions may take time to manifest and may be confounded by other variables that change over time.</p>
+
+<h2><strong>Causality in Causal Inference for Decision Making</strong></h2>
+<p class="custom-paragraph">Causality plays a crucial role in decision making as it allows us to understand the potential outcomes of different actions. By understanding causality, we can make better decisions by identifying the cause-and-effect relationships that drive the outcomes we care about.</p>
+<p class="custom-paragraph">One popular method for using causality in decision making is counterfactual reasoning. This method allows us to understand what would have happened if an intervention were applied by comparing the outcome of the actual intervention to the counterfactual outcome of not applying the intervention. This can be used to evaluate the effectiveness of a policy or treatment and identify the potential trade-offs of different actions.</p>
+<p class="custom-paragraph">Another method for using causality in decision making is decision-theoretic causal inference. This method combines causal inference with decision theory to identify the optimal decision based on the causal relationships in the data. This can be used to make decisions about treatment or policy interventions by identifying the intervention that is most likely to achieve a desired outcome.</p>
+<p class="custom-paragraph">It is important to note that causality in decision making requires a clear understanding of the underlying causal mechanisms and the potential confounding factors that may affect the outcome. Additionally, decision-making based on causality can be subject to ethical considerations and trade-offs, such as the potential harm or benefits to different groups in the population.</p>
+
+<h2><strong>Conclusion</strong></h2>
+<p class="custom-paragraph">In conclusion, causality is a fundamental concept in ML that can help us understand the underlying relationships between variables and improve the performance of our models. By using methods such as randomized controlled experiments, the do-calculus framework, and causal discovery, we can establish causality and make more informed decisions about how to use our models in the real world.</p>
+<p class="custom-paragraph">Causality has many applications in ML, including in counterfactual reasoning, causal ML, reinforcement learning, transfer learning, model interpretation and explainability. Additionally, causality plays a crucial role in time-series data and decision making, allowing us to identify patterns and trends, and make optimal decisions based on the causal relationships in the data.</p>
+<p class="custom-paragraph">However, it is important to keep in mind that causality is a complex and challenging concept, and there is always a degree of uncertainty in any causal inference. Additionally, the use of causality in ML may raise ethical considerations, such as fairness and bias. It is crucial to understand the limitations and potential biases of the methods used for causal inference, and to use them in conjunction with domain knowledge and other methods to ensure the most accurate and reliable results.</p>
  
 
   </div>
@@ -377,38 +1631,31 @@ if (!doNotTrack) {
     </ul>
 
 <nav class="paginav">
-  <a class="prev" href="https://kibromhft.github.io/posts/2022-11-27-vae/">
-    <span class="title"> Recommended Reading: </span>
-    <br>
-    <span>Disentangling the Latent Space: A Guide to Beta-VAE</span>
+          <a class="next" href="https://kibromhft.github.io/posts/2023-01-19-coding/">
+    <span class="title">Recommended Reading</span>
+    <span class="subtitle">Coding AI: The New Literacy</span>
+    <span class="subtitle">Disentangling the Latent Space: A Guide to Beta-VAE</span>
   </a>
-  
-         <a class="prev" href="https://kibromhft.github.io/posts/2023-01-19-coding/">
-   
-    <br>
-    <span>Coding AI: The New Literacy</span>
-  </a>
-  
 </nav>
 
 <div class="share-buttons">
 
     <a target="_blank" rel="noopener noreferrer" aria-label="share Causality in Machine Learning on twitter"
-        href="https://twitter.com/intent/tweet/?text=Causality%in%Machine%Learning&amp;url=https%3a%2f%2fkibromhft.github.io%2fposts%2f2022-11-20-causality_in_ML%2f&amp;hashtags=autoencoder%2cgenerative-model%2cimage-generation">
+        href="https://twitter.com/intent/tweet/?text=Causality%20in%20Machine%20Learning&amp;url=https%3a%2f%2fkibromhft.github.io%2fposts%2f2022-11-20-causality_in_ML%2f&amp;hashtags=causality%2cmachinelearning%2ccausalinference%2cml%2cdata">
         <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
             <path
                 d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
         </svg>
     </a>
     <a target="_blank" rel="noopener noreferrer" aria-label="share Causality in Machine Learning on linkedin"
-        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fkibromhft.github.io%2fposts%2f2022-11-20-causality_in_ML%2f&amp;title=Causality%in%Machine%Learning&amp;summary=From%20Autoencoder%20to%20Beta-VAE&amp;source=https%3a%2f%2fkibromhft.github.io%2fposts%2f2022-11-20-causality_in_ML%2f">
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fkibromhft.github.io%2fposts%2f2022-11-20-causality_in_ML%2f&amp;title=Causality%20in%20Machine%20Learning&amp;summary=Causality%20in%20Machine%20Learning&amp;source=https%3a%2f%2fkibromhft.github.io%2fposts%2f2022-11-20-causality_in_ML%2f">
         <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
             <path
                 d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
         </svg>
     </a>
     <a target="_blank" rel="noopener noreferrer" aria-label="share Causality in Machine Learning on reddit"
-        href="https://reddit.com/submit?url=https%3a%2f%2fkibromhft.github.io%2fposts%2f2022-11-20-causality_in_ML%2f&title=Causality%in%Machine%Learning">
+        href="https://reddit.com/submit?url=https%3a%2f%2fkibromhft.github.io%2fposts%2f2022-11-20-causality_in_ML%2f&title=Causality%20in%20Machine%20Learning">
         <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
             <path
                 d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
@@ -417,7 +1664,7 @@ if (!doNotTrack) {
   
 
     <a target="_blank" rel="noopener noreferrer" aria-label="share Causality in Machine Learning on telegram"
-        href="https://telegram.me/share/url?text=Causality%in%Machine%Learning&amp;url=https%3a%2f%2fkibromhft.github.io%2fposts%2f2022-11-20-causality_in_ML%2f">
+        href="https://telegram.me/share/url?text=Causality%20in%20Machine%20Learning&amp;url=https%3a%2f%2fkibromhft.github.io%2fposts%2f2022-11-20-causality_in_ML%2f">
         <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
             <path
                 d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
@@ -445,103 +1692,252 @@ if (!doNotTrack) {
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    // Optimized JavaScript with performance improvements
+    document.addEventListener('DOMContentLoaded', function() {
+        // Menu scroll position management
+        const menu = document.getElementById('menu');
     if (menu) {
         menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
+            menu.addEventListener('scroll', function() {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
+            });
     }
 
+        // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
             e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
+                const id = this.getAttribute("href").substr(1);
+                const targetElement = document.querySelector(`[id='${decodeURIComponent(id)}']`);
+                
+                if (targetElement) {
             if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                        targetElement.scrollIntoView({
                     behavior: "smooth"
                 });
             } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+                        targetElement.scrollIntoView();
             }
+                    
             if (id === "top") {
                 history.replaceState(null, null, " ");
             } else {
                 history.pushState(null, null, `#${id}`);
+                    }
             }
         });
     });
 
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+        // Top link visibility management
+        const topButton = document.getElementById("top-link");
+        if (topButton) {
+            const handleScroll = () => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > 800) {
+                    topButton.style.visibility = "visible";
+                    topButton.style.opacity = "1";
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+                    topButton.style.visibility = "hidden";
+                    topButton.style.opacity = "0";
+                }
+            };
+            
+            window.addEventListener('scroll', handleScroll, { passive: true });
         }
-    };
 
+        // Theme toggle functionality
+        const themeToggle = document.getElementById("theme-toggle");
+        if (themeToggle) {
+            themeToggle.addEventListener("click", () => {
+                const isDark = document.body.classList.contains("dark");
+                document.body.classList.toggle('dark');
+                localStorage.setItem("pref-theme", isDark ? 'light' : 'dark');
+            });
+        }
+    });
 </script>
 <script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-<script>
-    document.querySelectorAll('pre > code').forEach((codeblock) => {
-        const container = codeblock.parentNode.parentNode;
+    // Enhanced copy code functionality with better positioning
+    document.addEventListener('DOMContentLoaded', function() {
+        const copyButtons = new Map();
+        
+        // Find all code blocks (both pre>code and standalone code)
+        const codeBlocks = document.querySelectorAll('pre > code, pre code');
+        
+        codeBlocks.forEach((codeblock, index) => {
+            // Find the pre element that contains this code
+            let preElement = codeblock.closest('pre');
+            if (!preElement) return;
 
         const copybutton = document.createElement('button');
+            
         copybutton.classList.add('copy-code');
         copybutton.innerText = 'copy';
+            copybutton.setAttribute('aria-label', 'Copy code to clipboard');
+            copybutton.setAttribute('title', 'Copy code to clipboard');
+            copybutton.setAttribute('data-code-index', index);
 
-        function copyingDone() {
+            const copyingDone = () => {
             copybutton.innerText = 'copied!';
+                copybutton.setAttribute('aria-label', 'Code copied!');
+                copybutton.style.background = 'var(--primary-hover)';
             setTimeout(() => {
                 copybutton.innerText = 'copy';
+                    copybutton.setAttribute('aria-label', 'Copy code to clipboard');
+                    copybutton.style.background = '';
             }, 2000);
-        }
+            };
 
-        copybutton.addEventListener('click', (cb) => {
+            copybutton.addEventListener('click', async (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                try {
             if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
+                        await navigator.clipboard.writeText(codeblock.textContent);
                 copyingDone();
-                return;
-            }
-
+                    } else {
+                        // Fallback for older browsers
             const range = document.createRange();
             range.selectNodeContents(codeblock);
             const selection = window.getSelection();
             selection.removeAllRanges();
             selection.addRange(range);
+                        
             try {
                 document.execCommand('copy');
                 copyingDone();
-            } catch (e) { };
+                        } catch (err) {
+                            console.warn('Copy failed:', err);
+                        }
+                        
             selection.removeRange(range);
-        });
+                    }
+                } catch (err) {
+                    console.warn('Copy failed:', err);
+                    // Show error feedback
+                    copybutton.innerText = 'error';
+                    copybutton.style.background = '#dc3545';
+                    setTimeout(() => {
+                        copybutton.innerText = 'copy';
+                        copybutton.style.background = '';
+                    }, 2000);
+                }
+            });
 
-        if (container.classList.contains("highlight")) {
-            container.appendChild(copybutton);
-        } else if (container.parentNode.firstChild == container) {
+            // Always place copy button in the pre element
+            if (preElement) {
+                preElement.appendChild(copybutton);
+                copyButtons.set(copybutton, preElement);
+                
+                // Ensure the pre element has relative positioning
+                preElement.style.position = 'relative';
+            }
+        });
+        
+        // Log for debugging
+        console.log(`Added ${copyButtons.size} copy buttons to code blocks`);
+    });
+
+    // Reading Progress Bar
+    const progressBar = document.getElementById('reading-progress');
+    if (progressBar) {
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            progressBar.style.width = scrollPercent + '%';
+        });
+    }
+</script>
+<script>
+    // Mobile dropdown functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check if device is touch-based (mobile) or small screen
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        const isSmallScreen = window.innerWidth <= 768;
+        
+        if (isTouchDevice || isSmallScreen) {
+            const dropdowns = document.querySelectorAll('.dropdown');
             
-        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            // Disable hover behavior on mobile by removing hover styles
+            dropdowns.forEach(dropdown => {
+                const menu = dropdown.querySelector('.dropdown-menu');
+                if (menu) {
+                    // Force mobile styles
+                    menu.style.transition = 'all 0.2s ease';
+                }
+            });
             
-            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+            dropdowns.forEach(dropdown => {
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+                const menu = dropdown.querySelector('.dropdown-menu');
+                
+                if (toggle && menu) {
+                    // Add click event to toggle dropdown
+                    toggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        // Close all other dropdowns
+                        dropdowns.forEach(otherDropdown => {
+                            if (otherDropdown !== dropdown) {
+                                otherDropdown.classList.remove('dropdown-open');
+                            }
+                        });
+                        
+                        // Toggle current dropdown
+                        const isOpen = dropdown.classList.contains('dropdown-open');
+                        if (isOpen) {
+                            dropdown.classList.remove('dropdown-open');
         } else {
+                            dropdown.classList.add('dropdown-open');
+                        }
+                    });
+                }
+            });
             
-            codeblock.parentNode.appendChild(copybutton);
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                // Don't close if clicking on the dropdown toggle
+                if (e.target.closest('.dropdown-toggle')) {
+                    return;
+                }
+                
+                // Close if clicking outside dropdown
+                if (!e.target.closest('.dropdown')) {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('dropdown-open');
+                    });
+                }
+            });
+            
+            // Close dropdown when pressing Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('dropdown-open');
+                    });
+                }
+            });
+            
+            // Close dropdown when window is resized
+            window.addEventListener('resize', function() {
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('dropdown-open');
+                });
+            });
+        }
+    });
+
+    // Animate title underline on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const postTitle = document.querySelector('.post-title');
+        if (postTitle) {
+            // Add a small delay for smooth animation
+            setTimeout(() => {
+                postTitle.classList.add('loaded');
+            }, 300);
         }
     });
 </script>
