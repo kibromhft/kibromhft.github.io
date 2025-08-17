@@ -211,20 +211,20 @@
 			display: block;
 			cursor: default;
 			outline: none;
-			font-family: -apple-system, BlinkMacSystemFont, "segoe ui", Roboto, Oxygen, Ubuntu, Cantarell, "open sans", "helvetica neue", sans-serif;
+			font-family: var(--font-heading);
 			font-size: 13px;
 			font-style: normal;
 			font-variant: normal;
-			font-weight: 400;
+			font-weight: 600;
 			letter-spacing: 1px;
 			line-height: 30px;
-			text-decoration: none solid rgb(108, 108, 108);
+			text-decoration: none;
 			text-indent: 0px;
 			text-transform: uppercase;
 			vertical-align: baseline;
 			white-space: normal;
 			word-spacing: 0px;
-			color: rgb(108, 108, 108);
+			color: var(--text-secondary);
 		}
 
 		.paginav a {
@@ -246,6 +246,7 @@
 
 		.paginav span:not(.title) {
 			color: var(--primary-color);
+			font-family: var(--font-body);
 			font-weight: 500;
 			font-size: 1rem;
 			line-height: 1.4;
@@ -255,6 +256,7 @@
 
 		.paginav .subtitle {
 			color: var(--primary-color);
+			font-family: var(--font-body);
 			font-weight: 500;
 			font-size: 0.95rem;
 			line-height: 1.3;
@@ -270,7 +272,7 @@
 
 		/* Dark mode overrides for paginav */
 		body.dark .paginav .title {
-			color: rgb(156, 163, 175) !important;
+			color: var(--text-secondary) !important;
 		}
 
 		body.dark .paginav a {
@@ -315,6 +317,7 @@
 
 		.toc summary {
 			cursor: pointer;
+			font-family: var(--font-heading);
 			font-weight: 600;
 			color: var(--text-primary);
 			margin-bottom: 1rem;
@@ -342,6 +345,7 @@
 
 		.toc a {
 			color: var(--text-secondary);
+			font-family: var(--font-body);
 			text-decoration: none;
 			transition: var(--transition-base);
 			display: block;
@@ -548,6 +552,8 @@ if (!doNotTrack) {
 		#menu a {
 			color: var(--text-primary);
 			transition: var(--transition-base);
+			font-family: var(--font-body);
+			font-size: var(--font-size-base);
 		}
 
 		#menu a:hover,
@@ -561,18 +567,23 @@ if (!doNotTrack) {
 		.dropdown-menu a {
 			color: var(--text-primary);
 			transition: var(--transition-base);
+			font-family: var(--font-body);
+			font-size: var(--font-size-base);
 		}
 
 		.dropdown-menu a:hover,
 		.dropdown-menu a:focus {
 			background-color: var(--bg-secondary);
-			color: var(--text-primary);
+			color: var(--primary-color);
 		}
 
 		/* Logo and theme toggle */
 		.logo a {
 			color: var(--text-primary);
 			transition: var(--transition-base);
+			font-family: var(--font-heading);
+			font-size: var(--font-size-lg);
+			font-weight: 600;
 		}
 
 		.logo a:hover,
@@ -862,6 +873,7 @@ if (!doNotTrack) {
 			text-decoration: none;
 			transition: var(--transition-base);
 			position: relative;
+			font-family: var(--font-body);
 			font-weight: 500;
 			border-radius: 2px;
 			padding: 2px 4px;
@@ -1005,6 +1017,40 @@ if (!doNotTrack) {
 			opacity: 1;
 		}
 
+		/* Share buttons styling */
+		.share-buttons {
+			display: flex;
+			gap: 1rem;
+			margin: 2rem 0;
+			justify-content: center;
+			flex-wrap: wrap;
+		}
+
+		.share-buttons a {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 40px;
+			height: 40px;
+			background: var(--bg-secondary);
+			color: var(--text-secondary);
+			border-radius: 50%;
+			transition: var(--transition-base);
+			border: 1px solid var(--border-color);
+		}
+
+		.share-buttons a:hover {
+			background: var(--primary-color);
+			color: var(--bg-primary);
+			transform: translateY(-2px);
+			box-shadow: var(--shadow-md);
+		}
+
+		.share-buttons svg {
+			width: 20px;
+			height: 20px;
+		}
+
 		/* Reading Progress Bar */
 		.reading-progress {
 			position: relative;
@@ -1035,6 +1081,7 @@ if (!doNotTrack) {
 		}
 
 		.post-title {
+			font-family: var(--font-heading);
 			font-size: var(--font-size-2xl);
 			margin-bottom: 1rem;
 			color: var(--text-primary);
@@ -1082,7 +1129,8 @@ if (!doNotTrack) {
 		}
 
 		.post-meta {
-			color: rgb(0,123,255);
+			color: var(--primary-color);
+			font-family: var(--font-body);
 			font-size: 14px;
 			display: flex;
 			flex-wrap: wrap;
@@ -1092,7 +1140,66 @@ if (!doNotTrack) {
 		}
 
 		.post-meta:hover {
-			color: rgb(0,105,217);
+			color: var(--primary-hover);
+		}
+
+		/* Post tags styling */
+		.post-tags {
+			margin: 2rem 0;
+		}
+
+		.post-tags ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.5rem;
+		}
+
+		.post-tags li {
+			margin: 0;
+		}
+
+		.post-tags a {
+			display: inline-block;
+			padding: 0.25rem 0.75rem;
+			background: var(--bg-secondary);
+			color: var(--primary-color);
+			text-decoration: none;
+			border-radius: var(--radius-sm);
+			font-family: var(--font-body);
+			font-size: var(--font-size-sm);
+			transition: var(--transition-base);
+			border: 1px solid var(--border-color);
+		}
+
+		.post-tags a:hover {
+			background: var(--primary-color);
+			color: var(--bg-primary);
+			transform: translateY(-1px);
+			box-shadow: var(--shadow-sm);
+		}
+
+		/* Footer styling */
+		.footer {
+			text-align: center;
+			padding: 2rem 0;
+			margin-top: 3rem;
+			border-top: 1px solid var(--border-color);
+			color: var(--text-secondary);
+			font-family: var(--font-body);
+		}
+
+		.footer a {
+			color: var(--primary-color);
+			text-decoration: none;
+			transition: var(--transition-base);
+		}
+
+		.footer a:hover {
+			color: var(--primary-hover);
+			text-decoration: underline;
 		}
 
 		/* Print styles */
@@ -1267,14 +1374,16 @@ if (!doNotTrack) {
 		  margin: 0 !important;
 		  box-sizing: border-box !important;
 		  text-decoration: none !important;
-		  color: #333 !important;
-		  font-size: 16px !important; /* Increased font size */
+		  color: var(--text-primary) !important;
+		  font-family: var(--font-body) !important;
+		  font-size: var(--font-size-base) !important;
 		  line-height: 1.5 !important;
+		  transition: var(--transition-base) !important;
 		}
 
 		.custom-dropdown li a:hover {
-		  background-color: #f8f9fa !important;
-		  color: #000 !important;
+		  background-color: var(--bg-secondary) !important;
+		  color: var(--primary-color) !important;
 		}
 
 		/* Enhanced dropdown styles */
@@ -1353,6 +1462,7 @@ if (!doNotTrack) {
 			}
 
 			#menu a {
+				font-family: var(--font-body) !important;
 				font-size: 15px !important;
 				padding: 8px 12px !important;
 				border-radius: 6px !important;
@@ -1411,8 +1521,9 @@ if (!doNotTrack) {
 			}
 
 			#menu a {
+				font-family: var(--font-body) !important;
 				font-size: 14px !important;
-				padding: 6px 8px !important;
+				padding: 6px 12px !important;
 				white-space: normal !important;
 				word-wrap: break-word !important;
 				overflow-wrap: break-word !important;
