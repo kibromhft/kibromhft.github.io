@@ -898,6 +898,13 @@ Digitization (NTK) (Jacot et al. 2018) is a kernel to explain the evolution of n
 		}
 
 		/* Beautiful Recommended Reading Title Styling */
+		.paginav-header {
+			text-align: center;
+			margin-bottom: 1rem;
+			padding-bottom: 0.5rem;
+			border-bottom: 1px solid var(--border-color);
+		}
+		
 		.paginav .title {
 			/* Font & Text */
 			font-family: -apple-system, BlinkMacSystemFont, "segoe ui", Roboto, Oxygen, Ubuntu, Cantarell, "open sans", "helvetica neue", sans-serif;
@@ -908,7 +915,7 @@ Digitization (NTK) (Jacot et al. 2018) is a kernel to explain the evolution of n
 			letter-spacing: 1px;
 			line-height: 30px;
 			text-decoration: none solid rgb(108, 108, 108);
-			text-align: start;
+			text-align: center;
 			text-indent: 0px;
 			text-transform: uppercase;
 			vertical-align: baseline;
@@ -945,7 +952,7 @@ Digitization (NTK) (Jacot et al. 2018) is a kernel to explain the evolution of n
 			right: auto;
 			left: auto;
 			float: none;
-			display: inline;
+			display: block;
 			clear: none;
 			z-index: auto;
 
@@ -963,13 +970,13 @@ Digitization (NTK) (Jacot et al. 2018) is a kernel to explain the evolution of n
 
 			/* Miscellaneous */
 			overflow: visible;
-			cursor: pointer;
+			cursor: default;
 			visibility: visible;
 
 			/* Effects */
 			transform: none;
 			transition: all;
-			outline: rgb(255, 0, 0) dashed 1px;
+			outline: none;
 			outline-offset: 0px;
 			box-sizing: border-box;
 			resize: none;
