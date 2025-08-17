@@ -190,98 +190,43 @@
             box-shadow: var(--shadow-sm);
         		}
 
-		/* Beautiful Recommended Reading Title Styling */
+		/* Enhanced paginav styling */
+		.paginav {
+			margin: 2rem 0;
+			padding: 1.5rem;
+			background: var(--bg-secondary);
+			border-radius: var(--radius-md);
+			border: 1px solid var(--border-color);
+		}
+
+		.paginav-header {
+			text-align: center;
+			margin-bottom: 1rem;
+			padding-bottom: 0.5rem;
+			border-bottom: 1px solid var(--border-color);
+		}
+
 		.paginav .title {
-			/* Font & Text */
-			font-family: -apple-system, BlinkMacSystemFont, "segoe ui", Roboto, Oxygen, Ubuntu, Cantarell, "open sans", "helvetica neue", sans-serif;
+			text-align: center;
+			display: block;
+			cursor: default;
+			outline: none;
+			font-family: var(--font-heading);
 			font-size: 13px;
 			font-style: normal;
 			font-variant: normal;
-			font-weight: 400;
+			font-weight: 600;
 			letter-spacing: 1px;
 			line-height: 30px;
-			text-decoration: none solid rgb(108, 108, 108);
-			text-align: start;
+			text-decoration: none;
 			text-indent: 0px;
 			text-transform: uppercase;
 			vertical-align: baseline;
 			white-space: normal;
 			word-spacing: 0px;
-
-			/* Color & Background */
-			background-attachment: scroll;
-			background-color: rgba(0, 0, 0, 0);
-			background-image: none;
-			background-position: 0% 0%;
-			background-repeat: repeat;
-			color: rgb(108, 108, 108);
-
-			/* Box */
-			height: auto;
-			width: auto;
-			border: 0px none rgb(108, 108, 108);
-			border-top: 0px none rgb(108, 108, 108);
-			border-right: 0px none rgb(108, 108, 108);
-			border-bottom: 0px none rgb(108, 108, 108);
-			border-left: 0px none rgb(108, 108, 108);
-			margin: 0px;
-			padding: 0px;
-			max-height: none;
-			min-height: 0px;
-			max-width: none;
-			min-width: 0px;
-
-			/* Positioning */
-			position: static;
-			top: auto;
-			bottom: auto;
-			right: auto;
-			left: auto;
-			float: none;
-			display: inline;
-			clear: none;
-			z-index: auto;
-
-			/* List */
-			list-style-image: none;
-			list-style-type: disc;
-			list-style-position: outside;
-
-			/* Table */
-			border-collapse: separate;
-			border-spacing: 0px;
-			caption-side: top;
-			empty-cells: show;
-			table-layout: auto;
-
-			/* Miscellaneous */
-			overflow: visible;
-			cursor: pointer;
-			visibility: visible;
-
-			/* Effects */
-			transform: none;
-			transition: all;
-			outline: rgb(255, 0, 0) dashed 1px;
-			outline-offset: 0px;
-			box-sizing: border-box;
-			resize: none;
-			text-shadow: none;
-			text-overflow: clip;
-			word-wrap: normal;
-			box-shadow: none;
-			border-top-left-radius: 0px;
-			border-top-right-radius: 0px;
-			border-bottom-left-radius: 0px;
-			border-bottom-right-radius: 0px;
+			color: var(--text-secondary);
 		}
 
-		/* Dark mode override for recommended reading title */
-		body.dark .paginav .title {
-			color: rgb(156, 163, 175) !important;
-		}
-
-		/* Recommended Reading Link Styling - matching VAE post */
 		.paginav a {
 			color: var(--primary-color);
 			text-decoration: none;
@@ -289,10 +234,11 @@
 			display: block;
 			padding: 8px 12px;
 			border-radius: var(--radius-sm);
+			margin-bottom: 0.5rem;
 		}
 
 		.paginav a:hover {
-			background-color: var(--bg-secondary);
+			background-color: var(--bg-primary);
 			color: var(--primary-hover);
 			transform: translateY(-1px);
 			box-shadow: var(--shadow-sm);
@@ -300,6 +246,7 @@
 
 		.paginav span:not(.title) {
 			color: var(--primary-color);
+			font-family: var(--font-body);
 			font-weight: 500;
 			font-size: 1rem;
 			line-height: 1.4;
@@ -309,6 +256,7 @@
 
 		.paginav .subtitle {
 			color: var(--primary-color);
+			font-family: var(--font-body);
 			font-weight: 500;
 			font-size: 0.95rem;
 			line-height: 1.3;
@@ -322,13 +270,17 @@
 			text-decoration: underline;
 		}
 
-		/* Dark mode overrides for recommended reading links */
+		/* Dark mode overrides for paginav */
+		body.dark .paginav .title {
+			color: var(--text-secondary) !important;
+		}
+
 		body.dark .paginav a {
 			color: var(--primary-color);
 		}
 
 		body.dark .paginav a:hover {
-			background-color: var(--bg-secondary);
+			background-color: var(--bg-primary);
 			color: var(--primary-hover);
 		}
 
@@ -338,30 +290,6 @@
 
 		body.dark .paginav span:not(.title):hover {
 			color: var(--primary-hover);
-		}
-
-		/* Additional paginav improvements for better spacing */
-		.paginav {
-			margin: 12px 0;
-			padding: 8px 0;
-		}
-
-		.paginav a {
-			text-decoration: none;
-			transition: all 0.2s ease;
-		}
-
-		.paginav a:hover {
-			transform: translateY(-1px);
-		}
-
-		/* Ensure proper spacing between title and subtitles */
-		.paginav .title {
-			margin-bottom: 2px;
-		}
-
-		.paginav .subtitle:first-of-type {
-			margin-top: 3px;
 		}
 
 		/* TOC styling - restore blue bullets from main.css and ensure proper spacing */
@@ -851,7 +779,21 @@ if (!doNotTrack) {
 				text-align: left !important;
 			}
 
+			/* Mobile paginav improvements */
+			.paginav {
+				margin: 8px 0;
+			}
 
+			.paginav .title {
+				font-size: 12px;
+				line-height: 1.2;
+			}
+
+			.paginav .subtitle {
+				font-size: 0.9rem;
+				line-height: 1.2;
+				margin-top: 1px;
+			}
 		}
 
 		@media screen and (max-width: 480px) {
@@ -908,79 +850,22 @@ if (!doNotTrack) {
 				padding: 0 1rem;
 			}
 
-					/* Mobile paginav improvements */
-		.paginav {
-			margin: 6px 0;
+			/* Mobile paginav improvements */
+			.paginav {
+				margin: 6px 0;
+			}
+
+			.paginav .title {
+				font-size: 11px;
+				line-height: 1.1;
+			}
+
+			.paginav .subtitle {
+				font-size: 0.85rem;
+				line-height: 1.1;
+				margin-top: 0.5px;
+			}
 		}
-
-		.paginav .title {
-			font-size: 11px;
-			line-height: 1.1;
-		}
-
-		.paginav .subtitle {
-			font-size: 0.85rem;
-			line-height: 1.1;
-			margin-top: 0.5px;
-		}
-	}
-
-	/* Simple blue numbering for skills list */
-	#skills + p + ol {
-		counter-reset: skill-counter;
-	}
-
-	#skills + p + ol li {
-		counter-increment: skill-counter;
-		position: relative;
-		padding-left: 1.2rem;
-	}
-
-	#skills + p + ol li::marker {
-		color: #007bff;
-		font-weight: bold;
-	}
-
-	/* Mobile skills list improvements */
-	@media screen and (max-width: 768px) {
-		#skills + p + ol li {
-			padding-left: 1rem;
-			margin-bottom: 1rem;
-		}
-
-		/* Override text-align: justify for mobile */
-		#skills + p + ol li.custom-paragraph {
-			text-align: left !important;
-		}
-
-		/* Mobile paginav improvements */
-		.paginav {
-			margin: 8px 0;
-		}
-
-		.paginav .title {
-			font-size: 12px;
-			line-height: 1.2;
-		}
-
-		.paginav .subtitle {
-			font-size: 0.9rem;
-			line-height: 1.2;
-			margin-top: 1px;
-		}
-	}
-
-	@media screen and (max-width: 480px) {
-		#skills + p + ol li {
-			padding-left: 0.8rem;
-			margin-bottom: 0.75rem;
-		}
-
-		/* Override text-align: justify for small mobile */
-		#skills + p + ol li.custom-paragraph {
-			text-align: left !important;
-		}
-	}
 
 		/* Enhanced link styling with focus states */
 		.post-content a {
@@ -1972,10 +1857,17 @@ if (!doNotTrack) {
 <p>Future research directions include developing more sophisticated regularization techniques, improving understanding of the relationship between architecture and generalization, and creating more efficient ensemble methods. The goal remains building models that generalize effectively to new data while maintaining computational efficiency.</p>
 
 <nav class="paginav">
-          <a class="next" href="https://kibromhft.github.io/posts/2022-11-27-vae/">
+  <div class="paginav-header">
     <span class="title">Recommended Reading</span>
+  </div>
+  <a class="prev" href="https://kibromhft.github.io/posts/2022-11-27-vae/">
     <span class="subtitle">Disentangling the Latent Space: A Guide to Beta-VAE</span>
+  </a>
+  <a class="prev" href="https://kibromhft.github.io/posts/2023-01-19-coding/">
     <span class="subtitle">Coding AI: The New Literacy</span>
+  </a>
+  <a class="prev" href="https://kibromhft.github.io/posts/2022-11-20-causality_in_ML/">
+    <span class="subtitle">Causality in Machine Learning</span>
   </a>
 </nav>
   </div>
