@@ -289,6 +289,87 @@
 		body.dark .paginav span:not(.title):hover {
 			color: var(--primary-hover);
 		}
+
+		/* TOC styling - restore blue bullets from main.css and ensure proper spacing */
+		.toc li::before {
+			content: '•' !important;
+			position: absolute !important;
+			left: 0 !important;
+			color: var(--brand-blue) !important;
+			transition: all 0.2s ease !important;
+		}
+
+		.toc li {
+			position: relative;
+			padding-left: 1.2rem;
+			list-style: none;
+		}
+
+		.toc {
+			margin: 2rem 0;
+			padding: 1.5rem;
+			background: var(--bg-secondary);
+			border-radius: var(--radius-md);
+			border: 1px solid var(--border-color);
+		}
+
+		.toc summary {
+			cursor: pointer;
+			font-weight: 600;
+			color: var(--text-primary);
+			margin-bottom: 1rem;
+			padding: 0.5rem 0;
+			border-bottom: 2px solid var(--border-color);
+		}
+
+		.toc summary:hover {
+			color: var(--primary-color);
+		}
+
+		.toc .inner {
+			margin-top: 1rem;
+		}
+
+		.toc ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		.toc li {
+			margin-bottom: 0.75rem;
+		}
+
+		.toc a {
+			color: var(--text-secondary);
+			text-decoration: none;
+			transition: var(--transition-base);
+			display: block;
+			padding: 0.25rem 0;
+		}
+
+		.toc a:hover {
+			color: var(--primary-color);
+			transform: translateX(4px);
+		}
+
+		/* Dark mode TOC */
+		body.dark .toc {
+			background: var(--bg-secondary);
+			border-color: var(--border-color);
+		}
+
+		body.dark .toc summary {
+			color: var(--text-primary);
+		}
+
+		body.dark .toc a {
+			color: var(--text-secondary);
+		}
+
+		body.dark .toc a:hover {
+			color: var(--primary-color);
+		}
 		</style>
 
 <script type="application/javascript">
@@ -375,12 +456,15 @@ if (!doNotTrack) {
 			--primary-color: var(--brand-blue, rgb(13, 110, 253));
 			--primary-hover: var(--brand-blue-hover, rgb(10, 88, 202));
 			--primary-light: rgb(59, 130, 246);
+			--brand-blue: rgb(13, 110, 253);
+			--brand-blue-hover: rgb(10, 88, 202);
 			--text-primary: var(--primary, rgb(15, 23, 42));
 			--text-secondary: var(--secondary, rgb(51, 65, 85));
 			--text-muted: rgb(108, 117, 125);
 			--bg-primary: var(--theme, rgb(255, 255, 255));
 			--bg-secondary: var(--entry, rgb(248, 250, 252));
 			--bg-card: var(--entry, rgb(255, 255, 255));
+			--code-bg: rgb(255, 255, 255);
 			--border-color: var(--border, rgba(226, 232, 240, 0.8));
 			--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
 			--shadow-md: 0 4px 6px rgba(0, 0, 0, 0.02);
@@ -390,6 +474,8 @@ if (!doNotTrack) {
 			/* Typography */
 			--font-heading: "Essays 1743", serif;
 			--font-body: Libertine, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
+			--font-primary: "Essays 1743", serif;
+			--font-mono: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
 			--font-size-xs: 0.875rem;
 			--font-size-sm: 1rem;
 			--font-size-base: 1.1rem;
@@ -427,12 +513,15 @@ if (!doNotTrack) {
 			--primary-color: rgb(34, 211, 238);
 			--primary-hover: rgb(6, 182, 212);
 			--primary-light: rgb(6, 182, 212);
+			--brand-blue: rgb(34, 211, 238);
+			--brand-blue-hover: rgb(6, 182, 212);
 			--text-primary: var(--primary, rgb(248, 250, 252));
 			--text-secondary: var(--secondary, rgb(203, 213, 225));
 			--text-muted: rgb(156, 163, 175);
 			--bg-primary: var(--theme, rgb(15, 23, 42));
 			--bg-secondary: var(--entry, rgb(30, 41, 59));
 			--bg-card: var(--entry, rgb(30, 41, 59));
+			--code-bg: rgb(30, 41, 59);
 			--border-color: var(--border, rgba(51, 65, 85, 0.8));
 			--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
 			--shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -678,6 +767,22 @@ if (!doNotTrack) {
 				margin: 1rem 0;
 				text-align: left !important;
 			}
+
+			/* Mobile paginav improvements */
+			.paginav {
+				margin: 8px 0;
+			}
+
+			.paginav .title {
+				font-size: 12px;
+				line-height: 1.2;
+			}
+
+			.paginav .subtitle {
+				font-size: 0.9rem;
+				line-height: 1.2;
+				margin-top: 1px;
+			}
 		}
 
 		@media screen and (max-width: 480px) {
@@ -732,6 +837,22 @@ if (!doNotTrack) {
 			/* Improve mobile content spacing */
 			.post-content {
 				padding: 0 1rem;
+			}
+
+			/* Mobile paginav improvements */
+			.paginav {
+				margin: 6px 0;
+			}
+
+			.paginav .title {
+				font-size: 11px;
+				line-height: 1.1;
+			}
+
+			.paginav .subtitle {
+				font-size: 0.85rem;
+				line-height: 1.1;
+				margin-top: 0.5px;
 			}
 		}
 
@@ -1372,6 +1493,42 @@ if (!doNotTrack) {
       <div class="progress-bar" id="reading-progress"></div>
 </div>
   </header> 
+
+<div class="toc" role="navigation" aria-label="Table of contents">
+    <details>
+        <summary accesskey="c" title="(Alt + C)" role="button" aria-expanded="false">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#overfitting" aria-label="overfitting">What is overfitting?</a>
+                </li>
+                <li>
+                    <a href="#severity" aria-label="severity">Severity of overfitting in DNNs</a>
+                </li>
+                <li>
+                    <a href="#techniques" aria-label="techniques">Techniques to Address Overfitting</a>
+                </li>
+                <li>
+                    <a href="#architecture" aria-label="architecture">The Impact of Architecture Design</a>
+                </li>
+                <li>
+                    <a href="#transfer" aria-label="transfer">Transfer Learning</a>
+                </li>
+                <li>
+                    <a href="#hyperparameters" aria-label="hyperparameters">Hyperparameter Tuning</a>
+                </li>
+                <li>
+                    <a href="#ensembling" aria-label="ensembling">Model Ensembling</a>
+                </li>
+                <li>
+                    <a href="#conclusion" aria-label="conclusion">Conclusion</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
 
   <div class="post-content">
   
