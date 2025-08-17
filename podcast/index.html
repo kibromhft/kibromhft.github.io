@@ -298,69 +298,40 @@
 		line-height: 1.6;
 	}
 
-	.podcast-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: var(--space-lg);
-		margin-bottom: var(--space-2xl);
-	}
-
-	.podcast-card {
-		background: var(--bg-card);
-		border-radius: var(--radius-lg);
-		padding: var(--space-lg);
-		box-shadow: var(--shadow-md);
-		transition: var(--transition-base);
-		border: 1px solid var(--border-color);
-	}
-
-	.podcast-card:hover {
-		transform: translateY(-4px);
-		box-shadow: var(--shadow-lg);
-	}
-
-	.podcast-card h3 {
-		color: var(--text-primary);
-		font-family: var(--font-heading);
-		font-size: var(--font-size-xl);
-		margin-bottom: var(--space-sm);
-	}
-
-	.podcast-card p {
-		color: var(--text-secondary);
-		line-height: 1.6;
-		margin-bottom: var(--space-md);
-	}
-
-	.podcast-meta {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		color: var(--text-muted);
-		font-size: var(--font-size-sm);
-	}
-
-	.episode-count {
-		background: var(--primary-color);
-		color: white;
-		padding: 4px 12px;
-		border-radius: var(--radius-sm);
-		font-size: var(--font-size-xs);
-		font-weight: 600;
-	}
-
+	/* Premium Audio Player - Redesigned */
 	.audio-player-premium {
-		background: var(--bg-card);
+		background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
 		border-radius: var(--radius-lg);
-		padding: var(--space-xl);
-		box-shadow: var(--shadow-lg);
-		margin-bottom: var(--space-2xl);
+		padding: var(--space-2xl);
+		box-shadow: var(--shadow-xl);
+		margin: 0 auto;
+		max-width: 800px;
 		border: 1px solid var(--border-color);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.audio-player-premium::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 4px;
+		background: linear-gradient(90deg, var(--primary-color), var(--primary-light), #8b5cf6, #ec4899);
+		background-size: 200% 100%;
+		animation: gradient-shift 3s ease-in-out infinite;
+	}
+
+	@keyframes gradient-shift {
+		0%, 100% { background-position: 0% 50%; }
+		50% { background-position: 100% 50%; }
 	}
 
 	.player-header {
 		text-align: center;
-		margin-bottom: var(--space-lg);
+		margin-bottom: var(--space-xl);
+		position: relative;
 	}
 
 	.player-header h2 {
@@ -368,110 +339,212 @@
 		font-size: var(--font-size-2xl);
 		color: var(--text-primary);
 		margin-bottom: var(--space-sm);
+		font-weight: 700;
 	}
 
 	.player-header p {
 		color: var(--text-secondary);
-		font-size: var(--font-size-base);
+		font-size: var(--font-size-lg);
+		font-weight: 500;
 	}
 
-	.waveform-container {
+	.current-episode-info {
 		background: var(--bg-secondary);
 		border-radius: var(--radius-md);
 		padding: var(--space-md);
 		margin-bottom: var(--space-lg);
+		border-left: 4px solid var(--primary-color);
+	}
+
+	.episode-title {
+		font-size: var(--font-size-lg);
+		font-weight: 600;
+		color: var(--text-primary);
+		margin-bottom: var(--space-xs);
+	}
+
+	.episode-meta {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		color: var(--text-muted);
+		font-size: var(--font-size-sm);
+	}
+
+	.waveform-container {
+		background: linear-gradient(145deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+		border-radius: var(--radius-lg);
+		padding: var(--space-lg);
+		margin-bottom: var(--space-xl);
+		border: 1px solid var(--border-color);
+		box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
 	}
 
 	.controls-premium {
 		display: flex;
 		justify-content: center;
-		gap: var(--space-sm);
-		margin-bottom: var(--space-lg);
+		gap: var(--space-md);
+		margin-bottom: var(--space-xl);
 	}
 
 	.control-btn-premium {
-		background: var(--primary-color);
+		background: linear-gradient(145deg, var(--primary-color), var(--primary-hover));
 		color: white;
 		border: none;
-		padding: var(--space-sm) var(--space-md);
-		border-radius: var(--radius-md);
+		padding: var(--space-md) var(--space-lg);
+		border-radius: var(--radius-lg);
 		cursor: pointer;
-		transition: var(--transition-base);
+		transition: all var(--transition-base);
 		font-size: var(--font-size-base);
+		font-weight: 600;
 		display: flex;
 		align-items: center;
-		gap: var(--space-xs);
+		gap: var(--space-sm);
+		box-shadow: var(--shadow-md);
+		min-width: 120px;
+		justify-content: center;
 	}
 
 	.control-btn-premium:hover {
-		background: var(--primary-hover);
-		transform: translateY(-2px);
+		transform: translateY(-3px);
+		box-shadow: var(--shadow-lg);
+		background: linear-gradient(145deg, var(--primary-hover), var(--primary-color));
 	}
 
 	.control-btn-premium:active {
-		transform: translateY(0);
+		transform: translateY(-1px);
+	}
+
+	.control-btn-premium.play-pause {
+		background: linear-gradient(145deg, #10b981, #059669);
+		padding: var(--space-md) var(--space-xl);
+		min-width: 140px;
+		font-size: var(--font-size-lg);
+	}
+
+	.control-btn-premium.play-pause:hover {
+		background: linear-gradient(145deg, #059669, #10b981);
+	}
+
+	.search-premium {
+		margin-bottom: var(--space-xl);
+		position: relative;
+	}
+
+	.search-premium input {
+		width: 100%;
+		padding: var(--space-md);
+		border: 2px solid var(--border-color);
+		border-radius: var(--radius-lg);
+		font-size: var(--font-size-base);
+		transition: all var(--transition-base);
+		background: var(--bg-card);
+		color: var(--text-primary);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.search-premium input:focus {
+		outline: none;
+		border-color: var(--primary-color);
+		box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.1);
+		transform: translateY(-2px);
+	}
+
+	.search-premium input::placeholder {
+		color: var(--text-muted);
+		font-style: italic;
 	}
 
 	.playlist-premium {
-		background: var(--bg-secondary);
-		border-radius: var(--radius-md);
-		padding: var(--space-md);
-		max-height: 400px;
+		background: linear-gradient(145deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+		border-radius: var(--radius-lg);
+		padding: var(--space-lg);
+		max-height: 500px;
 		overflow-y: auto;
+		border: 1px solid var(--border-color);
+		box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
 	}
 
 	.playlist-premium h3 {
 		color: var(--text-primary);
 		font-family: var(--font-heading);
-		font-size: var(--font-size-lg);
-		margin-bottom: var(--space-md);
+		font-size: var(--font-size-xl);
+		margin-bottom: var(--space-lg);
 		text-align: center;
+		font-weight: 700;
+		position: relative;
+	}
+
+	.playlist-premium h3::after {
+		content: '';
+		position: absolute;
+		bottom: -8px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 60px;
+		height: 3px;
+		background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+		border-radius: 2px;
 	}
 
 	.playlist-item {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: var(--space-sm);
+		padding: var(--space-md);
 		border-bottom: 1px solid var(--border-color);
-		transition: var(--transition-base);
+		transition: all var(--transition-base);
 		cursor: pointer;
+		border-radius: var(--radius-md);
+		margin-bottom: var(--space-xs);
 	}
 
 	.playlist-item:hover {
 		background: var(--bg-card);
-		border-radius: var(--radius-sm);
+		transform: translateX(8px);
+		box-shadow: var(--shadow-sm);
 	}
 
 	.playlist-item.active {
-		background: var(--primary-color);
+		background: linear-gradient(145deg, var(--primary-color), var(--primary-hover));
 		color: white;
-		border-radius: var(--radius-sm);
-	}
-
-	.search-premium {
-		margin-bottom: var(--space-lg);
-	}
-
-	.search-premium input {
-		width: 100%;
-		padding: var(--space-sm);
-		border: 2px solid var(--border-color);
 		border-radius: var(--radius-md);
-		font-size: var(--font-size-base);
-		transition: var(--transition-base);
-		background: var(--bg-card);
-		color: var(--text-primary);
+		box-shadow: var(--shadow-md);
+		transform: translateX(8px);
 	}
 
-	.search-premium input:focus {
-		outline: none;
-		border-color: var(--primary-color);
-		box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
+	.playlist-item.active .episode-meta {
+		color: rgba(255, 255, 255, 0.8);
 	}
 
-	.search-premium input::placeholder {
+	.episode-info {
+		flex: 1;
+	}
+
+	.episode-title-text {
+		font-weight: 600;
+		margin-bottom: 4px;
+		line-height: 1.4;
+	}
+
+	.episode-category {
+		font-size: var(--font-size-sm);
+		opacity: 0.8;
+	}
+
+	.episode-duration {
+		background: rgba(255, 255, 255, 0.1);
 		color: var(--text-muted);
+		padding: 4px 12px;
+		border-radius: var(--radius-sm);
+		font-size: var(--font-size-xs);
+		font-weight: 600;
+		white-space: nowrap;
+	}
+
+	.playlist-item.active .episode-duration {
+		background: rgba(255, 255, 255, 0.2);
+		color: white;
 	}
 
 	@media (max-width: 768px) {
@@ -479,12 +552,19 @@
 			font-size: var(--font-size-2xl);
 		}
 		
-		.podcast-grid {
-			grid-template-columns: 1fr;
-		}
-		
 		.controls-premium {
 			flex-wrap: wrap;
+			gap: var(--space-sm);
+		}
+		
+		.control-btn-premium {
+			min-width: 100px;
+			padding: var(--space-sm) var(--space-md);
+		}
+		
+		.audio-player-premium {
+			margin: 0 var(--space-sm);
+			padding: var(--space-lg);
 		}
 	}
 </style>
@@ -594,50 +674,21 @@
 		<p>Dive deep into the world of artificial intelligence, machine learning, and cutting-edge technology. Expert insights, practical tutorials, and industry trends delivered straight to your ears.</p>
 	</section>
 
-	<!-- Podcast Categories Grid -->
-	<section class="podcast-grid">
-		<div class="podcast-card">
-			<h3>🤖 Machine Learning Deep Dives</h3>
-			<p>Comprehensive explorations of ML algorithms, neural networks, and practical applications in real-world scenarios.</p>
-			<div class="podcast-meta">
-				<span>12 Episodes</span>
-				<span class="episode-count">ML</span>
-			</div>
-		</div>
-		
-		<div class="podcast-card">
-			<h3>🐍 Python & AI Development</h3>
-			<p>Hands-on tutorials covering Python programming, AI frameworks, and development best practices for modern applications.</p>
-			<div class="podcast-meta">
-				<span>8 Episodes</span>
-				<span class="episode-count">Python</span>
-			</div>
-		</div>
-		
-		<div class="podcast-card">
-			<h3>📊 Data Science & Analytics</h3>
-			<p>Insights into data analysis, visualization techniques, and statistical methods for extracting meaningful insights from data.</p>
-			<div class="podcast-meta">
-				<span>15 Episodes</span>
-				<span class="episode-count">Data</span>
-			</div>
-		</div>
-		
-		<div class="podcast-card">
-			<h3>🚀 Industry Trends & Future</h3>
-			<p>Stay ahead with discussions on emerging technologies, industry developments, and predictions for the future of AI.</p>
-			<div class="podcast-meta">
-				<span>6 Episodes</span>
-				<span class="episode-count">Trends</span>
-			</div>
-		</div>
-	</section>
-
 	<!-- Premium Audio Player -->
 	<section class="audio-player-premium">
 		<div class="player-header">
 			<h2>🎧 Now Playing</h2>
 			<p id="current-episode-title">Select an episode to start listening</p>
+		</div>
+		
+		<div class="current-episode-info">
+			<div class="episode-title">
+				<span id="current-episode-title-text">Introduction to Machine Learning Fundamentals</span>
+			</div>
+			<div class="episode-meta">
+				<span class="episode-category">Machine Learning</span>
+				<span class="episode-duration">45:30</span>
+			</div>
 		</div>
 		
 		<div class="waveform-container">
@@ -648,7 +699,7 @@
 			<button class="control-btn-premium" id="prev-btn" aria-label="Previous Episode">
 				<i class="fas fa-step-backward"></i> Previous
 			</button>
-			<button class="control-btn-premium" id="play-pause-btn" aria-label="Play/Pause">
+			<button class="control-btn-premium play-pause" id="play-pause-btn" aria-label="Play/Pause">
 				<i class="fas fa-play"></i> Play
 			</button>
 			<button class="control-btn-premium" id="next-btn" aria-label="Next Episode">
@@ -744,12 +795,11 @@
 			const li = document.createElement('li');
 			li.className = 'playlist-item';
 			li.innerHTML = `
-				<div>
-					<strong>${episode.title}</strong>
-					<div style="font-size: 0.9em; color: var(--text-muted); margin-top: 4px;">
-						${episode.category} • ${episode.duration}
-					</div>
+				<div class="episode-info">
+					<div class="episode-title-text">${episode.title}</div>
+					<div class="episode-category">${episode.category}</div>
 				</div>
+				<div class="episode-duration">${episode.duration}</div>
 			`;
 			
 			li.addEventListener('click', () => {
@@ -767,6 +817,13 @@
 		
 		// Update UI
 		document.getElementById('current-episode-title').textContent = episode.title;
+		document.getElementById('current-episode-title-text').textContent = episode.title;
+		
+		// Update episode meta info
+		const categoryElement = document.querySelector('.episode-category');
+		const durationElement = document.querySelector('.episode-duration');
+		if (categoryElement) categoryElement.textContent = episode.category;
+		if (durationElement) durationElement.textContent = episode.duration;
 		
 		// Update active playlist item
 		document.querySelectorAll('.playlist-item').forEach((item, i) => {
