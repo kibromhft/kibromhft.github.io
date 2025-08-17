@@ -272,7 +272,7 @@
 		color: var(--primary-color);
 	}
 
-	/* Premium & Compact Podcast Player */
+	/* Premium & Compact Podcast Player - Side by Side Layout */
 	.podcast-hero {
 		background: linear-gradient(135deg, #1db954 0%, #1ed760 100%);
 		color: white;
@@ -296,17 +296,26 @@
 		line-height: 1.4;
 	}
 
-	/* Compact Premium Audio Player */
+	/* Main container for side-by-side layout */
+	.podcast-container {
+		display: flex;
+		gap: 2rem;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 1rem;
+	}
+
+	/* Left side - Audio Player */
 	.audio-player-premium {
+		flex: 1;
 		background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
 		border-radius: 16px;
 		padding: 1.5rem;
 		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-		margin: 0 auto;
-		max-width: 500px;
 		border: 1px solid rgba(29, 185, 84, 0.1);
 		position: relative;
 		overflow: hidden;
+		height: fit-content;
 	}
 
 	.audio-player-premium::before {
@@ -415,8 +424,15 @@
 		box-shadow: 0 8px 20px rgba(29, 185, 84, 0.5);
 	}
 
+	/* Right side - Playlist */
+	.playlist-section {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+
 	.search-premium {
-		margin-bottom: 1.5rem;
+		margin-bottom: 1rem;
 		position: relative;
 	}
 
@@ -454,13 +470,14 @@
 	}
 
 	.playlist-premium {
+		flex: 1;
 		background: linear-gradient(145deg, #f8fafc 0%, #f1f5f9 100%);
-		border-radius: 12px;
-		padding: 1rem;
-		max-height: 300px;
-		overflow-y: auto;
+		border-radius: 16px;
+		padding: 1.5rem;
 		border: 1px solid rgba(29, 185, 84, 0.1);
-		box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+		overflow-y: auto;
+		max-height: 600px;
 	}
 
 	.playlist-premium::-webkit-scrollbar {
@@ -480,8 +497,8 @@
 	.playlist-premium h3 {
 		color: #1f2937;
 		font-family: var(--font-heading);
-		font-size: 1rem;
-		margin-bottom: 1rem;
+		font-size: 1.1rem;
+		margin-bottom: 1.5rem;
 		text-align: center;
 		font-weight: 600;
 	}
@@ -490,25 +507,25 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 0.75rem;
+		padding: 1rem;
 		border-bottom: 1px solid rgba(29, 185, 84, 0.1);
 		transition: all 0.2s ease;
 		cursor: pointer;
-		border-radius: 8px;
-		margin-bottom: 0.25rem;
+		border-radius: 12px;
+		margin-bottom: 0.5rem;
 	}
 
 	.playlist-item:hover {
 		background: white;
 		transform: translateX(3px);
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 	}
 
 	.playlist-item.active {
 		background: linear-gradient(145deg, #1db954, #1ed760);
 		color: white;
-		border-radius: 8px;
-		box-shadow: 0 4px 12px rgba(29, 185, 84, 0.3);
+		border-radius: 12px;
+		box-shadow: 0 6px 16px rgba(29, 185, 84, 0.3);
 	}
 
 	.playlist-item.active .episode-meta {
@@ -521,22 +538,22 @@
 
 	.episode-title-text {
 		font-weight: 600;
-		margin-bottom: 2px;
-		line-height: 1.3;
-		font-size: 0.9rem;
+		margin-bottom: 4px;
+		line-height: 1.4;
+		font-size: 0.95rem;
 	}
 
 	.episode-category {
-		font-size: 0.75rem;
+		font-size: 0.8rem;
 		opacity: 0.8;
 	}
 
 	.episode-duration {
 		background: rgba(29, 185, 84, 0.1);
 		color: #1db954;
-		padding: 3px 8px;
-		border-radius: 6px;
-		font-size: 0.75rem;
+		padding: 4px 10px;
+		border-radius: 8px;
+		font-size: 0.8rem;
 		font-weight: 500;
 		white-space: nowrap;
 		border: 1px solid rgba(29, 185, 84, 0.2);
@@ -564,7 +581,7 @@
 	}
 
 	body.dark .playlist-premium {
-		background: linear-gradient(145deg, #374151 0%, #1f2937 100%);
+		background: linear-gradient(145deg, #1f2937 0%, #111827 100%);
 		border-color: rgba(29, 185, 84, 0.2);
 	}
 
@@ -588,7 +605,14 @@
 		background: #4b5563;
 	}
 
+	/* Mobile responsive - stack vertically on small screens */
 	@media (max-width: 768px) {
+		.podcast-container {
+			flex-direction: column;
+			gap: 1.5rem;
+			padding: 0 0.75rem;
+		}
+
 		.podcast-hero h1 {
 			font-size: 1.75rem;
 		}
@@ -605,12 +629,15 @@
 		}
 		
 		.audio-player-premium {
-			margin: 0 0.75rem;
 			padding: 1.25rem;
 		}
 		
 		.search-premium input {
 			padding: 0.5rem 0.5rem 0.5rem 2.25rem;
+		}
+
+		.playlist-premium {
+			max-height: 400px;
 		}
 	}
 </style>
@@ -721,45 +748,51 @@
 	</section>
 
 	<!-- Premium Audio Player -->
-	<section class="audio-player-premium">
-		<div class="player-header">
-			<h2>🎧 Now Playing</h2>
-			<p id="current-episode-title">Select an episode to start listening</p>
-		</div>
-		
-		<div class="current-episode-info">
-			<div class="episode-title">
-				<span id="current-episode-title-text">Introduction to Machine Learning Fundamentals</span>
+	<section class="podcast-container">
+		<!-- Left side - Audio Player -->
+		<div class="audio-player-premium">
+			<div class="player-header">
+				<h2>🎧 Now Playing</h2>
+				<p id="current-episode-title">Select an episode to start listening</p>
 			</div>
-			<div class="episode-meta">
-				<span class="episode-category">Machine Learning</span>
-				<span class="episode-duration">45:30</span>
+			
+			<div class="current-episode-info">
+				<div class="episode-title">
+					<span id="current-episode-title-text">Introduction to Machine Learning Fundamentals</span>
+				</div>
+				<div class="episode-meta">
+					<span class="episode-category">Machine Learning</span>
+					<span class="episode-duration">45:30</span>
+				</div>
+			</div>
+			
+			<div class="waveform-container">
+				<div id="waveform" style="width: 100%; height: 128px;"></div>
+			</div>
+			
+			<div class="controls-premium">
+				<button class="control-btn-premium" id="prev-btn" aria-label="Previous Episode">
+					<i class="fas fa-step-backward"></i> Previous
+				</button>
+				<button class="control-btn-premium play-pause" id="play-pause-btn" aria-label="Play/Pause">
+					<i class="fas fa-play"></i> Play
+				</button>
+				<button class="control-btn-premium" id="next-btn" aria-label="Next Episode">
+					Next <i class="fas fa-step-forward"></i>
+				</button>
 			</div>
 		</div>
-		
-		<div class="waveform-container">
-			<div id="waveform" style="width: 100%; height: 128px;"></div>
-		</div>
-		
-		<div class="controls-premium">
-			<button class="control-btn-premium" id="prev-btn" aria-label="Previous Episode">
-				<i class="fas fa-step-backward"></i> Previous
-			</button>
-			<button class="control-btn-premium play-pause" id="play-pause-btn" aria-label="Play/Pause">
-				<i class="fas fa-play"></i> Play
-			</button>
-			<button class="control-btn-premium" id="next-btn" aria-label="Next Episode">
-				Next <i class="fas fa-step-forward"></i>
-			</button>
-		</div>
-		
-		<div class="search-premium">
-			<input type="text" id="search-input" placeholder="🔍 Search episodes by title, category, or description...">
-		</div>
-		
-		<div class="playlist-premium">
-			<h3>📚 Episode Library</h3>
-			<ul id="playlist-items"></ul>
+
+		<!-- Right side - Playlist Section -->
+		<div class="playlist-section">
+			<div class="search-premium">
+				<input type="text" id="search-input" placeholder="🔍 Search episodes by title, category, or description...">
+			</div>
+			
+			<div class="playlist-premium">
+				<h3>📚 Episode Library</h3>
+				<ul id="playlist-items"></ul>
+			</div>
 		</div>
 	</section>
 </main>
