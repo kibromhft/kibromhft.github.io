@@ -1437,35 +1437,69 @@
         }
     }
 
+    /* Episode Search Bar */
+    .episode-search {
+        width: 100%;
+        max-width: 400px;
+        margin-bottom: var(--space-sm);
+    }
+
+    .episode-search input {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-sm);
+        font-size: 12px;
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background: var(--bg-card);
+        color: var(--text-primary);
+        transition: var(--transition-base);
+    }
+
+    .episode-search input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.1);
+    }
+
+    .episode-search input::placeholder {
+        color: var(--text-muted);
+    }
+
     /* Episode Selection - Vertical Scrollable List */
     .episode-selector {
         width: 100%;
         max-width: 400px;
-        margin-top: var(--space-md);
+        margin-top: var(--space-sm);
         background: var(--bg-secondary);
         border: 1px solid var(--border-color);
         border-radius: var(--radius-md);
         height: 200px;
         overflow-y: auto;
         overflow-x: hidden;
+        position: relative;
     }
 
+    /* Hide scrollbar and show arrow indicator */
     .episode-selector::-webkit-scrollbar {
-        width: 8px;
+        display: none;
     }
 
-    .episode-selector::-webkit-scrollbar-track {
-        background: var(--bg-card);
-        border-radius: 4px;
+    .episode-selector {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
     }
 
-    .episode-selector::-webkit-scrollbar-thumb {
-        background: var(--primary-color);
-        border-radius: 4px;
-    }
-
-    .episode-selector::-webkit-scrollbar-thumb:hover {
-        background: var(--primary-hover);
+    /* Arrow indicator */
+    .episode-selector::after {
+        content: '↓';
+        position: absolute;
+        right: 8px;
+        top: 8px;
+        font-size: 12px;
+        color: var(--text-muted);
+        pointer-events: none;
+        opacity: 0.6;
     }
 
     .episode-scroll {
@@ -1527,7 +1561,20 @@
         text-overflow: ellipsis;
     }
 
+    .episode-option .episode-duration {
+        font-size: 10px;
+        color: var(--text-muted);
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-weight: 400;
+        flex-shrink: 0;
+        margin-left: auto;
+    }
+
     .episode-option.current .episode-name {
+        color: var(--primary-color);
+    }
+
+    .episode-option.current .episode-duration {
         color: var(--primary-color);
     }
 </style>
@@ -1900,41 +1947,54 @@
 					</div>
 				</div>
 
+				<!-- Episode Search Bar -->
+				<div class="episode-search">
+					<input type="text" placeholder="Search episodes..." id="episode-search">
+				</div>
+
 				<!-- Episode Selection - Vertical Scrollable List -->
 				<div class="episode-selector">
 					<div class="episode-scroll">
 						<div class="episode-option current" data-episode="5" data-audio="audio5.mp3">
 							<span class="episode-num">05</span>
 							<span class="episode-name">Advanced Causal Inference in ML</span>
+							<span class="episode-duration">47:32</span>
 						</div>
 						<div class="episode-option" data-episode="4" data-audio="audio4.mp3">
 							<span class="episode-num">04</span>
 							<span class="episode-name">Understanding Autoencoders</span>
+							<span class="episode-duration">42:18</span>
 						</div>
 						<div class="episode-option" data-episode="3" data-audio="audio3.mp3">
 							<span class="episode-num">03</span>
 							<span class="episode-name">Data Analysis Fundamentals</span>
+							<span class="episode-duration">38:45</span>
 						</div>
 						<div class="episode-option" data-episode="2" data-audio="audio2.mp3">
 							<span class="episode-num">02</span>
 							<span class="episode-name">Debugging Neural Networks</span>
+							<span class="episode-duration">35:12</span>
 						</div>
 						<div class="episode-option" data-episode="1" data-audio="audio1.mp3">
 							<span class="episode-num">01</span>
 							<span class="episode-name">ML Automation Strategies</span>
+							<span class="episode-duration">41:27</span>
 						</div>
 						<!-- Example of how it would look with more episodes -->
 						<div class="episode-option" data-episode="6" data-audio="audio6.mp3">
 							<span class="episode-num">06</span>
 							<span class="episode-name">Deep Learning Optimization</span>
+							<span class="episode-duration">44:53</span>
 						</div>
 						<div class="episode-option" data-episode="7" data-audio="audio7.mp3">
 							<span class="episode-num">07</span>
 							<span class="episode-name">Computer Vision Basics</span>
+							<span class="episode-duration">39:18</span>
 						</div>
 						<div class="episode-option" data-episode="8" data-audio="audio8.mp3">
 							<span class="episode-num">08</span>
 							<span class="episode-name">Natural Language Processing</span>
+							<span class="episode-duration">46:22</span>
 						</div>
 					</div>
 				</div>
@@ -2270,6 +2330,23 @@
                     isPlaying = false;
                     playIcon.style.display = 'block';
                     pauseIcon.style.display = 'none';
+                }
+            });
+        });
+        
+        // Episode search functionality
+        const searchInput = document.getElementById('episode-search');
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            
+            episodeOptions.forEach(option => {
+                const episodeName = option.querySelector('.episode-name').textContent.toLowerCase();
+                const episodeNum = option.querySelector('.episode-num').textContent;
+                
+                if (episodeName.includes(searchTerm) || episodeNum.includes(searchTerm)) {
+                    option.style.display = 'flex';
+                } else {
+                    option.style.display = 'none';
                 }
             });
         });
