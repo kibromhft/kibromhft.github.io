@@ -1251,7 +1251,7 @@
         font-family: var(--font-heading);
         margin: 0;
         letter-spacing: -0.02em;
-        background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -1267,22 +1267,22 @@
         transform: translateX(-50%);
         width: 60px;
         height: 3px;
-        background: linear-gradient(90deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+        background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
         border-radius: 2px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3);
     }
 
     /* Dark mode support for featured episode title */
     body.dark .featured-episode-title h2 {
-        background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+        background: linear-gradient(135deg, rgb(34, 211, 238), rgb(6, 182, 212));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
     }
 
     body.dark .featured-episode-title h2::before {
-        background: linear-gradient(90deg, var(--text-primary) 0%, var(--text-secondary) 100%);
-        box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+        background: linear-gradient(90deg, rgb(34, 211, 238), rgb(6, 182, 212));
+        box-shadow: 0 2px 8px rgba(34, 211, 238, 0.3);
     }
 
     /* Responsive design for featured episode title */
