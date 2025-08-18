@@ -1054,6 +1054,12 @@
         width: 100%;
         max-width: 600px;
         text-align: center;
+        padding: var(--space-sm);
+        border-radius: var(--radius-lg);
+        background: linear-gradient(135deg, 
+            rgba(255,255,255,0.02) 0%, 
+            rgba(255,255,255,0.01) 100%);
+        backdrop-filter: blur(10px);
     }
 
     .wave-visualization {
@@ -1076,8 +1082,15 @@
         border-color: var(--primary-color);
         background: linear-gradient(180deg, 
             var(--bg-secondary) 0%, 
-            rgba(13, 110, 253, 0.05) 50%, 
+            rgba(13, 110, 253, 0.08) 50%, 
             var(--bg-secondary) 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+
+    .wave-visualization:hover .wave-bar {
+        transform: scaleY(1.05);
+        box-shadow: 0 3px 8px rgba(0,0,0,0.15);
     }
 
     /* Dark mode waveform background */
@@ -1099,27 +1112,29 @@
     .wave-bar {
 		position: absolute;
         bottom: 0;
-        background: var(--text-muted);
-        border-radius: 2px;
-        animation: waveform-animation 3s ease-in-out infinite;
-        transition: all 0.3s ease;
-        opacity: 0.7;
+        background: linear-gradient(180deg, var(--text-muted) 0%, rgba(0,0,0,0.1) 100%);
+        border-radius: 3px;
+        animation: waveform-animation 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0.8;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
-    /* Played portion - darker color with smooth transition */
+    /* Played portion - gradient with enhanced depth */
     .wave-bar.played {
-        background: var(--text-primary);
+        background: linear-gradient(180deg, var(--text-primary) 0%, rgba(0,0,0,0.2) 100%);
         opacity: 1;
-        transform: scaleY(1.1);
+        transform: scaleY(1.15);
+        box-shadow: 0 3px 8px rgba(0,0,0,0.15);
     }
 
-    /* Current playing position - accent color with pulse */
+    /* Current playing position - accent color with enhanced pulse */
     .wave-bar.current {
-        background: var(--primary-color);
+        background: linear-gradient(180deg, var(--primary-color) 0%, rgba(13, 110, 253, 0.8) 100%);
         opacity: 1;
-        transform: scaleY(1.2);
-        animation: current-bar-pulse 1s ease-in-out infinite;
-        box-shadow: 0 0 8px rgba(13, 110, 253, 0.4);
+        transform: scaleY(1.25);
+        animation: current-bar-pulse 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        box-shadow: 0 0 12px rgba(13, 110, 253, 0.6), 0 4px 12px rgba(0,0,0,0.2);
     }
 
 
@@ -1127,37 +1142,76 @@
     @keyframes waveform-animation {
         0%, 100% { 
             transform: scaleY(1); 
-            opacity: 0.7;
+            opacity: 0.8;
         }
         50% { 
-            transform: scaleY(1.3); 
+            transform: scaleY(1.4); 
             opacity: 1;
         }
     }
 
     @keyframes current-bar-pulse {
         0%, 100% { 
-            transform: scaleY(1.2); 
+            transform: scaleY(1.25); 
             opacity: 1;
         }
         50% { 
-            transform: scaleY(1.5); 
-            opacity: 0.8;
+            transform: scaleY(1.6); 
+            opacity: 0.9;
         }
     }
 
     /* Enhanced waveform animation when playing */
     .wave-visualization.playing .wave-bar {
         animation-duration: 1.5s;
-        animation-timing-function: ease-in-out;
+        animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .wave-visualization.playing .wave-bar:nth-child(odd) {
         animation-duration: 1.2s;
+        animation-delay: 0.1s;
     }
 
     .wave-visualization.playing .wave-bar:nth-child(even) {
         animation-duration: 1.8s;
+        animation-delay: 0.2s;
+    }
+
+    .wave-visualization.playing .wave-bar:nth-child(3n) {
+        animation-duration: 1.6s;
+        animation-delay: 0.3s;
+    }
+
+    /* Click ripple effect */
+    .wave-visualization.ripple {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .wave-visualization.ripple::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(13, 110, 253, 0.3);
+        transform: translate(-50%, -50%);
+        animation: ripple-effect 0.6s ease-out;
+    }
+
+    @keyframes ripple-effect {
+        0% {
+            width: 0;
+            height: 0;
+            opacity: 1;
+        }
+        100% {
+            width: 200px;
+            height: 200px;
+            opacity: 0;
+        }
     }
 
     .time-display {
@@ -2063,34 +2117,36 @@
 				
 				<div class="wave-container">
 					<div class="wave-visualization" id="waveform">
-						<!-- More realistic waveform with varying heights and widths -->
-						<div class="wave-bar" data-index="0" style="left: 2%; width: 2px; height: 12px;"></div>
-						<div class="wave-bar" data-index="1" style="left: 5%; width: 3px; height: 28px;"></div>
-						<div class="wave-bar" data-index="2" style="left: 9%; width: 2px; height: 18px;"></div>
-						<div class="wave-bar" data-index="3" style="left: 12%; width: 4px; height: 35px;"></div>
-						<div class="wave-bar" data-index="4" style="left: 16%; width: 2px; height: 22px;"></div>
-						<div class="wave-bar" data-index="5" style="left: 19%; width: 3px; height: 42px;"></div>
-						<div class="wave-bar" data-index="6" style="left: 23%; width: 2px; height: 15px;"></div>
-						<div class="wave-bar" data-index="7" style="left: 26%; width: 4px; height: 38px;"></div>
-						<div class="wave-bar" data-index="8" style="left: 30%; width: 3px; height: 25px;"></div>
-						<div class="wave-bar" data-index="9" style="left: 34%; width: 2px; height: 32px;"></div>
-						<div class="wave-bar" data-index="10" style="left: 37%; width: 4px; height: 45px;"></div>
-						<div class="wave-bar" data-index="11" style="left: 41%; width: 2px; height: 19px;"></div>
-						<div class="wave-bar" data-index="12" style="left: 44%; width: 3px; height: 36px;"></div>
-						<div class="wave-bar" data-index="13" style="left: 48%; width: 2px; height: 28px;"></div>
-						<div class="wave-bar" data-index="14" style="left: 51%; width: 4px; height: 42px;"></div>
-						<div class="wave-bar" data-index="15" style="left: 55%; width: 3px; height: 24px;"></div>
-						<div class="wave-bar" data-index="16" style="left: 58%; width: 2px; height: 35px;"></div>
-						<div class="wave-bar" data-index="17" style="left: 62%; width: 4px; height: 48px;"></div>
-						<div class="wave-bar" data-index="18" style="left: 66%; width: 2px; height: 21px;"></div>
-						<div class="wave-bar" data-index="19" style="left: 69%; width: 3px; height: 38px;"></div>
-						<div class="wave-bar" data-index="20" style="left: 73%; width: 2px; height: 29px;"></div>
-						<div class="wave-bar" data-index="21" style="left: 76%; width: 4px; height: 41px;"></div>
-						<div class="wave-bar" data-index="22" style="left: 80%; width: 3px; height: 26px;"></div>
-						<div class="wave-bar" data-index="23" style="left: 84%; width: 2px; height: 33px;"></div>
-						<div class="wave-bar" data-index="24" style="left: 87%; width: 4px; height: 39px;"></div>
-						<div class="wave-bar" data-index="25" style="left: 91%; width: 2px; height: 18px;"></div>
-						<div class="wave-bar" data-index="26" style="left: 94%; width: 3px; height: 31px;"></div>
+						<!-- Enhanced waveform with more realistic variety -->
+						<div class="wave-bar" data-index="0" style="left: 2%; width: 1px; height: 8px;"></div>
+						<div class="wave-bar" data-index="1" style="left: 5%; width: 3px; height: 32px;"></div>
+						<div class="wave-bar" data-index="2" style="left: 8%; width: 2px; height: 16px;"></div>
+						<div class="wave-bar" data-index="3" style="left: 11%; width: 4px; height: 45px;"></div>
+						<div class="wave-bar" data-index="4" style="left: 15%; width: 1px; height: 12px;"></div>
+						<div class="wave-bar" data-index="5" style="left: 18%; width: 3px; height: 38px;"></div>
+						<div class="wave-bar" data-index="6" style="left: 22%; width: 2px; height: 24px;"></div>
+						<div class="wave-bar" data-index="7" style="left: 25%; width: 4px; height: 52px;"></div>
+						<div class="wave-bar" data-index="8" style="left: 29%; width: 1px; height: 18px;"></div>
+						<div class="wave-bar" data-index="9" style="left: 32%; width: 3px; height: 35px;"></div>
+						<div class="wave-bar" data-index="10" style="left: 36%; width: 2px; height: 28px;"></div>
+						<div class="wave-bar" data-index="11" style="left: 39%; width: 4px; height: 48px;"></div>
+						<div class="wave-bar" data-index="12" style="left: 43%; width: 1px; height: 14px;"></div>
+						<div class="wave-bar" data-index="13" style="left: 46%; width: 3px; height: 42px;"></div>
+						<div class="wave-bar" data-index="14" style="left: 50%; width: 2px; height: 22px;"></div>
+						<div class="wave-bar" data-index="15" style="left: 53%; width: 4px; height: 55px;"></div>
+						<div class="wave-bar" data-index="16" style="left: 57%; width: 1px; height: 19px;"></div>
+						<div class="wave-bar" data-index="17" style="left: 60%; width: 3px; height: 36px;"></div>
+						<div class="wave-bar" data-index="18" style="left: 64%; width: 2px; height: 26px;"></div>
+						<div class="wave-bar" data-index="19" style="left: 67%; width: 4px; height: 49px;"></div>
+						<div class="wave-bar" data-index="20" style="left: 71%; width: 1px; height: 15px;"></div>
+						<div class="wave-bar" data-index="21" style="left: 74%; width: 3px; height: 33px;"></div>
+						<div class="wave-bar" data-index="22" style="left: 78%; width: 2px; height: 29px;"></div>
+						<div class="wave-bar" data-index="23" style="left: 81%; width: 4px; height: 46px;"></div>
+						<div class="wave-bar" data-index="24" style="left: 85%; width: 1px; height: 11px;"></div>
+						<div class="wave-bar" data-index="25" style="left: 88%; width: 3px; height: 31px;"></div>
+						<div class="wave-bar" data-index="26" style="left: 91%; width: 2px; height: 21px;"></div>
+						<div class="wave-bar" data-index="27" style="left: 94%; width: 4px; height: 41px;"></div>
+						<div class="wave-bar" data-index="28" style="left: 97%; width: 1px; height: 16px;"></div>
 					</div>
 					
 					<div class="time-display">
@@ -2453,7 +2509,7 @@
             audioPlayer.currentTime = Math.min(audioPlayer.duration, audioPlayer.currentTime + 30);
         });
         
-        // Waveform click-to-seek functionality
+        // Waveform click-to-seek functionality with ripple effect
         waveform.addEventListener('click', function(e) {
             const rect = waveform.getBoundingClientRect();
             const clickX = e.clientX - rect.left;
@@ -2463,6 +2519,12 @@
             if (!isNaN(audioPlayer.duration)) {
                 audioPlayer.currentTime = clickPercent * audioPlayer.duration;
             }
+
+            // Add ripple effect
+            waveform.classList.add('ripple');
+            setTimeout(() => {
+                waveform.classList.remove('ripple');
+            }, 600);
         });
 
         // Volume control
