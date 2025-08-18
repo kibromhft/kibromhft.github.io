@@ -1466,65 +1466,63 @@
         color: var(--text-muted);
     }
 
-    /* Episode Selection - Vertical Scrollable List */
+    /* Episode Selection - Standard Scrolling with Good Practices */
     .episode-selector {
         width: 100%;
-        max-width: 400px;
+        max-width: 600px;
         margin-top: var(--space-sm);
         background: var(--bg-secondary);
         border: 1px solid var(--border-color);
         border-radius: var(--radius-md);
-        height: 200px;
+        height: 250px;
         overflow-y: auto;
         overflow-x: hidden;
-        position: relative;
     }
 
-    /* Hide scrollbar and show arrow indicator */
+    /* Standard scrollbar with good styling */
     .episode-selector::-webkit-scrollbar {
-        display: none;
+        width: 12px;
     }
 
-    .episode-selector {
-        scrollbar-width: none;
-        -ms-overflow-style: none;
+    .episode-selector::-webkit-scrollbar-track {
+        background: var(--bg-card);
+        border-radius: 6px;
     }
 
-    /* Arrow indicator */
-    .episode-selector::after {
-        content: '↓';
-        position: absolute;
-        right: 8px;
-        top: 8px;
-        font-size: 12px;
-        color: var(--text-muted);
-        pointer-events: none;
-        opacity: 0.6;
+    .episode-selector::-webkit-scrollbar-thumb {
+        background: var(--primary-color);
+        border-radius: 6px;
+        border: 2px solid var(--bg-card);
+    }
+
+    .episode-selector::-webkit-scrollbar-thumb:hover {
+        background: var(--primary-hover);
     }
 
     .episode-scroll {
         display: flex;
         flex-direction: column;
-        gap: 2px;
-        padding: var(--space-xs);
+        gap: 4px;
+        padding: var(--space-sm);
     }
 
     .episode-option {
         display: flex;
         align-items: center;
-        gap: var(--space-xs);
-        padding: 8px 12px;
+        gap: var(--space-sm);
+        padding: 12px 16px;
         border-radius: var(--radius-sm);
         cursor: pointer;
         transition: var(--transition-base);
         background: transparent;
         border: 1px solid transparent;
-        min-height: 40px;
+        min-height: 50px;
     }
 
     .episode-option:hover {
         background-color: var(--bg-card);
         border-color: var(--border-color);
+        transform: translateX(4px);
     }
 
     .episode-option.current {
@@ -1532,25 +1530,26 @@
         color: var(--primary-color);
         font-weight: 600;
         border: 1px solid var(--primary-color);
+        box-shadow: 0 2px 8px rgba(13, 110, 253, 0.15);
     }
 
     .episode-option .episode-num {
         background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
         color: white;
-        width: 24px;
-        height: 24px;
+        width: 28px;
+        height: 28px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 11px;
+        font-size: 12px;
         font-weight: 700;
         flex-shrink: 0;
         font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
 
     .episode-option .episode-name {
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 500;
         color: var(--text-primary);
         font-family: var(--font-body);
@@ -1562,12 +1561,16 @@
     }
 
     .episode-option .episode-duration {
-        font-size: 10px;
+        font-size: 12px;
         color: var(--text-muted);
         font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         font-weight: 400;
         flex-shrink: 0;
         margin-left: auto;
+        background: var(--bg-card);
+        padding: 4px 8px;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--border-color);
     }
 
     .episode-option.current .episode-name {
@@ -1576,6 +1579,8 @@
 
     .episode-option.current .episode-duration {
         color: var(--primary-color);
+        border-color: var(--primary-color);
+        background: rgba(13, 110, 253, 0.1);
     }
 </style>
 
@@ -1952,7 +1957,7 @@
 					<input type="text" placeholder="Search episodes..." id="episode-search">
 				</div>
 
-				<!-- Episode Selection - Vertical Scrollable List -->
+				<!-- Episode Selection - Standard Scrolling with Good Practices -->
 				<div class="episode-selector">
 					<div class="episode-scroll">
 						<div class="episode-option current" data-episode="5" data-audio="audio5.mp3">
