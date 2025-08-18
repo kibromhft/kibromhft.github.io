@@ -1297,10 +1297,11 @@ if (!doNotTrack) {
 
     
 
-    /* 🎙️ Featured Episode Title - Simple Title Above Player */
+    /* 🎙️ Featured Episode Title - Original Perfect Styling */
     .featured-episode-title {
         text-align: center;
         margin: var(--space-xl) 0 var(--space-lg) 0;
+        position: relative;
     }
 
     .featured-episode-title h2 {
@@ -1314,6 +1315,21 @@ if (!doNotTrack) {
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        position: relative;
+        display: inline-block;
+    }
+
+    .featured-episode-title h2::before {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
+        border-radius: 2px;
+        box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3);
     }
 
     /* Dark mode support for featured episode title */
@@ -1324,6 +1340,11 @@ if (!doNotTrack) {
         background-clip: text;
     }
 
+    body.dark .featured-episode-title h2::before {
+        background: linear-gradient(90deg, rgb(34, 211, 238), rgb(6, 182, 212));
+        box-shadow: 0 2px 8px rgba(34, 211, 238, 0.3);
+    }
+
     /* Responsive design for featured episode title */
     @media (max-width: 768px) {
         .featured-episode-title {
@@ -1332,6 +1353,12 @@ if (!doNotTrack) {
         
         .featured-episode-title h2 {
             font-size: var(--font-size-xl);
+        }
+        
+        .featured-episode-title h2::before {
+            width: 50px;
+            height: 2px;
+            bottom: -6px;
         }
     }
 </style>
@@ -1621,7 +1648,7 @@ if (!doNotTrack) {
 		<p>Welcome to our premium podcast series featuring in-depth discussions on machine learning, data science, and artificial intelligence. Each episode brings you expert insights, practical knowledge, and cutting-edge research in the field.</p>
 	</div>
 
-	<!-- 🎙️ Featured Episode Title -->
+	<!-- 🎙️ Featured Episode Title - Original Perfect Styling -->
 	<div class="featured-episode-title">
 		<h2>🎙️ Featured Episode</h2>
 	</div>
