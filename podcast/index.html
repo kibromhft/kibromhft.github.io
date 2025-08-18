@@ -968,6 +968,88 @@
         color: var(--text-secondary);
     }
 
+    /* Volume Control Styling */
+    .volume-control {
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs);
+        position: relative;
+    }
+
+    .volume-btn {
+        position: relative;
+        z-index: 2;
+    }
+
+    .volume-slider {
+        width: 0;
+        overflow: hidden;
+        transition: width var(--transition-base);
+        opacity: 0;
+    }
+
+    .volume-control:hover .volume-slider {
+        width: 60px;
+        opacity: 1;
+    }
+
+    .volume-range {
+        width: 60px;
+        height: 4px;
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        border-radius: 2px;
+        outline: none;
+        cursor: pointer;
+        -webkit-appearance: none;
+        appearance: none;
+    }
+
+    .volume-range::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 12px;
+        height: 12px;
+        background: var(--primary-color);
+        border: 2px solid white;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .volume-range::-moz-range-thumb {
+        width: 12px;
+        height: 12px;
+        background: var(--primary-color);
+        border: 2px solid white;
+        border-radius: 50%;
+        cursor: pointer;
+        border: none;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .volume-range::-webkit-slider-track {
+        background: var(--bg-secondary);
+        border-radius: 2px;
+    }
+
+    .volume-range::-moz-range-track {
+        background: var(--bg-secondary);
+        border-radius: 2px;
+        height: 4px;
+    }
+
+    /* Dark mode volume control */
+    body.dark .volume-range::-webkit-slider-thumb {
+        border-color: var(--bg-card);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    body.dark .volume-range::-moz-range-thumb {
+        border-color: var(--bg-card);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
     .wave-container {
         width: 100%;
         max-width: 600px;
@@ -1435,6 +1517,61 @@
             height: 2px;
             bottom: -6px;
         }
+    }
+
+    /* Progress Bar Styling */
+    .progress-container {
+        width: 100%;
+        margin: var(--space-sm) 0;
+    }
+
+    .progress-bar {
+        width: 100%;
+        height: 6px;
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        border-radius: 3px;
+        position: relative;
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
+        border-radius: 3px;
+        width: 0%;
+        transition: width 0.1s ease;
+        position: relative;
+    }
+
+    .progress-handle {
+        position: absolute;
+        top: 50%;
+        right: -6px;
+        width: 12px;
+        height: 12px;
+        background: var(--primary-color);
+        border: 2px solid white;
+        border-radius: 50%;
+        transform: translateY(-50%);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+    .progress-bar:hover .progress-handle {
+        opacity: 1;
+    }
+
+    .progress-bar:hover .progress-fill {
+        background: linear-gradient(90deg, var(--primary-hover), var(--primary-color));
+    }
+
+    /* Dark mode progress bar */
+    body.dark .progress-handle {
+        border-color: var(--bg-card);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     }
 
     /* Episode Search Bar */
@@ -1927,6 +2064,21 @@
 					<button class="controls-button speed-control" aria-label="Change playback speed">
 						<span class="speed-text">1x</span>
 					</button>
+					
+					<!-- Volume Control -->
+					<div class="volume-control">
+						<button class="controls-button volume-btn" aria-label="Mute/Unmute">
+							<svg class="volume-icon" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+							</svg>
+							<svg class="mute-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+								<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+							</svg>
+						</button>
+						<div class="volume-slider">
+							<input type="range" class="volume-range" min="0" max="100" value="100" aria-label="Volume">
+						</div>
+					</div>
 				</div>
 				
 				<div class="wave-container">
@@ -1955,6 +2107,15 @@
 						<div class="wave-bar"></div>
 						<div class="wave-bar"></div>
 					</div>
+					
+					<!-- Progress Bar -->
+					<div class="progress-container">
+						<div class="progress-bar">
+							<div class="progress-fill"></div>
+							<div class="progress-handle"></div>
+						</div>
+					</div>
+					
 					<div class="time-display">
 						<span class="current-time">00:00</span>
 						<span class="duration">45:32</span>
@@ -2251,9 +2412,17 @@
         const rewindButton = mainPlayer.querySelector('.rewind');
         const forwardButton = mainPlayer.querySelector('.forward');
         const speedButton = mainPlayer.querySelector('.speed-control');
+        const progressBar = mainPlayer.querySelector('.progress-bar');
+        const progressFill = mainPlayer.querySelector('.progress-fill');
+        const volumeBtn = mainPlayer.querySelector('.volume-btn');
+        const volumeIcon = mainPlayer.querySelector('.volume-icon');
+        const muteIcon = mainPlayer.querySelector('.mute-icon');
+        const volumeRange = mainPlayer.querySelector('.volume-range');
         
         let currentEpisode = '5';
         let isPlaying = false;
+        let isMuted = false;
+        let lastVolume = 100;
         
         // Initialize with first episode
         updatePlayerInfo('5', 'audio5.mp3');
@@ -2307,6 +2476,54 @@
             audioPlayer.currentTime = Math.min(audioPlayer.duration, audioPlayer.currentTime + 30);
         });
         
+        // Progress bar functionality
+        progressBar.addEventListener('click', function(e) {
+            const rect = progressBar.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const progressWidth = rect.width;
+            const clickPercent = clickX / progressWidth;
+            
+            if (!isNaN(audioPlayer.duration)) {
+                audioPlayer.currentTime = clickPercent * audioPlayer.duration;
+            }
+        });
+
+        // Volume control
+        volumeBtn.addEventListener('click', function() {
+            if (isMuted) {
+                // Unmute
+                audioPlayer.volume = lastVolume / 100;
+                volumeRange.value = lastVolume;
+                isMuted = false;
+                volumeIcon.style.display = 'block';
+                muteIcon.style.display = 'none';
+            } else {
+                // Mute
+                lastVolume = audioPlayer.volume * 100;
+                audioPlayer.volume = 0;
+                volumeRange.value = 0;
+                isMuted = true;
+                volumeIcon.style.display = 'none';
+                muteIcon.style.display = 'block';
+            }
+        });
+
+        volumeRange.addEventListener('input', function() {
+            const volume = this.value;
+            audioPlayer.volume = volume / 100;
+            
+            if (volume > 0) {
+                isMuted = false;
+                lastVolume = volume;
+                volumeIcon.style.display = 'block';
+                muteIcon.style.display = 'none';
+            } else {
+                isMuted = true;
+                volumeIcon.style.display = 'none';
+                muteIcon.style.display = 'block';
+            }
+        });
+
         // Speed control
         let speedIndex = 0;
         const speeds = [1, 1.25, 1.5, 2];
@@ -2325,6 +2542,10 @@
             if (!isNaN(current) && !isNaN(duration)) {
                 currentTimeDisplay.textContent = formatTime(current);
                 durationDisplay.textContent = formatTime(duration);
+                
+                // Update progress bar
+                const progressPercent = (current / duration) * 100;
+                progressFill.style.width = progressPercent + '%';
             }
         });
         
@@ -2352,19 +2573,28 @@
                 const episodeName = this.querySelector('.episode-name').textContent;
                 const audioFile = this.getAttribute('data-audio');
                 
+                // Store current playback state
+                const wasPlaying = isPlaying;
+                const currentTime = audioPlayer.currentTime;
+                
                 // Update player
                 updatePlayerInfo(episodeNumber, audioFile);
                 
                 // Update episode title
                 episodeTitle.textContent = `Episode ${episodeNumber}: ${episodeName}`;
                 
-                // Reset player state
-                if (isPlaying) {
-                    audioPlayer.pause();
-                    isPlaying = false;
-                    playIcon.style.display = 'block';
-                    pauseIcon.style.display = 'none';
-                }
+                // Restore playback state after new audio loads
+                audioPlayer.addEventListener('loadedmetadata', function restorePlayback() {
+                    if (wasPlaying) {
+                        audioPlayer.play();
+                        isPlaying = true;
+                        playIcon.style.display = 'none';
+                        pauseIcon.style.display = 'block';
+                        playButton.classList.add('playing');
+                        document.querySelector('.wave-visualization').classList.add('playing');
+                    }
+                    audioPlayer.removeEventListener('loadedmetadata', restorePlayback);
+                }, { once: true });
             });
         });
         
