@@ -1016,153 +1016,216 @@ if (!doNotTrack) {
         box-shadow: var(--shadow-md);
     }
 
-    /* Subscribe Section */
-    .podcast-subscribe {
-        background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+    /* Modern Playlist Styling */
+    .playlist-container {
+        background: var(--bg-card);
         border: 1px solid var(--border-color);
         border-radius: var(--radius-lg);
-        padding: var(--space-2xl);
-        margin: var(--space-3xl) 0;
-        text-align: center;
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        margin: var(--space-xl) 0;
+        display: flex;
+        height: 500px;
+    }
+
+    .playlist-item {
+        display: flex;
+        align-items: stretch;
+        border-bottom: 1px solid var(--border-color);
+        transition: var(--transition-base);
+        position: relative;
+        min-height: 120px;
+    }
+
+    .playlist-item:last-child {
+        border-bottom: none;
+    }
+
+    .playlist-item:hover {
+        background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+        transform: translateX(4px);
+    }
+
+    .playlist-item:hover .episode-number {
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+        color: white;
+        transform: scale(1.1);
+    }
+
+    .episode-number {
+        background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
+        color: var(--text-secondary);
+        font-size: var(--font-size-2xl);
+        font-weight: 700;
+        font-family: var(--font-heading);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 80px;
+        border-right: 1px solid var(--border-color);
+        transition: var(--transition-base);
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .episode-number::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 60%;
+        background: linear-gradient(180deg, transparent, var(--border-color), transparent);
+    }
+
+    .episode-content {
+        flex: 1;
+        padding: var(--space-lg);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--space-lg);
+        min-width: 0;
+    }
+
+    .episode-info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .episode-info h3 {
+        color: var(--text-primary);
+        font-size: var(--font-size-lg);
+        font-weight: 600;
+        font-family: var(--font-heading);
+        margin: 0 0 var(--space-sm) 0;
+        line-height: 1.4;
+        letter-spacing: -0.01em;
+    }
+
+    .episode-info p {
+        color: var(--text-secondary);
+        font-size: var(--font-size-base);
+        line-height: 1.6;
+        margin: 0 0 var(--space-md) 0;
+        font-family: var(--font-body);
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .episode-meta {
+        display: flex;
+        gap: var(--space-md);
+        flex-wrap: wrap;
+    }
+
+    .episode-meta span {
+        color: var(--text-muted);
+        font-size: var(--font-size-sm);
+        font-weight: 500;
+        padding: var(--space-xs) var(--space-sm);
+        background: var(--bg-secondary);
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--border-color);
+        font-family: var(--font-body);
+    }
+
+    .episode-controls {
+        display: flex;
+        gap: var(--space-sm);
+        align-items: center;
+        flex-shrink: 0;
+    }
+
+    .episode-controls .play-button,
+    .episode-controls .download-button {
+        background: none;
+        border: 2px solid var(--border-color);
+        color: var(--text-secondary);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: var(--transition-base);
+        font-size: var(--font-size-lg);
         position: relative;
         overflow: hidden;
     }
 
-    .podcast-subscribe::before {
-        content: '��';
-        position: absolute;
-        top: var(--space-sm);
-        left: var(--space-sm);
-        font-size: var(--font-size-lg);
-        opacity: 0.6;
-    }
-
-    .podcast-subscribe h2 {
-        color: var(--text-primary);
-        font-size: var(--font-size-2xl);
-        font-weight: 700;
-        font-family: var(--font-heading);
-        margin-bottom: var(--space-md);
-        letter-spacing: -0.02em;
-    }
-
-    .podcast-subscribe p {
-        color: var(--text-secondary);
-        font-size: var(--font-size-base);
-        font-family: var(--font-body);
-        margin-bottom: var(--space-xl);
-        line-height: 1.6;
-    }
-
-    .subscribe-buttons {
-        display: flex;
-        flex-wrap: wrap;
-        gap: var(--space-md);
-        justify-content: center;
-    }
-
-    .subscribe-button {
+    .episode-controls .play-button {
         background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+        border-color: var(--primary-color);
         color: white;
-        text-decoration: none;
-        padding: var(--space-md) var(--space-xl);
-        border-radius: var(--radius-md);
-        font-size: var(--font-size-base);
-        font-weight: 600;
-        transition: var(--transition-base);
-        font-family: var(--font-body);
-        display: flex;
-        align-items: center;
-        gap: var(--space-xs);
-        border: none;
-        cursor: pointer;
     }
 
-    .subscribe-button:hover {
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-lg);
+    .episode-controls .play-button:hover {
+        transform: scale(1.1);
+        box-shadow: var(--shadow-md);
         background: linear-gradient(135deg, var(--primary-hover), var(--primary-color));
     }
 
-    .subscribe-button.spotify {
-        background: linear-gradient(135deg, #1DB954, #1ed760);
+    .episode-controls .download-button:hover {
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+        transform: scale(1.1);
+        box-shadow: var(--shadow-md);
     }
 
-    .subscribe-button.spotify:hover {
-        background: linear-gradient(135deg, #1ed760, #1DB954);
+    /* Playlist item states */
+    .playlist-item.playing {
+        background: linear-gradient(90deg, rgba(13, 110, 253, 0.1) 0%, var(--bg-card) 100%);
+        border-left: 4px solid var(--primary-color);
     }
 
-    .subscribe-button.apple {
-        background: linear-gradient(135deg, #A2AAAD, #8e9497);
+    .playlist-item.playing .episode-number {
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+        color: white;
     }
 
-    .subscribe-button.apple:hover {
-        background: linear-gradient(135deg, #8e9497, #A2AAAD);
-    }
-
-    .subscribe-button.google {
-        background: linear-gradient(135deg, #4285F4, #34A853);
-    }
-
-    .subscribe-button.google:hover {
-        background: linear-gradient(135deg, #34A853, #4285F4);
-    }
-
-    .subscribe-button.rss {
-        background: linear-gradient(135deg, #FF6600, #FF8533);
-    }
-
-    .subscribe-button.rss:hover {
-        background: linear-gradient(135deg, #FF8533, #FF6600);
-    }
-
-    /* Dark mode specific podcast styles */
-    body.dark .episode-card {
-        background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
+    /* Dark mode playlist styles */
+    body.dark .playlist-container {
+        background: var(--bg-card);
         border-color: var(--border-color);
     }
 
-    body.dark .episode-card.featured {
-        background: linear-gradient(145deg, var(--bg-card) 0%, rgba(34, 211, 238, 0.1) 100%);
-        border-color: var(--primary-color);
+    body.dark .playlist-item:hover {
+        background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
     }
 
-    body.dark .episode-card::before {
-        background: linear-gradient(180deg, var(--primary-color), var(--primary-hover));
+    body.dark .episode-number {
+        background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
+        border-right-color: var(--border-color);
     }
 
-    body.dark .category-tag:hover {
+    body.dark .episode-controls .play-button {
         background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
     }
 
-    /* Responsive podcast design */
+    /* Responsive playlist design */
     @container (max-width: 600px) {
-        .episode-header {
+        .episode-content {
             flex-direction: column;
             align-items: flex-start;
+            gap: var(--space-md);
         }
 
-        .episode-duration {
-            align-self: flex-start;
+        .episode-controls {
+            align-self: flex-end;
         }
 
-        .episode-actions {
-            flex-direction: column;
+        .episode-meta {
+            gap: var(--space-sm);
         }
 
-        .play-button,
-        .download-button {
-            width: 100%;
-            justify-content: center;
-        }
-
-        .subscribe-buttons {
-            flex-direction: column;
-        }
-
-        .subscribe-button {
-            width: 100%;
-            justify-content: center;
+        .episode-meta span {
+            font-size: var(--font-size-xs);
+            padding: var(--space-xs);
         }
     }
 
@@ -1176,8 +1239,7 @@ if (!doNotTrack) {
             font-size: var(--font-size-lg);
         }
 
-        .podcast-intro,
-        .podcast-subscribe {
+        .podcast-intro {
             padding: var(--space-lg);
         }
 
@@ -1499,69 +1561,83 @@ if (!doNotTrack) {
 
 	<!-- All Episodes -->
 	<div class="podcast-episodes">
-		<h2>📚 All Episodes</h2>
+		<h2>📚 Episode Playlist</h2>
 		
-		<div class="episode-card">
-			<div class="episode-header">
-				<h3>Episode 4: Understanding Autoencoders</h3>
-				<span class="episode-duration">38:15</span>
+		<div class="playlist-container">
+			<div class="playlist-item">
+				<div class="episode-number">04</div>
+				<div class="episode-content">
+					<div class="episode-info">
+						<h3>Understanding Autoencoders</h3>
+						<p>Comprehensive overview of autoencoder architectures, including VAE, DAE, and their applications in dimensionality reduction and generative modeling.</p>
+						<div class="episode-meta">
+							<span class="episode-date">January 8, 2024</span>
+							<span class="episode-category">Deep Learning</span>
+							<span class="episode-duration">38:15</span>
+						</div>
+					</div>
+					<div class="episode-controls">
+						<button class="play-button">▶️</button>
+						<button class="download-button">⬇️</button>
+					</div>
+				</div>
 			</div>
-			<p class="episode-description">Comprehensive overview of autoencoder architectures, including VAE, DAE, and their applications in dimensionality reduction and generative modeling.</p>
-			<div class="episode-meta">
-				<span class="episode-date">January 8, 2024</span>
-				<span class="episode-category">Deep Learning</span>
-			</div>
-			<div class="episode-actions">
-				<button class="play-button">▶️ Play</button>
-				<button class="download-button">⬇️ Download</button>
-			</div>
-		</div>
 
-		<div class="episode-card">
-			<div class="episode-header">
-				<h3>Episode 3: Data Analysis Fundamentals</h3>
-				<span class="episode-duration">42:08</span>
+			<div class="playlist-item">
+				<div class="episode-number">03</div>
+				<div class="episode-content">
+					<div class="episode-info">
+						<h3>Data Analysis Fundamentals</h3>
+						<p>Essential techniques for exploratory data analysis, statistical testing, and data visualization best practices.</p>
+						<div class="episode-meta">
+							<span class="episode-date">January 1, 2024</span>
+							<span class="episode-category">Data Science</span>
+							<span class="episode-duration">42:08</span>
+						</div>
+					</div>
+					<div class="episode-controls">
+						<button class="play-button">▶️</button>
+						<button class="download-button">⬇️</button>
+					</div>
+				</div>
 			</div>
-			<p class="episode-description">Essential techniques for exploratory data analysis, statistical testing, and data visualization best practices.</p>
-			<div class="episode-meta">
-				<span class="episode-date">January 1, 2024</span>
-				<span class="episode-category">Data Science</span>
-			</div>
-			<div class="episode-actions">
-				<button class="play-button">▶️ Play</button>
-				<button class="download-button">⬇️ Download</button>
-			</div>
-		</div>
 
-		<div class="episode-card">
-			<div class="episode-header">
-				<h3>Episode 2: Debugging Neural Networks</h3>
-				<span class="episode-duration">35:42</span>
+			<div class="playlist-item">
+				<div class="episode-number">02</div>
+				<div class="episode-content">
+					<div class="episode-info">
+						<h3>Debugging Neural Networks</h3>
+						<p>Practical strategies for identifying and fixing common issues in neural network training and deployment.</p>
+						<div class="episode-meta">
+							<span class="episode-date">December 25, 2023</span>
+							<span class="episode-category">Deep Learning</span>
+							<span class="episode-duration">35:42</span>
+						</div>
+					</div>
+					<div class="episode-controls">
+						<button class="play-button">▶️</button>
+						<button class="download-button">⬇️</button>
+					</div>
+				</div>
 			</div>
-			<p class="episode-description">Practical strategies for identifying and fixing common issues in neural network training and deployment.</p>
-			<div class="episode-meta">
-				<span class="episode-date">December 25, 2023</span>
-				<span class="episode-category">Deep Learning</span>
-			</div>
-			<div class="episode-actions">
-				<button class="play-button">▶️ Play</button>
-				<button class="download-button">⬇️ Download</button>
-			</div>
-		</div>
 
-		<div class="episode-card">
-			<div class="episode-header">
-				<h3>Episode 1: Introduction to ML Automation</h3>
-				<span class="episode-duration">39:56</span>
-			</div>
-			<p class="episode-description">Overview of machine learning automation tools, MLOps practices, and building scalable ML pipelines.</p>
-			<div class="episode-meta">
-				<span class="episode-date">December 18, 2023</span>
-				<span class="episode-category">MLOps</span>
-			</div>
-			<div class="episode-actions">
-				<button class="play-button">▶️ Play</button>
-				<button class="download-button">⬇️ Download</button>
+			<div class="playlist-item">
+				<div class="episode-number">01</div>
+				<div class="episode-content">
+					<div class="episode-info">
+						<h3>Introduction to ML Automation</h3>
+						<p>Overview of machine learning automation tools, MLOps practices, and building scalable ML pipelines.</p>
+						<div class="episode-meta">
+							<span class="episode-date">December 18, 2023</span>
+							<span class="episode-category">MLOps</span>
+							<span class="episode-duration">39:56</span>
+						</div>
+					</div>
+					<div class="episode-controls">
+						<button class="play-button">▶️</button>
+						<button class="download-button">⬇️</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -1576,18 +1652,6 @@ if (!doNotTrack) {
 			<span class="category-tag">MLOps</span>
 			<span class="category-tag">Research</span>
 			<span class="category-tag">Tutorials</span>
-		</div>
-	</div>
-
-	<!-- Subscribe Section -->
-	<div class="podcast-subscribe">
-		<h2>📱 Subscribe & Follow</h2>
-		<p>Never miss an episode! Subscribe to our podcast on your favorite platform.</p>
-		<div class="subscribe-buttons">
-			<a href="#" class="subscribe-button spotify">🎵 Spotify</a>
-			<a href="#" class="subscribe-button apple">🍎 Apple Podcasts</a>
-			<a href="#" class="subscribe-button google">🔍 Google Podcasts</a>
-			<a href="#" class="subscribe-button rss">📡 RSS Feed</a>
 		</div>
 	</div>
 
