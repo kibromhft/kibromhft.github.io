@@ -1530,7 +1530,6 @@
         color: var(--primary-color);
         font-weight: 600;
         border: 1px solid var(--primary-color);
-        box-shadow: 0 2px 8px rgba(13, 110, 253, 0.15);
     }
 
     .episode-option .episode-num {
@@ -1581,6 +1580,415 @@
         color: var(--primary-color);
         border-color: var(--primary-color);
         background: rgba(13, 110, 253, 0.1);
+    }
+
+    /* Enhanced Episode Search with Filters */
+    .episode-search-container {
+        width: 100%;
+        max-width: 600px;
+        margin-bottom: var(--space-md);
+    }
+
+    .episode-search {
+        width: 100%;
+        margin-bottom: var(--space-sm);
+    }
+
+    .episode-search input {
+        width: 100%;
+        padding: 10px 16px;
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        font-size: 14px;
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background: var(--bg-card);
+        color: var(--text-primary);
+        transition: var(--transition-base);
+    }
+
+    .episode-search input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
+    }
+
+    .episode-search input::placeholder {
+        color: var(--text-muted);
+    }
+
+    .episode-filters {
+        display: flex;
+        gap: var(--space-sm);
+        flex-wrap: wrap;
+        margin-bottom: var(--space-sm);
+    }
+
+    .filter-button {
+        padding: 6px 12px;
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-sm);
+        background: var(--bg-card);
+        color: var(--text-secondary);
+        font-size: 12px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition-base);
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .filter-button:hover,
+    .filter-button.active {
+        background: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+    }
+
+    /* Episode Progress Visualization */
+    .episode-option {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+        padding: 12px 16px;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: var(--transition-base);
+        background: transparent;
+        border: 1px solid transparent;
+        min-height: 60px;
+        position: relative;
+    }
+
+    .episode-progress {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        background: var(--primary-color);
+        border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+        transition: width var(--transition-base);
+    }
+
+    .episode-progress.partial {
+        background: var(--primary-light);
+    }
+
+    .episode-progress.completed {
+        background: #10b981;
+    }
+
+    .episode-status {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--text-muted);
+    }
+
+    .episode-status.playing {
+        background: var(--primary-color);
+        animation: pulse 2s infinite;
+    }
+
+    .episode-status.completed {
+        background: #10b981;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
+
+    /* Enhanced Episode Display */
+    .episode-info {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .episode-name {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-primary);
+        font-family: var(--font-body);
+        letter-spacing: -0.1px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .episode-meta {
+        display: flex;
+        align-items: center;
+        gap: var(--space-sm);
+        font-size: 11px;
+        color: var(--text-muted);
+    }
+
+    .episode-category {
+        background: var(--bg-card);
+        padding: 2px 6px;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--border-color);
+        font-size: 10px;
+        font-weight: 500;
+    }
+
+    .episode-date {
+        font-size: 10px;
+        color: var(--text-muted);
+    }
+
+    /* Episode Actions */
+    .episode-actions {
+        display: flex;
+        gap: var(--space-xs);
+        margin-left: auto;
+    }
+
+    .episode-action-btn {
+        width: 24px;
+        height: 24px;
+        border: none;
+        background: var(--bg-card);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition-base);
+        color: var(--text-muted);
+    }
+
+    .episode-action-btn:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: scale(1.1);
+    }
+
+    /* Playlist Management */
+    .playlist-section {
+        margin-top: var(--space-lg);
+        padding: var(--space-md);
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+    }
+
+    .playlist-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: var(--space-sm);
+    }
+
+    .playlist-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+
+    .create-playlist-btn {
+        padding: 6px 12px;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: var(--radius-sm);
+        font-size: 12px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition-base);
+    }
+
+    .create-playlist-btn:hover {
+        background: var(--primary-hover);
+        transform: translateY(-1px);
+    }
+
+    /* Social Sharing */
+    .share-section {
+        margin-top: var(--space-md);
+        text-align: center;
+    }
+
+    .share-buttons {
+        display: flex;
+        gap: var(--space-sm);
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .share-btn {
+        padding: 8px 16px;
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-sm);
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 500;
+        transition: var(--transition-base);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .share-btn:hover {
+        background: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+        transform: translateY(-1px);
+    }
+
+    /* Mobile Optimizations */
+    @media (max-width: 768px) {
+        .episode-selector {
+            max-width: 100%;
+            height: 300px;
+        }
+
+        .episode-option {
+            min-height: 70px;
+            padding: 16px;
+        }
+
+        .episode-filters {
+            gap: var(--space-xs);
+        }
+
+        .filter-button {
+            padding: 8px 16px;
+            font-size: 13px;
+        }
+
+        .episode-actions {
+            gap: var(--space-sm);
+        }
+
+        .episode-action-btn {
+            width: 32px;
+            height: 32px;
+        }
+    }
+
+    /* Touch-friendly improvements */
+    @media (hover: none) and (pointer: coarse) {
+        .episode-option {
+            min-height: 80px;
+            padding: 20px 16px;
+        }
+
+        .episode-action-btn {
+            width: 40px;
+            height: 40px;
+        }
+    }
+
+    /* Enhanced Visual Feedback */
+    .episode-option:hover {
+        background: var(--bg-secondary);
+        border-color: var(--primary-color);
+        transform: translateX(4px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .episode-option.current {
+        background: var(--primary-light);
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 2px var(--primary-color);
+    }
+
+    .episode-option.current .episode-name {
+        color: var(--primary-color);
+        font-weight: 600;
+    }
+
+    /* Smooth Transitions */
+    .episode-option,
+    .episode-progress,
+    .episode-status,
+    .filter-button,
+    .episode-action-btn {
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Loading States */
+    .episode-option.loading {
+        opacity: 0.6;
+        pointer-events: none;
+    }
+
+    .episode-option.loading::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        width: 16px;
+        height: 16px;
+        border: 2px solid var(--border-color);
+        border-top-color: var(--primary-color);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
+    /* Focus States for Accessibility */
+    .episode-option:focus,
+    .filter-button:focus,
+    .episode-action-btn:focus {
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+    }
+
+    /* High Contrast Mode Support */
+    @media (prefers-contrast: high) {
+        .episode-option {
+            border: 2px solid var(--text-primary);
+        }
+        
+        .episode-progress {
+            height: 4px;
+        }
+        
+        .episode-status {
+            width: 10px;
+            height: 10px;
+        }
+    }
+
+    /* Reduced Motion Support */
+    @media (prefers-reduced-motion: reduce) {
+        .episode-option,
+        .episode-progress,
+        .episode-status,
+        .filter-button,
+        .episode-action-btn {
+            transition: none;
+        }
+        
+        .episode-option:hover {
+            transform: none;
+        }
+    }
+
+    /* Print Styles */
+    @media print {
+        .episode-actions,
+        .playlist-section,
+        .share-section {
+            display: none;
+        }
+        
+        .episode-option {
+            break-inside: avoid;
+            border: 1px solid #000;
+        }
     }
 </style>
 
@@ -1944,7 +2352,6 @@
 						<div class="wave-bar"></div>
 						<div class="wave-bar"></div>
 						<div class="wave-bar"></div>
-						<div class="wave-bar"></div>
 					</div>
 					<div class="time-display">
 						<span class="current-time">00:00</span>
@@ -1952,68 +2359,138 @@
 					</div>
 				</div>
 
-				<!-- Episode Search Bar -->
-				<div class="episode-search">
-					<input type="text" placeholder="Search episodes..." id="episode-search">
+				<!-- Enhanced Episode Search with Filters -->
+				<div class="episode-search-container">
+					<div class="episode-search">
+						<input type="text" placeholder="Search episodes by title, number, or category..." id="episode-search">
+					</div>
+					<div class="episode-filters">
+						<button class="filter-button active" data-filter="all">All Episodes</button>
+						<button class="filter-button" data-filter="ml">Machine Learning</button>
+						<button class="filter-button" data-filter="data">Data Science</button>
+						<button class="filter-button" data-filter="research">Research</button>
+						<button class="filter-button" data-filter="short">Short (< 30min)</button>
+						<button class="filter-button" data-filter="long">Long (> 45min)</button>
+					</div>
 				</div>
 
-				<!-- Episode Selection - Standard Scrolling with Good Practices -->
+				<!-- Episode Selection - Enhanced with Progress -->
 				<div class="episode-selector">
 					<div class="episode-scroll">
-						<div class="episode-option current" data-episode="5" data-audio="audio5.mp3">
+						<div class="episode-option current" data-episode="5" data-audio="audio5.mp3" data-category="ml" data-date="2024-01-15">
+							<div class="episode-progress completed" style="width: 100%"></div>
+							<div class="episode-status playing"></div>
 							<span class="episode-num">05</span>
-							<span class="episode-name">Advanced Causal Inference in ML</span>
+							<div class="episode-info">
+								<span class="episode-name">Advanced Causal Inference in ML</span>
+								<div class="episode-meta">
+									<span class="episode-category">ML</span>
+									<span class="episode-date">Jan 15, 2024</span>
+								</div>
+							</div>
 							<span class="episode-duration">47:32</span>
+							<div class="episode-actions">
+								<button class="episode-action-btn" title="Add to Playlist">📋</button>
+								<button class="episode-action-btn" title="Share Episode">📤</button>
+							</div>
 						</div>
-						<div class="episode-option" data-episode="4" data-audio="audio4.mp3">
+						<div class="episode-option" data-episode="4" data-audio="audio4.mp3" data-category="ml" data-date="2024-01-08">
+							<div class="episode-progress partial" style="width: 65%"></div>
+							<div class="episode-status"></div>
 							<span class="episode-num">04</span>
-							<span class="episode-name">Understanding Autoencoders</span>
+							<div class="episode-info">
+								<span class="episode-name">Understanding Autoencoders</span>
+								<div class="episode-meta">
+									<span class="episode-category">ML</span>
+									<span class="episode-date">Jan 8, 2024</span>
+								</div>
+							</div>
 							<span class="episode-duration">42:18</span>
+							<div class="episode-actions">
+								<button class="episode-action-btn" title="Add to Playlist">📋</button>
+								<button class="episode-action-btn" title="Share Episode">📤</button>
+							</div>
 						</div>
-						<div class="episode-option" data-episode="3" data-audio="audio3.mp3">
+						<div class="episode-option" data-episode="3" data-audio="audio3.mp3" data-category="data" data-date="2024-01-01">
+							<div class="episode-progress" style="width: 0%"></div>
+							<div class="episode-status"></div>
 							<span class="episode-num">03</span>
-							<span class="episode-name">Data Analysis Fundamentals</span>
+							<div class="episode-info">
+								<span class="episode-name">Data Analysis Fundamentals</span>
+								<div class="episode-meta">
+									<span class="episode-category">Data</span>
+									<span class="episode-date">Jan 1, 2024</span>
+								</div>
+							</div>
 							<span class="episode-duration">38:45</span>
+							<div class="episode-actions">
+								<button class="episode-action-btn" title="Add to Playlist">📋</button>
+								<button class="episode-action-btn" title="Share Episode">📤</button>
+							</div>
 						</div>
-						<div class="episode-option" data-episode="2" data-audio="audio2.mp3">
+						<div class="episode-option" data-episode="2" data-audio="audio2.mp3" data-category="ml" data-date="2023-12-25">
+							<div class="episode-progress" style="width: 0%"></div>
+							<div class="episode-status"></div>
 							<span class="episode-num">02</span>
-							<span class="episode-name">Debugging Neural Networks</span>
+							<div class="episode-info">
+								<span class="episode-name">Debugging Neural Networks</span>
+								<div class="episode-meta">
+									<span class="episode-category">ML</span>
+									<span class="episode-date">Dec 25, 2023</span>
+								</div>
+							</div>
 							<span class="episode-duration">35:12</span>
+							<div class="episode-actions">
+								<button class="episode-action-btn" title="Add to Playlist">📋</button>
+								<button class="episode-action-btn" title="Share Episode">📤</button>
+							</div>
 						</div>
-						<div class="episode-option" data-episode="1" data-audio="audio1.mp3">
+						<div class="episode-option" data-episode="1" data-audio="audio1.mp3" data-category="research" data-date="2023-12-18">
+							<div class="episode-progress" style="width: 0%"></div>
+							<div class="episode-status"></div>
 							<span class="episode-num">01</span>
-							<span class="episode-name">ML Automation Strategies</span>
+							<div class="episode-info">
+								<span class="episode-name">ML Automation Strategies</span>
+								<div class="episode-meta">
+									<span class="episode-category">Research</span>
+									<span class="episode-date">Dec 18, 2023</span>
+								</div>
+							</div>
 							<span class="episode-duration">41:27</span>
-						</div>
-						<!-- Example of how it would look with more episodes -->
-						<div class="episode-option" data-episode="6" data-audio="audio6.mp3">
-							<span class="episode-num">06</span>
-							<span class="episode-name">Deep Learning Optimization</span>
-							<span class="episode-duration">44:53</span>
-						</div>
-						<div class="episode-option" data-episode="7" data-audio="audio7.mp3">
-							<span class="episode-num">07</span>
-							<span class="episode-name">Computer Vision Basics</span>
-							<span class="episode-duration">39:18</span>
-						</div>
-						<div class="episode-option" data-episode="8" data-audio="audio8.mp3">
-							<span class="episode-num">08</span>
-							<span class="episode-name">Natural Language Processing</span>
-							<span class="episode-duration">46:22</span>
+							<div class="episode-actions">
+								<button class="episode-action-btn" title="Add to Playlist">📋</button>
+								<button class="episode-action-btn" title="Share Episode">📤</button>
+							</div>
 						</div>
 					</div>
 				</div>
-				
-				<div class="player-actions">
-					<button class="episode-info-btn" aria-label="More Info">
-						<span>More Info</span>
-					</button>
-					<button class="share-btn" aria-label="Share">
-						<span>Share</span>
-					</button>
-					<button class="download-btn" aria-label="Download">
-						<span>Download</span>
-					</button>
+
+				<!-- Playlist Management -->
+				<div class="playlist-section">
+					<div class="playlist-header">
+						<span class="playlist-title">📚 My Playlists</span>
+						<button class="create-playlist-btn">Create New Playlist</button>
+					</div>
+					<p style="color: var(--text-muted); font-size: 14px; margin: 0;">Organize your favorite episodes into custom playlists for different topics or moods.</p>
+				</div>
+
+				<!-- Social Sharing -->
+				<div class="share-section">
+					<h3 style="color: var(--text-primary); font-size: 16px; margin-bottom: var(--space-sm);">Share This Episode</h3>
+					<div class="share-buttons">
+						<a href="#" class="share-btn" onclick="shareEpisode('twitter')">
+							🐦 Twitter
+						</a>
+						<a href="#" class="share-btn" onclick="shareEpisode('linkedin')">
+							💼 LinkedIn
+						</a>
+						<a href="#" class="share-btn" onclick="shareEpisode('facebook')">
+							📘 Facebook
+						</a>
+						<button class="share-btn" onclick="copyEpisodeLink()">
+							🔗 Copy Link
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -2347,8 +2824,9 @@
             episodeOptions.forEach(option => {
                 const episodeName = option.querySelector('.episode-name').textContent.toLowerCase();
                 const episodeNum = option.querySelector('.episode-num').textContent;
+                const episodeCategory = option.getAttribute('data-category');
                 
-                if (episodeName.includes(searchTerm) || episodeNum.includes(searchTerm)) {
+                if (episodeName.includes(searchTerm) || episodeNum.includes(searchTerm) || episodeCategory.includes(searchTerm)) {
                     option.style.display = 'flex';
                 } else {
                     option.style.display = 'none';
@@ -2356,6 +2834,168 @@
             });
         });
         
+        // Episode filtering functionality
+        const filterButtons = document.querySelectorAll('.filter-button');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const filter = this.getAttribute('data-filter');
+                filterEpisodes(filter);
+            });
+        });
+
+        function filterEpisodes(filter) {
+            episodeOptions.forEach(option => {
+                const category = option.getAttribute('data-category');
+                const duration = option.querySelector('.episode-duration').textContent;
+                const durationMinutes = parseInt(duration.split(':')[0]);
+                
+                let show = false;
+                
+                switch(filter) {
+                    case 'all':
+                        show = true;
+                        break;
+                    case 'ml':
+                        show = category === 'ml';
+                        break;
+                    case 'data':
+                        show = category === 'data';
+                        break;
+                    case 'research':
+                        show = category === 'research';
+                        break;
+                    case 'short':
+                        show = durationMinutes < 30;
+                        break;
+                    case 'long':
+                        show = durationMinutes > 45;
+                        break;
+                }
+                
+                option.style.display = show ? 'flex' : 'none';
+            });
+        }
+
+        // Episode progress tracking
+        function updateEpisodeProgress(episodeNumber, progressPercent) {
+            const episodeOption = document.querySelector(`[data-episode="${episodeNumber}"]`);
+            if (episodeOption) {
+                const progressBar = episodeOption.querySelector('.episode-progress');
+                const statusDot = episodeOption.querySelector('.episode-status');
+                
+                progressBar.style.width = progressPercent + '%';
+                
+                // Update status based on progress
+                if (progressPercent === 0) {
+                    progressBar.className = 'episode-progress';
+                    statusDot.className = 'episode-status';
+                } else if (progressPercent < 100) {
+                    progressBar.className = 'episode-progress partial';
+                    statusDot.className = 'episode-status';
+                } else {
+                    progressBar.className = 'episode-progress completed';
+                    statusDot.className = 'episode-status completed';
+                }
+            }
+        }
+
+        // Playlist management
+        const createPlaylistBtn = document.querySelector('.create-playlist-btn');
+        createPlaylistBtn.addEventListener('click', function() {
+            const playlistName = prompt('Enter playlist name:');
+            if (playlistName) {
+                createPlaylist(playlistName);
+            }
+        });
+
+        function createPlaylist(name) {
+            // In a real app, this would save to localStorage or backend
+            alert(`Playlist "${name}" created! Add episodes by clicking the 📋 button.`);
+        }
+
+        // Episode action buttons
+        document.querySelectorAll('.episode-action-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent episode selection
+                
+                const action = this.title;
+                const episodeOption = this.closest('.episode-option');
+                const episodeNumber = episodeOption.getAttribute('data-episode');
+                const episodeName = episodeOption.querySelector('.episode-name').textContent;
+                
+                if (action.includes('Playlist')) {
+                    addToPlaylist(episodeNumber, episodeName);
+                } else if (action.includes('Share')) {
+                    shareEpisode(episodeNumber, episodeName);
+                }
+            });
+        });
+
+        function addToPlaylist(episodeNumber, episodeName) {
+            // In a real app, this would add to a selected playlist
+            alert(`Episode ${episodeNumber}: "${episodeName}" added to playlist!`);
+        }
+
+        // Social sharing functions
+        window.shareEpisode = function(platform) {
+            const currentEpisode = document.querySelector('.episode-option.current');
+            const episodeNumber = currentEpisode.getAttribute('data-episode');
+            const episodeName = currentEpisode.querySelector('.episode-name').textContent;
+            const episodeUrl = window.location.href;
+            
+            let shareUrl = '';
+            let shareText = `Check out Episode ${episodeNumber}: "${episodeName}" on my podcast!`;
+            
+            switch(platform) {
+                case 'twitter':
+                    shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(episodeUrl)}`;
+                    break;
+                case 'linkedin':
+                    shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(episodeUrl)}`;
+                    break;
+                case 'facebook':
+                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(episodeUrl)}`;
+                    break;
+            }
+            
+            if (shareUrl) {
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+            }
+        };
+
+        window.copyEpisodeLink = function() {
+            const currentEpisode = document.querySelector('.episode-option.current');
+            const episodeNumber = currentEpisode.getAttribute('data-episode');
+            const episodeUrl = `${window.location.href}#episode-${episodeNumber}`;
+            
+            navigator.clipboard.writeText(episodeUrl).then(() => {
+                alert('Episode link copied to clipboard!');
+            }).catch(() => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = episodeUrl;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                alert('Episode link copied to clipboard!');
+            });
+        };
+
+        // Update progress when audio plays
+        audioPlayer.addEventListener('timeupdate', function() {
+            if (isPlaying && !isNaN(audioPlayer.duration)) {
+                const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                updateEpisodeProgress(currentEpisode, progressPercent);
+            }
+        });
+
+        // Player info update function
         function updatePlayerInfo(episodeNumber, audioFile) {
             currentEpisode = episodeNumber;
             
@@ -2384,6 +3024,107 @@
             const secs = Math.floor(seconds % 60);
             return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
         }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Prevent shortcuts when typing in search
+            if (e.target.tagName === 'INPUT') return;
+            
+            switch(e.code) {
+                case 'Space':
+                    e.preventDefault();
+                    if (isPlaying) {
+                        audioPlayer.pause();
+                    } else {
+                        audioPlayer.play();
+                    }
+                    break;
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    audioPlayer.currentTime = Math.max(0, audioPlayer.currentTime - 10);
+                    break;
+                case 'ArrowRight':
+                    e.preventDefault();
+                    audioPlayer.currentTime = Math.min(audioPlayer.duration, audioPlayer.currentTime + 10);
+                    break;
+                case 'ArrowUp':
+                    e.preventDefault();
+                    navigateEpisodes(-1);
+                    break;
+                case 'ArrowDown':
+                    e.preventDefault();
+                    navigateEpisodes(1);
+                    break;
+            }
+        });
+
+        // Episode navigation
+        function navigateEpisodes(direction) {
+            const currentIndex = Array.from(episodeOptions).findIndex(option => 
+                option.classList.contains('current')
+            );
+            
+            if (currentIndex !== -1) {
+                const newIndex = (currentIndex + direction + episodeOptions.length) % episodeOptions.length;
+                const newEpisode = episodeOptions[newIndex];
+                
+                // Remove current class from all episodes
+                episodeOptions.forEach(option => option.classList.remove('current'));
+                
+                // Add current class to new episode
+                newEpisode.classList.add('current');
+                
+                // Update player
+                const episodeNumber = newEpisode.getAttribute('data-episode');
+                const audioFile = newEpisode.getAttribute('data-audio');
+                updatePlayerInfo(episodeNumber, audioFile);
+                
+                // Scroll to episode if needed
+                newEpisode.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
+        // Performance optimization: Lazy loading for episode list
+        function lazyLoadEpisodes() {
+            const episodeScroll = document.querySelector('.episode-scroll');
+            
+            // Add intersection observer for lazy loading
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Load episode data if needed
+                        const episodeOption = entry.target;
+                        if (!episodeOption.dataset.loaded) {
+                            episodeOption.dataset.loaded = 'true';
+                            // In a real app, you might load episode metadata here
+                        }
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            // Observe all episode options
+            episodeOptions.forEach(option => observer.observe(option));
+        }
+
+        // Initialize lazy loading
+        lazyLoadEpisodes();
+
+        // Add smooth scrolling for episode list
+        const episodeScroll = document.querySelector('.episode-scroll');
+        episodeScroll.style.scrollBehavior = 'smooth';
+
+        // Add hover effects for better UX
+        episodeOptions.forEach(option => {
+            option.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(4px)';
+                this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+            });
+            
+            option.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0)';
+                this.style.boxShadow = 'none';
+            });
+        });
     });
 </script>
 </body>
