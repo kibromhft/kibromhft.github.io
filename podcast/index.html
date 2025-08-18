@@ -1011,9 +1011,10 @@ if (!doNotTrack) {
         border-radius: 2px;
     }
 
-    .episode-grid {
-        display: grid;
-        gap: var(--space-lg);
+    .episode-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
         margin: var(--space-xl) 0;
     }
 
@@ -1028,12 +1029,14 @@ if (!doNotTrack) {
         transition: var(--transition-base);
         position: relative;
         overflow: hidden;
+        cursor: pointer;
     }
 
     .episode-item:hover {
         transform: translateY(-2px);
         box-shadow: var(--shadow-md);
         border-color: rgba(13, 110, 253, 0.3);
+        background: var(--bg-secondary);
     }
 
     .episode-item::before {
@@ -1050,6 +1053,15 @@ if (!doNotTrack) {
     }
 
     .episode-item:hover::before {
+        opacity: 1;
+    }
+
+    .episode-item.current {
+        border-color: var(--primary-color);
+        background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+    }
+
+    .episode-item.current::before {
         opacity: 1;
     }
 
@@ -1597,7 +1609,7 @@ if (!doNotTrack) {
 	<div class="episode-selection">
 		<h2>📚 Episode Library</h2>
 		
-		<div class="episode-grid">
+		<div class="episode-list">
 			<div class="episode-item" data-episode="5">
 				<div class="episode-number">05</div>
 				<div class="episode-content">
@@ -1887,6 +1899,53 @@ if (!doNotTrack) {
             document.body.classList.add('dark');
             localStorage.setItem("pref-theme", 'dark');
         }
+    });
+
+    // Episode selection functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const episodeItems = document.querySelectorAll('.episode-item');
+        const mainPlayer = document.querySelector('.main-player');
+        const episodeTitle = mainPlayer.querySelector('.episode-title h2');
+        const episodeDuration = mainPlayer.querySelector('.duration');
+        
+        episodeItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove current class from all episodes
+                episodeItems.forEach(ep => ep.classList.remove('current'));
+                
+                // Add current class to clicked episode
+                this.classList.add('current');
+                
+                // Update main player with episode info
+                const episodeNumber = this.querySelector('.episode-number').textContent;
+                const episodeName = this.querySelector('h3').textContent;
+                const duration = this.querySelector('.episode-duration').textContent;
+                
+                episodeTitle.textContent = `Episode ${episodeNumber}: ${episodeName}`;
+                episodeDuration.textContent = duration;
+                
+                // Update status badges
+                episodeItems.forEach(ep => {
+                    const status = ep.querySelector('.episode-status');
+                    if (ep === this) {
+                        status.innerHTML = '<span class="status-badge current">Now Playing</span>';
+                    } else {
+                        status.innerHTML = '<button class="play-episode-btn">▶</button>';
+                    }
+                });
+                
+                // Reset player time
+                const currentTime = mainPlayer.querySelector('.current-time');
+                currentTime.textContent = '00:00';
+                
+                // Update play button to show play icon
+                const playButton = mainPlayer.querySelector('.playpause-button');
+                const playIcon = playButton.querySelector('.play-icon');
+                const pauseIcon = playButton.querySelector('.pause-icon');
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+            });
+        });
     });
 </script>
 </body>
