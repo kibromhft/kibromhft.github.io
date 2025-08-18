@@ -1265,79 +1265,399 @@
     <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <header class="header">
-        <nav class="nav">
-            <div class="logo">
-                <a href="https://kibromhft.github.io/" accesskey="h" title="Kb's Blog (Alt + H)">Kb's Blog</a>
-                <span class="logo-switches">
-                    <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                        </svg>
-                        <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="5"></circle>
-                            <line x1="12" y1="1" x2="12" y2="3"></line>
-                            <line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                            <line x1="1" y1="12" x2="3" y2="12"></line>
-                            <line x1="21" y1="12" x2="23" y2="12"></line>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                        </svg>
-                    </button>
-                </span>
-            </div>
-            <ul id="menu">
-                <li>
-                    <a href="https://kibromhft.github.io/" title="Home">
-                        Home <span class="caret fa fa-home"></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://kibromhft.github.io/archives/" title="Archives">
-                        <span>Archives</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://kibromhft.github.io/data/" title="Data">
-                        <span>Data</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://kibromhft.github.io/keywords/" title="keywords">
-                        <span>Keywords</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://kibromhft.github.io/faq" title="FAQ">
-                        <span>FAQs</span>
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">
-                        Resources <span class="caret fa fa-chevron-down"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="header-height first">
-                            <a href="https://kibromhft.github.io/podcast">Podcast</a>
-                        </li>
-                        <li class="header-height separator" style="padding: 0px;">
-                            <a href="#">Algorithms</a>
-                        </li>
-                        <li class="header-height separator" style="padding: 0px;">
-                            <a href="#">Funding & Grants</a>
-                        </li>
-                        <li class="header-height" style="padding: 0px;">
-                            <a href="#">Startup Toolkit</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kibromhft.github.io/" accesskey="h" title="Kb&#39;s Blog (Alt + H)">Kb&#39;s Blog</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+       <ul id="menu">
+
+		
+		  <li>
+			<a href="https://kibromhft.github.io/" title="Home">
+			  Home <span class="caret fa fa-home"></span>
+			</a>
+		  </li>
+		  
+
+		  <li>
+			<a href="https://kibromhft.github.io/archives/" title="Archives">
+			  <span>Archives</span>
+			</a>
+		  </li>
+		  
+
+
+		  <li>
+			<a href="https://kibromhft.github.io/data/" title="Data">
+			  <span>Data</span>
+			</a>
+		  </li>
+		  <li>
+			<a href="https://kibromhft.github.io/keywords/" title="keywords">
+			  <span>Keywords</span>
+			</a>
+		  </li>
+		  <li>
+			<a href="https://kibromhft.github.io/faq" title="FAQ">
+			  <span>FAQs</span>
+			</a>
+		  </li>
+		  
+<!-- 		  <li>
+			<a href="https://kibromhft.github.io/cv" title="cv">
+			  <span>CV</span>
+			</a>
+		  </li> -->
+
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">
+			  Resources <span class="caret fa fa-chevron-down"></span>
+			</a>
+		  <ul class="dropdown-menu">
+			<li>
+			  <a href="https://kibromhft.github.io/podcast">Podcast</a>
+			</li>
+			<li>
+			  <a href="#">Algorithms</a>
+			</li>
+			<li>
+			  <a href="#">Funding & Grants</a>
+			</li>
+			<li>
+			  <a href="#">Startup Toolkit</a>
+			</li>
+		  </ul>
+		</li>
+
+		</ul>
+
+		<style>
+		/* Simple navigation styles - same as keywords page */
+		.custom-dropdown {
+		  padding: 8px 0 !important;
+		  margin: 0 !important;
+		  list-style-type: none !important;
+		}
+
+		.custom-dropdown li {
+		  padding: 0 !important;
+		  margin: 0 !important;
+		}
+
+		.custom-dropdown li a {
+		  display: block !important;
+		  width: 100% !important;
+		  padding: 8px 20px !important;
+		  margin: 0 !important;
+		  box-sizing: border-box !important;
+		  text-decoration: none !important;
+		  color: #333 !important;
+		  font-size: 16px !important;
+		  line-height: 1.5 !important;
+		}
+
+		.custom-dropdown li a:hover {
+			background-color: #f8f9fa !important;
+			color: #000 !important;
+		}
+
+		/* Mobile-specific overrides to match keywords page behavior */
+		@media screen and (max-width: 768px) {
+			/* Override main.css mobile navigation with keywords-style behavior */
+			.nav {
+				padding: 0 16px !important;
+				gap: 16px !important;
+				/* Remove complex flex overrides that cause horizontal lines */
+				display: flex !important;
+				align-items: center !important;
+				flex-wrap: wrap !important;
+				overflow: visible !important;
+				white-space: normal !important;
+				/* Override max-width constraints */
+				max-width: none !important;
+			}
+
+			#menu {
+				gap: 6px !important;
+				/* Remove overflow-x that causes horizontal lines */
+				overflow: visible !important;
+				white-space: normal !important;
+				display: flex !important;
+				flex-direction: row !important;
+				flex-wrap: wrap !important;
+			}
+
+			#menu li {
+				/* Remove inline-block that causes layout issues */
+				display: flex !important;
+				white-space: normal !important;
+				flex-shrink: 1 !important;
+			}
+
+			#menu a {
+				font-size: 15px !important;
+				padding: 8px 12px !important;
+				border-radius: 6px !important;
+				white-space: normal !important;
+				word-wrap: break-word !important;
+				overflow-wrap: break-word !important;
+			}
+
+			.dropdown-menu {
+				right: auto !important;
+				left: 0 !important;
+				min-width: 200px !important;
+				border-radius: 8px !important;
+			}
+
+			/* Completely disable hover behavior on touch devices */
+			.dropdown .dropdown-menu {
+				opacity: 0 !important;
+				visibility: hidden !important;
+				transform: translateY(-8px) !important;
+			}
+
+			/* Show dropdown when dropdown-open class is present */
+			.dropdown.dropdown-open .dropdown-menu {
+				opacity: 1 !important;
+				visibility: visible !important;
+				transform: translateY(0) !important;
+			}
+
+			/* Rotate caret when dropdown is open */
+			.dropdown.dropdown-open .caret {
+				transform: rotate(180deg) !important;
+			}
+		}
+
+		@media screen and (max-width: 480px) {
+			.nav {
+				flex-direction: row !important;
+				padding: 0 16px !important;
+				display: flex !important;
+				align-items: center !important;
+				flex-wrap: wrap !important;
+				max-width: none !important;
+			}
+
+			.logo {
+				margin-bottom: 0 !important;
+			}
+
+			#menu {
+				flex-wrap: wrap !important;
+				justify-content: flex-start !important;
+				gap: 6px !important;
+				display: flex !important;
+				flex-direction: row !important;
+			}
+
+			#menu a {
+				font-size: 14px !important;
+				padding: 6px 8px !important;
+				white-space: normal !important;
+				word-wrap: break-word !important;
+				overflow-wrap: break-word !important;
+			}
+
+			/* Mobile dropdown functionality for smaller screens */
+			.dropdown .dropdown-menu {
+				opacity: 0 !important;
+				visibility: hidden !important;
+				transform: translateY(-8px) !important;
+			}
+
+			.dropdown.dropdown-open .dropdown-menu {
+				opacity: 1 !important;
+				visibility: visible !important;
+				transform: translateY(0) !important;
+			}
+		}
+		</style>
+		
+		<style>
+			/* Design System - CSS Custom Properties */
+			:root {
+				/* Colors - using main theme variables */
+				--primary-color: var(--brand-blue, rgb(13, 110, 253));
+				--primary-hover: var(--brand-blue-hover, rgb(10, 88, 202));
+				--primary-light: rgb(59, 130, 246);
+				--text-primary: var(--primary, rgb(15, 23, 42));
+				--text-secondary: var(--secondary, rgb(51, 65, 85));
+				--text-muted: rgb(108, 117, 125);
+				--bg-primary: var(--theme, rgb(255, 255, 255));
+				--bg-secondary: var(--entry, rgb(248, 250, 252));
+				--bg-card: var(--entry, rgb(255, 255, 255));
+				--border-color: var(--border, rgba(226, 232, 240, 0.8));
+				--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+				--shadow-md: 0 4px 6px rgba(0, 0, 0, 0.02);
+				--shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.03);
+				--shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.05);
+				
+				/* Typography */
+				--font-heading: "Essays 1743", serif;
+				--font-body: Libertine, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
+				--font-size-xs: 0.875rem;
+				--font-size-sm: 1rem;
+				--font-size-base: 1.1rem;
+				--font-size-lg: 1.25rem;
+				--font-size-xl: 1.4rem;
+				--font-size-2xl: 2rem;
+				--font-size-3xl: 3.5rem;
+				
+				/* Spacing */
+				--space-xs: 0.5rem;
+				--space-sm: 1rem;
+				--space-md: 1.5rem;
+				--space-lg: 2rem;
+				--space-xl: 2.5rem;
+				--space-2xl: 3rem;
+				--space-2xl: 3rem;
+				--space-3xl: 4rem;
+				
+				/* Border radius */
+				--radius-sm: 8px;
+				--radius-md: 12px;
+				--radius-lg: 16px;
+				
+				/* Transitions */
+				--transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+				--transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+				--transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+				
+				/* Container */
+				--container-max-width: min(900px, 90vw);
+				--container-padding: clamp(1rem, 5vw, 2rem);
+			}
+
+			/* Dark mode variables - using main theme system */
+			body.dark {
+				--primary-color: rgb(34, 211, 238);
+				--primary-hover: rgb(6, 182, 212);
+				primary-light: rgb(6, 182, 212);
+				--text-primary: var(--primary, rgb(248, 250, 252));
+				--text-secondary: var(--secondary, rgb(203, 213, 225));
+				--text-muted: rgb(156, 163, 175);
+				--bg-primary: var(--theme, rgb(15, 23, 42));
+				--bg-secondary: var(--entry, rgb(30, 41, 59));
+				--bg-card: var(--entry, rgb(30, 41, 59));
+				--border-color: var(--border, rgba(51, 65, 85, 0.8));
+				--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+				--shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
+				--shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+				--shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+			}
+
+			/* Reduced motion support */
+			@media (prefers-reduced-motion: reduce) {
+				:root {
+					--transition-fast: 0s;
+					--transition-base: 0s;
+					--transition-slow: 0s;
+				}
+				
+				* {
+					animation-duration: 0.01ms !important;
+					animation-iteration-count: 1 !important;
+					transition-duration: 0.01ms !important;
+				}
+			}
+
+			/* Navigation styles with CSS variables */
+			#menu a {
+				color: var(--text-primary) !important;
+				text-decoration: none !important;
+				transition: var(--transition-base) !important;
+				padding: 8px 12px !important;
+				border-radius: var(--radius-sm) !important;
+				font-weight: 500 !important;
+			}
+
+			#menu a:hover {
+				background-color: var(--bg-secondary) !important;
+				color: var(--primary-color) !important;
+				transform: translateY(-1px) !important;
+				box-shadow: var(--shadow-sm) !important;
+			}
+
+			/* Dropdown menu styling */
+			.dropdown-menu {
+				background: var(--bg-card) !important;
+				border: 1px solid var(--border-color) !important;
+				box-shadow: var(--shadow-lg) !important;
+				border-radius: var(--radius-md) !important;
+				padding: 8px 0 !important;
+				min-width: 200px !important;
+			}
+
+			.dropdown-menu a {
+				color: var(--text-primary) !important;
+				padding: 8px 16px !important;
+				display: block !important;
+				transition: var(--transition-fast) !important;
+			}
+
+			.dropdown-menu a:hover {
+				background-color: var(--bg-secondary) !important;
+				color: var(--primary-color) !important;
+			}
+
+			/* Logo styling */
+			.logo a {
+				color: var(--text-primary) !important;
+				font-weight: 600 !important;
+				font-size: var(--font-size-lg) !important;
+				text-decoration: none !important;
+				transition: var(--transition-base) !important;
+			}
+
+			.logo a:hover {
+				color: var(--primary-color) !important;
+			}
+
+			/* Theme toggle button */
+			#theme-toggle {
+				background: none !important;
+				border: none !important;
+				cursor: pointer !important;
+				padding: 8px !important;
+				border-radius: 50% !important;
+				transition: var(--transition-fast) !important;
+				color: var(--text-primary) !important;
+			}
+
+			#theme-toggle:hover {
+				background-color: var(--bg-secondary) !important;
+				color: var(--primary-color) !important;
+			}
+
+			#theme-toggle svg {
+				height: 20px !important;
+				width: 20px !important;
+			}
+		</style>
     </header>
 
     <main class="main">
