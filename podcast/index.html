@@ -1059,10 +1059,7 @@
     .wave-visualization {
         width: 100%;
         height: 60px;
-        background: linear-gradient(180deg, 
-            var(--bg-secondary) 0%, 
-            rgba(248, 250, 252, 0.8) 50%, 
-            var(--bg-secondary) 100%);
+        background: var(--bg-secondary);
         border: 1px solid var(--border-color);
         border-radius: var(--radius-md);
 		position: relative;
@@ -1074,77 +1071,43 @@
 
     .wave-visualization:hover {
         border-color: var(--primary-color);
-        background: linear-gradient(180deg, 
-            var(--bg-secondary) 0%, 
-            rgba(13, 110, 253, 0.05) 50%, 
-            var(--bg-secondary) 100%);
     }
 
-    /* Dark mode waveform background */
-    body.dark .wave-visualization {
-        background: linear-gradient(180deg, 
-            var(--bg-secondary) 0%, 
-            rgba(30, 41, 59, 0.8) 50%, 
-            var(--bg-secondary) 100%);
+    /* Canvas styling */
+    #waveform-canvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+        cursor: pointer;
     }
 
-    body.dark .wave-visualization:hover {
-        background: linear-gradient(180deg, 
-            var(--bg-secondary) 0%, 
-            rgba(34, 211, 238, 0.05) 50%, 
-            var(--bg-secondary) 100%);
+    /* Waveform overlay for progress indication */
+    .waveform-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        background: linear-gradient(90deg, 
+            rgba(13, 110, 253, 0.1) 0%, 
+            rgba(13, 110, 253, 0.05) 100%);
+        pointer-events: none;
+        transition: width 0.1s ease;
+        z-index: 1;
     }
 
-    /* Full horizontal waveform bars with progress states */
-    .wave-bar {
-		position: absolute;
-        bottom: 0;
-        background: var(--text-muted);
-        border-radius: 2px;
-        animation: waveform-animation 3s ease-in-out infinite;
-        transition: all 0.3s ease;
-        opacity: 0.7;
-    }
-
-    /* Played portion - darker color with smooth transition */
-    .wave-bar.played {
-        background: var(--text-primary);
-        opacity: 1;
-        transform: scaleY(1.1);
-    }
-
-    /* Current playing position - accent color with pulse */
-    .wave-bar.current {
-        background: var(--primary-color);
-        opacity: 1;
-        transform: scaleY(1.2);
-        animation: current-bar-pulse 1s ease-in-out infinite;
-        box-shadow: 0 0 8px rgba(13, 110, 253, 0.4);
+    /* Dark mode overlay */
+    body.dark .waveform-overlay {
+        background: linear-gradient(90deg, 
+            rgba(34, 211, 238, 0.1) 0%, 
+            rgba(34, 211, 238, 0.05) 100%);
     }
 
 
 
-    @keyframes waveform-animation {
-        0%, 100% { 
-            transform: scaleY(1); 
-            opacity: 0.7;
-        }
-        50% { 
-            transform: scaleY(1.3); 
-            opacity: 1;
-        }
-    }
 
-    @keyframes current-bar-pulse {
-        0%, 100% { 
-            transform: scaleY(1.2); 
-            opacity: 1;
-        }
-        50% { 
-            transform: scaleY(1.5); 
-            opacity: 0.8;
-        }
-    }
+
+
 
     /* Enhanced waveform animation when playing */
     .wave-visualization.playing .wave-bar {
@@ -2063,34 +2026,8 @@
 				
 				<div class="wave-container">
 					<div class="wave-visualization" id="waveform">
-						<!-- More realistic waveform with varying heights and widths -->
-						<div class="wave-bar" data-index="0" style="left: 2%; width: 2px; height: 12px;"></div>
-						<div class="wave-bar" data-index="1" style="left: 5%; width: 3px; height: 28px;"></div>
-						<div class="wave-bar" data-index="2" style="left: 9%; width: 2px; height: 18px;"></div>
-						<div class="wave-bar" data-index="3" style="left: 12%; width: 4px; height: 35px;"></div>
-						<div class="wave-bar" data-index="4" style="left: 16%; width: 2px; height: 22px;"></div>
-						<div class="wave-bar" data-index="5" style="left: 19%; width: 3px; height: 42px;"></div>
-						<div class="wave-bar" data-index="6" style="left: 23%; width: 2px; height: 15px;"></div>
-						<div class="wave-bar" data-index="7" style="left: 26%; width: 4px; height: 38px;"></div>
-						<div class="wave-bar" data-index="8" style="left: 30%; width: 3px; height: 25px;"></div>
-						<div class="wave-bar" data-index="9" style="left: 34%; width: 2px; height: 32px;"></div>
-						<div class="wave-bar" data-index="10" style="left: 37%; width: 4px; height: 45px;"></div>
-						<div class="wave-bar" data-index="11" style="left: 41%; width: 2px; height: 19px;"></div>
-						<div class="wave-bar" data-index="12" style="left: 44%; width: 3px; height: 36px;"></div>
-						<div class="wave-bar" data-index="13" style="left: 48%; width: 2px; height: 28px;"></div>
-						<div class="wave-bar" data-index="14" style="left: 51%; width: 4px; height: 42px;"></div>
-						<div class="wave-bar" data-index="15" style="left: 55%; width: 3px; height: 24px;"></div>
-						<div class="wave-bar" data-index="16" style="left: 58%; width: 2px; height: 35px;"></div>
-						<div class="wave-bar" data-index="17" style="left: 62%; width: 4px; height: 48px;"></div>
-						<div class="wave-bar" data-index="18" style="left: 66%; width: 2px; height: 21px;"></div>
-						<div class="wave-bar" data-index="19" style="left: 69%; width: 3px; height: 38px;"></div>
-						<div class="wave-bar" data-index="20" style="left: 73%; width: 2px; height: 29px;"></div>
-						<div class="wave-bar" data-index="21" style="left: 76%; width: 4px; height: 41px;"></div>
-						<div class="wave-bar" data-index="22" style="left: 80%; width: 3px; height: 26px;"></div>
-						<div class="wave-bar" data-index="23" style="left: 84%; width: 2px; height: 33px;"></div>
-						<div class="wave-bar" data-index="24" style="left: 87%; width: 4px; height: 39px;"></div>
-						<div class="wave-bar" data-index="25" style="left: 91%; width: 2px; height: 18px;"></div>
-						<div class="wave-bar" data-index="26" style="left: 94%; width: 3px; height: 31px;"></div>
+						<canvas id="waveform-canvas" width="600" height="60"></canvas>
+						<div class="waveform-overlay" id="waveform-overlay"></div>
 					</div>
 					
 					<div class="time-display">
@@ -2373,6 +2310,11 @@
             document.body.classList.add('dark');
             localStorage.setItem("pref-theme", 'dark');
         }
+        
+        // Regenerate waveform with new theme colors
+        if (typeof initWaveform === 'function') {
+            setTimeout(initWaveform, 100);
+        }
     });
 
     // Episode selection functionality
@@ -2390,7 +2332,8 @@
         const forwardButton = mainPlayer.querySelector('.forward');
         const speedButton = mainPlayer.querySelector('.speed-control');
         const waveform = mainPlayer.querySelector('#waveform');
-        const waveBars = mainPlayer.querySelectorAll('.wave-bar');
+        const waveformCanvas = mainPlayer.querySelector('#waveform-canvas');
+        const waveformOverlay = mainPlayer.querySelector('#waveform-overlay');
         const volumeBtn = mainPlayer.querySelector('.volume-btn');
         const volumeIcon = mainPlayer.querySelector('.volume-icon');
         const muteIcon = mainPlayer.querySelector('.mute-icon');
@@ -2403,6 +2346,9 @@
         
         // Initialize with first episode
         updatePlayerInfo('5', 'audio5.mp3');
+
+        // Initialize canvas waveform
+        initWaveform();
 
         // Calculate and update all episode durations
         async function updateAllEpisodeDurations() {
@@ -2612,23 +2558,83 @@
             }, { once: true });
         }
         
-        function updateWaveformProgress(current, duration) {
-            const totalBars = waveBars.length;
-            const currentBarIndex = Math.floor((current / duration) * totalBars);
+        function initWaveform() {
+            const canvas = waveformCanvas;
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
             
-            waveBars.forEach((bar, index) => {
-                // Remove all progress classes
-                bar.classList.remove('played', 'current');
+            // Clear canvas
+            ctx.clearRect(0, 0, width, height);
+            
+            // Generate realistic waveform data
+            const waveformData = generateWaveformData(width);
+            
+            // Draw waveform
+            drawWaveform(ctx, waveformData, width, height);
+        }
+
+        function generateWaveformData(width) {
+            const data = [];
+            const segments = Math.floor(width / 4); // 4px per segment
+            
+            for (let i = 0; i < segments; i++) {
+                // Generate realistic audio-like data
+                const baseHeight = Math.random() * 0.3 + 0.1; // 10-40% of height
+                const variation = Math.random() * 0.4 + 0.1; // Additional variation
+                const height = baseHeight + variation;
                 
-                if (index < currentBarIndex) {
-                    // Played portion - darker color
-                    bar.classList.add('played');
-                } else if (index === currentBarIndex && currentBarIndex < totalBars) {
-                    // Current playing position - accent color with pulse
-                    bar.classList.add('current');
-                }
-                // Unplayed bars keep default muted color
+                data.push({
+                    x: i * 4,
+                    height: height,
+                    width: Math.random() * 2 + 2 // 2-4px width
+                });
+            }
+            
+            return data;
+        }
+
+        function drawWaveform(ctx, data, width, height) {
+            const centerY = height / 2;
+            const isDark = document.body.classList.contains('dark');
+            
+            // Choose colors based on theme
+            const primaryColor = isDark ? 'rgb(34, 211, 238)' : 'rgb(13, 110, 253)';
+            const shadowColor = isDark ? 'rgba(34, 211, 238, 0.3)' : 'rgba(13, 110, 253, 0.3)';
+            
+            // Draw waveform bars
+            data.forEach(segment => {
+                const barHeight = segment.height * height;
+                const y = centerY - barHeight / 2;
+                
+                // Create gradient for each bar
+                const gradient = ctx.createLinearGradient(segment.x, y, segment.x, y + barHeight);
+                gradient.addColorStop(0, primaryColor + 'CC'); // 80% opacity
+                gradient.addColorStop(0.5, primaryColor);
+                gradient.addColorStop(1, primaryColor + '99'); // 60% opacity
+                
+                ctx.fillStyle = gradient;
+                ctx.fillRect(segment.x, y, segment.width, barHeight);
+                
+                // Add subtle shadow
+                ctx.shadowColor = shadowColor;
+                ctx.shadowBlur = 2;
+                ctx.shadowOffsetX = 1;
+                ctx.shadowOffsetY = 1;
             });
+            
+            // Reset shadow
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 0;
+        }
+
+        function updateWaveformProgress(current, duration) {
+            if (!isNaN(current) && !isNaN(duration) && duration > 0) {
+                const progressPercent = (current / duration) * 100;
+                waveformOverlay.style.width = progressPercent + '%';
+            }
         }
 
         function formatTime(seconds) {
