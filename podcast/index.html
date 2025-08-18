@@ -1282,7 +1282,7 @@
         padding: var(--space-sm) var(--space-lg);
         border-radius: var(--radius-md);
         font-size: var(--font-size-sm);
-        font-weight: 500;
+		font-weight: 500;
         border: 1px solid var(--border-color);
         transition: var(--transition-base);
         cursor: pointer;
@@ -1291,7 +1291,7 @@
 
     .category-tag:hover {
         background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
-        color: white;
+		color: white;
         transform: translateY(-2px);
         box-shadow: var(--shadow-md);
     }
@@ -1421,7 +1421,7 @@
     }
 
     /* Responsive design for featured episode title */
-    @media (max-width: 768px) {
+	@media (max-width: 768px) {
         .featured-episode-title {
             margin: var(--space-lg) 0 var(--space-md) 0;
         }
@@ -2257,6 +2257,26 @@
         
         // Initialize with first episode
         updatePlayerInfo('5', 'audio5.mp3');
+
+        // Calculate and update all episode durations
+        async function updateAllEpisodeDurations() {
+            episodeOptions.forEach(async (option) => {
+                const audioFile = option.getAttribute('data-audio');
+                const durationElement = option.querySelector('.episode-duration');
+                
+                if (audioFile && durationElement) {
+                    try {
+                        const realDuration = await calculateEpisodeDuration(audioFile);
+                        durationElement.textContent = realDuration;
+                    } catch (error) {
+                        console.log('Could not load duration for:', audioFile);
+                    }
+                }
+            });
+        }
+
+        // Update durations after page loads
+        updateAllEpisodeDurations();
         
         // Play/Pause functionality
         playButton.addEventListener('click', function() {
@@ -2392,6 +2412,22 @@
             const mins = Math.floor(seconds / 60);
             const secs = Math.floor(seconds % 60);
             return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        // Calculate real duration from audio files
+        function calculateEpisodeDuration(audioFile) {
+            return new Promise((resolve) => {
+                const audio = new Audio(audioFile);
+                audio.addEventListener('loadedmetadata', function() {
+                    const duration = formatTime(audio.duration);
+                    resolve(duration);
+                    audio.remove(); // Clean up
+                });
+                audio.addEventListener('error', function() {
+                    resolve('00:00'); // Fallback if audio fails to load
+                    audio.remove();
+                });
+            });
         }
     });
 </script>
