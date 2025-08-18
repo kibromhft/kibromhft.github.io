@@ -1017,76 +1017,31 @@ if (!doNotTrack) {
     }
 
     /* Modern Playlist Styling */
-    .playlist-container {
+    .episode-list {
         background: var(--bg-card);
         border: 1px solid var(--border-color);
         border-radius: var(--radius-lg);
         overflow: hidden;
         box-shadow: var(--shadow-sm);
         margin: var(--space-xl) 0;
-        display: flex;
-        height: 500px;
     }
 
-    .playlist-item {
+    .episode-item {
         display: flex;
-        align-items: stretch;
+        align-items: flex-start;
+        padding: var(--space-lg);
         border-bottom: 1px solid var(--border-color);
         transition: var(--transition-base);
         position: relative;
-        min-height: 120px;
+        gap: var(--space-lg);
     }
 
-    .playlist-item:last-child {
+    .episode-item:last-child {
         border-bottom: none;
     }
 
-    .playlist-item:hover {
-        background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
-        transform: translateX(4px);
-    }
-
-    .playlist-item:hover .episode-number {
-        background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
-        color: white;
-        transform: scale(1.1);
-    }
-
-    .episode-number {
-        background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
-        color: var(--text-secondary);
-        font-size: var(--font-size-2xl);
-        font-weight: 700;
-        font-family: var(--font-heading);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 80px;
-        border-right: 1px solid var(--border-color);
-        transition: var(--transition-base);
-        position: relative;
-        flex-shrink: 0;
-    }
-
-    .episode-number::after {
-        content: '';
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 1px;
-        height: 60%;
-        background: linear-gradient(180deg, transparent, var(--border-color), transparent);
-    }
-
-    .episode-content {
-        flex: 1;
-        padding: var(--space-lg);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: var(--space-lg);
-        min-width: 0;
+    .episode-item:hover {
+        background: var(--bg-secondary);
     }
 
     .episode-info {
@@ -1094,26 +1049,42 @@ if (!doNotTrack) {
         min-width: 0;
     }
 
-    .episode-info h3 {
+    .episode-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: var(--space-sm);
+        gap: var(--space-md);
+    }
+
+    .episode-title h3 {
         color: var(--text-primary);
         font-size: var(--font-size-lg);
         font-weight: 600;
         font-family: var(--font-heading);
-        margin: 0 0 var(--space-sm) 0;
+        margin: 0;
         line-height: 1.4;
         letter-spacing: -0.01em;
+        flex: 1;
     }
 
-    .episode-info p {
+    .episode-duration {
+        background: var(--bg-secondary);
+        color: var(--text-muted);
+        padding: var(--space-xs) var(--space-sm);
+        border-radius: var(--radius-sm);
+        font-size: var(--font-size-sm);
+        font-weight: 500;
+        white-space: nowrap;
+        border: 1px solid var(--border-color);
+    }
+
+    .episode-description {
         color: var(--text-secondary);
         font-size: var(--font-size-base);
         line-height: 1.6;
-        margin: 0 0 var(--space-md) 0;
+        margin: var(--space-sm) 0 var(--space-md) 0;
         font-family: var(--font-body);
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
     }
 
     .episode-meta {
@@ -1133,20 +1104,21 @@ if (!doNotTrack) {
         font-family: var(--font-body);
     }
 
-    .episode-controls {
+    .episode-actions {
         display: flex;
         gap: var(--space-sm);
         align-items: center;
         flex-shrink: 0;
+        margin-top: var(--space-sm);
     }
 
-    .episode-controls .play-button,
-    .episode-controls .download-button {
+    .play-btn,
+    .download-btn {
         background: none;
         border: 2px solid var(--border-color);
         color: var(--text-secondary);
-        width: 44px;
-        height: 44px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -1158,65 +1130,70 @@ if (!doNotTrack) {
         overflow: hidden;
     }
 
-    .episode-controls .play-button {
-        background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+    .play-btn {
+        background: var(--primary-color);
         border-color: var(--primary-color);
         color: white;
     }
 
-    .episode-controls .play-button:hover {
+    .play-btn:hover {
         transform: scale(1.1);
         box-shadow: var(--shadow-md);
-        background: linear-gradient(135deg, var(--primary-hover), var(--primary-color));
+        background: var(--primary-hover);
+        border-color: var(--primary-hover);
     }
 
-    .episode-controls .download-button:hover {
+    .download-btn:hover {
         border-color: var(--primary-color);
         color: var(--primary-color);
         transform: scale(1.1);
         box-shadow: var(--shadow-md);
     }
 
-    /* Playlist item states */
-    .playlist-item.playing {
-        background: linear-gradient(90deg, rgba(13, 110, 253, 0.1) 0%, var(--bg-card) 100%);
+    /* Episode item states */
+    .episode-item.playing {
+        background: rgba(13, 110, 253, 0.05);
         border-left: 4px solid var(--primary-color);
     }
 
-    .playlist-item.playing .episode-number {
-        background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
-        color: white;
+    .episode-item.playing .play-btn {
+        background: var(--primary-hover);
+        border-color: var(--primary-hover);
     }
 
-    /* Dark mode playlist styles */
-    body.dark .playlist-container {
+    /* Dark mode episode list styles */
+    body.dark .episode-list {
         background: var(--bg-card);
         border-color: var(--border-color);
     }
 
-    body.dark .playlist-item:hover {
-        background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+    body.dark .episode-item:hover {
+        background: var(--bg-secondary);
     }
 
-    body.dark .episode-number {
-        background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
-        border-right-color: var(--border-color);
+    body.dark .episode-duration,
+    body.dark .episode-meta span {
+        background: var(--bg-secondary);
+        border-color: var(--border-color);
     }
 
-    body.dark .episode-controls .play-button {
-        background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
-    }
-
-    /* Responsive playlist design */
-    @container (max-width: 600px) {
-        .episode-content {
+    /* Responsive episode list design */
+    @media (max-width: 768px) {
+        .episode-item {
             flex-direction: column;
-            align-items: flex-start;
             gap: var(--space-md);
+            padding: var(--space-md);
         }
 
-        .episode-controls {
+        .episode-title {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: var(--space-sm);
+        }
+
+        .episode-actions {
             align-self: flex-end;
+            margin-top: 0;
         }
 
         .episode-meta {
@@ -1226,30 +1203,6 @@ if (!doNotTrack) {
         .episode-meta span {
             font-size: var(--font-size-xs);
             padding: var(--space-xs);
-        }
-    }
-
-    @media (max-width: 768px) {
-        .episode-card {
-            padding: var(--space-lg);
-            margin: var(--space-md) 0;
-        }
-
-        .episode-header h3 {
-            font-size: var(--font-size-lg);
-        }
-
-        .podcast-intro {
-            padding: var(--space-lg);
-        }
-
-        .category-tags {
-            gap: var(--space-xs);
-        }
-
-        .category-tag {
-            padding: var(--space-xs) var(--space-md);
-            font-size: var(--font-size-sm);
         }
     }
 </style>
@@ -1563,80 +1516,76 @@ if (!doNotTrack) {
 	<div class="podcast-episodes">
 		<h2>📚 Episode Playlist</h2>
 		
-		<div class="playlist-container">
-			<div class="playlist-item">
-				<div class="episode-number">04</div>
-				<div class="episode-content">
-					<div class="episode-info">
-						<h3>Understanding Autoencoders</h3>
-						<p>Comprehensive overview of autoencoder architectures, including VAE, DAE, and their applications in dimensionality reduction and generative modeling.</p>
-						<div class="episode-meta">
-							<span class="episode-date">January 8, 2024</span>
-							<span class="episode-category">Deep Learning</span>
-							<span class="episode-duration">38:15</span>
-						</div>
+		<div class="episode-list">
+			<div class="episode-item">
+				<div class="episode-info">
+					<div class="episode-title">
+						<h3>Episode 4: Understanding Autoencoders</h3>
+						<span class="episode-duration">38:15</span>
 					</div>
-					<div class="episode-controls">
-						<button class="play-button">▶️</button>
-						<button class="download-button">⬇️</button>
+					<p class="episode-description">Comprehensive overview of autoencoder architectures, including VAE, DAE, and their applications in dimensionality reduction and generative modeling.</p>
+					<div class="episode-meta">
+						<span class="episode-date">January 8, 2024</span>
+						<span class="episode-category">Deep Learning</span>
 					</div>
+				</div>
+				<div class="episode-actions">
+					<button class="play-btn">▶</button>
+					<button class="download-btn">⬇</button>
 				</div>
 			</div>
 
-			<div class="playlist-item">
-				<div class="episode-number">03</div>
-				<div class="episode-content">
-					<div class="episode-info">
-						<h3>Data Analysis Fundamentals</h3>
-						<p>Essential techniques for exploratory data analysis, statistical testing, and data visualization best practices.</p>
-						<div class="episode-meta">
-							<span class="episode-date">January 1, 2024</span>
-							<span class="episode-category">Data Science</span>
-							<span class="episode-duration">42:08</span>
-						</div>
+			<div class="episode-item">
+				<div class="episode-info">
+					<div class="episode-title">
+						<h3>Episode 3: Data Analysis Fundamentals</h3>
+						<span class="episode-duration">42:08</span>
 					</div>
-					<div class="episode-controls">
-						<button class="play-button">▶️</button>
-						<button class="download-button">⬇️</button>
+					<p class="episode-description">Essential techniques for exploratory data analysis, statistical testing, and data visualization best practices.</p>
+					<div class="episode-meta">
+						<span class="episode-date">January 1, 2024</span>
+						<span class="episode-category">Data Science</span>
 					</div>
+				</div>
+				<div class="episode-actions">
+					<button class="play-btn">▶</button>
+					<button class="download-btn">⬇</button>
 				</div>
 			</div>
 
-			<div class="playlist-item">
-				<div class="episode-number">02</div>
-				<div class="episode-content">
-					<div class="episode-info">
-						<h3>Debugging Neural Networks</h3>
-						<p>Practical strategies for identifying and fixing common issues in neural network training and deployment.</p>
-						<div class="episode-meta">
-							<span class="episode-date">December 25, 2023</span>
-							<span class="episode-category">Deep Learning</span>
-							<span class="episode-duration">35:42</span>
-						</div>
+			<div class="episode-item">
+				<div class="episode-info">
+					<div class="episode-title">
+						<h3>Episode 2: Debugging Neural Networks</h3>
+						<span class="episode-duration">35:42</span>
 					</div>
-					<div class="episode-controls">
-						<button class="play-button">▶️</button>
-						<button class="download-button">⬇️</button>
+					<p class="episode-description">Practical strategies for identifying and fixing common issues in neural network training and deployment.</p>
+					<div class="episode-meta">
+						<span class="episode-date">December 25, 2023</span>
+						<span class="episode-category">Deep Learning</span>
 					</div>
+				</div>
+				<div class="episode-actions">
+					<button class="play-btn">▶</button>
+					<button class="download-btn">⬇</button>
 				</div>
 			</div>
 
-			<div class="playlist-item">
-				<div class="episode-number">01</div>
-				<div class="episode-content">
-					<div class="episode-info">
-						<h3>Introduction to ML Automation</h3>
-						<p>Overview of machine learning automation tools, MLOps practices, and building scalable ML pipelines.</p>
-						<div class="episode-meta">
-							<span class="episode-date">December 18, 2023</span>
-							<span class="episode-category">MLOps</span>
-							<span class="episode-duration">39:56</span>
-						</div>
+			<div class="episode-item">
+				<div class="episode-info">
+					<div class="episode-title">
+						<h3>Episode 1: Introduction to ML Automation</h3>
+						<span class="episode-duration">39:56</span>
 					</div>
-					<div class="episode-controls">
-						<button class="play-button">▶️</button>
-						<button class="download-button">⬇️</button>
+					<p class="episode-description">Overview of machine learning automation tools, MLOps practices, and building scalable ML pipelines.</p>
+					<div class="episode-meta">
+						<span class="episode-date">December 18, 2023</span>
+						<span class="episode-category">MLOps</span>
 					</div>
+				</div>
+				<div class="episode-actions">
+					<button class="play-btn">▶</button>
+					<button class="download-btn">⬇</button>
 				</div>
 			</div>
 		</div>
