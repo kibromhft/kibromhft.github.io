@@ -1436,6 +1436,100 @@
             bottom: -6px;
         }
     }
+
+    /* Episode Selection - Vertical Scrollable List */
+    .episode-selector {
+        width: 100%;
+        max-width: 400px;
+        margin-top: var(--space-md);
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        height: 200px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .episode-selector::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .episode-selector::-webkit-scrollbar-track {
+        background: var(--bg-card);
+        border-radius: 4px;
+    }
+
+    .episode-selector::-webkit-scrollbar-thumb {
+        background: var(--primary-color);
+        border-radius: 4px;
+    }
+
+    .episode-selector::-webkit-scrollbar-thumb:hover {
+        background: var(--primary-hover);
+    }
+
+    .episode-scroll {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        padding: var(--space-xs);
+    }
+
+    .episode-option {
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs);
+        padding: 8px 12px;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: var(--transition-base);
+        background: transparent;
+        border: 1px solid transparent;
+        min-height: 40px;
+    }
+
+    .episode-option:hover {
+        background-color: var(--bg-card);
+        border-color: var(--border-color);
+    }
+
+    .episode-option.current {
+        background-color: var(--bg-card);
+        color: var(--primary-color);
+        font-weight: 600;
+        border: 1px solid var(--primary-color);
+    }
+
+    .episode-option .episode-num {
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 700;
+        flex-shrink: 0;
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .episode-option .episode-name {
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--text-primary);
+        font-family: var(--font-body);
+        letter-spacing: -0.1px;
+        flex: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .episode-option.current .episode-name {
+        color: var(--primary-color);
+    }
 </style>
 
     <script>
@@ -1799,7 +1893,6 @@
 						<div class="wave-bar"></div>
 						<div class="wave-bar"></div>
 						<div class="wave-bar"></div>
-						<div class="wave-bar"></div>
 					</div>
 					<div class="time-display">
 						<span class="current-time">00:00</span>
@@ -1807,28 +1900,41 @@
 					</div>
 				</div>
 
-				<!-- Episode Selection Bar -->
+				<!-- Episode Selection - Vertical Scrollable List -->
 				<div class="episode-selector">
 					<div class="episode-scroll">
 						<div class="episode-option current" data-episode="5" data-audio="audio5.mp3">
 							<span class="episode-num">05</span>
-							<span class="episode-name">Advanced Causal Inference</span>
+							<span class="episode-name">Advanced Causal Inference in ML</span>
 						</div>
 						<div class="episode-option" data-episode="4" data-audio="audio4.mp3">
 							<span class="episode-num">04</span>
-							<span class="episode-name">Autoencoders</span>
+							<span class="episode-name">Understanding Autoencoders</span>
 						</div>
 						<div class="episode-option" data-episode="3" data-audio="audio3.mp3">
 							<span class="episode-num">03</span>
-							<span class="episode-name">Data Analysis</span>
+							<span class="episode-name">Data Analysis Fundamentals</span>
 						</div>
 						<div class="episode-option" data-episode="2" data-audio="audio2.mp3">
 							<span class="episode-num">02</span>
-							<span class="episode-name">Debugging NN</span>
+							<span class="episode-name">Debugging Neural Networks</span>
 						</div>
 						<div class="episode-option" data-episode="1" data-audio="audio1.mp3">
 							<span class="episode-num">01</span>
-							<span class="episode-name">ML Automation</span>
+							<span class="episode-name">ML Automation Strategies</span>
+						</div>
+						<!-- Example of how it would look with more episodes -->
+						<div class="episode-option" data-episode="6" data-audio="audio6.mp3">
+							<span class="episode-num">06</span>
+							<span class="episode-name">Deep Learning Optimization</span>
+						</div>
+						<div class="episode-option" data-episode="7" data-audio="audio7.mp3">
+							<span class="episode-num">07</span>
+							<span class="episode-name">Computer Vision Basics</span>
+						</div>
+						<div class="episode-option" data-episode="8" data-audio="audio8.mp3">
+							<span class="episode-num">08</span>
+							<span class="episode-name">Natural Language Processing</span>
 						</div>
 					</div>
 				</div>
