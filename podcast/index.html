@@ -20,7 +20,7 @@
     <link rel="mask-icon" href="https://kibromhft.github.io/safari-pinned-tab.svg">
     <meta name="theme-color" content="#2e2e33">
     <meta name="msapplication-TileColor" content="#2e2e33">
-    <link rel="alternate" type="application/rss+xml" href="https://kibromhft.github.io/keywords/index.xml">
+    <link rel="alternate" type="application/rss+xml" href="https://kibromhft.github.io/podcast/index.xml">
     <noscript>
         <style>
             #theme-toggle,
@@ -74,13 +74,52 @@
             ga('send', 'pageview');
         }
     </script>
-    <meta property="og:title" content="Tags" />
-    <meta property="og:description" content="Document my learning notes." />
+    <meta property="og:title" content="Podcast | Machine Learning & AI Discussions" />
+    <meta property="og:description" content="Listen to insightful discussions on machine learning, AI, data science, and technology. Join us for deep dives into cutting-edge topics with industry experts and thought leaders." />
+    <meta property="og:image" content="https://kibromhft.github.io/assets/images/podcast-cover.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://kibromhft.github.io/keywords/" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Tags" />
-    <meta name="twitter:description" content="Document my learning notes." />
+    <meta property="og:site_name" content="Kb's Blog" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://kibromhft.github.io/podcast/" />
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Podcast | Machine Learning & AI Discussions"/>
+    <meta name="twitter:description" content="Listen to insightful discussions on machine learning, AI, data science, and technology. Join us for deep dives into cutting-edge topics with industry experts and thought leaders."/>
+    <meta name="twitter:image" content="https://kibromhft.github.io/assets/images/podcast-cover.jpg" />
+    <meta name="twitter:site" content="@kibromhft" />
+    <meta name="twitter:creator" content="@kibromhft" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "headline": "Podcast | Machine Learning & AI Discussions",
+      "name": "Podcast",
+      "description": "Listen to insightful discussions on machine learning, AI, data science, and technology. Join us for deep dives into cutting-edge topics with industry experts and thought leaders.",
+      "keywords": [
+        "podcast", "machine-learning", "ai", "data-science", "technology", "interviews", "discussions"
+      ],
+      "inLanguage": "en",
+      "author":{
+        "@type": "Person",
+        "name": "kibrom Haftu"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://kibromhft.github.io/podcast/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Kb's Blog",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://kibromhft.github.io/favicon_peach.ico"
+        }
+      }
+    }
+    </script>
+
     <style>
         /* Navigation color consistency - using main.css colors */
         #menu a {
@@ -573,6 +612,619 @@
 
 		.playlist-unified {
 			max-height: 350px;
+		}
+
+		/* Enhanced font-face declarations for custom fonts */
+		@font-face {
+			font-family: "Essays 1743";
+			src: url("../assets/f/Essays1743.woff2") format("woff2"), url("../assets/f/Essays1743.woff") format("woff");
+			font-display: swap;
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: "Essays 1743";
+			src: url("../assets/f/Essays1743-bold.woff2") format("woff2"), url("../assets/f/Essays1743-bold.woff") format("woff");
+			font-display: swap;
+			font-weight: bold;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: "Essays 1743";
+			src: url("../assets/f/Essays1743-italic.woff2") format("woff2"), url("../assets/f/Essays1743-italic.woff") format("woff");
+			font-display: swap;
+			font-weight: normal;
+			font-style: italic;
+		}
+		@font-face {
+			font-family: "Essays 1743";
+			src: url("../assets/f/Essays1743-bold-italic.woff2") format("woff2"), url("../assets/f/Essays1743-bold-italic.woff") format("woff");
+			font-display: swap;
+			font-weight: bold;
+			font-style: italic;
+		}
+		@font-face {
+			font-family: "Libertine";
+			src: url("../assets/f/Libertine.woff2") format("woff2"), url("../assets/f/Libertine.woff") format("woff");
+			font-display: swap;
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: "Libertine";
+			src: url("../assets/f/Libertine-bold.woff2") format("woff2"), url("../assets/f/Libertine-bold.woff") format("woff");
+			font-display: swap;
+			font-weight: bold;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: "Libertine";
+			src: url("../assets/f/Libertine-italic.woff2") format("woff2"), url("../assets/f/Libertine-italic.woff") format("woff");
+			font-display: swap;
+			font-weight: normal;
+			font-style: italic;
+		}
+		@font-face {
+			font-family: "Libertine";
+			src: url("../assets/f/Libertine-bold-italic.woff2") format("woff2"), url("../assets/f/Libertine-bold-italic.woff") format("woff");
+			font-display: swap;
+			font-weight: bold;
+			font-style: italic;
+		}
+
+		/* Enhanced styles for quotes with CSS variables */
+		.quote {
+			background: linear-gradient(135deg, var(--bg-card), var(--bg-secondary));
+			border-left: 4px solid var(--primary-color);
+			padding: 2rem 2rem 2rem 2.5rem;
+			margin: 2rem 0;
+			box-shadow: var(--shadow-md);
+			transition: var(--transition-base);
+			border-radius: var(--radius-md);
+			position: relative;
+			overflow: hidden;
+			font-size: 1.2em;
+			font-style: italic;
+		}
+
+		.quote::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 0 20px 20px 0;
+			border-color: transparent var(--primary-color) transparent transparent;
+			opacity: 0.7;
+		}
+
+		.quote p {
+			color: var(--text-primary);
+			font-style: italic;
+			font-size: 1.2em;
+			margin: 0 0 1rem 0;
+			line-height: 1.6;
+			position: relative;
+			z-index: 1;
+			padding-left: 0;
+			text-indent: 0;
+		}
+
+		.quote cite {
+			color: var(--text-secondary);
+			font-style: normal;
+			font-size: 0.95em;
+			display: block;
+			text-align: right;
+			margin-top: 1rem;
+			padding-top: 0.5rem;
+			border-top: 1px solid var(--border-color);
+			font-weight: 500;
+		}
+
+		/* Quote hover effects */
+		.quote:hover {
+			transform: translateY(-2px);
+			box-shadow: var(--shadow-lg);
+		}
+
+		.quote:hover::before {
+			opacity: 0.5;
+			transform: scale(1.1);
+		}
+
+		/* Dark mode specific quote styles */
+		body.dark .quote {
+			background-color: var(--bg-card);
+			border-left-color: var(--primary-color);
+			box-shadow: var(--shadow-sm);
+		}
+
+		/* New styles for paragraphs with CSS variables */
+		.custom-paragraph {
+			font-family: var(--font-body);
+			font-size: var(--font-size-base);
+			line-height: 1.556;
+			word-spacing: 0.1em;
+			margin: 28.008px 0px;
+			color: var(--text-primary);
+			transition: var(--transition-base);
+		}
+
+		/* headers with CSS variables */
+		h1, h2, h3, h4, caption, thead th {
+			font-family: var(--font-heading);
+			font-weight: normal;
+			color: var(--text-primary);
+			text-shadow: 0 0 1px var(--text-secondary);
+		}
+		h1 {
+			font-size: var(--font-size-3xl);
+			line-height: 1.1;
+			width: 100%;
+			margin: 1.49em 0;
+		}
+		h2 {
+			font-size: var(--font-size-2xl);
+			line-height: 1.3125;
+			margin: 1.167em 0;
+			clear: both;
+		}
+		h3 {
+			font-size: var(--font-size-xl);
+			line-height: 1.167;
+			margin: 1.556em 0;
+		}
+
+		/* Enhanced styles for podcast cards with CSS variables */
+		.podcast-card {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 2rem 0;
+			border-radius: var(--radius-md);
+			overflow: hidden;
+			box-shadow: var(--shadow-md);
+			border: 1px solid var(--border-color);
+			background: var(--bg-primary);
+			position: relative;
+		}
+
+		/* Podcast card header enhancement */
+		.podcast-card thead {
+			background: transparent;
+		}
+
+		.podcast-card th {
+			background: transparent;
+			color: var(--text-primary);
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			font-family: var(--font-primary);
+			padding: 16px 12px;
+			text-align: left;
+			border: none;
+			position: relative;
+			text-shadow: none;
+		}
+
+		.podcast-card th::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 2px;
+			background: var(--border-color);
+		}
+
+		.podcast-card td {
+			padding: 16px 12px;
+			text-align: left;
+			border: none;
+			border-bottom: 1px solid var(--border-color);
+			vertical-align: top;
+			line-height: 1.6;
+			color: #333333;
+			font-weight: 500;
+		}
+
+		/* Dark mode podcast card content */
+		body.dark .podcast-card td {
+			color: #e0e0e0;
+		}
+
+		.podcast-card tr:nth-child(even) {
+			background-color: var(--bg-card);
+		}
+
+		.podcast-card tr:nth-child(odd) {
+			background-color: var(--bg-primary);
+		}
+
+		.podcast-card tr {
+			transition: background-color 0.8s ease;
+			position: static;
+		}
+
+		.podcast-card tr:hover {
+			background-color: var(--bg-secondary);
+		}
+
+		/* Styles for links within the podcast card */
+		.podcast-card a {
+			color: var(--primary-color);
+			text-decoration: none;
+			transition: color 0.6s ease;
+		}
+
+		.podcast-card a:hover {
+			color: var(--primary-hover);
+			text-decoration: underline;
+		}
+
+		/* Light mode specific podcast card styles */
+		body:not(.dark) .podcast-card th {
+			background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+			color: #495057;
+			text-shadow: none;
+			border-bottom: 2px solid #dee2e6;
+		}
+
+		/* Dark mode specific podcast card styles */
+		body.dark .podcast-card th {
+			background: linear-gradient(135deg, #007bff, #0056b3);
+			color: #ffffff;
+			border-color: var(--border-color);
+			text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+		}
+
+		body.dark .podcast-card tr:nth-child(even) {
+			background-color: var(--bg-card);
+		}
+
+		body.dark .podcast-card tr:nth-child(odd) {
+			background-color: var(--bg-primary);
+		}
+
+		/* Design System - CSS Custom Properties */
+		:root {
+			/* Colors - using main theme variables */
+			--primary-color: var(--brand-blue, rgb(13, 110, 253));
+			--primary-hover: var(--brand-blue-hover, rgb(10, 88, 202));
+			--primary-light: rgb(59, 130, 246);
+			--text-primary: var(--primary, rgb(15, 23, 42));
+			--text-secondary: var(--secondary, rgb(51, 65, 85));
+			--text-muted: rgb(108, 117, 125);
+			--bg-primary: var(--theme, rgb(255, 255, 255));
+			--bg-secondary: var(--entry, rgb(248, 250, 252));
+			--bg-card: var(--entry, rgb(255, 255, 255));
+			--border-color: var(--border, rgba(226, 232, 240, 0.8));
+			--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+			--shadow-md: 0 4px 6px rgba(0, 0, 0, 0.02);
+			--shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.03);
+			--shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.05);
+			
+			/* Typography */
+			--font-heading: "Essays 1743", serif;
+			--font-body: Libertine, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
+			--font-size-xs: 0.875rem;
+			--font-size-sm: 1rem;
+			--font-size-base: 1.1rem;
+			--font-size-lg: 1.25rem;
+			--font-size-xl: 1.4rem;
+			--font-size-2xl: 2rem;
+			--font-size-3xl: 3.5rem;
+			
+			/* Spacing */
+			--space-xs: 0.5rem;
+			--space-sm: 1rem;
+			--space-md: 1.5rem;
+			--space-lg: 2rem;
+			--space-xl: 2.5rem;
+			--space-2xl: 3rem;
+			--space-3xl: 4rem;
+			
+			/* Border radius */
+			--radius-sm: 8px;
+			--radius-md: 12px;
+			--radius-lg: 16px;
+			
+			/* Transitions */
+			--transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+			--transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+			--transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+			
+			/* Container */
+			--container-max-width: min(900px, 90vw);
+			--container-padding: clamp(1rem, 5vw, 2rem);
+		}
+
+		/* Dark mode variables - using main theme system */
+		body.dark {
+			--primary-color: rgb(34, 211, 238);
+			--primary-hover: rgb(6, 182, 212);
+			--primary-light: rgb(6, 182, 212);
+			--text-primary: var(--primary, rgb(248, 250, 252));
+			--text-secondary: var(--secondary, rgb(203, 213, 225));
+			--text-muted: rgb(156, 163, 175);
+			--bg-primary: var(--theme, rgb(15, 23, 42));
+			--bg-secondary: var(--entry, rgb(30, 41, 59));
+			--bg-card: var(--entry, rgb(30, 41, 59));
+			--border-color: var(--border, rgba(51, 65, 85, 0.8));
+			--shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+			--shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
+			--shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+			--shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+		}
+
+		/* Reduced motion support */
+		@media (prefers-reduced-motion: reduce) {
+			:root {
+				--transition-fast: 0s;
+				--transition-base: 0s;
+				--transition-slow: 0s;
+			}
+			
+			* {
+				animation-duration: 0.01ms !important;
+				animation-iteration-count: 1 !important;
+				transition-duration: 0.01ms !important;
+			}
+		}
+
+		/* Enhanced post header styling */
+		.post-header {
+			text-align: center;
+			margin-bottom: 1rem;
+			padding-bottom: 0.5rem;
+			margin-top: 0.5rem;
+			position: relative;
+		}
+
+		.post-title {
+			font-size: var(--font-size-3xl);
+			margin-bottom: 1rem;
+			color: var(--text-primary);
+			transition: var(--transition-base);
+			position: relative;
+		}
+
+		.post-title:hover {
+			transform: translateY(-2px) scale(1.02);
+		}
+
+		/* Add underline like FAQ page */
+		.post-title::after {
+			content: '';
+			position: absolute;
+			bottom: -8px;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 160px;
+			height: 2px;
+			background: linear-gradient(90deg, rgb(13, 110, 253) 0%, rgb(59, 130, 246) 50%, rgb(10, 88, 202) 100%);
+			border-radius: 1px;
+			transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+			opacity: 0;
+			transform: translateX(-50%) scaleX(0);
+			transform-origin: center;
+		}
+
+		.post-title:hover::after {
+			opacity: 1;
+			transform: translateX(-50%) scaleX(1);
+		}
+
+		/* Animate underline on page load */
+		.post-title.loaded::after {
+			opacity: 1;
+			transform: translateX(-50%) scaleX(1);
+		}
+
+		/* Dark mode underline */
+		body.dark .post-title::after {
+			background: linear-gradient(90deg, rgb(34, 211, 238) 0%, rgb(6, 182, 212) 50%, rgb(8, 145, 178) 100%);
+			box-shadow: 0 2px 8px rgba(34, 211, 238, 0.3);
+		}
+
+		.post-meta {
+			color: rgb(0,123,255);
+			font-size: 14px;
+			display: flex;
+			flex-wrap: wrap;
+			margin-bottom: 1rem;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.post-meta:hover {
+			color: rgb(0,105,217);
+		}
+
+		/* Enhanced link styling with focus states */
+		.post-content a {
+			color: var(--primary-color);
+			text-decoration: none;
+			transition: var(--transition-base);
+			position: relative;
+			font-weight: 500;
+			border-radius: 2px;
+			padding: 2px 4px;
+			margin: 0 2px;
+		}
+
+		.post-content a::after {
+			content: '';
+			position: absolute;
+			bottom: -2px;
+			left: 0;
+			width: 0;
+			height: 2px;
+			background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
+			transition: width var(--transition-base);
+			border-radius: 1px;
+		}
+
+		.post-content a:hover::after,
+		.post-content a:focus::after {
+			width: 100%;
+		}
+
+		.post-content a:hover,
+		.post-content a:focus {
+			color: var(--primary-hover);
+			background: var(--bg-secondary);
+			border-radius: 4px;
+			transform: translateY(-1px);
+			box-shadow: var(--shadow-sm);
+		}
+
+		/* External link indicators */
+		.post-content a[href^="http"]::before {
+			content: '↗';
+			margin-right: 4px;
+			font-size: 0.8em;
+			opacity: 0.7;
+			transition: var(--transition-base);
+		}
+
+		.post-content a[href^="http"]:hover::before {
+			opacity: 1;
+			transform: translateX(2px);
+		}
+
+		/* Responsive design improvements */
+		@media screen and (max-width: 768px) {
+			.post-content {
+				font-size: var(--font-size-sm);
+				padding: 0 var(--space-sm);
+			}
+
+			.podcast-card {
+				font-size: 14px;
+			}
+
+			.podcast-card th,
+			.podcast-card td {
+				padding: 8px;
+			}
+
+			.quote {
+				margin: 1rem 0;
+				padding: 1rem;
+			}
+
+			.quote p {
+				font-size: 1em;
+			}
+		}
+
+		@media screen and (max-width: 480px) {
+			.post-content {
+				font-size: var(--font-size-xs);
+				padding: 0 var(--space-xs);
+			}
+
+			.podcast-card {
+				font-size: 12px;
+			}
+
+			.podcast-card th,
+			.podcast-card td {
+				padding: 6px;
+			}
+
+			/* Mobile header improvements */
+			.post-header {
+				padding: 1rem 0;
+				text-align: center;
+			}
+
+			.post-title {
+				font-size: 2.5rem;
+				margin: 0.5rem 0;
+				line-height: 1.2;
+			}
+
+			.post-meta {
+				font-size: 0.9rem;
+				margin: 0.5rem 0;
+			}
+
+			/* Improve mobile content spacing */
+			.post-content {
+				padding: 0 1rem;
+			}
+
+			/* Better mobile table handling */
+			.podcast-card {
+				font-size: 13px;
+				margin: 1.5rem 0;
+			}
+
+			.podcast-card th,
+			.podcast-card td {
+				padding: 8px 6px;
+				word-wrap: break-word;
+			}
+
+			/* Copy button styling */
+			.copy-code {
+				position: absolute;
+				top: 8px;
+				right: 8px;
+				background: var(--primary-color);
+				color: white;
+				border: none;
+				border-radius: var(--radius-sm);
+				padding: 6px 12px;
+				font-size: 12px;
+				font-weight: 500;
+				cursor: pointer;
+				transition: var(--transition-base);
+				opacity: 0;
+				z-index: 10;
+				box-shadow: var(--shadow-sm);
+			}
+
+			.copy-code:hover {
+				background: var(--primary-hover);
+				transform: translateY(-1px);
+				box-shadow: var(--shadow-md);
+			}
+
+			pre:hover .copy-code {
+				opacity: 1;
+			}
+
+			.copy-code:focus {
+				outline: 2px solid var(--primary-color);
+				outline-offset: 2px;
+				opacity: 1;
+			}
+
+			/* Ensure pre elements have relative positioning for copy button */
+			pre {
+				position: relative;
+			}
+
+			/* Dark mode copy button */
+			body.dark .copy-code {
+				background: var(--primary-color);
+				color: var(--bg-primary);
+			}
+
+			body.dark .copy-code:hover {
+				background: var(--primary-hover);
+			}
+
+			/* Show copy button on focus for accessibility */
+			pre:focus-within .copy-code {
+				opacity: 1;
+			}
 		}
 	}
     </style>
@@ -1140,7 +1792,256 @@
             });
         }
     });
+
+    // Enhanced JavaScript functionality from coding post
+    // Optimized JavaScript with performance improvements
+    document.addEventListener('DOMContentLoaded', function() {
+        // Menu scroll position management
+        const menu = document.getElementById('menu');
+        if (menu) {
+            menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+            menu.addEventListener('scroll', function() {
+                localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                const id = this.getAttribute("href").substr(1);
+                const targetElement = document.querySelector(`[id='${decodeURIComponent(id)}']`);
+                
+                if (targetElement) {
+                    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                        targetElement.scrollIntoView({
+                            behavior: "smooth"
+                        });
+                    } else {
+                        targetElement.scrollIntoView();
+                    }
+                    
+                    if (id === "top") {
+                        history.replaceState(null, null, " ");
+                    } else {
+                        history.pushState(null, null, `#${id}`);
+                    }
+                }
+            });
+        });
+
+        // Top link visibility management
+        const topButton = document.getElementById("top-link");
+        if (topButton) {
+            const handleScroll = () => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > 800) {
+                    topButton.style.visibility = "visible";
+                    topButton.style.opacity = "1";
+                } else {
+                    topButton.style.visibility = "hidden";
+                    topButton.style.opacity = "0";
+                }
+            };
+            
+            window.addEventListener('scroll', handleScroll, { passive: true });
+        }
+
+        // Enhanced copy code functionality with better positioning
+        const copyButtons = new Map();
+        
+        // Find all code blocks (both pre>code and standalone code)
+        const codeBlocks = document.querySelectorAll('pre > code, pre code');
+        
+        codeBlocks.forEach((codeblock, index) => {
+            // Find the pre element that contains this code
+            let preElement = codeblock.closest('pre');
+            if (!preElement) return;
+
+            const copybutton = document.createElement('button');
+            
+            copybutton.classList.add('copy-code');
+            copybutton.innerText = 'copy';
+            copybutton.setAttribute('aria-label', 'Copy code to clipboard');
+            copybutton.setAttribute('title', 'Copy code to clipboard');
+            copybutton.setAttribute('data-code-index', index);
+
+            const copyingDone = () => {
+                copybutton.innerText = 'copied!';
+                copybutton.setAttribute('aria-label', 'Code copied!');
+                copybutton.style.background = 'var(--primary-hover)';
+                setTimeout(() => {
+                    copybutton.innerText = 'copy';
+                    copybutton.setAttribute('aria-label', 'Copy code to clipboard');
+                    copybutton.style.background = '';
+                }, 2000);
+            };
+
+            copybutton.addEventListener('click', async (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                try {
+                    if ('clipboard' in navigator) {
+                        await navigator.clipboard.writeText(codeblock.textContent);
+                        copyingDone();
+                    } else {
+                        // Fallback for older browsers
+                        const range = document.createRange();
+                        range.selectNodeContents(codeblock);
+                        const selection = window.getSelection();
+                        selection.removeAllRanges();
+                        selection.addRange(range);
+                        
+                        try {
+                            document.execCommand('copy');
+                            copyingDone();
+                        } catch (err) {
+                            console.warn('Copy failed:', err);
+                        }
+                        
+                        selection.removeRange(range);
+                    }
+                } catch (err) {
+                    console.warn('Copy failed:', err);
+                    // Show error feedback
+                    copybutton.innerText = 'error';
+                    copybutton.style.background = '#dc3545';
+                    setTimeout(() => {
+                        copybutton.innerText = 'copy';
+                        copybutton.style.background = '';
+                    }, 2000);
+                }
+            });
+
+            // Always place copy button in the pre element
+            if (preElement) {
+                preElement.appendChild(copybutton);
+                copyButtons.set(copybutton, preElement);
+                
+                // Ensure the pre element has relative positioning
+                preElement.style.position = 'relative';
+            }
+        });
+        
+        // Log for debugging
+        console.log(`Added ${copyButtons.size} copy buttons to code blocks`);
+    });
+
+    // Animate title underline on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const postTitle = document.querySelector('.post-title');
+        if (postTitle) {
+            // Add a small delay for smooth animation
+            setTimeout(() => {
+                postTitle.classList.add('loaded');
+            }, 300);
+        }
+    });
+
+    // Add top link button
+    const topLink = document.createElement('a');
+    topLink.href = '#top';
+    topLink.setAttribute('aria-label', 'go to top');
+    topLink.setAttribute('title', 'Go to Top (Alt + G)');
+    topLink.className = 'top-link';
+    topLink.id = 'top-link';
+    topLink.setAttribute('accesskey', 'g');
+    topLink.style.visibility = 'hidden';
+    topLink.style.opacity = '0';
+    
+    topLink.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
+            <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="rgb(192, 132, 224)"/>
+                <stop offset="100%" stop-color="rgb(153, 0, 204)"/>
+            </linearGradient>
+            <path d="M12 6H0l6-6z" fill="url(#grad)"></path>
+        </svg>
+    `;
+    
+    document.body.appendChild(topLink);
 </script>
+
+<footer class="footer">
+    <span>&copy; 2025 <a href="https://kibromhft.github.io/">Kb's Blog</a></span>
+</footer>
+
+<style>
+/* Top link button styling */
+.top-link {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 3rem;
+    height: 3rem;
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: var(--transition-base);
+    z-index: 1000;
+    box-shadow: var(--shadow-md);
+}
+
+.top-link:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+.top-link svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/* Dark mode top link */
+body.dark .top-link {
+    background: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+body.dark .top-link:hover {
+    border-color: var(--primary-color);
+}
+
+/* Footer styling */
+.footer {
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 3rem;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition-base);
+}
+
+.footer a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+/* Dark mode footer */
+body.dark .footer {
+    border-top-color: var(--border-color);
+    color: var(--text-secondary);
+}
+
+body.dark .footer a {
+    color: var(--primary-color);
+}
+
+body.dark .footer a:hover {
+    color: var(--primary-hover);
+}
+</style>
 </body>
 
 </html>
