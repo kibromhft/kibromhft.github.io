@@ -2352,9 +2352,6 @@
         // Initialize real waveform
         initRealWaveform();
 
-        // Start continuous animation loop
-        startWaveformAnimation();
-
         // Calculate and update all episode durations
         async function updateAllEpisodeDurations() {
             episodeOptions.forEach(async (option) => {
@@ -2473,11 +2470,6 @@
                 
                 // Update waveform progress visualization
                 updateWaveformProgress(current, duration);
-                
-                // Animate waveform in real-time
-                if (isPlaying) {
-                    animateWaveform();
-                }
             }
         });
         
@@ -2607,91 +2599,31 @@
         function drawRealWaveform(ctx, data, width, height) {
             const centerY = height / 2;
             const isDark = document.body.classList.contains('dark');
-            const currentTime = audioPlayer.currentTime || 0;
-            const duration = audioPlayer.duration || 1;
-            const progressPercent = currentTime / duration;
             
-            // Vibrant color palette with gradients
-            const colors = isDark ? [
-                'rgb(34, 211, 238)',   // Cyan
-                'rgb(168, 85, 247)',   // Purple
-                'rgb(236, 72, 153)',   // Pink
-                'rgb(251, 146, 60)',   // Orange
-                'rgb(34, 197, 94)'     // Green
-            ] : [
-                'rgb(13, 110, 253)',   // Blue
-                'rgb(102, 16, 242)',   // Indigo
-                'rgb(220, 38, 127)',   // Rose
-                'rgb(245, 101, 101)',  // Red
-                'rgb(16, 185, 129)'    // Emerald
-            ];
+            // Choose colors based on theme
+            const primaryColor = isDark ? 'rgb(34, 211, 238)' : 'rgb(13, 110, 253)';
+            const secondaryColor = isDark ? 'rgba(34, 211, 238, 0.6)' : 'rgba(13, 110, 253, 0.6)';
             
-            // Draw waveform bars with animated progress and vibrant colors
-            data.forEach((segment, index) => {
+            // Draw waveform bars with smooth gradients
+            data.forEach(segment => {
                 const barHeight = segment.height * height;
                 const y = centerY - barHeight / 2;
-                const barProgress = (index / data.length);
                 
-                // Determine if this bar is in the played section
-                const isPlayed = barProgress <= progressPercent;
-                const isCurrent = Math.abs(barProgress - progressPercent) < 0.02;
-                
-                // Choose color based on position and progress
-                let colorIndex = Math.floor(index / (data.length / colors.length)) % colors.length;
-                let baseColor = colors[colorIndex];
-                
-                if (isCurrent) {
-                    // Current playing position - bright and pulsing
-                    baseColor = isDark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)';
-                } else if (!isPlayed) {
-                    // Unplayed - muted version
-                    baseColor = isDark ? 'rgba(156, 163, 175, 0.4)' : 'rgba(107, 114, 128, 0.4)';
-                }
-                
-                // Create animated gradient
+                // Create gradient for each bar
                 const gradient = ctx.createLinearGradient(segment.x, y, segment.x, y + barHeight);
-                if (isCurrent) {
-                    // Current position - animated white/black with glow
-                    const pulseIntensity = 0.5 + 0.5 * Math.sin(Date.now() * 0.01);
-                    gradient.addColorStop(0, `rgba(255, 255, 255, ${0.3 + pulseIntensity * 0.7})`);
-                    gradient.addColorStop(0.5, `rgba(255, 255, 255, ${0.8 + pulseIntensity * 0.2})`);
-                    gradient.addColorStop(1, `rgba(255, 255, 255, ${0.3 + pulseIntensity * 0.7})`);
-                } else if (isPlayed) {
-                    // Played section - vibrant colors
-                    gradient.addColorStop(0, baseColor + '80');
-                    gradient.addColorStop(0.3, baseColor);
-                    gradient.addColorStop(0.7, baseColor);
-                    gradient.addColorStop(1, baseColor + '80');
-                } else {
-                    // Unplayed section - muted
-                    gradient.addColorStop(0, baseColor + '20');
-                    gradient.addColorStop(0.5, baseColor + '40');
-                    gradient.addColorStop(1, baseColor + '20');
-                }
+                gradient.addColorStop(0, secondaryColor);
+                gradient.addColorStop(0.3, primaryColor);
+                gradient.addColorStop(0.7, primaryColor);
+                gradient.addColorStop(1, secondaryColor);
                 
                 ctx.fillStyle = gradient;
                 ctx.fillRect(segment.x, y, segment.width, barHeight);
                 
-                // Add dynamic shadows and effects
-                if (isCurrent) {
-                    // Current bar - bright glow effect
-                    ctx.shadowColor = isDark ? 'rgba(255, 255, 255, 0.8)' : 'rgba(0, 0, 0, 0.8)';
-                    ctx.shadowBlur = 8 + Math.sin(Date.now() * 0.01) * 4;
-                    ctx.shadowOffsetX = 0;
-                    ctx.shadowOffsetY = 0;
-                } else if (isPlayed) {
-                    // Played bars - subtle glow
-                    ctx.shadowColor = baseColor + '40';
-                    ctx.shadowBlur = 4;
-                    ctx.shadowOffsetX = 1;
-                    ctx.shadowOffsetY = 1;
-                } else {
-                    // Unplayed bars - minimal shadow
-                    ctx.shadowColor = 'transparent';
-                    ctx.shadowBlur = 0;
-                    ctx.shadowOffsetX = 0;
-                    ctx.shadowOffsetY = 0;
-                }
+                // Add subtle shadow for depth
+                ctx.shadowColor = isDark ? 'rgba(34, 211, 238, 0.2)' : 'rgba(13, 110, 253, 0.2)';
+                ctx.shadowBlur = 3;
+                ctx.shadowOffsetX = 1;
+                ctx.shadowOffsetY = 1;
             });
             
             // Reset shadow
@@ -2706,31 +2638,6 @@
                 const progressPercent = (current / duration) * 100;
                 waveformProgress.style.width = progressPercent + '%';
             }
-        }
-
-        function animateWaveform() {
-            // Redraw waveform with current progress for smooth animation
-            const canvas = waveformCanvas;
-            const ctx = canvas.getContext('2d');
-            const width = canvas.width;
-            const height = canvas.height;
-            
-            // Get current waveform data
-            const waveformData = generateRealWaveformData(width);
-            
-            // Draw animated waveform
-            drawRealWaveform(ctx, waveformData, width, height);
-        }
-
-        function startWaveformAnimation() {
-            // Continuous animation loop for smooth effects
-            function animationLoop() {
-                if (isPlaying) {
-                    animateWaveform();
-                }
-                requestAnimationFrame(animationLoop);
-            }
-            animationLoop();
         }
 
         function formatTime(seconds) {
