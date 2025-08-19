@@ -1092,12 +1092,12 @@
 
 
 
-    /* Radio wave visualization - smooth sine wave pattern */
+    /* Professional Audio Waveform - Designed for Audio Playback */
     .wave-container {
         position: relative;
         width: 100%;
         max-width: 600px;
-        height: 80px;
+        height: 60px;
         margin: 0 auto;
         padding: var(--space-sm);
         border-radius: var(--radius-lg);
@@ -1114,122 +1114,88 @@
         position: relative;
         cursor: pointer;
         transition: all 0.3s ease;
+        background: linear-gradient(180deg, 
+            var(--bg-secondary) 0%, 
+            rgba(248, 250, 252, 0.8) 50%, 
+            var(--bg-secondary) 100%);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
     }
 
-    /* Radio wave path */
-    .radio-wave {
+    .wave-visualization:hover {
+        border-color: var(--primary-color);
+        background: linear-gradient(180deg, 
+            var(--bg-secondary) 0%, 
+            rgba(13, 110, 253, 0.08) 50%, 
+            var(--bg-secondary) 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+
+    /* Audio waveform bars */
+    .wave-bar {
         position: absolute;
-        top: 50%;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        transform: translateY(-50%);
-        background: var(--border-color);
-        border-radius: 1px;
+        bottom: 0;
+        background: linear-gradient(180deg, var(--text-muted) 0%, rgba(0,0,0,0.1) 100%);
+        border-radius: 2px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0.7;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
 
-    /* Main radio wave */
-    .radio-wave-main {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        transform: translateY(-50%);
-        overflow: hidden;
+    /* Played portion - enhanced visibility */
+    .wave-bar.played {
+        background: linear-gradient(180deg, var(--text-primary) 0%, rgba(0,0,0,0.2) 100%);
+        opacity: 1;
+        transform: scaleY(1.1);
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
 
-    .radio-wave-main::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: -100%;
-        width: 300%;
-        height: 100%;
-        background: linear-gradient(90deg, 
-            transparent 0%, 
-            var(--text-muted) 25%, 
-            var(--primary-color) 50%, 
-            var(--text-muted) 75%, 
-            transparent 100%);
-        transform: translateY(-50%);
-        animation: radio-wave-flow 4s linear infinite;
-        border-radius: 50%;
-        filter: blur(0.5px);
+    /* Current playing position - accent color */
+    .wave-bar.current {
+        background: linear-gradient(180deg, var(--primary-color) 0%, rgba(13, 110, 253, 0.8) 100%);
+        opacity: 1;
+        transform: scaleY(1.2);
+        box-shadow: 0 0 8px rgba(13, 110, 253, 0.4), 0 2px 6px rgba(0,0,0,0.15);
     }
 
-    /* Secondary radio waves for depth */
-    .radio-wave-secondary {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        width: 100%;
-        height: 60%;
-        transform: translateY(-50%);
-        overflow: hidden;
+    /* Subtle animation when playing */
+    .wave-visualization.playing .wave-bar {
+        animation: subtle-pulse 2s ease-in-out infinite;
     }
 
-    .radio-wave-secondary::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: -100%;
-        width: 300%;
-        height: 100%;
-        background: linear-gradient(90deg, 
-            transparent 0%, 
-            rgba(108, 117, 125, 0.6) 30%, 
-            rgba(13, 110, 253, 0.4) 60%, 
-            rgba(108, 117, 125, 0.6) 90%, 
-            transparent 100%);
-        transform: translateY(-50%);
-        animation: radio-wave-flow 6s linear infinite reverse;
-        border-radius: 50%;
-        filter: blur(1px);
+    .wave-visualization.playing .wave-bar:nth-child(odd) {
+        animation-delay: 0.1s;
     }
 
-    /* Tertiary radio wave for more depth */
-    .radio-wave-tertiary {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        width: 100%;
-        height: 40%;
-        transform: translateY(-50%);
-        overflow: hidden;
+    .wave-visualization.playing .wave-bar:nth-child(even) {
+        animation-delay: 0.2s;
     }
 
-    .radio-wave-tertiary::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: -100%;
-        width: 300%;
-        height: 100%;
-        background: linear-gradient(90deg, 
-            transparent 0%, 
-            rgba(108, 117, 125, 0.4) 35%, 
-            rgba(13, 110, 253, 0.2) 65%, 
-            rgba(108, 117, 125, 0.4) 95%, 
-            transparent 100%);
-        transform: translateY(-50%);
-        animation: radio-wave-flow 8s linear infinite;
-        border-radius: 50%;
-        filter: blur(1.5px);
+    @keyframes subtle-pulse {
+        0%, 100% { 
+            transform: scaleY(1); 
+            opacity: 0.7;
+        }
+        50% { 
+            transform: scaleY(1.05); 
+            opacity: 0.9;
+        }
     }
 
-    /* Progress indicator */
+    /* Progress indicator overlay */
     .wave-progress {
         position: absolute;
         top: 0;
         left: 0;
         height: 100%;
         background: linear-gradient(90deg, 
-            rgba(13, 110, 253, 0.1) 0%, 
-            rgba(13, 110, 253, 0.05) 100%);
+            rgba(13, 110, 253, 0.08) 0%, 
+            rgba(13, 110, 253, 0.03) 100%);
         border-radius: var(--radius-md);
         transition: width 0.1s ease;
         pointer-events: none;
+        z-index: 1;
     }
 
     /* Current position indicator */
@@ -1244,68 +1210,35 @@
         box-shadow: 0 0 8px rgba(13, 110, 253, 0.6);
         transition: left 0.1s ease;
         pointer-events: none;
-        z-index: 2;
-    }
-
-    /* Radio wave flow animation */
-    @keyframes radio-wave-flow {
-        0% {
-            transform: translateY(-50%) translateX(0%);
-        }
-        100% {
-            transform: translateY(-50%) translateX(100%);
-        }
-    }
-
-    /* Enhanced animation when playing */
-    .wave-visualization.playing .radio-wave-main::before {
-        animation-duration: 2s;
-    }
-
-    .wave-visualization.playing .radio-wave-secondary::before {
-        animation-duration: 3s;
-    }
-
-    .wave-visualization.playing .radio-wave-tertiary::before {
-        animation-duration: 4s;
-    }
-
-    /* Hover effects */
-    .wave-visualization:hover {
-        transform: scale(1.02);
-    }
-
-    .wave-visualization:hover .radio-wave-main::before {
-        filter: blur(0.3px);
-        animation-duration: 1.5s;
+        z-index: 3;
     }
 
     /* Dark mode support */
-    body.dark .radio-wave-main::before {
-        background: linear-gradient(90deg, 
-            transparent 0%, 
-            var(--text-muted) 25%, 
-            var(--primary-color) 50%, 
-            var(--text-muted) 75%, 
-            transparent 100%);
+    body.dark .wave-visualization {
+        background: linear-gradient(180deg, 
+            var(--bg-secondary) 0%, 
+            rgba(30, 41, 59, 0.8) 50%, 
+            var(--bg-secondary) 100%);
     }
 
-    body.dark .radio-wave-secondary::before {
-        background: linear-gradient(90deg, 
-            transparent 0%, 
-            rgba(156, 163, 175, 0.6) 30%, 
-            rgba(34, 211, 238, 0.4) 60%, 
-            rgba(156, 163, 175, 0.6) 90%, 
-            transparent 100%);
+    body.dark .wave-visualization:hover {
+        background: linear-gradient(180deg, 
+            var(--bg-secondary) 0%, 
+            rgba(34, 211, 238, 0.05) 50%, 
+            var(--bg-secondary) 100%);
     }
 
-    body.dark .radio-wave-tertiary::before {
-        background: linear-gradient(90deg, 
-            transparent 0%, 
-            rgba(156, 163, 175, 0.4) 35%, 
-            rgba(34, 211, 238, 0.2) 65%, 
-            rgba(156, 163, 175, 0.4) 95%, 
-            transparent 100%);
+    body.dark .wave-bar {
+        background: linear-gradient(180deg, var(--text-muted) 0%, rgba(0,0,0,0.2) 100%);
+    }
+
+    body.dark .wave-bar.played {
+        background: linear-gradient(180deg, var(--text-primary) 0%, rgba(0,0,0,0.3) 100%);
+    }
+
+    body.dark .wave-bar.current {
+        background: linear-gradient(180deg, var(--primary-color) 0%, rgba(34, 211, 238, 0.8) 100%);
+        box-shadow: 0 0 8px rgba(34, 211, 238, 0.4), 0 2px 6px rgba(0,0,0,0.2);
     }
 
 
@@ -2217,11 +2150,39 @@
 				
 				<div class="wave-container">
 					<div class="wave-visualization" id="waveform">
-						<!-- Radio wave visualization -->
-						<div class="radio-wave"></div>
-						<div class="radio-wave-main"></div>
-						<div class="radio-wave-secondary"></div>
-						<div class="radio-wave-tertiary"></div>
+						<!-- Professional audio waveform -->
+						<div class="wave-bar" data-index="0" style="left: 2%; width: 2px; height: 8px;"></div>
+						<div class="wave-bar" data-index="1" style="left: 5%; width: 2px; height: 24px;"></div>
+						<div class="wave-bar" data-index="2" style="left: 8%; width: 2px; height: 16px;"></div>
+						<div class="wave-bar" data-index="3" style="left: 11%; width: 2px; height: 32px;"></div>
+						<div class="wave-bar" data-index="4" style="left: 14%; width: 2px; height: 12px;"></div>
+						<div class="wave-bar" data-index="5" style="left: 17%; width: 2px; height: 28px;"></div>
+						<div class="wave-bar" data-index="6" style="left: 20%; width: 2px; height: 20px;"></div>
+						<div class="wave-bar" data-index="7" style="left: 23%; width: 2px; height: 36px;"></div>
+						<div class="wave-bar" data-index="8" style="left: 26%; width: 2px; height: 14px;"></div>
+						<div class="wave-bar" data-index="9" style="left: 29%; width: 2px; height: 26px;"></div>
+						<div class="wave-bar" data-index="10" style="left: 32%; width: 2px; height: 18px;"></div>
+						<div class="wave-bar" data-index="11" style="left: 35%; width: 2px; height: 30px;"></div>
+						<div class="wave-bar" data-index="12" style="left: 38%; width: 2px; height: 22px;"></div>
+						<div class="wave-bar" data-index="13" style="left: 41%; width: 2px; height: 34px;"></div>
+						<div class="wave-bar" data-index="14" style="left: 44%; width: 2px; height: 16px;"></div>
+						<div class="wave-bar" data-index="15" style="left: 47%; width: 2px; height: 28px;"></div>
+						<div class="wave-bar" data-index="16" style="left: 50%; width: 2px; height: 20px;"></div>
+						<div class="wave-bar" data-index="17" style="left: 53%; width: 2px; height: 32px;"></div>
+						<div class="wave-bar" data-index="18" style="left: 56%; width: 2px; height: 18px;"></div>
+						<div class="wave-bar" data-index="19" style="left: 59%; width: 2px; height: 26px;"></div>
+						<div class="wave-bar" data-index="20" style="left: 62%; width: 2px; height: 24px;"></div>
+						<div class="wave-bar" data-index="21" style="left: 65%; width: 2px; height: 30px;"></div>
+						<div class="wave-bar" data-index="22" style="left: 68%; width: 2px; height: 16px;"></div>
+						<div class="wave-bar" data-index="23" style="left: 71%; width: 2px; height: 28px;"></div>
+						<div class="wave-bar" data-index="24" style="left: 74%; width: 2px; height: 22px;"></div>
+						<div class="wave-bar" data-index="25" style="left: 77%; width: 2px; height: 34px;"></div>
+						<div class="wave-bar" data-index="26" style="left: 80%; width: 2px; height: 18px;"></div>
+						<div class="wave-bar" data-index="27" style="left: 83%; width: 2px; height: 26px;"></div>
+						<div class="wave-bar" data-index="28" style="left: 86%; width: 2px; height: 24px;"></div>
+						<div class="wave-bar" data-index="29" style="left: 89%; width: 2px; height: 30px;"></div>
+						<div class="wave-bar" data-index="30" style="left: 92%; width: 2px; height: 16px;"></div>
+						<div class="wave-bar" data-index="31" style="left: 95%; width: 2px; height: 28px;"></div>
 						<div class="wave-progress" id="wave-progress"></div>
 						<div class="wave-position" id="wave-position"></div>
 					</div>
@@ -2523,6 +2484,7 @@
         const forwardButton = mainPlayer.querySelector('.forward');
         const speedButton = mainPlayer.querySelector('.speed-control');
         const waveform = mainPlayer.querySelector('#waveform');
+        const waveBars = mainPlayer.querySelectorAll('.wave-bar');
         const waveProgress = mainPlayer.querySelector('#wave-progress');
         const wavePosition = mainPlayer.querySelector('#wave-position');
         const volumeBtn = mainPlayer.querySelector('.volume-btn');
@@ -2755,6 +2717,24 @@
                 
                 // Update position indicator
                 wavePosition.style.left = progressPercent + '%';
+                
+                // Update waveform bars
+                const totalBars = waveBars.length;
+                const currentBarIndex = Math.floor((current / duration) * totalBars);
+                
+                waveBars.forEach((bar, index) => {
+                    // Remove all progress classes
+                    bar.classList.remove('played', 'current');
+                    
+                    if (index < currentBarIndex) {
+                        // Played portion - enhanced visibility
+                        bar.classList.add('played');
+                    } else if (index === currentBarIndex && currentBarIndex < totalBars) {
+                        // Current playing position - accent color
+                        bar.classList.add('current');
+                    }
+                    // Unplayed bars keep default muted color
+                });
             }
         }
 
