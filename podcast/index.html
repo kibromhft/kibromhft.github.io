@@ -2462,8 +2462,169 @@
         let isMuted = false;
         let lastVolume = 100;
         
+        // Audio context and analyzer for waveform visualization
+        let audioContext;
+        let audioSource;
+        let analyser;
+        let dataArray;
+        let animationId;
+        let isInitialized = false;
+        
+        // Initialize audio context and analyzer
+        function initAudioContext() {
+            if (isInitialized) return;
+            
+            try {
+                // Create audio context
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                analyser = audioContext.createAnalyser();
+                analyser.fftSize = 256;
+                
+                // Connect audio source to analyzer
+                audioSource = audioContext.createMediaElementSource(audioPlayer);
+                audioSource.connect(analyser);
+                analyser.connect(audioContext.destination);
+                
+                // Create data array for audio analysis
+                const bufferLength = analyser.frequencyBinCount;
+                dataArray = new Uint8Array(bufferLength);
+                
+                // Initialize canvas for waveform
+                const canvas = document.getElementById('waveform-canvas');
+                if (canvas) {
+                    const dpr = window.devicePixelRatio || 1;
+                    const rect = canvas.getBoundingClientRect();
+                    canvas.width = rect.width * dpr;
+                    canvas.height = rect.height * dpr;
+                    const ctx = canvas.getContext('2d');
+                    ctx.scale(dpr, dpr);
+                }
+                
+                isInitialized = true;
+                
+                // Start visualization if audio is already playing
+                if (!audioPlayer.paused) {
+                    drawWaveform();
+                }
+            } catch (error) {
+                console.error('Error initializing audio context:', error);
+            }
+        }
+
+        // Draw the waveform visualization
+        function drawWaveform() {
+            if (!isInitialized) return;
+            
+            const canvas = document.getElementById('waveform-canvas');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            const width = canvas.offsetWidth;
+            const height = canvas.offsetHeight;
+            
+            // Clear the canvas
+            ctx.clearRect(0, 0, width, height);
+            
+            // Get the audio data
+            analyser.getByteTimeDomainData(dataArray);
+            
+            // Set up the drawing
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--primary') || '#0d6efd';
+            ctx.lineJoin = 'round';
+            ctx.lineCap = 'round';
+            
+            // Calculate the width of each segment
+            const sliceWidth = width / dataArray.length;
+            let x = 0;
+            
+            ctx.beginPath();
+            
+            // Draw the waveform
+            for (let i = 0; i < dataArray.length; i++) {
+                // Normalize the value to a range of 0 to 1
+                const v = dataArray[i] / 128.0;
+                // Scale to fit the height
+                const y = v * height / 2;
+                
+                if (i === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+                
+                x += sliceWidth;
+            }
+            
+            ctx.stroke();
+            
+            // Continue the animation if playing
+            if (isPlaying) {
+                animationId = requestAnimationFrame(drawWaveform);
+            }
+        }
+
         // Initialize with first episode
         updatePlayerInfo('5', 'audio5.mp3');
+        
+        // Handle window resize
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                if (isInitialized) {
+                    const canvas = document.getElementById('waveform-canvas');
+                    if (canvas) {
+                        const dpr = window.devicePixelRatio || 1;
+                        const rect = canvas.getBoundingClientRect();
+                        canvas.width = rect.width * dpr;
+                        canvas.height = rect.height * dpr;
+                        const ctx = canvas.getContext('2d');
+                        ctx.scale(dpr, dpr);
+                        
+                        // Redraw waveform if needed
+                        if (isPlaying) {
+                            drawWaveform();
+                        }
+                    }
+                }
+            }, 250);
+        });
+        
+        // Handle audio ended event
+        audioPlayer.addEventListener('ended', function() {
+            isPlaying = false;
+            playIcon.style.display = 'block';
+            pauseIcon.style.display = 'none';
+            playButton.classList.remove('playing');
+            document.querySelector('.wave-visualization').classList.remove('playing');
+            
+            // Stop the animation
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+                animationId = null;
+            }
+            
+            // Reset progress
+            updateWaveformProgress(0, audioPlayer.duration);
+        });
+        
+        // Handle seeking with the scrubber
+        const scrubber = document.querySelector('.waveform-scrubber');
+        if (scrubber) {
+            scrubber.addEventListener('input', function() {
+                if (!isNaN(audioPlayer.duration)) {
+                    const seekTime = (scrubber.value / 100) * audioPlayer.duration;
+                    audioPlayer.currentTime = seekTime;
+                    
+                    // Update the waveform overlay
+                    const overlay = document.getElementById('waveform-overlay');
+                    if (overlay) {
+                        overlay.style.width = `${scrubber.value}%`;
+                    }
+                }
+            });
+        }
 
         // Calculate and update all episode durations
         async function updateAllEpisodeDurations() {
@@ -2491,52 +2652,16 @@
             document.removeEventListener('click', handleFirstInteraction);
             document.removeEventListener('keydown', handleFirstInteraction);
         }
-        
-        // Set up event listeners for first interaction
-        document.addEventListener('click', handleFirstInteraction, { once: true });
-        document.addEventListener('keydown', handleFirstInteraction, { once: true });
-        
-        // Play/Pause functionality
-        playButton.addEventListener('click', function() {
-            if (isPlaying) {
-                audioPlayer.pause();
-                isPlaying = false;
-                playIcon.style.display = 'block';
-                pauseIcon.style.display = 'none';
-                playButton.classList.remove('playing');
-                document.querySelector('.wave-visualization').classList.remove('playing');
-                
-                // Stop the animation when paused
-                if (animationId) {
-                    cancelAnimationFrame(animationId);
-                    animationId = null;
-                }
-            } else {
-                // Initialize audio context if not already done
-                if (!isInitialized) {
-                    initAudioContext();
-                }
-                
-                audioPlayer.play().then(() => {
-                    isPlaying = true;
-                    playIcon.style.display = 'none';
-                    pauseIcon.style.display = 'block';
-                    playButton.classList.add('playing');
-                    document.querySelector('.wave-visualization').classList.add('playing');
-                    
-                    // Start the animation
-                    if (!animationId) {
-                        drawWaveform();
-                    }
-                }).catch(error => {
-                    console.error('Error playing audio:', error);
-                });
-            }
-        });
-        
-        // Rewind 15 seconds
-        rewindButton.addEventListener('click', function() {
-            audioPlayer.currentTime = Math.max(0, audioPlayer.currentTime - 15);
+    }
+    
+    // Set up event listeners for first interaction
+    document.addEventListener('click', handleFirstInteraction, { once: true });
+    document.addEventListener('keydown', handleFirstInteraction, { once: true });
+    
+    // Play/Pause functionality
+    playButton.addEventListener('click', function() {
+        if (isPlaying) {
+            audioPlayer.pause();
         });
         
         // Forward 30 seconds
@@ -2651,30 +2776,6 @@
                 
                 // Store current playback state
                 const wasPlaying = isPlaying;
-                const currentTime = audioPlayer.currentTime;
-                
-                // Update player
-                updatePlayerInfo(episodeNumber, audioFile);
-                
-                // Update episode title
-                episodeTitle.textContent = `Episode ${episodeNumber}: ${episodeName}`;
-                
-                // Restore playback state after new audio loads
-                audioPlayer.addEventListener('loadedmetadata', function restorePlayback() {
-                    if (wasPlaying) {
-                        audioPlayer.play();
-                        isPlaying = true;
-                        playIcon.style.display = 'none';
-                        pauseIcon.style.display = 'block';
-                        playButton.classList.add('playing');
-                        document.querySelector('.wave-visualization').classList.add('playing');
-                    }
-                    audioPlayer.removeEventListener('loadedmetadata', restorePlayback);
-                }, { once: true });
-            });
-        });
-        
-        // Episode search functionality
         const searchInput = document.getElementById('episode-search');
         searchInput.addEventListener('input', function() {
             const searchTerm = this.value.toLowerCase();
@@ -2713,18 +2814,29 @@
         }
         
         function updateWaveformProgress(current, duration) {
+            if (duration <= 0) return;
+            
             const progress = (current / duration) * 100;
-            document.getElementById('waveform-overlay').style.width = `${progress}%`;
-            document.querySelector('.waveform-scrubber').value = progress;
+            const overlay = document.getElementById('waveform-overlay');
+            const scrubber = document.querySelector('.waveform-scrubber');
+            
+            if (overlay) {
+                overlay.style.width = `${progress}%`;
+            }
+            
+            if (scrubber) {
+                scrubber.value = progress;
+            }
             
             // Update current time display
             const currentTime = document.querySelector('.current-time');
             if (currentTime) {
                 currentTime.textContent = formatTime(current);
-                waveformPlayed.style.strokeDashoffset = playedLength;
-                
-                // Update position indicator
-                waveformPosition.style.cx = progressPercent + '%';
+            }
+            
+            // If we're near the end and still playing, make sure animation continues
+            if (isPlaying && progress < 99.9 && !animationId) {
+                drawWaveform();
             }
         }
 
