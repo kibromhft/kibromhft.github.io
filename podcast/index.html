@@ -1088,131 +1088,233 @@
         box-shadow: 0 4px 16px rgba(0,0,0,0.1);
     }
 
-    .wave-visualization:hover .wave-bar {
-        transform: scaleY(1.05);
-        box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-    }
-
-    /* Dark mode waveform background */
-    body.dark .wave-visualization {
-        background: linear-gradient(180deg, 
-            var(--bg-secondary) 0%, 
-            rgba(30, 41, 59, 0.8) 50%, 
-            var(--bg-secondary) 100%);
-    }
-
-    body.dark .wave-visualization:hover {
-        background: linear-gradient(180deg, 
-            var(--bg-secondary) 0%, 
-            rgba(34, 211, 238, 0.05) 50%, 
-            var(--bg-secondary) 100%);
-    }
-
-    /* Full horizontal waveform bars with progress states */
-    .wave-bar {
-		position: absolute;
-        bottom: 0;
-        background: linear-gradient(180deg, var(--text-muted) 0%, rgba(0,0,0,0.1) 100%);
-        border-radius: 3px;
-        animation: waveform-animation 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        opacity: 0.8;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    /* Played portion - gradient with enhanced depth */
-    .wave-bar.played {
-        background: linear-gradient(180deg, var(--text-primary) 0%, rgba(0,0,0,0.2) 100%);
-        opacity: 1;
-        transform: scaleY(1.15);
-        box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-    }
-
-    /* Current playing position - accent color with enhanced pulse */
-    .wave-bar.current {
-        background: linear-gradient(180deg, var(--primary-color) 0%, rgba(13, 110, 253, 0.8) 100%);
-        opacity: 1;
-        transform: scaleY(1.25);
-        animation: current-bar-pulse 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-        box-shadow: 0 0 12px rgba(13, 110, 253, 0.6), 0 4px 12px rgba(0,0,0,0.2);
-    }
 
 
 
-    @keyframes waveform-animation {
-        0%, 100% { 
-            transform: scaleY(1); 
-            opacity: 0.8;
-        }
-        50% { 
-            transform: scaleY(1.4); 
-            opacity: 1;
-        }
-    }
 
-    @keyframes current-bar-pulse {
-        0%, 100% { 
-            transform: scaleY(1.25); 
-            opacity: 1;
-        }
-        50% { 
-            transform: scaleY(1.6); 
-            opacity: 0.9;
-        }
-    }
-
-    /* Enhanced waveform animation when playing */
-    .wave-visualization.playing .wave-bar {
-        animation-duration: 1.5s;
-        animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .wave-visualization.playing .wave-bar:nth-child(odd) {
-        animation-duration: 1.2s;
-        animation-delay: 0.1s;
-    }
-
-    .wave-visualization.playing .wave-bar:nth-child(even) {
-        animation-duration: 1.8s;
-        animation-delay: 0.2s;
-    }
-
-    .wave-visualization.playing .wave-bar:nth-child(3n) {
-        animation-duration: 1.6s;
-        animation-delay: 0.3s;
-    }
-
-    /* Click ripple effect */
-    .wave-visualization.ripple {
+    /* Radio wave visualization - smooth sine wave pattern */
+    .wave-container {
         position: relative;
+        width: 100%;
+        max-width: 600px;
+        height: 80px;
+        margin: 0 auto;
+        padding: var(--space-sm);
+        border-radius: var(--radius-lg);
+        background: linear-gradient(135deg, 
+            rgba(255,255,255,0.02) 0%, 
+            rgba(255,255,255,0.01) 100%);
+        backdrop-filter: blur(10px);
         overflow: hidden;
     }
 
-    .wave-visualization.ripple::after {
+    .wave-visualization {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    /* Radio wave path */
+    .radio-wave {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        transform: translateY(-50%);
+        background: var(--border-color);
+        border-radius: 1px;
+    }
+
+    /* Main radio wave */
+    .radio-wave-main {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: translateY(-50%);
+        overflow: hidden;
+    }
+
+    .radio-wave-main::before {
         content: '';
         position: absolute;
         top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
+        left: -100%;
+        width: 300%;
+        height: 100%;
+        background: linear-gradient(90deg, 
+            transparent 0%, 
+            var(--text-muted) 25%, 
+            var(--primary-color) 50%, 
+            var(--text-muted) 75%, 
+            transparent 100%);
+        transform: translateY(-50%);
+        animation: radio-wave-flow 4s linear infinite;
         border-radius: 50%;
-        background: rgba(13, 110, 253, 0.3);
-        transform: translate(-50%, -50%);
-        animation: ripple-effect 0.6s ease-out;
+        filter: blur(0.5px);
     }
 
-    @keyframes ripple-effect {
+    /* Secondary radio waves for depth */
+    .radio-wave-secondary {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 60%;
+        transform: translateY(-50%);
+        overflow: hidden;
+    }
+
+    .radio-wave-secondary::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: -100%;
+        width: 300%;
+        height: 100%;
+        background: linear-gradient(90deg, 
+            transparent 0%, 
+            rgba(108, 117, 125, 0.6) 30%, 
+            rgba(13, 110, 253, 0.4) 60%, 
+            rgba(108, 117, 125, 0.6) 90%, 
+            transparent 100%);
+        transform: translateY(-50%);
+        animation: radio-wave-flow 6s linear infinite reverse;
+        border-radius: 50%;
+        filter: blur(1px);
+    }
+
+    /* Tertiary radio wave for more depth */
+    .radio-wave-tertiary {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 40%;
+        transform: translateY(-50%);
+        overflow: hidden;
+    }
+
+    .radio-wave-tertiary::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: -100%;
+        width: 300%;
+        height: 100%;
+        background: linear-gradient(90deg, 
+            transparent 0%, 
+            rgba(108, 117, 125, 0.4) 35%, 
+            rgba(13, 110, 253, 0.2) 65%, 
+            rgba(108, 117, 125, 0.4) 95%, 
+            transparent 100%);
+        transform: translateY(-50%);
+        animation: radio-wave-flow 8s linear infinite;
+        border-radius: 50%;
+        filter: blur(1.5px);
+    }
+
+    /* Progress indicator */
+    .wave-progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: linear-gradient(90deg, 
+            rgba(13, 110, 253, 0.1) 0%, 
+            rgba(13, 110, 253, 0.05) 100%);
+        border-radius: var(--radius-md);
+        transition: width 0.1s ease;
+        pointer-events: none;
+    }
+
+    /* Current position indicator */
+    .wave-position {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 2px;
+        height: 100%;
+        background: var(--primary-color);
+        border-radius: 1px;
+        box-shadow: 0 0 8px rgba(13, 110, 253, 0.6);
+        transition: left 0.1s ease;
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    /* Radio wave flow animation */
+    @keyframes radio-wave-flow {
         0% {
-            width: 0;
-            height: 0;
-            opacity: 1;
+            transform: translateY(-50%) translateX(0%);
         }
         100% {
-            width: 200px;
-            height: 200px;
-            opacity: 0;
+            transform: translateY(-50%) translateX(100%);
         }
     }
+
+    /* Enhanced animation when playing */
+    .wave-visualization.playing .radio-wave-main::before {
+        animation-duration: 2s;
+    }
+
+    .wave-visualization.playing .radio-wave-secondary::before {
+        animation-duration: 3s;
+    }
+
+    .wave-visualization.playing .radio-wave-tertiary::before {
+        animation-duration: 4s;
+    }
+
+    /* Hover effects */
+    .wave-visualization:hover {
+        transform: scale(1.02);
+    }
+
+    .wave-visualization:hover .radio-wave-main::before {
+        filter: blur(0.3px);
+        animation-duration: 1.5s;
+    }
+
+    /* Dark mode support */
+    body.dark .radio-wave-main::before {
+        background: linear-gradient(90deg, 
+            transparent 0%, 
+            var(--text-muted) 25%, 
+            var(--primary-color) 50%, 
+            var(--text-muted) 75%, 
+            transparent 100%);
+    }
+
+    body.dark .radio-wave-secondary::before {
+        background: linear-gradient(90deg, 
+            transparent 0%, 
+            rgba(156, 163, 175, 0.6) 30%, 
+            rgba(34, 211, 238, 0.4) 60%, 
+            rgba(156, 163, 175, 0.6) 90%, 
+            transparent 100%);
+    }
+
+    body.dark .radio-wave-tertiary::before {
+        background: linear-gradient(90deg, 
+            transparent 0%, 
+            rgba(156, 163, 175, 0.4) 35%, 
+            rgba(34, 211, 238, 0.2) 65%, 
+            rgba(156, 163, 175, 0.4) 95%, 
+            transparent 100%);
+    }
+
+
+
+
+
+
+
+
 
     .time-display {
         display: flex;
@@ -1370,9 +1472,7 @@
         color: var(--text-secondary);
     }
 
-    body.dark .wave-bar {
-        background: var(--primary-color);
-    }
+
 
     body.dark .time-display {
         color: var(--text-muted);
@@ -2117,36 +2217,13 @@
 				
 				<div class="wave-container">
 					<div class="wave-visualization" id="waveform">
-						<!-- Enhanced waveform with more realistic variety -->
-						<div class="wave-bar" data-index="0" style="left: 2%; width: 1px; height: 8px;"></div>
-						<div class="wave-bar" data-index="1" style="left: 5%; width: 3px; height: 32px;"></div>
-						<div class="wave-bar" data-index="2" style="left: 8%; width: 2px; height: 16px;"></div>
-						<div class="wave-bar" data-index="3" style="left: 11%; width: 4px; height: 45px;"></div>
-						<div class="wave-bar" data-index="4" style="left: 15%; width: 1px; height: 12px;"></div>
-						<div class="wave-bar" data-index="5" style="left: 18%; width: 3px; height: 38px;"></div>
-						<div class="wave-bar" data-index="6" style="left: 22%; width: 2px; height: 24px;"></div>
-						<div class="wave-bar" data-index="7" style="left: 25%; width: 4px; height: 52px;"></div>
-						<div class="wave-bar" data-index="8" style="left: 29%; width: 1px; height: 18px;"></div>
-						<div class="wave-bar" data-index="9" style="left: 32%; width: 3px; height: 35px;"></div>
-						<div class="wave-bar" data-index="10" style="left: 36%; width: 2px; height: 28px;"></div>
-						<div class="wave-bar" data-index="11" style="left: 39%; width: 4px; height: 48px;"></div>
-						<div class="wave-bar" data-index="12" style="left: 43%; width: 1px; height: 14px;"></div>
-						<div class="wave-bar" data-index="13" style="left: 46%; width: 3px; height: 42px;"></div>
-						<div class="wave-bar" data-index="14" style="left: 50%; width: 2px; height: 22px;"></div>
-						<div class="wave-bar" data-index="15" style="left: 53%; width: 4px; height: 55px;"></div>
-						<div class="wave-bar" data-index="16" style="left: 57%; width: 1px; height: 19px;"></div>
-						<div class="wave-bar" data-index="17" style="left: 60%; width: 3px; height: 36px;"></div>
-						<div class="wave-bar" data-index="18" style="left: 64%; width: 2px; height: 26px;"></div>
-						<div class="wave-bar" data-index="19" style="left: 67%; width: 4px; height: 49px;"></div>
-						<div class="wave-bar" data-index="20" style="left: 71%; width: 1px; height: 15px;"></div>
-						<div class="wave-bar" data-index="21" style="left: 74%; width: 3px; height: 33px;"></div>
-						<div class="wave-bar" data-index="22" style="left: 78%; width: 2px; height: 29px;"></div>
-						<div class="wave-bar" data-index="23" style="left: 81%; width: 4px; height: 46px;"></div>
-						<div class="wave-bar" data-index="24" style="left: 85%; width: 1px; height: 11px;"></div>
-						<div class="wave-bar" data-index="25" style="left: 88%; width: 3px; height: 31px;"></div>
-						<div class="wave-bar" data-index="26" style="left: 91%; width: 2px; height: 21px;"></div>
-						<div class="wave-bar" data-index="27" style="left: 94%; width: 4px; height: 41px;"></div>
-						<div class="wave-bar" data-index="28" style="left: 97%; width: 1px; height: 16px;"></div>
+						<!-- Radio wave visualization -->
+						<div class="radio-wave"></div>
+						<div class="radio-wave-main"></div>
+						<div class="radio-wave-secondary"></div>
+						<div class="radio-wave-tertiary"></div>
+						<div class="wave-progress" id="wave-progress"></div>
+						<div class="wave-position" id="wave-position"></div>
 					</div>
 					
 					<div class="time-display">
@@ -2446,7 +2523,8 @@
         const forwardButton = mainPlayer.querySelector('.forward');
         const speedButton = mainPlayer.querySelector('.speed-control');
         const waveform = mainPlayer.querySelector('#waveform');
-        const waveBars = mainPlayer.querySelectorAll('.wave-bar');
+        const waveProgress = mainPlayer.querySelector('#wave-progress');
+        const wavePosition = mainPlayer.querySelector('#wave-position');
         const volumeBtn = mainPlayer.querySelector('.volume-btn');
         const volumeIcon = mainPlayer.querySelector('.volume-icon');
         const muteIcon = mainPlayer.querySelector('.mute-icon');
@@ -2509,7 +2587,7 @@
             audioPlayer.currentTime = Math.min(audioPlayer.duration, audioPlayer.currentTime + 30);
         });
         
-        // Waveform click-to-seek functionality with ripple effect
+        // Waveform click-to-seek functionality
         waveform.addEventListener('click', function(e) {
             const rect = waveform.getBoundingClientRect();
             const clickX = e.clientX - rect.left;
@@ -2519,12 +2597,6 @@
             if (!isNaN(audioPlayer.duration)) {
                 audioPlayer.currentTime = clickPercent * audioPlayer.duration;
             }
-
-            // Add ripple effect
-            waveform.classList.add('ripple');
-            setTimeout(() => {
-                waveform.classList.remove('ripple');
-            }, 600);
         });
 
         // Volume control
@@ -2675,22 +2747,15 @@
         }
         
         function updateWaveformProgress(current, duration) {
-            const totalBars = waveBars.length;
-            const currentBarIndex = Math.floor((current / duration) * totalBars);
-            
-            waveBars.forEach((bar, index) => {
-                // Remove all progress classes
-                bar.classList.remove('played', 'current');
+            if (!isNaN(current) && !isNaN(duration)) {
+                const progressPercent = (current / duration) * 100;
                 
-                if (index < currentBarIndex) {
-                    // Played portion - darker color
-                    bar.classList.add('played');
-                } else if (index === currentBarIndex && currentBarIndex < totalBars) {
-                    // Current playing position - accent color with pulse
-                    bar.classList.add('current');
-                }
-                // Unplayed bars keep default muted color
-            });
+                // Update progress bar width
+                waveProgress.style.width = progressPercent + '%';
+                
+                // Update position indicator
+                wavePosition.style.left = progressPercent + '%';
+            }
         }
 
         function formatTime(seconds) {
