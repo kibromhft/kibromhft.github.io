@@ -72,20 +72,88 @@ if (!doNotTrack) {
 <body class="list" id="top">
 
 <script>
-    // Existing initial theme setting code
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
+    // Enhanced theme management system
+    (function() {
+        // Get theme from localStorage or system preference
+        function getInitialTheme() {
+            const savedTheme = localStorage.getItem("pref-theme");
+            if (savedTheme === "dark" || savedTheme === "light") {
+                return savedTheme;
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light";
+        }
 
-    // Add this new code for theme toggle functionality
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        document.body.classList.toggle("dark");
-        localStorage.setItem("pref-theme", document.body.classList.contains("dark") ? "dark" : "light");
-    });
+        // Apply theme to body
+        function applyTheme(theme) {
+            if (theme === "dark") {
+                document.body.classList.add('dark');
+            } else {
+                document.body.classList.remove('dark');
+            }
+            localStorage.setItem("pref-theme", theme);
+            
+            // Show theme change notification
+            showThemeNotification(theme);
+        }
+
+        // Show theme change notification
+        function showThemeNotification(theme) {
+            // Remove existing notification
+            const existingNotification = document.querySelector('.theme-notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+
+            // Create notification
+            const notification = document.createElement('div');
+            notification.className = 'theme-notification';
+            notification.setAttribute('role', 'status');
+            notification.setAttribute('aria-live', 'polite');
+            notification.textContent = `Switched to ${theme} mode`;
+            
+            // Add to page
+            document.body.appendChild(notification);
+            
+            // Remove after 2 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 2000);
+        }
+
+        // Initialize theme
+        const initialTheme = getInitialTheme();
+        applyTheme(initialTheme);
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem("pref-theme")) {
+                applyTheme(e.matches ? "dark" : "light");
+            }
+        });
+
+        // Theme toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById("theme-toggle");
+            if (themeToggle) {
+                themeToggle.addEventListener("click", () => {
+                    // Add loading state
+                    themeToggle.setAttribute('aria-busy', 'true');
+                    themeToggle.style.pointerEvents = 'none';
+                    
+                    const currentTheme = document.body.classList.contains("dark") ? "light" : "dark";
+                    applyTheme(currentTheme);
+                    
+                    // Remove loading state after a short delay
+                    setTimeout(() => {
+                        themeToggle.removeAttribute('aria-busy');
+                        themeToggle.style.pointerEvents = 'auto';
+                    }, 300);
+                });
+            }
+        });
+    })();
 </script>
     
     
@@ -162,6 +230,164 @@ if (!doNotTrack) {
         --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
         --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
         --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Enhanced dark mode styling for all elements */
+    body.dark {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+    }
+
+    body.dark .entry {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-color);
+    }
+
+    body.dark .entry-content {
+        color: var(--text-primary);
+    }
+
+    body.dark .entry-content h1,
+    body.dark .entry-content h2,
+    body.dark .entry-content h3,
+    body.dark .entry-content h4,
+    body.dark .entry-content h5,
+    body.dark .entry-content h6 {
+        color: var(--text-primary);
+    }
+
+    body.dark .entry-content a {
+        color: var(--primary-color);
+    }
+
+    body.dark .entry-content a:hover {
+        color: var(--primary-hover);
+    }
+
+    body.dark .entry-content code {
+        background-color: var(--bg-secondary);
+        color: var(--text-primary);
+        border: 1px solid var(--border-color);
+    }
+
+    body.dark .entry-content pre {
+        background-color: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+    }
+
+    body.dark .entry-content blockquote {
+        border-left: 4px solid var(--primary-color);
+        background-color: var(--bg-secondary);
+    }
+
+    body.dark .entry-content table {
+        background-color: var(--bg-card);
+    }
+
+    body.dark .entry-content th,
+    body.dark .entry-content td {
+        border: 1px solid var(--border-color);
+    }
+
+    body.dark .entry-content th {
+        background-color: var(--bg-secondary);
+    }
+
+    body.dark .pagination {
+        background-color: var(--bg-card);
+    }
+
+    body.dark .pagination a {
+        color: var(--text-primary);
+        background-color: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+    }
+
+    body.dark .pagination a:hover {
+        background-color: var(--primary-color);
+        color: white;
+    }
+
+    body.dark .tags a {
+        background-color: var(--bg-secondary);
+        color: var(--text-primary);
+        border: 1px solid var(--border-color);
+    }
+
+    body.dark .tags a:hover {
+        background-color: var(--primary-color);
+        color: white;
+    }
+
+    /* Additional dark mode styles for common elements */
+    body.dark .entry-meta {
+        color: var(--text-secondary);
+    }
+
+    body.dark .entry-meta a {
+        color: var(--text-secondary);
+    }
+
+    body.dark .entry-meta a:hover {
+        color: var(--primary-color);
+    }
+
+    body.dark .entry-title a {
+        color: var(--text-primary);
+    }
+
+    body.dark .entry-title a:hover {
+        color: var(--primary-color);
+    }
+
+    body.dark .entry-summary {
+        color: var(--text-secondary);
+    }
+
+    body.dark .entry-footer {
+        color: var(--text-muted);
+        border-top: 1px solid var(--border-color);
+    }
+
+    body.dark .entry-footer a {
+        color: var(--text-muted);
+    }
+
+    body.dark .entry-footer a:hover {
+        color: var(--primary-color);
+    }
+
+    /* Dark mode for navigation elements */
+    body.dark .nav a {
+        color: var(--text-primary);
+    }
+
+    body.dark .nav a:hover {
+        color: var(--primary-color);
+    }
+
+    body.dark .dropdown-menu {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-color);
+        box-shadow: var(--shadow-lg);
+    }
+
+    body.dark .dropdown-menu a {
+        color: var(--text-primary);
+    }
+
+    body.dark .dropdown-menu a:hover {
+        background-color: var(--bg-secondary);
+        color: var(--primary-color);
+    }
+
+    /* Smooth theme transitions */
+    body,
+    body * {
+        transition: background-color var(--transition-base), 
+                    color var(--transition-base), 
+                    border-color var(--transition-base),
+                    box-shadow var(--transition-base);
     }
 
     /* Reduced motion support */
@@ -254,13 +480,120 @@ if (!doNotTrack) {
         position: relative;
     }
 
-    /* Theme toggle visibility */
+    /* Theme toggle visibility with smooth transitions */
+    #theme-toggle svg {
+        transition: opacity var(--transition-base), transform var(--transition-base);
+    }
+
     body.dark #moon {
-        display: none;
+        opacity: 0;
+        transform: rotate(-90deg);
+        pointer-events: none;
     }
 
     body:not(.dark) #sun {
-        display: none;
+        opacity: 0;
+        transform: rotate(90deg);
+        pointer-events: none;
+    }
+
+    body.dark #sun,
+    body:not(.dark) #moon {
+        opacity: 1;
+        transform: rotate(0deg);
+        pointer-events: auto;
+    }
+
+    /* Enhanced theme toggle button */
+    #theme-toggle {
+        position: relative;
+        overflow: hidden;
+    }
+
+    #theme-toggle::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: var(--primary-color);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width var(--transition-base), height var(--transition-base);
+        opacity: 0.1;
+    }
+
+    #theme-toggle:hover::before {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Theme toggle button animation */
+    @keyframes themeTogglePulse {
+        0% { transform: translate(-50%, -50%) scale(1); }
+        50% { transform: translate(-50%, -50%) scale(1.1); }
+        100% { transform: translate(-50%, -50%) scale(1); }
+    }
+
+    #theme-toggle:active::before {
+        animation: themeTogglePulse 0.3s ease-in-out;
+    }
+
+    /* Loading state for theme toggle */
+    #theme-toggle[aria-busy="true"] {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+
+    #theme-toggle[aria-busy="true"] svg {
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    /* Theme change notification */
+    .theme-notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--primary-color);
+        color: white;
+        padding: 12px 20px;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-lg);
+        z-index: 1000;
+        font-size: var(--font-size-sm);
+        font-weight: 500;
+        transform: translateX(100%);
+        animation: slideIn 0.3s ease-out forwards;
+        border: 1px solid var(--border-color);
+    }
+
+    @keyframes slideIn {
+        to { transform: translateX(0); }
+    }
+
+    body.dark .theme-notification {
+        background: var(--primary-color);
+        color: white;
+        border-color: var(--border-color);
+    }
+
+    /* Screen reader only text */
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
     }
 
     /* Subtle header background improvement */
@@ -505,15 +838,15 @@ if (!doNotTrack) {
         <div class="logo">
             <a href="https://kibromhft.github.io/" accesskey="h" title="KB&#39;s Blog (Alt + H)">KB&#39;s Blog</a>
             <span class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="Toggle dark mode (Alt + T)" aria-label="Toggle dark mode">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
+                        stroke-linejoin="round" aria-hidden="true">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
                     <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
+                        stroke-linejoin="round" aria-hidden="true">
                         <circle cx="12" cy="12" r="5"></circle>
                         <line x1="12" y1="1" x2="12" y2="3"></line>
                         <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -524,6 +857,7 @@ if (!doNotTrack) {
                         <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
+                    <span class="sr-only">Toggle dark mode</span>
                 </button>
             </span>
         </div>
@@ -783,17 +1117,7 @@ Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolu
         }
     };
 </script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    });
-</script>
+
 
 <script>
     // Mobile dropdown functionality
