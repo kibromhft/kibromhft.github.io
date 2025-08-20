@@ -91,35 +91,6 @@ if (!doNotTrack) {
                 document.body.classList.remove('dark');
             }
             localStorage.setItem("pref-theme", theme);
-            
-            // Show theme change notification
-            showThemeNotification(theme);
-        }
-
-        // Show theme change notification
-        function showThemeNotification(theme) {
-            // Remove existing notification
-            const existingNotification = document.querySelector('.theme-notification');
-            if (existingNotification) {
-                existingNotification.remove();
-            }
-
-            // Create notification
-            const notification = document.createElement('div');
-            notification.className = 'theme-notification';
-            notification.setAttribute('role', 'status');
-            notification.setAttribute('aria-live', 'polite');
-            notification.textContent = `Switched to ${theme} mode`;
-            
-            // Add to page
-            document.body.appendChild(notification);
-            
-            // Remove after 2 seconds
-            setTimeout(() => {
-                if (notification.parentNode) {
-                    notification.remove();
-                }
-            }, 2000);
         }
 
         // Initialize theme
@@ -138,18 +109,8 @@ if (!doNotTrack) {
             const themeToggle = document.getElementById("theme-toggle");
             if (themeToggle) {
                 themeToggle.addEventListener("click", () => {
-                    // Add loading state
-                    themeToggle.setAttribute('aria-busy', 'true');
-                    themeToggle.style.pointerEvents = 'none';
-                    
                     const currentTheme = document.body.classList.contains("dark") ? "light" : "dark";
                     applyTheme(currentTheme);
-                    
-                    // Remove loading state after a short delay
-                    setTimeout(() => {
-                        themeToggle.removeAttribute('aria-busy');
-                        themeToggle.style.pointerEvents = 'auto';
-                    }, 300);
                 });
             }
         });
@@ -381,13 +342,34 @@ if (!doNotTrack) {
         color: var(--primary-color);
     }
 
-    /* Smooth theme transitions */
+    /* Optimized theme transitions - only essential properties */
     body,
-    body * {
-        transition: background-color var(--transition-base), 
-                    color var(--transition-base), 
-                    border-color var(--transition-base),
-                    box-shadow var(--transition-base);
+    .header,
+    .nav,
+    .logo a,
+    #menu a,
+    .dropdown-menu,
+    .entry,
+    .entry-content,
+    .entry-header,
+    .entry-footer,
+    .post-entry,
+    .pagination,
+    .tags a,
+    .footer {
+        transition: background-color 0.15s ease, 
+                    color 0.15s ease, 
+                    border-color 0.15s ease;
+    }
+
+    /* Faster transitions for theme toggle button */
+    #theme-toggle {
+        transition: background-color 0.1s ease, 
+                    outline 0.1s ease;
+    }
+
+    #theme-toggle svg {
+        transition: opacity 0.2s ease, transform 0.2s ease;
     }
 
     /* Reduced motion support */
@@ -540,48 +522,9 @@ if (!doNotTrack) {
         animation: themeTogglePulse 0.3s ease-in-out;
     }
 
-    /* Loading state for theme toggle */
-    #theme-toggle[aria-busy="true"] {
-        opacity: 0.7;
-        cursor: not-allowed;
-    }
 
-    #theme-toggle[aria-busy="true"] svg {
-        animation: spin 1s linear infinite;
-    }
 
-    @keyframes spin {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-    }
 
-    /* Theme change notification */
-    .theme-notification {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: var(--primary-color);
-        color: white;
-        padding: 12px 20px;
-        border-radius: var(--radius-md);
-        box-shadow: var(--shadow-lg);
-        z-index: 1000;
-        font-size: var(--font-size-sm);
-        font-weight: 500;
-        transform: translateX(100%);
-        animation: slideIn 0.3s ease-out forwards;
-        border: 1px solid var(--border-color);
-    }
-
-    @keyframes slideIn {
-        to { transform: translateX(0); }
-    }
-
-    body.dark .theme-notification {
-        background: var(--primary-color);
-        color: white;
-        border-color: var(--border-color);
-    }
 
     /* Screen reader only text */
     .sr-only {

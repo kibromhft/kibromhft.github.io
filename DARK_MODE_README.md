@@ -8,7 +8,7 @@ This document describes the enhanced dark mode toggle functionality implemented 
 - **Location**: Top-right corner of the header, next to the logo
 - **Icons**: Sun (☀️) for light mode, Moon (🌙) for dark mode
 - **Accessibility**: Keyboard shortcut (Alt + T), ARIA labels, screen reader support
-- **Visual Feedback**: Smooth transitions, hover effects, loading states
+- **Visual Feedback**: Smooth transitions, hover effects, instant response
 
 ### 🌓 **Theme Management**
 - **Automatic Detection**: Detects user's system preference (light/dark)
@@ -109,10 +109,10 @@ body.dark {
 
 ## Performance Optimizations
 
-- **CSS Transitions**: Hardware-accelerated animations
-- **Efficient Selectors**: Minimal DOM queries
+- **Fast CSS Transitions**: Optimized 0.15s transitions for essential elements only
+- **Efficient Selectors**: Minimal DOM queries and targeted transitions
 - **Event Delegation**: Single event listener for theme toggle
-- **Lazy Loading**: Theme detection only when needed
+- **Instant Response**: No loading delays or unnecessary animations
 
 ## Usage
 

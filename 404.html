@@ -50,12 +50,28 @@
         --border-color: rgba(51, 65, 85, 0.8);
     }
 
-    /* Smooth theme transitions */
+    /* Optimized theme transitions - only essential properties */
     body,
-    body * {
-        transition: background-color var(--transition-base), 
-                    color var(--transition-base), 
-                    border-color var(--transition-base);
+    .header,
+    .nav,
+    .logo a,
+    #menu a,
+    .dropdown-menu,
+    .not-found,
+    .footer {
+        transition: background-color 0.15s ease, 
+                    color 0.15s ease, 
+                    border-color 0.15s ease;
+    }
+
+    /* Faster transitions for theme toggle button */
+    #theme-toggle {
+        transition: background-color 0.1s ease, 
+                    outline 0.1s ease;
+    }
+
+    #theme-toggle svg {
+        transition: opacity 0.2s ease, transform 0.2s ease;
     }
 
     /* Dark mode styles */
@@ -156,20 +172,7 @@
         pointer-events: auto;
     }
 
-    /* Loading state for theme toggle */
-    #theme-toggle[aria-busy="true"] {
-        opacity: 0.7;
-        cursor: not-allowed;
-    }
 
-    #theme-toggle[aria-busy="true"] svg {
-        animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-    }
 
     /* Screen reader only text */
     .sr-only {
@@ -456,27 +459,17 @@ if (!doNotTrack) {
     document.addEventListener('DOMContentLoaded', function() {
         const themeToggle = document.getElementById("theme-toggle");
         if (themeToggle) {
-            themeToggle.addEventListener("click", () => {
-                // Add loading state
-                themeToggle.setAttribute('aria-busy', 'true');
-                themeToggle.style.pointerEvents = 'none';
-                
-                const currentTheme = document.body.classList.contains("dark") ? "light" : "dark";
-                
-                // Apply theme
-                if (currentTheme === "dark") {
-                    document.body.classList.add('dark');
-                } else {
-                    document.body.classList.remove('dark');
-                }
-                localStorage.setItem("pref-theme", currentTheme);
-                
-                // Remove loading state after a short delay
-                setTimeout(() => {
-                    themeToggle.removeAttribute('aria-busy');
-                    themeToggle.style.pointerEvents = 'auto';
-                }, 300);
-            });
+                            themeToggle.addEventListener("click", () => {
+                    const currentTheme = document.body.classList.contains("dark") ? "light" : "dark";
+                    
+                    // Apply theme
+                    if (currentTheme === "dark") {
+                        document.body.classList.add('dark');
+                    } else {
+                        document.body.classList.remove('dark');
+                    }
+                    localStorage.setItem("pref-theme", currentTheme);
+                });
         }
     });
 </script>
