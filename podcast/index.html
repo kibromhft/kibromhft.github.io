@@ -1051,64 +1051,76 @@
     }
 
     .wave-container {
-        width: 100%;
         max-width: 600px;
-        text-align: center;
+        height: 80px;
+        margin: 0 auto;
         padding: var(--space-sm);
+        background: rgba(255, 255, 255, 0.02);
         border-radius: var(--radius-lg);
-        background: linear-gradient(135deg, 
-            rgba(255,255,255,0.02) 0%, 
-            rgba(255,255,255,0.01) 100%);
         backdrop-filter: blur(10px);
     }
 
     .wave-visualization {
         width: 100%;
-        height: 60px;
-        background: linear-gradient(180deg, 
-            var(--bg-secondary) 0%, 
-            rgba(248, 250, 252, 0.8) 50%, 
-            var(--bg-secondary) 100%);
+        height: 100%;
+        background: rgba(255, 255, 255, 0.05);
         border: 1px solid var(--border-color);
         border-radius: var(--radius-md);
-		position: relative;
-        overflow: hidden;
-        margin-bottom: var(--space-sm);
+        position: relative;
         cursor: pointer;
-        transition: border-color 0.2s ease;
-	}
-
-    .wave-visualization:hover {
-        border-color: var(--primary-color);
-        background: linear-gradient(180deg, 
-            var(--bg-secondary) 0%, 
-            rgba(13, 110, 253, 0.08) 50%, 
-            var(--bg-secondary) 100%);
-        transform: translateY(-1px);
-        box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        transition: all 0.2s ease;
     }
 
+    .wave-visualization:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: var(--primary-color);
+    }
 
+    .waveform-svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
 
+    .waveform-bg {
+        stroke: rgba(255, 255, 255, 0.3);
+        stroke-width: 1;
+        fill: none;
+        transition: all 0.2s ease;
+    }
 
+    .waveform-played {
+        stroke: var(--primary-color);
+        stroke-width: 1.5;
+        fill: none;
+        transition: all 0.2s ease;
+    }
 
+    .waveform-position {
+        fill: var(--primary-color);
+        transition: all 0.1s ease;
+    }
 
-
-
-
-
-
-
-
-
+    .wave-progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: linear-gradient(90deg, 
+            rgba(13, 110, 253, 0.1) 0%, 
+            rgba(13, 110, 253, 0.05) 100%);
+        transition: width 0.1s ease;
+        pointer-events: none;
+    }
 
     .time-display {
-        display: flex;
-        justify-content: space-between;
-        font-size: var(--font-size-sm);
+        position: absolute;
+        bottom: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.875rem;
         color: var(--text-muted);
-        font-family: var(--font-body);
-        font-weight: 400;
+        white-space: nowrap;
     }
 
     .player-actions {
@@ -1649,196 +1661,40 @@
         transition: all 0.2s ease;
     }
 
-    /* Enhanced Buzzsprout-style Continuous Waveform */
+
     .wave-container {
-        position: relative;
-        width: 100%;
-        max-width: 700px;
-        height: 100px;
+        max-width: 600px;
+        height: 80px;
         margin: 0 auto;
-        padding: var(--space-md);
-        border-radius: var(--radius-xl);
-        background: linear-gradient(135deg, 
-            rgba(255,255,255,0.05) 0%, 
-            rgba(255,255,255,0.02) 100%);
-        backdrop-filter: blur(15px);
-        overflow: hidden;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-        border: 1px solid rgba(255,255,255,0.1);
+        padding: var(--space-sm);
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: var(--radius-lg);
+        backdrop-filter: blur(10px);
     }
 
     .wave-visualization {
         width: 100%;
         height: 100%;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
         position: relative;
         cursor: pointer;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        background: linear-gradient(180deg, 
-            var(--bg-secondary) 0%, 
-            rgba(248, 250, 252, 0.9) 50%, 
-            var(--bg-secondary) 100%);
-        border: 2px solid var(--border-color);
-        border-radius: var(--radius-lg);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        overflow: hidden;
+        transition: all 0.2s ease;
     }
 
     .wave-visualization:hover {
         border-color: var(--primary-color);
-        background: linear-gradient(180deg, 
-            var(--bg-secondary) 0%, 
-            rgba(13, 110, 253, 0.12) 50%, 
-            var(--bg-secondary) 100%);
-        transform: translateY(-2px) scale(1.02);
-        box-shadow: 0 12px 40px rgba(13, 110, 253, 0.15);
+        background: rgba(255, 255, 255, 0.08);
+        border-color: var(--primary-color);
     }
 
-    /* SVG Waveform Styling */
     .waveform-svg {
         width: 100%;
         height: 100%;
-        position: relative;
-        z-index: 2;
+        display: block;
     }
 
-    /* Background waveform (unplayed portion) */
-    .waveform-bg {
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
-        opacity: 0.7;
-    }
-
-    /* Played portion waveform */
-    .waveform-played {
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        stroke-dasharray: 1000;
-        stroke-dashoffset: 1000;
-        filter: drop-shadow(0 3px 6px rgba(0,0,0,0.25));
-        opacity: 1;
-    }
-
-    /* Enhanced animation when playing */
-    .wave-visualization.playing .waveform-played {
-        animation: waveform-flow 2.5s ease-in-out infinite;
-    }
-
-    .wave-visualization.playing .waveform-bg {
-        animation: background-pulse 4s ease-in-out infinite;
-    }
-
-    @keyframes waveform-flow {
-        0%, 100% { 
-            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.25));
-            opacity: 1;
-        }
-        50% { 
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.35));
-            opacity: 0.9;
-        }
-    }
-
-    @keyframes background-pulse {
-        0%, 100% { 
-            opacity: 0.7;
-        }
-        50% { 
-            opacity: 0.5;
-        }
-    }
-
-    /* Enhanced current position indicator */
-    .waveform-position {
-        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        filter: drop-shadow(0 0 8px var(--primary-color));
-        animation: position-pulse 1.5s ease-in-out infinite;
-    }
-
-    @keyframes position-pulse {
-        0%, 100% { 
-            r: 2.5; 
-            opacity: 1;
-            filter: drop-shadow(0 0 8px var(--primary-color));
-        }
-        50% { 
-            r: 3.5; 
-            opacity: 0.9;
-            filter: drop-shadow(0 0 12px var(--primary-color));
-        }
-    }
-
-    /* Enhanced progress overlay */
-    .wave-progress {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        background: linear-gradient(90deg, 
-            rgba(13, 110, 253, 0.12) 0%, 
-            rgba(13, 110, 253, 0.06) 50%, 
-            rgba(13, 110, 253, 0.02) 100%);
-        border-radius: var(--radius-md);
-        transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        pointer-events: none;
-        z-index: 1;
-        opacity: 0.8;
-    }
-
-    /* Waveform interaction feedback */
-    .wave-visualization:active {
-        transform: scale(0.98);
-        transition: transform 0.1s ease;
-    }
-
-    /* Loading state for waveform */
-    .wave-visualization.loading::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, 
-            transparent 0%, 
-            rgba(255,255,255,0.1) 50%, 
-            transparent 100%);
-        animation: loading-shimmer 1.5s infinite;
-        z-index: 3;
-    }
-
-    @keyframes loading-shimmer {
-        0% { transform: translateX(-100%); }
-        100% { transform: translateX(100%); }
-    }
-
-    /* Dark mode support */
-    body.dark .wave-visualization {
-        background: linear-gradient(180deg, 
-            var(--bg-secondary) 0%, 
-            rgba(30, 41, 59, 0.8) 50%, 
-            var(--bg-secondary) 100%);
-    }
-
-    body.dark .wave-visualization:hover {
-        background: linear-gradient(180deg, 
-            var(--bg-secondary) 0%, 
-            rgba(34, 211, 238, 0.05) 50%, 
-            var(--bg-secondary) 100%);
-    }
-
-    body.dark .waveform-bg {
-        stroke: url(#waveGradientUnplayed);
-    }
-
-    body.dark .waveform-played {
-        stroke: url(#waveGradientPlayed);
-    }
-
-    body.dark .waveform-position {
-        filter: drop-shadow(0 0 6px var(--primary-color));
-    }
 </style>
 
     <script>
@@ -2194,52 +2050,33 @@
 				
 				<div class="wave-container">
 					<div class="wave-visualization" id="waveform">
-						<!-- Buzzsprout-style continuous waveform -->
-						<svg class="waveform-svg" viewBox="0 0 100 40" preserveAspectRatio="none">
+						<!-- Traditional audio waveform with peaks and valleys -->
+						<svg class="waveform-svg" viewBox="0 0 600 80" preserveAspectRatio="none">
 							<defs>
-								<linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-									<stop offset="0%" style="stop-color:var(--primary-color);stop-opacity:0.9" />
-									<stop offset="50%" style="stop-color:var(--primary-color);stop-opacity:0.7" />
-									<stop offset="100%" style="stop-color:var(--primary-color);stop-opacity:0.4" />
+								<linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+									<stop offset="0%" style="stop-color:var(--primary-color);stop-opacity:0.8" />
+									<stop offset="100%" style="stop-color:var(--primary-color);stop-opacity:0.6" />
 								</linearGradient>
-								<linearGradient id="waveGradientPlayed" x1="0%" y1="0%" x2="0%" y2="100%">
-									<stop offset="0%" style="stop-color:var(--text-primary);stop-opacity:1" />
-									<stop offset="50%" style="stop-color:var(--text-primary);stop-opacity:0.8" />
-									<stop offset="100%" style="stop-color:var(--text-primary);stop-opacity:0.5" />
+								<linearGradient id="waveGradientPlayed" x1="0%" y1="0%" x2="100%" y2="0%">
+									<stop offset="0%" style="stop-color:var(--primary-color);stop-opacity:1" />
+									<stop offset="100%" style="stop-color:var(--primary-color);stop-opacity:0.9" />
 								</linearGradient>
-								<linearGradient id="waveGradientUnplayed" x1="0%" y1="0%" x2="0%" y2="100%">
-									<stop offset="0%" style="stop-color:var(--text-muted);stop-opacity:0.6" />
-									<stop offset="50%" style="stop-color:var(--text-muted);stop-opacity:0.4" />
-									<stop offset="100%" style="stop-color:var(--text-muted);stop-opacity:0.2" />
+								<linearGradient id="waveGradientUnplayed" x1="0%" y1="0%" x2="100%" y2="0%">
+									<stop offset="0%" style="stop-color:rgba(255,255,255,0.4);stop-opacity:0.6" />
+									<stop offset="100%" style="stop-color:rgba(255,255,255,0.4);stop-opacity:0.4" />
 								</linearGradient>
-								<filter id="glow">
-									<feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-									<feMerge> 
-										<feMergeNode in="coloredBlur"/>
-										<feMergeNode in="SourceGraphic"/>
-									</feMerge>
-								</filter>
 							</defs>
 							
-							<!-- Background waveform (unplayed) -->
-							<path class="waveform-bg" d="M0,20 L2,18 L4,22 L6,16 L8,24 L10,14 L12,26 L14,12 L16,28 L18,10 L20,30 L22,8 L24,32 L26,6 L28,34 L30,4 L32,36 L34,2 L36,38 L38,0 L40,40 L42,2 L44,38 L46,4 L48,36 L50,6 L52,34 L54,8 L56,32 L58,10 L60,30 L62,12 L64,28 L66,14 L68,26 L70,16 L72,24 L74,18 L76,22 L78,20 L80,18 L82,22 L84,16 L86,24 L88,14 L90,26 L92,12 L94,28 L96,10 L98,30 L100,20" 
-								  fill="none" 
-								  stroke="url(#waveGradientUnplayed)" 
-								  stroke-width="2" 
-								  stroke-linecap="round" 
-								  stroke-linejoin="round"/>
+							<!-- Background waveform with realistic audio peaks and valleys -->
+							<path class="waveform-bg" d="M0,40 L8,35 L16,45 L24,30 L32,50 L40,25 L48,55 L56,20 L64,60 L72,15 L80,65 L88,10 L96,70 L104,5 L112,75 L120,0 L128,80 L136,8 L144,72 L152,18 L160,68 L168,22 L176,62 L184,28 L192,58 L200,32 L208,54 L216,36 L224,48 L232,38 L240,46 L248,40 L256,44 L264,42 L272,43 L280,41 L288,45 L296,35 L304,55 L312,25 L320,65 L328,15 L336,75 L344,5 L352,80 L360,0 L368,78 L376,12 L384,72 L392,18 L400,68 L408,22 L416,62 L424,28 L432,58 L440,32 L448,54 L456,36 L464,48 L472,38 L480,46 L488,40 L496,44 L504,42 L512,43 L520,41 L528,45 L536,35 L544,55 L552,25 L560,65 L568,15 L576,75 L584,5 L592,80 L600,70" 
+								  stroke="url(#waveGradientUnplayed)" stroke-width="1" fill="none"/>
 							
-							<!-- Played portion waveform -->
-							<path class="waveform-played" d="M0,20 L2,18 L4,22 L6,16 L8,24 L10,14 L12,26 L14,12 L16,28 L18,10 L20,30 L22,8 L24,32 L26,6 L28,34 L30,4 L32,36 L34,2 L36,38 L38,0 L40,40 L42,2 L44,38 L46,4 L48,36 L50,6 L52,34 L54,8 L56,32 L58,10 L60,30 L62,12 L64,28 L66,14 L68,26 L70,16 L72,24 L74,18 L76,22 L78,20 L80,18 L82,22 L84,16 L86,24 L88,14 L90,26 L92,12 L94,28 L96,10 L98,30 L100,20" 
-								  fill="none" 
-								  stroke="url(#waveGradientPlayed)" 
-								  stroke-width="2.5" 
-								  stroke-linecap="round" 
-								  stroke-linejoin="round"
-								  filter="url(#glow)"/>
+							<!-- Played waveform overlay -->
+							<path class="waveform-played" d="M0,40 L8,35 L16,45 L24,30 L32,50 L40,25 L48,55 L56,20 L64,60 L72,15 L80,65 L88,10 L96,70 L104,5 L112,75 L120,0 L128,80 L136,8 L144,72 L152,18 L160,68 L168,22 L176,62 L184,28 L192,58 L200,32 L208,54 L216,36 L224,48 L232,38 L240,46 L248,40 L256,44 L264,42 L272,43 L280,41 L288,45 L296,35 L304,55 L312,25 L320,65 L328,15 L336,75 L344,5 L352,80 L360,0 L368,78 L376,12 L384,72 L392,18 L400,68 L408,22 L416,62 L424,28 L432,58 L440,32 L448,54 L456,36 L464,48 L472,38 L480,46 L488,40 L496,44 L504,42 L512,43 L520,41 L528,45 L536,35 L544,55 L552,25 L560,65 L568,15 L576,75 L584,5 L592,80 L600,70" 
+								  stroke="url(#waveGradientPlayed)" stroke-width="1.5" fill="none"/>
 							
-							<!-- Current position indicator -->
-							<circle class="waveform-position" cx="0" cy="20" r="2" fill="var(--primary-color)" stroke="var(--bg-primary)" stroke-width="1"/>
+							<!-- Playhead position indicator -->
+							<circle class="waveform-position" cx="0" cy="40" r="2" fill="var(--primary-color)"/>
 						</svg>
 						
 						<!-- Progress overlay -->
@@ -2248,7 +2085,7 @@
 					
 					<div class="time-display">
 						<span class="current-time">00:00</span>
-						<span class="duration">45:32</span>
+						<span class="duration">00:00</span>
 					</div>
 				</div>
 
@@ -2608,7 +2445,7 @@
             audioPlayer.currentTime = Math.min(audioPlayer.duration, audioPlayer.currentTime + 30);
         });
         
-        // Enhanced waveform click-to-seek functionality
+        // Simple waveform click-to-seek functionality
         waveform.addEventListener('click', function(e) {
             const rect = waveform.getBoundingClientRect();
             const clickX = e.clientX - rect.left;
@@ -2617,31 +2454,7 @@
             
             if (!isNaN(audioPlayer.duration)) {
                 audioPlayer.currentTime = clickPercent * audioPlayer.duration;
-                
-                // Add visual feedback
-                waveform.style.transform = 'scale(0.98)';
-                setTimeout(() => {
-                    waveform.style.transform = '';
-                }, 150);
             }
-        });
-
-        // Add hover preview functionality
-        waveform.addEventListener('mousemove', function(e) {
-            if (!isNaN(audioPlayer.duration)) {
-                const rect = waveform.getBoundingClientRect();
-                const hoverX = e.clientX - rect.left;
-                const progressWidth = rect.width;
-                const hoverPercent = hoverX / progressWidth;
-                const hoverTime = hoverPercent * audioPlayer.duration;
-                
-                // Show time preview tooltip
-                showTimePreview(e.clientX, e.clientY, formatTime(hoverTime));
-            }
-        });
-
-        waveform.addEventListener('mouseleave', function() {
-            hideTimePreview();
         });
 
         // Volume control
@@ -2722,13 +2535,7 @@
                 
                 // Add current class to clicked episode
                 
-                // Add loading state to waveform
-                waveform.classList.add('loading');
-                
-                // Remove loading state after audio loads
-                audioPlayer.addEventListener('loadedmetadata', function() {
-                    waveform.classList.remove('loading');
-                }, { once: true });
+
                 this.classList.add('current');
                 
                 // Get episode info
@@ -2778,40 +2585,7 @@
             });
         });
 
-        // Keyboard navigation for waveform
-        document.addEventListener('keydown', function(e) {
-            if (e.target === searchInput) return; // Don't interfere with search input
-            
-            const currentTime = audioPlayer.currentTime;
-            const duration = audioPlayer.duration;
-            
-            switch(e.key) {
-                case 'ArrowLeft':
-                    e.preventDefault();
-                    audioPlayer.currentTime = Math.max(0, currentTime - 10);
-                    break;
-                case 'ArrowRight':
-                    e.preventDefault();
-                    audioPlayer.currentTime = Math.min(duration, currentTime + 10);
-                    break;
-                case ' ':
-                    e.preventDefault();
-                    if (isPlaying) {
-                        audioPlayer.pause();
-                    } else {
-                        audioPlayer.play();
-                    }
-                    break;
-                case 'Home':
-                    e.preventDefault();
-                    audioPlayer.currentTime = 0;
-                    break;
-                case 'End':
-                    e.preventDefault();
-                    audioPlayer.currentTime = duration;
-                    break;
-            }
-        });
+
         
         function updatePlayerInfo(episodeNumber, audioFile) {
             currentEpisode = episodeNumber;
@@ -2841,55 +2615,12 @@
                 // Update progress bar width
                 waveProgress.style.width = progressPercent + '%';
                 
-                // Update SVG waveform played portion using stroke-dashoffset
-                const totalLength = 1000; // This matches the stroke-dasharray in CSS
-                const playedLength = totalLength - (progressPercent / 100) * totalLength;
-                waveformPlayed.style.strokeDashoffset = playedLength;
-                
-                // Update position indicator with smooth animation
+                // Update position indicator
                 waveformPosition.style.cx = progressPercent + '%';
-                
-                // Add subtle animation to played portion
-                if (progressPercent > 0) {
-                    waveformPlayed.style.filter = 'drop-shadow(0 3px 6px rgba(0,0,0,0.3))';
-                }
             }
         }
 
-        // Time preview tooltip functionality
-        function showTimePreview(x, y, time) {
-            let tooltip = document.getElementById('time-preview-tooltip');
-            if (!tooltip) {
-                tooltip = document.createElement('div');
-                tooltip.id = 'time-preview-tooltip';
-                tooltip.style.cssText = `
-                    position: fixed;
-                    background: rgba(0,0,0,0.8);
-                    color: white;
-                    padding: 4px 8px;
-                    border-radius: 4px;
-                    font-size: 12px;
-                    pointer-events: none;
-                    z-index: 1000;
-                    transform: translate(-50%, -100%);
-                    margin-top: -8px;
-                    white-space: nowrap;
-                `;
-                document.body.appendChild(tooltip);
-            }
-            
-            tooltip.textContent = time;
-            tooltip.style.left = x + 'px';
-            tooltip.style.top = y + 'px';
-            tooltip.style.display = 'block';
-        }
 
-        function hideTimePreview() {
-            const tooltip = document.getElementById('time-preview-tooltip');
-            if (tooltip) {
-                tooltip.style.display = 'none';
-            }
-        }
 
         function formatTime(seconds) {
             if (isNaN(seconds)) return '00:00';
