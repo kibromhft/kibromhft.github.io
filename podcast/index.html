@@ -1827,6 +1827,225 @@
         background: var(--primary-color);
         box-shadow: 0 0 8px var(--primary-color);
     }
+
+    /* Speed Control */
+    .speed-control {
+        background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+        border-color: var(--border-color);
+        font-weight: 600;
+        font-size: var(--font-size-sm);
+        color: var(--text-primary);
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition-base);
+    }
+
+    .speed-control:hover {
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+        color: white;
+        border-color: var(--primary-color);
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-md);
+    }
+
+    /* More Info Button */
+    .controls-button.info-button {
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: var(--transition-base);
+        margin-right: var(--space-md);
+    }
+
+    .controls-button.info-button:hover {
+        color: var(--primary-color);
+        transform: scale(1.05);
+    }
+
+    .controls-button.info-button svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Share Button */
+    .controls-button.share-button {
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: var(--transition-base);
+        margin-left: var(--space-md);
+    }
+
+    .controls-button.share-button:hover {
+        color: var(--primary-color);
+        transform: scale(1.05);
+    }
+
+    .controls-button.share-button svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    /* Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+        transition: var(--transition-base);
+    }
+    
+    .modal.show {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .modal-content {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-xl);
+        max-width: 500px;
+        width: 90%;
+        max-height: 80vh;
+        overflow-y: auto;
+        animation: modalSlideIn 0.3s ease-out;
+    }
+    
+    @keyframes modalSlideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px) scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+    
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--space-lg) var(--space-lg) var(--space-md);
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .modal-header h3 {
+        margin: 0;
+        color: var(--text-primary);
+        font-size: var(--font-size-lg);
+        font-weight: 600;
+    }
+    
+    .modal-close {
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: var(--text-muted);
+        cursor: pointer;
+        padding: var(--space-xs);
+        border-radius: 50%;
+        transition: var(--transition-base);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+    }
+    
+    .modal-close:hover {
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+    }
+    
+    .modal-body {
+        padding: var(--space-lg);
+    }
+    
+    .episode-details h4 {
+        margin: 0 0 var(--space-md) 0;
+        color: var(--text-primary);
+        font-size: var(--font-size-lg);
+        font-weight: 600;
+        line-height: 1.4;
+    }
+    
+    .episode-description {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: var(--space-lg);
+    }
+    
+    .episode-meta {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+    
+    .meta-item {
+        color: var(--text-secondary);
+        font-size: var(--font-size-sm);
+    }
+    
+    .meta-item strong {
+        color: var(--text-primary);
+        margin-right: var(--space-xs);
+    }
+    
+    .share-options {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+    
+    .share-option {
+        display: flex;
+        align-items: center;
+        gap: var(--space-md);
+        padding: var(--space-md);
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        color: var(--text-primary);
+        cursor: pointer;
+        transition: var(--transition-base);
+        font-size: var(--font-size-sm);
+        font-weight: 500;
+    }
+    
+    .share-option:hover {
+        background: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-md);
+    }
+    
+    .share-option svg {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+    }
 </style>
 
     <script>
@@ -2164,6 +2383,20 @@
 						<span class="speed-text">1x</span>
 					</button>
 					
+					<!-- More Info Button -->
+					<button class="controls-button info-button" aria-label="More Info" id="more-info-btn">
+						<svg viewBox="0 0 24 24" fill="currentColor">
+							<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+						</svg>
+					</button>
+					
+					<!-- Share Button -->
+					<button class="controls-button share-button" aria-label="Share Episode" id="share-btn">
+						<svg viewBox="0 0 24 24" fill="currentColor">
+							<path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+						</svg>
+					</button>
+					
 					<!-- Volume Control -->
 					<div class="volume-control">
 						<button class="controls-button volume-btn" aria-label="Mute/Unmute">
@@ -2264,6 +2497,67 @@
 					</button>
 					<button class="download-btn" aria-label="Download">
 						<span>Download</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- More Info Modal -->
+	<div id="more-info-modal" class="modal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3>Episode Details</h3>
+				<button class="modal-close" id="modal-close">&times;</button>
+			</div>
+			<div class="modal-body">
+				<div class="episode-details">
+					<h4>Episode 5: Advanced Causal Inference in ML</h4>
+					<p class="episode-description">
+						Dive deep into the world of causal inference in machine learning. This episode explores advanced techniques for understanding cause-and-effect relationships in data, including structural causal models, counterfactual reasoning, and the challenges of establishing causality in observational studies.
+					</p>
+					<div class="episode-meta">
+						<div class="meta-item">
+							<strong>Duration:</strong> 45:32
+						</div>
+						<div class="meta-item">
+							<strong>Release Date:</strong> November 27, 2023
+						</div>
+						<div class="episode-meta">
+							<strong>Topics:</strong> Causal Inference, Machine Learning, Statistics
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Share Options Modal -->
+	<div id="share-modal" class="modal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3>Share Episode</h3>
+				<button class="modal-close" id="share-modal-close">&times;</button>
+			</div>
+			<div class="modal-body">
+				<div class="share-options">
+					<button class="share-option" id="copy-link">
+						<svg viewBox="0 0 24 24" fill="currentColor">
+							<path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+						</svg>
+						Copy Link
+					</button>
+					<button class="share-option" id="share-twitter">
+						<svg viewBox="0 0 24 24" fill="currentColor">
+							<path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+						</svg>
+						Twitter
+					</button>
+					<button class="share-option" id="share-linkedin">
+						<svg viewBox="0 0 24 24" fill="currentColor">
+							<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+						</svg>
+						LinkedIn
 					</button>
 				</div>
 			</div>
@@ -2939,6 +3233,111 @@
                 });
             });
         }
+        
+        // Modal functionality
+        const moreInfoBtn = document.getElementById('more-info-btn');
+        const shareBtn = document.getElementById('share-btn');
+        const modal = document.getElementById('more-info-modal');
+        const shareModal = document.getElementById('share-modal');
+        const modalClose = document.getElementById('modal-close');
+        const shareClose = document.getElementById('share-close');
+        const copyLinkBtn = document.getElementById('copy-link');
+        
+        // Open More Info modal
+        moreInfoBtn?.addEventListener('click', () => {
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // Close More Info modal
+        modalClose?.addEventListener('click', () => {
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Open Share modal
+        shareBtn?.addEventListener('click', () => {
+            shareModal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // Close Share modal
+        shareClose?.addEventListener('click', () => {
+            shareModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close modals when clicking outside
+        modal?.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        shareModal?.addEventListener('click', (e) => {
+            if (e.target === shareModal) {
+                shareModal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Copy link functionality
+        copyLinkBtn?.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(window.location.href);
+                copyLinkBtn.textContent = 'Copied!';
+                copyLinkBtn.style.background = 'var(--success-color, #28a745)';
+                setTimeout(() => {
+                    copyLinkBtn.textContent = 'Copy Link';
+                    copyLinkBtn.style.background = '';
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy: ', err);
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = window.location.href;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                copyLinkBtn.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyLinkBtn.textContent = 'Copy Link';
+                }, 2000);
+            }
+        });
+        
+        // Social media sharing
+        document.getElementById('share-twitter')?.addEventListener('click', () => {
+            const text = 'Check out this amazing podcast episode: Episode 5: Advanced Causal Inference in ML';
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${url}`, '_blank');
+        });
+        
+        document.getElementById('share-linkedin')?.addEventListener('click', () => {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+        });
+        
+        document.getElementById('share-facebook')?.addEventListener('click', () => {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (modal.classList.contains('show')) {
+                    modal.classList.remove('show');
+                    document.body.style.overflow = 'auto';
+                }
+                if (shareModal.classList.contains('show')) {
+                    shareModal.classList.remove('show');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        });
     });
 </script>
 </body>
