@@ -1524,9 +1524,26 @@
         margin-bottom: var(--space-sm);
     }
 
+    .search-input-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .search-icon {
+        position: absolute;
+        left: 12px;
+        width: 16px;
+        height: 16px;
+        color: var(--text-muted);
+        z-index: 2;
+        pointer-events: none;
+        transition: var(--transition-base);
+    }
+
     .episode-search input {
         width: 100%;
-        padding: 8px 12px;
+        padding: 8px 12px 8px 36px;
         border: 1px solid var(--border-color);
         border-radius: var(--radius-sm);
         font-size: 12px;
@@ -1540,6 +1557,11 @@
         outline: none;
         border-color: var(--primary-color);
         box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.1);
+        transform: translateY(-1px);
+    }
+
+    .episode-search input:focus + .search-icon {
+        color: var(--primary-color);
     }
 
     .episode-search input::placeholder {
@@ -2178,7 +2200,12 @@
 
 				<!-- Episode Search Bar -->
 				<div class="episode-search">
-					<input type="text" placeholder="Search episodes..." id="episode-search">
+					<div class="search-input-wrapper">
+						<svg class="search-icon" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+						</svg>
+						<input type="text" placeholder="Search episodes..." id="episode-search">
+					</div>
 				</div>
 
 				<!-- Episode Selection - Standard Scrolling with Good Practices -->
