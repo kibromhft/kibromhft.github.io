@@ -2033,19 +2033,6 @@
             transform: translateY(0) scale(1) rotateX(0deg);
         }
     }
-
-    @keyframes titleFadeIn {
-        0% {
-            opacity: 0;
-            transform: translateY(10px);
-            filter: blur(2px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-            filter: blur(0);
-        }
-    }
     
     .modal-header {
         display: flex;
@@ -2143,67 +2130,31 @@
     .episode-details h4 {
         margin: 0 0 var(--space-md) 0;
         color: var(--text-primary);
-        font-size: var(--font-size-xl);
-        font-weight: 700;
-        font-family: var(--font-heading);
-        line-height: 1.3;
-        letter-spacing: -0.02em;
-        background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary-color) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        animation: titleFadeIn 0.6s ease-out;
-        transition: all 0.3s ease;
-    }
-
-    .episode-details h4:hover {
-        transform: translateY(-2px);
-        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    }
-    
-    .episode-details {
-        padding: var(--space-lg);
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.05) 100%);
-        border-radius: var(--radius-lg);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        font-size: var(--font-size-lg);
+        font-weight: 600;
+        line-height: 1.4;
     }
     
     .episode-description {
         color: var(--text-secondary);
-        line-height: 1.7;
+        line-height: 1.6;
         margin-bottom: var(--space-lg);
-        font-size: var(--font-size-base);
-        font-family: var(--font-body);
-        text-align: justify;
-        hyphens: auto;
     }
     
     .episode-meta {
         display: flex;
         flex-direction: column;
-        gap: var(--space-md);
-        padding: var(--space-md);
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.08) 100%);
-        border-radius: var(--radius-md);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        gap: var(--space-sm);
     }
     
     .meta-item {
         color: var(--text-secondary);
         font-size: var(--font-size-sm);
-        font-family: var(--font-body);
-        display: flex;
-        align-items: center;
-        gap: var(--space-xs);
     }
     
     .meta-item strong {
         color: var(--text-primary);
-        font-weight: 600;
-        min-width: 80px;
+        margin-right: var(--space-xs);
     }
     
     .share-options {
@@ -2325,17 +2276,6 @@
 
         .modal-header {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.08) 100%);
-        }
-
-        .episode-details {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.04) 100%);
-            border-color: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .episode-meta {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.05) 100%);
-            border-color: rgba(255, 255, 255, 0.06);
         }
     }
 </style>
