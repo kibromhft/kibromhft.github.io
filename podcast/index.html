@@ -939,17 +939,14 @@
         background: none;
         border: 2px solid var(--border-color);
         color: var(--text-secondary);
-        width: auto;
-        min-width: 44px;
+        width: 44px;
         height: 44px;
-        border-radius: 22px;
+        border-radius: 50%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
         cursor: pointer;
         transition: var(--transition-base);
-        gap: var(--space-xs);
-        padding: 0 var(--space-sm);
     }
 
     .controls-button:hover {
@@ -961,13 +958,6 @@
     .controls-button svg {
         width: 20px;
         height: 20px;
-    }
-
-    .controls-button .time-label {
-        font-size: var(--font-size-sm);
-        font-weight: 600;
-        color: var(--text-secondary);
-        white-space: nowrap;
     }
 
     .speed-control {
@@ -2115,16 +2105,14 @@
 					
 					<button class="controls-button rewind" aria-label="Rewind 15 seconds">
 						<svg viewBox="0 0 24 24" fill="currentColor">
-							<path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69 6-6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/>
+							<path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/>
 						</svg>
-						<span class="time-label">15s</span>
 					</button>
 					
 					<button class="controls-button forward" aria-label="Forward 30 seconds">
 						<svg viewBox="0 0 24 24" fill="currentColor">
-							<path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69 6-6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/>
+							<path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/>
 						</svg>
-						<span class="time-label">30s</span>
 					</button>
 					
 					<button class="controls-button speed-control" aria-label="Change playback speed">
