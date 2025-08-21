@@ -1997,9 +1997,9 @@
             0 25px 50px rgba(0, 0, 0, 0.15),
             0 12px 25px rgba(0, 0, 0, 0.1),
             0 0 0 1px rgba(255, 255, 255, 0.05);
-        max-width: 500px;
+        max-width: 400px;
         width: 90%;
-        max-height: 80vh;
+        max-height: 70vh;
         overflow-y: auto;
         animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
@@ -2036,7 +2036,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: var(--space-xl) var(--space-xl) var(--space-lg);
+        padding: var(--space-lg) var(--space-lg) var(--space-md);
         border-bottom: 2px solid var(--border-color);
         background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.05) 100%);
         position: relative;
@@ -2056,7 +2056,7 @@
     .modal-header h3 {
         margin: 0;
         color: var(--text-primary);
-        font-size: var(--font-size-xl);
+        font-size: var(--font-size-lg);
         font-weight: 700;
         background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary-color) 100%);
         -webkit-background-clip: text;
@@ -2068,7 +2068,7 @@
     .modal-close {
         background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
         border: 2px solid var(--border-color);
-        font-size: 20px;
+        font-size: 18px;
         color: var(--text-muted);
         cursor: pointer;
         padding: var(--space-xs);
@@ -2077,8 +2077,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 36px;
-        height: 36px;
+        width: 32px;
+        height: 32px;
         position: relative;
         overflow: hidden;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -2112,7 +2112,7 @@
     }
     
     .modal-body {
-        padding: var(--space-xl);
+        padding: var(--space-lg);
         background: linear-gradient(135deg, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.03) 100%);
     }
     
@@ -2155,8 +2155,8 @@
         .share-option {
         display: flex;
         align-items: center;
-        gap: var(--space-md);
-        padding: var(--space-lg);
+        gap: var(--space-sm);
+        padding: var(--space-md);
         background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
         border: 2px solid var(--border-color);
         border-radius: var(--radius-lg);
@@ -2199,8 +2199,8 @@
     }
 
     .share-option svg {
-        width: 22px;
-        height: 22px;
+        width: 20px;
+        height: 20px;
         flex-shrink: 0;
         transition: transform 0.3s ease;
     }
@@ -2232,8 +2232,8 @@
     .share-options {
         display: flex;
         flex-direction: column;
-        gap: var(--space-lg);
-        padding: var(--space-md);
+        gap: var(--space-md);
+        padding: var(--space-sm);
         background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.05) 100%);
         border-radius: var(--radius-lg);
         border: 1px solid rgba(255, 255, 255, 0.1);
