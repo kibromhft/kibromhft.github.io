@@ -1649,7 +1649,7 @@
         transition: all 0.2s ease;
     }
 
-    /* Buzzsprout-style Continuous Waveform */
+    /* Modern Real-time Waveform */
     .wave-container {
         position: relative;
         width: 100%;
@@ -1680,6 +1680,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        overflow: hidden;
     }
 
     .wave-visualization:hover {
@@ -1692,57 +1693,40 @@
         box-shadow: 0 4px 16px rgba(0,0,0,0.1);
     }
 
-    /* SVG Waveform Styling */
-    .waveform-svg {
+    /* Canvas Waveform Styling */
+    .waveform-canvas {
         width: 100%;
         height: 100%;
         position: relative;
         z-index: 2;
+        display: block;
     }
 
-    /* Background waveform (unplayed portion) */
-    .waveform-bg {
-        transition: all 0.3s ease;
-        filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
-    }
-
-    /* Played portion waveform */
-    .waveform-played {
-        transition: all 0.3s ease;
-        stroke-dasharray: 1000;
-        stroke-dashoffset: 1000;
-        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    /* Playhead indicator */
+    .playhead {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 2px;
+        height: 100%;
+        background: var(--primary-color);
+        z-index: 4;
+        pointer-events: none;
+        transition: left 0.1s ease;
+        box-shadow: 0 0 8px var(--primary-color);
     }
 
     /* Animation when playing */
-    .wave-visualization.playing .waveform-played {
-        animation: waveform-flow 3s ease-in-out infinite;
+    .wave-visualization.playing .playhead {
+        animation: playhead-pulse 2s ease-in-out infinite;
     }
 
-    @keyframes waveform-flow {
+    @keyframes playhead-pulse {
         0%, 100% { 
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+            box-shadow: 0 0 8px var(--primary-color);
         }
         50% { 
-            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.3));
-        }
-    }
-
-    /* Current position indicator */
-    .waveform-position {
-        transition: all 0.1s ease;
-        filter: drop-shadow(0 0 6px var(--primary-color));
-        animation: position-pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes position-pulse {
-        0%, 100% { 
-            r: 2; 
-            opacity: 1;
-        }
-        50% { 
-            r: 2.5; 
-            opacity: 0.8;
+            box-shadow: 0 0 12px var(--primary-color), 0 0 20px rgba(13, 110, 253, 0.3);
         }
     }
 
@@ -1759,6 +1743,24 @@
         transition: width 0.1s ease;
         pointer-events: none;
         z-index: 1;
+        opacity: 0.6;
+    }
+    
+    /* Hover effects for waveform */
+    .wave-visualization:hover .wave-progress {
+        opacity: 0.8;
+    }
+    
+    /* Responsive waveform */
+    @media (max-width: 768px) {
+        .wave-container {
+            max-width: 100%;
+            height: 60px;
+        }
+        
+        .wave-visualization {
+            height: 100%;
+        }
     }
 
     /* Dark mode support */
@@ -1776,16 +1778,9 @@
             var(--bg-secondary) 100%);
     }
 
-    body.dark .waveform-bg {
-        stroke: url(#waveGradientUnplayed);
-    }
-
-    body.dark .waveform-played {
-        stroke: url(#waveGradientPlayed);
-    }
-
-    body.dark .waveform-position {
-        filter: drop-shadow(0 0 6px var(--primary-color));
+    body.dark .playhead {
+        background: var(--primary-color);
+        box-shadow: 0 0 8px var(--primary-color);
     }
 </style>
 
@@ -2142,48 +2137,14 @@
 				
 				<div class="wave-container">
 					<div class="wave-visualization" id="waveform">
-						<!-- Buzzsprout-style continuous waveform -->
-						<svg class="waveform-svg" viewBox="0 0 100 40" preserveAspectRatio="none">
-							<defs>
-								<linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-									<stop offset="0%" style="stop-color:var(--primary-color);stop-opacity:0.8" />
-									<stop offset="50%" style="stop-color:var(--primary-color);stop-opacity:0.6" />
-									<stop offset="100%" style="stop-color:var(--primary-color);stop-opacity:0.3" />
-								</linearGradient>
-								<linearGradient id="waveGradientPlayed" x1="0%" y1="0%" x2="0%" y2="100%">
-									<stop offset="0%" style="stop-color:var(--text-primary);stop-opacity:0.9" />
-									<stop offset="50%" style="stop-color:var(--text-primary);stop-opacity:0.7" />
-									<stop offset="100%" style="stop-color:var(--text-primary);stop-opacity:0.4" />
-								</linearGradient>
-								<linearGradient id="waveGradientUnplayed" x1="0%" y1="0%" x2="0%" y2="100%">
-									<stop offset="0%" style="stop-color:var(--text-muted);stop-opacity:0.5" />
-									<stop offset="50%" style="stop-color:var(--text-muted);stop-opacity:0.3" />
-									<stop offset="100%" style="stop-color:var(--text-muted);stop-opacity:0.1" />
-								</linearGradient>
-							</defs>
-							
-							<!-- Background waveform (unplayed) -->
-							<path class="waveform-bg" d="M0,20 L2,18 L4,22 L6,16 L8,24 L10,14 L12,26 L14,12 L16,28 L18,10 L20,30 L22,8 L24,32 L26,6 L28,34 L30,4 L32,36 L34,2 L36,38 L38,0 L40,40 L42,2 L44,38 L46,4 L48,36 L50,6 L52,34 L54,8 L56,32 L58,10 L60,30 L62,12 L64,28 L66,14 L68,26 L70,16 L72,24 L74,18 L76,22 L78,20 L80,18 L82,22 L84,16 L86,24 L88,14 L90,26 L92,12 L94,28 L96,10 L98,30 L100,20" 
-								  fill="none" 
-								  stroke="url(#waveGradientUnplayed)" 
-								  stroke-width="1.5" 
-								  stroke-linecap="round" 
-								  stroke-linejoin="round"/>
-							
-							<!-- Played portion waveform -->
-							<path class="waveform-played" d="M0,20 L2,18 L4,22 L6,16 L8,24 L10,14 L12,26 L14,12 L16,28 L18,10 L20,30 L22,8 L24,32 L26,6 L28,34 L30,4 L32,36 L34,2 L36,38 L38,0 L40,40 L42,2 L44,38 L46,4 L48,36 L50,6 L52,34 L54,8 L56,32 L58,10 L60,30 L62,12 L64,28 L66,14 L68,26 L70,16 L72,24 L74,18 L76,22 L78,20 L80,18 L82,22 L84,16 L86,24 L88,14 L90,26 L92,12 L94,28 L96,10 L98,30 L100,20" 
-								  fill="none" 
-								  stroke="url(#waveGradientPlayed)" 
-								  stroke-width="2" 
-								  stroke-linecap="round" 
-								  stroke-linejoin="round"/>
-							
-							<!-- Current position indicator -->
-							<circle class="waveform-position" cx="0" cy="20" r="2" fill="var(--primary-color)" stroke="var(--bg-primary)" stroke-width="1"/>
-						</svg>
+						<!-- Modern Canvas-based Real-time Waveform -->
+						<canvas id="waveform-canvas" class="waveform-canvas"></canvas>
 						
 						<!-- Progress overlay -->
 						<div class="wave-progress" id="wave-progress"></div>
+						
+						<!-- Playhead indicator -->
+						<div class="playhead" id="playhead"></div>
 					</div>
 					
 					<div class="time-display">
@@ -2484,8 +2445,8 @@
         const speedButton = mainPlayer.querySelector('.speed-control');
         const waveform = mainPlayer.querySelector('#waveform');
         const waveProgress = mainPlayer.querySelector('#wave-progress');
-        const waveformPlayed = mainPlayer.querySelector('.waveform-played');
-        const waveformPosition = mainPlayer.querySelector('.waveform-position');
+        const waveformCanvas = mainPlayer.querySelector('#waveform-canvas');
+        const playhead = mainPlayer.querySelector('#playhead');
         const volumeBtn = mainPlayer.querySelector('.volume-btn');
         const volumeIcon = mainPlayer.querySelector('.volume-icon');
         const muteIcon = mainPlayer.querySelector('.mute-icon');
@@ -2495,6 +2456,16 @@
         let isPlaying = false;
         let isMuted = false;
         let lastVolume = 100;
+        
+        // Waveform variables
+        let audioContext;
+        let analyser;
+        let dataArray;
+        let animationId;
+        let waveformData = [];
+        
+        // Initialize waveform
+        initWaveform();
         
         // Initialize with first episode
         updatePlayerInfo('5', 'audio5.mp3');
@@ -2529,6 +2500,12 @@
                 playButton.classList.remove('playing');
                 document.querySelector('.wave-visualization').classList.remove('playing');
             } else {
+                // Connect audio to analyser on first play
+                if (audioContext && audioContext.state === 'suspended') {
+                    audioContext.resume();
+                }
+                connectAudioToAnalyser();
+                
                 audioPlayer.play();
                 isPlaying = true;
                 playIcon.style.display = 'none';
@@ -2557,6 +2534,8 @@
             
             if (!isNaN(audioPlayer.duration)) {
                 audioPlayer.currentTime = clickPercent * audioPlayer.duration;
+                // Update waveform immediately
+                drawWaveform();
             }
         });
 
@@ -2648,12 +2627,15 @@
                 const wasPlaying = isPlaying;
                 const currentTime = audioPlayer.currentTime;
                 
-                // Update player
+                                // Update player
                 updatePlayerInfo(episodeNumber, audioFile);
                 
                 // Update episode title
                 episodeTitle.textContent = `Episode ${episodeNumber}: ${episodeName}`;
                 
+                // Regenerate waveform for new episode
+                generateWaveformData();
+
                 // Restore playback state after new audio loads
                 audioPlayer.addEventListener('loadedmetadata', function restorePlayback() {
                     if (wasPlaying) {
@@ -2668,6 +2650,168 @@
                 }, { once: true });
             });
         });
+        
+        // Waveform Functions
+        function initWaveform() {
+            const canvas = waveformCanvas;
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas size
+            function resizeCanvas() {
+                const rect = canvas.getBoundingClientRect();
+                canvas.width = rect.width * window.devicePixelRatio;
+                canvas.height = rect.height * window.devicePixelRatio;
+                ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+            
+            // Initialize Web Audio API
+            try {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                analyser = audioContext.createAnalyser();
+                analyser.fftSize = 256;
+                const bufferLength = analyser.frequencyBinCount;
+                dataArray = new Uint8Array(bufferLength);
+                
+                // Generate initial waveform data
+                generateWaveformData();
+            } catch (error) {
+                console.log('Web Audio API not supported, using fallback');
+                generateWaveformData();
+            }
+        }
+        
+        function generateWaveformData() {
+            const canvas = waveformCanvas;
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width / window.devicePixelRatio;
+            const height = canvas.height / window.devicePixelRatio;
+            
+            // Generate realistic waveform data
+            const barCount = Math.floor(width / 3);
+            waveformData = [];
+            
+            for (let i = 0; i < barCount; i++) {
+                // Create varied heights for realistic appearance
+                const baseHeight = Math.random() * 0.3 + 0.1;
+                const variation = Math.sin(i * 0.1) * 0.2;
+                const height = Math.max(0.05, baseHeight + variation);
+                waveformData.push(height);
+            }
+            
+            drawWaveform();
+        }
+        
+        function drawWaveform() {
+            const canvas = waveformCanvas;
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width / window.devicePixelRatio;
+            const height = canvas.height / window.devicePixelRatio;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, width, height);
+            
+            const barWidth = width / waveformData.length;
+            const centerY = height / 2;
+            
+            // Draw waveform bars
+            waveformData.forEach((barHeight, index) => {
+                const x = index * barWidth;
+                const barHeightPx = barHeight * height;
+                
+                // Calculate if this bar should be highlighted (played portion)
+                const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) || 0;
+                const isPlayed = (index / waveformData.length) <= progressPercent;
+                
+                // Create gradient for each bar
+                const gradient = ctx.createLinearGradient(x, 0, x + barWidth, 0);
+                
+                if (isPlayed) {
+                    // Played portion - primary color
+                    gradient.addColorStop(0, 'rgba(13, 110, 253, 0.8)');
+                    gradient.addColorStop(1, 'rgba(13, 110, 253, 0.6)');
+                } else {
+                    // Unplayed portion - muted color
+                    gradient.addColorStop(0, 'rgba(156, 163, 175, 0.4)');
+                    gradient.addColorStop(1, 'rgba(156, 163, 175, 0.2)');
+                }
+                
+                ctx.fillStyle = gradient;
+                
+                // Draw bar with rounded corners
+                const barX = x + barWidth * 0.1;
+                const barW = barWidth * 0.8;
+                const barY = centerY - barHeightPx / 2;
+                
+                ctx.beginPath();
+                ctx.roundRect(barX, barY, barW, barHeightPx, 2);
+                ctx.fill();
+                
+                // Add subtle shadow
+                ctx.shadowColor = 'rgba(0, 0, 0, 0.1)';
+                ctx.shadowBlur = 2;
+                ctx.shadowOffsetX = 0;
+                ctx.shadowOffsetY = 1;
+            });
+            
+            // Reset shadow
+            ctx.shadowColor = 'transparent';
+        }
+        
+        function updateWaveformRealtime() {
+            if (analyser && isPlaying) {
+                analyser.getByteFrequencyData(dataArray);
+                
+                // Update waveform data based on real audio
+                const barCount = waveformData.length;
+                for (let i = 0; i < barCount; i++) {
+                    const dataIndex = Math.floor((i / barCount) * dataArray.length);
+                    const audioValue = dataArray[dataIndex] / 255;
+                    
+                    // Blend real audio data with base waveform
+                    waveformData[i] = waveformData[i] * 0.7 + audioValue * 0.3;
+                }
+                
+                drawWaveform();
+            }
+            
+            // Continue animation
+            animationId = requestAnimationFrame(updateWaveformRealtime);
+        }
+        
+        // Start waveform animation
+        updateWaveformRealtime();
+        
+        // Add roundRect polyfill for older browsers
+        if (!CanvasRenderingContext2D.prototype.roundRect) {
+            CanvasRenderingContext2D.prototype.roundRect = function(x, y, width, height, radius) {
+                if (width < 2 * radius) radius = width / 2;
+                if (height < 2 * radius) radius = height / 2;
+                this.beginPath();
+                this.moveTo(x + radius, y);
+                this.arcTo(x + width, y, x + width, y + height, radius);
+                this.arcTo(x + width, y + height, x, y + height, radius);
+                this.arcTo(x, y + height, x, y, radius);
+                this.arcTo(x, y, x + width, y, radius);
+                this.closePath();
+                return this;
+            };
+        }
+        
+        // Connect audio player to Web Audio API when playing
+        function connectAudioToAnalyser() {
+            if (audioContext && analyser) {
+                try {
+                    const source = audioContext.createMediaElementSource(audioPlayer);
+                    source.connect(analyser);
+                    analyser.connect(audioContext.destination);
+                } catch (error) {
+                    console.log('Audio already connected or not supported');
+                }
+            }
+        }
         
         // Episode search functionality
         const searchInput = document.getElementById('episode-search');
@@ -2714,13 +2858,11 @@
                 // Update progress bar width
                 waveProgress.style.width = progressPercent + '%';
                 
-                // Update SVG waveform played portion using stroke-dashoffset
-                const totalLength = 1000; // This matches the stroke-dasharray in CSS
-                const playedLength = totalLength - (progressPercent / 100) * totalLength;
-                waveformPlayed.style.strokeDashoffset = playedLength;
+                // Update playhead position
+                playhead.style.left = progressPercent + '%';
                 
-                // Update position indicator
-                waveformPosition.style.cx = progressPercent + '%';
+                // Update waveform visualization
+                drawWaveform();
             }
         }
 
