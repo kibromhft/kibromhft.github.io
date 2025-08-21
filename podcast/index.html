@@ -2058,11 +2058,13 @@
         color: var(--text-primary);
         font-size: var(--font-size-lg);
         font-weight: 700;
+        font-family: var(--font-heading);
         background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary-color) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
         letter-spacing: -0.02em;
+        line-height: 1.2;
     }
     
     .modal-close {
@@ -2165,9 +2167,12 @@
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         font-size: var(--font-size-sm);
         font-weight: 600;
+        font-family: var(--font-body);
         position: relative;
         overflow: hidden;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        letter-spacing: 0.01em;
+        line-height: 1.4;
     }
 
     .share-option::before {
