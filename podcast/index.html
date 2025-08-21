@@ -1524,9 +1524,25 @@
         margin-bottom: var(--space-sm);
     }
 
+    .search-input-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .search-icon {
+        position: absolute;
+        left: 12px;
+        width: 16px;
+        height: 16px;
+        color: var(--text-muted);
+        z-index: 2;
+        pointer-events: none;
+    }
+
     .episode-search input {
         width: 100%;
-        padding: 8px 12px;
+        padding: 8px 12px 8px 36px;
         border: 1px solid var(--border-color);
         border-radius: var(--radius-sm);
         font-size: 12px;
@@ -1540,6 +1556,11 @@
         outline: none;
         border-color: var(--primary-color);
         box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.1);
+        transform: translateY(-1px);
+    }
+
+    .episode-search input:focus + .search-icon {
+        color: var(--primary-color);
     }
 
     .episode-search input::placeholder {
@@ -1628,16 +1649,59 @@
         font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
 
+    .episode-option .episode-info {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-sm);
+        flex: 1;
+    }
+
+    .episode-option .episode-details {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        flex: 1;
+        min-width: 0;
+    }
+
     .episode-option .episode-name {
         font-size: 14px;
         font-weight: 500;
         color: var(--text-primary);
         font-family: var(--font-body);
         letter-spacing: -0.1px;
-        flex: 1;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+
+    .episode-option .episode-description {
+        font-size: 12px;
+        color: var(--text-muted);
+        font-family: var(--font-body);
+        line-height: 1.3;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .episode-option .episode-meta {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 4px;
+        flex-shrink: 0;
+    }
+
+    .episode-option .now-playing-indicator {
+        font-size: 11px;
+        color: var(--primary-color);
+        font-weight: 600;
+        background: rgba(13, 110, 253, 0.1);
+        padding: 2px 6px;
+        border-radius: 10px;
+        border: 1px solid var(--primary-color);
+        white-space: nowrap;
     }
 
     .episode-option .episode-duration {
@@ -1723,6 +1787,25 @@
         position: relative;
         z-index: 2;
         display: block;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .waveform-canvas.loaded {
+        opacity: 1;
+    }
+
+    /* Loading state for waveform */
+    .wave-visualization.loading::before {
+        content: 'Loading...';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: var(--text-muted);
+        font-size: 12px;
+        font-family: var(--font-body);
+        z-index: 1;
     }
 
     /* Playhead indicator */
@@ -2178,36 +2261,77 @@
 
 				<!-- Episode Search Bar -->
 				<div class="episode-search">
-					<input type="text" placeholder="Search episodes..." id="episode-search">
+					<div class="search-input-wrapper">
+						<svg class="search-icon" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+						</svg>
+						<input type="text" placeholder="Search episodes..." id="episode-search">
+					</div>
 				</div>
 
 				<!-- Episode Selection - Standard Scrolling with Good Practices -->
 				<div class="episode-selector">
 					<div class="episode-scroll">
 						<div class="episode-option current" data-episode="5" data-audio="audio5.mp3">
-							<span class="episode-num">05</span>
-							<span class="episode-name">Advanced Causal Inference in ML</span>
-							<span class="episode-duration">47:32</span>
+							<div class="episode-info">
+								<span class="episode-num">05</span>
+								<div class="episode-details">
+									<span class="episode-name">Advanced Causal Inference in ML</span>
+									<span class="episode-description">Deep dive into causal inference methods for machine learning applications</span>
+								</div>
+							</div>
+							<div class="episode-meta">
+								<span class="episode-duration">47:32</span>
+								<span class="now-playing-indicator">▶ Now Playing</span>
+							</div>
 						</div>
 						<div class="episode-option" data-episode="4" data-audio="audio4.mp3">
-							<span class="episode-num">04</span>
-							<span class="episode-name">Understanding Autoencoders</span>
-							<span class="episode-duration">42:18</span>
+							<div class="episode-info">
+								<span class="episode-num">04</span>
+								<div class="episode-details">
+									<span class="episode-name">Understanding Autoencoders</span>
+									<span class="episode-description">Comprehensive guide to autoencoder architectures and applications</span>
+								</div>
+							</div>
+							<div class="episode-meta">
+								<span class="episode-duration">42:18</span>
+							</div>
 						</div>
 						<div class="episode-option" data-episode="3" data-audio="audio3.mp3">
-							<span class="episode-num">03</span>
-							<span class="episode-name">Data Analysis Fundamentals</span>
-							<span class="episode-duration">38:45</span>
+							<div class="episode-info">
+								<span class="episode-num">03</span>
+								<div class="episode-details">
+									<span class="episode-name">Data Analysis Fundamentals</span>
+									<span class="episode-description">Essential techniques and best practices for data analysis</span>
+								</div>
+							</div>
+							<div class="episode-meta">
+								<span class="episode-duration">38:45</span>
+							</div>
 						</div>
 						<div class="episode-option" data-episode="2" data-audio="audio2.mp3">
-							<span class="episode-num">02</span>
-							<span class="episode-name">Debugging Neural Networks</span>
-							<span class="episode-duration">35:12</span>
+							<div class="episode-info">
+								<span class="episode-num">02</span>
+								<div class="episode-details">
+									<span class="episode-name">Debugging Neural Networks</span>
+									<span class="episode-description">Practical strategies for troubleshooting neural network issues</span>
+								</div>
+							</div>
+							<div class="episode-meta">
+								<span class="episode-duration">35:12</span>
+							</div>
 						</div>
 						<div class="episode-option" data-episode="1" data-audio="audio1.mp3">
-							<span class="episode-num">01</span>
-							<span class="episode-name">ML Automation Strategies</span>
-							<span class="episode-duration">41:27</span>
+							<div class="episode-info">
+								<span class="episode-num">01</span>
+								<div class="episode-details">
+									<span class="episode-name">ML Automation Strategies</span>
+									<span class="episode-description">Streamlining machine learning workflows and pipelines</span>
+								</div>
+							</div>
+							<div class="episode-meta">
+								<span class="episode-duration">41:27</span>
+							</div>
 						</div>
 						<!-- Example of how it would look with more episodes -->
 						<div class="episode-option" data-episode="6" data-audio="audio6.mp3">
