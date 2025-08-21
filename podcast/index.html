@@ -2738,8 +2738,6 @@
             ctx.clearRect(0, 0, width, height);
             
             const centerY = height / 2;
-            const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) || 0;
-            const progressX = width * progressPercent;
             
             // Draw smooth flowing waveform
             ctx.beginPath();
@@ -2788,51 +2786,50 @@
             
             ctx.closePath();
             
-            // Fill played portion (left side) with play button blue
+            // Create gradient for the entire waveform
+            const gradient = ctx.createLinearGradient(0, 0, width, 0);
+            const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) || 0;
+            
             if (progressPercent > 0) {
+                // Split gradient for played/unplayed portions
+                const playedWidth = width * progressPercent;
+                
+                // Played portion gradient
+                const playedGradient = ctx.createLinearGradient(0, 0, playedWidth, 0);
+                playedGradient.addColorStop(0, 'rgba(13, 110, 253, 0.9)');
+                playedGradient.addColorStop(0.5, 'rgba(13, 110, 253, 0.7)');
+                playedGradient.addColorStop(1, 'rgba(13, 110, 253, 0.5)');
+                
+                // Unplayed portion gradient
+                const unplayedGradient = ctx.createLinearGradient(playedWidth, 0, width, 0);
+                unplayedGradient.addColorStop(0, 'rgba(156, 163, 175, 0.3)');
+                unplayedGradient.addColorStop(0.5, 'rgba(156, 163, 175, 0.2)');
+                unplayedGradient.addColorStop(1, 'rgba(156, 163, 175, 0.1)');
+                
+                // Fill played portion
                 ctx.save();
                 ctx.clip();
-                
-                // Create clipping region for left side only
-                ctx.beginPath();
-                ctx.rect(0, 0, progressX, height);
-                ctx.clip();
-                
-                // Fill with play button blue
-                ctx.fillStyle = 'rgb(0, 123, 255)';
+                ctx.fillStyle = playedGradient;
                 ctx.fill();
                 ctx.restore();
-            }
-            
-            // Fill unplayed portion (right side) with muted gray
-            ctx.save();
-            ctx.clip();
-            
-            // Create clipping region for right side only
-            ctx.beginPath();
-            ctx.rect(progressX, 0, width - progressX, height);
-            ctx.clip();
-            
-            // Fill with muted gray
-            ctx.fillStyle = 'rgba(156, 163, 175, 0.4)';
-            ctx.fill();
-            ctx.restore();
-            
-            // Draw progress line (vertical separator)
-            if (progressPercent > 0 && progressPercent < 1) {
+                
+                // Fill unplayed portion
                 ctx.save();
-                ctx.strokeStyle = 'rgb(0, 123, 255)';
-                ctx.lineWidth = 2;
-                ctx.setLineDash([4, 4]);
-                ctx.beginPath();
-                ctx.moveTo(progressX, 0);
-                ctx.lineTo(progressX, height);
-                ctx.stroke();
+                ctx.clip();
+                ctx.fillStyle = unplayedGradient;
+                ctx.fill();
                 ctx.restore();
+            } else {
+                // All unplayed
+                gradient.addColorStop(0, 'rgba(156, 163, 175, 0.3)');
+                gradient.addColorStop(0.5, 'rgba(156, 163, 175, 0.2)');
+                gradient.addColorStop(1, 'rgba(156, 163, 175, 0.1)');
+                ctx.fillStyle = gradient;
+                ctx.fill();
             }
             
             // Add subtle glow effect
-            ctx.shadowColor = 'rgba(0, 123, 255, 0.3)';
+            ctx.shadowColor = 'rgba(13, 110, 253, 0.3)';
             ctx.shadowBlur = 8;
             ctx.shadowOffsetX = 0;
             ctx.shadowOffsetY = 0;
