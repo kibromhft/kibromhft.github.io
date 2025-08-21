@@ -2689,42 +2689,18 @@
             const width = canvas.width / window.devicePixelRatio;
             const height = canvas.height / window.devicePixelRatio;
             
-            // Generate smooth, organic waveform data
-            const dataPoints = Math.floor(width / 2);
+            // Generate realistic waveform data
+            const barCount = Math.floor(width / 3);
             waveformData = [];
             
-            // Create base sine wave with multiple frequencies
-            for (let i = 0; i < dataPoints; i++) {
-                const progress = i / (dataPoints - 1);
-                
-                // Multiple sine waves for organic feel
-                const wave1 = Math.sin(progress * Math.PI * 8) * 0.15;
-                const wave2 = Math.sin(progress * Math.PI * 3) * 0.1;
-                const wave3 = Math.sin(progress * Math.PI * 12) * 0.05;
-                
-                // Add some randomness for natural variation
-                const random = (Math.random() - 0.5) * 0.1;
-                
-                // Combine waves and add base height
-                const amplitude = Math.max(0.08, 0.2 + wave1 + wave2 + wave3 + random);
-                waveformData.push(amplitude);
+            for (let i = 0; i < barCount; i++) {
+                // Create varied heights for realistic appearance
+                const baseHeight = Math.random() * 0.3 + 0.1;
+                const variation = Math.sin(i * 0.1) * 0.2;
+                const height = Math.max(0.05, baseHeight + variation);
+                waveformData.push(height);
             }
             
-            // Smooth the data using moving average
-            const smoothed = [];
-            for (let i = 0; i < waveformData.length; i++) {
-                let sum = 0;
-                let count = 0;
-                
-                for (let j = Math.max(0, i - 2); j <= Math.min(waveformData.length - 1, i + 2); j++) {
-                    sum += waveformData[j];
-                    count++;
-                }
-                
-                smoothed.push(sum / count);
-            }
-            
-            waveformData = smoothed;
             drawWaveform();
         }
         
@@ -2737,102 +2713,48 @@
             // Clear canvas
             ctx.clearRect(0, 0, width, height);
             
+            const barWidth = width / waveformData.length;
             const centerY = height / 2;
             
-            // Draw smooth flowing waveform
-            ctx.beginPath();
-            
-            // Draw top curve
-            ctx.moveTo(0, centerY);
-            for (let i = 0; i < waveformData.length; i++) {
-                const x = (i / (waveformData.length - 1)) * width;
-                const amplitude = waveformData[i] * height * 0.4;
-                const y = centerY - amplitude;
+            // Draw waveform bars
+            waveformData.forEach((barHeight, index) => {
+                const x = index * barWidth;
+                const barHeightPx = barHeight * height;
                 
-                if (i === 0) {
-                    ctx.moveTo(x, y);
+                // Calculate if this bar should be highlighted (played portion)
+                const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) || 0;
+                const isPlayed = (index / waveformData.length) <= progressPercent;
+                
+                // Create gradient for each bar
+                const gradient = ctx.createLinearGradient(x, 0, x + barWidth, 0);
+                
+                if (isPlayed) {
+                    // Played portion - primary color
+                    gradient.addColorStop(0, 'rgba(13, 110, 253, 0.8)');
+                    gradient.addColorStop(1, 'rgba(13, 110, 253, 0.6)');
                 } else {
-                    // Use quadratic curves for smooth transitions
-                    const prevX = ((i - 1) / (waveformData.length - 1)) * width;
-                    const prevAmplitude = waveformData[i - 1] * height * 0.4;
-                    const prevY = centerY - prevAmplitude;
-                    
-                    const controlX = (prevX + x) / 2;
-                    const controlY = (prevY + y) / 2;
-                    
-                    ctx.quadraticCurveTo(controlX, controlY, x, y);
+                    // Unplayed portion - muted color
+                    gradient.addColorStop(0, 'rgba(156, 163, 175, 0.4)');
+                    gradient.addColorStop(1, 'rgba(156, 163, 175, 0.2)');
                 }
-            }
-            
-            // Draw bottom curve (mirror of top)
-            for (let i = waveformData.length - 1; i >= 0; i--) {
-                const x = (i / (waveformData.length - 1)) * width;
-                const amplitude = waveformData[i] * height * 0.4;
-                const y = centerY + amplitude;
                 
-                if (i === waveformData.length - 1) {
-                    ctx.lineTo(x, y);
-                } else {
-                    const nextX = ((i + 1) / (waveformData.length - 1)) * width;
-                    const nextAmplitude = waveformData[i + 1] * height * 0.4;
-                    const nextY = centerY + nextAmplitude;
-                    
-                    const controlX = (x + nextX) / 2;
-                    const controlY = (y + nextY) / 2;
-                    
-                    ctx.quadraticCurveTo(controlX, controlY, x, y);
-                }
-            }
-            
-            ctx.closePath();
-            
-            // Create gradient for the entire waveform
-            const gradient = ctx.createLinearGradient(0, 0, width, 0);
-            const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) || 0;
-            
-            if (progressPercent > 0) {
-                // Split gradient for played/unplayed portions
-                const playedWidth = width * progressPercent;
-                
-                // Played portion gradient
-                const playedGradient = ctx.createLinearGradient(0, 0, playedWidth, 0);
-                playedGradient.addColorStop(0, 'rgba(13, 110, 253, 0.9)');
-                playedGradient.addColorStop(0.5, 'rgba(13, 110, 253, 0.7)');
-                playedGradient.addColorStop(1, 'rgba(13, 110, 253, 0.5)');
-                
-                // Unplayed portion gradient
-                const unplayedGradient = ctx.createLinearGradient(playedWidth, 0, width, 0);
-                unplayedGradient.addColorStop(0, 'rgba(156, 163, 175, 0.3)');
-                unplayedGradient.addColorStop(0.5, 'rgba(156, 163, 175, 0.2)');
-                unplayedGradient.addColorStop(1, 'rgba(156, 163, 175, 0.1)');
-                
-                // Fill played portion
-                ctx.save();
-                ctx.clip();
-                ctx.fillStyle = playedGradient;
-                ctx.fill();
-                ctx.restore();
-                
-                // Fill unplayed portion
-                ctx.save();
-                ctx.clip();
-                ctx.fillStyle = unplayedGradient;
-                ctx.fill();
-                ctx.restore();
-            } else {
-                // All unplayed
-                gradient.addColorStop(0, 'rgba(156, 163, 175, 0.3)');
-                gradient.addColorStop(0.5, 'rgba(156, 163, 175, 0.2)');
-                gradient.addColorStop(1, 'rgba(156, 163, 175, 0.1)');
                 ctx.fillStyle = gradient;
+                
+                // Draw bar with rounded corners
+                const barX = x + barWidth * 0.1;
+                const barW = barWidth * 0.8;
+                const barY = centerY - barHeightPx / 2;
+                
+                ctx.beginPath();
+                ctx.roundRect(barX, barY, barW, barHeightPx, 2);
                 ctx.fill();
-            }
-            
-            // Add subtle glow effect
-            ctx.shadowColor = 'rgba(13, 110, 253, 0.3)';
-            ctx.shadowBlur = 8;
-            ctx.shadowOffsetX = 0;
-            ctx.shadowOffsetY = 0;
+                
+                // Add subtle shadow
+                ctx.shadowColor = 'rgba(0, 0, 0, 0.1)';
+                ctx.shadowBlur = 2;
+                ctx.shadowOffsetX = 0;
+                ctx.shadowOffsetY = 1;
+            });
             
             // Reset shadow
             ctx.shadowColor = 'transparent';
@@ -2842,15 +2764,14 @@
             if (analyser && isPlaying) {
                 analyser.getByteFrequencyData(dataArray);
                 
-                // Update waveform data based on real audio with smooth blending
+                // Update waveform data based on real audio
                 const barCount = waveformData.length;
                 for (let i = 0; i < barCount; i++) {
                     const dataIndex = Math.floor((i / barCount) * dataArray.length);
                     const audioValue = dataArray[dataIndex] / 255;
                     
-                    // Smooth blending with easing
-                    const targetValue = waveformData[i] * 0.6 + audioValue * 0.4;
-                    waveformData[i] += (targetValue - waveformData[i]) * 0.3;
+                    // Blend real audio data with base waveform
+                    waveformData[i] = waveformData[i] * 0.7 + audioValue * 0.3;
                 }
                 
                 drawWaveform();
