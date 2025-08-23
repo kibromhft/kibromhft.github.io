@@ -2294,6 +2294,197 @@
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.08) 100%);
         }
     }
+
+    /* Mobile-specific fixes for podcast player */
+    @media (max-width: 768px) {
+        /* Ensure proper touch targets for mobile */
+        .playpause-button,
+        .controls-button {
+            min-width: 48px;
+            min-height: 48px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        /* Fix audio player controls layout on mobile */
+        .play-controls {
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            justify-content: center;
+            padding: var(--space-sm);
+        }
+        
+        /* Ensure waveform is touch-friendly */
+        .wave-container {
+            touch-action: manipulation;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
+        .wave-visualization {
+            touch-action: manipulation;
+            cursor: pointer;
+        }
+        
+        /* Fix episode selector scrolling on mobile */
+        .episode-selector {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .episode-selector::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .episode-scroll {
+            display: flex;
+            gap: var(--space-xs);
+            padding: var(--space-sm);
+            min-width: max-content;
+        }
+        
+        /* Ensure proper button sizing on mobile */
+        .episode-info-btn,
+        .share-btn,
+        .download-btn {
+            min-height: 44px;
+            padding: var(--space-sm) var(--space-md);
+            font-size: var(--font-size-sm);
+            white-space: nowrap;
+        }
+        
+        /* Fix volume control on mobile */
+        .volume-control {
+            position: relative;
+        }
+        
+        .volume-slider {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--space-sm);
+            margin-bottom: var(--space-xs);
+            box-shadow: var(--shadow-lg);
+            display: none;
+        }
+        
+        .volume-control:hover .volume-slider,
+        .volume-control:focus-within .volume-slider {
+            display: block;
+        }
+        
+        /* Mobile-specific modal improvements */
+        .modal-content {
+            margin: var(--space-sm);
+            max-width: calc(100vw - 2rem);
+            max-height: calc(100vh - 2rem);
+            overflow-y: auto;
+        }
+        
+        /* Fix search input on mobile */
+        .episode-search input {
+            font-size: 16px; /* Prevents zoom on iOS */
+            padding: var(--space-sm);
+            min-height: 44px;
+        }
+        
+        /* Ensure proper spacing on very small screens */
+        @media (max-width: 480px) {
+            .main-player {
+                padding: var(--space-sm);
+            }
+            
+            .player-header {
+                text-align: center;
+            }
+            
+            .episode-title h2 {
+                font-size: var(--font-size-lg);
+            }
+            
+            .podcast-name h3 {
+                font-size: var(--font-size-base);
+            }
+            
+            .play-controls {
+                gap: var(--space-xs);
+            }
+            
+            .controls-button {
+                width: 44px;
+                height: 44px;
+            }
+            
+            .playpause-button {
+                width: 56px;
+                height: 56px;
+            }
+        }
+    }
+
+    /* Touch device specific improvements */
+    @media (hover: none) and (pointer: coarse) {
+        /* Remove hover effects on touch devices */
+        .playpause-button:hover,
+        .controls-button:hover,
+        .episode-option:hover {
+            transform: none;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        /* Add active states for touch feedback */
+        .playpause-button:active,
+        .controls-button:active,
+        .episode-option:active {
+            transform: scale(0.95);
+            transition: transform 0.1s ease;
+        }
+        
+        /* Ensure proper touch feedback */
+        .episode-option {
+            -webkit-tap-highlight-color: rgba(13, 110, 253, 0.2);
+            touch-action: manipulation;
+        }
+        
+        /* Fix waveform touch interaction */
+        .wave-visualization {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+    }
+
+    /* iOS Safari specific fixes */
+    @supports (-webkit-touch-callout: none) {
+        .playpause-button,
+        .controls-button {
+            -webkit-appearance: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .episode-search input {
+            -webkit-appearance: none;
+            border-radius: var(--radius-md);
+        }
+        
+        /* Fix audio element on iOS */
+        #audio-player {
+            -webkit-appearance: none;
+        }
+    }
+
+    /* Android Chrome specific fixes */
+    @media screen and (-webkit-min-device-pixel-ratio: 0) {
+        .playpause-button,
+        .controls-button {
+            -webkit-tap-highlight-color: transparent;
+        }
+    }
 </style>
 
     <script>
@@ -3584,6 +3775,252 @@
                     shareModal.classList.remove('show');
                     document.body.style.overflow = 'auto';
                 }
+            }
+        });
+        
+        // Mobile-specific fixes and improvements
+        function initMobileFixes() {
+            const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            const isMobile = window.innerWidth <= 768;
+            
+            if (isTouchDevice || isMobile) {
+                console.log('Initializing mobile fixes...');
+                
+                // Fix audio autoplay issues on mobile
+                const audioPlayer = document.getElementById('audio-player');
+                const playButton = document.querySelector('.playpause-button');
+                
+                // Handle mobile audio context initialization
+                function initMobileAudioContext() {
+                    if (audioContext && audioContext.state === 'suspended') {
+                        audioContext.resume().then(() => {
+                            console.log('Audio context resumed successfully');
+                        }).catch(error => {
+                            console.log('Failed to resume audio context:', error);
+                        });
+                    }
+                }
+                
+                // Add touch event listeners for better mobile interaction
+                if (playButton) {
+                    // Handle touch events for play button
+                    playButton.addEventListener('touchstart', function(e) {
+                        e.preventDefault();
+                        this.style.transform = 'scale(0.95)';
+                    }, { passive: false });
+                    
+                    playButton.addEventListener('touchend', function(e) {
+                        e.preventDefault();
+                        this.style.transform = 'scale(1)';
+                        // Trigger play/pause
+                        this.click();
+                    }, { passive: false });
+                    
+                    // Fix iOS audio playback issues
+                    playButton.addEventListener('click', function(e) {
+                        if (isTouchDevice) {
+                            // Ensure audio context is resumed on mobile
+                            initMobileAudioContext();
+                            
+                            // Add small delay for mobile devices
+                            setTimeout(() => {
+                                if (!isPlaying) {
+                                    audioPlayer.play().catch(error => {
+                                        console.log('Mobile play failed:', error);
+                                        // Fallback: try to resume audio context
+                                        initMobileAudioContext();
+                                    });
+                                }
+                            }, 100);
+                        }
+                    });
+                }
+                
+                // Fix waveform touch interaction on mobile
+                const waveform = document.getElementById('waveform');
+                if (waveform) {
+                    let isDragging = false;
+                    let startX = 0;
+                    let startTime = 0;
+                    
+                    waveform.addEventListener('touchstart', function(e) {
+                        e.preventDefault();
+                        const touch = e.touches[0];
+                        const rect = this.getBoundingClientRect();
+                        startX = touch.clientX - rect.left;
+                        startTime = audioPlayer.currentTime;
+                        isDragging = true;
+                        
+                        // Add visual feedback
+                        this.style.opacity = '0.8';
+                    }, { passive: false });
+                    
+                    waveform.addEventListener('touchmove', function(e) {
+                        if (!isDragging) return;
+                        e.preventDefault();
+                        
+                        const touch = e.touches[0];
+                        const rect = this.getBoundingClientRect();
+                        const currentX = touch.clientX - rect.left;
+                        const progressWidth = rect.width;
+                        const clickPercent = Math.max(0, Math.min(1, currentX / progressWidth));
+                        
+                        if (!isNaN(audioPlayer.duration)) {
+                            audioPlayer.currentTime = clickPercent * audioPlayer.duration;
+                            updateWaveformProgress(audioPlayer.currentTime, audioPlayer.duration);
+                        }
+                    }, { passive: false });
+                    
+                    waveform.addEventListener('touchend', function(e) {
+                        if (!isDragging) return;
+                        e.preventDefault();
+                        isDragging = false;
+                        this.style.opacity = '1';
+                    }, { passive: false });
+                }
+                
+                // Fix episode selector touch scrolling on mobile
+                const episodeSelector = document.querySelector('.episode-selector');
+                if (episodeSelector) {
+                    let startX = 0;
+                    let scrollLeft = 0;
+                    
+                    episodeSelector.addEventListener('touchstart', function(e) {
+                        const touch = e.touches[0];
+                        startX = touch.pageX - this.offsetLeft;
+                        scrollLeft = this.scrollLeft;
+                    });
+                    
+                    episodeSelector.addEventListener('touchmove', function(e) {
+                        if (!startX) return;
+                        const touch = e.touches[0];
+                        const x = touch.pageX - this.offsetLeft;
+                        const walk = (x - startX) * 2;
+                        this.scrollLeft = scrollLeft - walk;
+                    });
+                    
+                    episodeSelector.addEventListener('touchend', function(e) {
+                        startX = 0;
+                    });
+                }
+                
+                // Fix volume control on mobile
+                const volumeControl = document.querySelector('.volume-control');
+                const volumeSlider = document.querySelector('.volume-range');
+                
+                if (volumeControl && volumeSlider) {
+                    // Show volume slider on touch
+                    volumeControl.addEventListener('touchstart', function(e) {
+                        const slider = this.querySelector('.volume-slider');
+                        if (slider) {
+                            slider.style.display = 'block';
+                        }
+                    });
+                    
+                    // Hide volume slider after delay
+                    let volumeTimeout;
+                    volumeControl.addEventListener('touchend', function(e) {
+                        clearTimeout(volumeTimeout);
+                        volumeTimeout = setTimeout(() => {
+                            const slider = this.querySelector('.volume-slider');
+                            if (slider) {
+                                slider.style.display = 'none';
+                            }
+                        }, 2000);
+                    });
+                }
+                
+                // Fix modal interactions on mobile
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(modal => {
+                    modal.addEventListener('touchstart', function(e) {
+                        // Prevent modal from closing on touch inside
+                        e.stopPropagation();
+                    });
+                });
+                
+                // Handle mobile orientation changes
+                window.addEventListener('orientationchange', function() {
+                    setTimeout(() => {
+                        // Recalculate canvas size after orientation change
+                        const canvas = document.getElementById('waveform-canvas');
+                        if (canvas) {
+                            resizeCanvas();
+                        }
+                        
+                        // Ensure proper layout
+                        window.dispatchEvent(new Event('resize'));
+                    }, 100);
+                });
+                
+                // Fix mobile keyboard issues
+                const searchInput = document.getElementById('episode-search');
+                if (searchInput) {
+                    searchInput.addEventListener('focus', function() {
+                        // Scroll to search input on mobile
+                        setTimeout(() => {
+                            this.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }, 300);
+                    });
+                }
+                
+                // Ensure proper mobile viewport handling
+                const viewport = document.querySelector('meta[name="viewport"]');
+                if (viewport) {
+                    viewport.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
+                }
+                
+                console.log('Mobile fixes initialized successfully');
+            }
+        }
+        
+        // Initialize mobile fixes when DOM is loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initMobileFixes);
+        } else {
+            initMobileFixes();
+        }
+        
+        // Additional mobile event listeners
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden && isPlaying) {
+                // Pause audio when page is hidden (mobile background)
+                audioPlayer.pause();
+                isPlaying = false;
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+                playButton.classList.remove('playing');
+                document.querySelector('.wave-visualization').classList.remove('playing');
+            }
+        });
+        
+        // Handle mobile audio interruptions
+        audioPlayer.addEventListener('pause', function() {
+            // Handle audio pause events (e.g., phone calls, notifications)
+            if (isPlaying) {
+                isPlaying = false;
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+                playButton.classList.remove('playing');
+                document.querySelector('.wave-visualization').classList.remove('playing');
+            }
+        });
+        
+        // Fix mobile audio loading issues
+        audioPlayer.addEventListener('loadstart', function() {
+            console.log('Audio loading started...');
+        });
+        
+        audioPlayer.addEventListener('canplay', function() {
+            console.log('Audio can play');
+        });
+        
+        audioPlayer.addEventListener('error', function(e) {
+            console.error('Audio error:', e);
+            // Fallback for mobile audio issues
+            if (isTouchDevice) {
+                console.log('Attempting to fix mobile audio...');
+                initMobileAudioContext();
             }
         });
     });
