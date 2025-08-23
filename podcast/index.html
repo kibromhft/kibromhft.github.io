@@ -1560,7 +1560,8 @@
     .episode-search {
         width: 100%;
         max-width: 400px;
-        margin-bottom: var(--space-sm);
+        margin-bottom: var(--space-md);
+        position: relative;
     }
 
     /* Custom font for Episode 5 title in More Info section */
@@ -1583,13 +1584,23 @@
         position: relative;
         display: flex;
         align-items: center;
+        background: var(--bg-card);
+        border: 2px solid var(--border-color);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+        transition: all 0.3s ease;
+    }
+
+    .search-input-wrapper:hover {
+        border-color: var(--primary-color);
+        box-shadow: var(--shadow-md);
     }
 
     .search-icon {
         position: absolute;
-        left: 12px;
-        width: 16px;
-        height: 16px;
+        left: 16px;
+        width: 20px;
+        height: 20px;
         color: var(--text-muted);
         z-index: 2;
         pointer-events: none;
@@ -1598,21 +1609,22 @@
 
     .episode-search input {
         width: 100%;
-        padding: 8px 12px 8px 36px;
-        border: 1px solid var(--border-color);
-        border-radius: var(--radius-sm);
-        font-size: 12px;
+        padding: 16px 16px 16px 48px;
+        border: 2px solid var(--border-color);
+        border-radius: var(--radius-md);
+        font-size: 16px;
+        font-weight: 500;
         font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         background: var(--bg-card);
         color: var(--text-primary);
         transition: var(--transition-base);
+        outline: none;
     }
 
     .episode-search input:focus {
         outline: none;
         border-color: var(--primary-color);
-        box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.1);
-        transform: translateY(-1px);
+        box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
     }
 
     .episode-search input:focus + .search-icon {
@@ -1621,7 +1633,31 @@
 
     .episode-search input::placeholder {
         color: var(--text-muted);
+        font-weight: 400;
+        opacity: 0.8;
     }
+
+    /* Search label for better accessibility */
+    .episode-search::before {
+        content: "Search Episodes";
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    /* Enhanced search visibility */
+    .episode-search {
+        background: var(--bg-secondary);
+        padding: var(--space-md);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border-color);
+    }
+    
+
 
     /* Episode Selection - Standard Scrolling with Good Practices */
     .episode-selector {
@@ -2390,8 +2426,17 @@
         /* Fix search input on mobile */
         .episode-search input {
             font-size: 16px; /* Prevents zoom on iOS */
-            padding: var(--space-sm);
-            min-height: 44px;
+            padding: 16px 16px 16px 48px;
+            min-height: 48px;
+        }
+        
+        .episode-search::before {
+            font-size: 12px;
+            margin-bottom: 6px;
+        }
+        
+        .search-input-wrapper {
+            border-width: 2px;
         }
         
         /* Ensure proper spacing on very small screens */
@@ -2470,6 +2515,11 @@
         .episode-search input {
             -webkit-appearance: none;
             border-radius: var(--radius-md);
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .search-input-wrapper {
+            -webkit-tap-highlight-color: transparent;
         }
         
         /* Fix audio element on iOS */
