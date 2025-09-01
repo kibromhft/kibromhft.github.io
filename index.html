@@ -620,14 +620,19 @@ if (!doNotTrack) {
          color: rgb(218, 218, 219) !important;
      }
 
-    /* Intro paragraph styling for better visibility */
-    .first-entry .entry-content p {
-        color: var(--text-primary) !important;
-        font-weight: 400 !important;
-        text-rendering: optimizeLegibility !important;
-        -webkit-font-smoothing: antialiased !important;
-        -moz-osx-font-smoothing: grayscale !important;
-    }
+         /* Intro paragraph styling for better visibility */
+     .first-entry .entry-content p {
+         color: var(--text-primary) !important;
+         font-weight: 400 !important;
+         text-rendering: optimizeLegibility !important;
+         -webkit-font-smoothing: antialiased !important;
+         -moz-osx-font-smoothing: grayscale !important;
+     }
+
+     /* Reduce spacing between header and first entry */
+     .first-entry {
+         margin-top: 1rem !important;
+     }
 
     /* Mission statement styling - subtle emphasis */
     .first-entry .entry-content p strong {
