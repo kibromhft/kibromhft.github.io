@@ -371,14 +371,20 @@ if (!doNotTrack) {
         background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(10px);
         border-bottom: 1px solid var(--border-color);
-        /* removed sticky to match archives */
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        width: 100%;
     }
 
     body.dark .header {
         background: rgba(29, 30, 32, 0.98);
         backdrop-filter: blur(10px);
         border-bottom: 1px solid var(--border-color);
-        /* removed sticky to match archives */
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        width: 100%;
     }
 
     /* Ensure theme toggle button is visible and clickable (match archives) */
