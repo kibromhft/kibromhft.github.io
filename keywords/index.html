@@ -105,29 +105,25 @@ if (!doNotTrack) {
 <body class="list" id="top">
 
 <script>
-    // Existing initial theme setting code
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
+    // Initial theme setting (apply to both html and body, like home)
+    (function() {
+        var preferDark = localStorage.getItem("pref-theme");
+        var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var shouldDark = preferDark ? (preferDark === 'dark') : systemDark;
+        document.body.classList.toggle('dark', shouldDark);
+        document.documentElement.classList.toggle('dark', shouldDark);
+    })();
 
     // Wait for DOM to be ready before adding event listener
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('DOM loaded, looking for theme toggle button...');
         const themeToggle = document.getElementById("theme-toggle");
         if (themeToggle) {
-            console.log('Theme toggle button found, adding event listener...');
             themeToggle.addEventListener("click", () => {
-                console.log('Theme toggle clicked!');
-                document.body.classList.toggle("dark");
-                localStorage.setItem("pref-theme", document.body.classList.contains("dark") ? "dark" : "light");
-                console.log('Theme changed to:', document.body.classList.contains("dark") ? "dark" : "light");
+                const willBeDark = !document.body.classList.contains("dark");
+                document.body.classList.toggle("dark", willBeDark);
+                document.documentElement.classList.toggle("dark", willBeDark);
+                localStorage.setItem("pref-theme", willBeDark ? "dark" : "light");
             });
-        } else {
-            console.log('Theme toggle button not found!');
         }
     });
 </script>
