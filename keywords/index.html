@@ -910,15 +910,7 @@ if (!doNotTrack) {
             }
         });
         
-        // Enhanced theme toggle functionality
-        const themeToggle = document.getElementById("theme-toggle");
-        if (themeToggle) {
-            themeToggle.addEventListener("click", () => {
-                const currentTheme = document.body.classList.contains("dark") ? "light" : "dark";
-                document.body.classList.toggle("dark");
-                localStorage.setItem("pref-theme", currentTheme);
-            });
-        }
+        // Theme toggle handled by the unified script at the top of the file
         
         // Enhanced mobile navigation
         const menu = document.getElementById('menu');
