@@ -508,6 +508,85 @@ if (!doNotTrack) {
             transform: rotate(180deg) !important;
         }
     }
+
+    /* Keywords page specific styling */
+    .terms-tags {
+        list-style: none;
+        padding: 0;
+        margin: 2rem 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .terms-tags li {
+        margin: 0;
+        padding: 0;
+    }
+
+    .terms-tags a {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background-color: var(--bg-secondary);
+        color: var(--text-primary);
+        text-decoration: none;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--border-color);
+        transition: var(--transition-base);
+        font-size: var(--font-size-sm);
+        line-height: 1.4;
+    }
+
+    .terms-tags a:hover,
+    .terms-tags a:focus {
+        background-color: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-md);
+    }
+
+    .terms-tags a sup {
+        font-size: 0.75em;
+        margin-left: 0.25rem;
+        opacity: 0.8;
+    }
+
+    /* Dark mode adjustments for keywords */
+    body.dark .terms-tags a {
+        background-color: var(--bg-secondary);
+        color: var(--text-primary);
+        border-color: var(--border-color);
+    }
+
+    body.dark .terms-tags a:hover,
+    body.dark .terms-tags a:focus {
+        background-color: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+    }
+
+    /* Page header styling */
+    .page-header {
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .page-header h1 {
+        margin: 0;
+        font-size: var(--font-size-2xl);
+        font-family: var(--font-heading);
+        color: var(--text-primary);
+        font-weight: 600;
+    }
+
+    /* Main content area */
+    .main {
+        max-width: var(--container-max-width);
+        margin: 0 auto;
+        padding: var(--container-padding);
+    }
 </style>
 
 <header class="header">
