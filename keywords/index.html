@@ -82,14 +82,49 @@ if (!doNotTrack) {
 
 <body class="list" id="top">
 <script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
+    // Enhanced theme management system
+    (function() {
+        // Get theme from localStorage or system preference
+        function getInitialTheme() {
+            const savedTheme = localStorage.getItem("pref-theme");
+            if (savedTheme === "dark" || savedTheme === "light") {
+                return savedTheme;
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light";
+        }
 
+        // Apply theme to body
+        function applyTheme(theme) {
+            if (theme === "dark") {
+                document.body.classList.add('dark');
+            } else {
+                document.body.classList.remove('dark');
+            }
+            localStorage.setItem("pref-theme", theme);
+        }
+
+        // Initialize theme
+        const initialTheme = getInitialTheme();
+        applyTheme(initialTheme);
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem("pref-theme")) {
+                applyTheme(e.matches ? "dark" : "light");
+            }
+        });
+
+        // Theme toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById("theme-toggle");
+            if (themeToggle) {
+                themeToggle.addEventListener("click", () => {
+                    const currentTheme = document.body.classList.contains("dark") ? "light" : "dark";
+                    applyTheme(currentTheme);
+                });
+            }
+        });
+    })();
 </script>
 
 <script>
@@ -118,17 +153,17 @@ if (!doNotTrack) {
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://kibromhft.github.io/" accesskey="h" title="Kb&#39;s Blog (Alt + H)">Kb&#39;s Blog</a>
+            <a href="https://kibromhft.github.io/" accesskey="h" title="KB&#39;s Blog (Alt + H)">KB&#39;s Blog</a>
             <span class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="Toggle dark mode (Alt + T)" aria-label="Toggle dark mode">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
+                        stroke-linejoin="round" aria-hidden="true">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
                     <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
+                        stroke-linejoin="round" aria-hidden="true">
                         <circle cx="12" cy="12" r="5"></circle>
                         <line x1="12" y1="1" x2="12" y2="3"></line>
                         <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -139,10 +174,11 @@ if (!doNotTrack) {
                         <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
+                    <span class="sr-only">Toggle dark mode</span>
                 </button>
             </span>
         </div>
-       <ul id="menu">
+        <ul id="menu">
 
 		
 		  <li>
@@ -182,6 +218,7 @@ if (!doNotTrack) {
 			</a>
 		  </li> -->
 
+
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">
 			  Resources <span class="caret fa fa-chevron-down"></span>
@@ -202,38 +239,11 @@ if (!doNotTrack) {
 		  </ul>
 		</li>
 
-		<style>
-		.custom-dropdown {
-		  padding: 8px 0 !important;
-		  margin: 0 !important;
-		  list-style-type: none !important;
-		  /* Removed min-width to allow natural width */
-		}
 
-		.custom-dropdown li {
-		  padding: 0 !important;
-		  margin: 0 !important;
-		}
-
-		.custom-dropdown li a {
-		  display: block !important;
-		  width: 100% !important;
-		  padding: 8px 20px !important;
-		  margin: 0 !important;
-		  box-sizing: border-box !important;
-		  text-decoration: none !important;
-		  color: #333 !important;
-		  font-size: 16px !important; /* Increased font size */
-		  line-height: 1.5 !important;
-		}
-
-		.custom-dropdown li a:hover {
-		  background-color: #f8f9fa !important;
-		  color: #000 !important;
-		}
-		</style>
 
 		</ul>
+
+
 
 		
     </nav>
@@ -325,117 +335,520 @@ if (!doNotTrack) {
 
 </script>
 <script>
-    // Wait for DOM to be ready before adding event listener
+    // Enhanced mobile dropdown functionality
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('DOM loaded, looking for theme toggle button...');
+        // Mobile dropdown functionality
+        const dropdowns = document.querySelectorAll('.dropdown');
+        
+        dropdowns.forEach(dropdown => {
+            const toggle = dropdown.querySelector('.dropdown-toggle');
+            const menu = dropdown.querySelector('.dropdown-menu');
+            const caret = dropdown.querySelector('.caret');
+            
+            if (toggle && menu) {
+                // Handle click events
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Close other dropdowns
+                    dropdowns.forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown) {
+                            otherDropdown.classList.remove('dropdown-open');
+                        }
+                    });
+                    
+                    // Toggle current dropdown
+                    dropdown.classList.toggle('dropdown-open');
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!dropdown.contains(e.target)) {
+                        dropdown.classList.remove('dropdown-open');
+                    }
+                });
+                
+                // Handle keyboard navigation
+                toggle.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggle.click();
+                    } else if (e.key === 'Escape') {
+                        dropdown.classList.remove('dropdown-open');
+                        toggle.focus();
+                    }
+                });
+            }
+        });
+        
+        // Enhanced theme toggle functionality
         const themeToggle = document.getElementById("theme-toggle");
         if (themeToggle) {
-            console.log('Theme toggle button found, adding event listener...');
             themeToggle.addEventListener("click", () => {
-                console.log('Theme toggle clicked!');
+                const currentTheme = document.body.classList.contains("dark") ? "light" : "dark";
                 document.body.classList.toggle("dark");
-                localStorage.setItem("pref-theme", document.body.classList.contains("dark") ? "dark" : "light");
-                console.log('Theme changed to:', document.body.classList.contains("dark") ? "dark" : "light");
+                localStorage.setItem("pref-theme", currentTheme);
             });
-        } else {
-            console.log('Theme toggle button not found!');
+        }
+        
+        // Enhanced mobile navigation
+        const menu = document.getElementById('menu');
+        if (menu) {
+            // Restore scroll position
+            menu.scrollLeft = localStorage.getItem("menu-scroll-position") || 0;
+            
+            // Save scroll position
+            menu.onscroll = function () {
+                localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+            }
+        }
+        
+        // Enhanced smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                var id = this.getAttribute("href").substr(1);
+                if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                        behavior: "smooth"
+                    });
+                } else {
+                    document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+                }
+                if (id === "top") {
+                    history.replaceState(null, null, " ");
+                } else {
+                    history.pushState(null, null, `#${id}`);
+                }
+            });
+        });
+        
+        // Enhanced back to top button
+        var mybutton = document.getElementById("top-link");
+        if (mybutton) {
+            window.onscroll = function () {
+                if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+                    mybutton.style.visibility = "visible";
+                    mybutton.style.opacity = "1";
+                } else {
+                    mybutton.style.visibility = "hidden";
+                    mybutton.style.opacity = "0";
+                }
+            };
         }
     });
 </script>
 
 
 <style>
-    /* Navigation color consistency - using main.css colors */
-    #menu a {
-        color: rgb(30, 30, 30) !important;
+    /* Design System - CSS Custom Properties */
+    :root {
+        /* Colors - using main theme variables */
+        --primary-color: var(--brand-blue, rgb(13, 110, 253));
+        --primary-hover: var(--brand-blue-hover, rgb(10, 88, 202));
+        --primary-light: rgb(59, 130, 246);
+        --text-primary: var(--primary, rgb(15, 23, 42));
+        --text-secondary: var(--secondary, rgb(51, 65, 85));
+        --text-muted: rgb(108, 117, 125);
+        --bg-primary: var(--theme, rgb(255, 255, 255));
+        --bg-secondary: var(--entry, rgb(248, 250, 252));
+        --bg-card: var(--entry, rgb(255, 255, 255));
+        --border-color: var(--border, rgba(226, 232, 240, 0.8));
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.02);
+        --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.03);
+        --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.05);
+        
+        /* Typography */
+        --font-heading: "Essays 1743", serif;
+        --font-body: Libertine, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
+        --font-size-xs: 0.875rem;
+        --font-size-sm: 1rem;
+        --font-size-base: 1.1rem;
+        --font-size-lg: 1.25rem;
+        --font-size-xl: 1.4rem;
+        --font-size-2xl: 2rem;
+        --font-size-3xl: 3.5rem;
+        
+        /* Spacing */
+        --space-xs: 0.5rem;
+        --space-sm: 1rem;
+        --space-md: 1.5rem;
+        --space-lg: 2rem;
+        --space-xl: 2.5rem;
+        --space-2xl: 3rem;
+        --space-3xl: 4rem;
+        
+        /* Border radius */
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 16px;
+        
+        /* Transitions */
+        --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        
+        /* Container */
+        --container-max-width: min(900px, 90vw);
+        --container-padding: clamp(1rem, 5vw, 2rem);
     }
 
-    #menu a:hover {
-        background-color: rgb(214, 214, 214) !important;
-        color: rgb(30, 30, 30) !important;
+    /* Dark mode variables - using main theme system */
+    body.dark {
+        --primary-color: rgb(34, 211, 238);
+        --primary-hover: rgb(6, 182, 212);
+        --primary-light: rgb(6, 182, 212);
+        --text-primary: var(--primary, rgb(248, 250, 252));
+        --text-secondary: var(--secondary, rgb(203, 213, 225));
+        --text-muted: rgb(156, 163, 175);
+        --bg-primary: var(--theme, rgb(15, 23, 42));
+        --bg-secondary: var(--entry, rgb(30, 41, 59));
+        --bg-card: var(--entry, rgb(30, 41, 59));
+        --border-color: var(--border, rgba(51, 65, 85, 0.8));
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
+        --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+        --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
     }
 
-    .dropdown-menu a {
-        color: rgb(30, 30, 30) !important;
+    /* Enhanced dark mode styling for all elements */
+    body.dark {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
     }
 
-    .dropdown-menu a:hover {
-        background-color: rgb(214, 214, 214) !important;
-        color: rgb(30, 30, 30) !important;
+    /* Optimized theme transitions - only essential properties */
+    body,
+    .header,
+    .nav,
+    .logo a,
+    #menu a,
+    .dropdown-menu,
+    .entry,
+    .entry-content,
+    .entry-header,
+    .entry-footer,
+    .post-entry,
+    .pagination,
+    .tags a,
+    .footer {
+        transition: background-color 0.15s ease, 
+                    color 0.15s ease, 
+                    border-color 0.15s ease;
     }
 
-    /* Dark mode navigation consistency */
-    body.dark #menu a {
-        color: rgb(218, 218, 219) !important;
-    }
-
-    body.dark #menu a:hover {
-        background-color: rgb(65, 66, 68) !important;
-        color: rgb(218, 218, 219) !important;
-    }
-
-    body.dark .dropdown-menu a {
-        color: rgb(218, 218, 219) !important;
-    }
-
-    body.dark .dropdown-menu a:hover {
-        background-color: rgb(65, 66, 68) !important;
-        color: rgb(218, 218, 219) !important;
-    }
-
-    /* Logo color consistency */
-    .logo a {
-        color: rgb(30, 30, 30) !important;
-    }
-
-    body.dark .logo a {
-        color: rgb(218, 218, 219) !important;
-    }
-
-    /* Theme toggle icon consistency */
-    body.dark #moon {
-        display: none !important;
-    }
-
-    body:not(.dark) #sun {
-        display: none !important;
-    }
-
-    /* Ensure theme toggle button is visible and clickable */
+    /* Faster transitions for theme toggle button */
     #theme-toggle {
-        background: none !important;
-        border: none !important;
-        cursor: pointer !important;
-        padding: 8px !important;
-        border-radius: 50% !important;
-        transition: background-color 0.2s ease !important;
-        color: var(--primary) !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-
-    #theme-toggle:hover {
-        background-color: var(--tertiary) !important;
+        transition: background-color 0.1s ease, 
+                    outline 0.1s ease;
     }
 
     #theme-toggle svg {
-        height: 20px !important;
-        width: 20px !important;
+        transition: opacity 0.2s ease, transform 0.2s ease;
     }
 
-    /* Ensure logo-switches is properly positioned */
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+        :root {
+            --transition-fast: 0s;
+            --transition-base: 0s;
+            --transition-slow: 0s;
+        }
+        
+        * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    /* Navigation styles with CSS variables */
+    #menu a {
+        color: var(--text-primary);
+        transition: var(--transition-base);
+    }
+
+    #menu a:hover,
+    #menu a:focus {
+        background-color: var(--bg-secondary);
+        color: var(--text-primary);
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+    }
+
+    .dropdown-menu a {
+        color: var(--text-primary);
+        transition: var(--transition-base);
+    }
+
+    .dropdown-menu a:hover,
+    .dropdown-menu a:focus {
+        background-color: var(--bg-secondary);
+        color: var(--text-primary);
+    }
+
+    /* Logo and theme toggle */
+    .logo a {
+        color: var(--text-primary);
+        transition: var(--transition-base);
+    }
+
+    .logo a:hover,
+    .logo a:focus {
+        color: var(--primary-color);
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+    }
+
+    #theme-toggle {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: var(--space-xs);
+        border-radius: 50%;
+        transition: var(--transition-base);
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #theme-toggle:hover,
+    #theme-toggle:focus {
+        background-color: var(--bg-secondary);
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+    }
+
+    #theme-toggle svg {
+        height: 20px;
+        width: 20px;
+    }
+
     .logo-switches {
-        display: flex !important;
-        align-items: center !important;
-        margin-left: 10px !important;
+        display: flex;
+        align-items: center;
+        margin-left: var(--space-sm);
     }
 
-    /* Ensure the button is not being covered by other elements */
     .logo {
-        display: flex !important;
-        align-items: center !important;
-        position: relative !important;
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    /* Theme toggle visibility with smooth transitions */
+    #theme-toggle svg {
+        transition: opacity var(--transition-base), transform var(--transition-base);
+    }
+
+    body.dark #moon {
+        opacity: 0;
+        transform: rotate(-90deg);
+        pointer-events: none;
+    }
+
+    body:not(.dark) #sun {
+        opacity: 0;
+        transform: rotate(90deg);
+        pointer-events: none;
+    }
+
+    body.dark #sun,
+    body:not(.dark) #moon {
+        opacity: 1;
+        transform: rotate(0deg);
+        pointer-events: auto;
+    }
+
+    /* Enhanced theme toggle button */
+    #theme-toggle {
+        position: relative;
+        overflow: hidden;
+    }
+
+    #theme-toggle::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: var(--primary-color);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width var(--transition-base), height var(--transition-base);
+        opacity: 0.1;
+    }
+
+    #theme-toggle:hover::before {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Theme toggle button animation */
+    @keyframes themeTogglePulse {
+        0% { transform: translate(-50%, -50%) scale(1); }
+        50% { transform: translate(-50%, -50%) scale(1.1); }
+        100% { transform: translate(-50%, -50%) scale(1); }
+    }
+
+    #theme-toggle:active::before {
+        animation: themeTogglePulse 0.3s ease-in-out;
+    }
+
+    /* Screen reader only text */
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    /* Subtle header background improvement */
+    .header {
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    body.dark .header {
+        background: rgba(29, 30, 32, 0.98);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    /* Improved caret styling */
+    .caret {
+        font-size: 14px !important;
+        opacity: 1 !important;
+        margin-left: 6px !important;
+        transition: transform 0.2s ease;
+        color: var(--text-primary);
+    }
+
+    .caret:hover {
+        color: var(--primary-color);
+    }
+
+    /* Enhanced mobile dropdown functionality */
+    @media screen and (max-width: 768px) {
+        /* Override main.css mobile navigation with enhanced behavior */
+        .nav {
+            padding: 0 16px !important;
+            gap: 16px !important;
+            display: flex !important;
+            align-items: center !important;
+            flex-wrap: wrap !important;
+            overflow: visible !important;
+            white-space: normal !important;
+            max-width: none !important;
+        }
+
+        #menu {
+            gap: 6px !important;
+            overflow: visible !important;
+            white-space: normal !important;
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: wrap !important;
+        }
+
+        #menu li {
+            display: flex !important;
+            white-space: normal !important;
+            flex-shrink: 1 !important;
+        }
+
+        #menu a {
+            font-size: 15px !important;
+            padding: 8px 12px !important;
+            border-radius: 6px !important;
+            white-space: normal !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+        }
+
+        .dropdown-menu {
+            right: auto !important;
+            left: 0 !important;
+            min-width: 200px !important;
+            border-radius: 8px !important;
+        }
+
+        /* Completely disable hover behavior on touch devices */
+        .dropdown .dropdown-menu {
+            opacity: 0 !important;
+            visibility: hidden !important;
+            transform: translateY(-8px) !important;
+        }
+
+        /* Show dropdown when dropdown-open class is present */
+        .dropdown.dropdown-open .dropdown-menu {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateY(0) !important;
+        }
+
+        /* Rotate caret when dropdown is open */
+        .dropdown.dropdown-open .caret {
+            transform: rotate(180deg) !important;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .nav {
+            flex-direction: row !important;
+            padding: 0 16px !important;
+            display: flex !important;
+            align-items: center !important;
+            flex-wrap: wrap !important;
+            max-width: none !important;
+        }
+
+        .logo {
+            margin-bottom: 0 !important;
+        }
+
+        #menu {
+            flex-wrap: wrap !important;
+            justify-content: flex-start !important;
+            gap: 6px !important;
+            display: flex !important;
+            flex-direction: row !important;
+        }
+
+        #menu a {
+            font-size: 14px !important;
+            padding: 6px 8px !important;
+            white-space: normal !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+        }
+
+        /* Mobile dropdown functionality for smaller screens */
+        .dropdown .dropdown-menu {
+            opacity: 0 !important;
+            visibility: hidden !important;
+            transform: translateY(-8px) !important;
+        }
+
+        .dropdown.dropdown-open .dropdown-menu {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateY(0) !important;
+        }
+
+        .dropdown.dropdown-open .caret {
+            transform: rotate(180deg) !important;
+        }
     }
 </style>
 
