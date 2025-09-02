@@ -375,20 +375,52 @@ if (!doNotTrack) {
         background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(10px);
         border-bottom: 1px solid var(--border-color);
-        position: sticky; /* keep header fixed at top */
-        top: 0;
-        z-index: 1000;
-        width: 100%;
+        /* removed sticky to match archives */
     }
 
     body.dark .header {
         background: rgba(29, 30, 32, 0.98);
         backdrop-filter: blur(10px);
         border-bottom: 1px solid var(--border-color);
-        position: sticky; /* keep header fixed at top */
-        top: 0;
-        z-index: 1000;
-        width: 100%;
+        /* removed sticky to match archives */
+    }
+
+    /* Ensure theme toggle button is visible and clickable (match archives) */
+    #theme-toggle {
+        background: none !important;
+        border: none !important;
+        cursor: pointer !important;
+        padding: 8px !important;
+        border-radius: 50% !important;
+        transition: background-color 0.2s ease !important;
+        color: var(--primary) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    #theme-toggle:hover {
+        background-color: var(--tertiary) !important;
+    }
+
+    #theme-toggle svg {
+        height: 20px !important;
+        width: 20px !important;
+    }
+
+    /* Ensure logo-switches is properly positioned (match archives) */
+    .logo-switches {
+        display: flex !important;
+        align-items: center !important;
+        margin-left: 10px !important;
+    }
+
+    /* Ensure the button is not being covered by other elements (match archives) */
+    .logo {
+        display: flex !important;
+        align-items: center !important;
+        position: relative !important;
+        margin-bottom: 0 !important;
     }
 
     /* Improved caret styling */
