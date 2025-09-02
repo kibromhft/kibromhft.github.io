@@ -10,17 +10,22 @@
 <meta name="description" content="Document my learning notes.">
 <meta name="author" content="kibrom Haftu">
 <link rel="canonical" href="https://kibromhft.github.io/keywords/" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet_main.css"  rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/main.css?v=1.1" rel="stylesheet">
 <link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kibromhft.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kibromhft.github.io/favicon-32x32.png">
 <link rel="apple-touch-icon" href="https://kibromhft.github.io/apple-touch-icon.png">
 <link rel="mask-icon" href="https://kibromhft.github.io/safari-pinned-tab.svg">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://kibromhft.github.io/keywords/index.xml">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+
+<!-- Font preloading for performance -->
+<link rel="preload" href="../assets/f/Essays1743.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="../assets/f/Libertine.woff" as="font" type="font/woff" crossorigin>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+
 <noscript>
     <style>
         #theme-toggle,
@@ -74,368 +79,55 @@ if (!doNotTrack) {
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://kibromhft.github.io/keywords/" />
 
+
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Keywords"/>
 <meta name="twitter:description" content="Document my learning notes."/>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Keywords",
+      "item": "https://kibromhft.github.io/keywords/"
+    }
+  ]
+}
+</script>
 </head>
 
 <body class="list" id="top">
-<script>
-    // Enhanced theme management system
-    (function() {
-        // Get theme from localStorage or system preference
-        function getInitialTheme() {
-            const savedTheme = localStorage.getItem("pref-theme");
-            if (savedTheme === "dark" || savedTheme === "light") {
-                return savedTheme;
-            }
-            return window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light";
-        }
-
-        // Apply theme to body
-        function applyTheme(theme) {
-            if (theme === "dark") {
-                document.body.classList.add('dark');
-            } else {
-                document.body.classList.remove('dark');
-            }
-            localStorage.setItem("pref-theme", theme);
-        }
-
-        // Initialize theme
-        const initialTheme = getInitialTheme();
-        applyTheme(initialTheme);
-
-        // Listen for system theme changes
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-            if (!localStorage.getItem("pref-theme")) {
-                applyTheme(e.matches ? "dark" : "light");
-            }
-        });
-
-        // Theme toggle functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const themeToggle = document.getElementById("theme-toggle");
-            if (themeToggle) {
-                themeToggle.addEventListener("click", () => {
-                    const currentTheme = document.body.classList.contains("dark") ? "light" : "dark";
-                    applyTheme(currentTheme);
-                });
-            }
-        });
-    })();
-</script>
 
 <script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$','$$'], ['\\[', '\\]']],
-      processEscapes: true,
-      processEnvironments: true
-    },
-    options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-    }
-  };
-
-  window.addEventListener('load', (event) => {
-      document.querySelectorAll("mjx-container").forEach(function(x){
-        x.parentElement.classList += 'has-jax'})
-    });
-
-</script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-<header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="https://kibromhft.github.io/" accesskey="h" title="KB&#39;s Blog (Alt + H)">KB&#39;s Blog</a>
-            <span class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="Toggle dark mode (Alt + T)" aria-label="Toggle dark mode">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" aria-hidden="true">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" aria-hidden="true">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                    <span class="sr-only">Toggle dark mode</span>
-                </button>
-            </span>
-        </div>
-        <ul id="menu">
-
-		
-		  <li>
-			<a href="https://kibromhft.github.io/" title="Home">
-			  Home <span class="caret fa fa-home"></span>
-			</a>
-		  </li>
-		  
-
-		  <li>
-			<a href="https://kibromhft.github.io/archives/" title="Archives">
-			  <span>Archives</span>
-			</a>
-		  </li>
-		  
-
-
-		  <li>
-			<a href="https://kibromhft.github.io/data/" title="Data">
-			  <span>Data</span>
-			</a>
-		  </li>
-		  <li>
-			<a href="https://kibromhft.github.io/keywords/" title="keywords">
-			  <span>Keywords</span>
-			</a>
-		  </li>
-		  <li>
-			<a href="https://kibromhft.github.io/faq" title="FAQ">
-			  <span>FAQs</span>
-			</a>
-		  </li>
-		  
-<!-- 		  <li>
-			<a href="https://kibromhft.github.io/cv" title="cv">
-			  <span>CV</span>
-			</a>
-		  </li> -->
-
-
-		<li class="dropdown">
-			<a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">
-			  Resources <span class="caret fa fa-chevron-down"></span>
-			</a>
-		  <ul class="dropdown-menu">
-			<li>
-			  <a href="https://kibromhft.github.io/podcast">Podcast</a>
-			</li>
-			<li>
-			  <a href="#">Algorithms</a>
-			</li>
-			<li>
-			  <a href="#">Funding & Grants</a>
-			</li>
-			<li>
-			  <a href="#">Startup Toolkit</a>
-			</li>
-		  </ul>
-		</li>
-
-
-
-		</ul>
-
-
-
-		
-    </nav>
-</header>
-
-<main class="main">
-<header class="page-header">
-    <h1>Keywords</h1>
-</header>
-
-<ul class="terms-tags">
-
-    <li>
-        <a href="https://kibromhft.github.io/keywords/architecture/">architecture <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
- 
-    <li>
-        <a href="https://kibromhft.github.io/keywords/auto-ml/">auto-ML <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://kibromhft.github.io/keywords/autoencoder/">autoencoder <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-	 <li>
-        <a href="https://kibromhft.github.io/keywords/tutorial/">tutorial <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://kibromhft.github.io/keywords/data/"> data <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="https://kibromhft.github.io/keywords/data-augmentation/">data-augmentation <sup><strong><sup>2</sup></strong></sup> </a>
-    </li>
-   
-    <li>
-        <a href="https://kibromhft.github.io/keywords/vision-model/">vision-model <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-</ul>
-    </main>
-    
-<footer class="footer">
-    <span>&copy; 2025 <a href="https://kibromhft.github.io/">Kb&#39;s Blog</a></span>
-
-</footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
-
-<script>
-    let menu = document.getElementById('menu')
-    if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
+    // Existing initial theme setting code
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
     }
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
-
-</script>
-<script>
-    // Enhanced mobile dropdown functionality
+    // Wait for DOM to be ready before adding event listener
     document.addEventListener('DOMContentLoaded', function() {
-        // Mobile dropdown functionality
-        const dropdowns = document.querySelectorAll('.dropdown');
-        
-        dropdowns.forEach(dropdown => {
-            const toggle = dropdown.querySelector('.dropdown-toggle');
-            const menu = dropdown.querySelector('.dropdown-menu');
-            const caret = dropdown.querySelector('.caret');
-            
-            if (toggle && menu) {
-                // Handle click events
-                toggle.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    // Close other dropdowns
-                    dropdowns.forEach(otherDropdown => {
-                        if (otherDropdown !== dropdown) {
-                            otherDropdown.classList.remove('dropdown-open');
-                        }
-                    });
-                    
-                    // Toggle current dropdown
-                    dropdown.classList.toggle('dropdown-open');
-                });
-                
-                // Close dropdown when clicking outside
-                document.addEventListener('click', function(e) {
-                    if (!dropdown.contains(e.target)) {
-                        dropdown.classList.remove('dropdown-open');
-                    }
-                });
-                
-                // Handle keyboard navigation
-                toggle.addEventListener('keydown', function(e) {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        toggle.click();
-                    } else if (e.key === 'Escape') {
-                        dropdown.classList.remove('dropdown-open');
-                        toggle.focus();
-                    }
-                });
-            }
-        });
-        
-        // Enhanced theme toggle functionality
+        console.log('DOM loaded, looking for theme toggle button...');
         const themeToggle = document.getElementById("theme-toggle");
         if (themeToggle) {
+            console.log('Theme toggle button found, adding event listener...');
             themeToggle.addEventListener("click", () => {
-                const currentTheme = document.body.classList.contains("dark") ? "light" : "dark";
+                console.log('Theme toggle clicked!');
                 document.body.classList.toggle("dark");
-                localStorage.setItem("pref-theme", currentTheme);
+                localStorage.setItem("pref-theme", document.body.classList.contains("dark") ? "dark" : "light");
+                console.log('Theme changed to:', document.body.classList.contains("dark") ? "dark" : "light");
             });
-        }
-        
-        // Enhanced mobile navigation
-        const menu = document.getElementById('menu');
-        if (menu) {
-            // Restore scroll position
-            menu.scrollLeft = localStorage.getItem("menu-scroll-position") || 0;
-            
-            // Save scroll position
-            menu.onscroll = function () {
-                localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-            }
-        }
-        
-        // Enhanced smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener("click", function (e) {
-                e.preventDefault();
-                var id = this.getAttribute("href").substr(1);
-                if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                    document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                        behavior: "smooth"
-                    });
-                } else {
-                    document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-                }
-                if (id === "top") {
-                    history.replaceState(null, null, " ");
-                } else {
-                    history.pushState(null, null, `#${id}`);
-                }
-            });
-        });
-        
-        // Enhanced back to top button
-        var mybutton = document.getElementById("top-link");
-        if (mybutton) {
-            window.onscroll = function () {
-                if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-                    mybutton.style.visibility = "visible";
-                    mybutton.style.opacity = "1";
-                } else {
-                    mybutton.style.visibility = "hidden";
-                    mybutton.style.opacity = "0";
-                }
-            };
+        } else {
+            console.log('Theme toggle button not found!');
         }
     });
 </script>
@@ -511,42 +203,8 @@ if (!doNotTrack) {
         --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
         --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
         --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Enhanced dark mode styling for all elements */
-    body.dark {
-        background-color: var(--bg-primary);
-        color: var(--text-primary);
-    }
-
-    /* Optimized theme transitions - only essential properties */
-    body,
-    .header,
-    .nav,
-    .logo a,
-    #menu a,
-    .dropdown-menu,
-    .entry,
-    .entry-content,
-    .entry-header,
-    .entry-footer,
-    .post-entry,
-    .pagination,
-    .tags a,
-    .footer {
-        transition: background-color 0.15s ease, 
-                    color 0.15s ease, 
-                    border-color 0.15s ease;
-    }
-
-    /* Faster transitions for theme toggle button */
-    #theme-toggle {
-        transition: background-color 0.1s ease, 
-                    outline 0.1s ease;
-    }
-
-    #theme-toggle svg {
-        transition: opacity 0.2s ease, transform 0.2s ease;
+        background-color: #222222;
+        color: #DADADB;
     }
 
     /* Reduced motion support */
@@ -639,121 +297,472 @@ if (!doNotTrack) {
         position: relative;
     }
 
-    /* Theme toggle visibility with smooth transitions */
-    #theme-toggle svg {
-        transition: opacity var(--transition-base), transform var(--transition-base);
-    }
-
+    /* Theme toggle visibility */
     body.dark #moon {
-        opacity: 0;
-        transform: rotate(-90deg);
-        pointer-events: none;
+        display: none;
     }
 
     body:not(.dark) #sun {
-        opacity: 0;
-        transform: rotate(90deg);
-        pointer-events: none;
+        display: none;
     }
 
-    body.dark #sun,
-    body:not(.dark) #moon {
-        opacity: 1;
-        transform: rotate(0deg);
-        pointer-events: auto;
+    /* Optimized font loading with fallbacks */
+    @font-face {
+        font-family: "Essays 1743";
+        src: url("../assets/f/Essays1743.woff2") format("woff2"), url("../assets/f/Essays1743.woff") format("woff");
+        font-display: swap;
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: "Essays 1743";
+        src: url("../assets/f/Essays1743-bold.woff2") format("woff2"), url("../assets/f/Essays1743-bold.woff") format("woff");
+        font-display: swap;
+        font-weight: bold;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: "Essays 1743";
+        src: url("../assets/f/Essays1743-italic.woff2") format("woff2"), url("../assets/f/Essays1743-italic.woff") format("woff");
+        font-display: swap;
+        font-weight: normal;
+        font-style: italic;
+    }
+    @font-face {
+        font-family: "Libertine";
+        src: url("../assets/f/Libertine.woff2") format("woff2"), url("../assets/f/Libertine.woff") format("woff");
+        font-display: swap;
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: "Libertine";
+        src: url("../assets/f/Libertine-bold.woff2") format("woff2"), url("../assets/f/Libertine-bold.woff") format("woff");
+        font-display: swap;
+        font-weight: bold;
+        font-style: normal;
     }
 
-    /* Enhanced theme toggle button */
-    #theme-toggle {
+    /* Original Archives styling - using correct main.css variables and fonts */
+    .page-header {
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+
+    .page-header h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--primary);
+        font-family: var(--font-serif);
+    }
+
+    /* Creative archive summary */
+    .archive-summary {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        padding: 1rem;
+        background: linear-gradient(135deg, var(--tertiary) 0%, rgba(var(--brand-blue), 0.05) 100%);
+        border-radius: 8px;
+        font-family: var(--font-primary);
+    }
+
+    .archive-stat {
+        text-align: center;
+        padding: 0.5rem 1rem;
+    }
+
+
+
+    /* Creative timeline-based archive styling */
+    .archive-year {
+        margin-bottom: 3rem;
+        padding-bottom: 1rem;
         position: relative;
-        overflow: hidden;
+        padding-left: 2rem;
     }
 
-    #theme-toggle::before {
+    /* Vertical timeline line */
+    .archive-year::before {
         content: '';
         position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        background: var(--primary-color);
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        transition: width var(--transition-base), height var(--transition-base);
-        opacity: 0.1;
+        left: 0.5rem;
+        top: 0;
+        bottom: -1rem;
+        width: 2px;
+        background: linear-gradient(to bottom, 
+            var(--brand-blue) 0%, 
+            var(--secondary) 100%);
+        opacity: 0.3;
     }
 
-    #theme-toggle:hover::before {
-        width: 100%;
-        height: 100%;
+    .archive-year:last-child::before {
+        bottom: 0;
     }
 
-    /* Theme toggle button animation */
-    @keyframes themeTogglePulse {
-        0% { transform: translate(-50%, -50%) scale(1); }
-        50% { transform: translate(-50%, -50%) scale(1.1); }
-        100% { transform: translate(-50%, -50%) scale(1); }
+    .archive-year-header {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1.25rem;
+        color: var(--primary);
+        font-family: var(--font-serif);
+        line-height: 1.3;
+        letter-spacing: -0.01em;
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
     }
 
-    #theme-toggle:active::before {
-        animation: themeTogglePulse 0.3s ease-in-out;
-    }
-
-    /* Screen reader only text */
-    .sr-only {
+    /* Timeline year marker */
+    .archive-year-header::before {
+        content: '';
         position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
+        left: -2.25rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 12px;
+        height: 12px;
+        background: var(--brand-blue);
+        border: 3px solid var(--theme);
+        border-radius: 50%;
+        box-shadow: 0 0 0 2px var(--brand-blue);
     }
 
-    /* Subtle header background improvement */
-    .header {
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid var(--border-color);
+    .archive-month {
+        margin-bottom: 1.75rem;
     }
 
-    body.dark .header {
-        background: rgba(29, 30, 32, 0.98);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid var(--border-color);
+    .archive-month-header {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        color: var(--primary);
+        font-family: var(--font-serif);
+        line-height: 1.4;
+        letter-spacing: -0.01em;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        opacity: 0.8;
     }
 
-    /* Improved caret styling */
-    .caret {
-        font-size: 14px !important;
-        opacity: 1 !important;
-        margin-left: 6px !important;
-        transition: transform 0.2s ease;
-        color: var(--text-primary);
+    /* Creative reading time indicator */
+    .archive-month-header::after {
+        content: '';
+        height: 3px;
+        background: var(--brand-blue);
+        border-radius: 2px;
+        opacity: 0.2;
+        flex-grow: 1;
+        margin-left: 1rem;
+        max-width: 100px;
     }
 
-    .caret:hover {
-        color: var(--primary-color);
+    /* Dynamic width based on post count - using CSS counters creatively */
+    .archive-month:has(.archive-entry:nth-child(3)) .archive-month-header::after {
+        width: 60px;
+        opacity: 0.4;
     }
 
-    /* Enhanced mobile dropdown functionality */
+    .archive-month:has(.archive-entry:nth-child(5)) .archive-month-header::after {
+        width: 80px;
+        opacity: 0.6;
+    }
+
+    .archive-posts {
+        margin-left: 1rem;
+        position: relative;
+    }
+
+    .archive-entry {
+        position: relative;
+        padding: 0.75rem 0.5rem;
+        margin: 0 -0.5rem;
+        border-radius: 6px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        border-left: 3px solid transparent;
+    }
+
+    .archive-entry:hover {
+        background-color: var(--tertiary);
+        transform: translateX(4px) translateY(-1px);
+        border-left-color: rgb(0, 123, 255);
+        box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
+    }
+
+    .archive-entry:focus-within {
+        outline: 2px solid var(--brand-blue);
+        outline-offset: 2px;
+        background-color: var(--tertiary);
+        transform: translateX(4px);
+        border-left-color: var(--brand-blue);
+    }
+
+    .archive-entry-title {
+        font-size: 1.05rem;
+        font-weight: 500;
+        margin: 0 0 0.4rem 0;
+        color: var(--primary);
+        font-family: var(--font-primary);
+        line-height: 1.4;
+        letter-spacing: -0.01em;
+        transition: color 0.2s ease;
+    }
+
+    .archive-entry:hover .archive-entry-title {
+        color: var(--brand-blue);
+    }
+
+    .archive-meta {
+        font-size: 0.85rem;
+        margin: 0;
+        font-family: var(--font-primary);
+        line-height: 1.4;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-variant-numeric: tabular-nums;
+        color: var(--secondary);
+    }
+
+    /* Enhanced date styling */
+    .archive-meta span:first-child {
+        color: var(--primary);
+        font-weight: 600;
+        padding: 0.1rem 0.3rem;
+        background: rgba(0, 123, 255, 0.06);
+        border-radius: 3px;
+        font-size: 0.8rem;
+    }
+
+    /* Enhanced separator styling */
+    .archive-meta::before {
+        content: "•";
+        color: rgb(0, 123, 255);
+        font-weight: bold;
+        opacity: 0.4;
+        margin: 0 -0.2rem;
+    }
+
+    /* Clean up remaining text */
+    .archive-meta {
+        font-weight: 400;
+    }
+
+    .entry-link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        text-decoration: none;
+    }
+
+    .entry-link:focus {
+        outline: none;
+    }
+
+    .archive-count {
+        font-size: 0.75rem;
+        color: rgb(0, 123, 255);
+        font-weight: 500;
+        font-family: var(--font-primary);
+        opacity: 0.9;
+    }
+
+    /* Enhanced summary stats */
+    .archive-stat-number {
+        display: block;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: rgb(0, 123, 255);
+        line-height: 1;
+        font-family: var(--font-primary);
+        margin-bottom: 0.2rem;
+    }
+
+    .archive-stat-label {
+        font-size: 0.8rem;
+        color: var(--secondary);
+        margin: 0;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    /* Creative responsive improvements */
+    @media (max-width: 768px) {
+        .archive-summary {
+            flex-direction: column;
+            gap: 1rem;
+            padding: 0.75rem;
+        }
+
+        .archive-stat {
+            padding: 0.25rem 0.5rem;
+        }
+
+        .archive-year {
+            padding-left: 1rem;
+        }
+
+        .archive-year::before {
+            left: 0.25rem;
+        }
+
+        .archive-year-header::before {
+            left: -1.5rem;
+            width: 8px;
+            height: 8px;
+            border-width: 2px;
+        }
+
+        .archive-posts {
+            margin-left: 0.5rem;
+        }
+        
+        .archive-entry {
+            padding: 0.6rem 0.3rem;
+            margin: 0 -0.3rem;
+        }
+
+        .archive-entry:hover {
+            transform: translateX(2px);
+        }
+
+        .archive-month-header::after {
+            max-width: 50px;
+        }
+
+        .archive-count {
+            font-size: 0.7rem;
+        }
+    }
+
+    /* Navigation color consistency - using correct main.css variables */
+    #menu a {
+        color: var(--primary) !important;
+    }
+
+    #menu a:hover {
+        background-color: var(--tertiary) !important;
+        color: var(--primary) !important;
+    }
+
+    .dropdown-menu a {
+        color: var(--primary) !important;
+    }
+
+    .dropdown-menu a:hover {
+        background-color: var(--tertiary) !important;
+        color: var(--primary) !important;
+    }
+
+    /* Logo color consistency */
+    .logo a {
+        color: var(--primary) !important;
+    }
+
+    /* Theme toggle icon consistency */
+    body.dark #moon {
+        display: none !important;
+    }
+
+    body:not(.dark) #sun {
+        display: none !important;
+    }
+
+    /* Ensure theme toggle button is visible and clickable */
+    #theme-toggle {
+        background: none !important;
+        border: none !important;
+        cursor: pointer !important;
+        padding: 8px !important;
+        border-radius: 50% !important;
+        transition: background-color 0.2s ease !important;
+        color: var(--primary) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    #theme-toggle:hover {
+        background-color: var(--tertiary) !important;
+    }
+
+    #theme-toggle svg {
+        height: 20px !important;
+        width: 20px !important;
+    }
+
+    /* Ensure logo-switches is properly positioned */
+    .logo-switches {
+        display: flex !important;
+        align-items: center !important;
+        margin-left: 10px !important;
+    }
+
+    /* Ensure the button is not being covered by other elements */
+    .logo {
+        display: flex !important;
+        align-items: center !important;
+        position: relative !important;
+    }
+
+    /* Simple navigation styles - same as FAQ page */
+    .custom-dropdown {
+      padding: 8px 0 !important;
+      margin: 0 !important;
+      list-style-type: none !important;
+    }
+
+    .custom-dropdown li {
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    .custom-dropdown li a {
+      display: block !important;
+      width: 100% !important;
+      padding: 8px 20px !important;
+      margin: 0 !important;
+      box-sizing: border-box !important;
+      text-decoration: none !important;
+      color: #333 !important;
+      font-size: 16px !important;
+      line-height: 1.5 !important;
+    }
+
+    .custom-dropdown li a:hover {
+        background-color: #f8f9fa !important;
+        color: #000 !important;
+    }
+
+    /* Mobile-specific overrides to match FAQ page behavior */
     @media screen and (max-width: 768px) {
-        /* Override main.css mobile navigation with enhanced behavior */
+        /* Override main.css mobile navigation with FAQ-style behavior */
         .nav {
             padding: 0 16px !important;
             gap: 16px !important;
+            /* Remove complex flex overrides that cause horizontal lines */
             display: flex !important;
             align-items: center !important;
             flex-wrap: wrap !important;
             overflow: visible !important;
             white-space: normal !important;
+            /* Override max-width constraints */
             max-width: none !important;
         }
 
         #menu {
             gap: 6px !important;
+            /* Remove overflow-x that causes horizontal lines */
             overflow: visible !important;
             white-space: normal !important;
             display: flex !important;
@@ -762,6 +771,7 @@ if (!doNotTrack) {
         }
 
         #menu li {
+            /* Remove inline-block that causes layout issues */
             display: flex !important;
             white-space: normal !important;
             flex-shrink: 1 !important;
@@ -772,6 +782,7 @@ if (!doNotTrack) {
             padding: 8px 12px !important;
             border-radius: 6px !important;
             white-space: normal !important;
+            /* Ensure text wrapping works properly */
             word-wrap: break-word !important;
             overflow-wrap: break-word !important;
         }
@@ -783,7 +794,7 @@ if (!doNotTrack) {
             border-radius: 8px !important;
         }
 
-        /* Completely disable hover behavior on touch devices */
+        /* Mobile dropdown functionality - completely disable hover behavior on touch devices */
         .dropdown .dropdown-menu {
             opacity: 0 !important;
             visibility: hidden !important;
@@ -803,6 +814,7 @@ if (!doNotTrack) {
         }
     }
 
+    /* Override the problematic 480px breakpoint from main.css */
     @media screen and (max-width: 480px) {
         .nav {
             flex-direction: row !important;
@@ -810,6 +822,7 @@ if (!doNotTrack) {
             display: flex !important;
             align-items: center !important;
             flex-wrap: wrap !important;
+            /* Override max-width constraints */
             max-width: none !important;
         }
 
@@ -829,6 +842,7 @@ if (!doNotTrack) {
             font-size: 14px !important;
             padding: 6px 8px !important;
             white-space: normal !important;
+            /* Ensure text wrapping works properly */
             word-wrap: break-word !important;
             overflow-wrap: break-word !important;
         }
@@ -852,6 +866,421 @@ if (!doNotTrack) {
     }
 </style>
 
+
+
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://kibromhft.github.io/" accesskey="h" title="Kb&#39;s Blog (Alt + H)">Kb&#39;s Blog</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+       <ul id="menu">
+
+		
+		  <li>
+			<a href="https://kibromhft.github.io/" title="Home">
+			  Home <span class="caret fa fa-home"></span>
+			</a>
+		  </li>
+		  
+
+		  <li>
+			<a href="https://kibromhft.github.io/archives/" title="Archives">
+			  <span>Archives</span>
+			</a>
+		  </li>
+		  
+
+
+		  <li>
+			<a href="https://kibromhft.github.io/data/" title="Data">
+			  <span>Data</span>
+			</a>
+		  </li>
+		  <li>
+			<a href="https://kibromhft.github.io/keywords/" title="keywords">
+			  <span>Keywords</span>
+			</a>
+		  </li>
+		  <li>
+			<a href="https://kibromhft.github.io/faq" title="FAQ">
+			  <span>FAQs</span>
+			</a>
+		  </li>
+		  
+<!-- 		  <li>
+			<a href="https://kibromhft.github.io/cv" title="cv">
+			  <span>CV</span>
+			</a>
+		  </li> -->
+
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">
+			  Resources <span class="caret fa fa-chevron-down"></span>
+			</a>
+		  <ul class="dropdown-menu">
+			<li>
+			  <a href="https://kibromhft.github.io/podcast">Podcast</a>
+			</li>
+			<li>
+			  <a href="#">Algorithms</a>
+			</li>
+			<li>
+			  <a href="#">Funding & Grants</a>
+			</li>
+			<li>
+			  <a href="#">Startup Toolkit</a>
+			</li>
+		  </ul>
+		</li>
+
+		</ul>
+		
+    </nav>
+</header>
+
+<main class="main">
+
+<header class="page-header">
+    <h1>Keywords</h1>
+
+</header>
+
+<div class="archive-year">
+  <h2 class="archive-year-header">2023<sup class="archive-count">&nbsp;&nbsp;1</sup>
+  </h2>
+  <div class="archive-month">
+    <h3 class="archive-month-header">January<sup class="archive-count">&nbsp;&nbsp;1</sup></h3>
+    <div class="archive-posts">
+      <div class="archive-entry">
+        <h3 class="archive-entry-title">Coding AI: The New Literacy
+        </h3>
+        <div class="archive-meta"><span title='2023-01-19 10:00:00 -0700 PDT'>January 19, 2023</span>&nbsp;·&nbsp;18 min&nbsp;·&nbsp;kibrom Haftu</div>
+        <a class="entry-link" aria-label="post link to Coding AI: The New Literacy" href="https://kibromhft.github.io/posts/2023-01-19-coding/"></a>
+      </div>
+    </div>
+  </div>
+
+<div class="archive-year">
+  <h2 class="archive-year-header">2022<sup class="archive-count">&nbsp;&nbsp;6</sup>
+  </h2>
+
+
+  
+    <div class="archive-month">
+  	<h3 class="archive-month-header">November<sup class="archive-count">&nbsp;&nbsp;2</sup></h3>
+    <div class="archive-posts">
+      <div class="archive-entry">
+        <h3 class="archive-entry-title">Disentangling the Latent Space: A Guide to Beta-VAE
+        </h3>
+        <div class="archive-meta"><span title='2022-02-27 00:00:00 +0000 UTC'>November 27, 2022</span>&nbsp;·&nbsp;21 min&nbsp;·&nbsp;kibrom Haftu</div>
+        <a class="entry-link" aria-label="post link to Disentangling the Latent Space: A Guide to Beta-VAE" href="https://kibromhft.github.io/posts/2022-11-27-vae/"></a>
+      </div>
+    </div>
+  </div>
+  <div class="archive-month">
+     <h3 class="archive-month-header"><sup class="archive-count"></sup></h3>
+    <div class="archive-posts">
+      <div class="archive-entry">
+        <h3 class="archive-entry-title">Causality in Machine Learning
+        </h3>
+        <div class="archive-meta"><span title='2022-02-20 00:00:00 +0000 UTC'>November 20, 2022</span>&nbsp;·&nbsp;22 min&nbsp;·&nbsp;kibrom Haftu</div>
+        <a class="entry-link" aria-label="post link to Causality in Machine Learning" href="https://kibromhft.github.io/posts/2022-11-20-causality_in_ML/"></a>
+      </div>
+    </div>
+  </div>
+  
+  
+   <div class="archive-month">
+    <h3 class="archive-month-header">October<sup class="archive-count">&nbsp;&nbsp;2</sup></h3>
+    <div class="archive-posts">
+      <div class="archive-entry">
+        <h3 class="archive-entry-title">Jobs in the Digital Era
+        </h3>
+        <div class="archive-meta"><span title='2022-10-19 10:00:00 -0700 PDT'>October 19, 2022</span>&nbsp;·&nbsp;11 min&nbsp;·&nbsp;kibrom Haftu</div>
+        <a class="entry-link" aria-label="post link to Jobs in the Digital Era" href="https://kibromhft.github.io/posts/2022-10-19-automation/"></a>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="archive-month">
+    <h3 class="archive-month-header"><sup class="archive-count"></sup></h3>
+    <div class="archive-posts">
+      <div class="archive-entry">
+        <h3 class="archive-entry-title">Demystifying Overfitting in Deep Neural Networks: Separating Fact from Fiction
+        </h3>
+        <div class="archive-meta"><span title='2022-10-06 00:00:00 +0000 UTC'>October 6, 2022</span>&nbsp;·&nbsp;12 min&nbsp;·&nbsp;kibrom Haftu</div>
+        <a class="entry-link" aria-label="Demystifying Overfitting in Deep Neural Networks: Separating Fact from Fiction" href="https://kibromhft.github.io/posts/2022-10-06-overfit_DNN/"></a>
+      </div>
+    </div>
+  </div>
+  
+    <div class="archive-month">
+    <h3 class="archive-month-header">September<sup class="archive-count">&nbsp;&nbsp;2</sup></h3>
+    <div class="archive-posts">
+      <div class="archive-entry">
+        <h3 class="archive-entry-title">Debugging Deep Learning Models: Strategies and Best Practices
+        </h3>
+        <div class="archive-meta"><span title='2022-09-23 00:00:00 +0000 UTC'>September 23, 2022</span>&nbsp;·&nbsp;13 min&nbsp;·&nbsp;kibrom Haftu</div>
+        <a class="entry-link" aria-label="Debugging Deep Learning Models: Strategies and Best Practices" href="https://kibromhft.github.io/posts/2022-09-23-debug/"></a>
+      </div>
+    </div>
+  </div>
+  
+    <div class="archive-month">
+     <h3 class="archive-month-header"><sup class="archive-count"></sup></h3>
+    <div class="archive-posts">
+      <div class="archive-entry">
+        <h3 class="archive-entry-title">Data Analysis
+        </h3>
+        <div class="archive-meta"><span title='2022-09-08 00:00:00 +0000 UTC'>September 8, 2022</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;kibrom Haftu</div>
+        <a class="entry-link" aria-label="post link to Data Analysis" href="https://kibromhft.github.io/posts/2022-09-08-data-analysis/"></a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- <div class="archive-year">
+  <h2 class="archive-year-header">2020<sup class="archive-count">&nbsp;&nbsp;5</sup>
+  </h2>
+
+
+  <div class="archive-month">
+    <h3 class="archive-month-header">June<sup class="archive-count">&nbsp;&nbsp;1</sup></h3>
+
+  </div>
+
+
+</div>
+<div class="archive-year">
+  <h2 class="archive-year-header">2019<sup class="archive-count">&nbsp;&nbsp;6</sup>
+  </h2>
+
+
+
+
+  <div class="archive-month">
+    <h3 class="archive-month-header">March<sup class="archive-count">&nbsp;&nbsp;1</sup></h3>
+    <div class="archive-posts">
+      <div class="archive-entry">
+        <h3 class="archive-entry-title">Are Deep Neural Networks Dramatically Overfitted?
+        </h3>
+        <div class="archive-meta"><span title='2019-03-14 00:00:00 +0000 UTC'>March 14, 2019</span>&nbsp;·&nbsp;22 min&nbsp;·&nbsp;kibrom Haftu</div>
+        <a class="entry-link" aria-label="post link to Are Deep Neural Networks Dramatically Overfitted?" href="https://kibromhft.github.io/posts/2019-03-14-overfit/"></a>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="archive-year">
+  <h2 class="archive-year-header">2018<sup class="archive-count">&nbsp;&nbsp;9</sup>
+  </h2>
+
+
+
+  <div class="archive-month">
+    <h3 class="archive-month-header">May<sup class="archive-count">&nbsp;&nbsp;1</sup></h3>
+    <div class="archive-posts">
+      <div class="archive-entry">
+        <h3 class="archive-entry-title">Implementing Deep Reinforcement Learning Models with Tensorflow + OpenAI Gym
+        </h3>
+        <div class="archive-meta"><span title='2018-05-05 00:00:00 +0000 UTC'>May 5, 2018</span>&nbsp;·&nbsp;13 min&nbsp;·&nbsp;kibrom Haftu</div>
+        <a class="entry-link" aria-label="post link to Implementing Deep Reinforcement Learning Models with Tensorflow &#43; OpenAI Gym" href="https://kibromhft.github.io/posts/2018-05-05-drl-implementation/"></a>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+<div class="archive-year">
+  <h2 class="archive-year-header">2017<sup class="archive-count">&nbsp;&nbsp;10</sup>
+  </h2>
+
+
+
+  <div class="archive-month">
+    <h3 class="archive-month-header">July<sup class="archive-count">&nbsp;&nbsp;2</sup></h3>
+    <div class="archive-posts">
+      <div class="archive-entry">
+        <h3 class="archive-entry-title">Predict Stock Prices Using RNN: Part 2
+        </h3>
+        <div class="archive-meta"><span title='2017-07-22 00:00:00 +0000 UTC'>July 22, 2017</span>&nbsp;·&nbsp;9 min&nbsp;·&nbsp;kibrom Haftu</div>
+        <a class="entry-link" aria-label="post link to Predict Stock Prices Using RNN: Part 2" href="https://kibromhft.github.io/posts/2017-07-22-stock-rnn-part-2/"></a>
+      </div>
+      <div class="archive-entry">
+        <h3 class="archive-entry-title">Predict Stock Prices Using RNN: Part 1
+        </h3>
+        <div class="archive-meta"><span title='2017-07-08 00:00:00 +0000 UTC'>July 8, 2017</span>&nbsp;·&nbsp;12 min&nbsp;·&nbsp;kibrom Haftu</div>
+        <a class="entry-link" aria-label="post link to Predict Stock Prices Using RNN: Part 1" href="https://kibromhft.github.io/posts/2017-07-08-stock-rnn-part-1/"></a>
+      </div>
+    </div>
+  </div>
+
+</div> -->
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2025 <a href="https://kibromhft.github.io/">Kb&#39;s Blog</a></span>
+
+</footer>
+
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g" style="visibility: visible; opacity: 1;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6">
+        <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="rgb(192, 132, 224)"/>
+            <stop offset="100%" stop-color="rgb(153, 0, 204)"/>
+        </linearGradient>
+        <path d="M12 6H0l6-6z" fill="url(#grad)"></path>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    // Mobile dropdown functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check if device is touch-based (mobile) or small screen
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        const isSmallScreen = window.innerWidth <= 768;
+        
+        if (isTouchDevice || isSmallScreen) {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            // Disable hover behavior on mobile by removing hover styles
+            dropdowns.forEach(dropdown => {
+                const menu = dropdown.querySelector('.dropdown-menu');
+                if (menu) {
+                    // Force mobile styles
+                    menu.style.transition = 'all 0.2s ease';
+                }
+            });
+            
+            dropdowns.forEach(dropdown => {
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+                const menu = dropdown.querySelector('.dropdown-menu');
+                
+                if (toggle && menu) {
+                    // Add click event to toggle dropdown
+                    toggle.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        // Close all other dropdowns
+                        dropdowns.forEach(otherDropdown => {
+                            if (otherDropdown !== dropdown) {
+                                otherDropdown.classList.remove('dropdown-open');
+                            }
+                        });
+                        
+                        // Toggle current dropdown
+                        const isOpen = dropdown.classList.contains('dropdown-open');
+                        if (isOpen) {
+                            dropdown.classList.remove('dropdown-open');
+                        } else {
+                            dropdown.classList.add('dropdown-open');
+                        }
+                    });
+                }
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                // Don't close if clicking on the dropdown toggle
+                if (e.target.closest('.dropdown-toggle')) {
+                    return;
+                }
+                
+                // Close if clicking outside dropdown
+                if (!e.target.closest('.dropdown')) {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('dropdown-open');
+                    });
+                }
+            });
+            
+            // Close dropdown when pressing Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('dropdown-open');
+                    });
+                }
+            });
+            
+            // Close dropdown when window is resized
+            window.addEventListener('resize', function() {
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('dropdown-open');
+                });
+            });
+        }
+    });
+</script>
 
 </body>
 
