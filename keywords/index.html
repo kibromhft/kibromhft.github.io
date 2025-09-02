@@ -663,6 +663,30 @@ if (!doNotTrack) {
     /* Match archives icon visibility behavior */
     body.dark #moon { display: none !important; }
     body:not(.dark) #sun { display: none !important; }
+
+    /* Match home (index.html) dark-mode nav/dropdown behavior */
+    body.dark .nav a {
+        color: var(--text-primary) !important;
+    }
+
+    body.dark .nav a:hover {
+        color: var(--primary-color) !important;
+    }
+
+    body.dark .dropdown-menu {
+        background-color: var(--bg-card) !important;
+        border: 1px solid var(--border-color) !important;
+        box-shadow: var(--shadow-lg) !important;
+    }
+
+    body.dark .dropdown-menu a {
+        color: var(--text-primary) !important;
+    }
+
+    body.dark .dropdown-menu a:hover {
+        background-color: var(--bg-secondary) !important;
+        color: var(--primary-color) !important;
+    }
 </style>
 
 <header class="header">
