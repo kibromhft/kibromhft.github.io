@@ -10,7 +10,15 @@
 <meta name="description" content="Document my learning notes.">
 <meta name="author" content="kibrom Haftu">
 <link rel="canonical" href="https://kibromhft.github.io/keywords/vision-model/" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet_main.css"  rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/main.css?v=1.1" rel="stylesheet">
+
+<!-- Font preloading for performance -->
+<link rel="preload" href="../assets/f/Essays1743.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="../assets/f/Libertine.woff" as="font" type="font/woff" crossorigin>
+
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+
 <link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kibromhft.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kibromhft.github.io/favicon-32x32.png">
@@ -76,6 +84,334 @@ if (!doNotTrack) {
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="vision-model"/>
 <meta name="twitter:description" content="Document my learning notes."/>
+
+<style>
+    :root {
+        --theme: #f8f8f2;
+        --entry: #f8f8f2;
+        --primary: #282a36;
+        --secondary: #6272a4;
+        --tertiary: #c0c0c0;
+        --content: #282a36;
+        --hljs-bg: #282a36;
+        --code-bg: #f8f8f2;
+        --border: #e1e4e8;
+    }
+
+    .list {
+        background: var(--theme);
+    }
+
+    .list:not(.dark)::-webkit-scrollbar-track {
+        background: 0 0;
+    }
+
+    .list:not(.dark)::-webkit-scrollbar-thumb {
+        border-color: var(--theme);
+    }
+
+    .dark {
+        --theme: #0d1117;
+        --entry: #161b22;
+        --primary: #f0f6fc;
+        --secondary: #8b949e;
+        --tertiary: #6e7681;
+        --content: #f0f6fc;
+        --hljs-bg: #0d1117;
+        --code-bg: #161b22;
+        --border: #30363d;
+    }
+
+    .list.dark {
+        background: var(--theme);
+    }
+
+    .list.dark::-webkit-scrollbar-track {
+        background: 0 0;
+    }
+
+    .list.dark::-webkit-scrollbar-thumb {
+        border-color: var(--theme);
+    }
+
+    /* Page header styling */
+    .page-header h1::before {
+        content: "👁️";
+        margin-right: 0.5em;
+    }
+
+    /* FAQ specific styling */
+    .qa {
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--entry);
+    }
+
+    .qa h3 {
+        margin-top: 0;
+        color: var(--primary);
+        border-bottom: 2px solid var(--secondary);
+        padding-bottom: 0.5rem;
+    }
+
+    .qa p {
+        margin-bottom: 1rem;
+        line-height: 1.6;
+    }
+
+    .qa p:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Navigation improvements */
+    .nav {
+        background: var(--entry);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .logo a {
+        color: var(--primary);
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .logo a:hover {
+        color: var(--secondary);
+    }
+
+    #menu a {
+        color: var(--primary);
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        transition: background-color 0.2s ease;
+    }
+
+    #menu a:hover {
+        background-color: var(--tertiary);
+        color: var(--primary);
+    }
+
+    /* Theme toggle button */
+    #theme-toggle {
+        background: none;
+        border: none;
+        color: var(--primary);
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 4px;
+        transition: background-color 0.2s ease;
+    }
+
+    #theme-toggle:hover {
+        background-color: var(--tertiary);
+    }
+
+    /* Footer styling */
+    .footer {
+        background: var(--entry);
+        border-top: 1px solid var(--border);
+        color: var(--secondary);
+        text-align: center;
+        padding: 2rem 0;
+    }
+
+    .footer a {
+        color: var(--secondary);
+        text-decoration: none;
+    }
+
+    .footer a:hover {
+        color: var(--primary);
+    }
+
+    /* Top link styling */
+    .top-link {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background: var(--primary);
+        color: var(--theme);
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+        z-index: 1000;
+    }
+
+    .top-link:hover {
+        background: var(--secondary);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .top-link svg {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+        .nav {
+            padding: 0 1rem;
+        }
+
+        #menu {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .top-link {
+            bottom: 1rem;
+            right: 1rem;
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+
+        .top-link svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+    }
+
+    /* Container queries for better responsive design */
+    @container (max-width: 768px) {
+        .page-header h1 {
+            font-size: 1.5rem;
+        }
+    }
+
+    /* Link styling improvements */
+    a {
+        color: var(--secondary);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    a:hover {
+        color: var(--primary);
+        text-decoration: underline;
+    }
+
+    /* Code block styling */
+    pre {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 1rem;
+        overflow-x: auto;
+    }
+
+    code {
+        background: var(--code-bg);
+        padding: 0.2rem 0.4rem;
+        border-radius: 3px;
+        font-family: 'Courier New', monospace;
+    }
+
+    /* Table styling */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    th, td {
+        border: 1px solid var(--border);
+        padding: 0.75rem;
+        text-align: left;
+    }
+
+    th {
+        background: var(--tertiary);
+        font-weight: bold;
+    }
+
+    /* Blockquote styling */
+    blockquote {
+        border-left: 4px solid var(--secondary);
+        margin: 1rem 0;
+        padding-left: 1rem;
+        color: var(--secondary);
+        font-style: italic;
+    }
+
+    /* List styling improvements */
+    ul, ol {
+        padding-left: 2rem;
+    }
+
+    li {
+        margin-bottom: 0.5rem;
+        line-height: 1.6;
+    }
+
+    /* Image styling */
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Form elements */
+    input, textarea, select {
+        background: var(--entry);
+        border: 1px solid var(--border);
+        color: var(--primary);
+        padding: 0.5rem;
+        border-radius: 4px;
+    }
+
+    input:focus, textarea:focus, select:focus {
+        outline: none;
+        border-color: var(--secondary);
+        box-shadow: 0 0 0 2px rgba(98, 114, 164, 0.2);
+    }
+
+    /* Button styling */
+    button {
+        background: var(--secondary);
+        color: var(--theme);
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    button:hover {
+        background: var(--primary);
+    }
+
+    /* Utility classes */
+    .text-center {
+        text-align: center;
+    }
+
+    .text-muted {
+        color: var(--secondary);
+    }
+
+    .mb-0 { margin-bottom: 0; }
+    .mb-1 { margin-bottom: 0.5rem; }
+    .mb-2 { margin-bottom: 1rem; }
+    .mb-3 { margin-bottom: 1.5rem; }
+    .mb-4 { margin-bottom: 2rem; }
+
+    .mt-0 { margin-top: 0; }
+    .mt-1 { margin-top: 0.5rem; }
+    .mt-2 { margin-top: 1rem; }
+    .mt-3 { margin-top: 1.5rem; }
+    .mt-4 { margin-top: 2rem; }
+</style>
 
 </head>
 

@@ -10,13 +10,20 @@
 <meta name="description" content="Document my learning notes.">
 <meta name="author" content="kibrom Haftu">
 <link rel="canonical" href="https://kibromhft.github.io/keywords/data/" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet_main.css"  rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/main.css?v=1.1" rel="stylesheet">
 <link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kibromhft.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kibromhft.github.io/favicon-32x32.png">
 <link rel="apple-touch-icon" href="https://kibromhft.github.io/apple-touch-icon.png">
 <link rel="mask-icon" href="https://kibromhft.github.io/safari-pinned-tab.svg">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+
+<!-- Font preloading for performance -->
+<link rel="preload" href="../assets/f/Essays1743.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="../assets/f/Libertine.woff" as="font" type="font/woff" crossorigin>
+
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+    onload="hljs.initHighlightingOnLoad();"></script>
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" type="application/rss+xml" href="https://kibromhft.github.io/keywords/data/index.xml">
@@ -79,7 +86,7 @@ if (!doNotTrack) {
 
 </head>
 
-<body class="list" id="top">
+<body class="" id="top">
 <script>
     if (localStorage.getItem("pref-theme") === "dark") {
         document.body.classList.add('dark');
@@ -113,6 +120,354 @@ if (!doNotTrack) {
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+    /* Design System - CSS Custom Properties */
+    :root {
+        /* Colors - using main theme variables */
+        --primary-color: var(--brand-blue, rgb(13, 110, 253));
+        --primary-hover: var(--brand-blue-hover, rgb(10, 88, 202));
+        --primary-light: rgb(59, 130, 246);
+        --text-primary: var(--primary, rgb(15, 23, 42));
+        --text-secondary: var(--secondary, rgb(51, 65, 85));
+        --text-muted: rgb(108, 117, 125);
+        --bg-primary: var(--theme, rgb(255, 255, 255));
+        --bg-secondary: var(--entry, rgb(248, 250, 252));
+        --bg-card: var(--entry, rgb(255, 255, 255));
+        --border-color: var(--border, rgba(226, 232, 240, 0.8));
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.02);
+        --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.03);
+        --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.05);
+        
+        /* Typography */
+        --font-heading: "Essays 1743", serif;
+        --font-body: Libertine, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
+        --font-size-xs: 0.875rem;
+        --font-size-sm: 1rem;
+        --font-size-base: 1.1rem;
+        --font-size-lg: 1.25rem;
+        --font-size-xl: 1.4rem;
+        --font-size-2xl: 2rem;
+        --font-size-3xl: 3.5rem;
+        
+        /* Spacing */
+        --space-xs: 0.5rem;
+        --space-sm: 1rem;
+        --space-md: 1.5rem;
+        --space-lg: 2rem;
+        --space-xl: 2.5rem;
+        --space-2xl: 3rem;
+        --space-3xl: 4rem;
+        
+        /* Border radius */
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 16px;
+        
+        /* Transitions */
+        --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        
+        /* Container */
+        --container-max-width: min(900px, 90vw);
+        --container-padding: clamp(1rem, 5vw, 2rem);
+    }
+
+    /* Dark mode variables - using main theme system */
+    body.dark {
+        --primary-color: rgb(34, 211, 238);
+        --primary-hover: rgb(6, 182, 212);
+        --primary-light: rgb(6, 182, 212);
+        --text-primary: var(--primary, rgb(248, 250, 252));
+        --text-secondary: var(--secondary, rgb(203, 213, 225));
+        --text-muted: rgb(156, 163, 175);
+        --bg-primary: var(--theme, rgb(15, 23, 42));
+        --bg-secondary: var(--entry, rgb(30, 41, 59));
+        --bg-card: var(--entry, rgb(30, 41, 59));
+        --border-color: var(--border, rgba(51, 65, 85, 0.8));
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
+        --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+        --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+        :root {
+            --transition-fast: 0s;
+            --transition-base: 0s;
+            --transition-slow: 0s;
+        }
+        
+        * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    /* Navigation styles with CSS variables */
+    #menu a {
+        color: var(--text-primary);
+        transition: var(--transition-base);
+    }
+
+    #menu a:hover,
+    #menu a:focus {
+        background-color: var(--bg-secondary);
+        color: var(--text-primary);
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+    }
+
+    .dropdown-menu a {
+        color: var(--text-primary);
+        transition: var(--transition-base);
+    }
+
+    .dropdown-menu a:hover,
+    .dropdown-menu a:focus {
+        background-color: var(--bg-secondary);
+        color: var(--text-primary);
+    }
+
+    /* Logo and theme toggle */
+    .logo a {
+        color: var(--text-primary);
+        transition: var(--transition-base);
+    }
+
+    .logo a:hover,
+    .logo a:focus {
+        color: var(--primary-color);
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+    }
+
+    #theme-toggle {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: var(--space-xs);
+        border-radius: 50%;
+        transition: var(--transition-base);
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #theme-toggle:hover,
+    #theme-toggle:focus {
+        background-color: var(--bg-secondary);
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+    }
+
+    #theme-toggle svg {
+        height: 20px;
+        width: 20px;
+    }
+
+    .logo-switches {
+        display: flex;
+        align-items: center;
+        margin-left: var(--space-sm);
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    /* Theme toggle visibility */
+    body.dark #moon {
+        display: none;
+    }
+
+    body:not(.dark) #sun {
+        display: none;
+    }
+
+    /* Optimized font loading with fallbacks */
+    @font-face {
+        font-family: "Essays 1743";
+        src: url("../assets/f/Essays1743.woff2") format("woff2"), url("../assets/f/Essays1743.woff") format("woff");
+        font-display: swap;
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: "Essays 1743";
+        src: url("../assets/f/Essays1743-bold.woff2") format("woff2"), url("../assets/f/Essays1743-bold.woff") format("woff");
+        font-display: swap;
+        font-weight: bold;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: "Essays 1743";
+        src: url("../assets/f/Essays1743-italic.woff2") format("woff2"), url("../assets/f/Essays1743-italic.woff") format("woff");
+        font-display: swap;
+        font-weight: normal;
+        font-style: italic;
+    }
+    @font-face {
+        font-family: "Libertine";
+        src: url("../assets/f/Libertine.woff2") format("woff2"), url("../assets/f/Libertine.woff") format("woff");
+        font-display: swap;
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: "Libertine";
+        src: url("../assets/f/Libertine-bold.woff2") format("woff2"), url("../assets/f/Libertine-bold.woff") format("woff");
+        font-display: swap;
+        font-weight: bold;
+        font-style: normal;
+    }
+
+    /* Container and layout with CSS variables */
+    .post-content {
+        color: var(--text-primary);
+        max-width: var(--container-max-width);
+        margin: 0 auto;
+        padding: 0 var(--container-padding);
+        font-family: var(--font-body);
+        font-size: var(--font-size-base);
+        line-height: 1.7;
+    }
+
+    /* Container queries for responsive design */
+    @container (max-width: 600px) {
+        .post-content {
+            font-size: var(--font-size-sm);
+            padding: 0 var(--space-sm);
+        }
+    }
+
+    /* Enhanced link styling with focus states */
+    .post-content a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: var(--transition-base);
+        position: relative;
+        font-weight: 500;
+        border-radius: 2px;
+    }
+
+    .post-content a::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
+        transition: width var(--transition-base);
+        border-radius: 1px;
+    }
+
+    .post-content a:hover::after,
+    .post-content a:focus::after {
+        width: 100%;
+    }
+
+    .post-content a:hover,
+    .post-content a:focus {
+        color: var(--primary-hover);
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+    }
+
+    /* Premium page header */
+    .page-header h1 {
+        color: var(--text-primary);
+        font-size: var(--font-size-3xl);
+        font-weight: 700;
+        font-family: var(--font-body);
+        margin-bottom: var(--space-3xl);
+        text-align: center;
+        position: relative;
+        letter-spacing: -0.02em;
+        background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .page-header h1::before {
+        content: '📊';
+        position: absolute;
+        top: -2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 2rem;
+        opacity: 0.1;
+    }
+
+    .page-header h1::after {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, rgb(13, 110, 253) 0%, rgb(59, 130, 246) 50%, rgb(10, 88, 202) 100%);
+        border-radius: 2px;
+        box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3);
+    }
+
+    body.dark .page-header h1::after {
+        background: linear-gradient(90deg, rgb(34, 211, 238) 0%, rgb(6, 182, 212) 50%, rgb(8, 145, 178) 100%);
+        box-shadow: 0 2px 8px rgba(34, 211, 238, 0.3);
+    }
+
+    /* Premium footer styling */
+    .footer {
+        margin-top: 6rem;
+        padding: 3rem 0;
+        text-align: center;
+        border-top: 1px solid var(--border-color);
+        background: linear-gradient(135deg, rgba(248, 250, 252, 0.5) 0%, rgba(255, 255, 255, 0.8) 100%);
+        backdrop-filter: blur(10px);
+    }
+
+    .footer span {
+        font-weight: 500;
+        color: var(--text-secondary);
+    }
+
+    .footer a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .footer a:hover {
+        color: var(--primary-hover);
+        text-decoration: underline;
+    }
+
+    body.dark .footer {
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.5) 0%, rgba(30, 41, 59, 0.8) 100%);
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+        .post-content {
+            padding: 0 15px;
+        }
+        
+        .page-header h1 {
+            font-size: 2rem;
+        }
+    }
+</style>
 
 <header class="header">
     <nav class="nav">
