@@ -118,17 +118,17 @@ if (!doNotTrack) {
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://kibromhft.github.io/" accesskey="h" title="Kb&#39;s Blog (Alt + H)">Kb&#39;s Blog</a>
+            <a href="https://kibromhft.github.io/" accesskey="h" title="KB&#39;s Blog (Alt + H)">KB&#39;s Blog</a>
             <span class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="Toggle dark mode (Alt + T)" aria-label="Toggle dark mode">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
+                        stroke-linejoin="round" aria-hidden="true">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
                     <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
+                        stroke-linejoin="round" aria-hidden="true">
                         <circle cx="12" cy="12" r="5"></circle>
                         <line x1="12" y1="1" x2="12" y2="3"></line>
                         <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -139,6 +139,7 @@ if (!doNotTrack) {
                         <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
+                    <span class="sr-only">Toggle dark mode</span>
                 </button>
             </span>
         </div>
@@ -159,7 +160,7 @@ if (!doNotTrack) {
 		  </li>
 		  
 
-
+		
 		  <li>
 			<a href="https://kibromhft.github.io/data/" title="Data">
 			  <span>Data</span>
@@ -176,17 +177,18 @@ if (!doNotTrack) {
 			</a>
 		  </li>
 		  
-<!-- 		  <li>
+		<!-- 		  <li>
 			<a href="https://kibromhft.github.io/cv" title="cv">
 			  <span>CV</span>
 			</a>
 		  </li> -->
 
+
 		<li class="dropdown">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-			  Resources <span class="caret fa fa-bars" data-toggle="dropdown"></span>
+			<a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">
+			  Resources <span class="caret fa fa-chevron-down"></span>
 			</a>
-		  <ul class="dropdown-menu custom-dropdown">
+		  <ul class="dropdown-menu">
 			<li>
 			  <a href="https://kibromhft.github.io/podcast">Podcast</a>
 			</li>
@@ -202,38 +204,11 @@ if (!doNotTrack) {
 		  </ul>
 		</li>
 
-		<style>
-		.custom-dropdown {
-		  padding: 8px 0 !important;
-		  margin: 0 !important;
-		  list-style-type: none !important;
-		  /* Removed min-width to allow natural width */
-		}
 
-		.custom-dropdown li {
-		  padding: 0 !important;
-		  margin: 0 !important;
-		}
-
-		.custom-dropdown li a {
-		  display: block !important;
-		  width: 100% !important;
-		  padding: 8px 20px !important;
-		  margin: 0 !important;
-		  box-sizing: border-box !important;
-		  text-decoration: none !important;
-		  color: #333 !important;
-		  font-size: 16px !important; /* Increased font size */
-		  line-height: 1.5 !important;
-		}
-
-		.custom-dropdown li a:hover {
-		  background-color: #f8f9fa !important;
-		  color: #000 !important;
-		}
-		</style>
 
 		</ul>
+
+
 
 		
     </nav>
