@@ -17,7 +17,7 @@
 <link rel="preload" href="../assets/f/Essays1743.woff" as="font" type="font/woff" crossorigin>
 <link rel="preload" href="../assets/f/Libertine.woff" as="font" type="font/woff" crossorigin>
 
-<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kibromhft.github.io/favicon-16x16.png">
@@ -788,21 +788,20 @@ if (!doNotTrack) {
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://kibromhft.github.io/" accesskey="h" title="Kb&#39;s Blog (Alt + H)">Kb&#39;s Blog</a>
+            <a href="https://kibromhft.github.io/" accesskey="h" title="KB&#39;s Blog (Alt + H)">KB&#39;s Blog</a>
             <span class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                <button id="theme-toggle" accesskey="t" title="Toggle dark mode (Alt + T)" aria-label="Toggle dark mode">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
+                        stroke-linejoin="round" aria-hidden="true">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
                     <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
+                        stroke-linejoin="round" aria-hidden="true">
                         <circle cx="12" cy="12" r="5"></circle>
                         <line x1="12" y1="1" x2="12" y2="3"></line>
                         <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -813,6 +812,7 @@ if (!doNotTrack) {
                         <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
+                    <span class="sr-only">Toggle dark mode</span>
                 </button>
             </span>
         </div>
@@ -833,7 +833,7 @@ if (!doNotTrack) {
 		  </li>
 		  
 
-
+		
 		  <li>
 			<a href="https://kibromhft.github.io/data/" title="Data">
 			  <span>Data</span>
@@ -850,11 +850,12 @@ if (!doNotTrack) {
 			</a>
 		  </li>
 		  
-<!-- 		  <li>
+		<!-- 		  <li>
 			<a href="https://kibromhft.github.io/cv" title="cv">
 			  <span>CV</span>
 			</a>
 		  </li> -->
+
 
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">
@@ -880,157 +881,7 @@ if (!doNotTrack) {
 
 		</ul>
 
-		<style>
-		/* Simple navigation styles - same as keywords page */
-		.custom-dropdown {
-		  padding: 8px 0 !important;
-		  margin: 0 !important;
-		  list-style-type: none !important;
-		}
 
-		.custom-dropdown li {
-		  padding: 0 !important;
-		  margin: 0 !important;
-		}
-
-		.custom-dropdown li a {
-		  display: block !important;
-		  width: 100% !important;
-		  padding: 8px 20px !important;
-		  margin: 0 !important;
-		  box-sizing: border-box !important;
-		  text-decoration: none !important;
-		  color: #333 !important;
-		  font-size: 16px !important;
-		  line-height: 1.5 !important;
-		}
-
-		.custom-dropdown li a:hover {
-			background-color: #f8f9fa !important;
-			color: #000 !important;
-		}
-
-		/* Mobile-specific overrides to match keywords page behavior */
-		@media screen and (max-width: 768px) {
-			/* Override main.css mobile navigation with keywords-style behavior */
-			.nav {
-				padding: 0 16px !important;
-				gap: 16px !important;
-				/* Remove complex flex overrides that cause horizontal lines */
-				display: flex !important;
-				align-items: center !important;
-				flex-wrap: wrap !important;
-				overflow: visible !important;
-				white-space: normal !important;
-				/* Override max-width constraints */
-				max-width: none !important;
-			}
-
-			#menu {
-				gap: 6px !important;
-				/* Remove overflow-x that causes horizontal lines */
-				overflow: visible !important;
-				white-space: normal !important;
-				display: flex !important;
-				flex-direction: row !important;
-				flex-wrap: wrap !important;
-			}
-
-			#menu li {
-				/* Remove inline-block that causes layout issues */
-				display: flex !important;
-				white-space: normal !important;
-				flex-shrink: 1 !important;
-			}
-
-			#menu a {
-				font-size: 15px !important;
-				padding: 8px 12px !important;
-				border-radius: 6px !important;
-				white-space: normal !important;
-				/* Ensure text wrapping works properly */
-				word-wrap: break-word !important;
-				overflow-wrap: break-word !important;
-			}
-
-			.dropdown-menu {
-				right: auto !important;
-				left: 0 !important;
-				min-width: 200px !important;
-				border-radius: 8px !important;
-			}
-
-			/* Mobile dropdown functionality - completely disable hover behavior on touch devices */
-			.dropdown .dropdown-menu {
-				opacity: 0 !important;
-				visibility: hidden !important;
-				transform: translateY(-8px) !important;
-			}
-
-			/* Show dropdown when dropdown-open class is present */
-			.dropdown.dropdown-open .dropdown-menu {
-				opacity: 1 !important;
-				visibility: visible !important;
-				transform: translateY(0) !important;
-			}
-
-			/* Rotate caret when dropdown is open */
-			.dropdown.dropdown-open .caret {
-				transform: rotate(180deg) !important;
-			}
-		}
-
-		/* Override the problematic 480px breakpoint from main.css */
-		@media screen and (max-width: 480px) {
-			.nav {
-				flex-direction: row !important;
-				padding: 0 16px !important;
-				display: flex !important;
-				align-items: center !important;
-				flex-wrap: wrap !important;
-				/* Override max-width constraints */
-				max-width: none !important;
-			}
-
-			.logo {
-				margin-bottom: 0 !important;
-			}
-
-			#menu {
-				flex-wrap: wrap !important;
-				justify-content: flex-start !important;
-				gap: 6px !important;
-				display: flex !important;
-				flex-direction: row !important;
-			}
-
-			#menu a {
-				font-size: 14px !important;
-				padding: 6px 8px !important;
-				white-space: normal !important;
-				/* Ensure text wrapping works properly */
-				word-wrap: break-word !important;
-				overflow-wrap: break-word !important;
-			}
-
-			/* Mobile dropdown functionality for smaller screens */
-			.dropdown .dropdown-menu {
-				opacity: 0 !important;
-				visibility: hidden !important;
-				transform: translateY(-8px) !important;
-			}
-
-			.dropdown.dropdown-open .dropdown-menu {
-				opacity: 1 !important;
-				visibility: visible !important;
-				transform: translateY(0) !important;
-			}
-
-			.dropdown.dropdown-open .caret {
-				transform: rotate(180deg) !important;
-			}
-		}
-		</style>
 
 		
     </nav>
