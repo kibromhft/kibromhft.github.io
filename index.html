@@ -895,8 +895,27 @@ if (!doNotTrack) {
     <header class="entry-header">
         <h2>👋 <span style="font-family: 'Schnyder S Demi', Garamond, serif;">Hi</span>, there!</h2>
     </header>
-    <section class="entry-content" style="margin: 0; padding: 0;">
-    <p class="custom-paragraph" style="text-align: justify; margin: 0; padding: 0; line-height: 1.6;">I'm Kibrom (KB), a Project Lead Data Scientist in <span style="font-weight: bold;">Medical Imaging AI Research</span> and a Tech Manager in banking. <span style="font-weight: bold;">My mission? To build human-centric AI as a force for good</span>—a vision that keeps me up at night. This blog is where I get honest about the messy, brilliant, and frustrating journey of <span style="font-weight: bold;">getting it right</span>. Join me in making sense of the revolution.</p>
+    <section class="entry-content" style="margin: 1.5rem 0;">
+    <p style="font-family: 'Schnyder S Demi', Garamond, serif; font-size: 1.2rem; line-height: 1.8; color: var(--primary); max-width: 800px; text-align: left; letter-spacing: 0.01em;">I'm Kibrom (KB), a <span class="highlight">Project Lead Data Scientist</span> in <span class="highlight">Medical Imaging AI Research</span> and a <span class="highlight">Tech Manager</span> in banking. <strong>My mission?</strong> To build human-centric AI as a force for good—a vision that keeps me up at night. This blog is where I get honest about the messy, brilliant, and frustrating journey of <span class="highlight">getting it right</span>. Join me in making sense of the revolution.</p>
+    <style>
+    .highlight {
+        background: linear-gradient(120deg, rgba(13, 110, 253, 0.15) 0%, rgba(13, 110, 253, 0.15) 100%);
+        background-repeat: no-repeat;
+        background-size: 100% 40%;
+        background-position: 0 88%;
+        padding: 0.1em 0.2em;
+        transition: background-size 0.2s ease;
+    }
+    .highlight:hover {
+        background-size: 100% 100%;
+    }
+    .dark .highlight {
+        background: linear-gradient(120deg, rgba(88, 192, 208, 0.2) 0%, rgba(88, 192, 208, 0.2) 100%);
+        background-repeat: no-repeat;
+        background-size: 100% 40%;
+        background-position: 0 88%;
+    }
+    </style>
     </section>
     <footer class="entry-footer">
     </footer>
