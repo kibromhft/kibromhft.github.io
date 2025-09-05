@@ -532,11 +532,6 @@ color: var(--text-secondary);
     box-shadow: var(--shadow-subtle);
 }
 
-/* Reduce spacing between Featured Posts and first post entry */
-.w-col.w-col-6 + .post-entry {
-    margin-top: -12px;
-}
-
 .post-entry:hover {
     border-color: var(--brand-blue);
     transform: translateY(-2px);
