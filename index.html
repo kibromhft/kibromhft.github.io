@@ -462,6 +462,15 @@ if (!doNotTrack) {
         text-underline-offset: 3px;
     }
 
+    /* Very slim divider under greeting */
+    .greeting-divider {
+        height: 1px;
+        background-color: var(--border-color);
+        margin: 6px 0 12px 0;
+        border: 0;
+        opacity: 0.6;
+    }
+
     .logo-switches {
         display: flex;
         align-items: center;
@@ -906,6 +915,7 @@ if (!doNotTrack) {
 <article class="first-entry home-info">
     <header class="entry-header">
         <h2>👋 <span class="greeting-text"><span style="font-family: 'Schnyder S Demi', Garamond, serif; color: var(--text-primary);">Hi</span>, <span style="color: var(--text-primary);">there!</span></span></h2>
+        <div class="greeting-divider"></div>
     </header>
     <section class="entry-content" style="margin: 0; padding: 0;">
     <p class="custom-paragraph" style="text-align: justify; margin: 0; padding: 0; line-height: 1.6;">I'm Kibrom (<span style="font-weight: bold;">KB</span>), a Project Lead Data Scientist in <span style="font-weight: bold;">Medical Imaging AI</span>, where a single algorithm can mean life or death, and a Tech Manager in Banking. <span style="font-weight: bold;">My mission is to build human-centric AI that solves real problems</span>—<span style="font-style: italic;">a vision that keeps me up at night.</span> This blog is where I get real about the messy, brilliant, and frustrating journey of <span style="font-weight: bold;">getting it right</span>. Join me in making sense of the revolution.</p>
