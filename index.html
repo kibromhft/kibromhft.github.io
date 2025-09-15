@@ -426,13 +426,13 @@ if (!doNotTrack) {
     }
 
     #theme-toggle {
-        background: var(--primary-color);
+        background: none;
         border: none;
         cursor: pointer;
         padding: var(--space-xs);
         border-radius: 50%;
         transition: var(--transition-base);
-        color: white;
+        color: var(--text-primary);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -440,7 +440,7 @@ if (!doNotTrack) {
 
     #theme-toggle:hover,
     #theme-toggle:focus {
-        background-color: var(--primary-hover);
+        background-color: var(--bg-secondary);
         outline: 2px solid var(--primary-color);
         outline-offset: 2px;
     }
