@@ -111,8 +111,6 @@ if (!doNotTrack) {
                 themeToggle.addEventListener("click", () => {
                     const currentTheme = document.body.classList.contains("dark") ? "light" : "dark";
                     applyTheme(currentTheme);
-                    // Remove focus to avoid persistent focus styles that may show blue background
-                    themeToggle.blur();
                 });
             }
         });
@@ -440,12 +438,10 @@ if (!doNotTrack) {
         justify-content: center;
     }
 
-    #theme-toggle:hover {
+    #theme-toggle:hover,
+    #theme-toggle:focus {
         background-color: var(--primary-color);
         color: white;
-    }
-
-    #theme-toggle:focus {
         outline: 2px solid var(--primary-color);
         outline-offset: 2px;
     }
