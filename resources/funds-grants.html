@@ -242,7 +242,7 @@ if (!doNotTrack) {
       <div class="resource-category">
         <h4>PhD Search Platforms</h4>
         <ul>
-          <li><a href="https://www.findaphd.com/" target="_blank">Find PhD</a></li>
+          <li><a href="https://www.findaphd.com/" target="_blank" class="highlight-resource">Find PhD</a></li>
           <li><a href="http://www.phdportal.eu/" target="_blank">PhD Portal Europe</a></li>
           <li><a href="https://www.phdportal.com/" target="_blank">PhD Portal</a></li>
           <li><a href="http://phdland.com/" target="_blank">PhD Land</a></li>
@@ -254,7 +254,7 @@ if (!doNotTrack) {
       <div class="resource-category">
         <h4>PhD Scholarship Databases</h4>
         <ul>
-          <li><a href="http://scholarshipdb.net/" target="_blank">Scholarship DB</a></li>
+          <li><a href="http://scholarshipdb.net/" target="_blank" class="highlight-resource">Scholarship DB</a></li>
           <li><a href="http://www.scholarshipportal.com/" target="_blank">Scholarship Portal</a></li>
           <li><a href="http://scholarship-positions.com/" target="_blank">Scholarship Positions</a></li>
           <li><a href="https://www.scholarships.com/" target="_blank">Scholarships.com</a></li>
@@ -269,7 +269,7 @@ if (!doNotTrack) {
           <li><a href="https://www.academicpositions.com/" target="_blank">Academic Positions US</a></li>
           <li><a href="https://www.academictransfer.com/" target="_blank">Academic Transfer</a></li>
           <li><a href="https://euraxess.ec.europa.eu/" target="_blank">EURAXESS</a></li>
-          <li><a href="https://dbworld.sigmod.org/browse.html" target="_blank">DBWorld</a></li>
+          <li><a href="https://dbworld.sigmod.org/browse.html" target="_blank" class="highlight-resource">DBWorld</a></li>
         </ul>
       </div>
       
@@ -357,6 +357,24 @@ body {
 
 .scholarship-table a:hover {
   background: #0056b3;
+}
+
+.highlight-resource {
+  color: #ff6b35;
+  font-weight: 600;
+  text-decoration: none;
+  position: relative;
+}
+
+.highlight-resource::after {
+  content: '⭐';
+  margin-left: 5px;
+  font-size: 12px;
+}
+
+.highlight-resource:hover {
+  color: #e55a2b;
+  text-decoration: underline;
 }
 
 .scholarship-info,
