@@ -9,58 +9,48 @@
     <style>
         body {
             font-family: 'Essays 1743', serif;
-            line-height: 1.6;
+            line-height: 1.8;
             margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
+            padding: 2rem;
+            background-color: #ffffff;
+            color: #000000;
         }
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 2rem;
         }
         h1 {
-            color: #333;
+            color: #000000;
             text-align: center;
             margin-bottom: 2rem;
+            font-size: 1.8rem;
         }
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+        .links-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
-        .link-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        .links-list li {
+            margin-bottom: 0.8rem;
+            padding: 0.2rem 0;
         }
-        .link-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
-        .link-card a {
-            color: #0066cc;
+        .links-list a {
+            color: #0000cc;
             text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1rem;
+            font-weight: normal;
         }
-        .link-card a:hover {
-            color: #004499;
+        .links-list a:hover {
             text-decoration: underline;
         }
-        .link-description {
-            color: #666;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
+        .links-list a:visited {
+            color: #660099;
         }
         @media (max-width: 768px) {
-            .container {
+            body {
                 padding: 1rem;
             }
-            .links-grid {
-                grid-template-columns: 1fr;
+            h1 {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -68,76 +58,25 @@
 <body>
     <div class="container">
         <h1>Scholarship Links</h1>
-        <div class="links-grid">
-            <div class="link-card">
-                <a href="http://scholarshipdb.net/" target="_blank">Scholarship Database</a>
-                <div class="link-description">Comprehensive database of international scholarships</div>
-            </div>
-            <div class="link-card">
-                <a href="http://www.scholarshipportal.com/" target="_blank">Scholarship Portal</a>
-                <div class="link-description">International scholarship opportunities</div>
-            </div>
-            <div class="link-card">
-                <a href="https://www.findaphd.com/" target="_blank">Find A PhD</a>
-                <div class="link-description">PhD programs and funding opportunities</div>
-            </div>
-            <div class="link-card">
-                <a href="http://www.findapostdoc.com/" target="_blank">Find A PostDoc</a>
-                <div class="link-description">Postdoctoral positions and fellowships</div>
-            </div>
-            <div class="link-card">
-                <a href="http://www.phdportal.eu/" target="_blank">PhD Portal EU</a>
-                <div class="link-description">European PhD programs and scholarships</div>
-            </div>
-            <div class="link-card">
-                <a href="http://academicpositions.eu/" target="_blank">Academic Positions EU</a>
-                <div class="link-description">Academic positions in Europe</div>
-            </div>
-            <div class="link-card">
-                <a href="http://engineering.academickeys.com/" target="_blank">Engineering Academic Keys</a>
-                <div class="link-description">Academic positions in engineering</div>
-            </div>
-            <div class="link-card">
-                <a href="http://www.monster.de/" target="_blank">Monster Germany</a>
-                <div class="link-description">Job portal for Germany</div>
-            </div>
-            <div class="link-card">
-                <a href="http://scholarship-positions.com/" target="_blank">Scholarship Positions</a>
-                <div class="link-description">Latest scholarship opportunities</div>
-            </div>
-            <div class="link-card">
-                <a href="http://www.scholarshipstimes.com/" target="_blank">Scholarship Times</a>
-                <div class="link-description">Scholarship news and updates</div>
-            </div>
-            <div class="link-card">
-                <a href="https://www.myscience.org/jobs" target="_blank">MyScience Jobs</a>
-                <div class="link-description">Science and research job opportunities</div>
-            </div>
-            <div class="link-card">
-                <a href="http://phdland.com/" target="_blank">PhD Land</a>
-                <div class="link-description">PhD opportunities and resources</div>
-            </div>
-            <div class="link-card">
-                <a href="http://www.scholarshipportal.com/" target="_blank">Scholarship Portal (Alt)</a>
-                <div class="link-description">Alternative link to scholarship portal</div>
-            </div>
-            <div class="link-card">
-                <a href="http://www.phds.org/" target="_blank">PhDs.org</a>
-                <div class="link-description">PhD resources and opportunities</div>
-            </div>
-            <div class="link-card">
-                <a href="http://careersinternational.com/" target="_blank">Careers International</a>
-                <div class="link-description">International career opportunities</div>
-            </div>
-            <div class="link-card">
-                <a href="http://freecomputerbooks" target="_blank">Free Computer Books</a>
-                <div class="link-description">Free educational resources and books</div>
-            </div>
-            <div class="link-card">
-                <a href="https://www.daad.de/de/" target="_blank">DAAD</a>
-                <div class="link-description">German Academic Exchange Service</div>
-            </div>
-        </div>
+        <ul class="links-list">
+            <li>[Scholarship Database](http://scholarshipdb.net/)</li>
+            <li>[Scholarship Portal](http://www.scholarshipportal.com/)</li>
+            <li>[Find A PhD](https://www.findaphd.com/)</li>
+            <li>[Find A PostDoc](http://www.findapostdoc.com/)</li>
+            <li>[PhD Portal EU](http://www.phdportal.eu/)</li>
+            <li>[Academic Positions EU](http://academicpositions.eu/)</li>
+            <li>[Engineering Academic Keys](http://engineering.academickeys.com/)</li>
+            <li>[Monster Germany](http://www.monster.de/)</li>
+            <li>[Scholarship Positions](http://scholarship-positions.com/)</li>
+            <li>[Scholarship Times](http://www.scholarshipstimes.com/)</li>
+            <li>[MyScience Jobs](https://www.myscience.org/jobs)</li>
+            <li>[PhD Land](http://phdland.com/)</li>
+            <li>[Scholarship Portal (Alt)](http://www.scholarshipportal.com/)</li>
+            <li>[PhDs.org](http://www.phds.org/)</li>
+            <li>[Careers International](http://careersinternational.com/)</li>
+            <li>[Free Computer Books](http://freecomputerbooks)</li>
+            <li>[DAAD](https://www.daad.de/de/)</li>
+        </ul>
     </div>
 </body>
 </html>
