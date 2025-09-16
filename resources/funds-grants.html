@@ -301,9 +301,10 @@ if (!doNotTrack) {
 
 <style>
 .scholarship-container {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 .table-responsive {
@@ -397,7 +398,8 @@ if (!doNotTrack) {
   padding: 10px 15px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  width: 300px;
+  width: 400px;
+  max-width: 100%;
 }
 
 .subscription-form button {
@@ -434,8 +436,9 @@ if (!doNotTrack) {
 
 .resources-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
+  width: 100%;
 }
 
 .resource-category {
