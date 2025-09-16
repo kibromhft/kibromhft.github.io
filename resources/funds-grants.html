@@ -280,6 +280,52 @@ if (!doNotTrack) {
       <button type="submit">Subscribe</button>
     </form>
   </div>
+
+  <div class="daily-resources">
+    <h3>Daily Scholarship & Funding Resources</h3>
+    <p>Here are the websites I use daily to find scholarship opportunities and funding resources:</p>
+    
+    <div class="resources-grid">
+      <div class="resource-category">
+        <h4>General Scholarship Databases</h4>
+        <ul>
+          <li><a href="http://scholarshipdb.net/" target="_blank">Scholarship DB</a></li>
+          <li><a href="http://www.scholarshipportal.com/" target="_blank">Scholarship Portal</a></li>
+          <li><a href="http://scholarship-positions.com/" target="_blank">Scholarship Positions</a></li>
+          <li><a href="http://www.scholarshipstimes.com/" target="_blank">Scholarship Times</a></li>
+          <li><a href="http://www.phds.org/" target="_blank">PhDs.org</a></li>
+        </ul>
+      </div>
+      
+      <div class="resource-category">
+        <h4>PhD Opportunities</h4>
+        <ul>
+          <li><a href="https://www.findaphd.com/" target="_blank">Find PhD</a></li>
+          <li><a href="http://www.phdportal.eu/" target="_blank">PhD Portal Europe</a></li>
+          <li><a href="http://academicpositions.eu/" target="_blank">Academic Positions Europe</a></li>
+          <li><a href="http://phdland.com/" target="_blank">PhD Land</a></li>
+        </ul>
+      </div>
+      
+      <div class="resource-category">
+        <h4>Academic & Engineering Jobs</h4>
+        <ul>
+          <li><a href="http://engineering.academickeys.com/" target="_blank">Academic Keys - Engineering</a></li>
+          <li><a href="https://www.myscience.org/jobs" target="_blank">My Science Jobs</a></li>
+          <li><a href="http://careersinternational.com/" target="_blank">Careers International</a></li>
+          <li><a href="http://www.monster.de/" target="_blank">Monster Germany</a></li>
+        </ul>
+      </div>
+      
+      <div class="resource-category">
+        <h4>Funding & Educational Resources</h4>
+        <ul>
+          <li><a href="https://www.daad.de/de/" target="_blank">DAAD - German Academic Exchange</a></li>
+          <li><a href="http://freecomputerbooks.com/" target="_blank">Free Computer Books</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 
 <style>
@@ -394,6 +440,69 @@ if (!doNotTrack) {
 
 .subscription-form button:hover {
   background: #0056b3;
+}
+
+.daily-resources {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 8px;
+  margin: 30px 0;
+}
+
+.daily-resources h3 {
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.daily-resources p {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #666;
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.resource-category {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.resource-category h4 {
+  color: #007bff;
+  margin-bottom: 15px;
+  font-size: 1.1em;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 5px;
+}
+
+.resource-category ul {
+  list-style: none;
+  padding: 0;
+}
+
+.resource-category li {
+  margin-bottom: 8px;
+}
+
+.resource-category a {
+  color: #333;
+  text-decoration: none;
+  display: block;
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+  transition: color 0.3s ease;
+}
+
+.resource-category a:hover {
+  color: #007bff;
+  text-decoration: underline;
 }
 
 @media (max-width: 768px) {
