@@ -651,6 +651,71 @@ body {
   text-decoration: underline;
 }
 
+/* Regional heading with left spacing */
+.regional-heading {
+  padding-left: 40px;
+  margin-bottom: 30px;
+  margin-top: 40px;
+}
+
+/* Region-based background colors */
+.region-americas {
+  background-color: #e3f2fd; /* Light blue */
+}
+
+.region-europe {
+  background-color: #e8f5e8; /* Light green */
+}
+
+.region-asia {
+  background-color: #fff3e0; /* Light orange */
+}
+
+.region-oceania {
+  background-color: #f3e5f5; /* Light purple */
+}
+
+.region-africa-middle-east {
+  background-color: #fffde7; /* Light yellow */
+}
+
+/* Apply region colors to table rows with higher specificity */
+.scholarship-container:last-child .scholarship-table tbody tr:nth-child(n+1):nth-child(-n+7) td:first-child {
+  background-color: #e3f2fd;
+  padding-left: 20px;
+  font-weight: 600;
+}
+
+.scholarship-container:last-child .scholarship-table tbody tr:nth-child(n+8):nth-child(-n+26) td:first-child {
+  background-color: #e8f5e8;
+  padding-left: 20px;
+  font-weight: 600;
+}
+
+.scholarship-container:last-child .scholarship-table tbody tr:nth-child(n+27):nth-child(-n+41) td:first-child {
+  background-color: #fff3e0;
+  padding-left: 20px;
+  font-weight: 600;
+}
+
+.scholarship-container:last-child .scholarship-table tbody tr:nth-child(n+42):nth-child(-n+45) td:first-child {
+  background-color: #f3e5f5;
+  padding-left: 20px;
+  font-weight: 600;
+}
+
+.scholarship-container:last-child .scholarship-table tbody tr:nth-child(n+46):nth-child(-n+50) td:first-child {
+  background-color: #fffde7;
+  padding-left: 20px;
+  font-weight: 600;
+}
+
+/* Add spacing to Region column header */
+.scholarship-container:last-child .scholarship-table th:first-child {
+  padding-left: 20px;
+  font-weight: 700;
+}
+
 .scholarship-info,
 .scholarship-tips {
   background: #f8f9fa;
