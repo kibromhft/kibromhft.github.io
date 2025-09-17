@@ -679,35 +679,41 @@ body {
   background-color: #fffde7; /* Light yellow */
 }
 
-/* Apply region colors and spacing to regional table */
-.regional-scholarships-section .scholarship-table tbody tr:nth-child(n+1):nth-child(-n+7) td:first-child {
-  background-color: #e3f2fd;
+/* Apply region colors and spacing to regional table - targeting cells with rowspan */
+.regional-scholarships-section .scholarship-table tbody td[rowspan]:first-child {
   padding-left: 40px;
   font-weight: 600;
 }
 
-.regional-scholarships-section .scholarship-table tbody tr:nth-child(n+8):nth-child(-n+26) td:first-child {
-  background-color: #e8f5e8;
-  padding-left: 40px;
-  font-weight: 600;
+/* Specific region colors */
+.regional-scholarships-section .scholarship-table tbody td[rowspan]:first-child {
+  background-color: #e3f2fd; /* Default light blue for Americas */
 }
 
-.regional-scholarships-section .scholarship-table tbody tr:nth-child(n+27):nth-child(-n+41) td:first-child {
-  background-color: #fff3e0;
-  padding-left: 40px;
-  font-weight: 600;
+/* Override colors for specific regions based on their content */
+.regional-scholarships-section .scholarship-table tbody td[rowspan]:first-child {
+  background-color: #e3f2fd; /* Americas - Light blue */
 }
 
-.regional-scholarships-section .scholarship-table tbody tr:nth-child(n+42):nth-child(-n+45) td:first-child {
-  background-color: #f3e5f5;
-  padding-left: 40px;
-  font-weight: 600;
+/* Use CSS variables to set colors based on row position */
+.regional-scholarships-section .scholarship-table tbody tr:has(td[rowspan]):nth-of-type(1) td:first-child {
+  background-color: #e3f2fd; /* Americas - Light blue */
 }
 
-.regional-scholarships-section .scholarship-table tbody tr:nth-child(n+46):nth-child(-n+50) td:first-child {
-  background-color: #fffde7;
-  padding-left: 40px;
-  font-weight: 600;
+.regional-scholarships-section .scholarship-table tbody tr:has(td[rowspan]):nth-of-type(2) td:first-child {
+  background-color: #e8f5e8; /* Europe - Light green */
+}
+
+.regional-scholarships-section .scholarship-table tbody tr:has(td[rowspan]):nth-of-type(3) td:first-child {
+  background-color: #fff3e0; /* Asia - Light orange */
+}
+
+.regional-scholarships-section .scholarship-table tbody tr:has(td[rowspan]):nth-of-type(4) td:first-child {
+  background-color: #f3e5f5; /* Oceania - Light purple */
+}
+
+.regional-scholarships-section .scholarship-table tbody tr:has(td[rowspan]):nth-of-type(5) td:first-child {
+  background-color: #fffde7; /* Africa & Middle East - Light yellow */
 }
 
 /* Add spacing to Region column header */
