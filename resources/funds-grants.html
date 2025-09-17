@@ -545,6 +545,11 @@ body {
   box-sizing: border-box;
 }
 
+/* Second table container with left breathing room */
+.scholarship-container:last-child {
+  padding-left: 40px;
+}
+
 .table-responsive {
   overflow-x: auto;
   margin: 20px 0;
@@ -564,6 +569,42 @@ body {
   padding: 8px 12px;
   text-align: left;
   border-bottom: 1px solid #ddd;
+}
+
+/* Mobile responsiveness for first table */
+@media screen and (max-width: 768px) {
+  .scholarship-table {
+    font-size: 12px;
+  }
+  
+  .scholarship-table th,
+  .scholarship-table td {
+    padding: 6px 8px;
+    white-space: nowrap;
+  }
+  
+  .scholarship-table th:nth-child(4),
+  .scholarship-table td:nth-child(4),
+  .scholarship-table th:nth-child(5),
+  .scholarship-table td:nth-child(5) {
+    display: none; /* Hide Field of Study and Eligibility on mobile */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .scholarship-table {
+    font-size: 11px;
+  }
+  
+  .scholarship-table th,
+  .scholarship-table td {
+    padding: 4px 6px;
+  }
+  
+  .scholarship-table th:nth-child(2),
+  .scholarship-table td:nth-child(2) {
+    display: none; /* Hide Amount on very small screens */
+  }
 }
 
 .scholarship-table th {
