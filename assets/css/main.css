@@ -432,7 +432,7 @@ color: var(--text-secondary);
     color: var(--content);
     letter-spacing: 0.025em;
     line-height: 1.6;
-    text-align: justify;
+    text-align: left;
 }
 
 
@@ -549,10 +549,14 @@ color: var(--text-secondary);
 }
 
 .entry-header h2 {
+    font-family: var(--font-serif);
     font-size: 24px;
-    line-height: 1.3;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.2px;
     margin-bottom: 16px;
     color: var(--primary);
+    text-rendering: optimizeLegibility;
 }
 
 .entry-content {
@@ -567,7 +571,7 @@ color: var(--text-secondary);
 }
 
 .entry-footer {
-    color: var(--brand-blue);
+    color: var(--secondary);
     font-size: 12px;
     margin-top: 16px;
 }
@@ -578,6 +582,39 @@ color: var(--text-secondary);
     right: 0;
     top: 0;
     bottom: 0;
+}
+
+/* ===== HOME PAGE ===== */
+.greeting-text {
+    color: var(--primary);
+    font-family: var(--font-serif);
+    transition: color 0.2s ease;
+}
+
+.home-intro {
+    max-width: 46em;
+    color: var(--secondary);
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: left;
+    text-rendering: optimizeLegibility;
+}
+
+.featured-posts {
+    margin-top: 8px;
+}
+
+.featured-heading {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin: 10px 0 0 0;
+    color: var(--primary);
+}
+
+.featured-divider {
+    height: 2px;
+    background-color: var(--border);
+    margin: 6px 0 0 0;
 }
 
 /* ===== PAGINATION ===== */

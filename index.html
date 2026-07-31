@@ -553,53 +553,10 @@
         font-style: normal;
     }
 
-         /* Dark mode overrides for featured posts section */
-     body.dark .w-col.w-col-6 {
-         background-color: rgb(46, 46, 51) !important;
-     }
-
-     body.dark .small-heading {
-         color: rgb(218, 218, 219) !important;
-     }
-
-     /* Dark mode support for Schnyder S Demi font styling */
-     body.dark h2[style*="font-family: 'Schnyder S Demi'"] {
-         color: rgb(218, 218, 219) !important;
-     }
-
-     body.dark span[style*="font-family: 'Schnyder S Demi'"] {
-         color: rgb(218, 218, 219) !important;
-     }
-
-         /* Intro paragraph styling for better visibility */
-     .first-entry .entry-content p {
-         color: var(--text-primary) !important;
-         font-weight: 400 !important;
-         text-rendering: optimizeLegibility !important;
-         -webkit-font-smoothing: antialiased !important;
-         -moz-osx-font-smoothing: grayscale !important;
-     }
-
      /* Reduce spacing between header and first entry */
      .first-entry {
          margin-top: 1rem !important;
      }
-
-    /* Mission statement styling - subtle emphasis */
-    .first-entry .entry-content p strong {
-        font-weight: 500 !important;
-        color: var(--text-primary) !important;
-    }
-
-    body.dark .first-entry .entry-content p {
-        color: var(--text-primary) !important;
-        text-shadow: none !important;
-    }
-
-    body.dark .first-entry .entry-content p strong {
-        font-weight: 500 !important;
-        color: var(--text-primary) !important;
-    }
 
     /* Enhanced mobile dropdown functionality */
     @media screen and (max-width: 768px) {
@@ -896,14 +853,12 @@
 <main class="main"> 
 <article class="first-entry home-info">
     <header class="entry-header">
-        <h2><span class="greeting-text"><span style="font-family: 'Schnyder S Demi', Garamond, serif; color: var(--text-primary);">Hi</span>, <span style="color: var(--text-primary);">there!</span></span></h2>
+        <h2><span class="greeting-text">Hi, there!</span></h2>
         <div class="greeting-divider"></div>
     </header>
-    <section class="entry-content" style="margin: 0; padding: 0;">
-    <p class="custom-paragraph" style="text-align: justify; margin: 0; padding: 0; line-height: 1.6;">I'm Kibrom (<span style="font-weight: bold;">KB</span>), a Project Lead Data Scientist in <span style="font-weight: bold;">Medical Imaging AI</span>, where a single algorithm can mean life or death, and a Tech Manager in Banking. <span style="font-weight: bold;">My mission is to build human-centric AI that solves real problems</span>. This blog is where I get real about the messy, brilliant, and frustrating journey of <span style="font-weight: bold;">getting it right</span>. Join me in making sense of the revolution.</p>
+    <section class="entry-content">
+    <p class="home-intro">I'm Kibrom (KB), a Project Lead Data Scientist in Medical Imaging AI, where a single algorithm can mean life or death, and a Tech Manager in Banking. My mission is to build human-centric AI that solves real problems. This blog is where I get real about the messy, brilliant, and frustrating journey of getting it right. Join me in making sense of the revolution.</p>
     </section>
-    <footer class="entry-footer">
-    </footer>
     <div class="about-block">
       <div class="social-link-group-tight"><a href="https://twitter.com/coding_era" target="_blank"
           class="social-icon-link-pad w-inline-block"><img
@@ -935,16 +890,13 @@
           class="social-icon-link-pad w-inline-block"><img
             src="https://uploads-ssl.webflow.com/5fff4548993f61212dec8c3a/5fff4548d36c8610ccf1e6df_social-30.svg" width="30"
             alt="Email logo." class="icon-image"></a></div>
-      <div class="space"></div>
-      <div class="columns-front-page w-row">   
-      </div>
     </div>
 </article>
 
-  <div class="w-col w-col-6" style="padding: 0 20px 20px 20px; background-color: #F2F2F2; margin-top: -10px;">
-  <h2 class="small-heading" style="color: var(--text-primary); font-weight: 600; font-size: 1.3em; text-align: start; margin: 10px 0 0 0;">Featured Posts:</h2>
-  <div style="height:2px; background-color: var(--border-color); filter: brightness(0.97); margin: 6px 0 0 0;"></div>
-</div>
+  <section class="featured-posts">
+  <h2 class="featured-heading">Featured Posts:</h2>
+  <div class="featured-divider"></div>
+</section>
 
 <article class="post-entry"> 
   <header class="entry-header">
@@ -960,7 +912,7 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 style="font-family: 'Schnyder S Demi', Garamond, serif; font-style: oblique 1deg; font-weight: 700; color: #2f2f2f; line-height: 1.25; letter-spacing: -0.2px; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;">Disentangling the Latent Space: A Guide to Beta-VAE
+    <h2>Disentangling the Latent Space: A Guide to Beta-VAE
     </h2>
   </header>
   <section class="entry-content">
@@ -973,7 +925,7 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 style="font-family: 'Schnyder S Demi', Garamond, serif; font-style: oblique 1deg; font-weight: 700; color: #2f2f2f; line-height: 1.25; letter-spacing: -0.2px; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;">Causality in Machine Learning
+    <h2>Causality in Machine Learning
     </h2>
   </header>
   <section class="entry-content">
@@ -985,12 +937,10 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 style="font-family: 'Schnyder S Demi', Garamond, serif; font-style: oblique 1deg; font-weight: 700; color: #2f2f2f; line-height: 1.25; letter-spacing: -0.2px; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;">Jobs in the Digital Era
+    <h2>Jobs in the Digital Era
     </h2>
   </header>
   <section class="entry-content">
-	<img src="automation.png" class="center" style="opacity: 0.8; border-radius: 10px;" alt="Automation and digital transformation illustration" />
-	
     <p>As we enter the digital age, one thing is certain: technology is not just a trend, it's a game-changer. With each passing day, technology is making its way into more and more industries, bringing about a variety of benefits for society such as increased efficiency, improved communication, and access to information. But, with change comes challenges, and one of the biggest concerns is the displacement of jobs.
 Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolution of neural networks during training via gradient descent....</p>
   </section>
@@ -1000,7 +950,7 @@ Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolu
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 style="font-family: 'Schnyder S Demi', Garamond, serif; font-style: oblique 1deg; font-weight: 700; color: #2f2f2f; line-height: 1.25; letter-spacing: -0.2px; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;">Demystifying Overfitting in Deep Neural Networks: Separating Fact from Fiction
+    <h2>Demystifying Overfitting in Deep Neural Networks: Separating Fact from Fiction
     </h2>
   </header>
   <section class="entry-content">
