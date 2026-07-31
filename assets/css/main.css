@@ -610,8 +610,9 @@ color: var(--text-secondary);
 }
 
 .featured-heading {
+    font-family: var(--font-primary);
     font-size: 1.3em;
-    font-weight: 600;
+    font-weight: 500;
     margin: 10px 0 0 0;
     color: var(--primary);
 }
