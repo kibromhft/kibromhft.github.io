@@ -11,7 +11,7 @@
 <meta name="description" content="Kibrom Haftu's blog on AI, machine learning, and data science: practical essays on medical imaging AI, causality, deep learning, and building human-centric intelligent systems.">
 <meta name="author" content="kibrom Haftu">
 <link rel="canonical" href="https://kibromhft.github.io/" />
-<link crossorigin="anonymous" href="/assets/css/main.css?v=1.1" rel="stylesheet">
+<link crossorigin="anonymous" href="/assets/css/main.css?v=1.2" rel="stylesheet">
 <link rel="icon" href="https://kibromhft.github.io/favicon_peach.ico">
 
 <meta name="theme-color" content="#2e2e33">
@@ -48,633 +48,6 @@
   ]
 }
 </script>
-<style>
-    /* Design System - CSS Custom Properties */
-    :root {
-        /* Colors - using main theme variables */
-        --primary-color: var(--brand-blue, rgb(13, 110, 253));
-        --primary-hover: var(--brand-blue-hover, rgb(10, 88, 202));
-        --primary-light: rgb(59, 130, 246);
-        --text-primary: var(--primary, rgb(15, 23, 42));
-        --text-secondary: var(--secondary, rgb(51, 65, 85));
-        --text-muted: rgb(108, 117, 125);
-        --bg-primary: var(--theme, rgb(255, 255, 255));
-        --bg-secondary: var(--entry, rgb(248, 250, 252));
-        --bg-card: var(--entry, rgb(255, 255, 255));
-        --border-color: var(--border, rgba(226, 232, 240, 0.8));
-        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.02);
-        --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.03);
-        --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.05);
-        
-        /* Typography */
-        --font-heading: "Essays 1743", serif;
-        --font-body: Libertine, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, "Times New Roman", serif;
-        --font-size-xs: 0.875rem;
-        --font-size-sm: 1rem;
-        --font-size-base: 1.1rem;
-        --font-size-lg: 1.25rem;
-        --font-size-xl: 1.4rem;
-        --font-size-2xl: 2rem;
-        --font-size-3xl: 3.5rem;
-        
-        /* Spacing */
-        --space-xs: 0.5rem;
-        --space-sm: 1rem;
-        --space-md: 1.5rem;
-        --space-lg: 2rem;
-        --space-xl: 2.5rem;
-        --space-2xl: 3rem;
-        --space-3xl: 4rem;
-        
-        /* Border radius */
-        --radius-sm: 8px;
-        --radius-md: 12px;
-        --radius-lg: 16px;
-        
-        /* Transitions */
-        --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        
-        /* Container */
-        --container-max-width: min(900px, 90vw);
-        --container-padding: clamp(1rem, 5vw, 2rem);
-    }
-
-    /* Dark mode variables - using main theme system */
-    body.dark {
-        --primary-color: rgb(34, 211, 238);
-        --primary-hover: rgb(6, 182, 212);
-        --primary-light: rgb(6, 182, 212);
-        --text-primary: var(--primary, rgb(248, 250, 252));
-        --text-secondary: var(--secondary, rgb(203, 213, 225));
-        --text-muted: rgb(156, 163, 175);
-        --bg-primary: var(--theme, rgb(15, 23, 42));
-        --bg-secondary: var(--entry, rgb(30, 41, 59));
-        --bg-card: var(--entry, rgb(30, 41, 59));
-        --border-color: var(--border, rgba(51, 65, 85, 0.8));
-        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
-        --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-        --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Enhanced dark mode styling for all elements */
-    body.dark {
-        background-color: var(--bg-primary);
-        color: var(--text-primary);
-    }
-
-    body.dark .entry {
-        background-color: var(--bg-card);
-        border: 1px solid var(--border-color);
-    }
-
-    body.dark .entry-content {
-        color: var(--text-primary);
-    }
-
-    body.dark .entry-content h1,
-    body.dark .entry-content h2,
-    body.dark .entry-content h3,
-    body.dark .entry-content h4,
-    body.dark .entry-content h5,
-    body.dark .entry-content h6 {
-        color: var(--text-primary);
-    }
-
-    body.dark .entry-content a {
-        color: var(--primary-color);
-    }
-
-    body.dark .entry-content a:hover {
-        color: var(--primary-hover);
-    }
-
-    body.dark .entry-content code {
-        background-color: var(--bg-secondary);
-        color: var(--text-primary);
-        border: 1px solid var(--border-color);
-    }
-
-    body.dark .entry-content pre {
-        background-color: var(--bg-secondary);
-        border: 1px solid var(--border-color);
-    }
-
-    body.dark .entry-content blockquote {
-        border-left: 4px solid var(--primary-color);
-        background-color: var(--bg-secondary);
-    }
-
-    body.dark .entry-content table {
-        background-color: var(--bg-card);
-    }
-
-    body.dark .entry-content th,
-    body.dark .entry-content td {
-        border: 1px solid var(--border-color);
-    }
-
-    body.dark .entry-content th {
-        background-color: var(--bg-secondary);
-    }
-
-    body.dark .pagination {
-        background-color: var(--bg-card);
-    }
-
-    body.dark .pagination a {
-        color: var(--text-primary);
-        background-color: var(--bg-secondary);
-        border: 1px solid var(--border-color);
-    }
-
-    body.dark .pagination a:hover {
-        background-color: var(--primary-color);
-        color: white;
-    }
-
-    body.dark .tags a {
-        background-color: var(--bg-secondary);
-        color: var(--text-primary);
-        border: 1px solid var(--border-color);
-    }
-
-    body.dark .tags a:hover {
-        background-color: var(--primary-color);
-        color: white;
-    }
-
-    /* Additional dark mode styles for common elements */
-    body.dark .entry-meta {
-        color: var(--text-secondary);
-    }
-
-    body.dark .entry-meta a {
-        color: var(--text-secondary);
-    }
-
-    body.dark .entry-meta a:hover {
-        color: var(--primary-color);
-    }
-
-    body.dark .entry-title a {
-        color: var(--text-primary);
-    }
-
-    body.dark .entry-title a:hover {
-        color: var(--primary-color);
-    }
-
-    body.dark .entry-summary {
-        color: var(--text-secondary);
-    }
-
-    body.dark .entry-footer {
-        color: var(--text-muted);
-        border-top: 1px solid var(--border-color);
-    }
-
-    body.dark .entry-footer a {
-        color: var(--text-muted);
-    }
-
-    body.dark .entry-footer a:hover {
-        color: var(--primary-color);
-    }
-
-    /* Dark mode for navigation elements */
-    body.dark .nav a {
-        color: var(--text-primary);
-    }
-
-    body.dark .nav a:hover {
-        color: var(--primary-color);
-    }
-
-    body.dark .dropdown-menu {
-        background-color: var(--bg-card);
-        border: 1px solid var(--border-color);
-        box-shadow: var(--shadow-lg);
-    }
-
-    body.dark .dropdown-menu a {
-        color: var(--text-primary);
-    }
-
-    body.dark .dropdown-menu a:hover {
-        background-color: var(--bg-secondary);
-        color: var(--primary-color);
-    }
-
-    /* Optimized theme transitions - only essential properties */
-    body,
-    .header,
-    .nav,
-    .logo a,
-    #menu a,
-    .dropdown-menu,
-    .entry,
-    .entry-content,
-    .entry-header,
-    .entry-footer,
-    .post-entry,
-    .pagination,
-    .tags a,
-    .footer {
-        transition: background-color 0.15s ease, 
-                    color 0.15s ease, 
-                    border-color 0.15s ease;
-    }
-
-    /* Faster transitions for theme toggle button */
-    #theme-toggle {
-        transition: background-color 0.1s ease, 
-                    outline 0.1s ease;
-    }
-
-    #theme-toggle svg {
-        transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-
-    /* Reduced motion support */
-    @media (prefers-reduced-motion: reduce) {
-        :root {
-            --transition-fast: 0s;
-            --transition-base: 0s;
-            --transition-slow: 0s;
-        }
-        
-        * {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-        }
-    }
-
-    /* Navigation styles with CSS variables */
-    #menu a {
-        color: var(--text-primary);
-        transition: var(--transition-base);
-    }
-
-    #menu a:hover,
-    #menu a:focus {
-        background-color: var(--bg-secondary);
-        color: var(--text-primary);
-        outline: 2px solid var(--primary-color);
-        outline-offset: 2px;
-    }
-
-    .dropdown-menu a {
-        color: var(--text-primary);
-        transition: var(--transition-base);
-    }
-
-    .dropdown-menu a:hover,
-    .dropdown-menu a:focus {
-        background-color: var(--bg-secondary);
-        color: var(--text-primary);
-    }
-
-    /* Logo and theme toggle */
-    .logo a {
-        color: var(--text-primary);
-        transition: var(--transition-base);
-    }
-
-    .logo a:hover,
-    .logo a:focus {
-        color: var(--primary-color);
-        outline: 2px solid var(--primary-color);
-        outline-offset: 2px;
-    }
-
-    #theme-toggle {
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: var(--space-xs);
-        border-radius: 50%;
-        transition: var(--transition-base);
-        color: var(--text-primary);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    #theme-toggle:hover,
-    #theme-toggle:focus {
-        background-color: var(--bg-secondary);
-        outline: 2px solid var(--primary-color);
-        outline-offset: 2px;
-    }
-
-    #theme-toggle svg {
-        height: 20px;
-        width: 20px;
-    }
-
-    /* Subtle hover accent for greeting */
-    .greeting-text {
-        text-decoration: none;
-        transition: text-decoration-color 0.2s ease, text-underline-offset 0.2s ease;
-    }
-
-    .greeting-text:hover {
-        text-decoration: underline;
-        text-decoration-color: var(--border-color);
-        text-underline-offset: 3px;
-    }
-
-    /* Very slim divider under greeting */
-    .greeting-divider {
-        height: 1.5px;
-        background-color: var(--border-color);
-        margin: 6px 0 12px 0;
-        border: 0;
-        opacity: 0.6;
-    }
-
-    .logo-switches {
-        display: flex;
-        align-items: center;
-        margin-left: var(--space-sm);
-    }
-
-    .logo {
-        display: flex;
-        align-items: center;
-        position: relative;
-    }
-
-    /* Theme toggle visibility with smooth transitions */
-    #theme-toggle svg {
-        transition: opacity var(--transition-base), transform var(--transition-base);
-    }
-
-    body.dark #moon {
-        opacity: 0;
-        transform: rotate(-90deg);
-        pointer-events: none;
-    }
-
-    body:not(.dark) #sun {
-        opacity: 0;
-        transform: rotate(90deg);
-        pointer-events: none;
-    }
-
-    body.dark #sun,
-    body:not(.dark) #moon {
-        opacity: 1;
-        transform: rotate(0deg);
-        pointer-events: auto;
-    }
-
-    /* Enhanced theme toggle button */
-    #theme-toggle {
-        position: relative;
-        overflow: hidden;
-    }
-
-    #theme-toggle::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        background: var(--primary-color);
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        transition: width var(--transition-base), height var(--transition-base);
-        opacity: 0.1;
-    }
-
-    #theme-toggle:hover::before {
-        width: 100%;
-        height: 100%;
-    }
-
-    /* Theme toggle button animation */
-    @keyframes themeTogglePulse {
-        0% { transform: translate(-50%, -50%) scale(1); }
-        50% { transform: translate(-50%, -50%) scale(1.1); }
-        100% { transform: translate(-50%, -50%) scale(1); }
-    }
-
-    #theme-toggle:active::before {
-        animation: themeTogglePulse 0.3s ease-in-out;
-    }
-
-
-
-
-
-    /* Screen reader only text */
-    .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-    }
-
-    /* Subtle header background improvement */
-    .header {
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid var(--border-color);
-    }
-
-    body.dark .header {
-        background: rgba(29, 30, 32, 0.98);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid var(--border-color);
-    }
-
-    /* Improved caret styling */
-    .caret {
-        font-size: 14px !important;
-        opacity: 1 !important;
-        margin-left: 6px !important;
-        transition: transform 0.2s ease;
-        color: var(--text-primary);
-    }
-
-    .caret:hover {
-        color: var(--primary-color);
-    }
-
-    /* Optimized font loading with fallbacks */
-    @font-face {
-        font-family: "Essays 1743";
-        src: url("assets/f/Essays1743.woff2") format("woff2"), url("assets/f/Essays1743.woff") format("woff");
-        font-display: swap;
-        font-weight: normal;
-        font-style: normal;
-    }
-    @font-face {
-        font-family: "Essays 1743";
-        src: url("assets/f/Essays1743-bold.woff2") format("woff2"), url("assets/f/Essays1743-bold.woff") format("woff");
-        font-display: swap;
-        font-weight: bold;
-        font-style: normal;
-    }
-    @font-face {
-        font-family: "Essays 1743";
-        src: url("assets/f/Essays1743-italic.woff2") format("woff2"), url("assets/f/Essays1743-italic.woff") format("woff");
-        font-display: swap;
-        font-weight: normal;
-        font-style: italic;
-    }
-    @font-face {
-        font-family: "Libertine";
-        src: url("assets/f/Libertine.woff2") format("woff2"), url("assets/f/Libertine.woff") format("woff");
-        font-display: swap;
-        font-weight: normal;
-        font-style: normal;
-    }
-    @font-face {
-        font-family: "Libertine";
-        src: url("assets/f/Libertine-bold.woff2") format("woff2"), url("assets/f/Libertine-bold.woff") format("woff");
-        font-display: swap;
-        font-weight: bold;
-        font-style: normal;
-    }
-
-     /* Reduce spacing between header and first entry */
-     .first-entry {
-         margin-top: 1rem !important;
-     }
-
-    /* Enhanced mobile dropdown functionality */
-    @media screen and (max-width: 768px) {
-        /* Override main.css mobile navigation with enhanced behavior */
-        .nav {
-            padding: 0 16px !important;
-            gap: 16px !important;
-            display: flex !important;
-            align-items: center !important;
-            flex-wrap: wrap !important;
-            overflow: visible !important;
-            white-space: normal !important;
-            max-width: none !important;
-        }
-
-        #menu {
-            gap: 6px !important;
-            overflow: visible !important;
-            white-space: normal !important;
-            display: flex !important;
-            flex-direction: row !important;
-            flex-wrap: wrap !important;
-        }
-
-        #menu li {
-            display: flex !important;
-            white-space: normal !important;
-            flex-shrink: 1 !important;
-        }
-
-        #menu a {
-            font-size: 15px !important;
-            padding: 8px 12px !important;
-            border-radius: 6px !important;
-            white-space: normal !important;
-            word-wrap: break-word !important;
-            overflow-wrap: break-word !important;
-        }
-
-        .dropdown-menu {
-            right: auto !important;
-            left: 0 !important;
-            min-width: 200px !important;
-            border-radius: 8px !important;
-        }
-
-        /* Completely disable hover behavior on touch devices */
-        .dropdown .dropdown-menu {
-            opacity: 0 !important;
-            visibility: hidden !important;
-            transform: translateY(-8px) !important;
-        }
-
-        /* Show dropdown when dropdown-open class is present */
-        .dropdown.dropdown-open .dropdown-menu {
-            opacity: 1 !important;
-            visibility: visible !important;
-            transform: translateY(0) !important;
-        }
-
-        /* Rotate caret when dropdown is open */
-        .dropdown.dropdown-open .caret {
-            transform: rotate(180deg) !important;
-        }
-    }
-
-    @media screen and (max-width: 480px) {
-        .nav {
-            flex-direction: row !important;
-            padding: 0 16px !important;
-            display: flex !important;
-            align-items: center !important;
-            flex-wrap: wrap !important;
-            max-width: none !important;
-        }
-
-        .logo {
-            margin-bottom: 0 !important;
-        }
-
-        #menu {
-            flex-wrap: wrap !important;
-            justify-content: flex-start !important;
-            gap: 6px !important;
-            display: flex !important;
-            flex-direction: row !important;
-        }
-
-        #menu a {
-            font-size: 14px !important;
-            padding: 6px 8px !important;
-            white-space: normal !important;
-            word-wrap: break-word !important;
-            overflow-wrap: break-word !important;
-        }
-
-        /* Mobile dropdown functionality for smaller screens */
-        .dropdown .dropdown-menu {
-            opacity: 0 !important;
-            visibility: hidden !important;
-            transform: translateY(-8px) !important;
-        }
-
-        .dropdown.dropdown-open .dropdown-menu {
-            opacity: 1 !important;
-            visibility: visible !important;
-            transform: translateY(0) !important;
-        }
-
-        .dropdown.dropdown-open .caret {
-            transform: rotate(180deg) !important;
-        }
-
-        /* Improve italic visibility on small screens (only for titles using oblique) */
-        .entry-header h2[style*="oblique"] {
-            font-style: oblique 1deg !important;
-            font-synthesis: style !important;
-            letter-spacing: -0.25px !important;
-        }
-    }
-</style>
 </head>
 
 <body class="list" id="top">
@@ -905,6 +278,7 @@
   </section>
   <footer class="entry-footer"><span title='2023-01-19 00:00:00 +0000 UTC'>January 19, 2023</span>&nbsp;·&nbsp;18 min&nbsp;·&nbsp;kibrom Haftu</footer>
           <a class="entry-link" aria-label="post link to Coding AI" href="https://kibromhft.github.io/posts/2023-01-19-coding/"></a>
+  <a class="entry-more" href="https://kibromhft.github.io/posts/2023-01-19-coding/">Read more &rarr;</a>
 </article>
 
 <article class="post-entry"> 
@@ -918,6 +292,7 @@
   </section>
   <footer class="entry-footer"><span title='2022-02-27 00:00:00 +0000 UTC'>November 27, 2022</span>&nbsp;·&nbsp;22 min&nbsp;·&nbsp;kibrom Haftu</footer>
   <a class="entry-link" aria-label="post link to VAE" href="https://kibromhft.github.io/posts/2022-11-27-vae/"></a>
+  <a class="entry-more" href="https://kibromhft.github.io/posts/2022-11-27-vae/">Read more &rarr;</a>
 </article>
 
 <article class="post-entry"> 
@@ -930,6 +305,7 @@
   </section>
   <footer class="entry-footer"><span title='2022-02-20 00:00:00 +0000 UTC'>November 20, 2022</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;kibrom Haftu</footer>
   <a class="entry-link" aria-label="post link to Causality in Machine Learning" href="https://kibromhft.github.io/posts/2022-11-20-causality_in_ML/"></a>
+  <a class="entry-more" href="https://kibromhft.github.io/posts/2022-11-20-causality_in_ML/">Read more &rarr;</a>
 </article>
 
 <article class="post-entry"> 
@@ -943,6 +319,7 @@ Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolu
   </section>
   <footer class="entry-footer"><span title='2022-10-19 00:00:00 +0000 UTC'>October 19, 2022</span>&nbsp;·&nbsp;11 min&nbsp;·&nbsp;kibrom Haftu</footer>
   <a class="entry-link" aria-label="post link to Jobs in the Digital Era" href="https://kibromhft.github.io/posts/2022-10-19-automation/"></a>
+  <a class="entry-more" href="https://kibromhft.github.io/posts/2022-10-19-automation/">Read more &rarr;</a>
 </article>
 
 <article class="post-entry"> 
@@ -955,6 +332,7 @@ Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolu
   </section>
   <footer class="entry-footer"><span title='2022-10-06 00:00:00 +0000 UTC'>October 6, 2022</span>&nbsp;·&nbsp;12 min&nbsp;·&nbsp;kibrom Haftu</footer>
   <a class="entry-link" aria-label="post link to Demystifying Overfitting in Deep Neural Networks" href="https://kibromhft.github.io/posts/2022-10-06-overfit_DNN/"></a>
+  <a class="entry-more" href="https://kibromhft.github.io/posts/2022-10-06-overfit_DNN/">Read more &rarr;</a>
 </article>
 
 <footer class="page-footer">
@@ -965,8 +343,16 @@ Neural tangent kernel (NTK) (Jacot et al. 2018) is a kernel to explain the evolu
     </main>
     
 <footer class="footer">
-    <span>&copy; 2025 <a href="https://kibromhft.github.io/">Kb&#39;s Blog</a></span>
-
+    <div class="footer-inner">
+        <span class="footer-brand">KB&#39;s Blog &mdash; human-centric AI essays</span>
+        <nav class="footer-links" aria-label="Footer">
+            <a href="https://kibromhft.github.io/posts/">Posts</a>
+            <a href="https://kibromhft.github.io/archives/">Archives</a>
+            <a href="https://kibromhft.github.io/faq">FAQ</a>
+            <a href="https://kibromhft.github.io/cv">CV</a>
+        </nav>
+        <span class="footer-copy">&copy; 2026 <a href="https://kibromhft.github.io/">Kb&#39;s Blog</a></span>
+    </div>
 </footer>
 
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g" style="visibility: visible; opacity: 1;">
