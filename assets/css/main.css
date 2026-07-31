@@ -549,9 +549,9 @@ color: var(--text-secondary);
 }
 
 .entry-header h2 {
-    font-family: var(--font-serif);
+    font-family: var(--font-primary);
     font-size: 24px;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.25;
     letter-spacing: -0.2px;
     margin-bottom: 16px;
