@@ -89,7 +89,7 @@ One of the main benefits of autoencoders is their ability to reduce the dimensio
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Disentangling the Latent Space: A Guide to Beta-VAE"/>
 <meta name="twitter:description" content=" 
-Autoencoders are a type of neural network that can be used to learn a compressed representation of input data. They work by training the network to reconstruct the input data from a lower-dimensional latent representation, which is typically obtained using an encoder. Autoencoders are versatile and can be used for a variety of tasks, including data compression, anomaly detection, and feature learning high-dimensional data using a neural network model with a narrow bottleneck layer in the middle (oops, this is probably not true for Variational Autoencoder, and we will investigate it in details in later sections). A nice byproduct is dimension reduction: the bottleneck layer captures a compressed latent encoding."/>
+Autoencoders are a type of neural network that can be used to learn a compressed representation of input data. They work by training the network to reconstruct the input data from a lower-dimensional latent representation, which is typically obtained using an encoder. Autoencoders are versatile and can be used for a variety of tasks, including data compression, anomaly detection, and feature learning."/>
 <meta name="twitter:site" content="@kibromhft" />
 <meta name="twitter:creator" content="@kibromhft" />
 
@@ -120,11 +120,11 @@ Autoencoders are a type of neural network that can be used to learn a compressed
   "@type": "BlogPosting",
   "headline": "Disentangling the Latent Space: A Guide to Beta-VAE",
   "name": "Disentangling the Latent Space: A Guide to Beta-VAE",
-  "description": "\nAutoencoders are a type of neural network that can be used to learn a compressed representation of input data. They work by training the network to reconstruct the input data from a lower-dimensional latent representation, which is typically obtained using an encoder. Autoencoders are versatile and can be used for a variety of tasks, including data compression, anomaly detection, and feature learning high-dimensional data using a neural network model with a narrow bottleneck layer in the middle (oops, this is probably not true for Variational Autoencoder, and we will investigate it in details in later sections). A nice byproduct is dimension reduction: the bottleneck layer captures a compressed latent encoding.",
+  "description": "\nAutoencoders are a type of neural network that can be used to learn a compressed representation of input data. They work by training the network to reconstruct the input data from a lower-dimensional latent representation, which is typically obtained using an encoder. Autoencoders are versatile and can be used for a variety of tasks, including data compression, anomaly detection, and feature learning.",
   "keywords": [
     "autoencoder","generative-model","unsupervised-learning","dimensionality-reduction","neural-networks","reconstruction-error","latent-space","variational-inference","beta-vae","generative-adversarial-networks"
   ],
-  "articleBody": "\nAutoencoders are a type of neural network that can be used to learn a compressed representation of input data. They work by training the network to reconstruct the input data from a lower-dimensional latent representation, which is typically obtained using an encoder. Autoencoders are versatile and can be used for a variety of tasks, including data compression, anomaly detection, and feature learning high-dimensional data using a neural network model with a narrow bottleneck layer in the middle (oops, this is probably not true for Variational Autoencoder, and we will investigate it in details in later sections). A nice byproduct is dimension reduction: the bottleneck layer captures a compressed latent encoding. Such a low-dimensional representation can be used as en embedding vector in various applications (i.e. search), help data compression, or reveal the underlying data generative factors.\nNotation    Symbol Mean     $\\mathcal{D}$ The dataset, $\\mathcal{D} = \\{ \\mathbf{x}^{(1)}, \\mathbf{x}^{(2)}, \\dots, \\mathbf{x}^{(n)} \\}$, contains $n$ data samples; $\\vert\\mathcal{D}\\vert =n $.   $\\mathbf{x}^{(i)}$ Each data point is a vector of $d$ dimensions, $\\mathbf{x}^{(i)} = [x^{(i)}_1, x^{(i)}_2, \\dots, x^{(i)}_d]$.   $\\mathbf{x}$ One data sample from the dataset, $\\mathbf{x} \\in \\mathcal{D}$.   $\\mathbf{x}'$ The reconstructed version of $\\mathbf{x}$.   $\\tilde{\\mathbf{x}}$ This is the noisy version of the original data $\\mathbf{x}$.   $\\mathbf{z}$ The latent vector.   $a_j^{(l)}$ The activation function for the $j$-th neuron in the $l$-th hidden layer.   $g_{\\phi}(.)$ The encoding function parameterized by $\\phi$.   $f_{\\theta}(.)$ The decoding function parameterized by $\\theta$.   $q_{\\phi}(\\mathbf{z}\\vert\\mathbf{x})$ Estimated posterior probability function, also known as probabilistic encoder.   $p_{\\theta}(\\mathbf{x}\\vert\\mathbf{z})$ Likelihood of generating true data sample given the latent code, also known as probabilistic decoder.    Autoencoder Autoencoder is a neural network designed to learn an identity function in an unsupervised way to reconstruct the original input while compressing the data in the process so as to discover a more efficient and compressed representation. The idea was originated in the 1980s, and later promoted by the seminal paper by Hinton \u0026 Salakhutdinov, 2006.\nIt consists of two networks:\n Encoder network: It translates the original high-dimension input into the latent low-dimensional code. The input size is larger than the output size. Decoder network: The decoder network recovers the data from the code, likely with larger and larger output layers. \n",
+  "articleBody": "\nLet's dive straight into the world of autoencoders and their cool variations, especially the game-changing beta-VAEs. We'll take a look at how these technologies are advancing data representation and generative tasks, and how they're really pushing the limits of what we can achieve in machine learning.\n\nAutoencoders are a type of neural network that can be used to learn a compressed representation of input data. They work by training the network to reconstruct the input data from a lower-dimensional latent representation, which is typically obtained using an encoder. Autoencoders are versatile and can be used for a variety of tasks, including data compression, anomaly detection, and feature learning.\n",
   "wordCount" : "5305",
   "inLanguage": "en",
   "datePublished": "2022-02-27T00:00:00Z",
@@ -1624,7 +1624,6 @@ Autoencoders are a type of neural network that can be used to learn a compressed
 <p>
 One of the main benefits of autoencoders is their ability to reduce the dimensionality of large and complex data sets, making them more manageable for downstream tasks such as classification, clustering, and visualization. They can also be used to identify patterns or anomalies in data that may not be easily detectable by other means.Using autoencoders, it is also possible to learn useful features from the data they are fed. These features can be used to enhance the performance of other machine learning models. It is also useful for data generation tasks such as generating images or synthesis of speech, which can be generated with them.
 </p>
-<p class="custom-paragraph" style="text-align: justify;">The spread of literacy was slow and gradual, with schools and educational institutions being established to teach the masses how to read and write. At first, literacy was only available to the privileged few, but as time went on, more and more people gained access to education. This brought about a significant change in society, as people became more informed and knowledgeable about the world around them. Consequently, more opportunities have emerged, especially with the advent of technology and the internet, making educational resources increasingly accessible to all. This shift has ushered in a new era of opportunities for those who previously lacked access to educational materials, paving the way for a more level playing field for the benefit of all. The democratization of knowledge has facilitated a more connected and equitable global population, breaking down traditional barriers to education and promoting greater social justice.</p>
 <h1 id="notation">Notation<a hidden class="anchor" aria-hidden="true" href="#notation">#</a></h1>
 <table>
 <thead>
@@ -1799,11 +1798,8 @@ $$
 &=\int q_\phi(\mathbf{z} \vert \mathbf{x}) \big( \log p_\theta(\mathbf{x}) + \log\frac{q_\phi(\mathbf{z} \vert \mathbf{x})}{p_\theta(\mathbf{z}, \mathbf{x})} \big) d\mathbf{z} & \\
 &=\log p_\theta(\mathbf{x}) + \int q_\phi(\mathbf{z} \vert \mathbf{x})\log\frac{q_\phi(\mathbf{z} \vert \mathbf{x})}{p_\theta(\mathbf{z}, \mathbf{x})} d\mathbf{z} & \\
 &=\log p_\theta(\mathbf{x}) - \int q_\phi(\mathbf{z} \vert \mathbf{x})\log\frac{p_\theta(\mathbf{z}, \mathbf{x})}{q_\phi(\mathbf{z} \vert \mathbf{x})} d\mathbf{z} & \\
-&\text{Switching the order of x, z} \\
-&=\int q_\phi(\mathbf{z} \vert \mathbf{x}) \log\frac{p_\theta(\mathbf{x}, \mathbf{z})}{q_\phi(\mathbf{z} \vert \mathbf{x})} d\mathbf{z} \\
-
-&\text{ By defining } D_\text{KL}(q_\phi(\mathbf{z}\vert\mathbf{x})||p_\theta(\mathbf{z})) = \int q_\phi(\mathbf{z} \vert \mathbf{x})\log\frac{p_\theta(\mathbf{z})}{q_\phi(\mathbf{z} \vert \mathbf{x})} d\mathbf{z} \\
-&=\log p_\theta(\mathbf{x}) - D_\text{KL}(q_\phi(\mathbf{z}\vert\mathbf{x})||p_\theta(\mathbf{z})) + \mathbb{E}{q\phi(\mathbf{z}\vert\mathbf{x})}\left[\log p_\theta(\mathbf{x},\mathbf{z})\right] \\
+&=\log p_\theta(\mathbf{x}) - \int q_\phi(\mathbf{z} \vert \mathbf{x}) \big( \log p_\theta(\mathbf{x}\vert\mathbf{z}) + \log\frac{p_\theta(\mathbf{z})}{q_\phi(\mathbf{z} \vert \mathbf{x})} \big) d\mathbf{z} \\
+&=\log p_\theta(\mathbf{x}) - \mathbb{E}_{\mathbf{z}\sim q_\phi(\mathbf{z}\vert\mathbf{x})}\left[\log p_\theta(\mathbf{x}\vert\mathbf{z})\right] + D_\text{KL}(q_\phi(\mathbf{z}\vert\mathbf{x}) \| p_\theta(\mathbf{z})) \\
 \end{aligned}
 $$
 </div>
@@ -1826,9 +1822,9 @@ $$
 Where $\theta^{}, \phi^{}$ are the optimal parameters for the model.
 </div>
 
-<p>The Evidence Lower Bound (ELBO) is an upper bound on the log marginal likelihood of the data, $\log p_\theta(\mathbf{x})$. We can optimize the ELBO with respect to $\phi$ and $\theta$ to find the best approximating distribution, $q_\phi(\mathbf{z}\vert\mathbf{x})$, and the best parameter values, $\theta$.</p> 
-<p>In summary, the ELBO is a scalar value that is used as a loss function in variational inference to approximate the true posterior distribution. It is the sum of two terms: the expected log likelihood of the data under the approximating distribution, and the KL divergence between the approximating distribution and the true posterior. It can be optimized with respect to both the parameters of the approximating distribution and the model, in order to find the best approximation of the true posterior distribution.</p> 
-<p>It is important to note that the ELBO is an lower bound on the true log likelihood of the data, thus, the optimization of ELBO will not give the true maximum likelihood estimate of the parameters. However, it is a practical and commonly used method for approximating the true posterior in Bayesian inference.</p> 
+<p>The Evidence Lower Bound (ELBO) is a lower bound on the log marginal likelihood of the data, $\log p_\theta(\mathbf{x})$. We can optimize the ELBO with respect to $\phi$ and $\theta$ to find the best approximating distribution, $q_\phi(\mathbf{z}\vert\mathbf{x})$, and the best parameter values, $\theta$.</p> 
+<p>In summary, the ELBO is a scalar value that is used as a loss function in variational inference to approximate the true posterior distribution. It is the sum of two terms: the expected log likelihood of the data under the approximating distribution, and the KL divergence between the approximating distribution and the prior. It can be optimized with respect to both the parameters of the approximating distribution and the model, in order to find the best approximation of the true posterior distribution.</p> 
+<p>It is important to note that the ELBO is a lower bound on the true log likelihood of the data, thus, the optimization of ELBO will not give the true maximum likelihood estimate of the parameters. However, it is a practical and commonly used method for approximating the true posterior in Bayesian inference.</p> 
 <p>Also, in practice, the ELBO is usually optimized via Stochastic Gradient Variational Bayes (SGVB) which is an efficient optimization method that utilizes the reparameterization trick and stochastic gradient descent to optimize the ELBO.</p> 
 <p>In a nutshell, Variational Inference is a powerful technique for approximating complex posterior distributions in Bayesian models, and the Evidence Lower Bound (ELBO) is a key component of this method, serving as the loss function to be optimized during the inference process.</p> 
 
@@ -1857,37 +1853,24 @@ The goal of the VAE is to learn an encoder and decoder that can generate realist
 </p>
 
 <h1 id="beta-vae">Beta-VAE<a hidden class="anchor" aria-hidden="true" href="#beta-vae">#</a></h1>
-<p>The equation for the Evidence Lower Bound (ELBO) in Beta-VAE is as follows:</p>
-<div>
-$$
-\begin{aligned}
-ELBO = -\beta * D_\text{KL}( q_\phi(\mathbf{z}\vert\mathbf{x}) \vert p_\theta(\mathbf{z}\vert\mathbf{x}) ) -\log p_\theta(\mathbf{x}\vert\mathbf{z})
-\end{aligned}
-$$
-</div>
-<p>Beta-VAE is a variant of the Variational Autoencoder (VAE) model, which is a generative model that is trained to learn a compact latent representation of data. The main idea behind VAEs is to learn a probabilistic encoding of the data, such that the data can be generated from a simple random noise signal. Beta-VAE modifies the standard VAE objective function by introducing a new hyperparameter, beta, which controls the trade-off between reconstruction error and the KL divergence between the approximate posterior and true posterior.</p>
-<p>The first term in the ELBO equation is the KL divergence between the approximate posterior distribution, $q_\phi(\mathbf{z}\vert\mathbf{x})$, and the true posterior distribution, $p_\theta(\mathbf{z}\vert\mathbf{x})$, scaled by the beta hyperparameter. The KL divergence term measures how different the approximate posterior is from the true posterior. In Beta-VAE, by increasing the value of beta, the weight on the KL divergence term is increased, which in turn encourages the approximate posterior to match the true posterior more closely. This results in a more disentangled representation of the data.</p>
-<p>The second term in the ELBO equation is the negative log-likelihood of the data given the latent variables, $-\log p_\theta(\mathbf{x}\vert\mathbf{z})$. This term measures the difference between the original data and the data generated by the decoder network.</p>
-<p>The encoder and decoder networks, represented by the parameters $\phi$ and $\theta$, are trained to maximize the ELBO with respect to these parameters. The encoder network maps the data to the latent space and the decoder network maps the latent variables back to the original data space. The training process involves minimizing the difference between the original data and the data generated by the decoder network. The objective of the training process is to learn a probabilistic encoding of the data such that the data can be used as en embedding vector in various applications (i.e. search), help data compression, or reveal the underlying data generative factors.</p>
-<p>The value of beta can be adjusted to prioritize either reconstruction or disentanglement, depending on the task and dataset. For example, in applications where reconstruction accuracy is more important, a smaller value of beta can be used, while in applications where disentanglement is more important, a larger value of beta can be used. Additionally, the value of beta can be adapted during training to achieve a balance between reconstruction and disentanglement.</p>
-<p>In summary, Beta-VAE is a generative model that is trained to learn a compact latent representation of data. It modifies the standard VAE objective function by introducing a new hyperparameter,beta, which controls the trade-off between reconstruction error and the KL divergence between the approximate posterior and true posterior. By increasing the value of beta, the weight on the KL divergence term is increased, which results in a more disentangled representation of the data. The encoder and decoder networks are trained to maximize the ELBO, and the value of beta can be adjusted to prioritize either reconstruction or disentanglement, depending on the task and dataset. This allows for more flexibility and control over the representation learned by the model, and can lead to better performance on certain tasks and datasets. Overall, Beta-VAE is a powerful tool for learning generative models and can be applied to a wide range of problems in computer vision, natural language processing, and other fields.</p>
-
-
-
-
-
-
-<h1 id="beta-vae">Beta-VAE<a hidden class="anchor" aria-hidden="true" href="#beta-vae">#</a></h1>
 <p>Beta-VAE is a variant of the Variational Autoencoder that introduces a hyperparameter $\beta$ to control the trade-off between reconstruction quality and the quality of the learned representations. The key idea behind Beta-VAE is to encourage the model to learn more disentangled representations by increasing the weight of the KL divergence term in the loss function.</p>
 
 <p>The loss function for Beta-VAE is defined as:</p>
 <div>
 $$
+\begin{aligned}
 L_\text{Beta-VAE}(\theta, \phi, \beta) = -\mathbb{E}_{\mathbf{z} \sim q_\phi(\mathbf{z}\vert\mathbf{x})} \log p_\theta(\mathbf{x}\vert\mathbf{z}) + \beta \cdot D_\text{KL}(q_\phi(\mathbf{z}\vert\mathbf{x}) \| p_\theta(\mathbf{z}))
+\end{aligned}
 $$
 </div>
 
 <p>Where $\beta > 1$ increases the weight of the KL divergence term, encouraging the model to learn more disentangled representations. When $\beta = 1$, the model reduces to the standard VAE.</p>
+
+<p>The first term is the reconstruction loss, the negative expected log-likelihood of the data given the latent variables, $-\log p_\theta(\mathbf{x}\vert\mathbf{z})$, which measures how well the decoder reconstructs the input. The second term is the KL divergence between the approximate posterior, $q_\phi(\mathbf{z}\vert\mathbf{x})$, and the prior, $p_\theta(\mathbf{z})$, scaled by the hyperparameter $\beta$. Increasing $\beta$ puts more weight on matching the prior, which encourages the latent dimensions to become independent and yields a more disentangled representation, at the cost of reconstruction quality.</p>
+
+<p>The encoder and decoder networks, represented by the parameters $\phi$ and $\theta$, are trained to maximize the ELBO with respect to these parameters. The encoder network maps the data to the latent space and the decoder network maps the latent variables back to the original data space. The training process involves minimizing the difference between the original data and the data generated by the decoder network. The objective of the training process is to learn a probabilistic encoding of the data such that the data can be used as an embedding vector in various applications (i.e. search), help data compression, or reveal the underlying data generative factors.</p>
+
+<p>The value of beta can be adjusted to prioritize either reconstruction or disentanglement, depending on the task and dataset. For example, in applications where reconstruction accuracy is more important, a smaller value of beta can be used, while in applications where disentanglement is more important, a larger value of beta can be used. Additionally, the value of beta can be adapted during training to achieve a balance between reconstruction and disentanglement.</p>
 
 <p>The main advantages of Beta-VAE include:</p>
 <ul>
