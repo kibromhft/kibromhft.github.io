@@ -593,7 +593,7 @@ color: var(--text-secondary);
 
 .home-intro {
     max-width: 46em;
-    color: var(--secondary);
+    color: var(--primary);
     font-size: 14px;
     line-height: 1.6;
     text-align: left;
