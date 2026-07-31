@@ -607,9 +607,8 @@ color: var(--text-secondary);
 .home-intro {
     max-width: 46em;
     color: var(--primary);
-    font-size: 15px;
-    line-height: 1.7;
-    letter-spacing: 0.01em;
+    font-size: 14px;
+    line-height: 1.6;
     text-align: left;
     text-rendering: optimizeLegibility;
 }
