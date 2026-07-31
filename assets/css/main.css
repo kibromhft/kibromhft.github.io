@@ -364,11 +364,6 @@ body:not(.dark) #sun {
     padding: var(--gap);
 }
 
-/* Home page keeps the narrower column for comfortable reading */
-body.home .main {
-    max-width: calc(720px + var(--gap) * 2);
-}
-
 /* ===== HOME PAGE SPECIFIC STYLES ===== */
 .first-entry {
     position: relative;
